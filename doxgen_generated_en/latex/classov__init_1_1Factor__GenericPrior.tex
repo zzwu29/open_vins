@@ -1,0 +1,55 @@
+\hypertarget{classov__init_1_1Factor__GenericPrior}{}\section{ov\+\_\+init\+:\+:Factor\+\_\+\+Generic\+Prior Class Reference}
+\label{classov__init_1_1Factor__GenericPrior}\index{ov\+\_\+init\+::\+Factor\+\_\+\+Generic\+Prior@{ov\+\_\+init\+::\+Factor\+\_\+\+Generic\+Prior}}
+
+
+Factor for generic state priors for specific types.  
+
+
+
+
+{\ttfamily \#include $<$Factor\+\_\+\+Generic\+Prior.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__GenericPrior_a9f3839a153e85d5836b12eaa68f3d565}\label{classov__init_1_1Factor__GenericPrior_a9f3839a153e85d5836b12eaa68f3d565}} 
+\hyperlink{classov__init_1_1Factor__GenericPrior_a9f3839a153e85d5836b12eaa68f3d565}{Factor\+\_\+\+Generic\+Prior} (const Eigen\+::\+Matrix\+Xd \&x\+\_\+lin\+\_\+, const std\+::vector$<$ std\+::string $>$ \&x\+\_\+type\+\_\+, const Eigen\+::\+Matrix\+Xd \&prior\+\_\+\+Info, const Eigen\+::\+Matrix\+Xd \&prior\+\_\+grad)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__GenericPrior_aba62008b7e579108e0cc05ef182f033c}\label{classov__init_1_1Factor__GenericPrior_aba62008b7e579108e0cc05ef182f033c}} 
+bool \hyperlink{classov__init_1_1Factor__GenericPrior_aba62008b7e579108e0cc05ef182f033c}{Evaluate} (double const $\ast$const $\ast$parameters, double $\ast$residuals, double $\ast$$\ast$jacobians) const override
+\begin{DoxyCompactList}\small\item\em Error residual and Jacobian calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__GenericPrior_a11eeaebe7c7e965fde10be9822c858d1}\label{classov__init_1_1Factor__GenericPrior_a11eeaebe7c7e965fde10be9822c858d1}} 
+Eigen\+::\+Matrix\+Xd \hyperlink{classov__init_1_1Factor__GenericPrior_a11eeaebe7c7e965fde10be9822c858d1}{x\+\_\+lin}
+\begin{DoxyCompactList}\small\item\em State estimates at the time of marginalization to linearize the problem. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__GenericPrior_a9ab293a4952b242f6455d5b5178e5ca1}\label{classov__init_1_1Factor__GenericPrior_a9ab293a4952b242f6455d5b5178e5ca1}} 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classov__init_1_1Factor__GenericPrior_a9ab293a4952b242f6455d5b5178e5ca1}{x\+\_\+type}
+\begin{DoxyCompactList}\small\item\em State type for each variable in x\+\_\+lin. Can be \mbox{[}quat, quat\+\_\+yaw, vec3, vec8\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__GenericPrior_ac91a3c87710a7a48f5ebb4f32554d3b7}\label{classov__init_1_1Factor__GenericPrior_ac91a3c87710a7a48f5ebb4f32554d3b7}} 
+Eigen\+::\+Matrix\+Xd \hyperlink{classov__init_1_1Factor__GenericPrior_ac91a3c87710a7a48f5ebb4f32554d3b7}{sqrtI}
+\begin{DoxyCompactList}\small\item\em The square-\/root of the information s.\+t. sqrt\+I$^\wedge$T $\ast$ sqrtI = marginal information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__GenericPrior_a9a3a5b2873e14ccec67e01a8cd57a755}\label{classov__init_1_1Factor__GenericPrior_a9a3a5b2873e14ccec67e01a8cd57a755}} 
+Eigen\+::\+Matrix\+Xd \hyperlink{classov__init_1_1Factor__GenericPrior_a9a3a5b2873e14ccec67e01a8cd57a755}{b}
+\begin{DoxyCompactList}\small\item\em Constant term inside the cost s.\+t. sqrt\+I$^\wedge$T $\ast$ b = marginal gradient (can be zero) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Factor for generic state priors for specific types. 
+
+This is a general factor which handles state priors which have non-\/zero linear errors. In general a unitary factor will have zero error when it is created, thus this extra term can be ignored. But if performing marginalization, this can be non-\/zero. See the following paper Section 3.\+2 Eq. 25-\/35 \href{https://journals.sagepub.com/doi/full/10.1177/0278364919835021}{\tt https\+://journals.\+sagepub.\+com/doi/full/10.\+1177/0278364919835021}
+
+We have the following minimization problem\+: \[ \textrm{argmin} ||A * (x - x_{lin}) + b||^2 \]
+
+In general we have the following after marginalization\+:
+\begin{DoxyItemize}
+\item $(A^T*A) = Inf_{prior} $ (the prior information)
+\item $A^T*b = grad_{prior} $ (the prior gradient)
+\end{DoxyItemize}
+
+For example, consider we have the following system were we wish to remove the xm states. This is the problem of state marginalization. \[ [ Arr Arm ] [ xr ] = [ - gr ] \] \[ [ Amr Amm ] [ xm ] = [ - gm ] \]
+
+We wish to marginalize the xm states which are correlated with the other states $ xr $. The Jacobian (and thus information matrix A) is computed at the current best guess $ x_{lin} $. We can define the following optimal subcost form which only involves the $ xr $ states as\+: \[ cost^2 = (xr - xr_{lin})^T*(A^T*A)*(xr - xr_{lin}) + b^T*A*(xr - xr_{lin}) + b^b \]
+
+where we have\+: \[ A = sqrt(Arr - Arm*Amm^{-1}*Amr) \] \[ b = A^-1 * (gr - Arm*Amm^{-1}*gm) \] 

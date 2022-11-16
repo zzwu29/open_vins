@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: Covariance Index Internals</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dev-welcome.html">Developer and Internals</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Covariance Index Internals </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="dev-index-types"></a>
+Type System</h1>
+<p>The type system that the <a class="el" href="namespaceov__msckf.html" title="Extended Kalman Filter estimator ">ov_msckf</a> leverages was inspired by graph-based optimization frameworks such as <a href="https://github.com/borglab/gtsam">Georgia Tech Smoothing and Mapping library (GTSAM)</a>. As compared to manually knowing where in the covariance state elements are, the interaction is abstracted away from the user and is replaced by a straight forward way to access the desired elements. The <a class="el" href="classov__msckf_1_1State.html" title="State of our filter ">ov_msckf::State</a> is owner of these types and thus after creation one should not delete these externally.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>Type {</div><div class="line"><span class="keyword">protected</span>:</div><div class="line">    <span class="comment">// Current best estimate</span></div><div class="line">    Eigen::MatrixXd _value;</div><div class="line">    <span class="comment">// Location of error state in covariance</span></div><div class="line">    <span class="keywordtype">int</span> _id = -1;</div><div class="line">    <span class="comment">// Dimension of error state</span></div><div class="line">    <span class="keywordtype">int</span> _size = -1;</div><div class="line">};</div></div><!-- fragment --><p>A type is defined by its location in its covariance, its current estimate and its error state size. The current value does not have to be a vector, but could be a matrix in the case of an SO(3) rotation group type object. The error state needs to be a vector and thus a type will need to define the mapping between this error state and its manifold representation.</p>
+<h1><a class="anchor" id="dev-index-update"></a>
+Type-based EKF Update</h1>
+<p>To show the power of this type-based indexing system, we will go through how we compute the EKF update. The specific method we will be looking at is the <a class="el" href="classov__msckf_1_1StateHelper.html#a471d81fcc22b706654556950931067fd">ov_msckf::StateHelper::EKFUpdate()</a> which takes in the state, vector of types, Jacobian, residual, and measurement covariance. As compared to passing a Jacobian matrix that is the full size of state wide, we instead leverage this type system by passing a "small" Jacobian that has only the state elements that the measurements are a function of.</p>
+<p>For example, if we have a global 3D SLAM feature update (implemented in <a class="el" href="classov__msckf_1_1UpdaterSLAM.html">ov_msckf::UpdaterSLAM</a>) our Jacobian will only be a function of the newest clone and the feature. This means that our Jacobian is only of size 9 as compared to the size our state. In addition to the matrix containing the Jacobian elements, we need to know what order this Jacobian is in, thus we pass a vector of types which correspond to the state elements our Jacobian is a function of. Thus in our example, it would contain two types: our newest clone <a class="el" href="classov__type_1_1PoseJPL.html">ov_type::PoseJPL</a> and current landmark feature <a class="el" href="classov__type_1_1Landmark.html">ov_type::Landmark</a> with our Jacobian being the type size of the pose plus the type size of the landmark in width. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

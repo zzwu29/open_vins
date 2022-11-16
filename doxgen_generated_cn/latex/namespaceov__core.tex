@@ -1,0 +1,515 @@
+\hypertarget{namespaceov__core}{}\section{ov\+\_\+core 命名空间参考}
+\label{namespaceov__core}\index{ov\+\_\+core@{ov\+\_\+core}}
+
+
+Core algorithms for Open\+V\+I\+NS  
+
+
+\subsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classov__core_1_1BsplineSE3}{Bspline\+S\+E3}
+\begin{DoxyCompactList}\small\item\em B-\/\+Spline which performs interpolation over S\+E(3) manifold. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1CamBase}{Cam\+Base}
+\begin{DoxyCompactList}\small\item\em Base pinhole camera model class \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1CamEqui}{Cam\+Equi}
+\begin{DoxyCompactList}\small\item\em Fisheye / equadistant model pinhole camera model class \end{DoxyCompactList}\item 
+struct \hyperlink{structov__core_1_1CameraData}{Camera\+Data}
+\begin{DoxyCompactList}\small\item\em Struct for a collection of camera measurements. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1CamRadtan}{Cam\+Radtan}
+\begin{DoxyCompactList}\small\item\em Radial-\/tangential / Brown–\+Conrady model pinhole camera model class \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1CpiBase}{Cpi\+Base}
+\begin{DoxyCompactList}\small\item\em Base class for continuous preintegration integrators. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1CpiV1}{Cpi\+V1}
+\begin{DoxyCompactList}\small\item\em Model 1 of continuous preintegration. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1CpiV2}{Cpi\+V2}
+\begin{DoxyCompactList}\small\item\em Model 2 of continuous preintegration. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1DatasetReader}{Dataset\+Reader}
+\begin{DoxyCompactList}\small\item\em Helper functions to read in dataset files \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1Feature}{Feature}
+\begin{DoxyCompactList}\small\item\em Sparse feature class used to collect measurements \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1FeatureDatabase}{Feature\+Database}
+\begin{DoxyCompactList}\small\item\em Database containing features we are currently tracking. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1FeatureHelper}{Feature\+Helper}
+\begin{DoxyCompactList}\small\item\em Contains some nice helper functions for features. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1FeatureInitializer}{Feature\+Initializer}
+\begin{DoxyCompactList}\small\item\em Class that triangulates feature \end{DoxyCompactList}\item 
+struct \hyperlink{structov__core_1_1FeatureInitializerOptions}{Feature\+Initializer\+Options}
+\begin{DoxyCompactList}\small\item\em Struct which stores all our feature initializer options \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1Grider__FAST}{Grider\+\_\+\+F\+A\+ST}
+\begin{DoxyCompactList}\small\item\em Extracts F\+A\+ST features in a grid pattern. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1Grider__GRID}{Grider\+\_\+\+G\+R\+ID}
+\begin{DoxyCompactList}\small\item\em Extracts F\+A\+ST features in a grid pattern. \end{DoxyCompactList}\item 
+struct \hyperlink{structov__core_1_1ImuData}{Imu\+Data}
+\begin{DoxyCompactList}\small\item\em Struct for a single imu measurement (time, wm, am) \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1LambdaBody}{Lambda\+Body}
+\begin{DoxyCompactList}\small\item\em Helper class to do Open\+CV parallelization \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1Printer}{Printer}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classov__core_1_1Printer}{Printer} for open\+\_\+vins that allows for various levels of printing to be done \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1TrackAruco}{Track\+Aruco}
+\begin{DoxyCompactList}\small\item\em Tracking of Open\+CV Aruoc tags. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1TrackBase}{Track\+Base}
+\begin{DoxyCompactList}\small\item\em Visual feature tracking base class \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1TrackDescriptor}{Track\+Descriptor}
+\begin{DoxyCompactList}\small\item\em Descriptor-\/based visual tracking \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1TrackKLT}{Track\+K\+LT}
+\begin{DoxyCompactList}\small\item\em K\+LT tracking of features. \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1TrackSIM}{Track\+S\+IM}
+\begin{DoxyCompactList}\small\item\em Simulated tracker for when we already have uv measurements! \end{DoxyCompactList}\item 
+class \hyperlink{classov__core_1_1YamlParser}{Yaml\+Parser}
+\begin{DoxyCompactList}\small\item\em Helper class to do Open\+CV yaml parsing from both file and R\+OS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{namespaceov__core_a1d2aafa6a756bb70fcd9f52695b4e573}{rot\+\_\+2\+\_\+quat} (const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&rot)
+\begin{DoxyCompactList}\small\item\em Returns a J\+PL quaternion from a rotation matrix \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_a24012c54df35621a935655b2e230169d}{skew\+\_\+x} (const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&w)
+\begin{DoxyCompactList}\small\item\em Skew-\/symmetric matrix from a given 3x1 vector \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_adfb06397034cc6b346efb9517ed3757e}{quat\+\_\+2\+\_\+\+Rot} (const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&q)
+\begin{DoxyCompactList}\small\item\em Converts J\+PL quaterion to S\+O(3) rotation matrix \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{namespaceov__core_aa708e95617ccac1c880451014f2715fa}{quat\+\_\+multiply} (const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&q, const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&p)
+\begin{DoxyCompactList}\small\item\em Multiply two J\+PL quaternions \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{namespaceov__core_aaf2593d3bde63e31ac9fc20e345271dc}{vee} (const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&w\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Returns vector portion of skew-\/symmetric \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_a835a207e29f0e50ddbf66d8ddce47514}{exp\+\_\+so3} (const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&w)
+\begin{DoxyCompactList}\small\item\em S\+O(3) matrix exponential \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{namespaceov__core_a1bbbcb3ed59aa7dff7883c2e8644d9fb}{log\+\_\+so3} (const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&R)
+\begin{DoxyCompactList}\small\item\em S\+O(3) matrix logarithm \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix4d \hyperlink{namespaceov__core_a8907fdb4273f23741299fb23a1c1f572}{exp\+\_\+se3} (Eigen\+::\+Matrix$<$ double, 6, 1 $>$ vec)
+\begin{DoxyCompactList}\small\item\em S\+E(3) matrix exponential function \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 6, 1 $>$ \hyperlink{namespaceov__core_aaf3626f4ed6392b8b0b0d0a75ff08a61}{log\+\_\+se3} (Eigen\+::\+Matrix4d mat)
+\begin{DoxyCompactList}\small\item\em S\+E(3) matrix logarithm \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix4d \hyperlink{namespaceov__core_a2854f4368bab599be2404f396f5ee434}{hat\+\_\+se3} (const Eigen\+::\+Matrix$<$ double, 6, 1 $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Hat operator for R$^\wedge$6 -\/$>$ Lie Algebra se(3) \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix4d \hyperlink{namespaceov__core_aba0a3888c4f1998478719dc70597ac73}{Inv\+\_\+se3} (const Eigen\+::\+Matrix4d \&T)
+\begin{DoxyCompactList}\small\item\em S\+E(3) matrix analytical inverse \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{namespaceov__core_a3ebbc28aa8b0945da800771168f7c843}{Inv} (Eigen\+::\+Matrix$<$ double, 4, 1 $>$ q)
+\begin{DoxyCompactList}\small\item\em J\+PL Quaternion inverse \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 4, 4 $>$ \hyperlink{namespaceov__core_a03115c09fd2fa8a6af23830b9230a683}{Omega} (Eigen\+::\+Matrix$<$ double, 3, 1 $>$ w)
+\begin{DoxyCompactList}\small\item\em Integrated quaternion from angular velocity \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{namespaceov__core_a6c4586cceb6f81771921e61e135dcaed}{quatnorm} (Eigen\+::\+Matrix$<$ double, 4, 1 $>$ q\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Normalizes a quaternion to make sure it is unit norm \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_a518b7324a4106ccad60558e2e5c4b14f}{Jl\+\_\+so3} (const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&w)
+\begin{DoxyCompactList}\small\item\em Computes left Jacobian of S\+O(3) \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_a0406d085d6175d3bc8a539328ec214b5}{Jr\+\_\+so3} (const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&w)
+\begin{DoxyCompactList}\small\item\em Computes right Jacobian of S\+O(3) \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{namespaceov__core_af608ab8e3f8cd8554ade192cd804b7ce}{rot2rpy} (const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&rot)
+\begin{DoxyCompactList}\small\item\em Gets roll, pitch, yaw of argument rotation (in that order). \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_ab3268e0844642c119fe45c2880afb581}{rot\+\_\+x} (double t)
+\begin{DoxyCompactList}\small\item\em Construct rotation matrix from given roll \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_a2a212d931b6f4325052b3169ad6161a3}{rot\+\_\+y} (double t)
+\begin{DoxyCompactList}\small\item\em Construct rotation matrix from given pitch \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{namespaceov__core_a512a53c9e1519a8e202277db433d37d1}{rot\+\_\+z} (double t)
+\begin{DoxyCompactList}\small\item\em Construct rotation matrix from given yaw \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Core algorithms for Open\+V\+I\+NS 
+
+This has the core algorithms that all projects within the Open\+V\+I\+NS ecosystem leverage. The purpose is to allow for the reuse of code that could be shared between different localization systems (i.\+e. msckf-\/based, batch-\/based, etc.). These algorithms are the foundation which is necessary before we can even write an estimator that can perform localization. The key components of the \hyperlink{namespaceov__core}{ov\+\_\+core} codebase are the following\+:
+
+
+\begin{DoxyItemize}
+\item 3d feature initialization (see \hyperlink{classov__core_1_1FeatureInitializer}{ov\+\_\+core\+::\+Feature\+Initializer})
+\item S\+E(3) b-\/spline (see \hyperlink{classov__core_1_1BsplineSE3}{ov\+\_\+core\+::\+Bspline\+S\+E3})
+\item K\+LT, descriptor, aruco, and simulation feature trackers
+\item Groundtruth dataset reader (see \hyperlink{classov__core_1_1DatasetReader}{ov\+\_\+core\+::\+Dataset\+Reader})
+\item Quaternion and other manifold math operations
+\item Generic type system and their implementations (see \hyperlink{namespaceov__type}{ov\+\_\+type} namespace)
+\item Closed-\/form preintegration \cite{Eckenhoff2019IJRR}
+\end{DoxyItemize}
+
+Please take a look at classes that we offer for the user to leverage as each has its own documentation. If you are looking for the estimator please take a look at the \hyperlink{namespaceov__msckf}{ov\+\_\+msckf} project which leverages these algorithms. If you are looking for the different types please take a look at the \hyperlink{namespaceov__type}{ov\+\_\+type} namespace for the ones we have. 
+
+\subsection{函数说明}
+\mbox{\Hypertarget{namespaceov__core_a8907fdb4273f23741299fb23a1c1f572}\label{namespaceov__core_a8907fdb4273f23741299fb23a1c1f572}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!exp\+\_\+se3@{exp\+\_\+se3}}
+\index{exp\+\_\+se3@{exp\+\_\+se3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{exp\+\_\+se3()}{exp\_se3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix4d ov\+\_\+core\+::exp\+\_\+se3 (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 6, 1 $>$}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+S\+E(3) matrix exponential function 
+
+Equation is from Ethan Eade\textquotesingle{}s reference\+: \href{http://ethaneade.com/lie.pdf}{\tt http\+://ethaneade.\+com/lie.\+pdf} \begin{align*} \exp([\boldsymbol\omega,\mathbf u])&=\begin{bmatrix} \mathbf R & \mathbf V \mathbf u \\ \mathbf 0 & 1 \end{bmatrix} \\[1em] \mathbf R &= \mathbf I + A \lfloor \boldsymbol\omega \times\rfloor + B \lfloor \boldsymbol\omega \times\rfloor^2 \\ \mathbf V &= \mathbf I + B \lfloor \boldsymbol\omega \times\rfloor + C \lfloor \boldsymbol\omega \times\rfloor^2 \end{align*} where we have the following definitions \begin{align*} \theta &= \sqrt{\boldsymbol\omega^\top\boldsymbol\omega} \\ A &= \sin\theta/\theta \\ B &= (1-\cos\theta)/\theta^2 \\ C &= (1-A)/\theta^2 \end{align*}
+
+
+\begin{DoxyParams}{参数}
+{\em vec} & 6x1 in the R(6) space \mbox{[}omega, u\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+4x4 S\+E(3) matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a835a207e29f0e50ddbf66d8ddce47514}\label{namespaceov__core_a835a207e29f0e50ddbf66d8ddce47514}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!exp\+\_\+so3@{exp\+\_\+so3}}
+\index{exp\+\_\+so3@{exp\+\_\+so3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{exp\+\_\+so3()}{exp\_so3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::exp\+\_\+so3 (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+S\+O(3) matrix exponential 
+
+S\+O(3) matrix exponential mapping from the vector to S\+O(3) lie group. This formula ends up being the \href{https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula}{\tt Rodrigues formula}. This definition was taken from \char`\"{}\+Lie Groups for 2\+D and 3\+D Transformations\char`\"{} by Ethan Eade equation 15. \href{http://ethaneade.com/lie.pdf}{\tt http\+://ethaneade.\+com/lie.\+pdf}
+
+\begin{align*} \exp\colon\mathfrak{so}(3)&\to SO(3) \\ \exp(\mathbf{v}) &= \mathbf{I} +\frac{\sin{\theta}}{\theta}\lfloor\mathbf{v}\times\rfloor +\frac{1-\cos{\theta}}{\theta^2}\lfloor\mathbf{v}\times\rfloor^2 \\ \mathrm{where}&\quad \theta^2 = \mathbf{v}^\top\mathbf{v} \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em w} & 3x1 vector in R(3) we will take the exponential of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+S\+O(3) rotation matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a2854f4368bab599be2404f396f5ee434}\label{namespaceov__core_a2854f4368bab599be2404f396f5ee434}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!hat\+\_\+se3@{hat\+\_\+se3}}
+\index{hat\+\_\+se3@{hat\+\_\+se3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{hat\+\_\+se3()}{hat\_se3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix4d ov\+\_\+core\+::hat\+\_\+se3 (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 6, 1 $>$ \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Hat operator for R$^\wedge$6 -\/$>$ Lie Algebra se(3) 
+
+\begin{align*} \boldsymbol\Omega^{\wedge} = \begin{bmatrix} \lfloor \boldsymbol\omega \times\rfloor & \mathbf u \\ \mathbf 0 & 0 \end{bmatrix} \end{align*}
+
+
+\begin{DoxyParams}{参数}
+{\em vec} & 6x1 in the R(6) space \mbox{[}omega, u\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Lie algebra se(3) 4x4 matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a3ebbc28aa8b0945da800771168f7c843}\label{namespaceov__core_a3ebbc28aa8b0945da800771168f7c843}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!Inv@{Inv}}
+\index{Inv@{Inv}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{Inv()}{Inv()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 4, 1$>$ ov\+\_\+core\+::\+Inv (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 4, 1 $>$}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+J\+PL Quaternion inverse 
+
+See equation 21 in \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Indirect Kalman Filter for 3D Attitude Estimation}. \begin{align*} \bar{q}^{-1} = \begin{bmatrix} -\mathbf{q} \\ q_4 \end{bmatrix} \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em q} & quaternion we want to change \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+inversed quaternion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_aba0a3888c4f1998478719dc70597ac73}\label{namespaceov__core_aba0a3888c4f1998478719dc70597ac73}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!Inv\+\_\+se3@{Inv\+\_\+se3}}
+\index{Inv\+\_\+se3@{Inv\+\_\+se3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{Inv\+\_\+se3()}{Inv\_se3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix4d ov\+\_\+core\+::\+Inv\+\_\+se3 (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix4d \&}]{T }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+S\+E(3) matrix analytical inverse 
+
+It seems that using the .inverse() function is not a good way. This should be used in all cases we need the inverse instead of numerical inverse. \href{https://github.com/rpng/open_vins/issues/12}{\tt https\+://github.\+com/rpng/open\+\_\+vins/issues/12} \begin{align*} \mathbf{T}^{-1} = \begin{bmatrix} \mathbf{R}^\top & -\mathbf{R}^\top\mathbf{p} \\ \mathbf{0} & 1 \end{bmatrix} \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em T} & S\+E(3) matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+inversed S\+E(3) matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a518b7324a4106ccad60558e2e5c4b14f}\label{namespaceov__core_a518b7324a4106ccad60558e2e5c4b14f}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!Jl\+\_\+so3@{Jl\+\_\+so3}}
+\index{Jl\+\_\+so3@{Jl\+\_\+so3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{Jl\+\_\+so3()}{Jl\_so3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::\+Jl\+\_\+so3 (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes left Jacobian of S\+O(3) 
+
+The left Jacobian of S\+O(3) is defined equation (7.\+77b) in \href{http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17.pdf}{\tt State Estimation for Robotics} by Timothy D. Barfoot. Specifically it is the following (with $\theta=|\boldsymbol\theta|$ and $\mathbf a=\boldsymbol\theta/|\boldsymbol\theta|$)\+: \begin{align*} J_l(\boldsymbol\theta) = \frac{\sin\theta}{\theta}\mathbf I + \Big(1-\frac{\sin\theta}{\theta}\Big)\mathbf a \mathbf a^\top + \frac{1-\cos\theta}{\theta}\lfloor \mathbf a \times\rfloor \end{align*}
+
+
+\begin{DoxyParams}{参数}
+{\em w} & axis-\/angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+The left Jacobian of S\+O(3) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a0406d085d6175d3bc8a539328ec214b5}\label{namespaceov__core_a0406d085d6175d3bc8a539328ec214b5}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!Jr\+\_\+so3@{Jr\+\_\+so3}}
+\index{Jr\+\_\+so3@{Jr\+\_\+so3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{Jr\+\_\+so3()}{Jr\_so3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::\+Jr\+\_\+so3 (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes right Jacobian of S\+O(3) 
+
+The right Jacobian of S\+O(3) is related to the left by Jl(-\/w)=Jr(w). See equation (7.\+87) in \href{http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17.pdf}{\tt State Estimation for Robotics} by Timothy D. Barfoot. See \hyperlink{namespaceov__core_a518b7324a4106ccad60558e2e5c4b14f}{Jl\+\_\+so3()} for the definition of the left Jacobian of S\+O(3).
+
+
+\begin{DoxyParams}{参数}
+{\em w} & axis-\/angle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+The right Jacobian of S\+O(3) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_aaf3626f4ed6392b8b0b0d0a75ff08a61}\label{namespaceov__core_aaf3626f4ed6392b8b0b0d0a75ff08a61}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!log\+\_\+se3@{log\+\_\+se3}}
+\index{log\+\_\+se3@{log\+\_\+se3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{log\+\_\+se3()}{log\_se3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 6, 1$>$ ov\+\_\+core\+::log\+\_\+se3 (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix4d}]{mat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+S\+E(3) matrix logarithm 
+
+Equation is from Ethan Eade\textquotesingle{}s reference\+: \href{http://ethaneade.com/lie.pdf}{\tt http\+://ethaneade.\+com/lie.\+pdf} \begin{align*} \boldsymbol\omega &=\mathrm{skew\_offdiags}\Big(\frac{\theta}{2\sin\theta}(\mathbf R - \mathbf R^\top)\Big) \\ \mathbf u &= \mathbf V^{-1}\mathbf t \end{align*} where we have the following definitions \begin{align*} \theta &= \mathrm{arccos}((\mathrm{tr}(\mathbf R)-1)/2) \\ \mathbf V^{-1} &= \mathbf I - \frac{1}{2} \lfloor \boldsymbol\omega \times\rfloor + \frac{1}{\theta^2}\Big(1-\frac{A}{2B}\Big)\lfloor \boldsymbol\omega \times\rfloor^2 \end{align*}
+
+This function is based on the G\+T\+S\+AM one as the original implementation was a bit unstable. See the following\+:
+\begin{DoxyItemize}
+\item \href{https://github.com/borglab/gtsam/}{\tt https\+://github.\+com/borglab/gtsam/}
+\item \href{https://github.com/borglab/gtsam/issues/746}{\tt https\+://github.\+com/borglab/gtsam/issues/746}
+\item \href{https://github.com/borglab/gtsam/pull/780}{\tt https\+://github.\+com/borglab/gtsam/pull/780}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{参数}
+{\em mat} & 4x4 S\+E(3) matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+6x1 in the R(6) space \mbox{[}omega, u\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a1bbbcb3ed59aa7dff7883c2e8644d9fb}\label{namespaceov__core_a1bbbcb3ed59aa7dff7883c2e8644d9fb}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!log\+\_\+so3@{log\+\_\+so3}}
+\index{log\+\_\+so3@{log\+\_\+so3}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{log\+\_\+so3()}{log\_so3()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 1$>$ ov\+\_\+core\+::log\+\_\+so3 (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&}]{R }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+S\+O(3) matrix logarithm 
+
+This definition was taken from \char`\"{}\+Lie Groups for 2\+D and 3\+D Transformations\char`\"{} by Ethan Eade equation 17 \& 18. \href{http://ethaneade.com/lie.pdf}{\tt http\+://ethaneade.\+com/lie.\+pdf} \begin{align*} \theta &= \textrm{arccos}(0.5(\textrm{trace}(\mathbf{R})-1)) \\ \lfloor\mathbf{v}\times\rfloor &= \frac{\theta}{2\sin{\theta}}(\mathbf{R}-\mathbf{R}^\top) \end{align*}
+
+This function is based on the G\+T\+S\+AM one as the original implementation was a bit unstable. See the following\+:
+\begin{DoxyItemize}
+\item \href{https://github.com/borglab/gtsam/}{\tt https\+://github.\+com/borglab/gtsam/}
+\item \href{https://github.com/borglab/gtsam/issues/746}{\tt https\+://github.\+com/borglab/gtsam/issues/746}
+\item \href{https://github.com/borglab/gtsam/pull/780}{\tt https\+://github.\+com/borglab/gtsam/pull/780}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em R} & 3x3 S\+O(3) rotation matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+3x1 in the R(3) space \mbox{[}omegax, omegay, omegaz\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a03115c09fd2fa8a6af23830b9230a683}\label{namespaceov__core_a03115c09fd2fa8a6af23830b9230a683}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!Omega@{Omega}}
+\index{Omega@{Omega}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{Omega()}{Omega()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 4, 4$>$ ov\+\_\+core\+::\+Omega (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Integrated quaternion from angular velocity 
+
+See equation (48) of trawny tech report \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Indirect Kalman Filter for 3D Attitude Estimation}. \mbox{\Hypertarget{namespaceov__core_adfb06397034cc6b346efb9517ed3757e}\label{namespaceov__core_adfb06397034cc6b346efb9517ed3757e}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!quat\+\_\+2\+\_\+\+Rot@{quat\+\_\+2\+\_\+\+Rot}}
+\index{quat\+\_\+2\+\_\+\+Rot@{quat\+\_\+2\+\_\+\+Rot}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{quat\+\_\+2\+\_\+\+Rot()}{quat\_2\_Rot()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::quat\+\_\+2\+\_\+\+Rot (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts J\+PL quaterion to S\+O(3) rotation matrix 
+
+This is based on equation 62 in \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Indirect Kalman Filter for 3D Attitude Estimation}\+: \begin{align*} \mathbf{R} = (2q_4^2-1)\mathbf{I}_3-2q_4\lfloor\mathbf{q}\times\rfloor+2\mathbf{q}\mathbf{q}^\top \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em q} & J\+PL quaternion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+3x3 S\+O(3) rotation matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_aa708e95617ccac1c880451014f2715fa}\label{namespaceov__core_aa708e95617ccac1c880451014f2715fa}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!quat\+\_\+multiply@{quat\+\_\+multiply}}
+\index{quat\+\_\+multiply@{quat\+\_\+multiply}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{quat\+\_\+multiply()}{quat\_multiply()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 4, 1$>$ ov\+\_\+core\+::quat\+\_\+multiply (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&}]{q,  }\item[{const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Multiply two J\+PL quaternions 
+
+This is based on equation 9 in \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Indirect Kalman Filter for 3D Attitude Estimation}. We also enforce that the quaternion is unique by having q\+\_\+4 be greater than zero. \begin{align*} \bar{q}\otimes\bar{p}= \mathcal{L}(\bar{q})\bar{p}= \begin{bmatrix} q_4\mathbf{I}_3+\lfloor\mathbf{q}\times\rfloor & \mathbf{q} \\ -\mathbf{q}^\top & q_4 \end{bmatrix} \begin{bmatrix} \mathbf{p} \\ p_4 \end{bmatrix} \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em q} & First J\+PL quaternion \\
+\hline
+\mbox{\tt in}  & {\em p} & Second J\+PL quaternion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+4x1 resulting q$\ast$p quaternion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a6c4586cceb6f81771921e61e135dcaed}\label{namespaceov__core_a6c4586cceb6f81771921e61e135dcaed}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!quatnorm@{quatnorm}}
+\index{quatnorm@{quatnorm}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{quatnorm()}{quatnorm()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 4, 1$>$ ov\+\_\+core\+::quatnorm (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 4, 1 $>$}]{q\+\_\+t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Normalizes a quaternion to make sure it is unit norm 
+
+
+\begin{DoxyParams}{参数}
+{\em q\+\_\+t} & Quaternion to normalized \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Normalized quaterion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_af608ab8e3f8cd8554ade192cd804b7ce}\label{namespaceov__core_af608ab8e3f8cd8554ade192cd804b7ce}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!rot2rpy@{rot2rpy}}
+\index{rot2rpy@{rot2rpy}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{rot2rpy()}{rot2rpy()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 1$>$ ov\+\_\+core\+::rot2rpy (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&}]{rot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets roll, pitch, yaw of argument rotation (in that order). 
+
+To recover the matrix\+: R\+\_\+input = R\+\_\+z(yaw)$\ast$\+R\+\_\+y(pitch)$\ast$\+R\+\_\+x(roll) If you are interested in how to compute Jacobians checkout this report\+: \href{http://mars.cs.umn.edu/tr/reports/Trawny05c.pdf}{\tt http\+://mars.\+cs.\+umn.\+edu/tr/reports/\+Trawny05c.\+pdf}
+
+
+\begin{DoxyParams}{参数}
+{\em rot} & Rotation matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+roll, pitch, yaw values (in that order) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_a1d2aafa6a756bb70fcd9f52695b4e573}\label{namespaceov__core_a1d2aafa6a756bb70fcd9f52695b4e573}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!rot\+\_\+2\+\_\+quat@{rot\+\_\+2\+\_\+quat}}
+\index{rot\+\_\+2\+\_\+quat@{rot\+\_\+2\+\_\+quat}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{rot\+\_\+2\+\_\+quat()}{rot\_2\_quat()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 4, 1$>$ ov\+\_\+core\+::rot\+\_\+2\+\_\+quat (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&}]{rot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a J\+PL quaternion from a rotation matrix 
+
+This is based on the equation 74 in \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Indirect Kalman Filter for 3D Attitude Estimation}. In the implementation, we have 4 statements so that we avoid a division by zero and instead always divide by the largest diagonal element. This all comes from the definition of a rotation matrix, using the diagonal elements and an off-\/diagonal. \begin{align*} \mathbf{R}(\bar{q})= \begin{bmatrix} q_1^2-q_2^2-q_3^2+q_4^2 & 2(q_1q_2+q_3q_4) & 2(q_1q_3-q_2q_4) \\ 2(q_1q_2-q_3q_4) & -q_2^2+q_2^2-q_3^2+q_4^2 & 2(q_2q_3+q_1q_4) \\ 2(q_1q_3+q_2q_4) & 2(q_2q_3-q_1q_4) & -q_1^2-q_2^2+q_3^2+q_4^2 \end{bmatrix} \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em rot} & 3x3 rotation matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+4x1 quaternion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_ab3268e0844642c119fe45c2880afb581}\label{namespaceov__core_ab3268e0844642c119fe45c2880afb581}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!rot\+\_\+x@{rot\+\_\+x}}
+\index{rot\+\_\+x@{rot\+\_\+x}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{rot\+\_\+x()}{rot\_x()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::rot\+\_\+x (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct rotation matrix from given roll 
+
+
+\begin{DoxyParams}{参数}
+{\em t} & roll angle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceov__core_a2a212d931b6f4325052b3169ad6161a3}\label{namespaceov__core_a2a212d931b6f4325052b3169ad6161a3}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!rot\+\_\+y@{rot\+\_\+y}}
+\index{rot\+\_\+y@{rot\+\_\+y}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{rot\+\_\+y()}{rot\_y()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::rot\+\_\+y (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct rotation matrix from given pitch 
+
+
+\begin{DoxyParams}{参数}
+{\em t} & pitch angle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceov__core_a512a53c9e1519a8e202277db433d37d1}\label{namespaceov__core_a512a53c9e1519a8e202277db433d37d1}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!rot\+\_\+z@{rot\+\_\+z}}
+\index{rot\+\_\+z@{rot\+\_\+z}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{rot\+\_\+z()}{rot\_z()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::rot\+\_\+z (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct rotation matrix from given yaw 
+
+
+\begin{DoxyParams}{参数}
+{\em t} & yaw angle \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespaceov__core_a24012c54df35621a935655b2e230169d}\label{namespaceov__core_a24012c54df35621a935655b2e230169d}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!skew\+\_\+x@{skew\+\_\+x}}
+\index{skew\+\_\+x@{skew\+\_\+x}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{skew\+\_\+x()}{skew\_x()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 3$>$ ov\+\_\+core\+::skew\+\_\+x (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Skew-\/symmetric matrix from a given 3x1 vector 
+
+This is based on equation 6 in \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Indirect Kalman Filter for 3D Attitude Estimation}\+: \begin{align*} \lfloor\mathbf{v}\times\rfloor = \begin{bmatrix} 0 & -v_3 & v_2 \\ v_3 & 0 & -v_1 \\ -v_2 & v_1 & 0 \end{bmatrix} \end{align*}
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em w} & 3x1 vector to be made a skew-\/symmetric \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+3x3 skew-\/symmetric matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceov__core_aaf2593d3bde63e31ac9fc20e345271dc}\label{namespaceov__core_aaf2593d3bde63e31ac9fc20e345271dc}} 
+\index{ov\+\_\+core@{ov\+\_\+core}!vee@{vee}}
+\index{vee@{vee}!ov\+\_\+core@{ov\+\_\+core}}
+\subsubsection{\texorpdfstring{vee()}{vee()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$double, 3, 1$>$ ov\+\_\+core\+::vee (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&}]{w\+\_\+x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns vector portion of skew-\/symmetric 
+
+See \hyperlink{namespaceov__core_a24012c54df35621a935655b2e230169d}{skew\+\_\+x()} for details.
+
+
+\begin{DoxyParams}[1]{参数}
+\mbox{\tt in}  & {\em w\+\_\+x} & skew-\/symmetric matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+3x1 vector portion of skew 
+\end{DoxyReturn}

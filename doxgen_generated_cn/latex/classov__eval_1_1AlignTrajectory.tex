@@ -1,0 +1,177 @@
+\hypertarget{classov__eval_1_1AlignTrajectory}{}\section{ov\+\_\+eval\+:\+:Align\+Trajectory类 参考}
+\label{classov__eval_1_1AlignTrajectory}\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+
+
+Class that given two trajectories, will align the two.  
+
+
+
+
+{\ttfamily \#include $<$Align\+Trajectory.\+h$>$}
+
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__eval_1_1AlignTrajectory_ac4ea2100e9e28dc54299569b97b698a3}{align\+\_\+trajectory} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+es, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+gt, Eigen\+::\+Matrix3d \&R, Eigen\+::\+Vector3d \&t, double \&s, std\+::string method, int n\+\_\+aligned=-\/1)
+\begin{DoxyCompactList}\small\item\em Align estimate to GT using a desired method using a set of initial poses \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{静态 Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__eval_1_1AlignTrajectory_ab281d908409f24b08c3ac910b4d942f0}{align\+\_\+posyaw\+\_\+single} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+es, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+gt, Eigen\+::\+Matrix3d \&R, Eigen\+::\+Vector3d \&t)
+\begin{DoxyCompactList}\small\item\em Align estimate to GT using only position and yaw (for gravity aligned trajectories) using only the first poses \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignTrajectory_aea1c35dee4b15301c7248c1698ee4ffa}{align\+\_\+posyaw} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+es, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+gt, Eigen\+::\+Matrix3d \&R, Eigen\+::\+Vector3d \&t, int n\+\_\+aligned=-\/1)
+\begin{DoxyCompactList}\small\item\em Align estimate to GT using only position and yaw (for gravity aligned trajectories) using a set of initial poses \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignTrajectory_a23c39c91e3ba64678efe9734086babec}{align\+\_\+se3\+\_\+single} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+es, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+gt, Eigen\+::\+Matrix3d \&R, Eigen\+::\+Vector3d \&t)
+\begin{DoxyCompactList}\small\item\em Align estimate to GT using a full S\+E(3) transform using only the first poses \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignTrajectory_af48d64a8e529e8ec2471ff42b439e54a}{align\+\_\+se3} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+es, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+gt, Eigen\+::\+Matrix3d \&R, Eigen\+::\+Vector3d \&t, int n\+\_\+aligned=-\/1)
+\begin{DoxyCompactList}\small\item\em Align estimate to GT using a full S\+E(3) transform using a set of initial poses \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignTrajectory_a0413904b252f558fe47886cbbf772e63}{align\+\_\+sim3} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+es, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&traj\+\_\+gt, Eigen\+::\+Matrix3d \&R, Eigen\+::\+Vector3d \&t, double \&s, int n\+\_\+aligned=-\/1)
+\begin{DoxyCompactList}\small\item\em Align estimate to GT using a full S\+I\+M(3) transform using a set of initial poses \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Class that given two trajectories, will align the two. 
+
+Given two trajectories that have already been time synchronized we will compute the alignment transform between the two. We can do this using different alignment methods such as full S\+E(3) transform, just postiion and yaw, or S\+I\+M(3). These scripts are based on the \href{https://github.com/uzh-rpg/rpg_trajectory_evaluation}{\tt rpg\+\_\+trajectory\+\_\+evaluation} toolkit by Zhang and Scaramuzza. Please take a look at their \href{http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf}{\tt 2018 I\+R\+OS} paper on these methods. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__eval_1_1AlignTrajectory_aea1c35dee4b15301c7248c1698ee4ffa}\label{classov__eval_1_1AlignTrajectory_aea1c35dee4b15301c7248c1698ee4ffa}} 
+\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}!align\+\_\+posyaw@{align\+\_\+posyaw}}
+\index{align\+\_\+posyaw@{align\+\_\+posyaw}!ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+\subsubsection{\texorpdfstring{align\+\_\+posyaw()}{align\_posyaw()}}
+{\footnotesize\ttfamily void Align\+Trajectory\+::align\+\_\+posyaw (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+es,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+gt,  }\item[{Eigen\+::\+Matrix3d \&}]{R,  }\item[{Eigen\+::\+Vector3d \&}]{t,  }\item[{int}]{n\+\_\+aligned = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Align estimate to GT using only position and yaw (for gravity aligned trajectories) using a set of initial poses 
+
+
+\begin{DoxyParams}{参数}
+{\em traj\+\_\+es} & Estimated trajectory values in estimate frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em traj\+\_\+gt} & Groundtruth trjaectory in groundtruth frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em R} & Rotation from estimate to GT frame that will be computed \\
+\hline
+{\em t} & translation from estimate to GT frame that will be computed \\
+\hline
+{\em n\+\_\+aligned} & Number of poses to use for alignment (-\/1 will use all) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignTrajectory_ab281d908409f24b08c3ac910b4d942f0}\label{classov__eval_1_1AlignTrajectory_ab281d908409f24b08c3ac910b4d942f0}} 
+\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}!align\+\_\+posyaw\+\_\+single@{align\+\_\+posyaw\+\_\+single}}
+\index{align\+\_\+posyaw\+\_\+single@{align\+\_\+posyaw\+\_\+single}!ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+\subsubsection{\texorpdfstring{align\+\_\+posyaw\+\_\+single()}{align\_posyaw\_single()}}
+{\footnotesize\ttfamily void Align\+Trajectory\+::align\+\_\+posyaw\+\_\+single (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+es,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+gt,  }\item[{Eigen\+::\+Matrix3d \&}]{R,  }\item[{Eigen\+::\+Vector3d \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Align estimate to GT using only position and yaw (for gravity aligned trajectories) using only the first poses 
+
+
+\begin{DoxyParams}{参数}
+{\em traj\+\_\+es} & Estimated trajectory values in estimate frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em traj\+\_\+gt} & Groundtruth trjaectory in groundtruth frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em R} & Rotation from estimate to GT frame that will be computed \\
+\hline
+{\em t} & translation from estimate to GT frame that will be computed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignTrajectory_af48d64a8e529e8ec2471ff42b439e54a}\label{classov__eval_1_1AlignTrajectory_af48d64a8e529e8ec2471ff42b439e54a}} 
+\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}!align\+\_\+se3@{align\+\_\+se3}}
+\index{align\+\_\+se3@{align\+\_\+se3}!ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+\subsubsection{\texorpdfstring{align\+\_\+se3()}{align\_se3()}}
+{\footnotesize\ttfamily void Align\+Trajectory\+::align\+\_\+se3 (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+es,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+gt,  }\item[{Eigen\+::\+Matrix3d \&}]{R,  }\item[{Eigen\+::\+Vector3d \&}]{t,  }\item[{int}]{n\+\_\+aligned = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Align estimate to GT using a full S\+E(3) transform using a set of initial poses 
+
+
+\begin{DoxyParams}{参数}
+{\em traj\+\_\+es} & Estimated trajectory values in estimate frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em traj\+\_\+gt} & Groundtruth trjaectory in groundtruth frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em R} & Rotation from estimate to GT frame that will be computed \\
+\hline
+{\em t} & translation from estimate to GT frame that will be computed \\
+\hline
+{\em n\+\_\+aligned} & Number of poses to use for alignment (-\/1 will use all) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignTrajectory_a23c39c91e3ba64678efe9734086babec}\label{classov__eval_1_1AlignTrajectory_a23c39c91e3ba64678efe9734086babec}} 
+\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}!align\+\_\+se3\+\_\+single@{align\+\_\+se3\+\_\+single}}
+\index{align\+\_\+se3\+\_\+single@{align\+\_\+se3\+\_\+single}!ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+\subsubsection{\texorpdfstring{align\+\_\+se3\+\_\+single()}{align\_se3\_single()}}
+{\footnotesize\ttfamily void Align\+Trajectory\+::align\+\_\+se3\+\_\+single (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+es,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+gt,  }\item[{Eigen\+::\+Matrix3d \&}]{R,  }\item[{Eigen\+::\+Vector3d \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Align estimate to GT using a full S\+E(3) transform using only the first poses 
+
+
+\begin{DoxyParams}{参数}
+{\em traj\+\_\+es} & Estimated trajectory values in estimate frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em traj\+\_\+gt} & Groundtruth trjaectory in groundtruth frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em R} & Rotation from estimate to GT frame that will be computed \\
+\hline
+{\em t} & translation from estimate to GT frame that will be computed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignTrajectory_a0413904b252f558fe47886cbbf772e63}\label{classov__eval_1_1AlignTrajectory_a0413904b252f558fe47886cbbf772e63}} 
+\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}!align\+\_\+sim3@{align\+\_\+sim3}}
+\index{align\+\_\+sim3@{align\+\_\+sim3}!ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+\subsubsection{\texorpdfstring{align\+\_\+sim3()}{align\_sim3()}}
+{\footnotesize\ttfamily void Align\+Trajectory\+::align\+\_\+sim3 (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+es,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+gt,  }\item[{Eigen\+::\+Matrix3d \&}]{R,  }\item[{Eigen\+::\+Vector3d \&}]{t,  }\item[{double \&}]{s,  }\item[{int}]{n\+\_\+aligned = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Align estimate to GT using a full S\+I\+M(3) transform using a set of initial poses 
+
+
+\begin{DoxyParams}{参数}
+{\em traj\+\_\+es} & Estimated trajectory values in estimate frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em traj\+\_\+gt} & Groundtruth trjaectory in groundtruth frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em R} & Rotation from estimate to GT frame that will be computed \\
+\hline
+{\em t} & translation from estimate to GT frame that will be computed \\
+\hline
+{\em s} & scale from estimate to GT frame that will be computed \\
+\hline
+{\em n\+\_\+aligned} & Number of poses to use for alignment (-\/1 will use all) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignTrajectory_ac4ea2100e9e28dc54299569b97b698a3}\label{classov__eval_1_1AlignTrajectory_ac4ea2100e9e28dc54299569b97b698a3}} 
+\index{ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}!align\+\_\+trajectory@{align\+\_\+trajectory}}
+\index{align\+\_\+trajectory@{align\+\_\+trajectory}!ov\+\_\+eval\+::\+Align\+Trajectory@{ov\+\_\+eval\+::\+Align\+Trajectory}}
+\subsubsection{\texorpdfstring{align\+\_\+trajectory()}{align\_trajectory()}}
+{\footnotesize\ttfamily void Align\+Trajectory\+::align\+\_\+trajectory (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+es,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{traj\+\_\+gt,  }\item[{Eigen\+::\+Matrix3d \&}]{R,  }\item[{Eigen\+::\+Vector3d \&}]{t,  }\item[{double \&}]{s,  }\item[{std\+::string}]{method,  }\item[{int}]{n\+\_\+aligned = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Align estimate to GT using a desired method using a set of initial poses 
+
+
+\begin{DoxyParams}{参数}
+{\em traj\+\_\+es} & Estimated trajectory values in estimate frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em traj\+\_\+gt} & Groundtruth trjaectory in groundtruth frame \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em R} & Rotation from estimate to GT frame that will be computed \\
+\hline
+{\em t} & translation from estimate to GT frame that will be computed \\
+\hline
+{\em s} & scale from estimate to GT frame that will be computed \\
+\hline
+{\em method} & Method used for alignment \\
+\hline
+{\em n\+\_\+aligned} & Number of poses to use for alignment (-\/1 will use all) \\
+\hline
+\end{DoxyParams}

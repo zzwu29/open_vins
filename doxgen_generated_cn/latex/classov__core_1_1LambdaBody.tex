@@ -1,0 +1,26 @@
+\hypertarget{classov__core_1_1LambdaBody}{}\section{ov\+\_\+core\+:\+:Lambda\+Body类 参考}
+\label{classov__core_1_1LambdaBody}\index{ov\+\_\+core\+::\+Lambda\+Body@{ov\+\_\+core\+::\+Lambda\+Body}}
+
+
+Helper class to do Open\+CV parallelization  
+
+
+
+
+{\ttfamily \#include $<$opencv\+\_\+lambda\+\_\+body.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1LambdaBody_a57cc3809565739625b969ac7c8512679}\label{classov__core_1_1LambdaBody_a57cc3809565739625b969ac7c8512679}} 
+{\bfseries Lambda\+Body} (const std\+::function$<$ void(const cv\+::\+Range \&)$>$ \&body)
+\item 
+\mbox{\Hypertarget{classov__core_1_1LambdaBody_a1c5e4804e776da07eddfab15fdfbe325}\label{classov__core_1_1LambdaBody_a1c5e4804e776da07eddfab15fdfbe325}} 
+void {\bfseries operator()} (const cv\+::\+Range \&range) const override
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Helper class to do Open\+CV parallelization 
+
+This is a utility class required to build with older version of opencv On newer versions this doesn\textquotesingle{}t seem to be needed, but here we just use it to ensure we can work for more opencv version. \href{https://answers.opencv.org/question/65800/how-to-use-lambda-as-a-parameter-to-parallel_for_/?answer=130691#post-id-130691}{\tt https\+://answers.\+opencv.\+org/question/65800/how-\/to-\/use-\/lambda-\/as-\/a-\/parameter-\/to-\/parallel\+\_\+for\+\_\+/?answer=130691\#post-\/id-\/130691} 

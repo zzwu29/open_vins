@@ -1,0 +1,270 @@
+\hypertarget{classov__msckf_1_1ROS1Visualizer}{}\section{ov\+\_\+msckf\+:\+:R\+O\+S1\+Visualizer Class Reference}
+\label{classov__msckf_1_1ROS1Visualizer}\index{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}}
+
+
+Helper class that will publish results onto the R\+OS framework.  
+
+
+
+
+{\ttfamily \#include $<$R\+O\+S1\+Visualizer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1ROS1Visualizer_abd76c037fd103010fcdb74d2d9f9e391}{R\+O\+S1\+Visualizer} (std\+::shared\+\_\+ptr$<$ ros\+::\+Node\+Handle $>$ nh, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1VioManager}{Vio\+Manager} $>$ app, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Simulator}{Simulator} $>$ sim=nullptr)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_a4e2e37124ca201ce654ff0b0b60ad3c2}{setup\+\_\+subscribers} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ parser)
+\begin{DoxyCompactList}\small\item\em Will setup R\+OS subscribers and callbacks. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_af1b81d6404be911527608c6564b031de}\label{classov__msckf_1_1ROS1Visualizer_af1b81d6404be911527608c6564b031de}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_af1b81d6404be911527608c6564b031de}{visualize} ()
+\begin{DoxyCompactList}\small\item\em Will visualize the system if we have new things. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ae3f4eb0a391d47c3bd811cb43935b9bc}\label{classov__msckf_1_1ROS1Visualizer_ae3f4eb0a391d47c3bd811cb43935b9bc}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_ae3f4eb0a391d47c3bd811cb43935b9bc}{visualize\+\_\+odometry} (double timestamp)
+\begin{DoxyCompactList}\small\item\em Will publish our odometry message for the current timestep. This will take the current state estimate and get the propagated pose to the desired time. This can be used to get pose estimates on systems which require high frequency pose estimates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a08dbac86db9d9e7bfb80a1a10202df9e}\label{classov__msckf_1_1ROS1Visualizer_a08dbac86db9d9e7bfb80a1a10202df9e}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_a08dbac86db9d9e7bfb80a1a10202df9e}{visualize\+\_\+final} ()
+\begin{DoxyCompactList}\small\item\em After the run has ended, print results. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a2f1cd044b066db51d6637933abed5549}\label{classov__msckf_1_1ROS1Visualizer_a2f1cd044b066db51d6637933abed5549}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_a2f1cd044b066db51d6637933abed5549}{callback\+\_\+inertial} (const sensor\+\_\+msgs\+::\+Imu\+::\+Const\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback for inertial information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ac0e01dd741b752ba22e0e9eba40675a0}\label{classov__msckf_1_1ROS1Visualizer_ac0e01dd741b752ba22e0e9eba40675a0}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_ac0e01dd741b752ba22e0e9eba40675a0}{callback\+\_\+monocular} (const sensor\+\_\+msgs\+::\+Image\+Const\+Ptr \&msg0, int cam\+\_\+id0)
+\begin{DoxyCompactList}\small\item\em Callback for monocular cameras information. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a1f8e90c31c8b4b6dcd33e05b839cdaa2}\label{classov__msckf_1_1ROS1Visualizer_a1f8e90c31c8b4b6dcd33e05b839cdaa2}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_a1f8e90c31c8b4b6dcd33e05b839cdaa2}{callback\+\_\+stereo} (const sensor\+\_\+msgs\+::\+Image\+Const\+Ptr \&msg0, const sensor\+\_\+msgs\+::\+Image\+Const\+Ptr \&msg1, int cam\+\_\+id0, int cam\+\_\+id1)
+\begin{DoxyCompactList}\small\item\em Callback for synchronized stereo camera information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a49f1e0c6fb04e4baa4ea64b0ae982056}\label{classov__msckf_1_1ROS1Visualizer_a49f1e0c6fb04e4baa4ea64b0ae982056}} 
+typedef message\+\_\+filters\+::sync\+\_\+policies\+::\+Approximate\+Time$<$ sensor\+\_\+msgs\+::\+Image, sensor\+\_\+msgs\+::\+Image $>$ {\bfseries sync\+\_\+pol}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aa1960cf9554976e0cd0d7bae5f13658c}\label{classov__msckf_1_1ROS1Visualizer_aa1960cf9554976e0cd0d7bae5f13658c}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_aa1960cf9554976e0cd0d7bae5f13658c}{publish\+\_\+state} ()
+\begin{DoxyCompactList}\small\item\em Publish the current state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_accfd5dbc7c5d646152eaa21694ac7e73}\label{classov__msckf_1_1ROS1Visualizer_accfd5dbc7c5d646152eaa21694ac7e73}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_accfd5dbc7c5d646152eaa21694ac7e73}{publish\+\_\+images} ()
+\begin{DoxyCompactList}\small\item\em Publish the active tracking image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a38e20e3c610668aa902f18d70b5f55cb}\label{classov__msckf_1_1ROS1Visualizer_a38e20e3c610668aa902f18d70b5f55cb}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_a38e20e3c610668aa902f18d70b5f55cb}{publish\+\_\+features} ()
+\begin{DoxyCompactList}\small\item\em Publish current features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_af5c658c203ebb405da10710491fcd5e1}\label{classov__msckf_1_1ROS1Visualizer_af5c658c203ebb405da10710491fcd5e1}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_af5c658c203ebb405da10710491fcd5e1}{publish\+\_\+groundtruth} ()
+\begin{DoxyCompactList}\small\item\em Publish groundtruth (if we have it) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a1acd1fa8c3f57152ac75211553ecb536}\label{classov__msckf_1_1ROS1Visualizer_a1acd1fa8c3f57152ac75211553ecb536}} 
+void \hyperlink{classov__msckf_1_1ROS1Visualizer_a1acd1fa8c3f57152ac75211553ecb536}{publish\+\_\+loopclosure\+\_\+information} ()
+\begin{DoxyCompactList}\small\item\em Publish loop-\/closure information of current pose and active track information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a5888fecd6f5e2505b9bc68b3e0d1bba0}\label{classov__msckf_1_1ROS1Visualizer_a5888fecd6f5e2505b9bc68b3e0d1bba0}} 
+std\+::shared\+\_\+ptr$<$ ros\+::\+Node\+Handle $>$ \hyperlink{classov__msckf_1_1ROS1Visualizer_a5888fecd6f5e2505b9bc68b3e0d1bba0}{\+\_\+nh}
+\begin{DoxyCompactList}\small\item\em Global node handler. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a94f9aec2778d9739fa35391174e4215f}\label{classov__msckf_1_1ROS1Visualizer_a94f9aec2778d9739fa35391174e4215f}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1VioManager}{Vio\+Manager} $>$ \hyperlink{classov__msckf_1_1ROS1Visualizer_a94f9aec2778d9739fa35391174e4215f}{\+\_\+app}
+\begin{DoxyCompactList}\small\item\em Core application of the filter system. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a3e28ea010550b2bbf938d505b172ba42}\label{classov__msckf_1_1ROS1Visualizer_a3e28ea010550b2bbf938d505b172ba42}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Simulator}{Simulator} $>$ \hyperlink{classov__msckf_1_1ROS1Visualizer_a3e28ea010550b2bbf938d505b172ba42}{\+\_\+sim}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classov__msckf_1_1Simulator}{Simulator} (is nullptr if we are not sim\textquotesingle{}ing) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aaee7e3fcfb1908ed245e04352810dbc3}\label{classov__msckf_1_1ROS1Visualizer_aaee7e3fcfb1908ed245e04352810dbc3}} 
+image\+\_\+transport\+::\+Publisher {\bfseries it\+\_\+pub\+\_\+tracks}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a6cb7aa0db30322fd15f128ee1eb3b234}\label{classov__msckf_1_1ROS1Visualizer_a6cb7aa0db30322fd15f128ee1eb3b234}} 
+image\+\_\+transport\+::\+Publisher {\bfseries it\+\_\+pub\+\_\+loop\+\_\+img\+\_\+depth}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a5c9da73f49d96b10fec862eb61b5a292}\label{classov__msckf_1_1ROS1Visualizer_a5c9da73f49d96b10fec862eb61b5a292}} 
+image\+\_\+transport\+::\+Publisher {\bfseries it\+\_\+pub\+\_\+loop\+\_\+img\+\_\+depth\+\_\+color}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a00818d14efa4a0eb3b7fdbb95ce7114d}\label{classov__msckf_1_1ROS1Visualizer_a00818d14efa4a0eb3b7fdbb95ce7114d}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+poseimu}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a3acd0320d7a1d4cb4d5dd2779f07dbc7}\label{classov__msckf_1_1ROS1Visualizer_a3acd0320d7a1d4cb4d5dd2779f07dbc7}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+odomimu}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a16e653161ae4cad23b24edb878d0fee9}\label{classov__msckf_1_1ROS1Visualizer_a16e653161ae4cad23b24edb878d0fee9}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+pathimu}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a721075e78fddf02c8de107acaed005ea}\label{classov__msckf_1_1ROS1Visualizer_a721075e78fddf02c8de107acaed005ea}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+points\+\_\+msckf}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a000c69ea1344b2d38e9cb2e001595d40}\label{classov__msckf_1_1ROS1Visualizer_a000c69ea1344b2d38e9cb2e001595d40}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+points\+\_\+slam}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aa7e63e8962068795c6e89b2ab3bee0b2}\label{classov__msckf_1_1ROS1Visualizer_aa7e63e8962068795c6e89b2ab3bee0b2}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+points\+\_\+aruco}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ab8da3dacb4288d034d2748868bf53258}\label{classov__msckf_1_1ROS1Visualizer_ab8da3dacb4288d034d2748868bf53258}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+points\+\_\+sim}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a241608d1eb08d09cbb8273d68dbee0a0}\label{classov__msckf_1_1ROS1Visualizer_a241608d1eb08d09cbb8273d68dbee0a0}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+loop\+\_\+pose}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ae6298b0902d6e4db42c3558565672303}\label{classov__msckf_1_1ROS1Visualizer_ae6298b0902d6e4db42c3558565672303}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+loop\+\_\+point}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a198424e20b3385f83a48625897b09cb6}\label{classov__msckf_1_1ROS1Visualizer_a198424e20b3385f83a48625897b09cb6}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+loop\+\_\+extrinsic}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a495b2605a5de931f99a5b09e2cdc5457}\label{classov__msckf_1_1ROS1Visualizer_a495b2605a5de931f99a5b09e2cdc5457}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+loop\+\_\+intrinsics}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a07871749e8a3e09ba964eef8d7b83042}\label{classov__msckf_1_1ROS1Visualizer_a07871749e8a3e09ba964eef8d7b83042}} 
+std\+::shared\+\_\+ptr$<$ tf\+::\+Transform\+Broadcaster $>$ {\bfseries m\+Tf\+Br}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a3bbd24e0165f2385bf95517ff5f570a9}\label{classov__msckf_1_1ROS1Visualizer_a3bbd24e0165f2385bf95517ff5f570a9}} 
+ros\+::\+Subscriber {\bfseries sub\+\_\+imu}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ab728f057db9c735e89375e1548b52ef9}\label{classov__msckf_1_1ROS1Visualizer_ab728f057db9c735e89375e1548b52ef9}} 
+std\+::vector$<$ ros\+::\+Subscriber $>$ {\bfseries subs\+\_\+cam}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a7d2dde3648aa2d897232a51cbedb6c06}\label{classov__msckf_1_1ROS1Visualizer_a7d2dde3648aa2d897232a51cbedb6c06}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ message\+\_\+filters\+::\+Synchronizer$<$ sync\+\_\+pol $>$ $>$ $>$ {\bfseries sync\+\_\+cam}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a35e23b69f42e025fa491ea7ccc1c1cfa}\label{classov__msckf_1_1ROS1Visualizer_a35e23b69f42e025fa491ea7ccc1c1cfa}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ message\+\_\+filters\+::\+Subscriber$<$ sensor\+\_\+msgs\+::\+Image $>$ $>$ $>$ {\bfseries sync\+\_\+subs\+\_\+cam}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a81194424d5ad506b6060ab8855a96a1c}\label{classov__msckf_1_1ROS1Visualizer_a81194424d5ad506b6060ab8855a96a1c}} 
+unsigned int {\bfseries poses\+\_\+seq\+\_\+imu} = 0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a656eda0c80b2f1b3845785132a23135f}\label{classov__msckf_1_1ROS1Visualizer_a656eda0c80b2f1b3845785132a23135f}} 
+std\+::vector$<$ geometry\+\_\+msgs\+::\+Pose\+Stamped $>$ {\bfseries poses\+\_\+imu}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ab3ce514ebd02e78b1392e6d3aa29c36d}\label{classov__msckf_1_1ROS1Visualizer_ab3ce514ebd02e78b1392e6d3aa29c36d}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+pathgt}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ab27ccdde411af650b7dd659b438d5bdb}\label{classov__msckf_1_1ROS1Visualizer_ab27ccdde411af650b7dd659b438d5bdb}} 
+ros\+::\+Publisher {\bfseries pub\+\_\+posegt}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a7ba75a96debc8e5c0248b502074c800d}\label{classov__msckf_1_1ROS1Visualizer_a7ba75a96debc8e5c0248b502074c800d}} 
+double {\bfseries summed\+\_\+mse\+\_\+ori} = 0.\+0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aabd97043eccbd6f07775128cb13c9b2a}\label{classov__msckf_1_1ROS1Visualizer_aabd97043eccbd6f07775128cb13c9b2a}} 
+double {\bfseries summed\+\_\+mse\+\_\+pos} = 0.\+0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aa713b52731b39e47ee89be5368031863}\label{classov__msckf_1_1ROS1Visualizer_aa713b52731b39e47ee89be5368031863}} 
+double {\bfseries summed\+\_\+nees\+\_\+ori} = 0.\+0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aba6715cf80a85c93d0e3e1afc369ada0}\label{classov__msckf_1_1ROS1Visualizer_aba6715cf80a85c93d0e3e1afc369ada0}} 
+double {\bfseries summed\+\_\+nees\+\_\+pos} = 0.\+0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a5c0408bcf3145d3374be11f6c9375c81}\label{classov__msckf_1_1ROS1Visualizer_a5c0408bcf3145d3374be11f6c9375c81}} 
+size\+\_\+t {\bfseries summed\+\_\+number} = 0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a2d9be2275c26f76c8dc534c9b7401a8f}\label{classov__msckf_1_1ROS1Visualizer_a2d9be2275c26f76c8dc534c9b7401a8f}} 
+bool {\bfseries start\+\_\+time\+\_\+set} = false
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a65dda57aa5b8a6ce70c95494bd08584c}\label{classov__msckf_1_1ROS1Visualizer_a65dda57aa5b8a6ce70c95494bd08584c}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T1}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a02d1f6f4e4f348ac197693bedf559802}\label{classov__msckf_1_1ROS1Visualizer_a02d1f6f4e4f348ac197693bedf559802}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T2}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aa73986823a3522bd240d080d67a675c9}\label{classov__msckf_1_1ROS1Visualizer_aa73986823a3522bd240d080d67a675c9}} 
+std\+::atomic$<$ bool $>$ {\bfseries thread\+\_\+update\+\_\+running}
+\item 
+std\+::deque$<$ \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} $>$ \hyperlink{classov__msckf_1_1ROS1Visualizer_a96e92f8bf544cc689e3fd203d3340e97}{camera\+\_\+queue}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a3bd226c3221277a8944d50180aa67fc5}\label{classov__msckf_1_1ROS1Visualizer_a3bd226c3221277a8944d50180aa67fc5}} 
+std\+::mutex {\bfseries camera\+\_\+queue\+\_\+mtx}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ac749d103cb9e6143732ad98354026091}\label{classov__msckf_1_1ROS1Visualizer_ac749d103cb9e6143732ad98354026091}} 
+std\+::map$<$ int, double $>$ {\bfseries camera\+\_\+last\+\_\+timestamp}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a3e96971588802b6a285be451b8ef4be4}\label{classov__msckf_1_1ROS1Visualizer_a3e96971588802b6a285be451b8ef4be4}} 
+double {\bfseries last\+\_\+visualization\+\_\+timestamp} = 0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a1d432f8be305f334af61509816715fbf}\label{classov__msckf_1_1ROS1Visualizer_a1d432f8be305f334af61509816715fbf}} 
+double {\bfseries last\+\_\+visualization\+\_\+timestamp\+\_\+image} = 0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a2f6fc9f0be8b52bdceeab9244244bc97}\label{classov__msckf_1_1ROS1Visualizer_a2f6fc9f0be8b52bdceeab9244244bc97}} 
+std\+::map$<$ double, Eigen\+::\+Matrix$<$ double, 17, 1 $>$ $>$ {\bfseries gt\+\_\+states}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a581a9fe50f2041f348614834b98ce6fb}\label{classov__msckf_1_1ROS1Visualizer_a581a9fe50f2041f348614834b98ce6fb}} 
+unsigned int {\bfseries poses\+\_\+seq\+\_\+gt} = 0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_ab0d14251833cba5ac33afc0236f0ee85}\label{classov__msckf_1_1ROS1Visualizer_ab0d14251833cba5ac33afc0236f0ee85}} 
+std\+::vector$<$ geometry\+\_\+msgs\+::\+Pose\+Stamped $>$ {\bfseries poses\+\_\+gt}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_aeeb66a8c0990cd4e91fc2346ec16bdf3}\label{classov__msckf_1_1ROS1Visualizer_aeeb66a8c0990cd4e91fc2346ec16bdf3}} 
+bool {\bfseries publish\+\_\+global2imu\+\_\+tf} = true
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a5e0ae19091760130725778ccf4efba9d}\label{classov__msckf_1_1ROS1Visualizer_a5e0ae19091760130725778ccf4efba9d}} 
+bool {\bfseries publish\+\_\+calibration\+\_\+tf} = true
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a85f127c8763177c8f99a4989f0fa1057}\label{classov__msckf_1_1ROS1Visualizer_a85f127c8763177c8f99a4989f0fa1057}} 
+bool {\bfseries save\+\_\+total\+\_\+state} = false
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a76dcf1acce0ae297a24f552cb3cc7885}\label{classov__msckf_1_1ROS1Visualizer_a76dcf1acce0ae297a24f552cb3cc7885}} 
+std\+::ofstream {\bfseries of\+\_\+state\+\_\+est}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a59895c91ee29491b530a1330cf2e229e}\label{classov__msckf_1_1ROS1Visualizer_a59895c91ee29491b530a1330cf2e229e}} 
+std\+::ofstream {\bfseries of\+\_\+state\+\_\+std}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a17caba0b49b67b146003f96163b46cab}\label{classov__msckf_1_1ROS1Visualizer_a17caba0b49b67b146003f96163b46cab}} 
+std\+::ofstream {\bfseries of\+\_\+state\+\_\+gt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class that will publish results onto the R\+OS framework. 
+
+Also save to file the current total state and covariance along with the groundtruth if we are simulating. We visualize the following things\+:
+\begin{DoxyItemize}
+\item \hyperlink{classov__msckf_1_1State}{State} of the system on TF, pose message, and path
+\item Image of our tracker
+\item Our different features (S\+L\+AM, M\+S\+C\+KF, A\+R\+U\+CO)
+\item Groundtruth trajectory if we have it 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_abd76c037fd103010fcdb74d2d9f9e391}\label{classov__msckf_1_1ROS1Visualizer_abd76c037fd103010fcdb74d2d9f9e391}} 
+\index{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}!R\+O\+S1\+Visualizer@{R\+O\+S1\+Visualizer}}
+\index{R\+O\+S1\+Visualizer@{R\+O\+S1\+Visualizer}!ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}}
+\subsubsection{\texorpdfstring{R\+O\+S1\+Visualizer()}{ROS1Visualizer()}}
+{\footnotesize\ttfamily R\+O\+S1\+Visualizer\+::\+R\+O\+S1\+Visualizer (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ ros\+::\+Node\+Handle $>$}]{nh,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1VioManager}{Vio\+Manager} $>$}]{app,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Simulator}{Simulator} $>$}]{sim = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nh} & R\+OS node handler \\
+\hline
+{\em app} & Core estimator manager \\
+\hline
+{\em sim} & \hyperlink{classov__msckf_1_1Simulator}{Simulator} if we are simulating \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a4e2e37124ca201ce654ff0b0b60ad3c2}\label{classov__msckf_1_1ROS1Visualizer_a4e2e37124ca201ce654ff0b0b60ad3c2}} 
+\index{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}!setup\+\_\+subscribers@{setup\+\_\+subscribers}}
+\index{setup\+\_\+subscribers@{setup\+\_\+subscribers}!ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}}
+\subsubsection{\texorpdfstring{setup\+\_\+subscribers()}{setup\_subscribers()}}
+{\footnotesize\ttfamily void R\+O\+S1\+Visualizer\+::setup\+\_\+subscribers (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$}]{parser }\end{DoxyParamCaption})}
+
+
+
+Will setup R\+OS subscribers and callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & Configuration file parser \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1ROS1Visualizer_a96e92f8bf544cc689e3fd203d3340e97}\label{classov__msckf_1_1ROS1Visualizer_a96e92f8bf544cc689e3fd203d3340e97}} 
+\index{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}!camera\+\_\+queue@{camera\+\_\+queue}}
+\index{camera\+\_\+queue@{camera\+\_\+queue}!ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer@{ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer}}
+\subsubsection{\texorpdfstring{camera\+\_\+queue}{camera\_queue}}
+{\footnotesize\ttfamily std\+::deque$<$\hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data}$>$ ov\+\_\+msckf\+::\+R\+O\+S1\+Visualizer\+::camera\+\_\+queue\hspace{0.3cm}{\ttfamily [protected]}}
+
+Queue up camera measurements sorted by time and trigger once we have exactly one I\+MU measurement with timestamp newer than the camera measurement This also handles out-\/of-\/order camera measurements, which is rare, but a nice feature to have for general robustness to bad camera drivers. 

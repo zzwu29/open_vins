@@ -1,0 +1,236 @@
+\hypertarget{classov__core_1_1BsplineSE3}{}\section{ov\+\_\+core\+:\+:Bspline\+S\+E3 Class Reference}
+\label{classov__core_1_1BsplineSE3}\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+
+
+B-\/\+Spline which performs interpolation over S\+E(3) manifold.  
+
+
+
+
+{\ttfamily \#include $<$Bspline\+S\+E3.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a1c4d986ac85cab989d26638f6ede2245}\label{classov__core_1_1BsplineSE3_a1c4d986ac85cab989d26638f6ede2245}} 
+\hyperlink{classov__core_1_1BsplineSE3_a1c4d986ac85cab989d26638f6ede2245}{Bspline\+S\+E3} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1BsplineSE3_a2031f15f618b1e4654f5933a987b1cd2}{feed\+\_\+trajectory} (std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ traj\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Will feed in a series of poses that we will then convert into control points. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1BsplineSE3_a2b80d8e6bf5fe51a35b789ab3c68f6a3}{get\+\_\+pose} (double timestamp, Eigen\+::\+Matrix3d \&R\+\_\+\+GtoI, Eigen\+::\+Vector3d \&p\+\_\+\+IinG)
+\begin{DoxyCompactList}\small\item\em Gets the orientation and position at a given timestamp. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1BsplineSE3_abf2eacd708d5adb25741fe7806a3c7a6}{get\+\_\+velocity} (double timestamp, Eigen\+::\+Matrix3d \&R\+\_\+\+GtoI, Eigen\+::\+Vector3d \&p\+\_\+\+IinG, Eigen\+::\+Vector3d \&w\+\_\+\+IinI, Eigen\+::\+Vector3d \&v\+\_\+\+IinG)
+\begin{DoxyCompactList}\small\item\em Gets the angular and linear velocity at a given timestamp. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1BsplineSE3_a487ddccc242464c38111489d325a7479}{get\+\_\+acceleration} (double timestamp, Eigen\+::\+Matrix3d \&R\+\_\+\+GtoI, Eigen\+::\+Vector3d \&p\+\_\+\+IinG, Eigen\+::\+Vector3d \&w\+\_\+\+IinI, Eigen\+::\+Vector3d \&v\+\_\+\+IinG, Eigen\+::\+Vector3d \&alpha\+\_\+\+IinI, Eigen\+::\+Vector3d \&a\+\_\+\+IinG)
+\begin{DoxyCompactList}\small\item\em Gets the angular and linear acceleration at a given timestamp. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_ae44f184ee4052cf65d8161063dc9ecae}\label{classov__core_1_1BsplineSE3_ae44f184ee4052cf65d8161063dc9ecae}} 
+double \hyperlink{classov__core_1_1BsplineSE3_ae44f184ee4052cf65d8161063dc9ecae}{get\+\_\+start\+\_\+time} ()
+\begin{DoxyCompactList}\small\item\em Returns the simulation start time that we should start simulating from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}\label{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}} 
+typedef std\+::map$<$ double, Eigen\+::\+Matrix4d, std\+::less$<$ double $>$, Eigen\+::aligned\+\_\+allocator$<$ std\+::pair$<$ const double, Eigen\+::\+Matrix4d $>$ $>$ $>$ \hyperlink{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}{Aligned\+Eigen\+Mat4d}
+\begin{DoxyCompactList}\small\item\em Type defintion of our aligned eigen4d matrix\+: \href{https://eigen.tuxfamily.org/dox/group__TopicStlContainers.html}{\tt https\+://eigen.\+tuxfamily.\+org/dox/group\+\_\+\+\_\+\+Topic\+Stl\+Containers.\+html}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classov__core_1_1BsplineSE3_a321442ce3c2aee341c64403e047f3f36}{find\+\_\+bounding\+\_\+poses} (const double timestamp, const \hyperlink{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}{Aligned\+Eigen\+Mat4d} \&poses, double \&t0, Eigen\+::\+Matrix4d \&pose0, double \&t1, Eigen\+::\+Matrix4d \&pose1)
+\begin{DoxyCompactList}\small\item\em Will find the two bounding poses for a given timestamp. \end{DoxyCompactList}\item 
+static bool \hyperlink{classov__core_1_1BsplineSE3_af03bc0e8df3f77134afa0a24a425be80}{find\+\_\+bounding\+\_\+control\+\_\+points} (const double timestamp, const \hyperlink{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}{Aligned\+Eigen\+Mat4d} \&poses, double \&t0, Eigen\+::\+Matrix4d \&pose0, double \&t1, Eigen\+::\+Matrix4d \&pose1, double \&t2, Eigen\+::\+Matrix4d \&pose2, double \&t3, Eigen\+::\+Matrix4d \&pose3)
+\begin{DoxyCompactList}\small\item\em Will find two older poses and two newer poses for the current timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a48e22f59195971f19e93f27a9dd9f250}\label{classov__core_1_1BsplineSE3_a48e22f59195971f19e93f27a9dd9f250}} 
+double \hyperlink{classov__core_1_1BsplineSE3_a48e22f59195971f19e93f27a9dd9f250}{dt}
+\begin{DoxyCompactList}\small\item\em Uniform sampling time for our control points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a3918570c18a61486c049a910c501d85a}\label{classov__core_1_1BsplineSE3_a3918570c18a61486c049a910c501d85a}} 
+double \hyperlink{classov__core_1_1BsplineSE3_a3918570c18a61486c049a910c501d85a}{timestamp\+\_\+start}
+\begin{DoxyCompactList}\small\item\em Start time of the system. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a339afd2119785871db41799c3c5e2ec0}\label{classov__core_1_1BsplineSE3_a339afd2119785871db41799c3c5e2ec0}} 
+\hyperlink{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}{Aligned\+Eigen\+Mat4d} \hyperlink{classov__core_1_1BsplineSE3_a339afd2119785871db41799c3c5e2ec0}{control\+\_\+points}
+\begin{DoxyCompactList}\small\item\em Our control S\+E3 control poses (R\+\_\+\+ItoG, p\+\_\+\+IinG) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+B-\/\+Spline which performs interpolation over S\+E(3) manifold. 
+
+This class implements the b-\/spline functionality that allows for interpolation over the $\mathbb{SE}(3)$ manifold. This is based off of the derivations from \href{https://ieeexplore.ieee.org/abstract/document/8432102/}{\tt Continuous-\/\+Time Visual-\/\+Inertial Odometry for Event Cameras} and \href{https://link.springer.com/article/10.1007/s11263-015-0811-3}{\tt A Spline-\/\+Based Trajectory Representation for Sensor Fusion and Rolling Shutter Cameras} with some additional derivations being available in \href{http://udel.edu/~pgeneva/downloads/notes/2018_notes_mueffler2017arxiv.pdf}{\tt these notes}. The use of b-\/splines for $\mathbb{SE}(3)$ interpolation has the following properties\+:
+
+
+\begin{DoxyEnumerate}
+\item Local control, allowing the system to function online as well as in batch
+\item $C^2$-\/continuity to enable inertial predictions and calculations
+\item Good approximation of minimal torque trajectories
+\item A parameterization of rigid-\/body motion devoid of singularities
+\end{DoxyEnumerate}
+
+The key idea is to convert a set of trajectory points into a continuous-\/time {\itshape uniform cubic cumulative} b-\/spline. As compared to standard b-\/spline representations, the cumulative form ensures local continuity which is needed for on-\/manifold interpolation. We leverage the cubic b-\/spline to ensure $C^2$-\/continuity to ensure that we can calculate accelerations at any point along the trajectory. The general equations are the following
+
+\begin{align*} {}^{w}_{s}\mathbf{T}(u(t)) &= {}^{w}_{i-1}\mathbf{T}~\mathbf{A}_0~\mathbf{A}_1~\mathbf{A}_2 \\ \empty {}^{w}_{s}\dot{\mathbf{T}}(u(t)) &= {}^{w}_{i-1}\mathbf{T} \Big( \dot{\mathbf{A}}_0~\mathbf{A}_1~\mathbf{A}_2 + \mathbf{A}_0~\dot{\mathbf{A}}_1~\mathbf{A}_2 + \mathbf{A}_0~\mathbf{A}_1~\dot{\mathbf{A}}_2 \Big) \\ \empty {}^{w}_{s}\ddot{\mathbf{T}}(u(t)) &= {}^{w}_{i-1}\mathbf{T} \Big( \ddot{\mathbf{A}}_0~\mathbf{A}_1~\mathbf{A}_2 + \mathbf{A}_0~\ddot{\mathbf{A}}_1~\mathbf{A}_2 + \mathbf{A}_0~\mathbf{A}_1~\ddot{\mathbf{A}}_2 \nonumber\\ &\hspace{4cm} + 2\dot{\mathbf{A}}_0\dot{\mathbf{A}}_1\mathbf{A}_2 + 2\mathbf{A}_0\dot{\mathbf{A}}_1\dot{\mathbf{A}}_2 + 2\dot{\mathbf{A}}_0\mathbf{A}_1\dot{\mathbf{A}}_2 \Big) \\[1em] \empty {}^{i-1}_{i}\mathbf{\Omega} &= \mathrm{log}\big( {}^{w}_{i-1}\mathbf{T}^{-1}~{}^{w}_{i}\mathbf{T} \big) \\ \mathbf{A}_j &= \mathrm{exp}\Big({B}_j(u(t))~{}^{i-1+j}_{i+j}\mathbf{\Omega} \Big) \\ \dot{\mathbf{A}}_j &= \dot{B}_j(u(t)) ~{}^{i-1+j}_{i+j}\mathbf{\Omega}^\wedge ~\mathbf{A}_j \\ \ddot{\mathbf{A}}_j &= \dot{B}_j(u(t)) ~{}^{i-1+j}_{i+j}\mathbf{\Omega}^\wedge ~\dot{\mathbf{A}}_j + \ddot{B}_j(u(t)) ~{}^{i-1+j}_{i+j}\mathbf{\Omega}^\wedge ~\mathbf{A}_j \\[1em] \empty {B}_0(u(t)) &= \frac{1}{3!}~(5+3u-3u^2+u^3) \\ {B}_1(u(t)) &= \frac{1}{3!}~(1+3u+3u^2-2u^3) \\ {B}_2(u(t)) &= \frac{1}{3!}~(u^3) \\[1em] \empty \dot{{B}}_0(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t}~(3-6u+3u^2) \\ \dot{{B}}_1(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t}~(3+6u-6u^2) \\ \dot{{B}}_2(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t}~(3u^2) \\[1em] \empty \ddot{{B}}_0(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t^2}~(-6+6u) \\ \ddot{{B}}_1(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t^2}~(6-12u) \\ \ddot{{B}}_2(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t^2}~(6u) \end{align*}
+
+where $u(t_s)=(t_s-t_i)/\Delta t=(t_s-t_i)/(t_{i+1}-t_i)$ is used for all values of {\itshape u}. Note that one needs to ensure that they use the S\+E(3) matrix expodential, logorithm, and hat operation for all above equations. The indexes correspond to the the two poses that are older and two poses that are newer then the current time we want to get (i.\+e. i-\/1 and i are less than s, while i+1 and i+2 are both greater than time s). Some additional derivations are available in \href{http://udel.edu/~pgeneva/downloads/notes/2018_notes_mueffler2017arxiv.pdf}{\tt these notes}. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a2031f15f618b1e4654f5933a987b1cd2}\label{classov__core_1_1BsplineSE3_a2031f15f618b1e4654f5933a987b1cd2}} 
+\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}!feed\+\_\+trajectory@{feed\+\_\+trajectory}}
+\index{feed\+\_\+trajectory@{feed\+\_\+trajectory}!ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+\subsubsection{\texorpdfstring{feed\+\_\+trajectory()}{feed\_trajectory()}}
+{\footnotesize\ttfamily void Bspline\+S\+E3\+::feed\+\_\+trajectory (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$}]{traj\+\_\+points }\end{DoxyParamCaption})}
+
+
+
+Will feed in a series of poses that we will then convert into control points. 
+
+Our control points need to be uniformly spaced over the trajectory, thus given a trajectory we will uniformly sample based on the average spacing between the pose points specified.
+
+
+\begin{DoxyParams}{Parameters}
+{\em traj\+\_\+points} & Trajectory poses that we will convert into control points (timestamp(s), q\+\_\+\+GtoI, p\+\_\+\+IinG) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_af03bc0e8df3f77134afa0a24a425be80}\label{classov__core_1_1BsplineSE3_af03bc0e8df3f77134afa0a24a425be80}} 
+\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}!find\+\_\+bounding\+\_\+control\+\_\+points@{find\+\_\+bounding\+\_\+control\+\_\+points}}
+\index{find\+\_\+bounding\+\_\+control\+\_\+points@{find\+\_\+bounding\+\_\+control\+\_\+points}!ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+\subsubsection{\texorpdfstring{find\+\_\+bounding\+\_\+control\+\_\+points()}{find\_bounding\_control\_points()}}
+{\footnotesize\ttfamily bool Bspline\+S\+E3\+::find\+\_\+bounding\+\_\+control\+\_\+points (\begin{DoxyParamCaption}\item[{const double}]{timestamp,  }\item[{const \hyperlink{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}{Aligned\+Eigen\+Mat4d} \&}]{poses,  }\item[{double \&}]{t0,  }\item[{Eigen\+::\+Matrix4d \&}]{pose0,  }\item[{double \&}]{t1,  }\item[{Eigen\+::\+Matrix4d \&}]{pose1,  }\item[{double \&}]{t2,  }\item[{Eigen\+::\+Matrix4d \&}]{pose2,  }\item[{double \&}]{t3,  }\item[{Eigen\+::\+Matrix4d \&}]{pose3 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Will find two older poses and two newer poses for the current timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Desired timestamp we want to get four bounding poses of \\
+\hline
+{\em poses} & Map of poses and timestamps \\
+\hline
+{\em t0} & Timestamp of the first pose \\
+\hline
+{\em pose0} & S\+E(3) pose of the first pose \\
+\hline
+{\em t1} & Timestamp of the second pose \\
+\hline
+{\em pose1} & S\+E(3) pose of the second pose \\
+\hline
+{\em t2} & Timestamp of the third pose \\
+\hline
+{\em pose2} & S\+E(3) pose of the third pose \\
+\hline
+{\em t3} & Timestamp of the fourth pose \\
+\hline
+{\em pose3} & S\+E(3) pose of the fourth pose \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if we are unable to find bounding poses 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a321442ce3c2aee341c64403e047f3f36}\label{classov__core_1_1BsplineSE3_a321442ce3c2aee341c64403e047f3f36}} 
+\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}!find\+\_\+bounding\+\_\+poses@{find\+\_\+bounding\+\_\+poses}}
+\index{find\+\_\+bounding\+\_\+poses@{find\+\_\+bounding\+\_\+poses}!ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+\subsubsection{\texorpdfstring{find\+\_\+bounding\+\_\+poses()}{find\_bounding\_poses()}}
+{\footnotesize\ttfamily bool Bspline\+S\+E3\+::find\+\_\+bounding\+\_\+poses (\begin{DoxyParamCaption}\item[{const double}]{timestamp,  }\item[{const \hyperlink{classov__core_1_1BsplineSE3_a2e0b3cb7cef84db7b84598f2ea01e00d}{Aligned\+Eigen\+Mat4d} \&}]{poses,  }\item[{double \&}]{t0,  }\item[{Eigen\+::\+Matrix4d \&}]{pose0,  }\item[{double \&}]{t1,  }\item[{Eigen\+::\+Matrix4d \&}]{pose1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Will find the two bounding poses for a given timestamp. 
+
+This will loop through the passed map of poses and find two bounding poses. If there are no bounding poses then this will return false.
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Desired timestamp we want to get two bounding poses of \\
+\hline
+{\em poses} & Map of poses and timestamps \\
+\hline
+{\em t0} & Timestamp of the first pose \\
+\hline
+{\em pose0} & S\+E(3) pose of the first pose \\
+\hline
+{\em t1} & Timestamp of the second pose \\
+\hline
+{\em pose1} & S\+E(3) pose of the second pose \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if we are unable to find bounding poses 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a487ddccc242464c38111489d325a7479}\label{classov__core_1_1BsplineSE3_a487ddccc242464c38111489d325a7479}} 
+\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}!get\+\_\+acceleration@{get\+\_\+acceleration}}
+\index{get\+\_\+acceleration@{get\+\_\+acceleration}!ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+\subsubsection{\texorpdfstring{get\+\_\+acceleration()}{get\_acceleration()}}
+{\footnotesize\ttfamily bool Bspline\+S\+E3\+::get\+\_\+acceleration (\begin{DoxyParamCaption}\item[{double}]{timestamp,  }\item[{Eigen\+::\+Matrix3d \&}]{R\+\_\+\+GtoI,  }\item[{Eigen\+::\+Vector3d \&}]{p\+\_\+\+IinG,  }\item[{Eigen\+::\+Vector3d \&}]{w\+\_\+\+IinI,  }\item[{Eigen\+::\+Vector3d \&}]{v\+\_\+\+IinG,  }\item[{Eigen\+::\+Vector3d \&}]{alpha\+\_\+\+IinI,  }\item[{Eigen\+::\+Vector3d \&}]{a\+\_\+\+IinG }\end{DoxyParamCaption})}
+
+
+
+Gets the angular and linear acceleration at a given timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Desired time to get the pose at \\
+\hline
+{\em R\+\_\+\+GtoI} & S\+O(3) orientation of the pose in the global frame \\
+\hline
+{\em p\+\_\+\+IinG} & Position of the pose in the global \\
+\hline
+{\em w\+\_\+\+IinI} & Angular velocity in the inertial frame \\
+\hline
+{\em v\+\_\+\+IinG} & Linear velocity in the global frame \\
+\hline
+{\em alpha\+\_\+\+IinI} & Angular acceleration in the inertial frame \\
+\hline
+{\em a\+\_\+\+IinG} & Linear acceleration in the global frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if we can\textquotesingle{}t find it 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_a2b80d8e6bf5fe51a35b789ab3c68f6a3}\label{classov__core_1_1BsplineSE3_a2b80d8e6bf5fe51a35b789ab3c68f6a3}} 
+\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}!get\+\_\+pose@{get\+\_\+pose}}
+\index{get\+\_\+pose@{get\+\_\+pose}!ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+\subsubsection{\texorpdfstring{get\+\_\+pose()}{get\_pose()}}
+{\footnotesize\ttfamily bool Bspline\+S\+E3\+::get\+\_\+pose (\begin{DoxyParamCaption}\item[{double}]{timestamp,  }\item[{Eigen\+::\+Matrix3d \&}]{R\+\_\+\+GtoI,  }\item[{Eigen\+::\+Vector3d \&}]{p\+\_\+\+IinG }\end{DoxyParamCaption})}
+
+
+
+Gets the orientation and position at a given timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Desired time to get the pose at \\
+\hline
+{\em R\+\_\+\+GtoI} & S\+O(3) orientation of the pose in the global frame \\
+\hline
+{\em p\+\_\+\+IinG} & Position of the pose in the global \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if we can\textquotesingle{}t find it 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1BsplineSE3_abf2eacd708d5adb25741fe7806a3c7a6}\label{classov__core_1_1BsplineSE3_abf2eacd708d5adb25741fe7806a3c7a6}} 
+\index{ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}!get\+\_\+velocity@{get\+\_\+velocity}}
+\index{get\+\_\+velocity@{get\+\_\+velocity}!ov\+\_\+core\+::\+Bspline\+S\+E3@{ov\+\_\+core\+::\+Bspline\+S\+E3}}
+\subsubsection{\texorpdfstring{get\+\_\+velocity()}{get\_velocity()}}
+{\footnotesize\ttfamily bool Bspline\+S\+E3\+::get\+\_\+velocity (\begin{DoxyParamCaption}\item[{double}]{timestamp,  }\item[{Eigen\+::\+Matrix3d \&}]{R\+\_\+\+GtoI,  }\item[{Eigen\+::\+Vector3d \&}]{p\+\_\+\+IinG,  }\item[{Eigen\+::\+Vector3d \&}]{w\+\_\+\+IinI,  }\item[{Eigen\+::\+Vector3d \&}]{v\+\_\+\+IinG }\end{DoxyParamCaption})}
+
+
+
+Gets the angular and linear velocity at a given timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Desired time to get the pose at \\
+\hline
+{\em R\+\_\+\+GtoI} & S\+O(3) orientation of the pose in the global frame \\
+\hline
+{\em p\+\_\+\+IinG} & Position of the pose in the global \\
+\hline
+{\em w\+\_\+\+IinI} & Angular velocity in the inertial frame \\
+\hline
+{\em v\+\_\+\+IinG} & Linear velocity in the global frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if we can\textquotesingle{}t find it 
+\end{DoxyReturn}

@@ -1,0 +1,49 @@
+\hypertarget{namespaceov__eval}{}\section{ov\+\_\+eval 命名空间参考}
+\label{namespaceov__eval}\index{ov\+\_\+eval@{ov\+\_\+eval}}
+
+
+Evaluation and recording utilities  
+
+
+\subsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classov__eval_1_1AlignTrajectory}{Align\+Trajectory}
+\begin{DoxyCompactList}\small\item\em Class that given two trajectories, will align the two. \end{DoxyCompactList}\item 
+class \hyperlink{classov__eval_1_1AlignUtils}{Align\+Utils}
+\begin{DoxyCompactList}\small\item\em Helper functions for the trajectory alignment class. \end{DoxyCompactList}\item 
+class \hyperlink{classov__eval_1_1Loader}{Loader}
+\begin{DoxyCompactList}\small\item\em Has helper functions to load text files from disk and process them. \end{DoxyCompactList}\item 
+class \hyperlink{classov__eval_1_1Recorder}{Recorder}
+\begin{DoxyCompactList}\small\item\em This class takes in published poses and writes them to file. \end{DoxyCompactList}\item 
+class \hyperlink{classov__eval_1_1ResultSimulation}{Result\+Simulation}
+\begin{DoxyCompactList}\small\item\em A single simulation run (the full state not just pose). \end{DoxyCompactList}\item 
+class \hyperlink{classov__eval_1_1ResultTrajectory}{Result\+Trajectory}
+\begin{DoxyCompactList}\small\item\em A single run for a given dataset. \end{DoxyCompactList}\item 
+struct \hyperlink{structov__eval_1_1Statistics}{Statistics}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structov__eval_1_1Statistics}{Statistics} object for a given set scalar time series values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Evaluation and recording utilities 
+
+This project contains the key evaluation and research scripts for localization methods. These come from the necessity of trying to quantify the accuracy of the estimated trajectory while also allowing for the comparision to other methods. Please see the following documentation pages for details\+:
+
+
+\begin{DoxyItemize}
+\item \hyperlink{eval-metrics}{Filter Evaluation Metrics} --- Definitions of different metrics for estimator accuracy.
+\item \hyperlink{eval-error}{Filter Error Evaluation Methods} --- Error evaluation methods for evaluating system performance.
+\item \hyperlink{eval-timing}{Filter Timing Analysis} --- Timing of estimator components and complexity.
+\end{DoxyItemize}
+
+The key methods that we have included are as follows\+:
+
+
+\begin{DoxyItemize}
+\item Absolute trajectory error
+\item Relative pose error (for varying segment lengths)
+\item Pose to text file recorder
+\item Timing of system components
+\end{DoxyItemize}
+
+The absolute and relative error scripts have been implemented in C++ to allow for fast computation on multiple runs. We recommend that people look at the \href{https://github.com/uzh-rpg/rpg_trajectory_evaluation}{\tt rpg\+\_\+trajectory\+\_\+evaluation} toolbox provided by Zhang and Scaramuzza. For a background we recommend reading their \href{http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf}{\tt A Tutorial on Quantitative Trajectory Evaluation for Visual(-\/\+Inertial) Odometry} \cite{Zhang2018IROS} and its use in \href{http://rpg.ifi.uzh.ch/docs/ICRA18_Delmerico.pdf}{\tt A Benchmark Comparison of Monocular Visual-\/\+Inertial Odometry Algorithms for Flying Robots} \cite{Delmerico2018ICRA} 

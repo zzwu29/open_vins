@@ -1,0 +1,198 @@
+\hypertarget{classov__core_1_1YamlParser}{}\section{ov\+\_\+core\+:\+:Yaml\+Parser Class Reference}
+\label{classov__core_1_1YamlParser}\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+
+
+Helper class to do Open\+CV yaml parsing from both file and R\+OS.  
+
+
+
+
+{\ttfamily \#include $<$opencv\+\_\+yaml\+\_\+parse.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1YamlParser_a4f4acc860b546d60f422a07d60eaa99b}{Yaml\+Parser} (const std\+::string \&config\+\_\+path, bool fail\+\_\+if\+\_\+not\+\_\+found=true)
+\begin{DoxyCompactList}\small\item\em Constructor that loads all three configuration files. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classov__core_1_1YamlParser_a76a8ca471859dd6fd22e1772c3d1aa44}{get\+\_\+config\+\_\+folder} ()
+\begin{DoxyCompactList}\small\item\em Will get the folder this config file is in. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1YamlParser_a05ee1de4577cdd64ad91a3f11c372714}{successful} () const
+\begin{DoxyCompactList}\small\item\em Check to see if all parameters were read succesfully. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{classov__core_1_1YamlParser_aff9bc745ae8097ece9807ec4d0fbec2f}{parse\+\_\+config} (const std\+::string \&node\+\_\+name, T \&node\+\_\+result, bool required=true)
+\begin{DoxyCompactList}\small\item\em Custom parser for the E\+S\+T\+I\+M\+A\+T\+OR parameters. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{classov__core_1_1YamlParser_ac955d674ec792557a9f53a4b613af0cb}{parse\+\_\+external} (const std\+::string \&external\+\_\+node\+\_\+name, const std\+::string \&sensor\+\_\+name, const std\+::string \&node\+\_\+name, T \&node\+\_\+result, bool required=true)
+\begin{DoxyCompactList}\small\item\em Custom parser for the external parameter files with levels. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1YamlParser_a72bdbe517f63793e36e8ec8faacfc9f5}{parse\+\_\+external} (const std\+::string \&external\+\_\+node\+\_\+name, const std\+::string \&sensor\+\_\+name, const std\+::string \&node\+\_\+name, Eigen\+::\+Matrix3d \&node\+\_\+result, bool required=true)
+\begin{DoxyCompactList}\small\item\em Custom parser for Matrix3d in the external parameter files with levels. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1YamlParser_a09a826b21ab5de606a5c82472e957e8c}{parse\+\_\+external} (const std\+::string \&external\+\_\+node\+\_\+name, const std\+::string \&sensor\+\_\+name, const std\+::string \&node\+\_\+name, Eigen\+::\+Matrix4d \&node\+\_\+result, bool required=true)
+\begin{DoxyCompactList}\small\item\em Custom parser for Matrix4d in the external parameter files with levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class to do Open\+CV yaml parsing from both file and R\+OS. 
+
+The logic is as follows\+:
+\begin{DoxyItemize}
+\item Given a path to the main config file we will load it into our cv\+::\+File\+Storage object.
+\item From there the user can request for different parameters of different types from the config.
+\item If we have R\+OS, then we will also check to see if the user has overridden any config files via R\+OS.
+\item The R\+OS parameters always take priority over the ones in our config.
+\end{DoxyItemize}
+
+N\+O\+TE\+: There are no \char`\"{}nested\char`\"{} yaml parameters. They are all under the \char`\"{}root\char`\"{} of the yaml file!!! N\+O\+TE\+: The camera and imu have nested, but those are handled externally.... 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_a4f4acc860b546d60f422a07d60eaa99b}\label{classov__core_1_1YamlParser_a4f4acc860b546d60f422a07d60eaa99b}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!Yaml\+Parser@{Yaml\+Parser}}
+\index{Yaml\+Parser@{Yaml\+Parser}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{Yaml\+Parser()}{YamlParser()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Yaml\+Parser\+::\+Yaml\+Parser (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{config\+\_\+path,  }\item[{bool}]{fail\+\_\+if\+\_\+not\+\_\+found = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that loads all three configuration files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config\+\_\+path} & Path to the Y\+A\+ML file we will parse \\
+\hline
+{\em fail\+\_\+if\+\_\+not\+\_\+found} & If we should terminate the program if we can\textquotesingle{}t open the config file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_a76a8ca471859dd6fd22e1772c3d1aa44}\label{classov__core_1_1YamlParser_a76a8ca471859dd6fd22e1772c3d1aa44}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!get\+\_\+config\+\_\+folder@{get\+\_\+config\+\_\+folder}}
+\index{get\+\_\+config\+\_\+folder@{get\+\_\+config\+\_\+folder}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{get\+\_\+config\+\_\+folder()}{get\_config\_folder()}}
+{\footnotesize\ttfamily std\+::string ov\+\_\+core\+::\+Yaml\+Parser\+::get\+\_\+config\+\_\+folder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Will get the folder this config file is in. 
+
+\begin{DoxyReturn}{Returns}
+Config folder 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_aff9bc745ae8097ece9807ec4d0fbec2f}\label{classov__core_1_1YamlParser_aff9bc745ae8097ece9807ec4d0fbec2f}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!parse\+\_\+config@{parse\+\_\+config}}
+\index{parse\+\_\+config@{parse\+\_\+config}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+config()}{parse\_config()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void ov\+\_\+core\+::\+Yaml\+Parser\+::parse\+\_\+config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{node\+\_\+name,  }\item[{T \&}]{node\+\_\+result,  }\item[{bool}]{required = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Custom parser for the E\+S\+T\+I\+M\+A\+T\+OR parameters. 
+
+This will load the data from the main config file. If it is unable it will give a warning to the user it couldn\textquotesingle{}t be found.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of parameter we are looking for. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em node\+\_\+name} & Name of the node \\
+\hline
+{\em node\+\_\+result} & Resulting value (should already have default value in it) \\
+\hline
+{\em required} & If this parameter is required by the user to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_ac955d674ec792557a9f53a4b613af0cb}\label{classov__core_1_1YamlParser_ac955d674ec792557a9f53a4b613af0cb}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!parse\+\_\+external@{parse\+\_\+external}}
+\index{parse\+\_\+external@{parse\+\_\+external}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+external()}{parse\_external()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void ov\+\_\+core\+::\+Yaml\+Parser\+::parse\+\_\+external (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{external\+\_\+node\+\_\+name,  }\item[{const std\+::string \&}]{sensor\+\_\+name,  }\item[{const std\+::string \&}]{node\+\_\+name,  }\item[{T \&}]{node\+\_\+result,  }\item[{bool}]{required = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Custom parser for the external parameter files with levels. 
+
+This will first load the external file requested. From there it will try to find the first level requested (e.\+g. imu0, cam0, cam1). Then the requested node can be found under this sensor name. R\+OS can override the config with {\ttfamily $<$sensor\+\_\+name$>$\+\_\+$<$node\+\_\+name$>$} (e.\+g., cam0\+\_\+distortion).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of parameter we are looking for. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em external\+\_\+node\+\_\+name} & Name of the node we will get our relative path from \\
+\hline
+{\em sensor\+\_\+name} & The first level node we will try to get the requested node under \\
+\hline
+{\em node\+\_\+name} & Name of the node \\
+\hline
+{\em node\+\_\+result} & Resulting value (should already have default value in it) \\
+\hline
+{\em required} & If this parameter is required by the user to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_a72bdbe517f63793e36e8ec8faacfc9f5}\label{classov__core_1_1YamlParser_a72bdbe517f63793e36e8ec8faacfc9f5}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!parse\+\_\+external@{parse\+\_\+external}}
+\index{parse\+\_\+external@{parse\+\_\+external}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+external()}{parse\_external()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void ov\+\_\+core\+::\+Yaml\+Parser\+::parse\+\_\+external (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{external\+\_\+node\+\_\+name,  }\item[{const std\+::string \&}]{sensor\+\_\+name,  }\item[{const std\+::string \&}]{node\+\_\+name,  }\item[{Eigen\+::\+Matrix3d \&}]{node\+\_\+result,  }\item[{bool}]{required = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Custom parser for Matrix3d in the external parameter files with levels. 
+
+This will first load the external file requested. From there it will try to find the first level requested (e.\+g. imu0, cam0, cam1). Then the requested node can be found under this sensor name. R\+OS can override the config with {\ttfamily $<$sensor\+\_\+name$>$\+\_\+$<$node\+\_\+name$>$} (e.\+g., cam0\+\_\+distortion).
+
+
+\begin{DoxyParams}{Parameters}
+{\em external\+\_\+node\+\_\+name} & Name of the node we will get our relative path from \\
+\hline
+{\em sensor\+\_\+name} & The first level node we will try to get the requested node under \\
+\hline
+{\em node\+\_\+name} & Name of the node \\
+\hline
+{\em node\+\_\+result} & Resulting value (should already have default value in it) \\
+\hline
+{\em required} & If this parameter is required by the user to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_a09a826b21ab5de606a5c82472e957e8c}\label{classov__core_1_1YamlParser_a09a826b21ab5de606a5c82472e957e8c}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!parse\+\_\+external@{parse\+\_\+external}}
+\index{parse\+\_\+external@{parse\+\_\+external}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+external()}{parse\_external()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void ov\+\_\+core\+::\+Yaml\+Parser\+::parse\+\_\+external (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{external\+\_\+node\+\_\+name,  }\item[{const std\+::string \&}]{sensor\+\_\+name,  }\item[{const std\+::string \&}]{node\+\_\+name,  }\item[{Eigen\+::\+Matrix4d \&}]{node\+\_\+result,  }\item[{bool}]{required = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Custom parser for Matrix4d in the external parameter files with levels. 
+
+This will first load the external file requested. From there it will try to find the first level requested (e.\+g. imu0, cam0, cam1). Then the requested node can be found under this sensor name. R\+OS can override the config with {\ttfamily $<$sensor\+\_\+name$>$\+\_\+$<$node\+\_\+name$>$} (e.\+g., cam0\+\_\+distortion).
+
+
+\begin{DoxyParams}{Parameters}
+{\em external\+\_\+node\+\_\+name} & Name of the node we will get our relative path from \\
+\hline
+{\em sensor\+\_\+name} & The first level node we will try to get the requested node under \\
+\hline
+{\em node\+\_\+name} & Name of the node \\
+\hline
+{\em node\+\_\+result} & Resulting value (should already have default value in it) \\
+\hline
+{\em required} & If this parameter is required by the user to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1YamlParser_a05ee1de4577cdd64ad91a3f11c372714}\label{classov__core_1_1YamlParser_a05ee1de4577cdd64ad91a3f11c372714}} 
+\index{ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}!successful@{successful}}
+\index{successful@{successful}!ov\+\_\+core\+::\+Yaml\+Parser@{ov\+\_\+core\+::\+Yaml\+Parser}}
+\subsubsection{\texorpdfstring{successful()}{successful()}}
+{\footnotesize\ttfamily bool ov\+\_\+core\+::\+Yaml\+Parser\+::successful (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check to see if all parameters were read succesfully. 
+
+\begin{DoxyReturn}{Returns}
+True if we found all parameters 
+\end{DoxyReturn}

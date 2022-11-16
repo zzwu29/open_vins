@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core::YamlParser类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__core.html">ov_core</a></li><li class="navelem"><a class="el" href="classov__core_1_1YamlParser.html">YamlParser</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classov__core_1_1YamlParser-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_core::YamlParser类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Helper class to do OpenCV yaml parsing from both file and ROS.  
+ <a href="classov__core_1_1YamlParser.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="opencv__yaml__parse_8h_source.html">opencv_yaml_parse.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a4f4acc860b546d60f422a07d60eaa99b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#a4f4acc860b546d60f422a07d60eaa99b">YamlParser</a> (const std::string &amp;config_path, bool fail_if_not_found=true)</td></tr>
+<tr class="memdesc:a4f4acc860b546d60f422a07d60eaa99b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that loads all three configuration files  <a href="#a4f4acc860b546d60f422a07d60eaa99b">更多...</a><br /></td></tr>
+<tr class="separator:a4f4acc860b546d60f422a07d60eaa99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76a8ca471859dd6fd22e1772c3d1aa44"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#a76a8ca471859dd6fd22e1772c3d1aa44">get_config_folder</a> ()</td></tr>
+<tr class="memdesc:a76a8ca471859dd6fd22e1772c3d1aa44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will get the folder this config file is in  <a href="#a76a8ca471859dd6fd22e1772c3d1aa44">更多...</a><br /></td></tr>
+<tr class="separator:a76a8ca471859dd6fd22e1772c3d1aa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ee1de4577cdd64ad91a3f11c372714"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#a05ee1de4577cdd64ad91a3f11c372714">successful</a> () const</td></tr>
+<tr class="memdesc:a05ee1de4577cdd64ad91a3f11c372714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check to see if all parameters were read succesfully  <a href="#a05ee1de4577cdd64ad91a3f11c372714">更多...</a><br /></td></tr>
+<tr class="separator:a05ee1de4577cdd64ad91a3f11c372714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9bc745ae8097ece9807ec4d0fbec2f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:aff9bc745ae8097ece9807ec4d0fbec2f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#aff9bc745ae8097ece9807ec4d0fbec2f">parse_config</a> (const std::string &amp;node_name, T &amp;node_result, bool required=true)</td></tr>
+<tr class="memdesc:aff9bc745ae8097ece9807ec4d0fbec2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom parser for the ESTIMATOR parameters.  <a href="#aff9bc745ae8097ece9807ec4d0fbec2f">更多...</a><br /></td></tr>
+<tr class="separator:aff9bc745ae8097ece9807ec4d0fbec2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac955d674ec792557a9f53a4b613af0cb"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ac955d674ec792557a9f53a4b613af0cb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#ac955d674ec792557a9f53a4b613af0cb">parse_external</a> (const std::string &amp;external_node_name, const std::string &amp;sensor_name, const std::string &amp;node_name, T &amp;node_result, bool required=true)</td></tr>
+<tr class="memdesc:ac955d674ec792557a9f53a4b613af0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom parser for the external parameter files with levels.  <a href="#ac955d674ec792557a9f53a4b613af0cb">更多...</a><br /></td></tr>
+<tr class="separator:ac955d674ec792557a9f53a4b613af0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72bdbe517f63793e36e8ec8faacfc9f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#a72bdbe517f63793e36e8ec8faacfc9f5">parse_external</a> (const std::string &amp;external_node_name, const std::string &amp;sensor_name, const std::string &amp;node_name, Eigen::Matrix3d &amp;node_result, bool required=true)</td></tr>
+<tr class="memdesc:a72bdbe517f63793e36e8ec8faacfc9f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom parser for Matrix3d in the external parameter files with levels.  <a href="#a72bdbe517f63793e36e8ec8faacfc9f5">更多...</a><br /></td></tr>
+<tr class="separator:a72bdbe517f63793e36e8ec8faacfc9f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a826b21ab5de606a5c82472e957e8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1YamlParser.html#a09a826b21ab5de606a5c82472e957e8c">parse_external</a> (const std::string &amp;external_node_name, const std::string &amp;sensor_name, const std::string &amp;node_name, Eigen::Matrix4d &amp;node_result, bool required=true)</td></tr>
+<tr class="memdesc:a09a826b21ab5de606a5c82472e957e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom parser for Matrix4d in the external parameter files with levels.  <a href="#a09a826b21ab5de606a5c82472e957e8c">更多...</a><br /></td></tr>
+<tr class="separator:a09a826b21ab5de606a5c82472e957e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Helper class to do OpenCV yaml parsing from both file and ROS. </p>
+<p>The logic is as follows:</p><ul>
+<li>Given a path to the main config file we will load it into our cv::FileStorage object.</li>
+<li>From there the user can request for different parameters of different types from the config.</li>
+<li>If we have ROS, then we will also check to see if the user has overridden any config files via ROS.</li>
+<li>The ROS parameters always take priority over the ones in our config.</li>
+</ul>
+<p>NOTE: There are no "nested" yaml parameters. They are all under the "root" of the yaml file!!! NOTE: The camera and imu have nested, but those are handled externally.... </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a4f4acc860b546d60f422a07d60eaa99b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4acc860b546d60f422a07d60eaa99b">&#9670;&nbsp;</a></span>YamlParser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ov_core::YamlParser::YamlParser </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>config_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>fail_if_not_found</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor that loads all three configuration files </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config_path</td><td>Path to the YAML file we will parse </td></tr>
+    <tr><td class="paramname">fail_if_not_found</td><td>If we should terminate the program if we can't open the config file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a76a8ca471859dd6fd22e1772c3d1aa44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a8ca471859dd6fd22e1772c3d1aa44">&#9670;&nbsp;</a></span>get_config_folder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ov_core::YamlParser::get_config_folder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Will get the folder this config file is in </p>
+<dl class="section return"><dt>返回</dt><dd>Config folder </dd></dl>
+
+</div>
+</div>
+<a id="aff9bc745ae8097ece9807ec4d0fbec2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff9bc745ae8097ece9807ec4d0fbec2f">&#9670;&nbsp;</a></span>parse_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_core::YamlParser::parse_config </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>node_result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>required</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Custom parser for the ESTIMATOR parameters. </p>
+<p>This will load the data from the main config file. If it is unable it will give a warning to the user it couldn't be found.</p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of parameter we are looking for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node_name</td><td>Name of the node </td></tr>
+    <tr><td class="paramname">node_result</td><td>Resulting value (should already have default value in it) </td></tr>
+    <tr><td class="paramname">required</td><td>If this parameter is required by the user to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac955d674ec792557a9f53a4b613af0cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac955d674ec792557a9f53a4b613af0cb">&#9670;&nbsp;</a></span>parse_external() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_core::YamlParser::parse_external </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>external_node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>sensor_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>node_result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>required</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Custom parser for the external parameter files with levels. </p>
+<p>This will first load the external file requested. From there it will try to find the first level requested (e.g. imu0, cam0, cam1). Then the requested node can be found under this sensor name. ROS can override the config with <code>&lt;sensor_name&gt;_&lt;node_name&gt;</code> (e.g., cam0_distortion).</p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of parameter we are looking for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">external_node_name</td><td>Name of the node we will get our relative path from </td></tr>
+    <tr><td class="paramname">sensor_name</td><td>The first level node we will try to get the requested node under </td></tr>
+    <tr><td class="paramname">node_name</td><td>Name of the node </td></tr>
+    <tr><td class="paramname">node_result</td><td>Resulting value (should already have default value in it) </td></tr>
+    <tr><td class="paramname">required</td><td>If this parameter is required by the user to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72bdbe517f63793e36e8ec8faacfc9f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72bdbe517f63793e36e8ec8faacfc9f5">&#9670;&nbsp;</a></span>parse_external() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_core::YamlParser::parse_external </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>external_node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>sensor_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>node_result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>required</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Custom parser for Matrix3d in the external parameter files with levels. </p>
+<p>This will first load the external file requested. From there it will try to find the first level requested (e.g. imu0, cam0, cam1). Then the requested node can be found under this sensor name. ROS can override the config with <code>&lt;sensor_name&gt;_&lt;node_name&gt;</code> (e.g., cam0_distortion).</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">external_node_name</td><td>Name of the node we will get our relative path from </td></tr>
+    <tr><td class="paramname">sensor_name</td><td>The first level node we will try to get the requested node under </td></tr>
+    <tr><td class="paramname">node_name</td><td>Name of the node </td></tr>
+    <tr><td class="paramname">node_result</td><td>Resulting value (should already have default value in it) </td></tr>
+    <tr><td class="paramname">required</td><td>If this parameter is required by the user to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a09a826b21ab5de606a5c82472e957e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a826b21ab5de606a5c82472e957e8c">&#9670;&nbsp;</a></span>parse_external() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_core::YamlParser::parse_external </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>external_node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>sensor_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>node_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix4d &amp;&#160;</td>
+          <td class="paramname"><em>node_result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>required</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Custom parser for Matrix4d in the external parameter files with levels. </p>
+<p>This will first load the external file requested. From there it will try to find the first level requested (e.g. imu0, cam0, cam1). Then the requested node can be found under this sensor name. ROS can override the config with <code>&lt;sensor_name&gt;_&lt;node_name&gt;</code> (e.g., cam0_distortion).</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">external_node_name</td><td>Name of the node we will get our relative path from </td></tr>
+    <tr><td class="paramname">sensor_name</td><td>The first level node we will try to get the requested node under </td></tr>
+    <tr><td class="paramname">node_name</td><td>Name of the node </td></tr>
+    <tr><td class="paramname">node_result</td><td>Resulting value (should already have default value in it) </td></tr>
+    <tr><td class="paramname">required</td><td>If this parameter is required by the user to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05ee1de4577cdd64ad91a3f11c372714"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ee1de4577cdd64ad91a3f11c372714">&#9670;&nbsp;</a></span>successful()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ov_core::YamlParser::successful </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check to see if all parameters were read succesfully </p>
+<dl class="section return"><dt>返回</dt><dd>True if we found all parameters </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

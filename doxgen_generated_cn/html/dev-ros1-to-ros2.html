@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ROS1 to ROS2 Bag Conversion Guide</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dev-welcome.html">Developer and Internals</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ROS1 to ROS2 Bag Conversion Guide </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="gs-ros1-to-ros2-option-1"></a>
+rosbags</h1>
+<p><a href="https://gitlab.com/ternaris/rosbags">rosbags</a> is the simplest utility which does not depend on ROS installs at all. ROS bag conversion is a hard problem since you need to have both ROS1 and ROS2 dependencies. This is what was used to generate the converted ROS2 bag files for standard datasets. To do a conversion of a bag file we can do the following:</p>
+<div class="fragment"><div class="line">pip install rosbags</div><div class="line">rosbags-convert V1_01_easy.bag</div></div><!-- fragment --><h1><a class="anchor" id="dev-ros1-to-ros2-option-2"></a>
+rosbag2 play</h1>
+<p>To do this conversion you will need to have both ROS1 and ROS2 installed on your system. Also ensure that you have installed all dependencies and backends required. The main <a href="https://github.com/ros2/rosbag2">rosbag2</a> readme has a lot of good details.</p>
+<div class="fragment"><div class="line">sudo apt-get install ros-$ROS2_DISTRO-ros2bag ros-$ROS2_DISTRO-rosbag2*</div><div class="line">sudo apt install ros-$ROS2_DISTRO-rosbag2-bag-v2-plugins</div></div><!-- fragment --><p>From here we can do the following. This is based on <a href="https://github.com/ros2/rosbag2/issues/139#issuecomment-516167831">this issue</a>. You might run into issues with the .so files being corrupted (see <a href="https://github.com/ros2/rosbag2/issues/94">this issue</a>) Not sure if there is a fix besides building it from scratch yourself.</p>
+<div class="fragment"><div class="line">source_ros1</div><div class="line">source_ros2</div><div class="line">ros2 bag play -s rosbag_v2 V1_01_easy.bag</div></div><!-- fragment --> </div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

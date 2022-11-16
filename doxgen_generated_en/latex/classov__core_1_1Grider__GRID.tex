@@ -1,0 +1,75 @@
+\hypertarget{classov__core_1_1Grider__GRID}{}\section{ov\+\_\+core\+:\+:Grider\+\_\+\+G\+R\+ID Class Reference}
+\label{classov__core_1_1Grider__GRID}\index{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID@{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID}}
+
+
+Extracts F\+A\+ST features in a grid pattern.  
+
+
+
+
+{\ttfamily \#include $<$Grider\+\_\+\+G\+R\+I\+D.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classov__core_1_1Grider__GRID_a6e78e323f7c99e2a13be240345c564f3}{compare\+\_\+response} (cv\+::\+Key\+Point first, cv\+::\+Key\+Point second)
+\begin{DoxyCompactList}\small\item\em Compare keypoints based on their response value. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__core_1_1Grider__GRID_a5021984f1ab36317c43ea3beddfd34e2}{perform\+\_\+griding} (const cv\+::\+Mat \&img, const cv\+::\+Mat \&mask, const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&valid\+\_\+locs, std\+::vector$<$ cv\+::\+Key\+Point $>$ \&pts, int num\+\_\+features, int grid\+\_\+x, int grid\+\_\+y, int threshold, bool nonmax\+Suppression)
+\begin{DoxyCompactList}\small\item\em This function will perform grid extraction using F\+A\+ST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Extracts F\+A\+ST features in a grid pattern. 
+
+As compared to just extracting fast features over the entire image, we want to have as uniform of extractions as possible over the image plane. Thus we split the image into a bunch of small grids, and extract points in each. We then pick enough top points in each grid so that we have the total number of desired points. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1Grider__GRID_a6e78e323f7c99e2a13be240345c564f3}\label{classov__core_1_1Grider__GRID_a6e78e323f7c99e2a13be240345c564f3}} 
+\index{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID@{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID}!compare\+\_\+response@{compare\+\_\+response}}
+\index{compare\+\_\+response@{compare\+\_\+response}!ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID@{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID}}
+\subsubsection{\texorpdfstring{compare\+\_\+response()}{compare\_response()}}
+{\footnotesize\ttfamily static bool ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+I\+D\+::compare\+\_\+response (\begin{DoxyParamCaption}\item[{cv\+::\+Key\+Point}]{first,  }\item[{cv\+::\+Key\+Point}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Compare keypoints based on their response value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & First keypoint \\
+\hline
+{\em second} & Second keypoint\\
+\hline
+\end{DoxyParams}
+We want to have the keypoints with the highest values! See\+: \href{https://stackoverflow.com/a/10910921}{\tt https\+://stackoverflow.\+com/a/10910921} \mbox{\Hypertarget{classov__core_1_1Grider__GRID_a5021984f1ab36317c43ea3beddfd34e2}\label{classov__core_1_1Grider__GRID_a5021984f1ab36317c43ea3beddfd34e2}} 
+\index{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID@{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID}!perform\+\_\+griding@{perform\+\_\+griding}}
+\index{perform\+\_\+griding@{perform\+\_\+griding}!ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID@{ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+ID}}
+\subsubsection{\texorpdfstring{perform\+\_\+griding()}{perform\_griding()}}
+{\footnotesize\ttfamily static void ov\+\_\+core\+::\+Grider\+\_\+\+G\+R\+I\+D\+::perform\+\_\+griding (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img,  }\item[{const cv\+::\+Mat \&}]{mask,  }\item[{const std\+::vector$<$ std\+::pair$<$ int, int $>$$>$ \&}]{valid\+\_\+locs,  }\item[{std\+::vector$<$ cv\+::\+Key\+Point $>$ \&}]{pts,  }\item[{int}]{num\+\_\+features,  }\item[{int}]{grid\+\_\+x,  }\item[{int}]{grid\+\_\+y,  }\item[{int}]{threshold,  }\item[{bool}]{nonmax\+Suppression }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This function will perform grid extraction using F\+A\+ST. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Image we will do F\+A\+ST extraction on \\
+\hline
+{\em mask} & Region of the image we do not want to extract features in (255 = do not detect features) \\
+\hline
+{\em valid\+\_\+locs} & Valid 2d grid locations we will extract in (instead of the whole image) \\
+\hline
+{\em pts} & vector of extracted points we will return \\
+\hline
+{\em num\+\_\+features} & max number of features we want to extract \\
+\hline
+{\em grid\+\_\+x} & size of grid in the x-\/direction / u-\/direction \\
+\hline
+{\em grid\+\_\+y} & size of grid in the y-\/direction / v-\/direction \\
+\hline
+{\em threshold} & F\+A\+ST threshold paramter (10 is a good value normally) \\
+\hline
+{\em nonmax\+Suppression} & if F\+A\+ST should perform non-\/max suppression (true normally)\\
+\hline
+\end{DoxyParams}
+Given a specified grid size, this will try to extract fast features from each grid. It will then return the best from each grid in the return vector. 

@@ -1,0 +1,90 @@
+\hypertarget{classov__core_1_1TrackSIM}{}\section{ov\+\_\+core\+:\+:Track\+S\+IM Class Reference}
+\label{classov__core_1_1TrackSIM}\index{ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}}
+
+
+Simulated tracker for when we already have uv measurements!  
+
+
+
+
+{\ttfamily \#include $<$Track\+S\+I\+M.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1TrackSIM_ac1b011188c7ec1af805b66bd5eaa29c8}{Track\+S\+IM} (std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$$>$ cameras, int numaruco)
+\begin{DoxyCompactList}\small\item\em Public constructor with configuration variables. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackSIM_a4c1537c48eec664a2c83dacc4b7e5778}{feed\+\_\+new\+\_\+camera} (const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&message) override
+\begin{DoxyCompactList}\small\item\em Process a new image. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackSIM_a00388c410c804854c4c91e1a392d44e0}{feed\+\_\+measurement\+\_\+simulation} (double timestamp, const std\+::vector$<$ int $>$ \&camids, const std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$$>$$>$ \&feats)
+\begin{DoxyCompactList}\small\item\em Feed function for a synchronized simulated cameras. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Simulated tracker for when we already have uv measurements! 
+
+This class should be used when we are using the \hyperlink{classov__msckf_1_1Simulator}{ov\+\_\+msckf\+::\+Simulator} class to generate measurements. It simply takes the resulting simulation data and appends it to the internal feature database. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1TrackSIM_ac1b011188c7ec1af805b66bd5eaa29c8}\label{classov__core_1_1TrackSIM_ac1b011188c7ec1af805b66bd5eaa29c8}} 
+\index{ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}!Track\+S\+IM@{Track\+S\+IM}}
+\index{Track\+S\+IM@{Track\+S\+IM}!ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}}
+\subsubsection{\texorpdfstring{Track\+S\+I\+M()}{TrackSIM()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Track\+S\+I\+M\+::\+Track\+S\+IM (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$$>$}]{cameras,  }\item[{int}]{numaruco }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Public constructor with configuration variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cameras} & camera calibration object which has all camera intrinsics in it \\
+\hline
+{\em numaruco} & the max id of the arucotags, so we ensure that we start our non-\/auroc features above this value \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1TrackSIM_a00388c410c804854c4c91e1a392d44e0}\label{classov__core_1_1TrackSIM_a00388c410c804854c4c91e1a392d44e0}} 
+\index{ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}!feed\+\_\+measurement\+\_\+simulation@{feed\+\_\+measurement\+\_\+simulation}}
+\index{feed\+\_\+measurement\+\_\+simulation@{feed\+\_\+measurement\+\_\+simulation}!ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}}
+\subsubsection{\texorpdfstring{feed\+\_\+measurement\+\_\+simulation()}{feed\_measurement\_simulation()}}
+{\footnotesize\ttfamily void Track\+S\+I\+M\+::feed\+\_\+measurement\+\_\+simulation (\begin{DoxyParamCaption}\item[{double}]{timestamp,  }\item[{const std\+::vector$<$ int $>$ \&}]{camids,  }\item[{const std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$$>$$>$ \&}]{feats }\end{DoxyParamCaption})}
+
+
+
+Feed function for a synchronized simulated cameras. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Time that this image was collected \\
+\hline
+{\em camids} & Camera ids that we have simulated measurements for \\
+\hline
+{\em feats} & Raw uv simulated measurements \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1TrackSIM_a4c1537c48eec664a2c83dacc4b7e5778}\label{classov__core_1_1TrackSIM_a4c1537c48eec664a2c83dacc4b7e5778}} 
+\index{ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}!feed\+\_\+new\+\_\+camera@{feed\+\_\+new\+\_\+camera}}
+\index{feed\+\_\+new\+\_\+camera@{feed\+\_\+new\+\_\+camera}!ov\+\_\+core\+::\+Track\+S\+IM@{ov\+\_\+core\+::\+Track\+S\+IM}}
+\subsubsection{\texorpdfstring{feed\+\_\+new\+\_\+camera()}{feed\_new\_camera()}}
+{\footnotesize\ttfamily void ov\+\_\+core\+::\+Track\+S\+I\+M\+::feed\+\_\+new\+\_\+camera (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Process a new image. 
+
+\begin{DoxyWarning}{Warning}
+This function should not be used!! Use \hyperlink{classov__core_1_1TrackSIM_a00388c410c804854c4c91e1a392d44e0}{feed\+\_\+measurement\+\_\+simulation()} instead. 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classov__core_1_1TrackBase_a18f208f4047e9a1955406806ba68a8c1}{ov\+\_\+core\+::\+Track\+Base}.
+

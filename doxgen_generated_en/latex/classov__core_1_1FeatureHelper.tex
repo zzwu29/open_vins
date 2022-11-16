@@ -1,0 +1,80 @@
+\hypertarget{classov__core_1_1FeatureHelper}{}\section{ov\+\_\+core\+:\+:Feature\+Helper Class Reference}
+\label{classov__core_1_1FeatureHelper}\index{ov\+\_\+core\+::\+Feature\+Helper@{ov\+\_\+core\+::\+Feature\+Helper}}
+
+
+Contains some nice helper functions for features.  
+
+
+
+
+{\ttfamily \#include $<$Feature\+Helper.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__core_1_1FeatureHelper_a1371c7d11c6d74693f7cec9deea2afcd}{compute\+\_\+disparity} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ db, double time0, double time1, double \&disp\+\_\+mean, double \&disp\+\_\+var, int \&total\+\_\+feats)
+\begin{DoxyCompactList}\small\item\em This functions will compute the disparity between common features in the two frames. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__core_1_1FeatureHelper_aef3bc04d256c42e04fce2a62e30c3ef0}{compute\+\_\+disparity} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ db, double \&disp\+\_\+mean, double \&disp\+\_\+var, int \&total\+\_\+feats, double newest\+\_\+time=1, double oldest\+\_\+time=1)
+\begin{DoxyCompactList}\small\item\em This functions will compute the disparity over all features we have. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains some nice helper functions for features. 
+
+These functions should only depend on feature and the feature database. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1FeatureHelper_a1371c7d11c6d74693f7cec9deea2afcd}\label{classov__core_1_1FeatureHelper_a1371c7d11c6d74693f7cec9deea2afcd}} 
+\index{ov\+\_\+core\+::\+Feature\+Helper@{ov\+\_\+core\+::\+Feature\+Helper}!compute\+\_\+disparity@{compute\+\_\+disparity}}
+\index{compute\+\_\+disparity@{compute\+\_\+disparity}!ov\+\_\+core\+::\+Feature\+Helper@{ov\+\_\+core\+::\+Feature\+Helper}}
+\subsubsection{\texorpdfstring{compute\+\_\+disparity()}{compute\_disparity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void ov\+\_\+core\+::\+Feature\+Helper\+::compute\+\_\+disparity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$}]{db,  }\item[{double}]{time0,  }\item[{double}]{time1,  }\item[{double \&}]{disp\+\_\+mean,  }\item[{double \&}]{disp\+\_\+var,  }\item[{int \&}]{total\+\_\+feats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This functions will compute the disparity between common features in the two frames. 
+
+First we find all features in the first frame. Then we loop through each and find the uv of it in the next requested frame. Features are skipped if no tracked feature is found (it was lost). N\+O\+TE\+: this is on the R\+AW coordinates of the feature not the normalized ones. N\+O\+TE\+: This computes the disparity over all cameras!
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & \hyperlink{classov__core_1_1Feature}{Feature} database pointer \\
+\hline
+{\em time0} & First camera frame timestamp \\
+\hline
+{\em time1} & Second camera frame timestamp \\
+\hline
+{\em disp\+\_\+mean} & Average raw disparity \\
+\hline
+{\em disp\+\_\+var} & Variance of the disparities \\
+\hline
+{\em total\+\_\+feats} & Total number of common features \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1FeatureHelper_aef3bc04d256c42e04fce2a62e30c3ef0}\label{classov__core_1_1FeatureHelper_aef3bc04d256c42e04fce2a62e30c3ef0}} 
+\index{ov\+\_\+core\+::\+Feature\+Helper@{ov\+\_\+core\+::\+Feature\+Helper}!compute\+\_\+disparity@{compute\+\_\+disparity}}
+\index{compute\+\_\+disparity@{compute\+\_\+disparity}!ov\+\_\+core\+::\+Feature\+Helper@{ov\+\_\+core\+::\+Feature\+Helper}}
+\subsubsection{\texorpdfstring{compute\+\_\+disparity()}{compute\_disparity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static void ov\+\_\+core\+::\+Feature\+Helper\+::compute\+\_\+disparity (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$}]{db,  }\item[{double \&}]{disp\+\_\+mean,  }\item[{double \&}]{disp\+\_\+var,  }\item[{int \&}]{total\+\_\+feats,  }\item[{double}]{newest\+\_\+time = {\ttfamily 1},  }\item[{double}]{oldest\+\_\+time = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This functions will compute the disparity over all features we have. 
+
+N\+O\+TE\+: this is on the R\+AW coordinates of the feature not the normalized ones. N\+O\+TE\+: This computes the disparity over all cameras!
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & \hyperlink{classov__core_1_1Feature}{Feature} database pointer \\
+\hline
+{\em disp\+\_\+mean} & Average raw disparity \\
+\hline
+{\em disp\+\_\+var} & Variance of the disparities \\
+\hline
+{\em total\+\_\+feats} & Total number of common features \\
+\hline
+{\em newest\+\_\+time} & Only compute disparity for ones older (-\/1 to disable) \\
+\hline
+{\em oldest\+\_\+time} & Only compute disparity for ones newer (-\/1 to disable) \\
+\hline
+\end{DoxyParams}

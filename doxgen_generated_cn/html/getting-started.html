@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: Getting Started</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Getting Started </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Welcome to the OpenVINS project! The following guides will help new users through the downloading of the software and running on datasets that we support. Additionally, we provide information on how to get your own sensors running on our system and have a guide on how we perform calibration. Please feel free to open an issue if you find any missing or areas that could be clarified.</p>
+<h1><a class="anchor" id="highlevel"></a>
+High-level overview</h1>
+<p>From a high level the system is build on a few key algorithms. At the center we have the <a class="el" href="namespaceov__core.html" title="Core algorithms for OpenVINS ">ov_core</a> which contains a lot of standard computer vision algorithms and utilities that anybody can use. Specifically it stores the following large components:</p>
+<ul>
+<li>Sparse feature visual tracking (KLT and descriptor-based)</li>
+<li>Fundamental math types used to represent states</li>
+<li>Initialization procedures</li>
+<li>Multi-sensor simulator that generates synthetic measurements</li>
+</ul>
+<p>This <a class="el" href="namespaceov__core.html" title="Core algorithms for OpenVINS ">ov_core</a> library is used by the <a class="el" href="namespaceov__msckf.html" title="Extended Kalman Filter estimator ">ov_msckf</a> system which contains our filter-based estimator. Within this we have the state, its manager, type system, prediction, and update algorithms. We encourage users to look at the specific documentation for a detailed view of what we support. The <a class="el" href="namespaceov__eval.html" title="Evaluation and recording utilities ">ov_eval</a> library has a bunch of evaluation methods and scripts that one can use to generate research results for publication.</p>
+<h1><a class="anchor" id="getting-started-more"></a>
+Getting Started Guides</h1>
+<ul>
+<li><a class="el" href="gs-installing.html">Installation Guide</a> &mdash; Installation guide for OpenVINS and dependencies</li>
+<li><a class="el" href="dev-docker.html">Building with Docker</a> &mdash; Installing with Docker instead of from source</li>
+<li><a class="el" href="gs-tutorial.html">Simple Tutorial</a> &mdash; Simple tutorial on getting OpenVINS running out of the box.</li>
+<li><a class="el" href="gs-datasets.html">Supported Datasets</a> &mdash; Links to supported datasets and configuration files</li>
+<li><a class="el" href="gs-calibration.html">Sensor Calibration</a> &mdash; Guide to how to calibration your own visual-inertial sensors. </li>
+</ul>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -1,0 +1,396 @@
+\hypertarget{update_basics}{}\section{Minimum Mean Square Error (\+M\+M\+S\+E) Estimation}\label{update_basics}
+Consider the following static state estimation problem\+: Given a prior distribution (probability density function or pdf) for a Gaussian random vector $ \mathbf x\sim \mathcal N (\hat{\mathbf x}^\ominus, \mathbf P_{xx}^\ominus)$ with dimension of $n$ and a new $m$ dimentional measurement $\mathbf{z}_m = \mathbf z + \mathbf n = \mathbf h(\mathbf x) + \mathbf n $ corrupted by zero-\/mean white Gaussian noise independent of state, $ \mathbf n \sim \mathcal N(\mathbf 0, \mathbf R)$, we want to compute the first two (central) moments of the posterior pdf $ p(\mathbf x|\mathbf z_m)$. Generally (given a nonlinear measurement model), we approximate the posterior pdf as\+: $ p(\mathbf x|\mathbf z_m) \simeq \mathcal N (\hat{\mathbf x}^\oplus, \mathbf P_{xx}^\oplus)$. By design, this is the (approximate) solution to the M\+M\+SE estimation problem \href{http://users.isr.ist.utl.pt/~pjcro/temp/Fundamentals%20Of%20Statistical%20Signal%20Processing--Estimation%20Theory-Kay.pdf}{\tt \mbox{[}Kay 1993\mbox{]}} \cite{Kay1993}.\hypertarget{update_conditional-pdf}{}\section{Conditional Probability Distribution}\label{update_conditional-pdf}
+To this end, we employ the Bayes Rule\+:
+
+\begin{align*} p(\mathbf{x} | \mathbf{z}_m) = \frac{p(\mathbf{x},\mathbf{z}_m)}{p(\mathbf{z}_m)} \end{align*}
+
+In general, this conditional pdf cannot be computed analytically without imposing simplifying assumptions. For the problem at hand, we first approximate (if indeed) $ p(\mathbf{z}_m) \simeq \mathcal N (\hat{\mathbf z}, \mathbf P_{zz}) $, and then have the following joint Gaussian pdf (noting that joint of Gaussian pdfs is Gaussian)\+:
+
+\begin{align*} p(\mathbf{x},\mathbf{z}_m) = \mathcal N \left( \begin{bmatrix} \hat{\mathbf x}^\ominus \\ \mathbf z \end{bmatrix}, \begin{bmatrix}\mathbf P_{xx} & \mathbf P_{xz} \\ \mathbf P_{zx} & \mathbf P_{zz} \end{bmatrix} \right) =: \mathcal N(\hat{\mathbf y}, \mathbf P_{yy}) \end{align*}
+
+Substitution of these two Gaussians into the first equation yields the following conditional Gaussian pdf\+:
+
+\begin{align*} p(\mathbf{x} | \mathbf{z}_m) &\simeq \frac{\mathcal N(\hat{\mathbf y}, \mathbf P_{yy})}{\mathcal N (\hat{\mathbf z}, \mathbf P_{zz}) }\\ &= \frac{\frac{1}{\sqrt{(2\pi)^{n+m}|{\mathbf{P}_{yy}}|}}e^{-\frac{1}{2}(\mathbf{y}-\hat{\mathbf{y}})^\top\mathbf{P}_{yy}^{-1}(\mathbf{y}-\hat{\mathbf{y}})}}{ \frac{1}{\sqrt{(2\pi)^{m}|{\mathbf{P}_{zz}}|}}e^{-\frac{1}{2}(\mathbf{z}_m-\hat{\mathbf{z}})^\top\mathbf{P}_{zz}^{-1}(\mathbf{z}_m-\hat{\mathbf{z}})}}\\ &= \frac{1}{\sqrt{(2\pi)^{n}|{\mathbf{P}_{yy}}|/|{\mathbf{P}_{zz}}|}} e^{ {-\frac{1}{2}\left[ (\mathbf{y}-\hat{\mathbf{y}})^\top\mathbf{P}_{yy}^{-1}(\mathbf{y}-\hat{\mathbf{y}}) - (\mathbf{z}_m-\hat{\mathbf{z}})^\top\mathbf{P}_{zz}^{-1}(\mathbf{z}_m-\hat{\mathbf{z}}) \right]} }\\ &=: \mathcal N (\hat{\mathbf x}^\oplus, \mathbf P_{xx}^\oplus) \end{align*}
+
+We now derive the conditional mean and covariance can be computed as follows\+: First we simplify the denominator term $|{\mathbf{P}_{yy}}|/|{\mathbf{P}_{zz}}|$ in order to find the conditional covariance.
+
+\begin{align*} |{\mathbf{P}_{yy}}| = \Big|{\begin{bmatrix} \mathbf{P}_{xx} & \mathbf{P}_{xz} \\ \mathbf{P}_{zx} & \mathbf{P}_{zz} \end{bmatrix}}\Big| = \Big|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}\Big|\ \Big|{\mathbf{P}_{zz}}\Big| \end{align*}
+
+where we assumed $\mathbf{P}_{zz}$ is invertible and employed the determinant property of \href{https://en.wikipedia.org/wiki/Schur_complement}{\tt Schur complement}. Thus, we have\+:
+
+\begin{align*} \frac{|{\mathbf{P}_{yy}}|}{|{\mathbf{P}_{zz}}|} = \frac{\Big|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}\Big|\Big|{\mathbf{P}_{zz}}\Big|}{|{\mathbf{P}_{zz}}|} = \Big|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}\Big| \end{align*}
+
+Next, by defining the error states $\mathbf{r}_x=\mathbf{x}-\hat{\mathbf{x}}^\ominus$, $\mathbf{r}_z=\mathbf{z}_m-\hat{\mathbf{z}}$, $\mathbf{r}_y=\mathbf{y}-\hat{\mathbf{y}}$, and using the \href{https://en.wikipedia.org/wiki/Woodbury_matrix_identity}{\tt matrix inersion lemma}, we rewrite the exponential term as follows\+:
+
+\begin{align*} &(\mathbf{y}-\hat{\mathbf{y}})^\top\mathbf{P}_{yy}^{-1}(\mathbf{y}-\hat{\mathbf{y}}) - (\mathbf{z}_m-\hat{\mathbf{z}})^\top\mathbf{P}_{zz}^{-1}(\mathbf{z}_m-\hat{\mathbf{z}}) \\[5px] &= \mathbf{r}_y^\top\mathbf{P}_{yy}^{-1}\mathbf{r}_y - \mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z \\[5px] &= \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix}^\top \begin{bmatrix} \mathbf{P}_{xx} & \mathbf{P}_{xz} \\ \mathbf{P}_{zx} & \mathbf{P}_{zz} \end{bmatrix}^{-1} \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix} - \mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z \\[5px] &= \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix}^\top \begin{bmatrix} \mathbf{Q} & -\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1} \\ -\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q} & \mathbf{P}_{zz}^{-1}+\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1} \end{bmatrix} \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix} - \mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z \\[5px] &\hspace{8cm} \mathrm{where} ~ \mathbf{Q}= (\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx})^{-1} \nonumber\\[5px] &= \mathbf{r}_x^\top\mathbf{Q}\mathbf{r}_x -\mathbf{r}_x^\top\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z -\mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q}\mathbf{r}_x \nonumber\\ &\hspace{4.6cm}+\mathbf{r}_z^\top( \textcolor{red}{\mathbf{P}_{zz}^{-1}}+\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1} )\mathbf{r}_z -\textcolor{red}{\mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z} \\[5px] &= \mathbf{r}_x^\top\mathbf{Q}\mathbf{r}_x -\mathbf{r}_x^\top\mathbf{Q}[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_x] -[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z]^\top\mathbf{Q}\mathbf{r}_x +[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z]^\top\mathbf{Q}[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z] \\[5px] &= (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z)^\top \mathbf{Q} (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z) \\[5px] &= (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z)^\top (\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx})^{-1} (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z) \end{align*}
+
+where $(\mathbf{P}_{zz}^{-1})^\top = \mathbf{P}_{zz}^{-1}$ since covariance matrices are symmetric. Up to this point, we can now construct the conditional Gaussian pdf as follows\+:
+
+\begin{align*} p(\mathbf{x}_k | \mathbf{z}_m) &= \frac{1}{\sqrt{(2\pi)^{n}|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}}|} \times \nonumber\\ &\hspace{0.5cm}\mathrm{exp}\left( {-\frac{1}{2}\left[ (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z)^\top (\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx})^{-1} (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z) \right]} \right) \end{align*}
+
+which results in the following conditional mean and covariance we were seeking\+:
+
+\begin{align*} \hat{\mathbf{x}}^\oplus &= \hat{\mathbf{x}}^\ominus + \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}(\mathbf{z}_m - \hat{\mathbf{z}}) \\ \mathbf{P}_{xx}^\oplus &= \mathbf{P}_{xx}^\ominus - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx} \end{align*}
+
+These are the fundamental equations for (linear) state estimation.\hypertarget{update_linear-meas}{}\section{Linear Measurement Update}\label{update_linear-meas}
+As a special case, we consider a simple linear measurement model to illustrate the linear M\+M\+SE estimator\+:
+
+\begin{align*} \mathbf{z}_{m,k} &= \mathbf{H}_k \mathbf{x}_k + \mathbf{n}_k \\ \hat{\mathbf{z}}_k &:= \mathbb{E}[\mathbf{z}_{m,k}] = \mathbb{E}[\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k] = \mathbf{H}_k {\hat{\mathbf{x}}_k^\ominus} \end{align*}
+
+With this, we can derive the covariance and cross-\/correlation matrices as follows\+:
+
+\begin{align*} \mathbf{P}_{zz} &= \mathbb{E}\left[ (\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k)(\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus}) (\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus})^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) + \mathbf{n}_k) (\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) + \mathbf{n}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ \mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top + \textcolor{red}{\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) \mathbf{n}_k^\top} \right.\nonumber\\ &\hspace{4cm}+ \textcolor{red}{\mathbf{n}_k (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top} + \left. \mathbf{n}_k \mathbf{n}_k^\top \right] \\[5px] &= \mathbb{E}\left[ \mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top + \mathbf{n}_k \mathbf{n}_k^\top \right] \\[5px] &= \mathbf{H}_k~\mathbb{E}\left[(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\right]\mathbf{H}_k^\top + ~\mathbb{E}\left[\mathbf{n}_k\mathbf{n}_k^\top\right] \\[5px] &= \mathbf{H}_k\mathbf{P}_{xx}^\ominus\mathbf{H}_k^\top + \mathbf{R}_k \end{align*}
+
+where $\mathbf{R}_k$ is the {\itshape discrete} measurement noise matrix, $\mathbf{H}_k$ is the measurement Jacobian mapping the state into the measurement domain, and $\mathbf{P}_{xx}^\ominus$ is the current state covariance.
+
+\begin{align*} \mathbf{P}_{xz} &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})(\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus})^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) + \mathbf{n}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top +(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})\mathbf{n}_k^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\right]\mathbf{H}_k^\top + \textcolor{red}{\mathbb{E}\left[(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})\mathbf{n}_k^\top \right]} \\[5px] &= \mathbf{P}_{xx}^\ominus\mathbf{H}_k^\top \end{align*}
+
+where we have employed the fact that the noise is independent of the state. Substitution of these quantities into the fundamental equation leads to the following update equations\+:
+
+\begin{align*} \hat{\mathbf{x}}_k^\oplus &= {\hat{\mathbf{x}}_k^\ominus} + \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1}(\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k) \\[5px] &= {\hat{\mathbf{x}}_k^\ominus} + \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1}(\mathbf{z}_{m,k} - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus}) \\[5px] &= {\hat{\mathbf{x}}_k^\ominus} + \mathbf{K}\mathbf{r}_z \\[5px] \mathbf{P}_{xx}^\oplus &= \mathbf{P}_{k}^\ominus - \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1} (\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top)^\top \\[5px] &= \mathbf{P}_{k}^\ominus - \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1} \mathbf{H}_k{\mathbf{P}_{k}^\ominus} \end{align*}
+
+These are essentially the Kalman filter (or linear M\+M\+SE) update equations.\hypertarget{update_update-examples}{}\section{Update Equations and Derivations}\label{update_update-examples}
+
+\begin{DoxyItemize}
+\item \hyperlink{update-featinit}{Feature Triangulation} --- 3D feature triangulation derivations for getting a feature linearization point
+\item \hyperlink{update-feat}{Camera Measurement Update} --- Measurement equations and derivation for 3D feature point
+\item \hyperlink{update-delay}{Delayed Feature Initialization} --- How to perform delayed initialization
+\item \hyperlink{update-null}{M\+S\+C\+KF Nullspace Projection} --- M\+S\+C\+KF nullspace projection
+\item \hyperlink{update-compress}{Measurement Compression} --- M\+S\+C\+KF measurement compression
+\item \hyperlink{update-zerovelocity}{Zero Velocity Update} --- Zero velocity stationary update 
+\end{DoxyItemize}\hypertarget{update-featinit}{}\section{Feature Triangulation}\label{update-featinit}
+\hypertarget{update-featinit_featinit-linear}{}\subsection{3\+D Cartesian Triangulation}\label{update-featinit_featinit-linear}
+We wish to create a solvable linear system that can give us an initial guess for the 3D cartesian position of our feature. To do this, we take all the poses that the feature is seen from to be of known quantity. This feature will be triangulated in some anchor camera frame $\{A\}$ which we can arbitrary pick. If the feature $\mathbf{p}_f$ is observed by pose $1\ldots m$, given the anchor pose $A$, we can have the following transformation from any camera pose $C_i, i=1\ldots m$\+:
+
+\begin{align*} {}^{C_i}\mathbf{p}_{f} & = {}^{C_i}_A\mathbf{R} \left( {}^A\mathbf{p}_f - {}^A\mathbf{p}_{C_i}\right) \\ {}^A\mathbf{p}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}\mathbf{p}_{f} + {}^A\mathbf{p}_{C_i} \end{align*}
+
+In the absents of noise, the measurement in the current frame is the bearing ${}^{C_i}\mathbf{b}$ and its depth ${}^{C_i}z$. Thus we have the following mapping to a feature seen from the current frame\+:
+
+\begin{align*} {}^{C_i}\mathbf{p}_f & = {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} = {}^{C_i}z_{f} \begin{bmatrix} u_n \\ v_n \\ 1 \end{bmatrix} \end{align*}
+
+We note that $u_n$ and $v_n$ represent the undistorted normalized image coordinates. This bearing can be warped into the the anchor frame by substituting into the above equation\+:
+
+\begin{align*} {}^A\mathbf{p}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} + {}^A\mathbf{p}_{C_i} \\ & = {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^A\mathbf{p}_{C_i} \end{align*}
+
+To remove the need to estimate the extra degree of freedom of depth ${}^{C_i}z_{f}$, we define the following vectors which are orthoganal to the bearing ${}^{A}\mathbf{b}_{C_i \rightarrow f}$\+:
+
+\begin{align*} {}^{A}\mathbf{N}_i &= \lfloor {}^{A}\mathbf{b}_{C_i \rightarrow f} \times\rfloor = \begin{bmatrix} 0 & -{}^{A}{b}_{C_i \rightarrow f}(3) & {}^{A}{b}_{C_i \rightarrow f}(2) \\ {}^{A}{b}_{C_i \rightarrow f}(3) & 0 & -{}^{A}{b}_{C_i \rightarrow f}(1) \\ -{}^{A}{b}_{C_i \rightarrow f}(2) & {}^{A}{b}_{C_i \rightarrow f}(1) & 0 \\ \end{bmatrix} \end{align*}
+
+All three rows are perpendicular to the vector ${}^{A}\mathbf{b}_{C_i \rightarrow f}$ and thus ${}^{A}\mathbf{N}_i{}^{A}\mathbf{b}_{C_i \rightarrow f}=\mathbf{0}_3$. We can then multiple the transform equation/constraint to form two equation which only relates to the unknown 3 d.\+o.\+f ${}^A\mathbf{p}_f$\+:
+
+\begin{align*} {}^{A}\mathbf{N}_i {}^A\mathbf{p}_f & = {}^{A}\mathbf{N}_i {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \\ & = {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \end{align*}
+
+By stacking all the measurements, we can have\+:
+
+\begin{align*} \underbrace{ \begin{bmatrix} \vdots \\ {}^{A}\mathbf{N}_i \\ \vdots \end{bmatrix} }_{\mathbf{A}} {}^A\mathbf{p}_f & = \underbrace{ \begin{bmatrix} \vdots \\ {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \\ \vdots \end{bmatrix} }_{\mathbf{b}} \end{align*}
+
+Since each pixel measurement provides two constraints, as long as $m>1$, we will have enough constraints to triangulate the feature. In practice, the more views of the feature the better the triangulation and thus normally want to have a feature seen from at least five views. We could select two rows of the each ${}^{A}\mathbf{N}_i$ to reduce the number of rows, but by having a square system we can perform the following \char`\"{}trick\char`\"{}. \begin{align*} \mathbf{A}^\top\mathbf{A}~ {}^A\mathbf{p}_f &= \mathbf{A}^\top\mathbf{b} \\ \Big( \sum_i {}^{A}\mathbf{N}_i^\top {}^{A}\mathbf{N}_i \Big) {}^A\mathbf{p}_f &= \Big( \sum_i {}^{A}\mathbf{N}_i^\top {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \Big) \end{align*}
+
+This is a 3x3 system which can be quickly solved for as compared to the originl 3mx3m or 2mx2m system. We additionally check that the triangulated feature is \char`\"{}valid\char`\"{} and in front of the camera and not too far away. The \href{https://en.wikipedia.org/wiki/Condition_number}{\tt condition number} of the above linear system and reject systems that are \char`\"{}sensitive\char`\"{} to errors and have a large value.\hypertarget{update-featinit_featinit-linear-1d}{}\subsection{1\+D Depth Triangulation}\label{update-featinit_featinit-linear-1d}
+We wish to create a solvable linear system that can give us an initial guess for the 1D depth position of our feature. To do this, we take all the poses that the feature is seen from to be of known quantity along with the bearing in the anchor frame. This feature will be triangulated in some anchor camera frame $\{A\}$ which we can arbitrary pick. We define it as its normalized image coordiantes $[u_n ~ v_n ~ 1]^\top$ in tha anchor frame. If the feature $\mathbf{p}_f$ is observed by pose $1\ldots m$, given the anchor pose $A$, we can have the following transformation from any camera pose $C_i, i=1\ldots m$\+:
+
+\begin{align*} {}^{C_i}\mathbf{p}_{f} & = {}^{C_i}_A\mathbf{R} \left( {}^A\mathbf{p}_f - {}^A\mathbf{p}_{C_i}\right) \\ {}^A\mathbf{p}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}\mathbf{p}_{f} + {}^A\mathbf{p}_{C_i} \\ {}^{A}z_{f} {}^A\mathbf{b}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}\mathbf{p}_{f} + {}^A\mathbf{p}_{C_i} \\ \end{align*}
+
+In the absents of noise, the measurement in the current frame is the bearing ${}^{C_i}\mathbf{b}$ and its depth ${}^{C_i}z$.
+
+\begin{align*} {}^{C_i}\mathbf{p}_f & = {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} = {}^{C_i}z_{f} \begin{bmatrix} u_n \\ v_n \\ 1 \end{bmatrix} \end{align*}
+
+We note that $u_n$ and $v_n$ represent the undistorted normalized image coordinates. This bearing can be warped into the the anchor frame by substituting into the above equation\+:
+
+\begin{align*} {}^{A}z_{f} {}^A\mathbf{b}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} + {}^A\mathbf{p}_{C_i} \\ & = {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^A\mathbf{p}_{C_i} \end{align*}
+
+To remove the need to estimate the extra degree of freedom of depth ${}^{C_i}z_{f}$, we define the following vectors which are orthoganal to the bearing ${}^{A}\mathbf{b}_{C_i \rightarrow f}$\+:
+
+\begin{align*} {}^{A}\mathbf{N}_i &= \lfloor {}^{A}\mathbf{b}_{C_i \rightarrow f} \times\rfloor \end{align*}
+
+All three rows are perpendicular to the vector ${}^{A}\mathbf{b}_{C_i \rightarrow f}$ and thus ${}^{A}\mathbf{N}_i{}^{A}\mathbf{b}_{C_i \rightarrow f}=\mathbf{0}_3$. We can then multiple the transform equation/constraint to form two equation which only relates to the unknown ${}^{A}z_{f}$\+:
+
+\begin{align*} ({}^{A}\mathbf{N}_i {}^A\mathbf{b}_f) {}^{A}z_{f} & = {}^{A}\mathbf{N}_i {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \\ & = {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \end{align*}
+
+We can then formulate the following system\+:
+
+\begin{align*} \Big( \sum_i ({}^{A}\mathbf{N}_i{}^A\mathbf{b}_f)^\top ({}^{A}\mathbf{N}_i{}^A\mathbf{b}_f) \Big) {}^{A}z_{f} &= \Big( \sum_i ({}^{A}\mathbf{N}_i{}^A\mathbf{b}_f)^\top {}^{A}\mathbf{N}_i{}^A \mathbf{b}_i \Big) \end{align*}
+
+This is a 1x1 system which can be quickly solved for with a single scalar division. We additionally check that the triangulated feature is \char`\"{}valid\char`\"{} and in front of the camera and not too far away. The full feature can be reconstructed by $ {}^A\mathbf{p}_f = {}^{A}z_{f} {}^A\mathbf{b}_f$.\hypertarget{update-featinit_featinit-nonlinear}{}\subsection{3\+D Inverse Non-\/linear Optimization}\label{update-featinit_featinit-nonlinear}
+After we get the triangulated feature 3D position, a nonlinear least-\/squares will be performed to refine this estimate. In order to achieve good numerical stability, we use the inverse depth representation for point feature which helps with convergence. We find that in most cases this problem converges within 2-\/3 iterations in indoor environments. The feature transformation can be written as\+:
+
+\begin{align*} {}^{C_i}\mathbf{p}_f & = {}^{C_i}_A\mathbf{R} \left( {}^A\mathbf{p}_f - {}^A\mathbf{p}_{C_i} \right) \\ &= {}^Az_f {}^{C_i}_A\mathbf{R} \left( \begin{bmatrix} {}^Ax_f/{}^Az_f \\ {}^Ay_f/{}^Az_f \\ 1 \end{bmatrix} - \frac{1}{{}^Az_f} {}^A\mathbf{p}_{C_i} \right) \\ \Rightarrow \frac{1}{{}^Az_f} {}^{C_i}\mathbf{p}_f & = {}^{C_i}_A\mathbf{R} \left( \begin{bmatrix} {}^Ax_f/{}^Az_f \\ {}^Ay_f/{}^Az_f \\ 1 \end{bmatrix} - \frac{1}{{}^Az_f} {}^A\mathbf{p}_{C_i} \right) \end{align*}
+
+We define $u_A = {}^Ax_f/{}^Az_f$, $v_A = {}^Ay_f/{}^Az_f$, and $\rho_A = {1}/{{}^Az_f}$ to get the following measurement equation\+:
+
+\begin{align*} h(u_A, v_A, \rho_A) & = {}^{C_i}_A\mathbf{R} \left( \begin{bmatrix} u_A \\ v_A \\ 1 \end{bmatrix} - \rho_A {}^A\mathbf{p}_{C_i} \right) \end{align*}
+
+The feature measurement seen from the $\{C_i\}$ camera frame can be reformulated as\+:
+
+\begin{align*} \mathbf{z} & = \begin{bmatrix} u_i \\ v_i \end{bmatrix} \\ &= \begin{bmatrix} h(u_A, v_A, \rho_A)(1) / h(u_A, v_A, \rho_A)(3) \\ h(u_A, v_A, \rho_A)(2) / h(u_A, v_A, \rho_A)(3) \\ \end{bmatrix} \\ & = \mathbf{h}(u_A, v_A, \rho_A) \end{align*}
+
+Therefore, we can have the least-\/squares formulated and Jacobians\+:
+
+\begin{align*} \operatorname*{argmin}_{u_A, v_A, \rho_A}||{\mathbf{z} - \mathbf{h}(u_A, v_A, \rho_A)}||^2 \end{align*} \begin{align*} \frac{\partial \mathbf{h}(u_A, v_A, \rho_A)}{\partial {h}(u_A, v_A, \rho_A)} & = \begin{bmatrix} 1/h(\cdots)(1) & 0 & -h(\cdots)(1)/h(\cdots)(3)^2 \\ 0 & 1/h(\cdots)(2) & -h(\cdots)(2)/h(\cdots)(3)^2 \end{bmatrix} \\ \frac{\partial {h}(u_A, v_A, \rho_A)}{\partial [u_A, v_A, \rho_A]} & = {}^{C_i}_A\mathbf{R} \begin{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & 1 \\ 0 & 0 \end{bmatrix} & -{}^A\mathbf{p}_{C_i} \end{bmatrix} \end{align*}
+
+The least-\/squares problem can be solved with \href{https://en.wikipedia.org/wiki/Gauss%E2%80%93Newton_algorithm}{\tt Gaussian-\/\+Newton} or \href{https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm}{\tt Levenberg-\/\+Marquart} algorithm. \hypertarget{update-feat}{}\section{Camera Measurement Update}\label{update-feat}
+\hypertarget{update-feat_model}{}\subsection{Perspective Projection (\+Bearing) Measurement Model}\label{update-feat_model}
+Consider a 3D feature is detected from the camera image at time $k$, whose $uv$ measurement (i.\+e., the corresponding pixel coordinates) on the image plane is given by\+:
+
+\begin{align*} \mathbf{z}_{m,k} &= \mathbf h(\mathbf x_k) + \mathbf n_k \\ &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) + \mathbf{n}_k \\ &= \mathbf h_d(\mathbf h_p({}^{C_k}\mathbf{p}_f), ~\boldsymbol\zeta) + \mathbf{n}_k \\ &= \mathbf h_d(\mathbf h_p(\mathbf h_t({}^{G}\mathbf{p}_f,~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k})), ~\boldsymbol\zeta) + \mathbf{n}_k \\ &= \mathbf h_d(\mathbf h_p(\mathbf h_t(\mathbf h_r(\boldsymbol\lambda,\cdots),~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k})), ~\boldsymbol\zeta) + \mathbf{n}_k \end{align*}
+
+where $\mathbf n_k$ is the measurement noise and typically assumed to be zero-\/mean white Gaussian; $\mathbf z_{n,k}$ is the normalized undistorted uv measurement; $\boldsymbol\zeta$ is the camera intrinsic parameters such as focal length and distortion parameters; ${}^{C_k}\mathbf{p}_f$ is the feature position in the current camera frame $\{C_k\}$; ${}^{G}\mathbf{p}_f$ is the feature position in the global frame $\{G\}$; $\{ {}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k} \}$ denotes the current camera pose (position and orientation) in the global frame (or camera extrinsics); and $\boldsymbol\lambda$ is the feature\textquotesingle{}s parameters of different representations (other than position) such as simply a xyz position or an inverse depth with bearing.
+
+In the above expression, we decompose the measurement function into multiple concatenated functions corresponding to different operations, which map the states into the raw uv measurement on the image plane. It should be noted that as we will perform intrinsic calibration along with extrinsic with different feature representations, the above camera measurement model is general. The high-\/level description of each function is given in the next section.\hypertarget{update-feat_model-table}{}\subsubsection{Measurement Function Overview}\label{update-feat_model-table}
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Function }&\textbf{ Description  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Function }&\textbf{ Description  }\\\cline{1-2}
+\endhead
+$\mathbf{z}_k = \mathbf h_d (\mathbf{z}_{n,k}, ~\boldsymbol\zeta)$ &The distortion function that takes normalized coordinates and maps it into distorted uv coordinates \\\cline{1-2}
+$\mathbf{z}_{n,k}= \mathbf h_p({}^{C_k}\mathbf{p}_f)$&The projection function that takes a 3D point in the image and converts it into the normalized uv coordinates \\\cline{1-2}
+${}^{C_k}\mathbf{p}_f=\mathbf h_t({}^{G}\mathbf{p}_f,~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k})$ &Transforming a feature\textquotesingle{}s position in the global frame into the current camera frame \\\cline{1-2}
+${}^{G}\mathbf{p}_f= \mathbf h_r(\boldsymbol\lambda,\cdots)$ &Converting from a feature representation to a 3D feature in the global frame \\\cline{1-2}
+\end{longtabu}
+\hypertarget{update-feat_model-deriv}{}\subsubsection{Jacobian Computation}\label{update-feat_model-deriv}
+Given the above nested functions, we can leverage the chainrule to find the total state Jacobian. Since our feature representation function $\mathbf h_r(\cdots)$ might also depend on the state, i.\+e. an anchoring pose, we need to carefully consider its additional derivatives. Consider the following example of our measurement in respect to a state $ \mathbf{x} $ Jacobian\+:
+
+\begin{align*} \frac{\partial \mathbf{z}_k}{\partial \mathbf{x}} = \frac{\partial \mathbf h_d (\cdot) }{\partial \mathbf{z}_{n,k}} \frac{\partial \mathbf h_p (\cdot) }{\partial {}^{C_k}\mathbf{p}_f} \frac{\partial \mathbf h_t (\cdot) }{\partial \mathbf{x}} + \frac{\partial \mathbf h_d (\cdot) }{\partial \mathbf{z}_{n,k}} \frac{\partial \mathbf h_p (\cdot) }{\partial {}^{C_k}\mathbf{p}_f} \frac{\partial \mathbf h_t (\cdot) }{\partial {}^{G}\mathbf{p}_f} \frac{\partial \mathbf h_r (\cdot) }{\partial \mathbf{x}} \end{align*}
+
+In the global feature representations, see \hyperlink{update-feat_feat-rep}{Point Feature Representations} section, the second term will be zero while for the anchored representations it will need to be computed.\hypertarget{update-feat_distortion}{}\subsection{Distortion Function}\label{update-feat_distortion}
+\hypertarget{update-feat_distortion-radtan}{}\subsubsection{Radial model}\label{update-feat_distortion-radtan}
+To calibrate camera intrinsics, we need to know how to map our normalized coordinates into the raw pixel coordinates on the image plane. We first employ the radial distortion as in \href{https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#details}{\tt Open\+CV model}\+:
+
+\begin{align*} \begin{bmatrix} u \\ v \end{bmatrix}:= \mathbf{z}_k &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) = \begin{bmatrix} f_x * x + c_x \\ f_y * y + c_y \end{bmatrix}\\[1em] \empty {\rm where}~~ x &= x_n (1 + k_1 r^2 + k_2 r^4) + 2 p_1 x_n y_n + p_2(r^2 + 2 x_n^2) \\\ y &= y_n (1 + k_1 r^2 + k_2 r^4) + p_1 (r^2 + 2 y_n^2) + 2 p_2 x_n y_n \\[1em] r^2 &= x_n^2 + y_n^2 \end{align*}
+
+where $ \mathbf{z}_{n,k} = [ x_n ~ y_n ]^\top$ are the normalized coordinates of the 3D feature and u and v are the distorted image coordinates on the image plane. The following distortion and camera intrinsic (focal length and image center) parameters are involved in the above distortion model, which can be estimated online\+:
+
+\begin{align*} \boldsymbol\zeta = \begin{bmatrix} f_x & f_y & c_x & c_y & k_1 & k_2 & p_1 & p_2 \end{bmatrix}^\top \end{align*}
+
+Note that we do not estimate the higher order (i.\+e., higher than fourth order) terms as in most offline calibration methods such as \href{https://github.com/ethz-asl/kalibr}{\tt Kalibr}. To estimate these intrinsic parameters (including the distortation parameters), the following Jacobian for these parameters is needed\+:
+
+\begin{align*} \frac{\partial \mathbf h_d(\cdot)}{\partial \boldsymbol\zeta} = \begin{bmatrix} x & 0 & 1 & 0 & f_x*(x_nr^2) & f_x*(x_nr^4) & f_x*(2x_ny_n) & f_x*(r^2+2x_n^2) \\[5pt] 0 & y & 0 & 1 & f_y*(y_nr^2) & f_y*(y_nr^4) & f_y*(r^2+2y_n^2) & f_y*(2x_ny_n) \end{bmatrix} \end{align*}
+
+Similarly, the Jacobian with respect to the normalized coordinates can be obtained as follows\+:
+
+\begin{align*} \frac{\partial \mathbf h_d (\cdot)}{\partial \mathbf{z}_{n,k}} = \begin{bmatrix} f_x*((1+k_1r^2+k_2r^4)+(2k_1x_n^2+4k_2x_n^2(x_n^2+y_n^2))+2p_1y_n+(2p_2x_n+4p_2x_n)) & f_x*(2k_1x_ny_n+4k_2x_ny_n(x_n^2+y_n^2)+2p_1x_n+2p_2y_n) \\ f_y*(2k_1x_ny_n+4k_2x_ny_n(x_n^2+y_n^2)+2p_1x_n+2p_2y_n) & f_y*((1+k_1r^2+k_2r^4)+(2k_1y_n^2+4k_2y_n^2(x_n^2+y_n^2))+(2p_1y_n+4p_1y_n)+2p_2x_n) \end{bmatrix} \end{align*}\hypertarget{update-feat_distortion-equi}{}\subsubsection{Fisheye model}\label{update-feat_distortion-equi}
+As fisheye or wide-\/angle lenses are widely used in practice, we here provide mathematical derivations of such distortion model as in \href{https://docs.opencv.org/3.4/db/d58/group__calib3d__fisheye.html#details}{\tt Open\+CV fisheye}.
+
+\begin{align*} \begin{bmatrix} u \\ v \end{bmatrix}:= \mathbf{z}_k &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) = \begin{bmatrix} f_x * x + c_x \\ f_y * y + c_y \end{bmatrix}\\[1em] \empty {\rm where}~~ x &= \frac{x_n}{r} * \theta_d \\ y &= \frac{y_n}{r} * \theta_d \\ \theta_d &= \theta (1 + k_1 \theta^2 + k_2 \theta^4 + k_3 \theta^6 + k_4 \theta^8) \\ \quad r^2 &= x_n^2 + y_n^2 \\ \theta &= atan(r) \end{align*}
+
+where $ \mathbf{z}_{n,k} = [ x_n ~ y_n ]^\top$ are the normalized coordinates of the 3D feature and u and v are the distorted image coordinates on the image plane. Clearly, the following distortion intrinsic parameters are used in the above model\+:
+
+\begin{align*} \boldsymbol\zeta = \begin{bmatrix} f_x & f_y & c_x & c_y & k_1 & k_2 & k_3 & k_4 \end{bmatrix}^\top \end{align*}
+
+In analogy to the previous radial distortion case, the following Jacobian for these parameters is needed for intrinsic calibration\+:
+
+\begin{align*} \frac{\partial \mathbf h_d (\cdot)}{\partial \boldsymbol\zeta} = \begin{bmatrix} x_n & 0 & 1 & 0 & f_x*(\frac{x_n}{r}\theta^3) & f_x*(\frac{x_n}{r}\theta^5) & f_x*(\frac{x_n}{r}\theta^7) & f_x*(\frac{x_n}{r}\theta^9) \\[5pt] 0 & y_n & 0 & 1 & f_y*(\frac{y_n}{r}\theta^3) & f_y*(\frac{y_n}{r}\theta^5) & f_y*(\frac{y_n}{r}\theta^7) & f_y*(\frac{y_n}{r}\theta^9) \end{bmatrix} \end{align*}
+
+Similarly, with the chain rule of differentiation, we can compute the following Jacobian with respect to the normalized coordinates\+:
+
+\begin{align*} \frac{\partial \mathbf h_d(\cdot)}{\partial \mathbf{z}_{n,k}} &= \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial x_ny_n}+ \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial r}\frac{\partial r}{\partial x_ny_n}+ \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial \theta_d}\frac{\partial \theta_d}{\partial \theta}\frac{\partial \theta}{\partial r}\frac{\partial r}{\partial x_ny_n} \\[1em] \empty {\rm where}~~~~ \frac{\partial uv}{\partial xy} &= \begin{bmatrix} f_x & 0 \\ 0 & f_y \end{bmatrix} \\ \empty \frac{\partial xy}{\partial x_ny_n} &= \begin{bmatrix} \theta_d/r & 0 \\ 0 & \theta_d/r \end{bmatrix} \\ \empty \frac{\partial xy}{\partial r} &= \begin{bmatrix} -\frac{x_n}{r^2}\theta_d \\ -\frac{y_n}{r^2}\theta_d \end{bmatrix} \\ \empty \frac{\partial r}{\partial x_ny_n} &= \begin{bmatrix} \frac{x_n}{r} & \frac{y_n}{r} \end{bmatrix} \\ \empty \frac{\partial xy}{\partial \theta_d} &= \begin{bmatrix} \frac{x_n}{r} \\ \frac{y_n}{r} \end{bmatrix} \\ \empty \frac{\partial \theta_d}{\partial \theta} &= \begin{bmatrix} 1 + 3k_1 \theta^2 + 5k_2 \theta^4 + 7k_3 \theta^6 + 9k_4 \theta^8\end{bmatrix} \\ \empty \frac{\partial \theta}{\partial r} &= \begin{bmatrix} \frac{1}{r^2+1} \end{bmatrix} \end{align*}\hypertarget{update-feat_projection}{}\subsection{Perspective Projection Function}\label{update-feat_projection}
+The standard pinhole camera model is used to project a 3D point in the {\itshape camera} frame into the normalized image plane (with unit depth)\+:
+
+\begin{align*} \mathbf{z}_{n,k} &= \mathbf h_p ({}^{C_k}\mathbf{p}_f) = \begin{bmatrix} {}^Cx/{}^Cz \\ {}^Cy/{}^Cz \end{bmatrix} \\ \text{where} \quad {}^{C_k}\mathbf{p}_f &= \begin{bmatrix} {}^Cx \\ {}^Cy \\ {}^Cz \end{bmatrix} \end{align*}
+
+whose Jacobian matrix is computed as follows\+:
+
+\begin{align*} \frac{\partial \mathbf h_p (\cdot)}{\partial {}^{C_k}\mathbf{p}_f} = \begin{bmatrix} \frac{1}{{}^Cz} & 0 & \frac{-{}^Cx}{({}^Cz)^2} \\ 0 & \frac{1}{{}^Cz} & \frac{-{}^Cy}{({}^Cz)^2} \\ \end{bmatrix} \end{align*}\hypertarget{update-feat_relative}{}\subsection{Euclidean Transformation}\label{update-feat_relative}
+We employ the 6\+D\+OF rigid-\/body Euclidean transformation to transform the 3D feature position in the global frame $\{G\}$ to the current camera frame $\{C_k\}$ based on the current global camera pose\+:
+
+\begin{align*} {}^{C_k}\mathbf{p}_f &= \mathbf h_t ({}^{G}\mathbf{p}_f,~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k}) = {}^{C_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{C_k}) \end{align*}
+
+Note that in visual-\/inertial navigation systems, we often keep the I\+MU, instead of camera, state in the state vector. So, we need to further transform the above geometry using the time-\/invariant I\+M\+U-\/camera extrinsic parameters $\{ {}^{C}_{I}\mathbf{R}, ~{}^{C}\mathbf{p}_I \}$ as follows\+:
+
+\begin{align*} {}^{G}\mathbf{p}_{C_k} &= {}^{G}\mathbf{p}_{I_k} + {}^{G}_{I}\mathbf{R} {}^{I}\mathbf{p}_{C_k} = {}^{G}\mathbf{p}_{I_k} + {}^{G}_{I}\mathbf{R} {}^{I}\mathbf{p}_{C} \\ {}^{C_k}_{G}\mathbf{R} &= {}^{C_k}_{I}\mathbf{R} {}^{I_k}_{G}\mathbf{R} = {}^{C}_{I}\mathbf{R} {}^{I_k}_{G}\mathbf{R} \end{align*}
+
+Substituting these quantities into the equation of $ {}^{C_k}\mathbf{p}_f$ yields\+:
+
+\begin{align*} {}^{C_k}\mathbf{p}_f = {}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) +{}^{C}\mathbf{p}_I \end{align*}
+
+We now can compute the following Jacobian with respect to the pertinent states\+:
+
+\begin{align*} \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{G}\mathbf{p}_f} &= {}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R} \\ \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{I_k}_{G}\mathbf{R}} &= {}^{C}_{I}\mathbf{R} \left\lfloor {}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) \times\right\rfloor \\ \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{G}\mathbf{p}_{I_k}} &= -{}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R} \end{align*}
+
+where $\lfloor \mathbf a\times \rfloor $ denotes the skew symmetric matrix of a vector $\mathbf a$ (see \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt Quaternion TR} \cite{Trawny2005TR}). Note also that in above expression (as well as in ensuing derivations), there is a little abuse of notation; that is, the Jacobian with respect to the rotation matrix is not the direct differentiation with respect to the 3x3 rotation matrix, instead with respect to the corresponding 3x1 rotation angle vector. Moreover, if performing online extrinsic calibration, the Jacobian with respect to the I\+M\+U-\/camera extrinsics is needed\+:
+
+\begin{align*} \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{C}_{I}\mathbf{R}} &= \left\lfloor {}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) \times\right\rfloor \\ \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{C}\mathbf{p}_I} &= \mathbf{I}_{3\times 3} \end{align*}\hypertarget{update-feat_feat-rep}{}\subsection{Point Feature Representations}\label{update-feat_feat-rep}
+There are two main parameterizations of a 3D point feature\+: 3D position (xyz) and inverse depth with bearing. Both of these can either be represented in the global frame or in an anchor frame of reference which adds a dependency on having an \char`\"{}anchor\char`\"{} pose where the feature is observed. To allow for a unified treatment of different feature parameterizations $\boldsymbol \lambda$ in our codebase, we derive in detail the generic function ${}^{G}\mathbf{p}_f=\mathbf f (\cdot)$ that maps different representations into global position.\hypertarget{update-feat_feat-rep-global-xyz}{}\subsubsection{Global X\+YZ}\label{update-feat_feat-rep-global-xyz}
+As the canonical parameterization, the global position of a 3D point feature is simply given by its xyz coordinates in the global frame of reference\+:
+
+\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda) \\ &= \begin{bmatrix} {}^Gx \\ {}^Gy \\ {}^Gz \end{bmatrix} \\ \text{where} &\quad \boldsymbol\lambda = {}^{G}\mathbf{p}_f = \begin{bmatrix} {}^Gx & {}^Gy & {}^Gz \end{bmatrix}^\top \end{align*}
+
+It is clear that the Jacobian with respect to the feature parameters is\+: \begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= \mathbf{I}_{3\times 3} \end{align*}\hypertarget{update-feat_feat-rep-global-inv}{}\subsubsection{Global Inverse Depth}\label{update-feat_feat-rep-global-inv}
+The global inverse-\/depth representation of a 3D point feature is given by (akin to spherical coordinates)\+:
+
+\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda) \\ &= \frac{1}{\rho}\begin{bmatrix} \cos(\theta)\sin(\phi) \\ \sin(\theta)\sin(\phi) \\ \cos(\phi) \end{bmatrix} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \theta & \phi & \rho \end{bmatrix}^\top \end{align*}
+
+The Jacobian with respect to the feature parameters can be computed as\+: \begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= \begin{bmatrix} -\frac{1}{\rho}\sin(\theta)\sin(\phi) & \frac{1}{\rho}\cos(\theta)\cos(\phi) & -\frac{1}{\rho^2}\cos(\theta)\sin(\phi) \\ \frac{1}{\rho}\cos(\theta)\sin(\phi) & \frac{1}{\rho}\sin(\theta)\cos(\phi) & -\frac{1}{\rho^2}\sin(\theta)\sin(\phi) \\ 0 & -\frac{1}{\rho}\sin(\phi) & -\frac{1}{\rho^2}\cos(\phi) \end{bmatrix} \end{align*}\hypertarget{update-feat_feat-rep-global-inv2}{}\subsubsection{Global Inverse Depth (\+M\+S\+C\+K\+F V\+E\+R\+S\+I\+O\+N)}\label{update-feat_feat-rep-global-inv2}
+Note that as this representation has a singularity when the z-\/distance goes to zero, it is not recommended to use in practice. Instead, one should use the \hyperlink{update-feat_feat-rep-anchor-inv2}{Anchored Inverse Depth (M\+S\+C\+KF Version)} representation. The anchored version doesn\textquotesingle{}t have this issue if features are represented in a camera frame that they where seen from (in which features should never have a non-\/positive z-\/direction).\hypertarget{update-feat_feat-rep-anchor-xyz}{}\subsubsection{Anchored X\+YZ}\label{update-feat_feat-rep-anchor-xyz}
+We can represent a 3D point feature in some \char`\"{}anchor\char`\"{} frame (say some I\+MU local frame, $\{{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a}\}$), which would normally be the I\+MU pose corresponding to the first camera frame where the feature was detected.
+
+\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top( \boldsymbol\lambda -{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = {}^{C_a}\mathbf{p}_f = \begin{bmatrix} {}^{C_a}x & {}^{C_a}y & {}^{C_a}z \end{bmatrix}^\top \end{align*}
+
+The Jacobian with respect to the feature state is given by\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \end{align*}
+
+As the anchor pose is involved in this representation, its Jacobians are computed as\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{I_a}_{G}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top \left\lfloor{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{G}\mathbf{p}_{I_a}} &= \mathbf{I}_{3\times 3} \end{align*}
+
+Moreover, if performing extrinsic calibration, the following Jacobians with respect to the I\+M\+U-\/camera extrinsics are also needed\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}_{I}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \left\lfloor({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}\mathbf{p}_{I}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \end{align*}\hypertarget{update-feat_feat-rep-anchor-inv}{}\subsubsection{Anchored Inverse Depth}\label{update-feat_feat-rep-anchor-inv}
+In analogy to the global inverse depth case, we can employ the inverse-\/depth with bearing (akin to spherical coordinates) in the anchor frame, $\{{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a}\}$, to represent a 3D point feature\+:
+
+\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top\Bigg(\frac{1}{\rho}\begin{bmatrix} \cos(\theta)\sin(\phi) \\ \sin(\theta)\sin(\phi) \\ \cos(\phi) \end{bmatrix}-{}^{C}\mathbf{p}_{I}\Bigg) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \theta & \phi & \rho \end{bmatrix}^\top \end{align*}
+
+The Jacobian with respect to the feature state is given by\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \begin{bmatrix} -\frac{1}{\rho}\sin(\theta)\sin(\phi) & \frac{1}{\rho}\cos(\theta)\cos(\phi) & -\frac{1}{\rho^2}\cos(\theta)\sin(\phi) \\ \frac{1}{\rho}\cos(\theta)\sin(\phi) & \frac{1}{\rho}\sin(\theta)\cos(\phi) & -\frac{1}{\rho^2}\sin(\theta)\sin(\phi) \\ 0 & -\frac{1}{\rho}\sin(\phi) & -\frac{1}{\rho^2}\cos(\phi) \end{bmatrix} \end{align*}
+
+The Jacobians with respect to the anchor pose are\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{I_a}_{G}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top \left\lfloor{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{G}\mathbf{p}_{I_a}} &= \mathbf{I}_{3\times 3} \end{align*}
+
+The Jacobians with respect to the I\+M\+U-\/camera extrinsics are\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}_{I}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \left\lfloor({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}\mathbf{p}_{I}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \end{align*}\hypertarget{update-feat_feat-rep-anchor-inv2}{}\subsubsection{Anchored Inverse Depth (\+M\+S\+C\+K\+F Version)}\label{update-feat_feat-rep-anchor-inv2}
+Note that a simpler version of inverse depth was used in the original M\+S\+C\+KF paper \cite{Mourikis2007ICRA}. This representation does not have the singularity if it is represented in a camera frame the feature was measured from.
+
+\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top\Bigg(\frac{1}{\rho}\begin{bmatrix} \alpha \\ \beta \\ 1 \end{bmatrix}-{}^{C}\mathbf{p}_{I}\Bigg) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \alpha & \beta & \rho \end{bmatrix}^\top \end{align*}
+
+The Jacobian with respect to the feature state is\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \begin{bmatrix} \frac{1}{\rho} & 0 & -\frac{1}{\rho^2}\alpha \\ 0 & \frac{1}{\rho} & -\frac{1}{\rho^2}\beta \\ 0 & 0 & -\frac{1}{\rho^2} \end{bmatrix} \end{align*}
+
+The Jacobians with respect to the anchor state are\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{I_a}_{G}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top \left\lfloor{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{G}\mathbf{p}_{I_a}} &= \mathbf{I}_{3\times 3} \end{align*}
+
+The Jacobians with respect to the I\+M\+U-\/camera extrinsics are\+:
+
+\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}_{I}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \left\lfloor({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}\mathbf{p}_{I}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \end{align*}\hypertarget{update-feat_feat-rep-anchor-inv3}{}\subsubsection{Anchored Inverse Depth (\+M\+S\+C\+K\+F Single Depth Version)}\label{update-feat_feat-rep-anchor-inv3}
+This feature representation is based on the M\+S\+C\+KF representation \cite{Mourikis2007ICRA}, and the the single depth from V\+I\+N\+S-\/\+Mono \cite{Qin2018TRO}. As compared to the implementation in \cite{Qin2018TRO}, we are careful about how we handle treating of the bearing of the feature. During initialization we initialize a full 3D feature and then follow that by marginalize the bearing portion of it leaving the depth in the state vector. The marginalized bearing is then fixed for all future linearizations.
+
+Then during update, we perform nullspace projection at every timestep to remove the feature dependence on this bearing. To do so, we need at least {\itshape two} sets of UV measurements to perform this bearing nullspace operation since we loose two dimensions of the feature in the process. We can define the feature measurement function as follows\+:
+
+\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top\Big(\frac{1}{\rho}\hat{\mathbf{b}}-{}^{C}\mathbf{p}_{I}\Big) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \rho \end{bmatrix} \end{align*}
+
+In the above case we have defined a bearing $\hat{\mathbf{b}}$ which is the marginalized bearing of the feature after initialization. After collecting two measurement, we can nullspace project to remove the Jacobian in respect to this bearing variable. \hypertarget{update-delay}{}\section{Delayed Feature Initialization}\label{update-delay}
+We describe a method of delayed initialization of a 3D point feature as in \href{https://escholarship.org/content/qt4nn0j264/qt4nn0j264.pdf}{\tt Visual-\/\+Inertial Odometry on Resource-\/\+Constrained Systems} \cite{Li2014THESIS}. Specifically, given a set of measurements involving the state $\mathbf{x}$ and a new feature $\mathbf{f}$, we want to optimally and efficiently initialize the feature.
+
+\begin{align*} \mathbf{z}_i = \mathbf{h}_i\left(\mathbf{x}, \mathbf{f}\right) + \mathbf{n}_i \end{align*}
+
+In general, we collect more than the minimum number of measurements at different times needed for initialization (i.\+e. delayed). For example, although in principle we need two monocular images to initialize a 3D point feature, we often collect more than two images in order to obtain better initialization. To process all collected measurements, we stack them and perform linearization around some linearization points (estimates) denoted by $\hat{\mathbf x}$ and $\hat{\mathbf f}$\+:
+
+\begin{align*} \mathbf{z} &= \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \\ \vdots \\ \mathbf{z}_m \end{bmatrix} = \mathbf{h}\left(\mathbf{x}, \mathbf{f}\right)+ \mathbf{n}\\ \Rightarrow~~ \mathbf{r} &= \mathbf{z}-\mathbf{h}(\hat{\mathbf{x}}, \hat{f}) = \mathbf{H}_x \tilde{\mathbf{x}} +\mathbf{H}_f \tilde{\mathbf{f}} + \mathbf{n} \end{align*}
+
+To efficiently compute the resulting augmented covariance matrix, we perform \href{https://en.wikipedia.org/wiki/Givens_rotation}{\tt Givens rotations} to zero-\/out rows in $\mathbf{H}_f$ with indices larger than the dimension of $\tilde{\mathbf{f}}$, and apply the same Givens rotations to $\mathbf{H}_x$ and $\mathbf{r}$. As a result of this operation, we have the following linear system\+:
+
+\begin{align*} \begin{bmatrix} \mathbf{r}_1 \\ \mathbf{r}_2 \end{bmatrix} = \begin{bmatrix} \mathbf{H}_{x1} \\ \mathbf{H}_{x2} \end{bmatrix} \tilde{\mathbf{x}} +\begin{bmatrix} \mathbf{H}_{f1} \\ \mathbf{0} \end{bmatrix} \tilde{\mathbf{f}} + \begin{bmatrix} \mathbf{n}_1 \\ \mathbf{n}_2 \end{bmatrix} \end{align*}
+
+Note that the bottom system essentially is corresponding to the nullspace projection as in the M\+S\+C\+KF update and $\mathbf{H}_{f1}$ is generally invertible. Note also that we assume the measurement noise is isotropic; otherwise, we should first perform whitening to make it isotropic, which would save significant computations. So, if the original measurement noise covariance $\mathbf{R} = \sigma^2\mathbf{I}_m$ and the dimension of $\tilde{\mathbf{f}}$ is n, then the inferred measurement noise covariance will be $\mathbf{R}_1 = \sigma^2\mathbf{I}_n$ and $\mathbf{R}_2 = \sigma^2\mathbf{I}_{m-n}$.
+
+Now we can directly solve for the error of the new feature based on the first subsystem\+:
+
+\begin{align*} \tilde{\mathbf{f}} &= \mathbf{H}_{f1}^{-1}(\mathbf{r}_1-\mathbf{n}_1-\mathbf{H}_x\tilde{\mathbf{x}}) \\ \Rightarrow~ \mathbb{E}[\tilde{\mathbf{f}}] &= \mathbf{H}_{f1}^{-1}(\mathbf{r}_1) \end{align*}
+
+where we assumed noise and state error are zero mean. We can update $\hat{\mathbf f}$ with this correction by $\hat{\mathbf f}+\mathbb{E}[\tilde{\mathbf{f}}]$. Note that this is equivalent to a Gauss Newton step for solving the corresponding maximum likelihood estimation (M\+LE) formed by fixing the estimate of $\mathbf{x}$ and optimizing over the value of $\hat{\mathbf{f}}$, and should therefore be zero if we used such an optimization to come up with our initial estimate for the new variable.
+
+We now can compute the covariance of the new feature as follows\+:
+
+\begin{align*} \mathbf{P}_{ff} &= \mathbb{E}\Big[(\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}]) (\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}])^{\top}\Big] \\ &= \mathbb{E}\Big[(\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}})) (\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}}))^{\top}\Big] \\ &= \mathbf{H}_{f1}^{-1}(\mathbf{H}_{x1}\mathbf{P}_{xx}\mathbf{H}_{x1}^{\top} + \mathbf{R}_1)\mathbf{H}_{f1}^{-\top} \end{align*}
+
+and the cross correlation can be computed as\+:
+
+\begin{align*} \mathbf{P}_{xf} &= \mathbb{E}\Big[(\tilde{\mathbf{x}}) (\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}])^{\top}\Big] \\ &= \mathbb{E}\Big[(\tilde{\mathbf{x}}) (\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}}))^{\top}\Big] \\ &= -\mathbf{P}_{xx}\mathbf{H}_{x1}^{\top}\mathbf{H}_{f1}^{-\top} \end{align*}
+
+These entries can then be placed in the correct location for the covariance. For example when initializing a new feature to the end of the state, the augmented covariance would be\+:
+
+\begin{align*} \mathbf{P}_{aug} = \begin{bmatrix} \mathbf{P}_{xx} & \mathbf{P}_{xf} \\ \mathbf{P}_{xf}^{\top} & \mathbf{P}_{ff} \end{bmatrix} \end{align*}
+
+Note that this process does not update the estimate for $\mathbf{x}$. However, after initialization, we can then use the second system, $\mathbf{r}_2$, $\mathbf{H}_{x2}$, and $\mathbf{n}_2$ to update our new state through a standard E\+KF update (see \hyperlink{update_linear-meas}{Linear Measurement Update} section). \hypertarget{update-null}{}\section{M\+S\+C\+KF Nullspace Projection}\label{update-null}
+In the standard E\+KF update, given a linearized measurement error (or residual) equation\+:
+
+\begin{align*} \tilde{\mathbf{z}}_{m,k} &\simeq \mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{H}_{f} {}^G\tilde{\mathbf{p}}_f + \mathbf{n}_k \end{align*}
+
+we naively need to compute the residual covariance matrix $\mathbf{P}_{zz}$ as follows\+:
+
+\begin{align*} \mathbf{P}_{zz} &= \mathbb{E}\left[ \tilde{\mathbf{z}}_{m,k}{m,k} \tilde{\mathbf{z}}_{m,k}^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}+\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f+\mathbf{n}_k) (\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}+\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f+\mathbf{n}_k)^\top \right] \\[5px] &= \mathbb{E}\Big[ \mathbf{H}_{x}\tilde{\mathbf{x}}_{k}\tilde{\mathbf{x}}_{k}^\top\mathbf{H}_{x}^\top +\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}{}^G\tilde{\mathbf{p}}_f^\top\mathbf{H}_{f}^\top +\textcolor{red}{\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}\mathbf{n}_k^\top} \nonumber\\[3px] &\hspace{3cm}+ \mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f\tilde{\mathbf{x}}_{k}^\top\mathbf{H}_{x}^\top +\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f{}^G\tilde{\mathbf{p}}_f^\top\mathbf{H}_{f}^\top +\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f\mathbf{n}_k^\top \nonumber\\[3px] &\hspace{3cm}+ \textcolor{red}{\mathbf{n}_k\tilde{\mathbf{x}}_{k}^\top\mathbf{H}_{x}^\top} +\mathbf{n}_k{}^G\tilde{\mathbf{p}}_f^\top\mathbf{H}_{f}^\top +\mathbf{n}_k\mathbf{n}_k^\top \Big] \\[5px] \empty &= \mathbf{H}_x\mathbb{E}\Big[\tilde{\mathbf{x}}_{k}\tilde{\mathbf{x}}_{k}^\top\Big]\mathbf{H}_x^\top +\mathbf{H}_x\mathbb{E}\Big[\tilde{\mathbf{x}}_{k}{}^G\tilde{\mathbf{p}}_f^\top\Big]\mathbf{H}_f^\top +\mathbf{H}_f\mathbb{E}\Big[{}^G\tilde{\mathbf{p}}_f\tilde{\mathbf{x}}_{k}^\top\Big]\mathbf{H}_x^\top + \mathbf{H}_f\mathbb{E}\Big[{}^G\tilde{\mathbf{p}}_f{}^G\tilde{\mathbf{p}}_f^\top\Big]\mathbf{H}_f^\top \nonumber\\[3px] &\hspace{3.2cm}+ \mathbf{H}_f\mathbb{E}\Big[{}^G\tilde{\mathbf{p}}_f\mathbf{n}_k^\top\Big] +\mathbb{E}\Big[\mathbf{n}_k{}^G\tilde{\mathbf{p}}_f^\top\Big]\mathbf{H}_f^\top +\mathbb{E}\Big[\mathbf{n}_k\mathbf{n}_k^\top\Big] \\[5px] \empty &= \mathbf{H}_x \mathbf{P}_{xx}\mathbf{H}_x^\top +\mathbf{H}_x \mathbf{P}_{xf}\mathbf{H}_f^\top +\mathbf{H}_f \mathbf{P}_{fx}\mathbf{H}_x^\top + \mathbf{H}_f \mathbf{P}_{ff}\mathbf{H}_f^\top \nonumber\\[3px] &\hspace{2.3cm}+ \mathbf{H}_f \mathbf{P}_{fn} +\mathbf{P}_{nf} \mathbf{H}_f^\top +\mathbf{R}_d \end{align*}
+
+However, there would be a big problem in visual-\/inertial odometry (V\+IO); that is, we do not know what the prior feature covariance and it is coupled with both the state, itself, and the noise (i.\+e., $\mathbf{P}_{xf}$, $\mathbf{P}_{ff}$, and $\mathbf{P}_{nf}$). This motivates the need for a method to remove the feature ${}^G\tilde{\mathbf{p}}_f$ from the linearized measurement equation (thus removing the correlation between the measurement and its error).
+
+To this end, we start with the measurement residual function by removing the \char`\"{}sensitivity\char`\"{} to feature error we compute and apply the left nullspace of the Jacobian $\mathbf{H}_{f}$. We can compute it using QR decomposition as follows\+:
+
+\begin{align*} \mathbf{H}_{f} = \begin{bmatrix} \mathbf{Q_1} & \mathbf{Q_2} \end{bmatrix} \begin{bmatrix} \mathbf{R_1} \\ \mathbf{0} \end{bmatrix} = \mathbf{Q_1}\mathbf{R_1} \end{align*}
+
+Multiplying the linearized measurement equation by the nullspace of the feature Jacobian from the left yields\+:
+
+\begin{align*} \tilde{\mathbf{z}}_{m,k} &\simeq \mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{Q_1}\mathbf{R_1}{}^G\tilde{\mathbf{p}}_f + \mathbf{n}_k \\[5px] \empty \Rightarrow~ \mathbf{Q_2}^\top\tilde{\mathbf{z}}_m &\simeq \mathbf{Q_2}^\top\mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \textcolor{red}{\mathbf{Q_2}^\top\mathbf{Q_1}\mathbf{R_1} {}^G\tilde{\mathbf{p}}_f} + \mathbf{Q_2}^\top\mathbf{n}_k \\[5px] \empty \Rightarrow~ \mathbf{Q_2}^\top\tilde{\mathbf{z}}_m &\simeq \mathbf{Q_2}^\top\mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{Q_2}^\top\mathbf{n}_k \\[5px] \empty \Rightarrow~ \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{H}_{o,k}\tilde{\mathbf{x}}_{k} + \mathbf{n}_{o,k} \end{align*}
+
+where we have employed the fact that $\mathbf Q_1$ and $\mathbf Q_2$ are orthonormal.
+
+We now examine the dimensions of the involved matrices to appreciate the computation saving gained from this nullspace projection.
+
+\begin{align*} \textrm{size}(\mathbf{H}_{f}) &= 2n\times3 \textrm{~~where~}n\textrm{~is the number of uv measurements of this feature} \\[5px] \textrm{size}({}^G\tilde{\mathbf{p}}_f) &= 3\times1 \\[5px] \textrm{size}(\mathbf{H}_{x}) &= 2n\times15+6c \textrm{~~where~}c\textrm{~is the number of clones} \\[5px] \textrm{size}(\tilde{\mathbf{x}}_{k}) &= 15+6c\times1 \textrm{~~where~}c\textrm{~is the number of clones} \\[5px] \textrm{rank}(\mathbf{H}_{f}) &\leq \textrm{min}(2n,3) = 3 \textrm{~~where equality holds in most cases} \\[5px] \textrm{nullity}(\mathbf{H}_{f}) &= \textrm{size}(\mathbf{x}) - \textrm{rank}(\mathbf{H}_{f}) = 2n-3 \textrm{~~assuming full rank} \end{align*}
+
+With that, we can have the following conclusion about the sizes when the nullspace is applied\+:
+
+\begin{align*} \mathbf{Q_2}^\top\tilde{\mathbf{z}}_{m,k} &\simeq \mathbf{Q_2}^\top\mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{Q_2}^\top\mathbf{n}_k \\[5px] \empty \Rightarrow~ (2n-3\times2n)(2n\times1) &= (2n-3\times2n)(2n\times15+6c)(15+6c\times1) \\ &\hspace{3.5cm}+ (2n-3\times2n)(2n\times1) \nonumber\\[5px] \empty \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{H}_{o,k}\tilde{\mathbf{x}}_{k} + \mathbf{n}_o \\[5px] \empty \Rightarrow~ (2n-3\times1) &= (2n-3\times15+6c)(15+6c\times1) + (2n-3\times1) \end{align*}
+
+Finally, we perform the E\+KF update using the inferred measurement $\mathbf z_{o,k}$\+:
+
+\begin{align*} \hat{\mathbf{x}}_{k|k} &= \hat{\mathbf{x}}_{k|k-1} + \mathbf{P}_{k|k-1} \mathbf{H}_{o,k}^\top (\mathbf{H}_{o,k} \mathbf{P}_{k|k-1} \mathbf{H}_{o,k}^\top + \mathbf{R}_o)^{-1}\tilde{\mathbf{z}}_{o,k} \\[5px] \mathbf{P}_{k|k} &= \mathbf{P}_{k|k-1} - \mathbf{P}_{k|k-1}\mathbf{H}_{o,k}^\top (\mathbf{H}_{o,k} \mathbf{P}_{k|k-1} \mathbf{H}_{o,k}^\top + \mathbf{R}_o)^{-1} \mathbf{H}_{o,k}\mathbf{P}_{k|k-1}^\top \end{align*}
+
+where the time index (subscript) $k|k-1$ refers to the prior estimate which was denoted before by symbol $\ominus$ and $k|k$ corresponds to the posterior (or updated) estimate indicated before by $\oplus$.\hypertarget{update-null_implementation}{}\subsection{Implementation}\label{update-null_implementation}
+Using Eigen 3 library, we perform QR decomposition to get the nullspace. Here we know that the size of $\mathbf{Q}_1$ is $2n\times3$, which corresponds to the number of observations and size of the 3D point feature state.
+
+
+\begin{DoxyCode}
+Eigen::ColPivHouseholderQR<Eigen::MatrixXd> qr(H\_f.rows(), H\_f.cols());
+qr.compute(H\_f);
+Eigen::MatrixXd Q = qr.householderQ();
+Eigen::MatrixXd Q1 = Q.block(0,0,Q.rows(),3);
+Eigen::MatrixXd Q2 = Q.block(0,3,Q.rows(),Q.cols()-3);
+\end{DoxyCode}
+ \hypertarget{update-compress}{}\section{Measurement Compression}\label{update-compress}
+One of the most costly opeerations in the E\+KF update is the matrix multiplication. To mitigate this issue, we perform the thin QR decomposition of the measurement Jacobian after nullspace projection\+:
+
+\begin{align*} \mathbf{H}_{o,k} = \begin{bmatrix} \mathbf{Q_1} & \mathbf{Q_2} \end{bmatrix} \begin{bmatrix} \mathbf{R_1} \\ \mathbf{0} \end{bmatrix} = \mathbf Q_1 \mathbf R_1 \end{align*}
+
+This QR decomposition can be performed again using \href{https://en.wikipedia.org/wiki/Givens_rotation}{\tt Givens rotations} (note that this operation in general is not cheap though). We apply this QR to the linearized measurement residuals to compress measurements\+:
+
+\begin{align*} \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{H}_{o,k}\tilde{\mathbf{x}}_{k} + \mathbf{n}_o \\[5px] \empty \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf Q_1 \mathbf R_1 \tilde{\mathbf{x}}_{k} + \mathbf{n}_o \\[5px] \empty \mathbf{Q_1}^\top \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{Q_1}^\top \mathbf{Q_1} \mathbf{R_1} \tilde{\mathbf{x}}_{k} + \mathbf{Q_1}^\top \mathbf{n}_o \\[5px] \empty \mathbf{Q_1}^\top\tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{R_1} \tilde{\mathbf{x}}_{k} + \mathbf{Q_1}^\top\mathbf{n}_o \\[5pt] \empty \Rightarrow~ \tilde{\mathbf{z}}_{n,k} &\simeq \mathbf{H}_{n,k} \tilde{\mathbf{x}}_{k} + \mathbf{n}_n \end{align*}
+
+As a result, the compressed measurement Jacobian will be of the size of the state, which will signficantly reduce the E\+KF update cost\+:
+
+\begin{align*} \hat{\mathbf{x}}_{k|k} &= \hat{\mathbf{x}}_{k|k-1} + \mathbf{P}_{k|k-1} \mathbf{H}_{n,k}^\top (\mathbf{H}_{n,k} \mathbf{P}_{k|k-1} \mathbf{H}_{n,k}^\top + \mathbf{R}_n)^{-1}\tilde{\mathbf{z}}_{n,k} \\[5px] \empty \mathbf{P}_{k|k} &= \mathbf{P}_{k|k-1} - \mathbf{P}_{k|k-1}\mathbf{H}_{n,k}^\top (\mathbf{H}_{n,k}\mathbf{P}_{k|k-1} \mathbf{H}_{n,k}^\top + \mathbf{R}_n)^{-1} \mathbf{H}_{n,k} \mathbf{P}_{k|k-1}^\top \end{align*} \hypertarget{update-zerovelocity}{}\section{Zero Velocity Update}\label{update-zerovelocity}
+The key idea of the zero velocity update (Z\+U\+PT) is to allow for the system to reduce its uncertainty leveraging motion knowledge (i.\+e. leverage the fact that the system is stationary). This is of particular importance in cases where we have a monocular system without any temporal S\+L\+AM features. In this case, if we are stationary we will be unable to triangulate features and thus will be unable to update the system. This can be avoided by either using a stereo system or temporal S\+L\+AM features. One problem that both of these don\textquotesingle{}t solve is the issue of dynamic environmental objects. In a typical autonomous car scenario the sensor system will become stationary at stop lights in which dynamic objects, such as other cars crossing the intersection, can quickly corrupt the system. A zero velocity update and skipping feature tracking can address these issues if we are able to classify the cases where the sensor system is at rest.\hypertarget{update-zerovelocity_update-zerovelocity-meas}{}\subsection{Constant Velocity Synthetic Measurement}\label{update-zerovelocity_update-zerovelocity-meas}
+To perform update, we create a synthetic \char`\"{}measurement\char`\"{} which says that the current {\bfseries true} acceleration and angular velocity is zero. As compared to saying the velocity is zero, we can model the uncertainty of these measurements based on the readings from our inertial measurement unit.
+
+\begin{align*} \mathbf{a} &= \mathbf{0} \\ \boldsymbol{\omega} &= \mathbf{0} \end{align*}
+
+It is important to realize this is not strictly enforcing zero velocity, but really a constant velocity. This means we can have a false detection at constant velocity times (zero acceleration), but this can be easily addressed by a velocity magnitude check. We have the following measurement equation relating this above synthetic \char`\"{}measurement\char`\"{} to the currently recorded inertial readings\+:
+
+\begin{align*} \mathbf{a} &= \mathbf{a}_m - \mathbf{b}_a - {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} - \mathbf{n}_a \\ \boldsymbol{\omega} &= \boldsymbol{\omega}_m - \mathbf{b}_g - \mathbf{n}_g \end{align*}
+
+It is important to note that here our actual measurement is the true $\mathbf{a}$ and $\boldsymbol{\omega}$ and thus we will have the following residual where we will subtract the synthetic \char`\"{}measurement\char`\"{} and our measurement function\+:
+
+\begin{align*} \tilde{\mathbf{z}} &= \begin{bmatrix} \mathbf{a} - \Big(\mathbf{a}_m - \mathbf{b}_a - {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} - \mathbf{n}_a \Big) \\ \boldsymbol{\omega} - \Big(\boldsymbol{\omega}_m - \mathbf{b}_g - \mathbf{n}_g \Big) \end{bmatrix} &= \begin{bmatrix} - \Big(\mathbf{a}_m - \mathbf{b}_a - {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} - \mathbf{n}_a \Big) \\ - \Big(\boldsymbol{\omega}_m - \mathbf{b}_g - \mathbf{n}_g \Big) \end{bmatrix} \end{align*}
+
+Where we have the following Jacobians in respect to our state\+:
+
+\begin{align*} \frac{\partial \tilde{\mathbf{z}}}{\partial {}^{I_k}_{G}\mathbf{R}} &= - \left\lfloor {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} \times\right\rfloor \\ \frac{\partial \tilde{\mathbf{z}}}{\partial \mathbf{b}_a} &= \frac{\partial \tilde{\mathbf{z}}}{\partial \mathbf{b}_g} = - \mathbf{I}_{3\times 3} \end{align*}\hypertarget{update-zerovelocity_update-zerovelocity-detect}{}\subsection{Zero Velocity Detection}\label{update-zerovelocity_update-zerovelocity-detect}
+Zero velocity detection in itself is a challenging problem which has seen many different works tried to address this issue \cite{Wagstaff2017IPIN}, \cite{Ramanandan2011TITS}, \cite{Davidson2009ENC}. Most works boil down to simple thresholding and the approach is to try to determine the optimal threshold which allows for the best classifications of zero velocity update (Z\+U\+PT) portion of the trajectories. There have been other works, \cite{Wagstaff2017IPIN} and \cite{Ramanandan2011TITS}, which have looked at more complicated methods and try to address the issue that this threshold can be dependent on the type of different motions (such as running vs walking) and characteristics of the platform which the sensor is mounted on (we want to ignore vehicle engine vibrations and other non-\/essential observed vibrations).\hypertarget{update-zerovelocity_update-zerovelocity-detect-imu}{}\subsubsection{Inertial-\/based Detection}\label{update-zerovelocity_update-zerovelocity-detect-imu}
+We approach this detection problem based on tuning of a $\chi^2$, chi-\/squared, thresholding based on the measurement model above. It is important to note that we also have a velocity magnitude check which is aimed at preventing constant velocity cases which have non-\/zero magnitude. More specifically, we perform the following threshold check to see if we are current at zero velocity\+:
+
+\begin{align*} \tilde{\mathbf{z}}^\top(\mathbf{H}\mathbf{P}\mathbf{H}^\top + \alpha\mathbf{R})^{-1}\tilde{\mathbf{z}} < \chi^2 \end{align*}
+
+We found that in the real world experiments, typically the inertial measurement noise $\mathbf{R}$ needs to be inflated by $\alpha\in[50,100]$ times to allow for proper detection. This can hint that we are using overconfident inertial noises, or that there are additional frequencies (such as the vibration of motors) which inject additional noises.\hypertarget{update-zerovelocity_update-zerovelocity-detect-disp}{}\subsubsection{Disparity-\/based Detection}\label{update-zerovelocity_update-zerovelocity-detect-disp}
+We additionally have a detection method which leverages the visual feature tracks. Given two sequential images, the assumption is if there is very little disparity change between feature tracks then we will be stationary. Thus we calculate the average disparity and threshold on this value.
+
+\begin{align*} \frac{1}{N}\sum_{i=0}^N ||\mathbf{uv}_{k,i}-\mathbf{uv}_{k-1,i}|| < \Delta d \end{align*}
+
+This seems to work reasonably well, but can fail if the environment is dynamic in nature, thus it can be useful to use both the inertial and disparity-\/based methods together in very dynamic environments. 

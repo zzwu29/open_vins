@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core::ImuData结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__core.html">ov_core</a></li><li class="navelem"><a class="el" href="structov__core_1_1ImuData.html">ImuData</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structov__core_1_1ImuData-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_core::ImuData结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Struct for a single imu measurement (time, wm, am)  
+ <a href="structov__core_1_1ImuData.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="sensor__data_8h_source.html">sensor_data.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac7c9b5b27b5a1fc4461571d3d4733b83"><td class="memItemLeft" align="right" valign="top"><a id="ac7c9b5b27b5a1fc4461571d3d4733b83"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__core_1_1ImuData.html#ac7c9b5b27b5a1fc4461571d3d4733b83">operator&lt;</a> (const <a class="el" href="structov__core_1_1ImuData.html">ImuData</a> &amp;other) const</td></tr>
+<tr class="memdesc:ac7c9b5b27b5a1fc4461571d3d4733b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort function to allow for using of STL containers <br /></td></tr>
+<tr class="separator:ac7c9b5b27b5a1fc4461571d3d4733b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a530e14b091b762a7690a2acf5c826929"><td class="memItemLeft" align="right" valign="top"><a id="a530e14b091b762a7690a2acf5c826929"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__core_1_1ImuData.html#a530e14b091b762a7690a2acf5c826929">timestamp</a></td></tr>
+<tr class="memdesc:a530e14b091b762a7690a2acf5c826929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamp of the reading <br /></td></tr>
+<tr class="separator:a530e14b091b762a7690a2acf5c826929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee11312b7789dd0465dded1174eb6cf3"><td class="memItemLeft" align="right" valign="top"><a id="aee11312b7789dd0465dded1174eb6cf3"></a>
+Eigen::Matrix&lt; double, 3, 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__core_1_1ImuData.html#aee11312b7789dd0465dded1174eb6cf3">wm</a></td></tr>
+<tr class="memdesc:aee11312b7789dd0465dded1174eb6cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gyroscope reading, angular velocity (rad/s) <br /></td></tr>
+<tr class="separator:aee11312b7789dd0465dded1174eb6cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6053ffa1918f271ac0342647df25c5f4"><td class="memItemLeft" align="right" valign="top"><a id="a6053ffa1918f271ac0342647df25c5f4"></a>
+Eigen::Matrix&lt; double, 3, 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__core_1_1ImuData.html#a6053ffa1918f271ac0342647df25c5f4">am</a></td></tr>
+<tr class="memdesc:a6053ffa1918f271ac0342647df25c5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accelerometer reading, linear acceleration (m/s^2) <br /></td></tr>
+<tr class="separator:a6053ffa1918f271ac0342647df25c5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Struct for a single imu measurement (time, wm, am) </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

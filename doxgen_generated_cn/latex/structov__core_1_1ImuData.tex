@@ -1,0 +1,33 @@
+\hypertarget{structov__core_1_1ImuData}{}\section{ov\+\_\+core\+:\+:Imu\+Data结构体 参考}
+\label{structov__core_1_1ImuData}\index{ov\+\_\+core\+::\+Imu\+Data@{ov\+\_\+core\+::\+Imu\+Data}}
+
+
+Struct for a single imu measurement (time, wm, am)  
+
+
+
+
+{\ttfamily \#include $<$sensor\+\_\+data.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__core_1_1ImuData_ac7c9b5b27b5a1fc4461571d3d4733b83}\label{structov__core_1_1ImuData_ac7c9b5b27b5a1fc4461571d3d4733b83}} 
+bool \hyperlink{structov__core_1_1ImuData_ac7c9b5b27b5a1fc4461571d3d4733b83}{operator$<$} (const \hyperlink{structov__core_1_1ImuData}{Imu\+Data} \&other) const
+\begin{DoxyCompactList}\small\item\em Sort function to allow for using of S\+TL containers \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__core_1_1ImuData_a530e14b091b762a7690a2acf5c826929}\label{structov__core_1_1ImuData_a530e14b091b762a7690a2acf5c826929}} 
+double \hyperlink{structov__core_1_1ImuData_a530e14b091b762a7690a2acf5c826929}{timestamp}
+\begin{DoxyCompactList}\small\item\em Timestamp of the reading \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1ImuData_aee11312b7789dd0465dded1174eb6cf3}\label{structov__core_1_1ImuData_aee11312b7789dd0465dded1174eb6cf3}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{structov__core_1_1ImuData_aee11312b7789dd0465dded1174eb6cf3}{wm}
+\begin{DoxyCompactList}\small\item\em Gyroscope reading, angular velocity (rad/s) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1ImuData_a6053ffa1918f271ac0342647df25c5f4}\label{structov__core_1_1ImuData_a6053ffa1918f271ac0342647df25c5f4}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{structov__core_1_1ImuData_a6053ffa1918f271ac0342647df25c5f4}{am}
+\begin{DoxyCompactList}\small\item\em Accelerometer reading, linear acceleration (m/s$^\wedge$2) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Struct for a single imu measurement (time, wm, am) 

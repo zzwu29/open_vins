@@ -1,0 +1,253 @@
+\hypertarget{classov__core_1_1CamBase}{}\section{ov\+\_\+core\+:\+:Cam\+Base Class Reference}
+\label{classov__core_1_1CamBase}\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+
+
+Base pinhole camera model class.  
+
+
+
+
+{\ttfamily \#include $<$Cam\+Base.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1CamBase_a1f11a6e4e8324d6843b578c0dabe0f94}{Cam\+Base} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classov__core_1_1CamBase_a630f35e703c3893ae694fe0f14693216}{set\+\_\+value} (const Eigen\+::\+Matrix\+Xd \&calib)
+\begin{DoxyCompactList}\small\item\em This will set and update the camera calibration values. This should be called on startup for each camera and after update! \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector2f \hyperlink{classov__core_1_1CamBase_ad0db03f97e5a12f5ad757f72e60f50e4}{undistort\+\_\+f} (const Eigen\+::\+Vector2f \&uv\+\_\+dist)=0
+\begin{DoxyCompactList}\small\item\em Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector2d \hyperlink{classov__core_1_1CamBase_ab910cf55ee13ca74eb4b8463ab32f1c4}{undistort\+\_\+d} (const Eigen\+::\+Vector2d \&uv\+\_\+dist)
+\begin{DoxyCompactList}\small\item\em Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. \end{DoxyCompactList}\item 
+cv\+::\+Point2f \hyperlink{classov__core_1_1CamBase_a42b140a7dfc1398cc7fc2f8df6c141d2}{undistort\+\_\+cv} (const cv\+::\+Point2f \&uv\+\_\+dist)
+\begin{DoxyCompactList}\small\item\em Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector2f \hyperlink{classov__core_1_1CamBase_a00902793219107474dc21f762fb14556}{distort\+\_\+f} (const Eigen\+::\+Vector2f \&uv\+\_\+norm)=0
+\begin{DoxyCompactList}\small\item\em Given a normalized uv coordinate this will distort it to the raw image plane. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector2d \hyperlink{classov__core_1_1CamBase_acf981dbc008c5929bf32ddde80b04caf}{distort\+\_\+d} (const Eigen\+::\+Vector2d \&uv\+\_\+norm)
+\begin{DoxyCompactList}\small\item\em Given a normalized uv coordinate this will distort it to the raw image plane. \end{DoxyCompactList}\item 
+cv\+::\+Point2f \hyperlink{classov__core_1_1CamBase_ae04e8fb6f5b61a7c9e9b7c22cfc1b82c}{distort\+\_\+cv} (const cv\+::\+Point2f \&uv\+\_\+norm)
+\begin{DoxyCompactList}\small\item\em Given a normalized uv coordinate this will distort it to the raw image plane. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classov__core_1_1CamBase_a498fa2b56be008d7b59bf9927f60d5db}{compute\+\_\+distort\+\_\+jacobian} (const Eigen\+::\+Vector2d \&uv\+\_\+norm, Eigen\+::\+Matrix\+Xd \&H\+\_\+dz\+\_\+dzn, Eigen\+::\+Matrix\+Xd \&H\+\_\+dz\+\_\+dzeta)=0
+\begin{DoxyCompactList}\small\item\em Computes the derivative of raw distorted to normalized coordinate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_aa8c2283f7db1a88b590c8058e8949150}\label{classov__core_1_1CamBase_aa8c2283f7db1a88b590c8058e8949150}} 
+Eigen\+::\+Matrix\+Xd \hyperlink{classov__core_1_1CamBase_aa8c2283f7db1a88b590c8058e8949150}{get\+\_\+value} ()
+\begin{DoxyCompactList}\small\item\em Gets the complete intrinsic vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_a01b8c0f89bf1bde983806b1dc331658c}\label{classov__core_1_1CamBase_a01b8c0f89bf1bde983806b1dc331658c}} 
+cv\+::\+Matx33d \hyperlink{classov__core_1_1CamBase_a01b8c0f89bf1bde983806b1dc331658c}{get\+\_\+K} ()
+\begin{DoxyCompactList}\small\item\em Gets the camera matrix. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_a7ee1a5a19bf68bbf7bcd55dcd56748fb}\label{classov__core_1_1CamBase_a7ee1a5a19bf68bbf7bcd55dcd56748fb}} 
+cv\+::\+Vec4d \hyperlink{classov__core_1_1CamBase_a7ee1a5a19bf68bbf7bcd55dcd56748fb}{get\+\_\+D} ()
+\begin{DoxyCompactList}\small\item\em Gets the camera distortion. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_a9eea297b76bc8acfe69946699b83d4f5}\label{classov__core_1_1CamBase_a9eea297b76bc8acfe69946699b83d4f5}} 
+int \hyperlink{classov__core_1_1CamBase_a9eea297b76bc8acfe69946699b83d4f5}{w} ()
+\begin{DoxyCompactList}\small\item\em Gets the width of the camera images. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_aa159148b3d1b3789f68c61ca54084e2a}\label{classov__core_1_1CamBase_aa159148b3d1b3789f68c61ca54084e2a}} 
+int \hyperlink{classov__core_1_1CamBase_aa159148b3d1b3789f68c61ca54084e2a}{h} ()
+\begin{DoxyCompactList}\small\item\em Gets the height of the camera images. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_a3b9b353487071aef189fc5bc313dab5d}\label{classov__core_1_1CamBase_a3b9b353487071aef189fc5bc313dab5d}} 
+Eigen\+::\+Matrix\+Xd \hyperlink{classov__core_1_1CamBase_a3b9b353487071aef189fc5bc313dab5d}{camera\+\_\+values}
+\begin{DoxyCompactList}\small\item\em Raw set of camera intrinic values (f\+\_\+x \& f\+\_\+y \& c\+\_\+x \& c\+\_\+y \& k\+\_\+1 \& k\+\_\+2 \& k\+\_\+3 \& k\+\_\+4) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_a867f7b5a903cc2776227c9b16fdde162}\label{classov__core_1_1CamBase_a867f7b5a903cc2776227c9b16fdde162}} 
+cv\+::\+Matx33d \hyperlink{classov__core_1_1CamBase_a867f7b5a903cc2776227c9b16fdde162}{camera\+\_\+k\+\_\+\+O\+P\+E\+N\+CV}
+\begin{DoxyCompactList}\small\item\em Camera intrinsics in Open\+CV format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_a5783a122e28281c1cd72a23f4bee212c}\label{classov__core_1_1CamBase_a5783a122e28281c1cd72a23f4bee212c}} 
+cv\+::\+Vec4d \hyperlink{classov__core_1_1CamBase_a5783a122e28281c1cd72a23f4bee212c}{camera\+\_\+d\+\_\+\+O\+P\+E\+N\+CV}
+\begin{DoxyCompactList}\small\item\em Camera distortion in Open\+CV format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_aa7b9e38e6da0ee85af5f82c3bc3ea91d}\label{classov__core_1_1CamBase_aa7b9e38e6da0ee85af5f82c3bc3ea91d}} 
+int \hyperlink{classov__core_1_1CamBase_aa7b9e38e6da0ee85af5f82c3bc3ea91d}{\+\_\+width}
+\begin{DoxyCompactList}\small\item\em Width of the camera (raw pixels) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CamBase_aa9d833d887ee0ca92044e72d788c54de}\label{classov__core_1_1CamBase_aa9d833d887ee0ca92044e72d788c54de}} 
+int \hyperlink{classov__core_1_1CamBase_aa9d833d887ee0ca92044e72d788c54de}{\+\_\+height}
+\begin{DoxyCompactList}\small\item\em Height of the camera (raw pixels) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base pinhole camera model class. 
+
+This is the base class for all our camera models. All these models are pinhole cameras, thus just have standard reprojection logic.
+
+See each base class for detailed examples on each model\+:
+\begin{DoxyItemize}
+\item \hyperlink{classov__core_1_1CamEqui}{ov\+\_\+core\+::\+Cam\+Equi}
+\item \hyperlink{classov__core_1_1CamRadtan}{ov\+\_\+core\+::\+Cam\+Radtan} 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1CamBase_a1f11a6e4e8324d6843b578c0dabe0f94}\label{classov__core_1_1CamBase_a1f11a6e4e8324d6843b578c0dabe0f94}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!Cam\+Base@{Cam\+Base}}
+\index{Cam\+Base@{Cam\+Base}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{Cam\+Base()}{CamBase()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Cam\+Base\+::\+Cam\+Base (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the camera (raw pixels) \\
+\hline
+{\em height} & Height of the camera (raw pixels) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1CamBase_a498fa2b56be008d7b59bf9927f60d5db}\label{classov__core_1_1CamBase_a498fa2b56be008d7b59bf9927f60d5db}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!compute\+\_\+distort\+\_\+jacobian@{compute\+\_\+distort\+\_\+jacobian}}
+\index{compute\+\_\+distort\+\_\+jacobian@{compute\+\_\+distort\+\_\+jacobian}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{compute\+\_\+distort\+\_\+jacobian()}{compute\_distort\_jacobian()}}
+{\footnotesize\ttfamily virtual void ov\+\_\+core\+::\+Cam\+Base\+::compute\+\_\+distort\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2d \&}]{uv\+\_\+norm,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+dz\+\_\+dzn,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+dz\+\_\+dzeta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Computes the derivative of raw distorted to normalized coordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+{\em H\+\_\+dz\+\_\+dzn} & Derivative of measurement z in respect to normalized \\
+\hline
+{\em H\+\_\+dz\+\_\+dzeta} & Derivative of measurement z in respect to intrinic parameters \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classov__core_1_1CamEqui_a68692045d866fbd508a30aab7f3b0637}{ov\+\_\+core\+::\+Cam\+Equi}, and \hyperlink{classov__core_1_1CamRadtan_a4ab5e54e89f48779a696f5b33d120dbc}{ov\+\_\+core\+::\+Cam\+Radtan}.
+
+\mbox{\Hypertarget{classov__core_1_1CamBase_ae04e8fb6f5b61a7c9e9b7c22cfc1b82c}\label{classov__core_1_1CamBase_ae04e8fb6f5b61a7c9e9b7c22cfc1b82c}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!distort\+\_\+cv@{distort\+\_\+cv}}
+\index{distort\+\_\+cv@{distort\+\_\+cv}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{distort\+\_\+cv()}{distort\_cv()}}
+{\footnotesize\ttfamily cv\+::\+Point2f ov\+\_\+core\+::\+Cam\+Base\+::distort\+\_\+cv (\begin{DoxyParamCaption}\item[{const cv\+::\+Point2f \&}]{uv\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Given a normalized uv coordinate this will distort it to the raw image plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of raw uv coordinate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1CamBase_acf981dbc008c5929bf32ddde80b04caf}\label{classov__core_1_1CamBase_acf981dbc008c5929bf32ddde80b04caf}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!distort\+\_\+d@{distort\+\_\+d}}
+\index{distort\+\_\+d@{distort\+\_\+d}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{distort\+\_\+d()}{distort\_d()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector2d ov\+\_\+core\+::\+Cam\+Base\+::distort\+\_\+d (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2d \&}]{uv\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Given a normalized uv coordinate this will distort it to the raw image plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of raw uv coordinate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1CamBase_a00902793219107474dc21f762fb14556}\label{classov__core_1_1CamBase_a00902793219107474dc21f762fb14556}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!distort\+\_\+f@{distort\+\_\+f}}
+\index{distort\+\_\+f@{distort\+\_\+f}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{distort\+\_\+f()}{distort\_f()}}
+{\footnotesize\ttfamily virtual Eigen\+::\+Vector2f ov\+\_\+core\+::\+Cam\+Base\+::distort\+\_\+f (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2f \&}]{uv\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Given a normalized uv coordinate this will distort it to the raw image plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of raw uv coordinate 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classov__core_1_1CamEqui_ac35e3814d053f66a32644321691d8e0f}{ov\+\_\+core\+::\+Cam\+Equi}, and \hyperlink{classov__core_1_1CamRadtan_a022376b5a15b827bbb7dabebc8df0508}{ov\+\_\+core\+::\+Cam\+Radtan}.
+
+\mbox{\Hypertarget{classov__core_1_1CamBase_a630f35e703c3893ae694fe0f14693216}\label{classov__core_1_1CamBase_a630f35e703c3893ae694fe0f14693216}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily virtual void ov\+\_\+core\+::\+Cam\+Base\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{calib }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+This will set and update the camera calibration values. This should be called on startup for each camera and after update! 
+
+
+\begin{DoxyParams}{Parameters}
+{\em calib} & Camera calibration information (f\+\_\+x \& f\+\_\+y \& c\+\_\+x \& c\+\_\+y \& k\+\_\+1 \& k\+\_\+2 \& k\+\_\+3 \& k\+\_\+4) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1CamBase_a42b140a7dfc1398cc7fc2f8df6c141d2}\label{classov__core_1_1CamBase_a42b140a7dfc1398cc7fc2f8df6c141d2}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!undistort\+\_\+cv@{undistort\+\_\+cv}}
+\index{undistort\+\_\+cv@{undistort\+\_\+cv}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{undistort\+\_\+cv()}{undistort\_cv()}}
+{\footnotesize\ttfamily cv\+::\+Point2f ov\+\_\+core\+::\+Cam\+Base\+::undistort\+\_\+cv (\begin{DoxyParamCaption}\item[{const cv\+::\+Point2f \&}]{uv\+\_\+dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+dist} & Raw uv coordinate we wish to undistort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of normalized coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1CamBase_ab910cf55ee13ca74eb4b8463ab32f1c4}\label{classov__core_1_1CamBase_ab910cf55ee13ca74eb4b8463ab32f1c4}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!undistort\+\_\+d@{undistort\+\_\+d}}
+\index{undistort\+\_\+d@{undistort\+\_\+d}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{undistort\+\_\+d()}{undistort\_d()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector2d ov\+\_\+core\+::\+Cam\+Base\+::undistort\+\_\+d (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2d \&}]{uv\+\_\+dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+dist} & Raw uv coordinate we wish to undistort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of normalized coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1CamBase_ad0db03f97e5a12f5ad757f72e60f50e4}\label{classov__core_1_1CamBase_ad0db03f97e5a12f5ad757f72e60f50e4}} 
+\index{ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}!undistort\+\_\+f@{undistort\+\_\+f}}
+\index{undistort\+\_\+f@{undistort\+\_\+f}!ov\+\_\+core\+::\+Cam\+Base@{ov\+\_\+core\+::\+Cam\+Base}}
+\subsubsection{\texorpdfstring{undistort\+\_\+f()}{undistort\_f()}}
+{\footnotesize\ttfamily virtual Eigen\+::\+Vector2f ov\+\_\+core\+::\+Cam\+Base\+::undistort\+\_\+f (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2f \&}]{uv\+\_\+dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+dist} & Raw uv coordinate we wish to undistort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of normalized coordinates 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classov__core_1_1CamEqui_a737d6b4b634ae1da976d362158323059}{ov\+\_\+core\+::\+Cam\+Equi}, and \hyperlink{classov__core_1_1CamRadtan_af02fa84ed2fdc895aaaf216184aa25ef}{ov\+\_\+core\+::\+Cam\+Radtan}.
+

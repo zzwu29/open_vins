@@ -69,6 +69,13 @@ struct InertialInitializerOptions {
   /// Max disparity we will consider the unit to be stationary
   double init_max_disparity = 1.0;
 
+  //zzwu
+  double init_att_std = 0.02;
+  double init_pos_std = 0.05;
+  double init_vel_std = 0.01;
+  double init_bg_std = 0.02;
+  double init_ba_std = 0.02;
+
   /// Number of features we should try to track
   int init_max_features = 50;
 
@@ -128,6 +135,13 @@ struct InertialInitializerOptions {
       parser->parse_config("init_imu_thresh", init_imu_thresh);
       parser->parse_config("init_max_disparity", init_max_disparity);
       parser->parse_config("init_max_features", init_max_features);
+
+      parser->parse_config("init_att_std", init_att_std);
+      parser->parse_config("init_pos_std", init_pos_std);
+      parser->parse_config("init_vel_std", init_vel_std);
+      parser->parse_config("init_bg_std", init_bg_std);
+      parser->parse_config("init_ba_std", init_ba_std);
+
       parser->parse_config("init_dyn_use", init_dyn_use);
       parser->parse_config("init_dyn_mle_opt_calib", init_dyn_mle_opt_calib);
       parser->parse_config("init_dyn_mle_max_iter", init_dyn_mle_max_iter);

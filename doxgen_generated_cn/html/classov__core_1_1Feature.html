@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core::Feature类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__core.html">ov_core</a></li><li class="navelem"><a class="el" href="classov__core_1_1Feature.html">Feature</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="classov__core_1_1Feature-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_core::Feature类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Sparse feature class used to collect measurements  
+ <a href="classov__core_1_1Feature.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Feature_8h_source.html">Feature.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aee27e65f3de5581ededd30646479e315"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#aee27e65f3de5581ededd30646479e315">clean_old_measurements</a> (const std::vector&lt; double &gt; &amp;valid_times)</td></tr>
+<tr class="memdesc:aee27e65f3de5581ededd30646479e315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove measurements that do not occur at passed timestamps.  <a href="#aee27e65f3de5581ededd30646479e315">更多...</a><br /></td></tr>
+<tr class="separator:aee27e65f3de5581ededd30646479e315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9daa91fb3836d23563bdc9aad6686ee1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a9daa91fb3836d23563bdc9aad6686ee1">clean_invalid_measurements</a> (const std::vector&lt; double &gt; &amp;invalid_times)</td></tr>
+<tr class="memdesc:a9daa91fb3836d23563bdc9aad6686ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove measurements that occur at the invalid timestamps  <a href="#a9daa91fb3836d23563bdc9aad6686ee1">更多...</a><br /></td></tr>
+<tr class="separator:a9daa91fb3836d23563bdc9aad6686ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5426e15b7fb0f1f315c12465c63787d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#ad5426e15b7fb0f1f315c12465c63787d">clean_older_measurements</a> (double timestamp)</td></tr>
+<tr class="memdesc:ad5426e15b7fb0f1f315c12465c63787d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove measurements that are older then the specified timestamp.  <a href="#ad5426e15b7fb0f1f315c12465c63787d">更多...</a><br /></td></tr>
+<tr class="separator:ad5426e15b7fb0f1f315c12465c63787d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a2d29cbda05723b3c681fca9d9c08a6b6"><td class="memItemLeft" align="right" valign="top"><a id="a2d29cbda05723b3c681fca9d9c08a6b6"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a2d29cbda05723b3c681fca9d9c08a6b6">featid</a></td></tr>
+<tr class="memdesc:a2d29cbda05723b3c681fca9d9c08a6b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique ID of this feature <br /></td></tr>
+<tr class="separator:a2d29cbda05723b3c681fca9d9c08a6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7ba032d3f576d6cedff37326a00766"><td class="memItemLeft" align="right" valign="top"><a id="afd7ba032d3f576d6cedff37326a00766"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#afd7ba032d3f576d6cedff37326a00766">to_delete</a></td></tr>
+<tr class="memdesc:afd7ba032d3f576d6cedff37326a00766"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this feature should be deleted <br /></td></tr>
+<tr class="separator:afd7ba032d3f576d6cedff37326a00766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0158e28d76464ab4daa4ac498270b6a0"><td class="memItemLeft" align="right" valign="top"><a id="a0158e28d76464ab4daa4ac498270b6a0"></a>
+std::unordered_map&lt; size_t, std::vector&lt; Eigen::VectorXf &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a0158e28d76464ab4daa4ac498270b6a0">uvs</a></td></tr>
+<tr class="memdesc:a0158e28d76464ab4daa4ac498270b6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">UV coordinates that this feature has been seen from (mapped by camera ID) <br /></td></tr>
+<tr class="separator:a0158e28d76464ab4daa4ac498270b6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eb23faca74853073bf7625c9cdfe93f"><td class="memItemLeft" align="right" valign="top"><a id="a9eb23faca74853073bf7625c9cdfe93f"></a>
+std::unordered_map&lt; size_t, std::vector&lt; Eigen::VectorXf &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a9eb23faca74853073bf7625c9cdfe93f">uvs_norm</a></td></tr>
+<tr class="memdesc:a9eb23faca74853073bf7625c9cdfe93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">UV normalized coordinates that this feature has been seen from (mapped by camera ID) <br /></td></tr>
+<tr class="separator:a9eb23faca74853073bf7625c9cdfe93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16de72ae07065bc81570d63ec694d743"><td class="memItemLeft" align="right" valign="top"><a id="a16de72ae07065bc81570d63ec694d743"></a>
+std::unordered_map&lt; size_t, std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a16de72ae07065bc81570d63ec694d743">timestamps</a></td></tr>
+<tr class="memdesc:a16de72ae07065bc81570d63ec694d743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamps of each UV measurement (mapped by camera ID) <br /></td></tr>
+<tr class="separator:a16de72ae07065bc81570d63ec694d743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d3c50ff0d0e511fc859d6537c90f192"><td class="memItemLeft" align="right" valign="top"><a id="a9d3c50ff0d0e511fc859d6537c90f192"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a9d3c50ff0d0e511fc859d6537c90f192">anchor_cam_id</a> = -1</td></tr>
+<tr class="memdesc:a9d3c50ff0d0e511fc859d6537c90f192"><td class="mdescLeft">&#160;</td><td class="mdescRight">What camera ID our pose is anchored in!! By default the first measurement is the anchor. <br /></td></tr>
+<tr class="separator:a9d3c50ff0d0e511fc859d6537c90f192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf559a10ad1ccf1ba44500d2c81fc765"><td class="memItemLeft" align="right" valign="top"><a id="abf559a10ad1ccf1ba44500d2c81fc765"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#abf559a10ad1ccf1ba44500d2c81fc765">anchor_clone_timestamp</a></td></tr>
+<tr class="memdesc:abf559a10ad1ccf1ba44500d2c81fc765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamp of anchor clone <br /></td></tr>
+<tr class="separator:abf559a10ad1ccf1ba44500d2c81fc765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c7616f29b0a254a12cdb6244c1f5953"><td class="memItemLeft" align="right" valign="top"><a id="a7c7616f29b0a254a12cdb6244c1f5953"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a7c7616f29b0a254a12cdb6244c1f5953">p_FinA</a></td></tr>
+<tr class="memdesc:a7c7616f29b0a254a12cdb6244c1f5953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangulated position of this feature, in the anchor frame <br /></td></tr>
+<tr class="separator:a7c7616f29b0a254a12cdb6244c1f5953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e9697cf6bd37a344ddaff0631778278"><td class="memItemLeft" align="right" valign="top"><a id="a5e9697cf6bd37a344ddaff0631778278"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Feature.html#a5e9697cf6bd37a344ddaff0631778278">p_FinG</a></td></tr>
+<tr class="memdesc:a5e9697cf6bd37a344ddaff0631778278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangulated position of this feature, in the global frame <br /></td></tr>
+<tr class="separator:a5e9697cf6bd37a344ddaff0631778278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Sparse feature class used to collect measurements </p>
+<p>This feature class allows for holding of all tracking information for a given feature. Each feature has a unique ID assigned to it, and should have a set of feature tracks alongside it. See the <a class="el" href="classov__core_1_1FeatureDatabase.html" title="Database containing features we are currently tracking. ">FeatureDatabase</a> class for details on how we load information into this, and how we delete features. </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a9daa91fb3836d23563bdc9aad6686ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9daa91fb3836d23563bdc9aad6686ee1">&#9670;&nbsp;</a></span>clean_invalid_measurements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Feature::clean_invalid_measurements </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>invalid_times</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove measurements that occur at the invalid timestamps </p>
+<p>Given a series of invalid timestamps, this will remove all measurements that have occurred at these times.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">invalid_times</td><td>Vector of timestamps that our measurements should not </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee27e65f3de5581ededd30646479e315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee27e65f3de5581ededd30646479e315">&#9670;&nbsp;</a></span>clean_old_measurements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Feature::clean_old_measurements </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>valid_times</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove measurements that do not occur at passed timestamps. </p>
+<p>Given a series of valid timestamps, this will remove all measurements that have not occurred at these times. This would normally be used to ensure that the measurements that we have occur at our clone times.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">valid_times</td><td>Vector of timestamps that our measurements must occur at </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5426e15b7fb0f1f315c12465c63787d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5426e15b7fb0f1f315c12465c63787d">&#9670;&nbsp;</a></span>clean_older_measurements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Feature::clean_older_measurements </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>timestamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove measurements that are older then the specified timestamp. </p>
+<p>Given a valid timestamp, this will remove all measurements that have occured earlier then this.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>Timestamps that our measurements must occur after </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

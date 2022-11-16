@@ -1,0 +1,134 @@
+\hypertarget{classov__eval_1_1ResultSimulation}{}\section{ov\+\_\+eval\+:\+:Result\+Simulation类 参考}
+\label{classov__eval_1_1ResultSimulation}\index{ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}}
+
+
+A single simulation run (the full state not just pose).  
+
+
+
+
+{\ttfamily \#include $<$Result\+Simulation.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__eval_1_1ResultSimulation_ad75bc6dc74af33a2ecdf0c8eca44ecca}{Result\+Simulation} (std\+::string path\+\_\+est, std\+::string path\+\_\+std, std\+::string path\+\_\+gt)
+\begin{DoxyCompactList}\small\item\em Default constructor that will load our data from file \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1ResultSimulation_aa7e8b0be0f423f9b77d29b0fb41cc715}{plot\+\_\+state} (bool doplotting, double max\+\_\+time=I\+N\+F\+I\+N\+I\+TY)
+\begin{DoxyCompactList}\small\item\em Will plot the state error and its three sigma bounds \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1ResultSimulation_a3d927f6bd6eaf6eba2b5a067920ef662}{plot\+\_\+timeoff} (bool doplotting, double max\+\_\+time=I\+N\+F\+I\+N\+I\+TY)
+\begin{DoxyCompactList}\small\item\em Will plot the state imu camera offset and its sigma bound \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1ResultSimulation_abb8a9eeb8c5e9b21c0558f27d4a9cf9a}{plot\+\_\+cam\+\_\+instrinsics} (bool doplotting, double max\+\_\+time=I\+N\+F\+I\+N\+I\+TY)
+\begin{DoxyCompactList}\small\item\em Will plot the camera calibration intrinsics \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1ResultSimulation_a7f2f0d71c2b3d2f9db44ceb9542a8d9e}{plot\+\_\+cam\+\_\+extrinsics} (bool doplotting, double max\+\_\+time=I\+N\+F\+I\+N\+I\+TY)
+\begin{DoxyCompactList}\small\item\em Will plot the camera calibration extrinsic transform \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_abba7015a0c17ea62bab2e67599fe928d}\label{classov__eval_1_1ResultSimulation_abba7015a0c17ea62bab2e67599fe928d}} 
+std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ {\bfseries est\+\_\+state}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_a27c5a2ab21bb80022d2da1ae10886253}\label{classov__eval_1_1ResultSimulation_a27c5a2ab21bb80022d2da1ae10886253}} 
+std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ {\bfseries gt\+\_\+state}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_a41f5acf9da9823cc67c3870334f659d2}\label{classov__eval_1_1ResultSimulation_a41f5acf9da9823cc67c3870334f659d2}} 
+std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ {\bfseries state\+\_\+cov}
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+A single simulation run (the full state not just pose). 
+
+This should match the recording logic that is in the ov\+\_\+msckf\+::\+Ros\+Visualizer in which we write both estimate, their deviation, and groundtruth to three files. We enforce that these files first contain the current I\+MU state, then time offset, number of cameras, then the camera calibration states. If we are not performing calibration these should all be written to file, just their deviation should be zero as they are 100\% certain. 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_ad75bc6dc74af33a2ecdf0c8eca44ecca}\label{classov__eval_1_1ResultSimulation_ad75bc6dc74af33a2ecdf0c8eca44ecca}} 
+\index{ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}!Result\+Simulation@{Result\+Simulation}}
+\index{Result\+Simulation@{Result\+Simulation}!ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}}
+\subsubsection{\texorpdfstring{Result\+Simulation()}{ResultSimulation()}}
+{\footnotesize\ttfamily Result\+Simulation\+::\+Result\+Simulation (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+\_\+est,  }\item[{std\+::string}]{path\+\_\+std,  }\item[{std\+::string}]{path\+\_\+gt }\end{DoxyParamCaption})}
+
+
+
+Default constructor that will load our data from file 
+
+
+\begin{DoxyParams}{参数}
+{\em path\+\_\+est} & Path to the estimate text file \\
+\hline
+{\em path\+\_\+std} & Path to the standard deviation file \\
+\hline
+{\em path\+\_\+gt} & Path to the groundtruth text file \\
+\hline
+\end{DoxyParams}
+Assert they are of equal length 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_a7f2f0d71c2b3d2f9db44ceb9542a8d9e}\label{classov__eval_1_1ResultSimulation_a7f2f0d71c2b3d2f9db44ceb9542a8d9e}} 
+\index{ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}!plot\+\_\+cam\+\_\+extrinsics@{plot\+\_\+cam\+\_\+extrinsics}}
+\index{plot\+\_\+cam\+\_\+extrinsics@{plot\+\_\+cam\+\_\+extrinsics}!ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}}
+\subsubsection{\texorpdfstring{plot\+\_\+cam\+\_\+extrinsics()}{plot\_cam\_extrinsics()}}
+{\footnotesize\ttfamily void Result\+Simulation\+::plot\+\_\+cam\+\_\+extrinsics (\begin{DoxyParamCaption}\item[{bool}]{doplotting,  }\item[{double}]{max\+\_\+time = {\ttfamily INFINITY} }\end{DoxyParamCaption})}
+
+
+
+Will plot the camera calibration extrinsic transform 
+
+
+\begin{DoxyParams}{参数}
+{\em doplotting} & True if you want to display the plots \\
+\hline
+{\em max\+\_\+time} & Max number of second we want to plot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_abb8a9eeb8c5e9b21c0558f27d4a9cf9a}\label{classov__eval_1_1ResultSimulation_abb8a9eeb8c5e9b21c0558f27d4a9cf9a}} 
+\index{ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}!plot\+\_\+cam\+\_\+instrinsics@{plot\+\_\+cam\+\_\+instrinsics}}
+\index{plot\+\_\+cam\+\_\+instrinsics@{plot\+\_\+cam\+\_\+instrinsics}!ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}}
+\subsubsection{\texorpdfstring{plot\+\_\+cam\+\_\+instrinsics()}{plot\_cam\_instrinsics()}}
+{\footnotesize\ttfamily void Result\+Simulation\+::plot\+\_\+cam\+\_\+instrinsics (\begin{DoxyParamCaption}\item[{bool}]{doplotting,  }\item[{double}]{max\+\_\+time = {\ttfamily INFINITY} }\end{DoxyParamCaption})}
+
+
+
+Will plot the camera calibration intrinsics 
+
+
+\begin{DoxyParams}{参数}
+{\em doplotting} & True if you want to display the plots \\
+\hline
+{\em max\+\_\+time} & Max number of second we want to plot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_aa7e8b0be0f423f9b77d29b0fb41cc715}\label{classov__eval_1_1ResultSimulation_aa7e8b0be0f423f9b77d29b0fb41cc715}} 
+\index{ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}!plot\+\_\+state@{plot\+\_\+state}}
+\index{plot\+\_\+state@{plot\+\_\+state}!ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}}
+\subsubsection{\texorpdfstring{plot\+\_\+state()}{plot\_state()}}
+{\footnotesize\ttfamily void Result\+Simulation\+::plot\+\_\+state (\begin{DoxyParamCaption}\item[{bool}]{doplotting,  }\item[{double}]{max\+\_\+time = {\ttfamily INFINITY} }\end{DoxyParamCaption})}
+
+
+
+Will plot the state error and its three sigma bounds 
+
+
+\begin{DoxyParams}{参数}
+{\em doplotting} & True if you want to display the plots \\
+\hline
+{\em max\+\_\+time} & Max number of second we want to plot \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1ResultSimulation_a3d927f6bd6eaf6eba2b5a067920ef662}\label{classov__eval_1_1ResultSimulation_a3d927f6bd6eaf6eba2b5a067920ef662}} 
+\index{ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}!plot\+\_\+timeoff@{plot\+\_\+timeoff}}
+\index{plot\+\_\+timeoff@{plot\+\_\+timeoff}!ov\+\_\+eval\+::\+Result\+Simulation@{ov\+\_\+eval\+::\+Result\+Simulation}}
+\subsubsection{\texorpdfstring{plot\+\_\+timeoff()}{plot\_timeoff()}}
+{\footnotesize\ttfamily void Result\+Simulation\+::plot\+\_\+timeoff (\begin{DoxyParamCaption}\item[{bool}]{doplotting,  }\item[{double}]{max\+\_\+time = {\ttfamily INFINITY} }\end{DoxyParamCaption})}
+
+
+
+Will plot the state imu camera offset and its sigma bound 
+
+
+\begin{DoxyParams}{参数}
+{\em doplotting} & True if you want to display the plots \\
+\hline
+{\em max\+\_\+time} & Max number of second we want to plot \\
+\hline
+\end{DoxyParams}

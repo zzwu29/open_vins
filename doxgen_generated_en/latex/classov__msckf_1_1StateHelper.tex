@@ -1,0 +1,302 @@
+\hypertarget{classov__msckf_1_1StateHelper}{}\section{ov\+\_\+msckf\+:\+:State\+Helper Class Reference}
+\label{classov__msckf_1_1StateHelper}\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+
+
+Helper which manipulates the \hyperlink{classov__msckf_1_1State}{State} and its covariance.  
+
+
+
+
+{\ttfamily \#include $<$State\+Helper.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_a31f92fdf5bac87bfc23d34334af7bd4d}{E\+K\+F\+Propagation} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&order\+\_\+\+N\+EW, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&order\+\_\+\+O\+LD, const Eigen\+::\+Matrix\+Xd \&Phi, const Eigen\+::\+Matrix\+Xd \&Q)
+\begin{DoxyCompactList}\small\item\em Performs E\+KF propagation of the state covariance. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_a471d81fcc22b706654556950931067fd}{E\+K\+F\+Update} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&H\+\_\+order, const Eigen\+::\+Matrix\+Xd \&H, const Eigen\+::\+Vector\+Xd \&res, const Eigen\+::\+Matrix\+Xd \&R)
+\begin{DoxyCompactList}\small\item\em Performs E\+KF update of the state (see \hyperlink{update_linear-meas}{Linear Measurement Update} page) \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_a5f19646a05e77e67d5be2da8aed19f14}{set\+\_\+initial\+\_\+covariance} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, const Eigen\+::\+Matrix\+Xd \&covariance, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&order)
+\begin{DoxyCompactList}\small\item\em This will set the initial covaraince of the specified state elements. Will also ensure that proper cross-\/covariances are inserted. \end{DoxyCompactList}\item 
+static Eigen\+::\+Matrix\+Xd \hyperlink{classov__msckf_1_1StateHelper_a23ec77c8411dcc7cfed64273f6882805}{get\+\_\+marginal\+\_\+covariance} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&small\+\_\+variables)
+\begin{DoxyCompactList}\small\item\em For a given set of variables, this will this will calculate a smaller covariance. \end{DoxyCompactList}\item 
+static Eigen\+::\+Matrix\+Xd \hyperlink{classov__msckf_1_1StateHelper_a2ac98543816e664cd85e4fa61bd165b7}{get\+\_\+full\+\_\+covariance} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state)
+\begin{DoxyCompactList}\small\item\em This gets the full covariance matrix. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_a7a6d020115f02fe783ced90b90c32287}{marginalize} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$ marg)
+\begin{DoxyCompactList}\small\item\em Marginalizes a variable, properly modifying the ordering/covariances in the state. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$ \hyperlink{classov__msckf_1_1StateHelper_a3aecb942a1d9bb7dec915fdad303acc8}{clone} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$ variable\+\_\+to\+\_\+clone)
+\begin{DoxyCompactList}\small\item\em Clones \char`\"{}variable to clone\char`\"{} and places it at end of covariance. \end{DoxyCompactList}\item 
+static bool \hyperlink{classov__msckf_1_1StateHelper_a58ed364529ae3802a7110edf3ac4dbbb}{initialize} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$ new\+\_\+variable, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&H\+\_\+order, Eigen\+::\+Matrix\+Xd \&H\+\_\+R, Eigen\+::\+Matrix\+Xd \&H\+\_\+L, Eigen\+::\+Matrix\+Xd \&R, Eigen\+::\+Vector\+Xd \&res, double chi\+\_\+2\+\_\+mult)
+\begin{DoxyCompactList}\small\item\em Initializes new variable into covariance. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_adb0f34932bb91d89bfd5ae72c2e693d8}{initialize\+\_\+invertible} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$ new\+\_\+variable, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&H\+\_\+order, const Eigen\+::\+Matrix\+Xd \&H\+\_\+R, const Eigen\+::\+Matrix\+Xd \&H\+\_\+L, const Eigen\+::\+Matrix\+Xd \&R, const Eigen\+::\+Vector\+Xd \&res)
+\begin{DoxyCompactList}\small\item\em Initializes new variable into covariance (H\+\_\+L must be invertible) \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_ade3a86a89f15cc6e03a6430fd1dee694}{augment\+\_\+clone} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ last\+\_\+w)
+\begin{DoxyCompactList}\small\item\em Augment the state with a stochastic copy of the current I\+MU pose. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_a18f86e6da0bf5e7d4879f8c2f1460a27}{marginalize\+\_\+old\+\_\+clone} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state)
+\begin{DoxyCompactList}\small\item\em Remove the oldest clone, if we have more then the max clone count!! \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1StateHelper_a54f8517a288b9362f29481f650f4b959}{marginalize\+\_\+slam} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state)
+\begin{DoxyCompactList}\small\item\em Marginalize bad S\+L\+AM features. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper which manipulates the \hyperlink{classov__msckf_1_1State}{State} and its covariance. 
+
+In general, this class has all the core logic for an Extended Kalman Filter (E\+KF)-\/based system. This has all functions that change the covariance along with addition and removing elements from the state. All functions here are static, and thus are self-\/contained so that in the future multiple states could be tracked and updated. We recommend you look directly at the code for this class for clarity on what exactly we are doing in each and the matching documentation pages. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_ade3a86a89f15cc6e03a6430fd1dee694}\label{classov__msckf_1_1StateHelper_ade3a86a89f15cc6e03a6430fd1dee694}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!augment\+\_\+clone@{augment\+\_\+clone}}
+\index{augment\+\_\+clone@{augment\+\_\+clone}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{augment\+\_\+clone()}{augment\_clone()}}
+{\footnotesize\ttfamily void State\+Helper\+::augment\+\_\+clone (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{last\+\_\+w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Augment the state with a stochastic copy of the current I\+MU pose. 
+
+After propagation, normally we augment the state with an new clone that is at the new update timestep. This augmentation clones the I\+MU pose and adds it to our state\textquotesingle{}s clone map. If we are doing time offset calibration we also make our cloning a function of the time offset. Time offset logic is based on Mingyang Li and Anastasios I. Mourikis paper\+: \href{http://journals.sagepub.com/doi/pdf/10.1177/0278364913515286}{\tt http\+://journals.\+sagepub.\+com/doi/pdf/10.\+1177/0278364913515286} We can write the current clone at the true imu base clock time as the follow\+: \begin{align*} {}^{I_{t+t_d}}_G\bar{q} &= \begin{bmatrix}\frac{1}{2} {}^{I_{t+\hat{t}_d}}\boldsymbol\omega \tilde{t}_d \\ 1\end{bmatrix}\otimes{}^{I_{t+\hat{t}_d}}_G\bar{q} \\ {}^G\mathbf{p}_{I_{t+t_d}} &= {}^G\mathbf{p}_{I_{t+\hat{t}_d}} + {}^G\mathbf{v}_{I_{t+\hat{t}_d}}\tilde{t}_d \end{align*} where we say that we have propagated our state up to the current estimated true imaging time for the current image, ${}^{I_{t+\hat{t}_d}}\boldsymbol\omega$ is the angular velocity at the end of propagation with biases removed. This is off by some smaller error, so to get to the true imaging time in the imu base clock, we can append some small timeoffset error. Thus the Jacobian in respect to our time offset during our cloning procedure is the following\+: \begin{align*} \frac{\partial {}^{I_{t+t_d}}_G\tilde{\boldsymbol\theta}}{\partial \tilde{t}_d} &= {}^{I_{t+\hat{t}_d}}\boldsymbol\omega \\ \frac{\partial {}^G\tilde{\mathbf{p}}_{I_{t+t_d}}}{\partial \tilde{t}_d} &= {}^G\mathbf{v}_{I_{t+\hat{t}_d}} \end{align*}
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em last\+\_\+w} & The estimated angular velocity at cloning time (used to estimate imu-\/cam time offset) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a3aecb942a1d9bb7dec915fdad303acc8}\label{classov__msckf_1_1StateHelper_a3aecb942a1d9bb7dec915fdad303acc8}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!clone@{clone}}
+\index{clone@{clone}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ State\+Helper\+::clone (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$}]{variable\+\_\+to\+\_\+clone }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Clones \char`\"{}variable to clone\char`\"{} and places it at end of covariance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em variable\+\_\+to\+\_\+clone} & Pointer to variable that will be cloned \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a31f92fdf5bac87bfc23d34334af7bd4d}\label{classov__msckf_1_1StateHelper_a31f92fdf5bac87bfc23d34334af7bd4d}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!E\+K\+F\+Propagation@{E\+K\+F\+Propagation}}
+\index{E\+K\+F\+Propagation@{E\+K\+F\+Propagation}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{E\+K\+F\+Propagation()}{EKFPropagation()}}
+{\footnotesize\ttfamily void State\+Helper\+::\+E\+K\+F\+Propagation (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{order\+\_\+\+N\+EW,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{order\+\_\+\+O\+LD,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{Phi,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{Q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Performs E\+KF propagation of the state covariance. 
+
+The mean of the state should already have been propagated, thus just moves the covariance forward in time. The new states that we are propagating the old covariance into, should be {\bfseries contiguous} in memory. The user only needs to specify the sub-\/variables that this block is a function of. \[ \tilde{\mathbf{x}}' = \begin{bmatrix} \boldsymbol\Phi_1 & \boldsymbol\Phi_2 & \boldsymbol\Phi_3 \end{bmatrix} \begin{bmatrix} \tilde{\mathbf{x}}_1 \\ \tilde{\mathbf{x}}_2 \\ \tilde{\mathbf{x}}_3 \end{bmatrix} + \mathbf{n} \]
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em order\+\_\+\+N\+EW} & Contiguous variables that have evolved according to this state transition \\
+\hline
+{\em order\+\_\+\+O\+LD} & Variable ordering used in the state transition \\
+\hline
+{\em Phi} & \hyperlink{classov__msckf_1_1State}{State} transition matrix (size order\+\_\+\+N\+EW by size order\+\_\+\+O\+LD) \\
+\hline
+{\em Q} & Additive state propagation noise matrix (size order\+\_\+\+N\+EW by size order\+\_\+\+N\+EW) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a471d81fcc22b706654556950931067fd}\label{classov__msckf_1_1StateHelper_a471d81fcc22b706654556950931067fd}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!E\+K\+F\+Update@{E\+K\+F\+Update}}
+\index{E\+K\+F\+Update@{E\+K\+F\+Update}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{E\+K\+F\+Update()}{EKFUpdate()}}
+{\footnotesize\ttfamily void State\+Helper\+::\+E\+K\+F\+Update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{H\+\_\+order,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{H,  }\item[{const Eigen\+::\+Vector\+Xd \&}]{res,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{R }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Performs E\+KF update of the state (see \hyperlink{update_linear-meas}{Linear Measurement Update} page) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em H\+\_\+order} & Variable ordering used in the compressed Jacobian \\
+\hline
+{\em H} & Condensed Jacobian of updating measurement \\
+\hline
+{\em res} & residual of updating measurement \\
+\hline
+{\em R} & updating measurement covariance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a2ac98543816e664cd85e4fa61bd165b7}\label{classov__msckf_1_1StateHelper_a2ac98543816e664cd85e4fa61bd165b7}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!get\+\_\+full\+\_\+covariance@{get\+\_\+full\+\_\+covariance}}
+\index{get\+\_\+full\+\_\+covariance@{get\+\_\+full\+\_\+covariance}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{get\+\_\+full\+\_\+covariance()}{get\_full\_covariance()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd State\+Helper\+::get\+\_\+full\+\_\+covariance (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This gets the full covariance matrix. 
+
+Should only be used during simulation as operations on this covariance will be slow. This will return a copy, so this cannot be used to change the covariance by design. Please use the other interface functions in the \hyperlink{classov__msckf_1_1StateHelper}{State\+Helper} to progamatically change to covariance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+covariance of current state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a23ec77c8411dcc7cfed64273f6882805}\label{classov__msckf_1_1StateHelper_a23ec77c8411dcc7cfed64273f6882805}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!get\+\_\+marginal\+\_\+covariance@{get\+\_\+marginal\+\_\+covariance}}
+\index{get\+\_\+marginal\+\_\+covariance@{get\+\_\+marginal\+\_\+covariance}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{get\+\_\+marginal\+\_\+covariance()}{get\_marginal\_covariance()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix\+Xd State\+Helper\+::get\+\_\+marginal\+\_\+covariance (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{small\+\_\+variables }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+For a given set of variables, this will this will calculate a smaller covariance. 
+
+That only includes the ones specified with all crossterms. Thus the size of the return will be the summed dimension of all the passed variables. Normal use for this is a chi-\/squared check before update (where you don\textquotesingle{}t need the full covariance).
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em small\+\_\+variables} & Vector of variables whose marginal covariance is desired \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+marginal covariance of the passed variables 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a58ed364529ae3802a7110edf3ac4dbbb}\label{classov__msckf_1_1StateHelper_a58ed364529ae3802a7110edf3ac4dbbb}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!initialize@{initialize}}
+\index{initialize@{initialize}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily bool State\+Helper\+::initialize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$}]{new\+\_\+variable,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{H\+\_\+order,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+R,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+L,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{R,  }\item[{Eigen\+::\+Vector\+Xd \&}]{res,  }\item[{double}]{chi\+\_\+2\+\_\+mult }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initializes new variable into covariance. 
+
+Uses Givens to separate into updating and initializing systems (therefore system must be fed as isotropic). If you are not isotropic first whiten your system (T\+O\+DO\+: we should add a helper function to do this). If your H\+\_\+L Jacobian is already directly invertable, the just call the \hyperlink{classov__msckf_1_1StateHelper_adb0f34932bb91d89bfd5ae72c2e693d8}{initialize\+\_\+invertible()} instead of this function. Please refer to \hyperlink{update-delay}{Delayed Feature Initialization} page for detailed derivation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em new\+\_\+variable} & Pointer to variable to be initialized \\
+\hline
+{\em H\+\_\+order} & Vector of pointers in order they are contained in the condensed state Jacobian \\
+\hline
+{\em H\+\_\+R} & Jacobian of initializing measurements wrt variables in H\+\_\+order \\
+\hline
+{\em H\+\_\+L} & Jacobian of initializing measurements wrt new variable \\
+\hline
+{\em R} & Covariance of initializing measurements (isotropic) \\
+\hline
+{\em res} & Residual of initializing measurements \\
+\hline
+{\em chi\+\_\+2\+\_\+mult} & Value we should multiply the chi2 threshold by (larger means it will be accepted more measurements) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_adb0f34932bb91d89bfd5ae72c2e693d8}\label{classov__msckf_1_1StateHelper_adb0f34932bb91d89bfd5ae72c2e693d8}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!initialize\+\_\+invertible@{initialize\+\_\+invertible}}
+\index{initialize\+\_\+invertible@{initialize\+\_\+invertible}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{initialize\+\_\+invertible()}{initialize\_invertible()}}
+{\footnotesize\ttfamily void State\+Helper\+::initialize\+\_\+invertible (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$}]{new\+\_\+variable,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{H\+\_\+order,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+R,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+L,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{R,  }\item[{const Eigen\+::\+Vector\+Xd \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Initializes new variable into covariance (H\+\_\+L must be invertible) 
+
+Please refer to \hyperlink{update-delay}{Delayed Feature Initialization} page for detailed derivation. This is just the update assuming that H\+\_\+L is invertable (and thus square) and isotropic noise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em new\+\_\+variable} & Pointer to variable to be initialized \\
+\hline
+{\em H\+\_\+order} & Vector of pointers in order they are contained in the condensed state Jacobian \\
+\hline
+{\em H\+\_\+R} & Jacobian of initializing measurements wrt variables in H\+\_\+order \\
+\hline
+{\em H\+\_\+L} & Jacobian of initializing measurements wrt new variable (needs to be invertible) \\
+\hline
+{\em R} & Covariance of initializing measurements \\
+\hline
+{\em res} & Residual of initializing measurements \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a7a6d020115f02fe783ced90b90c32287}\label{classov__msckf_1_1StateHelper_a7a6d020115f02fe783ced90b90c32287}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!marginalize@{marginalize}}
+\index{marginalize@{marginalize}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{marginalize()}{marginalize()}}
+{\footnotesize\ttfamily void State\+Helper\+::marginalize (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$}]{marg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Marginalizes a variable, properly modifying the ordering/covariances in the state. 
+
+This function can support any Type variable out of the box. Right now the marginalization of a sub-\/variable/type is not supported. For example if you wanted to just marginalize the orientation of a Pose\+J\+PL, that isn\textquotesingle{}t supported. We will first remove the rows and columns corresponding to the type (i.\+e. do the marginalization). After we update all the type ids so that they take into account that the covariance has shrunk in parts of it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em marg} & Pointer to variable to marginalize \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a18f86e6da0bf5e7d4879f8c2f1460a27}\label{classov__msckf_1_1StateHelper_a18f86e6da0bf5e7d4879f8c2f1460a27}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!marginalize\+\_\+old\+\_\+clone@{marginalize\+\_\+old\+\_\+clone}}
+\index{marginalize\+\_\+old\+\_\+clone@{marginalize\+\_\+old\+\_\+clone}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{marginalize\+\_\+old\+\_\+clone()}{marginalize\_old\_clone()}}
+{\footnotesize\ttfamily void State\+Helper\+::marginalize\+\_\+old\+\_\+clone (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Remove the oldest clone, if we have more then the max clone count!! 
+
+This will marginalize the clone from our covariance, and remove it from our state. This is mainly a helper function that we can call after each update. It will marginalize the clone specified by \hyperlink{classov__msckf_1_1State_a36420e71ffa54625667eac2a8a345582}{State\+::margtimestep()} which should return a clone timestamp.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a54f8517a288b9362f29481f650f4b959}\label{classov__msckf_1_1StateHelper_a54f8517a288b9362f29481f650f4b959}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!marginalize\+\_\+slam@{marginalize\+\_\+slam}}
+\index{marginalize\+\_\+slam@{marginalize\+\_\+slam}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{marginalize\+\_\+slam()}{marginalize\_slam()}}
+{\footnotesize\ttfamily void State\+Helper\+::marginalize\+\_\+slam (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Marginalize bad S\+L\+AM features. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1StateHelper_a5f19646a05e77e67d5be2da8aed19f14}\label{classov__msckf_1_1StateHelper_a5f19646a05e77e67d5be2da8aed19f14}} 
+\index{ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}!set\+\_\+initial\+\_\+covariance@{set\+\_\+initial\+\_\+covariance}}
+\index{set\+\_\+initial\+\_\+covariance@{set\+\_\+initial\+\_\+covariance}!ov\+\_\+msckf\+::\+State\+Helper@{ov\+\_\+msckf\+::\+State\+Helper}}
+\subsubsection{\texorpdfstring{set\+\_\+initial\+\_\+covariance()}{set\_initial\_covariance()}}
+{\footnotesize\ttfamily void State\+Helper\+::set\+\_\+initial\+\_\+covariance (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{covariance,  }\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This will set the initial covaraince of the specified state elements. Will also ensure that proper cross-\/covariances are inserted. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to state \\
+\hline
+{\em covariance} & The covariance of the system state \\
+\hline
+{\em order} & Order of the covariance matrix \\
+\hline
+\end{DoxyParams}

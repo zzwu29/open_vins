@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_init::DynamicInitializer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__init.html">ov_init</a></li><li class="navelem"><a class="el" href="classov__init_1_1DynamicInitializer.html">DynamicInitializer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classov__init_1_1DynamicInitializer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_init::DynamicInitializer类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Initializer for a dynamic visual-inertial system.  
+ <a href="classov__init_1_1DynamicInitializer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="DynamicInitializer_8h_source.html">DynamicInitializer.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a11e592324aedffe4a5b984cf9651a6ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1DynamicInitializer.html#a11e592324aedffe4a5b984cf9651a6ab">DynamicInitializer</a> (const <a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a> &amp;params_, std::shared_ptr&lt; <a class="el" href="classov__core_1_1FeatureDatabase.html">ov_core::FeatureDatabase</a> &gt; db, std::shared_ptr&lt; std::vector&lt; <a class="el" href="structov__core_1_1ImuData.html">ov_core::ImuData</a> &gt;&gt; imu_data_)</td></tr>
+<tr class="memdesc:a11e592324aedffe4a5b984cf9651a6ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor  <a href="#a11e592324aedffe4a5b984cf9651a6ab">更多...</a><br /></td></tr>
+<tr class="separator:a11e592324aedffe4a5b984cf9651a6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec51b927083a2c5e6fa0c641ca326504"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1DynamicInitializer.html#aec51b927083a2c5e6fa0c641ca326504">initialize</a> (double &amp;timestamp, Eigen::MatrixXd &amp;covariance, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classov__type_1_1Type.html">ov_type::Type</a> &gt;&gt; &amp;order, std::shared_ptr&lt; <a class="el" href="classov__type_1_1IMU.html">ov_type::IMU</a> &gt; &amp;_imu, std::map&lt; double, std::shared_ptr&lt; <a class="el" href="classov__type_1_1PoseJPL.html">ov_type::PoseJPL</a> &gt;&gt; &amp;_clones_IMU, std::unordered_map&lt; size_t, std::shared_ptr&lt; <a class="el" href="classov__type_1_1Landmark.html">ov_type::Landmark</a> &gt;&gt; &amp;_features_SLAM)</td></tr>
+<tr class="memdesc:aec51b927083a2c5e6fa0c641ca326504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get the initialized system  <a href="#aec51b927083a2c5e6fa0c641ca326504">更多...</a><br /></td></tr>
+<tr class="separator:aec51b927083a2c5e6fa0c641ca326504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Initializer for a dynamic visual-inertial system. </p>
+<p>This implementation that will try to recover the initial conditions of the system. Additionally, we will try to recover the covariance of the system. To initialize with arbitrary motion:</p><ol type="1">
+<li>Preintegrate our system to get the relative rotation change (biases assumed known)</li>
+<li>Construct linear system with features to recover velocity (solve with |g| constraint)</li>
+<li>Perform a large MLE with all calibration and recover the covariance.</li>
+</ol>
+<p>Method is based on this work (see this <a href="https://pgeneva.com/downloads/reports/tr_init.pdf">tech report</a> for a high level walk through):</p>
+<blockquote class="doxtable">
+<p>Dong-Si, Tue-Cuong, and Anastasios I. Mourikis. "Estimator initialization in vision-aided inertial navigation with unknown camera-IMU calibration." 2012 IEEE/RSJ International Conference on Intelligent Robots and Systems. IEEE, 2012. </p>
+</blockquote>
+<ul>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/6386235">https://ieeexplore.ieee.org/abstract/document/6386235</a></li>
+<li><a href="https://tdongsi.github.io/download/pubs/2011_VIO_Init_TR.pdf">https://tdongsi.github.io/download/pubs/2011_VIO_Init_TR.pdf</a></li>
+<li><a href="https://pgeneva.com/downloads/reports/tr_init.pdf">https://pgeneva.com/downloads/reports/tr_init.pdf</a> </li>
+</ul>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a11e592324aedffe4a5b984cf9651a6ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e592324aedffe4a5b984cf9651a6ab">&#9670;&nbsp;</a></span>DynamicInitializer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ov_init::DynamicInitializer::DynamicInitializer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>params_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__core_1_1FeatureDatabase.html">ov_core::FeatureDatabase</a> &gt;&#160;</td>
+          <td class="paramname"><em>db</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; std::vector&lt; <a class="el" href="structov__core_1_1ImuData.html">ov_core::ImuData</a> &gt;&gt;&#160;</td>
+          <td class="paramname"><em>imu_data_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">params_</td><td>Parameters loaded from either ROS or CMDLINE </td></tr>
+    <tr><td class="paramname">db</td><td>Feature tracker database with all features in it </td></tr>
+    <tr><td class="paramname">imu_data_</td><td>Shared pointer to our IMU vector of historical information </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aec51b927083a2c5e6fa0c641ca326504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec51b927083a2c5e6fa0c641ca326504">&#9670;&nbsp;</a></span>initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DynamicInitializer::initialize </td>
+          <td>(</td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>covariance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classov__type_1_1Type.html">ov_type::Type</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>order</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__type_1_1IMU.html">ov_type::IMU</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_imu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; double, std::shared_ptr&lt; <a class="el" href="classov__type_1_1PoseJPL.html">ov_type::PoseJPL</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>_clones_IMU</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; size_t, std::shared_ptr&lt; <a class="el" href="classov__type_1_1Landmark.html">ov_type::Landmark</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>_features_SLAM</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Try to get the initialized system </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">timestamp</td><td>Timestamp we have initialized the state at (last imu state) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">covariance</td><td>Calculated covariance of the returned state </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">order</td><td>Order of the covariance matrix </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">_imu</td><td>Pointer to the "active" IMU state (q_GtoI, p_IinG, v_IinG, bg, ba) </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">_clones_IMU</td><td>Map between imaging times and clone poses (q_GtoIi, p_IiinG) </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">_features_SLAM</td><td>Our current set of SLAM features (3d positions) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True if we have successfully initialized our system </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

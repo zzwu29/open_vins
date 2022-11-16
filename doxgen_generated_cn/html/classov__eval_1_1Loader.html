@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_eval::Loader类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__eval.html">ov_eval</a></li><li class="navelem"><a class="el" href="classov__eval_1_1Loader.html">Loader</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classov__eval_1_1Loader-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_eval::Loader类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Has helper functions to load text files from disk and process them.  
+ <a href="classov__eval_1_1Loader.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Loader_8h_source.html">Loader.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:afdd99379f29b052ecf7bf197d21a911f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1Loader.html#afdd99379f29b052ecf7bf197d21a911f">load_data</a> (std::string path_traj, std::vector&lt; double &gt; &amp;times, std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;poses, std::vector&lt; Eigen::Matrix3d &gt; &amp;cov_ori, std::vector&lt; Eigen::Matrix3d &gt; &amp;cov_pos)</td></tr>
+<tr class="memdesc:afdd99379f29b052ecf7bf197d21a911f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This will load <em>space</em> separated trajectory into memory  <a href="#afdd99379f29b052ecf7bf197d21a911f">更多...</a><br /></td></tr>
+<tr class="separator:afdd99379f29b052ecf7bf197d21a911f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb07f7d33c1ed0e9996775188861d87"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1Loader.html#abcb07f7d33c1ed0e9996775188861d87">load_data_csv</a> (std::string path_traj, std::vector&lt; double &gt; &amp;times, std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;poses, std::vector&lt; Eigen::Matrix3d &gt; &amp;cov_ori, std::vector&lt; Eigen::Matrix3d &gt; &amp;cov_pos)</td></tr>
+<tr class="memdesc:abcb07f7d33c1ed0e9996775188861d87"><td class="mdescLeft">&#160;</td><td class="mdescRight">This will load <em>comma</em> separated trajectory into memory (ASL/ETH format)  <a href="#abcb07f7d33c1ed0e9996775188861d87">更多...</a><br /></td></tr>
+<tr class="separator:abcb07f7d33c1ed0e9996775188861d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ecab01ce0d594bc3a635925ea8a7321"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1Loader.html#a6ecab01ce0d594bc3a635925ea8a7321">load_simulation</a> (std::string path, std::vector&lt; Eigen::VectorXd &gt; &amp;values)</td></tr>
+<tr class="memdesc:a6ecab01ce0d594bc3a635925ea8a7321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load an arbitrary sized row of <em>space</em> separated values, used for our simulation  <a href="#a6ecab01ce0d594bc3a635925ea8a7321">更多...</a><br /></td></tr>
+<tr class="separator:a6ecab01ce0d594bc3a635925ea8a7321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2c74f0ad3dc52f0ce47bfe22ae6ed4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1Loader.html#aef2c74f0ad3dc52f0ce47bfe22ae6ed4">load_timing_flamegraph</a> (std::string path, std::vector&lt; std::string &gt; &amp;names, std::vector&lt; double &gt; &amp;times, std::vector&lt; Eigen::VectorXd &gt; &amp;timing_values)</td></tr>
+<tr class="memdesc:aef2c74f0ad3dc52f0ce47bfe22ae6ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load <em>comma</em> separated timing file from pid_ros.py file  <a href="#aef2c74f0ad3dc52f0ce47bfe22ae6ed4">更多...</a><br /></td></tr>
+<tr class="separator:aef2c74f0ad3dc52f0ce47bfe22ae6ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb4fa55e3b3c9399dfebe11fe940112"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1Loader.html#aebb4fa55e3b3c9399dfebe11fe940112">load_timing_percent</a> (std::string path, std::vector&lt; double &gt; &amp;times, std::vector&lt; Eigen::Vector3d &gt; &amp;summed_values, std::vector&lt; Eigen::VectorXd &gt; &amp;node_values)</td></tr>
+<tr class="memdesc:aebb4fa55e3b3c9399dfebe11fe940112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load space separated timing file from pid_ros.py file  <a href="#aebb4fa55e3b3c9399dfebe11fe940112">更多...</a><br /></td></tr>
+<tr class="separator:aebb4fa55e3b3c9399dfebe11fe940112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f3f47d194febe39fe1a97a915b7add"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1Loader.html#af4f3f47d194febe39fe1a97a915b7add">get_total_length</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;poses)</td></tr>
+<tr class="memdesc:af4f3f47d194febe39fe1a97a915b7add"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will calculate the total trajectory distance  <a href="#af4f3f47d194febe39fe1a97a915b7add">更多...</a><br /></td></tr>
+<tr class="separator:af4f3f47d194febe39fe1a97a915b7add"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Has helper functions to load text files from disk and process them. </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="af4f3f47d194febe39fe1a97a915b7add"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f3f47d194febe39fe1a97a915b7add">&#9670;&nbsp;</a></span>get_total_length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Loader::get_total_length </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>poses</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Will calculate the total trajectory distance </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">poses</td><td>Pose at every timestep [pos,quat] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Distance travels (meters) </dd></dl>
+
+</div>
+</div>
+<a id="afdd99379f29b052ecf7bf197d21a911f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd99379f29b052ecf7bf197d21a911f">&#9670;&nbsp;</a></span>load_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Loader::load_data </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path_traj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>times</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>poses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Matrix3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cov_ori</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Matrix3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cov_pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This will load <em>space</em> separated trajectory into memory </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path_traj</td><td>Path to the trajectory file that we want to read in. </td></tr>
+    <tr><td class="paramname">times</td><td>Timesteps in seconds for each pose </td></tr>
+    <tr><td class="paramname">poses</td><td>Pose at every timestep [pos,quat] </td></tr>
+    <tr><td class="paramname">cov_ori</td><td>Vector of orientation covariances at each timestep (empty if we can't load) </td></tr>
+    <tr><td class="paramname">cov_pos</td><td>Vector of position covariances at each timestep (empty if we can't load) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abcb07f7d33c1ed0e9996775188861d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcb07f7d33c1ed0e9996775188861d87">&#9670;&nbsp;</a></span>load_data_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Loader::load_data_csv </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path_traj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>times</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>poses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Matrix3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cov_ori</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Matrix3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cov_pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This will load <em>comma</em> separated trajectory into memory (ASL/ETH format) </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path_traj</td><td>Path to the trajectory file that we want to read in. </td></tr>
+    <tr><td class="paramname">times</td><td>Timesteps in seconds for each pose </td></tr>
+    <tr><td class="paramname">poses</td><td>Pose at every timestep [pos,quat] </td></tr>
+    <tr><td class="paramname">cov_ori</td><td>Vector of orientation covariances at each timestep (empty if we can't load) </td></tr>
+    <tr><td class="paramname">cov_pos</td><td>Vector of position covariances at each timestep (empty if we can't load) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6ecab01ce0d594bc3a635925ea8a7321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ecab01ce0d594bc3a635925ea8a7321">&#9670;&nbsp;</a></span>load_simulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Loader::load_simulation </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Load an arbitrary sized row of <em>space</em> separated values, used for our simulation </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to our text file to load </td></tr>
+    <tr><td class="paramname">values</td><td>Each row of values </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aef2c74f0ad3dc52f0ce47bfe22ae6ed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef2c74f0ad3dc52f0ce47bfe22ae6ed4">&#9670;&nbsp;</a></span>load_timing_flamegraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Loader::load_timing_flamegraph </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>times</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>timing_values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Load <em>comma</em> separated timing file from pid_ros.py file </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to our text file to load </td></tr>
+    <tr><td class="paramname">names</td><td>Names of each timing category </td></tr>
+    <tr><td class="paramname">times</td><td>Timesteps in seconds for each measurement </td></tr>
+    <tr><td class="paramname">timing_values</td><td>Component timing values for the given timestamp </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aebb4fa55e3b3c9399dfebe11fe940112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb4fa55e3b3c9399dfebe11fe940112">&#9670;&nbsp;</a></span>load_timing_percent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Loader::load_timing_percent </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>times</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Vector3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>summed_values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::VectorXd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>node_values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Load space separated timing file from pid_ros.py file </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to our text file to load </td></tr>
+    <tr><td class="paramname">times</td><td>Timesteps in seconds for each measurement </td></tr>
+    <tr><td class="paramname">summed_values</td><td>Summed node values [cpu,mem,num_threads] </td></tr>
+    <tr><td class="paramname">node_values</td><td>Values for each separate node [cpu,mem,num_threads] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

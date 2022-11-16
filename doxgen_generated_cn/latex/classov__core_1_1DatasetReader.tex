@@ -1,0 +1,88 @@
+\hypertarget{classov__core_1_1DatasetReader}{}\section{ov\+\_\+core\+:\+:Dataset\+Reader类 参考}
+\label{classov__core_1_1DatasetReader}\index{ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}}
+
+
+Helper functions to read in dataset files  
+
+
+
+
+{\ttfamily \#include $<$dataset\+\_\+reader.\+h$>$}
+
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__core_1_1DatasetReader_a948c021c3e3d80afe6a7248fd8423104}{load\+\_\+gt\+\_\+file} (std\+::string path, std\+::map$<$ double, Eigen\+::\+Matrix$<$ double, 17, 1 $>$$>$ \&gt\+\_\+states)
+\begin{DoxyCompactList}\small\item\em Load a A\+SL format groundtruth file \end{DoxyCompactList}\item 
+static bool \hyperlink{classov__core_1_1DatasetReader_af7827150c03a1871d5211764699ef0eb}{get\+\_\+gt\+\_\+state} (double timestep, Eigen\+::\+Matrix$<$ double, 17, 1 $>$ \&imustate, std\+::map$<$ double, Eigen\+::\+Matrix$<$ double, 17, 1 $>$$>$ \&gt\+\_\+states)
+\begin{DoxyCompactList}\small\item\em Gets the 17x1 groundtruth state at a given timestep \end{DoxyCompactList}\item 
+static void \hyperlink{classov__core_1_1DatasetReader_accb2a66a6468edf517c254aaa2e691d4}{load\+\_\+simulated\+\_\+trajectory} (std\+::string path, std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&traj\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This will load the trajectory into memory (space separated) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Helper functions to read in dataset files 
+
+This file has some nice functions for reading dataset files. One of the main datasets that we test against is the Eu\+RoC M\+AV dataset. We have some nice utility functions here that handle loading of the groundtruth data. This can be used to initialize the system or for plotting and calculation of R\+M\+SE values without needing any alignment.
+
+\begin{quote}
+M. Burri, J. Nikolic, P. Gohl, T. Schneider, J. Rehder, S. Omari,M. Achtelik and R. Siegwart, \char`\"{}\+The Eu\+Ro\+C micro aerial vehicle datasets\char`\"{}, International Journal of Robotic Research, D\+OI\+: 10.\+1177/0278364915620033, 2016. \href{https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets}{\tt https\+://projects.\+asl.\+ethz.\+ch/datasets/doku.\+php?id=kmavvisualinertialdatasets}.\end{quote}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__core_1_1DatasetReader_af7827150c03a1871d5211764699ef0eb}\label{classov__core_1_1DatasetReader_af7827150c03a1871d5211764699ef0eb}} 
+\index{ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}!get\+\_\+gt\+\_\+state@{get\+\_\+gt\+\_\+state}}
+\index{get\+\_\+gt\+\_\+state@{get\+\_\+gt\+\_\+state}!ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}}
+\subsubsection{\texorpdfstring{get\+\_\+gt\+\_\+state()}{get\_gt\_state()}}
+{\footnotesize\ttfamily static bool ov\+\_\+core\+::\+Dataset\+Reader\+::get\+\_\+gt\+\_\+state (\begin{DoxyParamCaption}\item[{double}]{timestep,  }\item[{Eigen\+::\+Matrix$<$ double, 17, 1 $>$ \&}]{imustate,  }\item[{std\+::map$<$ double, Eigen\+::\+Matrix$<$ double, 17, 1 $>$$>$ \&}]{gt\+\_\+states }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the 17x1 groundtruth state at a given timestep 
+
+
+\begin{DoxyParams}{参数}
+{\em timestep} & timestep we want to get the groundtruth for \\
+\hline
+{\em imustate} & groundtruth state \mbox{[}time(sec),q\+\_\+\+GtoI,p\+\_\+\+IinG,v\+\_\+\+IinG,b\+\_\+gyro,b\+\_\+accel\mbox{]} \\
+\hline
+{\em gt\+\_\+states} & Should be loaded with groundtruth states, see \hyperlink{classov__core_1_1DatasetReader_a948c021c3e3d80afe6a7248fd8423104}{load\+\_\+gt\+\_\+file()} for details \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+true if we found the state, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1DatasetReader_a948c021c3e3d80afe6a7248fd8423104}\label{classov__core_1_1DatasetReader_a948c021c3e3d80afe6a7248fd8423104}} 
+\index{ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}!load\+\_\+gt\+\_\+file@{load\+\_\+gt\+\_\+file}}
+\index{load\+\_\+gt\+\_\+file@{load\+\_\+gt\+\_\+file}!ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}}
+\subsubsection{\texorpdfstring{load\+\_\+gt\+\_\+file()}{load\_gt\_file()}}
+{\footnotesize\ttfamily static void ov\+\_\+core\+::\+Dataset\+Reader\+::load\+\_\+gt\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::map$<$ double, Eigen\+::\+Matrix$<$ double, 17, 1 $>$$>$ \&}]{gt\+\_\+states }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Load a A\+SL format groundtruth file 
+
+
+\begin{DoxyParams}{参数}
+{\em path} & Path to the C\+SV file of groundtruth data \\
+\hline
+{\em gt\+\_\+states} & Will be filled with groundtruth states\\
+\hline
+\end{DoxyParams}
+Here we will try to load a groundtruth file that is in the A\+S\+L/\+E\+U\+R\+O\+C\+M\+AV format. If we can\textquotesingle{}t open the file, or it is in the wrong format we will error and exit the program. See \hyperlink{classov__core_1_1DatasetReader_af7827150c03a1871d5211764699ef0eb}{get\+\_\+gt\+\_\+state()} for a way to get the groundtruth state at a given timestep \mbox{\Hypertarget{classov__core_1_1DatasetReader_accb2a66a6468edf517c254aaa2e691d4}\label{classov__core_1_1DatasetReader_accb2a66a6468edf517c254aaa2e691d4}} 
+\index{ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}!load\+\_\+simulated\+\_\+trajectory@{load\+\_\+simulated\+\_\+trajectory}}
+\index{load\+\_\+simulated\+\_\+trajectory@{load\+\_\+simulated\+\_\+trajectory}!ov\+\_\+core\+::\+Dataset\+Reader@{ov\+\_\+core\+::\+Dataset\+Reader}}
+\subsubsection{\texorpdfstring{load\+\_\+simulated\+\_\+trajectory()}{load\_simulated\_trajectory()}}
+{\footnotesize\ttfamily static void ov\+\_\+core\+::\+Dataset\+Reader\+::load\+\_\+simulated\+\_\+trajectory (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&}]{traj\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This will load the trajectory into memory (space separated) 
+
+
+\begin{DoxyParams}{参数}
+{\em path} & Path to the trajectory file that we want to read in. \\
+\hline
+{\em traj\+\_\+data} & Will be filled with groundtruth states (timestamp(s), q\+\_\+\+GtoI, p\+\_\+\+IinG) \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,132 @@
+\hypertarget{classov__core_1_1CamEqui}{}\section{ov\+\_\+core\+:\+:Cam\+Equi类 参考}
+\label{classov__core_1_1CamEqui}\index{ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}}
+
+
+Fisheye / equadistant model pinhole camera model class  
+
+
+
+
+{\ttfamily \#include $<$Cam\+Equi.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1CamEqui_aac99e3cb833ebf47a7ba2db390ba5f66}{Cam\+Equi} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Default constructor \end{DoxyCompactList}\item 
+Eigen\+::\+Vector2f \hyperlink{classov__core_1_1CamEqui_a737d6b4b634ae1da976d362158323059}{undistort\+\_\+f} (const Eigen\+::\+Vector2f \&uv\+\_\+dist) override
+\begin{DoxyCompactList}\small\item\em Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector2f \hyperlink{classov__core_1_1CamEqui_ac35e3814d053f66a32644321691d8e0f}{distort\+\_\+f} (const Eigen\+::\+Vector2f \&uv\+\_\+norm) override
+\begin{DoxyCompactList}\small\item\em Given a normalized uv coordinate this will distort it to the raw image plane \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1CamEqui_a68692045d866fbd508a30aab7f3b0637}{compute\+\_\+distort\+\_\+jacobian} (const Eigen\+::\+Vector2d \&uv\+\_\+norm, Eigen\+::\+Matrix\+Xd \&H\+\_\+dz\+\_\+dzn, Eigen\+::\+Matrix\+Xd \&H\+\_\+dz\+\_\+dzeta) override
+\begin{DoxyCompactList}\small\item\em Computes the derivative of raw distorted to normalized coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{额外继承的成员函数}
+
+
+\subsection{详细描述}
+Fisheye / equadistant model pinhole camera model class 
+
+As fisheye or wide-\/angle lenses are widely used in practice, we here provide mathematical derivations of such distortion model as in \href{https://docs.opencv.org/3.4/db/d58/group__calib3d__fisheye.html#details}{\tt Open\+CV fisheye}.
+
+\begin{align*} \begin{bmatrix} u \\ v \end{bmatrix}:= \mathbf{z}_k &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) = \begin{bmatrix} f_x * x + c_x \\ f_y * y + c_y \end{bmatrix}\\[1em] \empty {\rm where}~~ x &= \frac{x_n}{r} * \theta_d \\ y &= \frac{y_n}{r} * \theta_d \\ \theta_d &= \theta (1 + k_1 \theta^2 + k_2 \theta^4 + k_3 \theta^6 + k_4 \theta^8) \\ \quad r^2 &= x_n^2 + y_n^2 \\ \theta &= atan(r) \end{align*}
+
+where $ \mathbf{z}_{n,k} = [ x_n ~ y_n ]^\top$ are the normalized coordinates of the 3D feature and u and v are the distorted image coordinates on the image plane. Clearly, the following distortion intrinsic parameters are used in the above model\+:
+
+\begin{align*} \boldsymbol\zeta = \begin{bmatrix} f_x & f_y & c_x & c_y & k_1 & k_2 & k_3 & k_4 \end{bmatrix}^\top \end{align*}
+
+In analogy to the previous radial distortion (see \hyperlink{classov__core_1_1CamRadtan}{ov\+\_\+core\+::\+Cam\+Radtan}) case, the following Jacobian for these parameters is needed for intrinsic calibration\+: \begin{align*} \frac{\partial \mathbf h_d (\cdot)}{\partial \boldsymbol\zeta} = \begin{bmatrix} x_n & 0 & 1 & 0 & f_x*(\frac{x_n}{r}\theta^3) & f_x*(\frac{x_n}{r}\theta^5) & f_x*(\frac{x_n}{r}\theta^7) & f_x*(\frac{x_n}{r}\theta^9) \\[5pt] 0 & y_n & 0 & 1 & f_y*(\frac{y_n}{r}\theta^3) & f_y*(\frac{y_n}{r}\theta^5) & f_y*(\frac{y_n}{r}\theta^7) & f_y*(\frac{y_n}{r}\theta^9) \end{bmatrix} \end{align*}
+
+Similarly, with the chain rule of differentiation, we can compute the following Jacobian with respect to the normalized coordinates\+:
+
+\begin{align*} \frac{\partial \mathbf h_d(\cdot)}{\partial \mathbf{z}_{n,k}} &= \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial x_ny_n}+ \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial r}\frac{\partial r}{\partial x_ny_n}+ \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial \theta_d}\frac{\partial \theta_d}{\partial \theta}\frac{\partial \theta}{\partial r}\frac{\partial r}{\partial x_ny_n} \\[1em] \empty {\rm where}~~~~ \frac{\partial uv}{\partial xy} &= \begin{bmatrix} f_x & 0 \\ 0 & f_y \end{bmatrix} \\ \empty \frac{\partial xy}{\partial x_ny_n} &= \begin{bmatrix} \theta_d/r & 0 \\ 0 & \theta_d/r \end{bmatrix} \\ \empty \frac{\partial xy}{\partial r} &= \begin{bmatrix} -\frac{x_n}{r^2}\theta_d \\ -\frac{y_n}{r^2}\theta_d \end{bmatrix} \\ \empty \frac{\partial r}{\partial x_ny_n} &= \begin{bmatrix} \frac{x_n}{r} & \frac{y_n}{r} \end{bmatrix} \\ \empty \frac{\partial xy}{\partial \theta_d} &= \begin{bmatrix} \frac{x_n}{r} \\ \frac{y_n}{r} \end{bmatrix} \\ \empty \frac{\partial \theta_d}{\partial \theta} &= \begin{bmatrix} 1 + 3k_1 \theta^2 + 5k_2 \theta^4 + 7k_3 \theta^6 + 9k_4 \theta^8\end{bmatrix} \\ \empty \frac{\partial \theta}{\partial r} &= \begin{bmatrix} \frac{1}{r^2+1} \end{bmatrix} \end{align*}
+
+To equate this to one of Kalibr\textquotesingle{}s models, this is what you would use for {\ttfamily pinhole-\/equi}. 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__core_1_1CamEqui_aac99e3cb833ebf47a7ba2db390ba5f66}\label{classov__core_1_1CamEqui_aac99e3cb833ebf47a7ba2db390ba5f66}} 
+\index{ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}!Cam\+Equi@{Cam\+Equi}}
+\index{Cam\+Equi@{Cam\+Equi}!ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}}
+\subsubsection{\texorpdfstring{Cam\+Equi()}{CamEqui()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Cam\+Equi\+::\+Cam\+Equi (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor 
+
+
+\begin{DoxyParams}{参数}
+{\em width} & Width of the camera (raw pixels) \\
+\hline
+{\em height} & Height of the camera (raw pixels) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__core_1_1CamEqui_a68692045d866fbd508a30aab7f3b0637}\label{classov__core_1_1CamEqui_a68692045d866fbd508a30aab7f3b0637}} 
+\index{ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}!compute\+\_\+distort\+\_\+jacobian@{compute\+\_\+distort\+\_\+jacobian}}
+\index{compute\+\_\+distort\+\_\+jacobian@{compute\+\_\+distort\+\_\+jacobian}!ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}}
+\subsubsection{\texorpdfstring{compute\+\_\+distort\+\_\+jacobian()}{compute\_distort\_jacobian()}}
+{\footnotesize\ttfamily void ov\+\_\+core\+::\+Cam\+Equi\+::compute\+\_\+distort\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2d \&}]{uv\+\_\+norm,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+dz\+\_\+dzn,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+dz\+\_\+dzeta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes the derivative of raw distorted to normalized coordinate. 
+
+
+\begin{DoxyParams}{参数}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+{\em H\+\_\+dz\+\_\+dzn} & Derivative of measurement z in respect to normalized \\
+\hline
+{\em H\+\_\+dz\+\_\+dzeta} & Derivative of measurement z in respect to intrinic parameters \\
+\hline
+\end{DoxyParams}
+
+
+实现了 \hyperlink{classov__core_1_1CamBase_a498fa2b56be008d7b59bf9927f60d5db}{ov\+\_\+core\+::\+Cam\+Base}.
+
+\mbox{\Hypertarget{classov__core_1_1CamEqui_ac35e3814d053f66a32644321691d8e0f}\label{classov__core_1_1CamEqui_ac35e3814d053f66a32644321691d8e0f}} 
+\index{ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}!distort\+\_\+f@{distort\+\_\+f}}
+\index{distort\+\_\+f@{distort\+\_\+f}!ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}}
+\subsubsection{\texorpdfstring{distort\+\_\+f()}{distort\_f()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector2f ov\+\_\+core\+::\+Cam\+Equi\+::distort\+\_\+f (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2f \&}]{uv\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Given a normalized uv coordinate this will distort it to the raw image plane 
+
+
+\begin{DoxyParams}{参数}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+2d vector of raw uv coordinate 
+\end{DoxyReturn}
+
+
+实现了 \hyperlink{classov__core_1_1CamBase_a00902793219107474dc21f762fb14556}{ov\+\_\+core\+::\+Cam\+Base}.
+
+\mbox{\Hypertarget{classov__core_1_1CamEqui_a737d6b4b634ae1da976d362158323059}\label{classov__core_1_1CamEqui_a737d6b4b634ae1da976d362158323059}} 
+\index{ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}!undistort\+\_\+f@{undistort\+\_\+f}}
+\index{undistort\+\_\+f@{undistort\+\_\+f}!ov\+\_\+core\+::\+Cam\+Equi@{ov\+\_\+core\+::\+Cam\+Equi}}
+\subsubsection{\texorpdfstring{undistort\+\_\+f()}{undistort\_f()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector2f ov\+\_\+core\+::\+Cam\+Equi\+::undistort\+\_\+f (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2f \&}]{uv\+\_\+dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. 
+
+
+\begin{DoxyParams}{参数}
+{\em uv\+\_\+dist} & Raw uv coordinate we wish to undistort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+2d vector of normalized coordinates 
+\end{DoxyReturn}
+
+
+实现了 \hyperlink{classov__core_1_1CamBase_ad0db03f97e5a12f5ad757f72e60f50e4}{ov\+\_\+core\+::\+Cam\+Base}.
+

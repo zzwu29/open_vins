@@ -1,0 +1,341 @@
+\hypertarget{classov__msckf_1_1VioManager}{}\section{ov\+\_\+msckf\+:\+:Vio\+Manager类 参考}
+\label{classov__msckf_1_1VioManager}\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+
+
+Core class that manages the entire system  
+
+
+
+
+{\ttfamily \#include $<$Vio\+Manager.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1VioManager_aa2376a11794739f8d7811d6e7c0dd447}{Vio\+Manager} (\hyperlink{structov__msckf_1_1VioManagerOptions}{Vio\+Manager\+Options} \&params\+\_\+)
+\begin{DoxyCompactList}\small\item\em Default constructor, will load all configuration variables \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1VioManager_a5e7dde1c28eb800c663fb2e238cc60ea}{feed\+\_\+measurement\+\_\+imu} (const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&message)
+\begin{DoxyCompactList}\small\item\em Feed function for inertial data \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1VioManager_a96cd1d24579772a7e1f6c6ff068dc489}{feed\+\_\+measurement\+\_\+camera} (const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&message)
+\begin{DoxyCompactList}\small\item\em Feed function for camera measurements \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1VioManager_a12eedc237bb96866b368dc87d7f53aa5}{feed\+\_\+measurement\+\_\+simulation} (double timestamp, const std\+::vector$<$ int $>$ \&camids, const std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$$>$$>$ \&feats)
+\begin{DoxyCompactList}\small\item\em Feed function for a synchronized simulated cameras \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1VioManager_a196e1780d418021e2c41a394747e872b}{initialize\+\_\+with\+\_\+gt} (Eigen\+::\+Matrix$<$ double, 17, 1 $>$ imustate)
+\begin{DoxyCompactList}\small\item\em Given a state, this will initialize our I\+MU state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ae463166d4a27c3576fab416751bea40f}\label{classov__msckf_1_1VioManager_ae463166d4a27c3576fab416751bea40f}} 
+bool \hyperlink{classov__msckf_1_1VioManager_ae463166d4a27c3576fab416751bea40f}{initialized} ()
+\begin{DoxyCompactList}\small\item\em If we are initialized or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a12069947bc27ee0595978f2d188551bc}\label{classov__msckf_1_1VioManager_a12069947bc27ee0595978f2d188551bc}} 
+double \hyperlink{classov__msckf_1_1VioManager_a12069947bc27ee0595978f2d188551bc}{initialized\+\_\+time} ()
+\begin{DoxyCompactList}\small\item\em Timestamp that the system was initialized at \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_addbe77f2b0c6554b9f1baa5071b8c6d2}\label{classov__msckf_1_1VioManager_addbe77f2b0c6554b9f1baa5071b8c6d2}} 
+\hyperlink{structov__msckf_1_1VioManagerOptions}{Vio\+Manager\+Options} \hyperlink{classov__msckf_1_1VioManager_addbe77f2b0c6554b9f1baa5071b8c6d2}{get\+\_\+params} ()
+\begin{DoxyCompactList}\small\item\em Accessor for current system parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_abcdebe3b9debe73fb6a11b1c3b899eb1}\label{classov__msckf_1_1VioManager_abcdebe3b9debe73fb6a11b1c3b899eb1}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ \hyperlink{classov__msckf_1_1VioManager_abcdebe3b9debe73fb6a11b1c3b899eb1}{get\+\_\+state} ()
+\begin{DoxyCompactList}\small\item\em Accessor to get the current state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a8b1118aec3492d8d4c4291e00c084e84}\label{classov__msckf_1_1VioManager_a8b1118aec3492d8d4c4291e00c084e84}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Propagator}{Propagator} $>$ \hyperlink{classov__msckf_1_1VioManager_a8b1118aec3492d8d4c4291e00c084e84}{get\+\_\+propagator} ()
+\begin{DoxyCompactList}\small\item\em Accessor to get the current propagator \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a52b2da9f2acc6df2b88cf8bf7cacfc32}\label{classov__msckf_1_1VioManager_a52b2da9f2acc6df2b88cf8bf7cacfc32}} 
+cv\+::\+Mat \hyperlink{classov__msckf_1_1VioManager_a52b2da9f2acc6df2b88cf8bf7cacfc32}{get\+\_\+historical\+\_\+viz\+\_\+image} ()
+\begin{DoxyCompactList}\small\item\em Get a nice visualization image of what tracks we have \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a32f00c78c24062b4de0b58bcc1bcfe70}\label{classov__msckf_1_1VioManager_a32f00c78c24062b4de0b58bcc1bcfe70}} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ \hyperlink{classov__msckf_1_1VioManager_a32f00c78c24062b4de0b58bcc1bcfe70}{get\+\_\+features\+\_\+\+S\+L\+AM} ()
+\begin{DoxyCompactList}\small\item\em Returns 3d S\+L\+AM features in the global frame \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ae28e92d6c8c6747108aaebb971d8b4fd}\label{classov__msckf_1_1VioManager_ae28e92d6c8c6747108aaebb971d8b4fd}} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ \hyperlink{classov__msckf_1_1VioManager_ae28e92d6c8c6747108aaebb971d8b4fd}{get\+\_\+features\+\_\+\+A\+R\+U\+CO} ()
+\begin{DoxyCompactList}\small\item\em Returns 3d A\+R\+U\+CO features in the global frame \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a6f44315b0084e276598d4ce508574e4b}\label{classov__msckf_1_1VioManager_a6f44315b0084e276598d4ce508574e4b}} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ \hyperlink{classov__msckf_1_1VioManager_a6f44315b0084e276598d4ce508574e4b}{get\+\_\+good\+\_\+features\+\_\+\+M\+S\+C\+KF} ()
+\begin{DoxyCompactList}\small\item\em Returns 3d features used in the last update in global frame \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a6f73eaacca9a468e02d6322e0987c480}\label{classov__msckf_1_1VioManager_a6f73eaacca9a468e02d6322e0987c480}} 
+void \hyperlink{classov__msckf_1_1VioManager_a6f73eaacca9a468e02d6322e0987c480}{get\+\_\+active\+\_\+image} (double \&timestamp, cv\+::\+Mat \&image)
+\begin{DoxyCompactList}\small\item\em Return the image used when projecting the active tracks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a2645f06f1516cec870e6d69f2baa66ba}\label{classov__msckf_1_1VioManager_a2645f06f1516cec870e6d69f2baa66ba}} 
+void \hyperlink{classov__msckf_1_1VioManager_a2645f06f1516cec870e6d69f2baa66ba}{get\+\_\+active\+\_\+tracks} (double \&timestamp, std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \&feat\+\_\+posinG, std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \&feat\+\_\+tracks\+\_\+uvd)
+\begin{DoxyCompactList}\small\item\em Returns active tracked features in the current frame \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__msckf_1_1VioManager_a626bd0d043f80c4d5e993bcfbbee0244}{track\+\_\+image\+\_\+and\+\_\+update} (const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&message)
+\begin{DoxyCompactList}\small\item\em Given a new set of camera images, this will track them. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1VioManager_a31d3fade828a229a1b5a99abd9aaa243}{do\+\_\+feature\+\_\+propagate\+\_\+update} (const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&message)
+\begin{DoxyCompactList}\small\item\em This will do the propagation and feature updates to the state \end{DoxyCompactList}\item 
+bool \hyperlink{classov__msckf_1_1VioManager_adc329d2be4fad2addd93e01e5318c102}{try\+\_\+to\+\_\+initialize} (const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&message)
+\begin{DoxyCompactList}\small\item\em This function will try to initialize the state. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1VioManager_ac3259add6e59f191388dfe989d668759}{retriangulate\+\_\+active\+\_\+tracks} (const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&message)
+\begin{DoxyCompactList}\small\item\em This function will will re-\/triangulate all features in the current frame \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a69eebf475686d6e17af5f7a5c7f0a8ac}\label{classov__msckf_1_1VioManager_a69eebf475686d6e17af5f7a5c7f0a8ac}} 
+\hyperlink{structov__msckf_1_1VioManagerOptions}{Vio\+Manager\+Options} \hyperlink{classov__msckf_1_1VioManager_a69eebf475686d6e17af5f7a5c7f0a8ac}{params}
+\begin{DoxyCompactList}\small\item\em Manager parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ab5d6a1e35e3630d2b5dde39c3f40d272}\label{classov__msckf_1_1VioManager_ab5d6a1e35e3630d2b5dde39c3f40d272}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ \hyperlink{classov__msckf_1_1VioManager_ab5d6a1e35e3630d2b5dde39c3f40d272}{state}
+\begin{DoxyCompactList}\small\item\em Our master state object \+:D \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ab3c7664f03ecef91da5de542d6ac5e47}\label{classov__msckf_1_1VioManager_ab3c7664f03ecef91da5de542d6ac5e47}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Propagator}{Propagator} $>$ \hyperlink{classov__msckf_1_1VioManager_ab3c7664f03ecef91da5de542d6ac5e47}{propagator}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classov__msckf_1_1Propagator}{Propagator} of our state \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a4aad25861fa3e5de2102e101e24912ae}\label{classov__msckf_1_1VioManager_a4aad25861fa3e5de2102e101e24912ae}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ \hyperlink{classov__msckf_1_1VioManager_a4aad25861fa3e5de2102e101e24912ae}{track\+D\+A\+T\+A\+B\+A\+SE}
+\begin{DoxyCompactList}\small\item\em Complete history of our feature tracks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a3f464a59a277fef9c5d7f29202561c9c}\label{classov__msckf_1_1VioManager_a3f464a59a277fef9c5d7f29202561c9c}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1TrackBase}{ov\+\_\+core\+::\+Track\+Base} $>$ \hyperlink{classov__msckf_1_1VioManager_a3f464a59a277fef9c5d7f29202561c9c}{track\+F\+E\+A\+TS}
+\begin{DoxyCompactList}\small\item\em Our sparse feature tracker (klt or descriptor) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a534feb840d93f24dfd0171b86d996a51}\label{classov__msckf_1_1VioManager_a534feb840d93f24dfd0171b86d996a51}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1TrackBase}{ov\+\_\+core\+::\+Track\+Base} $>$ \hyperlink{classov__msckf_1_1VioManager_a534feb840d93f24dfd0171b86d996a51}{track\+A\+R\+U\+CO}
+\begin{DoxyCompactList}\small\item\em Our aruoc tracker \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a9a29e966de741d42411c4c6c5ed2fea1}\label{classov__msckf_1_1VioManager_a9a29e966de741d42411c4c6c5ed2fea1}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__init_1_1InertialInitializer}{ov\+\_\+init\+::\+Inertial\+Initializer} $>$ \hyperlink{classov__msckf_1_1VioManager_a9a29e966de741d42411c4c6c5ed2fea1}{initializer}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classov__msckf_1_1State}{State} initializer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_af39939911eb700d326389255b75738c9}\label{classov__msckf_1_1VioManager_af39939911eb700d326389255b75738c9}} 
+bool \hyperlink{classov__msckf_1_1VioManager_af39939911eb700d326389255b75738c9}{is\+\_\+initialized\+\_\+vio} = false
+\begin{DoxyCompactList}\small\item\em Boolean if we are initialized or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a9a12150c9f5297c07e82ae1a19539767}\label{classov__msckf_1_1VioManager_a9a12150c9f5297c07e82ae1a19539767}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1UpdaterMSCKF}{Updater\+M\+S\+C\+KF} $>$ \hyperlink{classov__msckf_1_1VioManager_a9a12150c9f5297c07e82ae1a19539767}{updater\+M\+S\+C\+KF}
+\begin{DoxyCompactList}\small\item\em Our M\+S\+C\+KF feature updater \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_aeb2ad853d87a8f2b387db3cff18cdb0e}\label{classov__msckf_1_1VioManager_aeb2ad853d87a8f2b387db3cff18cdb0e}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1UpdaterSLAM}{Updater\+S\+L\+AM} $>$ \hyperlink{classov__msckf_1_1VioManager_aeb2ad853d87a8f2b387db3cff18cdb0e}{updater\+S\+L\+AM}
+\begin{DoxyCompactList}\small\item\em Our S\+L\+A\+M/\+A\+R\+U\+CO feature updater \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a94e1136ce9798ad776a19baceee5580c}\label{classov__msckf_1_1VioManager_a94e1136ce9798ad776a19baceee5580c}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1UpdaterZeroVelocity}{Updater\+Zero\+Velocity} $>$ \hyperlink{classov__msckf_1_1VioManager_a94e1136ce9798ad776a19baceee5580c}{updater\+Z\+U\+PT}
+\begin{DoxyCompactList}\small\item\em Our zero velocity tracker \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classov__msckf_1_1VioManager_a3d64db49753d6ae3ae946257c1a8e184}{camera\+\_\+queue\+\_\+init}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a596b2a9f732e4c412d5c1e85d9b9eba3}\label{classov__msckf_1_1VioManager_a596b2a9f732e4c412d5c1e85d9b9eba3}} 
+std\+::mutex {\bfseries camera\+\_\+queue\+\_\+init\+\_\+mtx}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a2a945d55d74eeb81eb3a6ef1f774d0c9}\label{classov__msckf_1_1VioManager_a2a945d55d74eeb81eb3a6ef1f774d0c9}} 
+std\+::ofstream {\bfseries of\+\_\+statistics}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_aa25c347d35e5c3d0fab18c19179a95ea}\label{classov__msckf_1_1VioManager_aa25c347d35e5c3d0fab18c19179a95ea}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T1}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_adc8f8ef4cfe2bc9ce3e45e398b3d7082}\label{classov__msckf_1_1VioManager_adc8f8ef4cfe2bc9ce3e45e398b3d7082}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T2}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_adb22eec0c16e3aa654a8ead07067e7f7}\label{classov__msckf_1_1VioManager_adb22eec0c16e3aa654a8ead07067e7f7}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T3}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a9b7af9e1c523c38710719b523cea96b6}\label{classov__msckf_1_1VioManager_a9b7af9e1c523c38710719b523cea96b6}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T4}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a2ebbce211a219bb8a32262d231a2cd8b}\label{classov__msckf_1_1VioManager_a2ebbce211a219bb8a32262d231a2cd8b}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T5}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ae5187913f25a92bf73a561b5a61b9a3c}\label{classov__msckf_1_1VioManager_ae5187913f25a92bf73a561b5a61b9a3c}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T6}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ace32296109fc3d68812648eb32b8e975}\label{classov__msckf_1_1VioManager_ace32296109fc3d68812648eb32b8e975}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T7}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a4feb01f2334a78b67072666ad904779e}\label{classov__msckf_1_1VioManager_a4feb01f2334a78b67072666ad904779e}} 
+double {\bfseries timelastupdate} = -\/1
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a18a50735976b6d4d9a6e88236ca0bed9}\label{classov__msckf_1_1VioManager_a18a50735976b6d4d9a6e88236ca0bed9}} 
+double {\bfseries distance} = 0
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a00cea60848df8e21992653b89ff0be74}\label{classov__msckf_1_1VioManager_a00cea60848df8e21992653b89ff0be74}} 
+double {\bfseries startup\+\_\+time} = -\/1
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a7962d5717ac8b252d0b7b5126a0d2e05}\label{classov__msckf_1_1VioManager_a7962d5717ac8b252d0b7b5126a0d2e05}} 
+std\+::atomic$<$ bool $>$ {\bfseries thread\+\_\+init\+\_\+running}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a0753f3ee56bdfd8954b892353ceb6840}\label{classov__msckf_1_1VioManager_a0753f3ee56bdfd8954b892353ceb6840}} 
+std\+::atomic$<$ bool $>$ {\bfseries thread\+\_\+init\+\_\+success}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_aae835bcfddddf4991cb2561efce0ee06}\label{classov__msckf_1_1VioManager_aae835bcfddddf4991cb2561efce0ee06}} 
+bool {\bfseries did\+\_\+zupt\+\_\+update} = false
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a3450b4297050f1018765c7939bf00d7f}\label{classov__msckf_1_1VioManager_a3450b4297050f1018765c7939bf00d7f}} 
+bool {\bfseries has\+\_\+moved\+\_\+since\+\_\+zupt} = false
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a40926fd6cbd206a7e87fc3042782f222}\label{classov__msckf_1_1VioManager_a40926fd6cbd206a7e87fc3042782f222}} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ {\bfseries good\+\_\+features\+\_\+\+M\+S\+C\+KF}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a7a541d7d6baedd02147a851436f897c0}\label{classov__msckf_1_1VioManager_a7a541d7d6baedd02147a851436f897c0}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureInitializer}{ov\+\_\+core\+::\+Feature\+Initializer} $>$ \hyperlink{classov__msckf_1_1VioManager_a7a541d7d6baedd02147a851436f897c0}{active\+\_\+tracks\+\_\+initializer}
+\begin{DoxyCompactList}\small\item\em Feature initializer used to triangulate all active tracks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a27b558310fe30c4396ce13bcaae50bbc}\label{classov__msckf_1_1VioManager_a27b558310fe30c4396ce13bcaae50bbc}} 
+double {\bfseries active\+\_\+tracks\+\_\+time} = -\/1
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a19929a92cf2148f4854ee5741bcaed96}\label{classov__msckf_1_1VioManager_a19929a92cf2148f4854ee5741bcaed96}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ {\bfseries active\+\_\+tracks\+\_\+posinG}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ac573da3687258c50f21c2c973f6554e0}\label{classov__msckf_1_1VioManager_ac573da3687258c50f21c2c973f6554e0}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ {\bfseries active\+\_\+tracks\+\_\+uvd}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a2b1138ae43c6c7adc9c79ac0639a637c}\label{classov__msckf_1_1VioManager_a2b1138ae43c6c7adc9c79ac0639a637c}} 
+cv\+::\+Mat {\bfseries active\+\_\+image}
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Core class that manages the entire system 
+
+This class contains the state and other algorithms needed for the M\+S\+C\+KF to work. We feed in measurements into this class and send them to their respective algorithms. If we have measurements to propagate or update with, this class will call on our state to do that. 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_aa2376a11794739f8d7811d6e7c0dd447}\label{classov__msckf_1_1VioManager_aa2376a11794739f8d7811d6e7c0dd447}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!Vio\+Manager@{Vio\+Manager}}
+\index{Vio\+Manager@{Vio\+Manager}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{Vio\+Manager()}{VioManager()}}
+{\footnotesize\ttfamily Vio\+Manager\+::\+Vio\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{structov__msckf_1_1VioManagerOptions}{Vio\+Manager\+Options} \&}]{params\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Default constructor, will load all configuration variables 
+
+
+\begin{DoxyParams}{参数}
+{\em params\+\_\+} & Parameters loaded from either R\+OS or C\+M\+D\+L\+I\+NE \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a31d3fade828a229a1b5a99abd9aaa243}\label{classov__msckf_1_1VioManager_a31d3fade828a229a1b5a99abd9aaa243}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!do\+\_\+feature\+\_\+propagate\+\_\+update@{do\+\_\+feature\+\_\+propagate\+\_\+update}}
+\index{do\+\_\+feature\+\_\+propagate\+\_\+update@{do\+\_\+feature\+\_\+propagate\+\_\+update}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{do\+\_\+feature\+\_\+propagate\+\_\+update()}{do\_feature\_propagate\_update()}}
+{\footnotesize\ttfamily void Vio\+Manager\+::do\+\_\+feature\+\_\+propagate\+\_\+update (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This will do the propagation and feature updates to the state 
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a96cd1d24579772a7e1f6c6ff068dc489}\label{classov__msckf_1_1VioManager_a96cd1d24579772a7e1f6c6ff068dc489}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!feed\+\_\+measurement\+\_\+camera@{feed\+\_\+measurement\+\_\+camera}}
+\index{feed\+\_\+measurement\+\_\+camera@{feed\+\_\+measurement\+\_\+camera}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{feed\+\_\+measurement\+\_\+camera()}{feed\_measurement\_camera()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+::feed\+\_\+measurement\+\_\+camera (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Feed function for camera measurements 
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a5e7dde1c28eb800c663fb2e238cc60ea}\label{classov__msckf_1_1VioManager_a5e7dde1c28eb800c663fb2e238cc60ea}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!feed\+\_\+measurement\+\_\+imu@{feed\+\_\+measurement\+\_\+imu}}
+\index{feed\+\_\+measurement\+\_\+imu@{feed\+\_\+measurement\+\_\+imu}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{feed\+\_\+measurement\+\_\+imu()}{feed\_measurement\_imu()}}
+{\footnotesize\ttfamily void Vio\+Manager\+::feed\+\_\+measurement\+\_\+imu (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Feed function for inertial data 
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp and inertial information \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a12eedc237bb96866b368dc87d7f53aa5}\label{classov__msckf_1_1VioManager_a12eedc237bb96866b368dc87d7f53aa5}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!feed\+\_\+measurement\+\_\+simulation@{feed\+\_\+measurement\+\_\+simulation}}
+\index{feed\+\_\+measurement\+\_\+simulation@{feed\+\_\+measurement\+\_\+simulation}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{feed\+\_\+measurement\+\_\+simulation()}{feed\_measurement\_simulation()}}
+{\footnotesize\ttfamily void Vio\+Manager\+::feed\+\_\+measurement\+\_\+simulation (\begin{DoxyParamCaption}\item[{double}]{timestamp,  }\item[{const std\+::vector$<$ int $>$ \&}]{camids,  }\item[{const std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$$>$$>$ \&}]{feats }\end{DoxyParamCaption})}
+
+
+
+Feed function for a synchronized simulated cameras 
+
+
+\begin{DoxyParams}{参数}
+{\em timestamp} & Time that this image was collected \\
+\hline
+{\em camids} & Camera ids that we have simulated measurements for \\
+\hline
+{\em feats} & Raw uv simulated measurements \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a196e1780d418021e2c41a394747e872b}\label{classov__msckf_1_1VioManager_a196e1780d418021e2c41a394747e872b}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!initialize\+\_\+with\+\_\+gt@{initialize\+\_\+with\+\_\+gt}}
+\index{initialize\+\_\+with\+\_\+gt@{initialize\+\_\+with\+\_\+gt}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{initialize\+\_\+with\+\_\+gt()}{initialize\_with\_gt()}}
+{\footnotesize\ttfamily void Vio\+Manager\+::initialize\+\_\+with\+\_\+gt (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 17, 1 $>$}]{imustate }\end{DoxyParamCaption})}
+
+
+
+Given a state, this will initialize our I\+MU state. 
+
+
+\begin{DoxyParams}{参数}
+{\em imustate} & \hyperlink{classov__msckf_1_1State}{State} in the M\+S\+C\+KF ordering\+: \mbox{[}time(sec),q\+\_\+\+GtoI,p\+\_\+\+IinG,v\+\_\+\+IinG,b\+\_\+gyro,b\+\_\+accel\mbox{]} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_ac3259add6e59f191388dfe989d668759}\label{classov__msckf_1_1VioManager_ac3259add6e59f191388dfe989d668759}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!retriangulate\+\_\+active\+\_\+tracks@{retriangulate\+\_\+active\+\_\+tracks}}
+\index{retriangulate\+\_\+active\+\_\+tracks@{retriangulate\+\_\+active\+\_\+tracks}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{retriangulate\+\_\+active\+\_\+tracks()}{retriangulate\_active\_tracks()}}
+{\footnotesize\ttfamily void Vio\+Manager\+::retriangulate\+\_\+active\+\_\+tracks (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This function will will re-\/triangulate all features in the current frame 
+
+For all features that are currently being tracked by the system, this will re-\/triangulate them. This is useful for downstream applications which need the current pointcloud of points (e.\+g. loop closure). This will try to triangulate {\itshape all} points, not just ones that have been used in the update.
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a626bd0d043f80c4d5e993bcfbbee0244}\label{classov__msckf_1_1VioManager_a626bd0d043f80c4d5e993bcfbbee0244}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!track\+\_\+image\+\_\+and\+\_\+update@{track\+\_\+image\+\_\+and\+\_\+update}}
+\index{track\+\_\+image\+\_\+and\+\_\+update@{track\+\_\+image\+\_\+and\+\_\+update}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{track\+\_\+image\+\_\+and\+\_\+update()}{track\_image\_and\_update()}}
+{\footnotesize\ttfamily void Vio\+Manager\+::track\+\_\+image\+\_\+and\+\_\+update (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Given a new set of camera images, this will track them. 
+
+If we are having stereo tracking, we should call stereo tracking functions. Otherwise we will try to track on each of the images passed.
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_adc329d2be4fad2addd93e01e5318c102}\label{classov__msckf_1_1VioManager_adc329d2be4fad2addd93e01e5318c102}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!try\+\_\+to\+\_\+initialize@{try\+\_\+to\+\_\+initialize}}
+\index{try\+\_\+to\+\_\+initialize@{try\+\_\+to\+\_\+initialize}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{try\+\_\+to\+\_\+initialize()}{try\_to\_initialize()}}
+{\footnotesize\ttfamily bool Vio\+Manager\+::try\+\_\+to\+\_\+initialize (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{ov\+\_\+core\+::\+Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This function will try to initialize the state. 
+
+This should call on our initializer and try to init the state. In the future we should call the structure-\/from-\/motion code from here. This function could also be repurposed to re-\/initialize the system after failure.
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True if we have successfully initialized 
+\end{DoxyReturn}
+
+
+\subsection{类成员变量说明}
+\mbox{\Hypertarget{classov__msckf_1_1VioManager_a3d64db49753d6ae3ae946257c1a8e184}\label{classov__msckf_1_1VioManager_a3d64db49753d6ae3ae946257c1a8e184}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}!camera\+\_\+queue\+\_\+init@{camera\+\_\+queue\+\_\+init}}
+\index{camera\+\_\+queue\+\_\+init@{camera\+\_\+queue\+\_\+init}!ov\+\_\+msckf\+::\+Vio\+Manager@{ov\+\_\+msckf\+::\+Vio\+Manager}}
+\subsubsection{\texorpdfstring{camera\+\_\+queue\+\_\+init}{camera\_queue\_init}}
+{\footnotesize\ttfamily std\+::vector$<$double$>$ ov\+\_\+msckf\+::\+Vio\+Manager\+::camera\+\_\+queue\+\_\+init\hspace{0.3cm}{\ttfamily [protected]}}
+
+This is the queue of measurement times that have come in since we starting doing initialization After we initialize, we will want to prop \& update to the latest timestamp quickly 

@@ -1,0 +1,123 @@
+\hypertarget{classov__msckf_1_1UpdaterHelper}{}\section{ov\+\_\+msckf\+:\+:Updater\+Helper Class Reference}
+\label{classov__msckf_1_1UpdaterHelper}\index{ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}}
+
+
+Class that has helper functions for our updaters.  
+
+
+
+
+{\ttfamily \#include $<$Updater\+Helper.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}{Updater\+Helper\+Feature}
+\begin{DoxyCompactList}\small\item\em Feature object that our \hyperlink{classov__msckf_1_1UpdaterHelper}{Updater\+Helper} leverages, has all measurements and means. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__msckf_1_1UpdaterHelper_a56158bf8f62681bb1458500589d80aa7}{get\+\_\+feature\+\_\+jacobian\+\_\+representation} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}{Updater\+Helper\+Feature} \&feature, Eigen\+::\+Matrix\+Xd \&H\+\_\+f, std\+::vector$<$ Eigen\+::\+Matrix\+Xd $>$ \&H\+\_\+x, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&x\+\_\+order)
+\begin{DoxyCompactList}\small\item\em This gets the feature and state Jacobian in respect to the feature representation. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1UpdaterHelper_a83ba71455395ed13bbd15eb9134a6075}{get\+\_\+feature\+\_\+jacobian\+\_\+full} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}{Updater\+Helper\+Feature} \&feature, Eigen\+::\+Matrix\+Xd \&H\+\_\+f, Eigen\+::\+Matrix\+Xd \&H\+\_\+x, Eigen\+::\+Vector\+Xd \&res, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&x\+\_\+order)
+\begin{DoxyCompactList}\small\item\em Will construct the \char`\"{}stacked\char`\"{} Jacobians for a single feature from all its measurements. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1UpdaterHelper_a5cbdb9addf936d5cf101a9a9bda79f3b}{nullspace\+\_\+project\+\_\+inplace} (Eigen\+::\+Matrix\+Xd \&H\+\_\+f, Eigen\+::\+Matrix\+Xd \&H\+\_\+x, Eigen\+::\+Vector\+Xd \&res)
+\begin{DoxyCompactList}\small\item\em This will project the left nullspace of H\+\_\+f onto the linear system. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__msckf_1_1UpdaterHelper_a45c5fab93318114f765bf29e9e42a3f3}{measurement\+\_\+compress\+\_\+inplace} (Eigen\+::\+Matrix\+Xd \&H\+\_\+x, Eigen\+::\+Vector\+Xd \&res)
+\begin{DoxyCompactList}\small\item\em This will perform measurement compression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that has helper functions for our updaters. 
+
+Can compute the Jacobian for a single feature representation. This will create the Jacobian based on what representation our state is in. If we are using the anchor representation then we also have additional Jacobians in respect to the anchor state. Also has functions such as nullspace projection and full jacobian construction. For derivations look at \hyperlink{update-feat}{Camera Measurement Update} page which has detailed equations. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterHelper_a83ba71455395ed13bbd15eb9134a6075}\label{classov__msckf_1_1UpdaterHelper_a83ba71455395ed13bbd15eb9134a6075}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}!get\+\_\+feature\+\_\+jacobian\+\_\+full@{get\+\_\+feature\+\_\+jacobian\+\_\+full}}
+\index{get\+\_\+feature\+\_\+jacobian\+\_\+full@{get\+\_\+feature\+\_\+jacobian\+\_\+full}!ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}}
+\subsubsection{\texorpdfstring{get\+\_\+feature\+\_\+jacobian\+\_\+full()}{get\_feature\_jacobian\_full()}}
+{\footnotesize\ttfamily void Updater\+Helper\+::get\+\_\+feature\+\_\+jacobian\+\_\+full (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{\hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}{Updater\+Helper\+Feature} \&}]{feature,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+f,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+x,  }\item[{Eigen\+::\+Vector\+Xd \&}]{res,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{x\+\_\+order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Will construct the \char`\"{}stacked\char`\"{} Jacobians for a single feature from all its measurements. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter system \\
+\hline
+\mbox{\tt in}  & {\em feature} & Feature we want to get Jacobians of (must have feature means) \\
+\hline
+\mbox{\tt out}  & {\em H\+\_\+f} & Jacobians in respect to the feature error state \\
+\hline
+\mbox{\tt out}  & {\em H\+\_\+x} & Extra Jacobians in respect to the state (for example anchored pose) \\
+\hline
+\mbox{\tt out}  & {\em res} & Measurement residual for this feature \\
+\hline
+\mbox{\tt out}  & {\em x\+\_\+order} & Extra variables our extra Jacobian has (for example anchored pose) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterHelper_a56158bf8f62681bb1458500589d80aa7}\label{classov__msckf_1_1UpdaterHelper_a56158bf8f62681bb1458500589d80aa7}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}!get\+\_\+feature\+\_\+jacobian\+\_\+representation@{get\+\_\+feature\+\_\+jacobian\+\_\+representation}}
+\index{get\+\_\+feature\+\_\+jacobian\+\_\+representation@{get\+\_\+feature\+\_\+jacobian\+\_\+representation}!ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}}
+\subsubsection{\texorpdfstring{get\+\_\+feature\+\_\+jacobian\+\_\+representation()}{get\_feature\_jacobian\_representation()}}
+{\footnotesize\ttfamily void Updater\+Helper\+::get\+\_\+feature\+\_\+jacobian\+\_\+representation (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{\hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}{Updater\+Helper\+Feature} \&}]{feature,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+f,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix\+Xd $>$ \&}]{H\+\_\+x,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{x\+\_\+order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This gets the feature and state Jacobian in respect to the feature representation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter system \\
+\hline
+\mbox{\tt in}  & {\em feature} & Feature we want to get Jacobians of (must have feature means) \\
+\hline
+\mbox{\tt out}  & {\em H\+\_\+f} & Jacobians in respect to the feature error state (will be either 3x3 or 3x1 for single depth) \\
+\hline
+\mbox{\tt out}  & {\em H\+\_\+x} & Extra Jacobians in respect to the state (for example anchored pose) \\
+\hline
+\mbox{\tt out}  & {\em x\+\_\+order} & Extra variables our extra Jacobian has (for example anchored pose) \\
+\hline
+\end{DoxyParams}
+C\+A\+SE\+: Estimate single depth of the feature using the initial bearing \mbox{\Hypertarget{classov__msckf_1_1UpdaterHelper_a45c5fab93318114f765bf29e9e42a3f3}\label{classov__msckf_1_1UpdaterHelper_a45c5fab93318114f765bf29e9e42a3f3}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}!measurement\+\_\+compress\+\_\+inplace@{measurement\+\_\+compress\+\_\+inplace}}
+\index{measurement\+\_\+compress\+\_\+inplace@{measurement\+\_\+compress\+\_\+inplace}!ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}}
+\subsubsection{\texorpdfstring{measurement\+\_\+compress\+\_\+inplace()}{measurement\_compress\_inplace()}}
+{\footnotesize\ttfamily void Updater\+Helper\+::measurement\+\_\+compress\+\_\+inplace (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+x,  }\item[{Eigen\+::\+Vector\+Xd \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This will perform measurement compression. 
+
+Please see the \hyperlink{update-compress}{Measurement Compression} for details on how this works. Note that this is done {\bfseries in place} so all matrices will be different after a function call.
+
+
+\begin{DoxyParams}{Parameters}
+{\em H\+\_\+x} & \hyperlink{classov__msckf_1_1State}{State} jacobian \\
+\hline
+{\em res} & Measurement residual \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterHelper_a5cbdb9addf936d5cf101a9a9bda79f3b}\label{classov__msckf_1_1UpdaterHelper_a5cbdb9addf936d5cf101a9a9bda79f3b}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}!nullspace\+\_\+project\+\_\+inplace@{nullspace\+\_\+project\+\_\+inplace}}
+\index{nullspace\+\_\+project\+\_\+inplace@{nullspace\+\_\+project\+\_\+inplace}!ov\+\_\+msckf\+::\+Updater\+Helper@{ov\+\_\+msckf\+::\+Updater\+Helper}}
+\subsubsection{\texorpdfstring{nullspace\+\_\+project\+\_\+inplace()}{nullspace\_project\_inplace()}}
+{\footnotesize\ttfamily void Updater\+Helper\+::nullspace\+\_\+project\+\_\+inplace (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+f,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+x,  }\item[{Eigen\+::\+Vector\+Xd \&}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This will project the left nullspace of H\+\_\+f onto the linear system. 
+
+Please see the \hyperlink{update-null}{M\+S\+C\+KF Nullspace Projection} for details on how this works. This is the M\+S\+C\+KF nullspace projection which removes the dependency on the feature state. Note that this is done {\bfseries in place} so all matrices will be different after a function call.
+
+
+\begin{DoxyParams}{Parameters}
+{\em H\+\_\+f} & Jacobian with nullspace we want to project onto the system \mbox{[}res = Hx$\ast$(x-\/xhat)+\+Hf(f-\/fhat)+n\mbox{]} \\
+\hline
+{\em H\+\_\+x} & \hyperlink{classov__msckf_1_1State}{State} jacobian \\
+\hline
+{\em res} & Measurement residual \\
+\hline
+\end{DoxyParams}

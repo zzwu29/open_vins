@@ -1,0 +1,195 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Agarwal et~al.()Agarwal, Mierle, and Others]{ceres-solver}
+Sameer Agarwal, Keir Mierle, and Others.
+\newblock Ceres solver.
+\newblock \url{http://ceres-solver.org}.
+\newblock URL \url{http://ceres-solver.org}.
+
+\bibitem[Burri et~al.(2016)Burri, Nikolic, Gohl, Schneider, Rehder, Omari,
+  Achtelik, and Siegwart]{Burri2016IJRR}
+Michael Burri, Janosch Nikolic, Pascal Gohl, Thomas Schneider, Joern Rehder,
+  Sammy Omari, Markus~W Achtelik, and Roland Siegwart.
+\newblock The euroc micro aerial vehicle datasets.
+\newblock \emph{The International Journal of Robotics Research}, 35\penalty0
+  (10):\penalty0 1157--1163, 2016.
+
+\bibitem[Davidson et~al.(2009)Davidson, Hautam{\"a}ki, Collin, and
+  Takala]{Davidson2009ENC}
+Pavel Davidson, Jani Hautam{\"a}ki, Jussi Collin, and Jarmo Takala.
+\newblock Improved vehicle positioning in urban environment through integration
+  of gps and low-cost inertial sensors.
+\newblock In \emph{Proceedings of the European Navigation Conference (ENC),
+  Naples, Italy}, pages 3--6, 2009.
+\newblock URL \url{http://www.tkt.cs.tut.fi/research/nappo_files/1_C2.pdf}.
+
+\bibitem[Delmerico and Scaramuzza(2018)]{Delmerico2018ICRA}
+Jeffrey Delmerico and Davide Scaramuzza.
+\newblock A benchmark comparison of monocular visual-inertial odometry
+  algorithms for flying robots.
+\newblock In \emph{2018 IEEE International Conference on Robotics and
+  Automation (ICRA)}, pages 2502--2509. IEEE, 2018.
+\newblock URL \url{http://rpg.ifi.uzh.ch/docs/ICRA18_Delmerico.pdf}.
+
+\bibitem[Dong-Si and Mourikis(2012)]{Dong2012IROS}
+Tue-Cuong Dong-Si and Anastasios~I Mourikis.
+\newblock Estimator initialization in vision-aided inertial navigation with
+  unknown camera-imu calibration.
+\newblock In \emph{2012 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems}, pages 1064--1071. IEEE, 2012.
+
+\bibitem[Eckenhoff et~al.(2019)Eckenhoff, Geneva, and Huang]{Eckenhoff2019IJRR}
+Kevin Eckenhoff, Patrick Geneva, and Guoquan Huang.
+\newblock Closed-form preintegration methods for graph-based visual-inertial
+  navigation.
+\newblock \emph{International Journal of Robotics Research}, 38\penalty0 (5),
+  2019.
+\newblock \doi{10.1177/0278364919835021}.
+\newblock URL \url{https://doi.org/10.1177/0278364919835021}.
+
+\bibitem[Furgale et~al.(2013)Furgale, Rehder, and Siegwart]{Furgale2013IROS}
+Paul Furgale, Joern Rehder, and Roland Siegwart.
+\newblock Unified temporal and spatial calibration for multi-sensor systems.
+\newblock In \emph{2013 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems}, pages 1280--1286. IEEE, 2013.
+
+\bibitem[Huang et~al.(2010)Huang, Mourikis, and Roumeliotis]{Huang2010IJRR}
+Guoquan~P Huang, Anastasios~I Mourikis, and Stergios~I Roumeliotis.
+\newblock Observability-based rules for designing consistent ekf slam
+  estimators.
+\newblock \emph{The International Journal of Robotics Research}, 29\penalty0
+  (5):\penalty0 502--528, 2010.
+\newblock URL
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.228.5851&rep=rep1&type=pdf}.
+
+\bibitem[Jeon et~al.(2021)Jeon, Jung, Lee, Choi, and Myung]{Jeon2021RAL}
+Jinwoo Jeon, Sungwook Jung, Eungchang Lee, Duckyu Choi, and Hyun Myung.
+\newblock Run your visual-inertial odometry on nvidia jetson: Benchmark tests
+  on a micro aerial vehicle.
+\newblock \emph{IEEE Robotics and Automation Letters}, 6\penalty0 (3):\penalty0
+  5332--5339, 2021.
+
+\bibitem[Jeong et~al.(2019)Jeong, Cho, Shin, Roh, and Kim]{Jeong2019IJRR}
+Jinyong Jeong, Younggun Cho, Young-Sik Shin, Hyunchul Roh, and Ayoung Kim.
+\newblock Complex urban dataset with multi-level sensors from highly diverse
+  urban environments.
+\newblock \emph{The International Journal of Robotics Research}, 38\penalty0
+  (6):\penalty0 642--657, 2019.
+
+\bibitem[Kay(1993)]{Kay1993}
+Steven~M Kay.
+\newblock \emph{Fundamentals of statistical signal processing}.
+\newblock Prentice Hall PTR, 1993.
+\newblock URL
+  \url{http://users.isr.ist.utl.pt/~pjcro/temp/Fundamentals\%20Of\%20Statistical\%20Signal\%20Processing\%2D\%2DEstimation\%20Theory-Kay.pdf}.
+
+\bibitem[Lee et~al.(2020)Lee, Eckenhoff, Yang, Geneva, and Huang]{Lee2020IROS}
+Woosik Lee, Kevin Eckenhoff, Yulin Yang, Patrick Geneva, and Guoquan Huang.
+\newblock Visual-inertial-wheel odometry with online calibration.
+\newblock In \emph{2020 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS)}, pages 4559--4566. IEEE, 2020.
+\newblock URL \url{http://udel.edu/~ghuang/papers/tr_wheel-vio.pdf}.
+
+\bibitem[Li(2014)]{Li2014THESIS}
+Mingyang Li.
+\newblock \emph{Visual-inertial odometry on resource-constrained systems}.
+\newblock PhD thesis, UC Riverside, 2014.
+\newblock URL \url{https://escholarship.org/uc/item/4nn0j264}.
+
+\bibitem[Li and Mourikis(2013)]{Li2013IJRR}
+Mingyang Li and Anastasios~I Mourikis.
+\newblock High-precision, consistent ekf-based visual-inertial odometry.
+\newblock \emph{The International Journal of Robotics Research}, 32\penalty0
+  (6):\penalty0 690--711, 2013.
+
+\bibitem[Maybeck(1982)]{Maybeck1982STOC}
+Peter~S Maybeck.
+\newblock \emph{Stochastic models, estimation, and control}, volume~3.
+\newblock Academic press, 1982.
+\newblock URL \url{https://books.google.com/books?id=L_YVMUJKNQUC}.
+
+\bibitem[Mourikis and Roumeliotis(2007)]{Mourikis2007ICRA}
+Anastasios~I Mourikis and Stergios~I Roumeliotis.
+\newblock A multi-state constraint kalman filter for vision-aided inertial
+  navigation.
+\newblock In \emph{Proceedings 2007 IEEE International Conference on Robotics
+  and Automation}, pages 3565--3572. IEEE, 2007.
+\newblock URL
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.437.1085&rep=rep1&type=pdf}.
+
+\bibitem[Mueggler et~al.(2018)Mueggler, Gallego, Rebecq, and
+  Scaramuzza]{Mueggler2018TRO}
+E.~Mueggler, G.~Gallego, H.~Rebecq, and D.~Scaramuzza.
+\newblock Continuous-time visual-inertial odometry for event cameras.
+\newblock \emph{IEEE Transactions on Robotics}, pages 1--16, 2018.
+\newblock URL \url{http://rpg.ifi.uzh.ch/docs/TRO18_Mueggler.pdf}.
+
+\bibitem[Patron-Perez et~al.(2015)Patron-Perez, Lovegrove, and
+  Sibley]{Patron2015IJCV}
+Alonso Patron-Perez, Steven Lovegrove, and Gabe Sibley.
+\newblock A spline-based trajectory representation for sensor fusion and
+  rolling shutter cameras.
+\newblock \emph{International Journal of Computer Vision}, 113\penalty0
+  (3):\penalty0 208--219, 2015.
+
+\bibitem[Qin et~al.(2018)Qin, Li, and Shen]{Qin2018TRO}
+Tong Qin, Peiliang Li, and Shaojie Shen.
+\newblock Vins-mono: A robust and versatile monocular visual-inertial state
+  estimator.
+\newblock \emph{IEEE Transactions on Robotics}, 34\penalty0 (4):\penalty0
+  1004--1020, 2018.
+\newblock URL \url{https://arxiv.org/pdf/1708.03852.pdf}.
+
+\bibitem[Ramanandan et~al.(2011)Ramanandan, Chen, and
+  Farrell]{Ramanandan2011TITS}
+Arvind Ramanandan, Anning Chen, and Jay~A Farrell.
+\newblock Inertial navigation aiding by stationary updates.
+\newblock \emph{IEEE Transactions on Intelligent Transportation Systems},
+  13\penalty0 (1):\penalty0 235--248, 2011.
+
+\bibitem[Schubert et~al.(2018)Schubert, Goll, Demmel, Usenko, St~{ \"u }~ckler,
+  and Cremers]{Schubert2018IROS}
+David Schubert, Thore Goll, Nikolaus Demmel, Vladyslav Usenko, J~{ \"o }~rg
+  St~{ \"u }~ckler, and Daniel Cremers.
+\newblock The tum vi benchmark for evaluating visual-inertial odometry.
+\newblock In \emph{2018 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS)}, pages 1680--1687. IEEE, 2018.
+\newblock URL \url{https://arxiv.org/pdf/1804.06120.pdf}.
+
+\bibitem[Trawny and Roumeliotis(2005)]{Trawny2005TR}
+Nikolas Trawny and Stergios~I Roumeliotis.
+\newblock Indirect kalman filter for 3d attitude estimation.
+\newblock \emph{University of Minnesota, Dept. of Comp. Sci. \& Eng., Tech.
+  Rep}, 2:\penalty0 2005, 2005.
+\newblock URL \url{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}.
+
+\bibitem[Wagstaff et~al.(2017)Wagstaff, Peretroukhin, and
+  Kelly]{Wagstaff2017IPIN}
+Brandon Wagstaff, Valentin Peretroukhin, and Jonathan Kelly.
+\newblock Improving foot-mounted inertial navigation through real-time motion
+  classification.
+\newblock In \emph{2017 International Conference on Indoor Positioning and
+  Indoor Navigation (IPIN)}, pages 1--8. IEEE, 2017.
+\newblock URL \url{https://arxiv.org/pdf/1707.01152.pdf}.
+
+\bibitem[Wu et~al.(2017)Wu, Guo, Georgiou, and Roumeliotis]{Wu2017ICRA}
+Kejian~J Wu, Chao~X Guo, Georgios Georgiou, and Stergios~I Roumeliotis.
+\newblock Vins on wheels.
+\newblock In \emph{2017 IEEE International Conference on Robotics and
+  Automation (ICRA)}, pages 5155--5162. IEEE, 2017.
+\newblock URL \url{http://mars.cs.umn.edu/papers/KejianWu_VINSonWheels.pdf}.
+
+\bibitem[Zhang and Scaramuzza(2018)]{Zhang2018IROS}
+Zichao Zhang and Davide Scaramuzza.
+\newblock A tutorial on quantitative trajectory evaluation for
+  visual(-inertial) odometry.
+\newblock In \emph{2018 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems (IROS)}, pages 7244--7251. IEEE, 2018.
+\newblock URL \url{http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf}.
+
+\end{thebibliography}

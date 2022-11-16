@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_msckf::UpdaterSLAM类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__msckf.html">ov_msckf</a></li><li class="navelem"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html">UpdaterSLAM</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classov__msckf_1_1UpdaterSLAM-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_msckf::UpdaterSLAM类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Will compute the system for our sparse SLAM features and update the filter.  
+ <a href="classov__msckf_1_1UpdaterSLAM.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UpdaterSLAM_8h_source.html">UpdaterSLAM.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a24185ab7a42cea66b9361ebf991e9548"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a24185ab7a42cea66b9361ebf991e9548">UpdaterSLAM</a> (<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a> &amp;options_slam, <a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a> &amp;options_aruco, <a class="el" href="structov__core_1_1FeatureInitializerOptions.html">ov_core::FeatureInitializerOptions</a> &amp;feat_init_options)</td></tr>
+<tr class="memdesc:a24185ab7a42cea66b9361ebf991e9548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for our SLAM updater  <a href="#a24185ab7a42cea66b9361ebf991e9548">更多...</a><br /></td></tr>
+<tr class="separator:a24185ab7a42cea66b9361ebf991e9548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a327bcedfea68fe301dc37e1f08d562e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a327bcedfea68fe301dc37e1f08d562e6">update</a> (std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt; state, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">ov_core::Feature</a> &gt;&gt; &amp;feature_vec)</td></tr>
+<tr class="memdesc:a327bcedfea68fe301dc37e1f08d562e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given tracked SLAM features, this will try to use them to update the state.  <a href="#a327bcedfea68fe301dc37e1f08d562e6">更多...</a><br /></td></tr>
+<tr class="separator:a327bcedfea68fe301dc37e1f08d562e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ef14978d06b4386672fe56c3a844fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a4ef14978d06b4386672fe56c3a844fda">delayed_init</a> (std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt; state, std::vector&lt; std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">ov_core::Feature</a> &gt;&gt; &amp;feature_vec)</td></tr>
+<tr class="memdesc:a4ef14978d06b4386672fe56c3a844fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given max track features, this will try to use them to initialize them in the state.  <a href="#a4ef14978d06b4386672fe56c3a844fda">更多...</a><br /></td></tr>
+<tr class="separator:a4ef14978d06b4386672fe56c3a844fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae85d162f1a93f1dbed1a60b2fdd26870"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#ae85d162f1a93f1dbed1a60b2fdd26870">change_anchors</a> (std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt; state)</td></tr>
+<tr class="memdesc:ae85d162f1a93f1dbed1a60b2fdd26870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will change SLAM feature anchors if it will be marginalized  <a href="#ae85d162f1a93f1dbed1a60b2fdd26870">更多...</a><br /></td></tr>
+<tr class="separator:ae85d162f1a93f1dbed1a60b2fdd26870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a4910b23be6e7cf3a9f135330f657c501"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a4910b23be6e7cf3a9f135330f657c501">perform_anchor_change</a> (std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt; state, std::shared_ptr&lt; <a class="el" href="classov__type_1_1Landmark.html">ov_type::Landmark</a> &gt; landmark, double new_anchor_timestamp, size_t new_cam_id)</td></tr>
+<tr class="memdesc:a4910b23be6e7cf3a9f135330f657c501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shifts landmark anchor to new clone  <a href="#a4910b23be6e7cf3a9f135330f657c501">更多...</a><br /></td></tr>
+<tr class="separator:a4910b23be6e7cf3a9f135330f657c501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a219d1a88421f59b953e65e835776cfd9"><td class="memItemLeft" align="right" valign="top"><a id="a219d1a88421f59b953e65e835776cfd9"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a219d1a88421f59b953e65e835776cfd9">_options_slam</a></td></tr>
+<tr class="memdesc:a219d1a88421f59b953e65e835776cfd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options used during update for slam features <br /></td></tr>
+<tr class="separator:a219d1a88421f59b953e65e835776cfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf282c84f49d9ec4514c530b3a97f683"><td class="memItemLeft" align="right" valign="top"><a id="abf282c84f49d9ec4514c530b3a97f683"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#abf282c84f49d9ec4514c530b3a97f683">_options_aruco</a></td></tr>
+<tr class="memdesc:abf282c84f49d9ec4514c530b3a97f683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options used during update for aruco features <br /></td></tr>
+<tr class="separator:abf282c84f49d9ec4514c530b3a97f683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2adf90e25fa4a3abf697eba018e0b65e"><td class="memItemLeft" align="right" valign="top"><a id="a2adf90e25fa4a3abf697eba018e0b65e"></a>
+std::shared_ptr&lt; <a class="el" href="classov__core_1_1FeatureInitializer.html">ov_core::FeatureInitializer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a2adf90e25fa4a3abf697eba018e0b65e">initializer_feat</a></td></tr>
+<tr class="memdesc:a2adf90e25fa4a3abf697eba018e0b65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature initializer class object <br /></td></tr>
+<tr class="separator:a2adf90e25fa4a3abf697eba018e0b65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550ec76668fcbb2a8cb8245c6c08fddd"><td class="memItemLeft" align="right" valign="top"><a id="a550ec76668fcbb2a8cb8245c6c08fddd"></a>
+std::map&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterSLAM.html#a550ec76668fcbb2a8cb8245c6c08fddd">chi_squared_table</a></td></tr>
+<tr class="memdesc:a550ec76668fcbb2a8cb8245c6c08fddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chi squared 95th percentile table (lookup would be size of residual) <br /></td></tr>
+<tr class="separator:a550ec76668fcbb2a8cb8245c6c08fddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Will compute the system for our sparse SLAM features and update the filter. </p>
+<p>This class is responsible for performing delayed feature initialization, SLAM update, and SLAM anchor change for anchored feature representations. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a24185ab7a42cea66b9361ebf991e9548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24185ab7a42cea66b9361ebf991e9548">&#9670;&nbsp;</a></span>UpdaterSLAM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UpdaterSLAM::UpdaterSLAM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>options_slam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>options_aruco</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structov__core_1_1FeatureInitializerOptions.html">ov_core::FeatureInitializerOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>feat_init_options</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default constructor for our SLAM updater </p>
+<p>Our updater has a feature initializer which we use to initialize features as needed. Also the options allow for one to tune the different parameters for update.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options_slam</td><td>Updater options (include measurement noise value) for SLAM features </td></tr>
+    <tr><td class="paramname">options_aruco</td><td>Updater options (include measurement noise value) for ARUCO features </td></tr>
+    <tr><td class="paramname">feat_init_options</td><td>Feature initializer options </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae85d162f1a93f1dbed1a60b2fdd26870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae85d162f1a93f1dbed1a60b2fdd26870">&#9670;&nbsp;</a></span>change_anchors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UpdaterSLAM::change_anchors </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Will change SLAM feature anchors if it will be marginalized </p>
+<p>Makes sure that if any clone is about to be marginalized, it changes anchor representation. By default, this will shift the anchor into the newest IMU clone and keep the camera calibration anchor the same.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="classov__msckf_1_1State.html" title="State of our filter ">State</a> of the filter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4ef14978d06b4386672fe56c3a844fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ef14978d06b4386672fe56c3a844fda">&#9670;&nbsp;</a></span>delayed_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UpdaterSLAM::delayed_init </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt;&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">ov_core::Feature</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>feature_vec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Given max track features, this will try to use them to initialize them in the state. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="classov__msckf_1_1State.html" title="State of our filter ">State</a> of the filter </td></tr>
+    <tr><td class="paramname">feature_vec</td><td>Features that can be used for update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4910b23be6e7cf3a9f135330f657c501"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4910b23be6e7cf3a9f135330f657c501">&#9670;&nbsp;</a></span>perform_anchor_change()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UpdaterSLAM::perform_anchor_change </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt;&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__type_1_1Landmark.html">ov_type::Landmark</a> &gt;&#160;</td>
+          <td class="paramname"><em>landmark</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>new_anchor_timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>new_cam_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shifts landmark anchor to new clone </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="classov__msckf_1_1State.html" title="State of our filter ">State</a> of filter </td></tr>
+    <tr><td class="paramname">landmark</td><td>landmark whose anchor is being shifter </td></tr>
+    <tr><td class="paramname">new_anchor_timestamp</td><td>Clone timestamp we want to move to </td></tr>
+    <tr><td class="paramname">new_cam_id</td><td>Which camera frame we want to move to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a327bcedfea68fe301dc37e1f08d562e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a327bcedfea68fe301dc37e1f08d562e6">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UpdaterSLAM::update </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt;&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">ov_core::Feature</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>feature_vec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Given tracked SLAM features, this will try to use them to update the state. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="classov__msckf_1_1State.html" title="State of our filter ">State</a> of the filter </td></tr>
+    <tr><td class="paramname">feature_vec</td><td>Features that can be used for update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

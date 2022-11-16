@@ -1,0 +1,51 @@
+\hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}{}\section{ov\+\_\+msckf\+:\+:Updater\+Helper\+:\+:Updater\+Helper\+Feature结构体 参考}
+\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}\index{ov\+\_\+msckf\+::\+Updater\+Helper\+::\+Updater\+Helper\+Feature@{ov\+\_\+msckf\+::\+Updater\+Helper\+::\+Updater\+Helper\+Feature}}
+
+
+Feature object that our \hyperlink{classov__msckf_1_1UpdaterHelper}{Updater\+Helper} leverages, has all measurements and means  
+
+
+
+
+{\ttfamily \#include $<$Updater\+Helper.\+h$>$}
+
+\subsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a36ac27ddf140e21720d08dbce50b25ec}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a36ac27ddf140e21720d08dbce50b25ec}} 
+size\+\_\+t \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a36ac27ddf140e21720d08dbce50b25ec}{featid}
+\begin{DoxyCompactList}\small\item\em Unique ID of this feature \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_ac8371fba9fe2bc7238d90176032892da}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_ac8371fba9fe2bc7238d90176032892da}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ Eigen\+::\+Vector\+Xf $>$ $>$ \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_ac8371fba9fe2bc7238d90176032892da}{uvs}
+\begin{DoxyCompactList}\small\item\em UV coordinates that this feature has been seen from (mapped by camera ID) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_af53aeb3043a029de724b564a2bc9d2d8}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_af53aeb3043a029de724b564a2bc9d2d8}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ Eigen\+::\+Vector\+Xf $>$ $>$ {\bfseries uvs\+\_\+norm}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a7f9c2dcc7f4855e7034a0f3dcc964d9d}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a7f9c2dcc7f4855e7034a0f3dcc964d9d}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ double $>$ $>$ \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a7f9c2dcc7f4855e7034a0f3dcc964d9d}{timestamps}
+\begin{DoxyCompactList}\small\item\em Timestamps of each UV measurement (mapped by camera ID) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a31e055121de04496fe06631b1352d62e}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a31e055121de04496fe06631b1352d62e}} 
+\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation} \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a31e055121de04496fe06631b1352d62e}{feat\+\_\+representation}
+\begin{DoxyCompactList}\small\item\em What representation our feature is in \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a474d6bd5344818e899ba1b03c261fc9c}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a474d6bd5344818e899ba1b03c261fc9c}} 
+int \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a474d6bd5344818e899ba1b03c261fc9c}{anchor\+\_\+cam\+\_\+id} = -\/1
+\begin{DoxyCompactList}\small\item\em What camera ID our pose is anchored in!! By default the first measurement is the anchor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a41aaaf3a4c85bb1669b0d56e78c5f851}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a41aaaf3a4c85bb1669b0d56e78c5f851}} 
+double \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a41aaaf3a4c85bb1669b0d56e78c5f851}{anchor\+\_\+clone\+\_\+timestamp} = -\/1
+\begin{DoxyCompactList}\small\item\em Timestamp of anchor clone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a2e0ab4cc6215ee1bff8ccbe0cefcc349}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a2e0ab4cc6215ee1bff8ccbe0cefcc349}} 
+Eigen\+::\+Vector3d \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a2e0ab4cc6215ee1bff8ccbe0cefcc349}{p\+\_\+\+FinA}
+\begin{DoxyCompactList}\small\item\em Triangulated position of this feature, in the anchor frame \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a0558ee91d9c7e0929a10b5b4f4946f02}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a0558ee91d9c7e0929a10b5b4f4946f02}} 
+Eigen\+::\+Vector3d \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a0558ee91d9c7e0929a10b5b4f4946f02}{p\+\_\+\+Fin\+A\+\_\+fej}
+\begin{DoxyCompactList}\small\item\em Triangulated position of this feature, in the anchor frame first estimate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a3969fdadac10a9873ce77468ed4b68b4}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a3969fdadac10a9873ce77468ed4b68b4}} 
+Eigen\+::\+Vector3d \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a3969fdadac10a9873ce77468ed4b68b4}{p\+\_\+\+FinG}
+\begin{DoxyCompactList}\small\item\em Triangulated position of this feature, in the global frame \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a683f5e77e259db6e9fe564c8f68b7733}\label{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a683f5e77e259db6e9fe564c8f68b7733}} 
+Eigen\+::\+Vector3d \hyperlink{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature_a683f5e77e259db6e9fe564c8f68b7733}{p\+\_\+\+Fin\+G\+\_\+fej}
+\begin{DoxyCompactList}\small\item\em Triangulated position of this feature, in the global frame first estimate \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Feature object that our \hyperlink{classov__msckf_1_1UpdaterHelper}{Updater\+Helper} leverages, has all measurements and means 

@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_init::SimulatorInit类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__init.html">ov_init</a></li><li class="navelem"><a class="el" href="classov__init_1_1SimulatorInit.html">SimulatorInit</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classov__init_1_1SimulatorInit-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_init::SimulatorInit类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Master simulator class that generated visual-inertial measurements  
+ <a href="classov__init_1_1SimulatorInit.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SimulatorInit_8h_source.html">SimulatorInit.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a6f8df388f25c2d90411bd51ade48c6e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a6f8df388f25c2d90411bd51ade48c6e4">SimulatorInit</a> (<a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a> &amp;params_)</td></tr>
+<tr class="memdesc:a6f8df388f25c2d90411bd51ade48c6e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor, will load all configuration variables  <a href="#a6f8df388f25c2d90411bd51ade48c6e4">更多...</a><br /></td></tr>
+<tr class="separator:a6f8df388f25c2d90411bd51ade48c6e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34f9e98902032aeb2b695e1f72f56d15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a34f9e98902032aeb2b695e1f72f56d15">perturb_parameters</a> (<a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a> &amp;params_)</td></tr>
+<tr class="memdesc:a34f9e98902032aeb2b695e1f72f56d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will get a set of perturbed parameters  <a href="#a34f9e98902032aeb2b695e1f72f56d15">更多...</a><br /></td></tr>
+<tr class="separator:a34f9e98902032aeb2b695e1f72f56d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a251dce8d062f3b152f9fa72a7f5dd1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a9a251dce8d062f3b152f9fa72a7f5dd1">ok</a> ()</td></tr>
+<tr class="memdesc:a9a251dce8d062f3b152f9fa72a7f5dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if we are actively simulating  <a href="#a9a251dce8d062f3b152f9fa72a7f5dd1">更多...</a><br /></td></tr>
+<tr class="separator:a9a251dce8d062f3b152f9fa72a7f5dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca29b02e15f68526724d2dae56d2f756"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#aca29b02e15f68526724d2dae56d2f756">current_timestamp</a> ()</td></tr>
+<tr class="memdesc:aca29b02e15f68526724d2dae56d2f756"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the timestamp we have simulated up too  <a href="#aca29b02e15f68526724d2dae56d2f756">更多...</a><br /></td></tr>
+<tr class="separator:aca29b02e15f68526724d2dae56d2f756"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe1fc7470175ceb0b60a9ba8461a21b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#abe1fc7470175ceb0b60a9ba8461a21b3">get_state</a> (double desired_time, Eigen::Matrix&lt; double, 17, 1 &gt; &amp;imustate)</td></tr>
+<tr class="memdesc:abe1fc7470175ceb0b60a9ba8461a21b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the simulation state at a specified timestep  <a href="#abe1fc7470175ceb0b60a9ba8461a21b3">更多...</a><br /></td></tr>
+<tr class="separator:abe1fc7470175ceb0b60a9ba8461a21b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a06f52d0de40b6e3ce274a47512e9e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a84a06f52d0de40b6e3ce274a47512e9e">get_next_imu</a> (double &amp;time_imu, Eigen::Vector3d &amp;wm, Eigen::Vector3d &amp;am)</td></tr>
+<tr class="memdesc:a84a06f52d0de40b6e3ce274a47512e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next inertial reading if we have one.  <a href="#a84a06f52d0de40b6e3ce274a47512e9e">更多...</a><br /></td></tr>
+<tr class="separator:a84a06f52d0de40b6e3ce274a47512e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3101f4237fc14a77d8d4b6de038bd323"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a3101f4237fc14a77d8d4b6de038bd323">get_next_cam</a> (double &amp;time_cam, std::vector&lt; int &gt; &amp;camids, std::vector&lt; std::vector&lt; std::pair&lt; size_t, Eigen::VectorXf &gt;&gt;&gt; &amp;feats)</td></tr>
+<tr class="memdesc:a3101f4237fc14a77d8d4b6de038bd323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next inertial reading if we have one.  <a href="#a3101f4237fc14a77d8d4b6de038bd323">更多...</a><br /></td></tr>
+<tr class="separator:a3101f4237fc14a77d8d4b6de038bd323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b4f53f1aa8775c636976cb912cad64"><td class="memItemLeft" align="right" valign="top"><a id="ac7b4f53f1aa8775c636976cb912cad64"></a>
+std::unordered_map&lt; size_t, Eigen::Vector3d &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#ac7b4f53f1aa8775c636976cb912cad64">get_map</a> ()</td></tr>
+<tr class="memdesc:ac7b4f53f1aa8775c636976cb912cad64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the true 3d map of features <br /></td></tr>
+<tr class="separator:ac7b4f53f1aa8775c636976cb912cad64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c311cdb3c5de359ca6a8080fda13de6"><td class="memItemLeft" align="right" valign="top"><a id="a1c311cdb3c5de359ca6a8080fda13de6"></a>
+<a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a1c311cdb3c5de359ca6a8080fda13de6">get_true_parameters</a> ()</td></tr>
+<tr class="memdesc:a1c311cdb3c5de359ca6a8080fda13de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access function to get the true parameters (i.e. calibration and settings) <br /></td></tr>
+<tr class="separator:a1c311cdb3c5de359ca6a8080fda13de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a97c74693a9fe77d025d53983c9a147ce"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; size_t, Eigen::VectorXf &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a97c74693a9fe77d025d53983c9a147ce">project_pointcloud</a> (const Eigen::Matrix3d &amp;R_GtoI, const Eigen::Vector3d &amp;p_IinG, int camid, const std::unordered_map&lt; size_t, Eigen::Vector3d &gt; &amp;feats)</td></tr>
+<tr class="memdesc:a97c74693a9fe77d025d53983c9a147ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Projects the passed map features into the desired camera frame.  <a href="#a97c74693a9fe77d025d53983c9a147ce">更多...</a><br /></td></tr>
+<tr class="separator:a97c74693a9fe77d025d53983c9a147ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a352ee444f38cb6689e37ac83e30c7a68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a352ee444f38cb6689e37ac83e30c7a68">generate_points</a> (const Eigen::Matrix3d &amp;R_GtoI, const Eigen::Vector3d &amp;p_IinG, int camid, std::unordered_map&lt; size_t, Eigen::Vector3d &gt; &amp;feats, int numpts)</td></tr>
+<tr class="memdesc:a352ee444f38cb6689e37ac83e30c7a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will generate points in the fov of the specified camera  <a href="#a352ee444f38cb6689e37ac83e30c7a68">更多...</a><br /></td></tr>
+<tr class="separator:a352ee444f38cb6689e37ac83e30c7a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a372edd6c98642b8aabb583dbf11140f2"><td class="memItemLeft" align="right" valign="top"><a id="a372edd6c98642b8aabb583dbf11140f2"></a>
+<a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a372edd6c98642b8aabb583dbf11140f2">params</a></td></tr>
+<tr class="memdesc:a372edd6c98642b8aabb583dbf11140f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">True params (a copy of the parsed ones) <br /></td></tr>
+<tr class="separator:a372edd6c98642b8aabb583dbf11140f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf0cb10b2d9ec0e5688071e40490ca01"><td class="memItemLeft" align="right" valign="top"><a id="abf0cb10b2d9ec0e5688071e40490ca01"></a>
+std::vector&lt; Eigen::VectorXd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#abf0cb10b2d9ec0e5688071e40490ca01">traj_data</a></td></tr>
+<tr class="memdesc:abf0cb10b2d9ec0e5688071e40490ca01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our loaded trajectory data (timestamp(s), q_GtoI, p_IinG) <br /></td></tr>
+<tr class="separator:abf0cb10b2d9ec0e5688071e40490ca01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40735548035cb62e36f9aac82921d8d3"><td class="memItemLeft" align="right" valign="top"><a id="a40735548035cb62e36f9aac82921d8d3"></a>
+std::shared_ptr&lt; <a class="el" href="classov__core_1_1BsplineSE3.html">ov_core::BsplineSE3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a40735548035cb62e36f9aac82921d8d3">spline</a></td></tr>
+<tr class="memdesc:a40735548035cb62e36f9aac82921d8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our b-spline trajectory <br /></td></tr>
+<tr class="separator:a40735548035cb62e36f9aac82921d8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb7a28d93c7b4d38d95bcaf13ecbef8"><td class="memItemLeft" align="right" valign="top"><a id="a2fb7a28d93c7b4d38d95bcaf13ecbef8"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a2fb7a28d93c7b4d38d95bcaf13ecbef8">id_map</a> = 0</td></tr>
+<tr class="memdesc:a2fb7a28d93c7b4d38d95bcaf13ecbef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our map of 3d features <br /></td></tr>
+<tr class="separator:a2fb7a28d93c7b4d38d95bcaf13ecbef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cfaf9b3d02ad742eb1dabc40eaab32"><td class="memItemLeft" align="right" valign="top"><a id="a26cfaf9b3d02ad742eb1dabc40eaab32"></a>
+std::unordered_map&lt; size_t, Eigen::Vector3d &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>featmap</b></td></tr>
+<tr class="separator:a26cfaf9b3d02ad742eb1dabc40eaab32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07a8dcfb65652705d79ccade133cfac5"><td class="memItemLeft" align="right" valign="top"><a id="a07a8dcfb65652705d79ccade133cfac5"></a>
+std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a07a8dcfb65652705d79ccade133cfac5">gen_meas_imu</a></td></tr>
+<tr class="memdesc:a07a8dcfb65652705d79ccade133cfac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mersenne twister PRNG for measurements (IMU) <br /></td></tr>
+<tr class="separator:a07a8dcfb65652705d79ccade133cfac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c0c57b4ddbd9995b42020e1139e3ea"><td class="memItemLeft" align="right" valign="top"><a id="a22c0c57b4ddbd9995b42020e1139e3ea"></a>
+std::vector&lt; std::mt19937 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a22c0c57b4ddbd9995b42020e1139e3ea">gen_meas_cams</a></td></tr>
+<tr class="memdesc:a22c0c57b4ddbd9995b42020e1139e3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mersenne twister PRNG for measurements (CAMERAS) <br /></td></tr>
+<tr class="separator:a22c0c57b4ddbd9995b42020e1139e3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad458e97f0d879d4b23fe983dec5df804"><td class="memItemLeft" align="right" valign="top"><a id="ad458e97f0d879d4b23fe983dec5df804"></a>
+std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#ad458e97f0d879d4b23fe983dec5df804">gen_state_init</a></td></tr>
+<tr class="memdesc:ad458e97f0d879d4b23fe983dec5df804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mersenne twister PRNG for state initialization <br /></td></tr>
+<tr class="separator:ad458e97f0d879d4b23fe983dec5df804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1183d2053b6618e3ad4f4b3616c74a6"><td class="memItemLeft" align="right" valign="top"><a id="ad1183d2053b6618e3ad4f4b3616c74a6"></a>
+std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#ad1183d2053b6618e3ad4f4b3616c74a6">gen_state_perturb</a></td></tr>
+<tr class="memdesc:ad1183d2053b6618e3ad4f4b3616c74a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mersenne twister PRNG for state perturbations <br /></td></tr>
+<tr class="separator:ad1183d2053b6618e3ad4f4b3616c74a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8abb917e0f329e5d8602692a5f4c2776"><td class="memItemLeft" align="right" valign="top"><a id="a8abb917e0f329e5d8602692a5f4c2776"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a8abb917e0f329e5d8602692a5f4c2776">is_running</a></td></tr>
+<tr class="memdesc:a8abb917e0f329e5d8602692a5f4c2776"><td class="mdescLeft">&#160;</td><td class="mdescRight">If our simulation is running <br /></td></tr>
+<tr class="separator:a8abb917e0f329e5d8602692a5f4c2776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69cfbc8778564611b8b81e5fdb1d5736"><td class="memItemLeft" align="right" valign="top"><a id="a69cfbc8778564611b8b81e5fdb1d5736"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a69cfbc8778564611b8b81e5fdb1d5736">timestamp</a></td></tr>
+<tr class="memdesc:a69cfbc8778564611b8b81e5fdb1d5736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current timestamp of the system <br /></td></tr>
+<tr class="separator:a69cfbc8778564611b8b81e5fdb1d5736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad6608fa7e7a00ef588ec326c3f03729"><td class="memItemLeft" align="right" valign="top"><a id="aad6608fa7e7a00ef588ec326c3f03729"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#aad6608fa7e7a00ef588ec326c3f03729">timestamp_last_imu</a></td></tr>
+<tr class="memdesc:aad6608fa7e7a00ef588ec326c3f03729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last time we had an IMU reading <br /></td></tr>
+<tr class="separator:aad6608fa7e7a00ef588ec326c3f03729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad35d52befdec1e430bdd13c49a418fc4"><td class="memItemLeft" align="right" valign="top"><a id="ad35d52befdec1e430bdd13c49a418fc4"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#ad35d52befdec1e430bdd13c49a418fc4">timestamp_last_cam</a></td></tr>
+<tr class="memdesc:ad35d52befdec1e430bdd13c49a418fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last time we had an CAMERA reading <br /></td></tr>
+<tr class="separator:ad35d52befdec1e430bdd13c49a418fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3f60dfbc69a9b510d9278e9d21ef31e"><td class="memItemLeft" align="right" valign="top"><a id="ab3f60dfbc69a9b510d9278e9d21ef31e"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#ab3f60dfbc69a9b510d9278e9d21ef31e">true_bias_accel</a> = Eigen::Vector3d::Zero()</td></tr>
+<tr class="memdesc:ab3f60dfbc69a9b510d9278e9d21ef31e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our running acceleration bias <br /></td></tr>
+<tr class="separator:ab3f60dfbc69a9b510d9278e9d21ef31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23a46e6cdbe66968bb6d4174a1aa6861"><td class="memItemLeft" align="right" valign="top"><a id="a23a46e6cdbe66968bb6d4174a1aa6861"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__init_1_1SimulatorInit.html#a23a46e6cdbe66968bb6d4174a1aa6861">true_bias_gyro</a> = Eigen::Vector3d::Zero()</td></tr>
+<tr class="memdesc:a23a46e6cdbe66968bb6d4174a1aa6861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our running gyroscope bias <br /></td></tr>
+<tr class="separator:a23a46e6cdbe66968bb6d4174a1aa6861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca8eeb9e14ae34664d610f7fbf86a90c"><td class="memItemLeft" align="right" valign="top"><a id="aca8eeb9e14ae34664d610f7fbf86a90c"></a>
+std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>hist_true_bias_time</b></td></tr>
+<tr class="separator:aca8eeb9e14ae34664d610f7fbf86a90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96c954fefe87f0c91421fdaa09e72dd2"><td class="memItemLeft" align="right" valign="top"><a id="a96c954fefe87f0c91421fdaa09e72dd2"></a>
+std::vector&lt; Eigen::Vector3d &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>hist_true_bias_accel</b></td></tr>
+<tr class="separator:a96c954fefe87f0c91421fdaa09e72dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b63849cf6d4dfc3d0376ebce213e80"><td class="memItemLeft" align="right" valign="top"><a id="a34b63849cf6d4dfc3d0376ebce213e80"></a>
+std::vector&lt; Eigen::Vector3d &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>hist_true_bias_gyro</b></td></tr>
+<tr class="separator:a34b63849cf6d4dfc3d0376ebce213e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Master simulator class that generated visual-inertial measurements </p>
+<p>Given a trajectory this will generate a SE(3) <a class="el" href="classov__core_1_1BsplineSE3.html">ov_core::BsplineSE3</a> for that trajectory. This allows us to get the inertial measurement information at each timestep during this trajectory. After creating the bspline we will generate an environmental feature map which will be used as our feature measurements. This map will be projected into the frame at each timestep to get our "raw" uv measurements. We inject bias and white noises into our inertial readings while adding our white noise to the uv measurements also. The user should specify the sensor rates that they desire along with the seeds of the random number generators. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a6f8df388f25c2d90411bd51ade48c6e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f8df388f25c2d90411bd51ade48c6e4">&#9670;&nbsp;</a></span>SimulatorInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SimulatorInit::SimulatorInit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>params_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default constructor, will load all configuration variables </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">params_</td><td><a class="el" href="classov__init_1_1InertialInitializer.html" title="Initializer for visual-inertial system. ">InertialInitializer</a> parameters. Should have already been loaded from cmd. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aca29b02e15f68526724d2dae56d2f756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca29b02e15f68526724d2dae56d2f756">&#9670;&nbsp;</a></span>current_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ov_init::SimulatorInit::current_timestamp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the timestamp we have simulated up too </p>
+<dl class="section return"><dt>返回</dt><dd>Timestamp </dd></dl>
+
+</div>
+</div>
+<a id="a352ee444f38cb6689e37ac83e30c7a68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a352ee444f38cb6689e37ac83e30c7a68">&#9670;&nbsp;</a></span>generate_points()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimulatorInit::generate_points </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R_GtoI</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>p_IinG</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>camid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; size_t, Eigen::Vector3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>feats</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numpts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Will generate points in the fov of the specified camera </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">R_GtoI</td><td>Orientation of the IMU pose </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">p_IinG</td><td>Position of the IMU pose </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">camid</td><td>Camera id of the camera sensor we want to project into </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">feats</td><td>Map we will append new features to </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">numpts</td><td>Number of points we should generate </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3101f4237fc14a77d8d4b6de038bd323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3101f4237fc14a77d8d4b6de038bd323">&#9670;&nbsp;</a></span>get_next_cam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SimulatorInit::get_next_cam </td>
+          <td>(</td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>time_cam</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>camids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; std::pair&lt; size_t, Eigen::VectorXf &gt;&gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>feats</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the next inertial reading if we have one. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_cam</td><td>Time that this measurement occured at </td></tr>
+    <tr><td class="paramname">camids</td><td>Camera ids that the corresponding vectors match </td></tr>
+    <tr><td class="paramname">feats</td><td>Noisy uv measurements and ids for the returned time </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True if we have a measurement </dd></dl>
+
+</div>
+</div>
+<a id="a84a06f52d0de40b6e3ce274a47512e9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a06f52d0de40b6e3ce274a47512e9e">&#9670;&nbsp;</a></span>get_next_imu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SimulatorInit::get_next_imu </td>
+          <td>(</td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>time_imu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>wm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>am</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the next inertial reading if we have one. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_imu</td><td>Time that this measurement occured at </td></tr>
+    <tr><td class="paramname">wm</td><td>Angular velocity measurement in the inertial frame </td></tr>
+    <tr><td class="paramname">am</td><td>Linear velocity in the inertial frame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True if we have a measurement </dd></dl>
+
+</div>
+</div>
+<a id="abe1fc7470175ceb0b60a9ba8461a21b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe1fc7470175ceb0b60a9ba8461a21b3">&#9670;&nbsp;</a></span>get_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SimulatorInit::get_state </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>desired_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix&lt; double, 17, 1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>imustate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the simulation state at a specified timestep </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">desired_time</td><td>Timestamp we want to get the state at </td></tr>
+    <tr><td class="paramname">imustate</td><td>State in the MSCKF ordering: [time(sec),q_GtoI,p_IinG,v_IinG,b_gyro,b_accel] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True if we have a state </dd></dl>
+
+</div>
+</div>
+<a id="a9a251dce8d062f3b152f9fa72a7f5dd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a251dce8d062f3b152f9fa72a7f5dd1">&#9670;&nbsp;</a></span>ok()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ov_init::SimulatorInit::ok </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns if we are actively simulating </p>
+<dl class="section return"><dt>返回</dt><dd>True if we still have simulation data </dd></dl>
+
+</div>
+</div>
+<a id="a34f9e98902032aeb2b695e1f72f56d15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34f9e98902032aeb2b695e1f72f56d15">&#9670;&nbsp;</a></span>perturb_parameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SimulatorInit::perturb_parameters </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structov__init_1_1InertialInitializerOptions.html">InertialInitializerOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>params_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Will get a set of perturbed parameters </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">params_</td><td>Parameters we will perturb </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a97c74693a9fe77d025d53983c9a147ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97c74693a9fe77d025d53983c9a147ce">&#9670;&nbsp;</a></span>project_pointcloud()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::pair&lt; size_t, Eigen::VectorXf &gt; &gt; SimulatorInit::project_pointcloud </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R_GtoI</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>p_IinG</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>camid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::unordered_map&lt; size_t, Eigen::Vector3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>feats</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Projects the passed map features into the desired camera frame. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">R_GtoI</td><td>Orientation of the IMU pose </td></tr>
+    <tr><td class="paramname">p_IinG</td><td>Position of the IMU pose </td></tr>
+    <tr><td class="paramname">camid</td><td>Camera id of the camera sensor we want to project into </td></tr>
+    <tr><td class="paramname">feats</td><td>Our set of 3d features </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True distorted raw image measurements and their ids for the specified camera </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

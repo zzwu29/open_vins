@@ -1,0 +1,144 @@
+\hypertarget{classov__eval_1_1Recorder}{}\section{ov\+\_\+eval\+:\+:Recorder Class Reference}
+\label{classov__eval_1_1Recorder}\index{ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}}
+
+
+This class takes in published poses and writes them to file.  
+
+
+
+
+{\ttfamily \#include $<$Recorder.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__eval_1_1Recorder_a36307659369029395731737a7577bf0a}{Recorder} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em Default constructor that will open the specified file on disk. If the output directory does not exists this will also create the directory path to this file. \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1Recorder_a731eae3cf076afc70a7e590f5e8943fe}{callback\+\_\+odometry} (const nav\+\_\+msgs\+::\+Odometry\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback for nav\+\_\+msgs\+::\+Odometry message types. \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1Recorder_a0a2cc6684a70ab530c8d7c31ebc1ba9e}{callback\+\_\+pose} (const geometry\+\_\+msgs\+::\+Pose\+Stamped\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback for geometry\+\_\+msgs\+::\+Pose\+Stamped message types. \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1Recorder_afe156131ed31a4f35d7fea30d4221293}{callback\+\_\+posecovariance} (const geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback for geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped message types. \end{DoxyCompactList}\item 
+void \hyperlink{classov__eval_1_1Recorder_aa98f2bf8b8f3bfc70c905d83a778065b}{callback\+\_\+transform} (const geometry\+\_\+msgs\+::\+Transform\+Stamped\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback for geometry\+\_\+msgs\+::\+Transform\+Stamped message types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a57b309de81ce7312ff3f07125d03ee7a}\label{classov__eval_1_1Recorder_a57b309de81ce7312ff3f07125d03ee7a}} 
+void \hyperlink{classov__eval_1_1Recorder_a57b309de81ce7312ff3f07125d03ee7a}{write} ()
+\begin{DoxyCompactList}\small\item\em This is the main write function that will save to disk. This should be called after we have saved the desired pose to our class variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_ab175907faecd57d895b4e3ac25dba7d5}\label{classov__eval_1_1Recorder_ab175907faecd57d895b4e3ac25dba7d5}} 
+std\+::ofstream {\bfseries outfile}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a3a11f4b799275ea1d0d8790af3085014}\label{classov__eval_1_1Recorder_a3a11f4b799275ea1d0d8790af3085014}} 
+bool {\bfseries has\+\_\+covariance} = false
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a7f094609e17a0251a68a96f19bd8ba18}\label{classov__eval_1_1Recorder_a7f094609e17a0251a68a96f19bd8ba18}} 
+double {\bfseries timestamp}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a3e9cd436f944aeff84ca044644cd9333}\label{classov__eval_1_1Recorder_a3e9cd436f944aeff84ca044644cd9333}} 
+Eigen\+::\+Vector4d {\bfseries q\+\_\+\+ItoG}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a3fc04158a626ca3d84f4beac6a7c0918}\label{classov__eval_1_1Recorder_a3fc04158a626ca3d84f4beac6a7c0918}} 
+Eigen\+::\+Vector3d {\bfseries p\+\_\+\+IinG}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a521ab33ed3681e03f6d03e391c4795a2}\label{classov__eval_1_1Recorder_a521ab33ed3681e03f6d03e391c4795a2}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries cov\+\_\+rot}
+\item 
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a0a20dbfd92839ebf9455cc4145b96cdb}\label{classov__eval_1_1Recorder_a0a20dbfd92839ebf9455cc4145b96cdb}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries cov\+\_\+pos}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class takes in published poses and writes them to file. 
+
+Original code is based on this modified \href{https://github.com/rpng/posemsg_to_file/}{\tt posemsg\+\_\+to\+\_\+file}. Output is in a text file that is space deliminated and can be read by all scripts. If we have a covariance then we also save the upper triangular part to file so we can calculate N\+E\+ES values. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a36307659369029395731737a7577bf0a}\label{classov__eval_1_1Recorder_a36307659369029395731737a7577bf0a}} 
+\index{ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}!Recorder@{Recorder}}
+\index{Recorder@{Recorder}!ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}}
+\subsubsection{\texorpdfstring{Recorder()}{Recorder()}}
+{\footnotesize\ttfamily ov\+\_\+eval\+::\+Recorder\+::\+Recorder (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor that will open the specified file on disk. If the output directory does not exists this will also create the directory path to this file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Desired file we want to \char`\"{}record\char`\"{} into \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a731eae3cf076afc70a7e590f5e8943fe}\label{classov__eval_1_1Recorder_a731eae3cf076afc70a7e590f5e8943fe}} 
+\index{ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}!callback\+\_\+odometry@{callback\+\_\+odometry}}
+\index{callback\+\_\+odometry@{callback\+\_\+odometry}!ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}}
+\subsubsection{\texorpdfstring{callback\+\_\+odometry()}{callback\_odometry()}}
+{\footnotesize\ttfamily void ov\+\_\+eval\+::\+Recorder\+::callback\+\_\+odometry (\begin{DoxyParamCaption}\item[{const nav\+\_\+msgs\+::\+Odometry\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback for nav\+\_\+msgs\+::\+Odometry message types. 
+
+Note that covariance is in the order (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis). \href{http://docs.ros.org/api/geometry_msgs/html/msg/PoseWithCovariance.html}{\tt http\+://docs.\+ros.\+org/api/geometry\+\_\+msgs/html/msg/\+Pose\+With\+Covariance.\+html}
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & New message \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Recorder_a0a2cc6684a70ab530c8d7c31ebc1ba9e}\label{classov__eval_1_1Recorder_a0a2cc6684a70ab530c8d7c31ebc1ba9e}} 
+\index{ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}!callback\+\_\+pose@{callback\+\_\+pose}}
+\index{callback\+\_\+pose@{callback\+\_\+pose}!ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}}
+\subsubsection{\texorpdfstring{callback\+\_\+pose()}{callback\_pose()}}
+{\footnotesize\ttfamily void ov\+\_\+eval\+::\+Recorder\+::callback\+\_\+pose (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Pose\+Stamped\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback for geometry\+\_\+msgs\+::\+Pose\+Stamped message types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & New message \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Recorder_afe156131ed31a4f35d7fea30d4221293}\label{classov__eval_1_1Recorder_afe156131ed31a4f35d7fea30d4221293}} 
+\index{ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}!callback\+\_\+posecovariance@{callback\+\_\+posecovariance}}
+\index{callback\+\_\+posecovariance@{callback\+\_\+posecovariance}!ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}}
+\subsubsection{\texorpdfstring{callback\+\_\+posecovariance()}{callback\_posecovariance()}}
+{\footnotesize\ttfamily void ov\+\_\+eval\+::\+Recorder\+::callback\+\_\+posecovariance (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback for geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped message types. 
+
+Note that covariance is in the order (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis). \href{http://docs.ros.org/api/geometry_msgs/html/msg/PoseWithCovariance.html}{\tt http\+://docs.\+ros.\+org/api/geometry\+\_\+msgs/html/msg/\+Pose\+With\+Covariance.\+html}
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & New message \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Recorder_aa98f2bf8b8f3bfc70c905d83a778065b}\label{classov__eval_1_1Recorder_aa98f2bf8b8f3bfc70c905d83a778065b}} 
+\index{ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}!callback\+\_\+transform@{callback\+\_\+transform}}
+\index{callback\+\_\+transform@{callback\+\_\+transform}!ov\+\_\+eval\+::\+Recorder@{ov\+\_\+eval\+::\+Recorder}}
+\subsubsection{\texorpdfstring{callback\+\_\+transform()}{callback\_transform()}}
+{\footnotesize\ttfamily void ov\+\_\+eval\+::\+Recorder\+::callback\+\_\+transform (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Transform\+Stamped\+Ptr \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Callback for geometry\+\_\+msgs\+::\+Transform\+Stamped message types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & New message \\
+\hline
+\end{DoxyParams}

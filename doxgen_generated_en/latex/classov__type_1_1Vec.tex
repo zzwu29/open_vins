@@ -1,0 +1,65 @@
+\hypertarget{classov__type_1_1Vec}{}\section{ov\+\_\+type\+:\+:Vec Class Reference}
+\label{classov__type_1_1Vec}\index{ov\+\_\+type\+::\+Vec@{ov\+\_\+type\+::\+Vec}}
+
+
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements vector variables.  
+
+
+
+
+{\ttfamily \#include $<$Vec.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__type_1_1Vec_aae80ad8a2e9580f20ee90e126f36bcb0}{Vec} (int dim)
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classov__type_1_1Vec}{Vec}. \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1Vec_a7d66e9414946807c9469de0a1038256d}{update} (const Eigen\+::\+Vector\+Xd \&dx) override
+\begin{DoxyCompactList}\small\item\em Implements the update operation through standard vector addition. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Vec_a31a73978bc3c8dc0f0df1a1abc83664f}\label{classov__type_1_1Vec_a31a73978bc3c8dc0f0df1a1abc83664f}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ \hyperlink{classov__type_1_1Vec_a31a73978bc3c8dc0f0df1a1abc83664f}{clone} () override
+\begin{DoxyCompactList}\small\item\em Performs all the cloning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements vector variables. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__type_1_1Vec_aae80ad8a2e9580f20ee90e126f36bcb0}\label{classov__type_1_1Vec_aae80ad8a2e9580f20ee90e126f36bcb0}} 
+\index{ov\+\_\+type\+::\+Vec@{ov\+\_\+type\+::\+Vec}!Vec@{Vec}}
+\index{Vec@{Vec}!ov\+\_\+type\+::\+Vec@{ov\+\_\+type\+::\+Vec}}
+\subsubsection{\texorpdfstring{Vec()}{Vec()}}
+{\footnotesize\ttfamily ov\+\_\+type\+::\+Vec\+::\+Vec (\begin{DoxyParamCaption}\item[{int}]{dim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor for \hyperlink{classov__type_1_1Vec}{Vec}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dim} & Size of the vector (will be same as error state) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__type_1_1Vec_a7d66e9414946807c9469de0a1038256d}\label{classov__type_1_1Vec_a7d66e9414946807c9469de0a1038256d}} 
+\index{ov\+\_\+type\+::\+Vec@{ov\+\_\+type\+::\+Vec}!update@{update}}
+\index{update@{update}!ov\+\_\+type\+::\+Vec@{ov\+\_\+type\+::\+Vec}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Vec\+::update (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{dx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements the update operation through standard vector addition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Additive error state correction \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classov__type_1_1Type_a4e133d50af35f07bd97f73590fe31000}{ov\+\_\+type\+::\+Type}.
+

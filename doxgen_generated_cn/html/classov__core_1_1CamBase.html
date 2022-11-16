@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core::CamBase类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__core.html">ov_core</a></li><li class="navelem"><a class="el" href="classov__core_1_1CamBase.html">CamBase</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classov__core_1_1CamBase-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_core::CamBase类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Base pinhole camera model class  
+ <a href="classov__core_1_1CamBase.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="CamBase_8h_source.html">CamBase.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1f11a6e4e8324d6843b578c0dabe0f94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a1f11a6e4e8324d6843b578c0dabe0f94">CamBase</a> (int width, int height)</td></tr>
+<tr class="memdesc:a1f11a6e4e8324d6843b578c0dabe0f94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor  <a href="#a1f11a6e4e8324d6843b578c0dabe0f94">更多...</a><br /></td></tr>
+<tr class="separator:a1f11a6e4e8324d6843b578c0dabe0f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630f35e703c3893ae694fe0f14693216"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a630f35e703c3893ae694fe0f14693216">set_value</a> (const Eigen::MatrixXd &amp;calib)</td></tr>
+<tr class="memdesc:a630f35e703c3893ae694fe0f14693216"><td class="mdescLeft">&#160;</td><td class="mdescRight">This will set and update the camera calibration values. This should be called on startup for each camera and after update!  <a href="#a630f35e703c3893ae694fe0f14693216">更多...</a><br /></td></tr>
+<tr class="separator:a630f35e703c3893ae694fe0f14693216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0db03f97e5a12f5ad757f72e60f50e4"><td class="memItemLeft" align="right" valign="top">virtual Eigen::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#ad0db03f97e5a12f5ad757f72e60f50e4">undistort_f</a> (const Eigen::Vector2f &amp;uv_dist)=0</td></tr>
+<tr class="memdesc:ad0db03f97e5a12f5ad757f72e60f50e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords.  <a href="#ad0db03f97e5a12f5ad757f72e60f50e4">更多...</a><br /></td></tr>
+<tr class="separator:ad0db03f97e5a12f5ad757f72e60f50e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab910cf55ee13ca74eb4b8463ab32f1c4"><td class="memItemLeft" align="right" valign="top">Eigen::Vector2d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#ab910cf55ee13ca74eb4b8463ab32f1c4">undistort_d</a> (const Eigen::Vector2d &amp;uv_dist)</td></tr>
+<tr class="memdesc:ab910cf55ee13ca74eb4b8463ab32f1c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords.  <a href="#ab910cf55ee13ca74eb4b8463ab32f1c4">更多...</a><br /></td></tr>
+<tr class="separator:ab910cf55ee13ca74eb4b8463ab32f1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b140a7dfc1398cc7fc2f8df6c141d2"><td class="memItemLeft" align="right" valign="top">cv::Point2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a42b140a7dfc1398cc7fc2f8df6c141d2">undistort_cv</a> (const cv::Point2f &amp;uv_dist)</td></tr>
+<tr class="memdesc:a42b140a7dfc1398cc7fc2f8df6c141d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords.  <a href="#a42b140a7dfc1398cc7fc2f8df6c141d2">更多...</a><br /></td></tr>
+<tr class="separator:a42b140a7dfc1398cc7fc2f8df6c141d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00902793219107474dc21f762fb14556"><td class="memItemLeft" align="right" valign="top">virtual Eigen::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a00902793219107474dc21f762fb14556">distort_f</a> (const Eigen::Vector2f &amp;uv_norm)=0</td></tr>
+<tr class="memdesc:a00902793219107474dc21f762fb14556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a normalized uv coordinate this will distort it to the raw image plane  <a href="#a00902793219107474dc21f762fb14556">更多...</a><br /></td></tr>
+<tr class="separator:a00902793219107474dc21f762fb14556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf981dbc008c5929bf32ddde80b04caf"><td class="memItemLeft" align="right" valign="top">Eigen::Vector2d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#acf981dbc008c5929bf32ddde80b04caf">distort_d</a> (const Eigen::Vector2d &amp;uv_norm)</td></tr>
+<tr class="memdesc:acf981dbc008c5929bf32ddde80b04caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a normalized uv coordinate this will distort it to the raw image plane  <a href="#acf981dbc008c5929bf32ddde80b04caf">更多...</a><br /></td></tr>
+<tr class="separator:acf981dbc008c5929bf32ddde80b04caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04e8fb6f5b61a7c9e9b7c22cfc1b82c"><td class="memItemLeft" align="right" valign="top">cv::Point2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#ae04e8fb6f5b61a7c9e9b7c22cfc1b82c">distort_cv</a> (const cv::Point2f &amp;uv_norm)</td></tr>
+<tr class="memdesc:ae04e8fb6f5b61a7c9e9b7c22cfc1b82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a normalized uv coordinate this will distort it to the raw image plane  <a href="#ae04e8fb6f5b61a7c9e9b7c22cfc1b82c">更多...</a><br /></td></tr>
+<tr class="separator:ae04e8fb6f5b61a7c9e9b7c22cfc1b82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a498fa2b56be008d7b59bf9927f60d5db"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a498fa2b56be008d7b59bf9927f60d5db">compute_distort_jacobian</a> (const Eigen::Vector2d &amp;uv_norm, Eigen::MatrixXd &amp;H_dz_dzn, Eigen::MatrixXd &amp;H_dz_dzeta)=0</td></tr>
+<tr class="memdesc:a498fa2b56be008d7b59bf9927f60d5db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the derivative of raw distorted to normalized coordinate.  <a href="#a498fa2b56be008d7b59bf9927f60d5db">更多...</a><br /></td></tr>
+<tr class="separator:a498fa2b56be008d7b59bf9927f60d5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c2283f7db1a88b590c8058e8949150"><td class="memItemLeft" align="right" valign="top"><a id="aa8c2283f7db1a88b590c8058e8949150"></a>
+Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#aa8c2283f7db1a88b590c8058e8949150">get_value</a> ()</td></tr>
+<tr class="memdesc:aa8c2283f7db1a88b590c8058e8949150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the complete intrinsic vector <br /></td></tr>
+<tr class="separator:aa8c2283f7db1a88b590c8058e8949150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b8c0f89bf1bde983806b1dc331658c"><td class="memItemLeft" align="right" valign="top"><a id="a01b8c0f89bf1bde983806b1dc331658c"></a>
+cv::Matx33d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a01b8c0f89bf1bde983806b1dc331658c">get_K</a> ()</td></tr>
+<tr class="memdesc:a01b8c0f89bf1bde983806b1dc331658c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the camera matrix <br /></td></tr>
+<tr class="separator:a01b8c0f89bf1bde983806b1dc331658c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ee1a5a19bf68bbf7bcd55dcd56748fb"><td class="memItemLeft" align="right" valign="top"><a id="a7ee1a5a19bf68bbf7bcd55dcd56748fb"></a>
+cv::Vec4d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a7ee1a5a19bf68bbf7bcd55dcd56748fb">get_D</a> ()</td></tr>
+<tr class="memdesc:a7ee1a5a19bf68bbf7bcd55dcd56748fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the camera distortion <br /></td></tr>
+<tr class="separator:a7ee1a5a19bf68bbf7bcd55dcd56748fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eea297b76bc8acfe69946699b83d4f5"><td class="memItemLeft" align="right" valign="top"><a id="a9eea297b76bc8acfe69946699b83d4f5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a9eea297b76bc8acfe69946699b83d4f5">w</a> ()</td></tr>
+<tr class="memdesc:a9eea297b76bc8acfe69946699b83d4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the width of the camera images <br /></td></tr>
+<tr class="separator:a9eea297b76bc8acfe69946699b83d4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa159148b3d1b3789f68c61ca54084e2a"><td class="memItemLeft" align="right" valign="top"><a id="aa159148b3d1b3789f68c61ca54084e2a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#aa159148b3d1b3789f68c61ca54084e2a">h</a> ()</td></tr>
+<tr class="memdesc:aa159148b3d1b3789f68c61ca54084e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the height of the camera images <br /></td></tr>
+<tr class="separator:aa159148b3d1b3789f68c61ca54084e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a3b9b353487071aef189fc5bc313dab5d"><td class="memItemLeft" align="right" valign="top"><a id="a3b9b353487071aef189fc5bc313dab5d"></a>
+Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a3b9b353487071aef189fc5bc313dab5d">camera_values</a></td></tr>
+<tr class="memdesc:a3b9b353487071aef189fc5bc313dab5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw set of camera intrinic values (f_x &amp; f_y &amp; c_x &amp; c_y &amp; k_1 &amp; k_2 &amp; k_3 &amp; k_4) <br /></td></tr>
+<tr class="separator:a3b9b353487071aef189fc5bc313dab5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867f7b5a903cc2776227c9b16fdde162"><td class="memItemLeft" align="right" valign="top"><a id="a867f7b5a903cc2776227c9b16fdde162"></a>
+cv::Matx33d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a867f7b5a903cc2776227c9b16fdde162">camera_k_OPENCV</a></td></tr>
+<tr class="memdesc:a867f7b5a903cc2776227c9b16fdde162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Camera intrinsics in OpenCV format <br /></td></tr>
+<tr class="separator:a867f7b5a903cc2776227c9b16fdde162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5783a122e28281c1cd72a23f4bee212c"><td class="memItemLeft" align="right" valign="top"><a id="a5783a122e28281c1cd72a23f4bee212c"></a>
+cv::Vec4d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#a5783a122e28281c1cd72a23f4bee212c">camera_d_OPENCV</a></td></tr>
+<tr class="memdesc:a5783a122e28281c1cd72a23f4bee212c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Camera distortion in OpenCV format <br /></td></tr>
+<tr class="separator:a5783a122e28281c1cd72a23f4bee212c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7b9e38e6da0ee85af5f82c3bc3ea91d"><td class="memItemLeft" align="right" valign="top"><a id="aa7b9e38e6da0ee85af5f82c3bc3ea91d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#aa7b9e38e6da0ee85af5f82c3bc3ea91d">_width</a></td></tr>
+<tr class="memdesc:aa7b9e38e6da0ee85af5f82c3bc3ea91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width of the camera (raw pixels) <br /></td></tr>
+<tr class="separator:aa7b9e38e6da0ee85af5f82c3bc3ea91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d833d887ee0ca92044e72d788c54de"><td class="memItemLeft" align="right" valign="top"><a id="aa9d833d887ee0ca92044e72d788c54de"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1CamBase.html#aa9d833d887ee0ca92044e72d788c54de">_height</a></td></tr>
+<tr class="memdesc:aa9d833d887ee0ca92044e72d788c54de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the camera (raw pixels) <br /></td></tr>
+<tr class="separator:aa9d833d887ee0ca92044e72d788c54de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Base pinhole camera model class </p>
+<p>This is the base class for all our camera models. All these models are pinhole cameras, thus just have standard reprojection logic.</p>
+<p>See each base class for detailed examples on each model:</p><ul>
+<li><a class="el" href="classov__core_1_1CamEqui.html">ov_core::CamEqui</a></li>
+<li><a class="el" href="classov__core_1_1CamRadtan.html">ov_core::CamRadtan</a> </li>
+</ul>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a1f11a6e4e8324d6843b578c0dabe0f94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f11a6e4e8324d6843b578c0dabe0f94">&#9670;&nbsp;</a></span>CamBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ov_core::CamBase::CamBase </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>Width of the camera (raw pixels) </td></tr>
+    <tr><td class="paramname">height</td><td>Height of the camera (raw pixels) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a498fa2b56be008d7b59bf9927f60d5db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a498fa2b56be008d7b59bf9927f60d5db">&#9670;&nbsp;</a></span>compute_distort_jacobian()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ov_core::CamBase::compute_distort_jacobian </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector2d &amp;&#160;</td>
+          <td class="paramname"><em>uv_norm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>H_dz_dzn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>H_dz_dzeta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the derivative of raw distorted to normalized coordinate. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_norm</td><td>Normalized coordinates we wish to distort </td></tr>
+    <tr><td class="paramname">H_dz_dzn</td><td>Derivative of measurement z in respect to normalized </td></tr>
+    <tr><td class="paramname">H_dz_dzeta</td><td>Derivative of measurement z in respect to intrinic parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="classov__core_1_1CamEqui.html#a68692045d866fbd508a30aab7f3b0637">ov_core::CamEqui</a> , 以及 <a class="el" href="classov__core_1_1CamRadtan.html#a4ab5e54e89f48779a696f5b33d120dbc">ov_core::CamRadtan</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ae04e8fb6f5b61a7c9e9b7c22cfc1b82c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae04e8fb6f5b61a7c9e9b7c22cfc1b82c">&#9670;&nbsp;</a></span>distort_cv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cv::Point2f ov_core::CamBase::distort_cv </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Point2f &amp;&#160;</td>
+          <td class="paramname"><em>uv_norm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a normalized uv coordinate this will distort it to the raw image plane </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_norm</td><td>Normalized coordinates we wish to distort </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>2d vector of raw uv coordinate </dd></dl>
+
+</div>
+</div>
+<a id="acf981dbc008c5929bf32ddde80b04caf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf981dbc008c5929bf32ddde80b04caf">&#9670;&nbsp;</a></span>distort_d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::Vector2d ov_core::CamBase::distort_d </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector2d &amp;&#160;</td>
+          <td class="paramname"><em>uv_norm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a normalized uv coordinate this will distort it to the raw image plane </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_norm</td><td>Normalized coordinates we wish to distort </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>2d vector of raw uv coordinate </dd></dl>
+
+</div>
+</div>
+<a id="a00902793219107474dc21f762fb14556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00902793219107474dc21f762fb14556">&#9670;&nbsp;</a></span>distort_f()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Eigen::Vector2f ov_core::CamBase::distort_f </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector2f &amp;&#160;</td>
+          <td class="paramname"><em>uv_norm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a normalized uv coordinate this will distort it to the raw image plane </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_norm</td><td>Normalized coordinates we wish to distort </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>2d vector of raw uv coordinate </dd></dl>
+
+<p>在 <a class="el" href="classov__core_1_1CamEqui.html#ac35e3814d053f66a32644321691d8e0f">ov_core::CamEqui</a> , 以及 <a class="el" href="classov__core_1_1CamRadtan.html#a022376b5a15b827bbb7dabebc8df0508">ov_core::CamRadtan</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a630f35e703c3893ae694fe0f14693216"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630f35e703c3893ae694fe0f14693216">&#9670;&nbsp;</a></span>set_value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ov_core::CamBase::set_value </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>calib</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This will set and update the camera calibration values. This should be called on startup for each camera and after update! </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">calib</td><td>Camera calibration information (f_x &amp; f_y &amp; c_x &amp; c_y &amp; k_1 &amp; k_2 &amp; k_3 &amp; k_4) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42b140a7dfc1398cc7fc2f8df6c141d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b140a7dfc1398cc7fc2f8df6c141d2">&#9670;&nbsp;</a></span>undistort_cv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cv::Point2f ov_core::CamBase::undistort_cv </td>
+          <td>(</td>
+          <td class="paramtype">const cv::Point2f &amp;&#160;</td>
+          <td class="paramname"><em>uv_dist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_dist</td><td>Raw uv coordinate we wish to undistort </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>2d vector of normalized coordinates </dd></dl>
+
+</div>
+</div>
+<a id="ab910cf55ee13ca74eb4b8463ab32f1c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab910cf55ee13ca74eb4b8463ab32f1c4">&#9670;&nbsp;</a></span>undistort_d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::Vector2d ov_core::CamBase::undistort_d </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector2d &amp;&#160;</td>
+          <td class="paramname"><em>uv_dist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_dist</td><td>Raw uv coordinate we wish to undistort </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>2d vector of normalized coordinates </dd></dl>
+
+</div>
+</div>
+<a id="ad0db03f97e5a12f5ad757f72e60f50e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0db03f97e5a12f5ad757f72e60f50e4">&#9670;&nbsp;</a></span>undistort_f()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Eigen::Vector2f ov_core::CamBase::undistort_f </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector2f &amp;&#160;</td>
+          <td class="paramname"><em>uv_dist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uv_dist</td><td>Raw uv coordinate we wish to undistort </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>2d vector of normalized coordinates </dd></dl>
+
+<p>在 <a class="el" href="classov__core_1_1CamEqui.html#a737d6b4b634ae1da976d362158323059">ov_core::CamEqui</a> , 以及 <a class="el" href="classov__core_1_1CamRadtan.html#af02fa84ed2fdc895aaaf216184aa25ef">ov_core::CamRadtan</a> 内被实现.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

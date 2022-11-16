@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_msckf::UpdaterHelper::UpdaterHelperFeature结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__msckf.html">ov_msckf</a></li><li class="navelem"><a class="el" href="classov__msckf_1_1UpdaterHelper.html">UpdaterHelper</a></li><li class="navelem"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html">UpdaterHelperFeature</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_msckf::UpdaterHelper::UpdaterHelperFeature结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Feature object that our <a class="el" href="classov__msckf_1_1UpdaterHelper.html" title="Class that has helper functions for our updaters. ">UpdaterHelper</a> leverages, has all measurements and means  
+ <a href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UpdaterHelper_8h_source.html">UpdaterHelper.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a36ac27ddf140e21720d08dbce50b25ec"><td class="memItemLeft" align="right" valign="top"><a id="a36ac27ddf140e21720d08dbce50b25ec"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a36ac27ddf140e21720d08dbce50b25ec">featid</a></td></tr>
+<tr class="memdesc:a36ac27ddf140e21720d08dbce50b25ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique ID of this feature <br /></td></tr>
+<tr class="separator:a36ac27ddf140e21720d08dbce50b25ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8371fba9fe2bc7238d90176032892da"><td class="memItemLeft" align="right" valign="top"><a id="ac8371fba9fe2bc7238d90176032892da"></a>
+std::unordered_map&lt; size_t, std::vector&lt; Eigen::VectorXf &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#ac8371fba9fe2bc7238d90176032892da">uvs</a></td></tr>
+<tr class="memdesc:ac8371fba9fe2bc7238d90176032892da"><td class="mdescLeft">&#160;</td><td class="mdescRight">UV coordinates that this feature has been seen from (mapped by camera ID) <br /></td></tr>
+<tr class="separator:ac8371fba9fe2bc7238d90176032892da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53aeb3043a029de724b564a2bc9d2d8"><td class="memItemLeft" align="right" valign="top"><a id="af53aeb3043a029de724b564a2bc9d2d8"></a>
+std::unordered_map&lt; size_t, std::vector&lt; Eigen::VectorXf &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>uvs_norm</b></td></tr>
+<tr class="separator:af53aeb3043a029de724b564a2bc9d2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f9c2dcc7f4855e7034a0f3dcc964d9d"><td class="memItemLeft" align="right" valign="top"><a id="a7f9c2dcc7f4855e7034a0f3dcc964d9d"></a>
+std::unordered_map&lt; size_t, std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a7f9c2dcc7f4855e7034a0f3dcc964d9d">timestamps</a></td></tr>
+<tr class="memdesc:a7f9c2dcc7f4855e7034a0f3dcc964d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamps of each UV measurement (mapped by camera ID) <br /></td></tr>
+<tr class="separator:a7f9c2dcc7f4855e7034a0f3dcc964d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e055121de04496fe06631b1352d62e"><td class="memItemLeft" align="right" valign="top"><a id="a31e055121de04496fe06631b1352d62e"></a>
+<a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">ov_type::LandmarkRepresentation::Representation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a31e055121de04496fe06631b1352d62e">feat_representation</a></td></tr>
+<tr class="memdesc:a31e055121de04496fe06631b1352d62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">What representation our feature is in <br /></td></tr>
+<tr class="separator:a31e055121de04496fe06631b1352d62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a474d6bd5344818e899ba1b03c261fc9c"><td class="memItemLeft" align="right" valign="top"><a id="a474d6bd5344818e899ba1b03c261fc9c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a474d6bd5344818e899ba1b03c261fc9c">anchor_cam_id</a> = -1</td></tr>
+<tr class="memdesc:a474d6bd5344818e899ba1b03c261fc9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">What camera ID our pose is anchored in!! By default the first measurement is the anchor. <br /></td></tr>
+<tr class="separator:a474d6bd5344818e899ba1b03c261fc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41aaaf3a4c85bb1669b0d56e78c5f851"><td class="memItemLeft" align="right" valign="top"><a id="a41aaaf3a4c85bb1669b0d56e78c5f851"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a41aaaf3a4c85bb1669b0d56e78c5f851">anchor_clone_timestamp</a> = -1</td></tr>
+<tr class="memdesc:a41aaaf3a4c85bb1669b0d56e78c5f851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timestamp of anchor clone <br /></td></tr>
+<tr class="separator:a41aaaf3a4c85bb1669b0d56e78c5f851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e0ab4cc6215ee1bff8ccbe0cefcc349"><td class="memItemLeft" align="right" valign="top"><a id="a2e0ab4cc6215ee1bff8ccbe0cefcc349"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a2e0ab4cc6215ee1bff8ccbe0cefcc349">p_FinA</a></td></tr>
+<tr class="memdesc:a2e0ab4cc6215ee1bff8ccbe0cefcc349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangulated position of this feature, in the anchor frame <br /></td></tr>
+<tr class="separator:a2e0ab4cc6215ee1bff8ccbe0cefcc349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0558ee91d9c7e0929a10b5b4f4946f02"><td class="memItemLeft" align="right" valign="top"><a id="a0558ee91d9c7e0929a10b5b4f4946f02"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a0558ee91d9c7e0929a10b5b4f4946f02">p_FinA_fej</a></td></tr>
+<tr class="memdesc:a0558ee91d9c7e0929a10b5b4f4946f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangulated position of this feature, in the anchor frame first estimate <br /></td></tr>
+<tr class="separator:a0558ee91d9c7e0929a10b5b4f4946f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3969fdadac10a9873ce77468ed4b68b4"><td class="memItemLeft" align="right" valign="top"><a id="a3969fdadac10a9873ce77468ed4b68b4"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a3969fdadac10a9873ce77468ed4b68b4">p_FinG</a></td></tr>
+<tr class="memdesc:a3969fdadac10a9873ce77468ed4b68b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangulated position of this feature, in the global frame <br /></td></tr>
+<tr class="separator:a3969fdadac10a9873ce77468ed4b68b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a683f5e77e259db6e9fe564c8f68b7733"><td class="memItemLeft" align="right" valign="top"><a id="a683f5e77e259db6e9fe564c8f68b7733"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature.html#a683f5e77e259db6e9fe564c8f68b7733">p_FinG_fej</a></td></tr>
+<tr class="memdesc:a683f5e77e259db6e9fe564c8f68b7733"><td class="mdescLeft">&#160;</td><td class="mdescRight">Triangulated position of this feature, in the global frame first estimate <br /></td></tr>
+<tr class="separator:a683f5e77e259db6e9fe564c8f68b7733"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Feature object that our <a class="el" href="classov__msckf_1_1UpdaterHelper.html" title="Class that has helper functions for our updaters. ">UpdaterHelper</a> leverages, has all measurements and means </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

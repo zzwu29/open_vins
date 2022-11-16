@@ -1,0 +1,189 @@
+\hypertarget{classov__core_1_1CpiBase}{}\section{ov\+\_\+core\+:\+:Cpi\+Base Class Reference}
+\label{classov__core_1_1CpiBase}\index{ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}}
+
+
+Base class for continuous preintegration integrators.  
+
+
+
+
+{\ttfamily \#include $<$Cpi\+Base.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1CpiBase_a362f384da35801365d15d53dfe7d3116}{Cpi\+Base} (double sigma\+\_\+w, double sigma\+\_\+wb, double sigma\+\_\+a, double sigma\+\_\+ab, bool imu\+\_\+avg\+\_\+=false)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1CpiBase_a32c11e3e61dc8a524bf48a18504b5417}{set\+Linearization\+Points} (Eigen\+::\+Matrix$<$ double, 3, 1 $>$ b\+\_\+w\+\_\+lin\+\_\+, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ b\+\_\+a\+\_\+lin\+\_\+, Eigen\+::\+Matrix$<$ double, 4, 1 $>$ q\+\_\+k\+\_\+lin\+\_\+=Eigen\+::\+Matrix$<$ double, 4, 1 $>$\+::Zero(), Eigen\+::\+Matrix$<$ double, 3, 1 $>$ grav\+\_\+=Eigen\+::\+Matrix$<$ double, 3, 1 $>$\+::Zero())
+\begin{DoxyCompactList}\small\item\em Set linearization points of the integration. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classov__core_1_1CpiBase_af3b192b968d702b484a672a5557bea13}{feed\+\_\+\+I\+MU} (double t\+\_\+0, double t\+\_\+1, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ w\+\_\+m\+\_\+0, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ a\+\_\+m\+\_\+0, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ w\+\_\+m\+\_\+1=Eigen\+::\+Matrix$<$ double, 3, 1 $>$\+::Zero(), Eigen\+::\+Matrix$<$ double, 3, 1 $>$ a\+\_\+m\+\_\+1=Eigen\+::\+Matrix$<$ double, 3, 1 $>$\+::Zero())=0
+\begin{DoxyCompactList}\small\item\em Main function that will sequentially compute the preintegration measurement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a44b409fc4abd74901b30813a0aeef868}\label{classov__core_1_1CpiBase_a44b409fc4abd74901b30813a0aeef868}} 
+bool {\bfseries imu\+\_\+avg} = false
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a0c28fb509ed55ef7ba4957735490a0e7}\label{classov__core_1_1CpiBase_a0c28fb509ed55ef7ba4957735490a0e7}} 
+double \hyperlink{classov__core_1_1CpiBase_a0c28fb509ed55ef7ba4957735490a0e7}{DT} = 0
+\begin{DoxyCompactList}\small\item\em measurement integration time \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_adb27448c25850a08a47d02184cfee45e}\label{classov__core_1_1CpiBase_adb27448c25850a08a47d02184cfee45e}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__core_1_1CpiBase_adb27448c25850a08a47d02184cfee45e}{alpha\+\_\+tau} = Eigen\+::\+Matrix$<$double, 3, 1$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em alpha measurement mean \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a948805010b85aab837fd7414ca8dc8c5}\label{classov__core_1_1CpiBase_a948805010b85aab837fd7414ca8dc8c5}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__core_1_1CpiBase_a948805010b85aab837fd7414ca8dc8c5}{beta\+\_\+tau} = Eigen\+::\+Matrix$<$double, 3, 1$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em beta measurement mean \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a9fdb4dd0a3c7c68f39464b26a71ab1cf}\label{classov__core_1_1CpiBase_a9fdb4dd0a3c7c68f39464b26a71ab1cf}} 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{classov__core_1_1CpiBase_a9fdb4dd0a3c7c68f39464b26a71ab1cf}{q\+\_\+k2tau}
+\begin{DoxyCompactList}\small\item\em orientation measurement mean \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a4ac6384285daf011340fa910df1911c7}\label{classov__core_1_1CpiBase_a4ac6384285daf011340fa910df1911c7}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__core_1_1CpiBase_a4ac6384285daf011340fa910df1911c7}{R\+\_\+k2tau} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Identity()
+\begin{DoxyCompactList}\small\item\em orientation measurement mean \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a0b7922b1990897d67fedc01ee8a36f29}\label{classov__core_1_1CpiBase_a0b7922b1990897d67fedc01ee8a36f29}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__core_1_1CpiBase_a0b7922b1990897d67fedc01ee8a36f29}{J\+\_\+q} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em orientation Jacobian wrt b\+\_\+w \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a2c4b611daa13fd5b59f6b21474883058}\label{classov__core_1_1CpiBase_a2c4b611daa13fd5b59f6b21474883058}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__core_1_1CpiBase_a2c4b611daa13fd5b59f6b21474883058}{J\+\_\+a} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em alpha Jacobian wrt b\+\_\+w \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_ab8df9746f5b4628a60f98f8f949a7fa4}\label{classov__core_1_1CpiBase_ab8df9746f5b4628a60f98f8f949a7fa4}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__core_1_1CpiBase_ab8df9746f5b4628a60f98f8f949a7fa4}{J\+\_\+b} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em beta Jacobian wrt b\+\_\+w \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a9980c4eabf4fb2d045297138424dc02c}\label{classov__core_1_1CpiBase_a9980c4eabf4fb2d045297138424dc02c}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__core_1_1CpiBase_a9980c4eabf4fb2d045297138424dc02c}{H\+\_\+a} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em alpha Jacobian wrt b\+\_\+a \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_aedaa626d4f2f506db3fe4a5222fede5a}\label{classov__core_1_1CpiBase_aedaa626d4f2f506db3fe4a5222fede5a}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__core_1_1CpiBase_aedaa626d4f2f506db3fe4a5222fede5a}{H\+\_\+b} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em beta Jacobian wrt b\+\_\+a \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a36b8b84f53f08b62b55485ff06829f64}\label{classov__core_1_1CpiBase_a36b8b84f53f08b62b55485ff06829f64}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__core_1_1CpiBase_a36b8b84f53f08b62b55485ff06829f64}{b\+\_\+w\+\_\+lin}
+\begin{DoxyCompactList}\small\item\em b\+\_\+w linearization point (gyroscope) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a013295bb1bb30db58c752c6c802cc08f}\label{classov__core_1_1CpiBase_a013295bb1bb30db58c752c6c802cc08f}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__core_1_1CpiBase_a013295bb1bb30db58c752c6c802cc08f}{b\+\_\+a\+\_\+lin}
+\begin{DoxyCompactList}\small\item\em b\+\_\+a linearization point (accelerometer) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a8dedbf02f3a04d5cd66f88b9354ccfd1}\label{classov__core_1_1CpiBase_a8dedbf02f3a04d5cd66f88b9354ccfd1}} 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{classov__core_1_1CpiBase_a8dedbf02f3a04d5cd66f88b9354ccfd1}{q\+\_\+k\+\_\+lin}
+\begin{DoxyCompactList}\small\item\em q\+\_\+k linearization point (only model 2 uses) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a43580d4c493d8b44a1c8cab9ad9b8a42}\label{classov__core_1_1CpiBase_a43580d4c493d8b44a1c8cab9ad9b8a42}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__core_1_1CpiBase_a43580d4c493d8b44a1c8cab9ad9b8a42}{grav} = Eigen\+::\+Matrix$<$double, 3, 1$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em Global gravity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a8e34ef29a4679c8a47c7dacd1bb40c23}\label{classov__core_1_1CpiBase_a8e34ef29a4679c8a47c7dacd1bb40c23}} 
+Eigen\+::\+Matrix$<$ double, 12, 12 $>$ \hyperlink{classov__core_1_1CpiBase_a8e34ef29a4679c8a47c7dacd1bb40c23}{Q\+\_\+c} = Eigen\+::\+Matrix$<$double, 12, 12$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em Our continous-\/time measurement noise matrix (computed from contructor noise values) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a67e00ae8c7b77288577a1251de52123a}\label{classov__core_1_1CpiBase_a67e00ae8c7b77288577a1251de52123a}} 
+Eigen\+::\+Matrix$<$ double, 15, 15 $>$ \hyperlink{classov__core_1_1CpiBase_a67e00ae8c7b77288577a1251de52123a}{P\+\_\+meas} = Eigen\+::\+Matrix$<$double, 15, 15$>$\+::Zero()
+\begin{DoxyCompactList}\small\item\em Our final measurement covariance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_ad266689bc9d3bd8b4f2b245ad58b5246}\label{classov__core_1_1CpiBase_ad266689bc9d3bd8b4f2b245ad58b5246}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries eye3} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Identity()
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a486971a8b5022fdd22dcd93d73a44c8c}\label{classov__core_1_1CpiBase_a486971a8b5022fdd22dcd93d73a44c8c}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ {\bfseries e\+\_\+1}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_adce734353b7a1f32da8c96014304cfb7}\label{classov__core_1_1CpiBase_adce734353b7a1f32da8c96014304cfb7}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ {\bfseries e\+\_\+2}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a99d311f75307cdbc40e535beecb0842b}\label{classov__core_1_1CpiBase_a99d311f75307cdbc40e535beecb0842b}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ {\bfseries e\+\_\+3}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a37d297cce43fb6cec20a2ee3ee8a7d51}\label{classov__core_1_1CpiBase_a37d297cce43fb6cec20a2ee3ee8a7d51}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries e\+\_\+1x}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_adf133215dc6e35fdeec0c6d448aafc94}\label{classov__core_1_1CpiBase_adf133215dc6e35fdeec0c6d448aafc94}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries e\+\_\+2x}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a6f34ad2753e4e7b1abc0ef7f4bdca2b5}\label{classov__core_1_1CpiBase_a6f34ad2753e4e7b1abc0ef7f4bdca2b5}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries e\+\_\+3x}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for continuous preintegration integrators. 
+
+This is the base class that both continuous-\/time preintegrators extend. Please take a look at the derived classes \hyperlink{classov__core_1_1CpiV1}{Cpi\+V1} and \hyperlink{classov__core_1_1CpiV2}{Cpi\+V2} for the actual implementation. Please see the following publication for details on the theory \cite{Eckenhoff2019IJRR} \+: \begin{quote}
+Continuous Preintegration Theory for Graph-\/based Visual-\/\+Inertial Navigation Authors\+: Kevin Eckenhoff, Patrick Geneva, and Guoquan Huang \href{http://udel.edu/~ghuang/papers/tr_cpi.pdf}{\tt http\+://udel.\+edu/$\sim$ghuang/papers/tr\+\_\+cpi.\+pdf} \end{quote}
+
+
+The steps to use this preintegration class are as follows\+:
+\begin{DoxyEnumerate}
+\item call \hyperlink{classov__core_1_1CpiBase_a32c11e3e61dc8a524bf48a18504b5417}{set\+Linearization\+Points()} to set the bias/orientation linearization point
+\item call \hyperlink{classov__core_1_1CpiBase_af3b192b968d702b484a672a5557bea13}{feed\+\_\+\+I\+M\+U()} will all I\+MU measurements you want to precompound over
+\item access public varibles, to get means, Jacobians, and measurement covariance 
+\end{DoxyEnumerate}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a362f384da35801365d15d53dfe7d3116}\label{classov__core_1_1CpiBase_a362f384da35801365d15d53dfe7d3116}} 
+\index{ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}!Cpi\+Base@{Cpi\+Base}}
+\index{Cpi\+Base@{Cpi\+Base}!ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}}
+\subsubsection{\texorpdfstring{Cpi\+Base()}{CpiBase()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Cpi\+Base\+::\+Cpi\+Base (\begin{DoxyParamCaption}\item[{double}]{sigma\+\_\+w,  }\item[{double}]{sigma\+\_\+wb,  }\item[{double}]{sigma\+\_\+a,  }\item[{double}]{sigma\+\_\+ab,  }\item[{bool}]{imu\+\_\+avg\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sigma\+\_\+w} & gyroscope white noise density (rad/s/sqrt(hz)) \\
+\hline
+{\em sigma\+\_\+wb} & gyroscope random walk (rad/s$^\wedge$2/sqrt(hz)) \\
+\hline
+{\em sigma\+\_\+a} & accelerometer white noise density (m/s$^\wedge$2/sqrt(hz)) \\
+\hline
+{\em sigma\+\_\+ab} & accelerometer random walk (m/s$^\wedge$3/sqrt(hz)) \\
+\hline
+{\em imu\+\_\+avg\+\_\+} & if we want to average the imu measurements (I\+J\+RR paper did not do this) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1CpiBase_af3b192b968d702b484a672a5557bea13}\label{classov__core_1_1CpiBase_af3b192b968d702b484a672a5557bea13}} 
+\index{ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}!feed\+\_\+\+I\+MU@{feed\+\_\+\+I\+MU}}
+\index{feed\+\_\+\+I\+MU@{feed\+\_\+\+I\+MU}!ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}}
+\subsubsection{\texorpdfstring{feed\+\_\+\+I\+M\+U()}{feed\_IMU()}}
+{\footnotesize\ttfamily virtual void ov\+\_\+core\+::\+Cpi\+Base\+::feed\+\_\+\+I\+MU (\begin{DoxyParamCaption}\item[{double}]{t\+\_\+0,  }\item[{double}]{t\+\_\+1,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{w\+\_\+m\+\_\+0,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{a\+\_\+m\+\_\+0,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{w\+\_\+m\+\_\+1 = {\ttfamily Eigen\+:\+:Matrix$<$~double,~3,~1~$>$\+:\+:Zero()},  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{a\+\_\+m\+\_\+1 = {\ttfamily Eigen\+:\+:Matrix$<$~double,~3,~1~$>$\+:\+:Zero()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Main function that will sequentially compute the preintegration measurement. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em t\+\_\+0} & first I\+MU timestamp \\
+\hline
+\mbox{\tt in}  & {\em t\+\_\+1} & second I\+MU timestamp \\
+\hline
+\mbox{\tt in}  & {\em w\+\_\+m\+\_\+0} & first imu gyroscope measurement \\
+\hline
+\mbox{\tt in}  & {\em a\+\_\+m\+\_\+0} & first imu acceleration measurement \\
+\hline
+\mbox{\tt in}  & {\em w\+\_\+m\+\_\+1} & second imu gyroscope measurement \\
+\hline
+\mbox{\tt in}  & {\em a\+\_\+m\+\_\+1} & second imu acceleration measurement\\
+\hline
+\end{DoxyParams}
+This new I\+MU messages and will precompound our measurements, jacobians, and measurement covariance. Please see both \hyperlink{classov__core_1_1CpiV1}{Cpi\+V1} and \hyperlink{classov__core_1_1CpiV2}{Cpi\+V2} classes for implementation details on how this works. 
+
+Implemented in \hyperlink{classov__core_1_1CpiV2_a2e526d34b80061293a922fefa3a858a1}{ov\+\_\+core\+::\+Cpi\+V2}, and \hyperlink{classov__core_1_1CpiV1_aafd93ac727dc176a9d5ca4b6d09d0cd2}{ov\+\_\+core\+::\+Cpi\+V1}.
+
+\mbox{\Hypertarget{classov__core_1_1CpiBase_a32c11e3e61dc8a524bf48a18504b5417}\label{classov__core_1_1CpiBase_a32c11e3e61dc8a524bf48a18504b5417}} 
+\index{ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}!set\+Linearization\+Points@{set\+Linearization\+Points}}
+\index{set\+Linearization\+Points@{set\+Linearization\+Points}!ov\+\_\+core\+::\+Cpi\+Base@{ov\+\_\+core\+::\+Cpi\+Base}}
+\subsubsection{\texorpdfstring{set\+Linearization\+Points()}{setLinearizationPoints()}}
+{\footnotesize\ttfamily void ov\+\_\+core\+::\+Cpi\+Base\+::set\+Linearization\+Points (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{b\+\_\+w\+\_\+lin\+\_\+,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{b\+\_\+a\+\_\+lin\+\_\+,  }\item[{Eigen\+::\+Matrix$<$ double, 4, 1 $>$}]{q\+\_\+k\+\_\+lin\+\_\+ = {\ttfamily Eigen\+:\+:Matrix$<$double,~4,~1$>$\+:\+:Zero()},  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{grav\+\_\+ = {\ttfamily Eigen\+:\+:Matrix$<$double,~3,~1$>$\+:\+:Zero()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set linearization points of the integration. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em b\+\_\+w\+\_\+lin\+\_\+} & gyroscope bias linearization point \\
+\hline
+\mbox{\tt in}  & {\em b\+\_\+a\+\_\+lin\+\_\+} & accelerometer bias linearization point \\
+\hline
+\mbox{\tt in}  & {\em q\+\_\+k\+\_\+lin\+\_\+} & orientation linearization point (only model 2 uses) \\
+\hline
+\mbox{\tt in}  & {\em grav\+\_\+} & global gravity at the current timestep\\
+\hline
+\end{DoxyParams}
+This function sets the linearization points we are to preintegrate about. For model 2 we will also pass the q\+\_\+\+GtoK and current gravity estimate. 

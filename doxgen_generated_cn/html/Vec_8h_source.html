@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core/src/types/Vec.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f846aec873b969403c43c9b6accb9e26.html">ov_core</a></li><li class="navelem"><a class="el" href="dir_73fb0fc6664f16923a3e82fd05d842f5.html">src</a></li><li class="navelem"><a class="el" href="dir_fc24ca0e911a1453a73970d38f55ed70.html">types</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Vec.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * OpenVINS: An Open Platform for Visual-Inertial Research</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2018-2022 Patrick Geneva</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Copyright (C) 2018-2022 Guoquan Huang</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Copyright (C) 2018-2022 OpenVINS Contributors</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Copyright (C) 2018-2019 Kevin Eckenhoff</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * it under the terms of the GNU General Public License as published by</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * (at your option) any later version.</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * This program is distributed in the hope that it will be useful,</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * GNU General Public License for more details.</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * You should have received a copy of the GNU General Public License</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef OV_TYPE_TYPE_VEC_H</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define OV_TYPE_TYPE_VEC_H</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;Type.h&quot;</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceov__type.html">ov_type</a> {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classov__type_1_1Vec.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classov__type_1_1Vec.html">Vec</a> : <span class="keyword">public</span> <a class="code" href="classov__type_1_1Type.html">Type</a> {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classov__type_1_1Vec.html#aae80ad8a2e9580f20ee90e126f36bcb0">   39</a></span>&#160;  <a class="code" href="classov__type_1_1Vec.html#aae80ad8a2e9580f20ee90e126f36bcb0">Vec</a>(<span class="keywordtype">int</span> dim) : <a class="code" href="classov__type_1_1Type.html">Type</a>(dim) {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classov__type_1_1Type.html#a40afb4c94c3d11db860b98c186e22312">_value</a> = Eigen::VectorXd::Zero(dim);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classov__type_1_1Type.html#a9e035fed9c1dc0e975f7e41c2a95695f">_fej</a> = Eigen::VectorXd::Zero(dim);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  ~<a class="code" href="classov__type_1_1Vec.html">Vec</a>() {}</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classov__type_1_1Vec.html#a7d66e9414946807c9469de0a1038256d">   50</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classov__type_1_1Vec.html#a7d66e9414946807c9469de0a1038256d">update</a>(<span class="keyword">const</span> Eigen::VectorXd &amp;dx)<span class="keyword"> override </span>{</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    assert(dx.rows() == <a class="code" href="classov__type_1_1Type.html#ae7450adb49403a591013e1719ab1e46e">_size</a>);</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classov__type_1_1Type.html#a81c73f0b6c10f2550a487019a59796a9">set_value</a>(<a class="code" href="classov__type_1_1Type.html#a40afb4c94c3d11db860b98c186e22312">_value</a> + dx);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  }</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classov__type_1_1Vec.html#a31a73978bc3c8dc0f0df1a1abc83664f">   58</a></span>&#160;  std::shared_ptr&lt;Type&gt; <a class="code" href="classov__type_1_1Vec.html#a31a73978bc3c8dc0f0df1a1abc83664f">clone</a>()<span class="keyword"> override </span>{</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">auto</span> Clone = std::shared_ptr&lt;Type&gt;(<span class="keyword">new</span> <a class="code" href="classov__type_1_1Vec.html#aae80ad8a2e9580f20ee90e126f36bcb0">Vec</a>(<a class="code" href="classov__type_1_1Type.html#ae7450adb49403a591013e1719ab1e46e">_size</a>));</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    Clone-&gt;set_value(<a class="code" href="classov__type_1_1Type.html#a578c16c3fe70fd4a0b33c4c39c777b33">value</a>());</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    Clone-&gt;set_fej(<a class="code" href="classov__type_1_1Type.html#a85a032ffd5c9a04bf7f582f31cdb4bb2">fej</a>());</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> Clone;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace ov_type</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif // OV_TYPE_TYPE_VEC_H</span></div><div class="ttc" id="classov__type_1_1Type_html_ae7450adb49403a591013e1719ab1e46e"><div class="ttname"><a href="classov__type_1_1Type.html#ae7450adb49403a591013e1719ab1e46e">ov_type::Type::_size</a></div><div class="ttdeci">int _size</div><div class="ttdoc">Dimension of error state </div><div class="ttdef"><b>Definition:</b> Type.h:132</div></div>
+<div class="ttc" id="classov__type_1_1Type_html_a81c73f0b6c10f2550a487019a59796a9"><div class="ttname"><a href="classov__type_1_1Type.html#a81c73f0b6c10f2550a487019a59796a9">ov_type::Type::set_value</a></div><div class="ttdeci">virtual void set_value(const Eigen::MatrixXd &amp;new_value)</div><div class="ttdoc">Overwrite value of state&amp;#39;s estimate </div><div class="ttdef"><b>Definition:</b> Type.h:90</div></div>
+<div class="ttc" id="classov__type_1_1Vec_html_a7d66e9414946807c9469de0a1038256d"><div class="ttname"><a href="classov__type_1_1Vec.html#a7d66e9414946807c9469de0a1038256d">ov_type::Vec::update</a></div><div class="ttdeci">void update(const Eigen::VectorXd &amp;dx) override</div><div class="ttdoc">Implements the update operation through standard vector addition </div><div class="ttdef"><b>Definition:</b> Vec.h:50</div></div>
+<div class="ttc" id="classov__type_1_1Type_html_a9e035fed9c1dc0e975f7e41c2a95695f"><div class="ttname"><a href="classov__type_1_1Type.html#a9e035fed9c1dc0e975f7e41c2a95695f">ov_type::Type::_fej</a></div><div class="ttdeci">Eigen::MatrixXd _fej</div><div class="ttdoc">First-estimate </div><div class="ttdef"><b>Definition:</b> Type.h:123</div></div>
+<div class="ttc" id="namespaceov__type_html"><div class="ttname"><a href="namespaceov__type.html">ov_type</a></div><div class="ttdoc">Dynamic type system types </div></div>
+<div class="ttc" id="classov__type_1_1Vec_html_a31a73978bc3c8dc0f0df1a1abc83664f"><div class="ttname"><a href="classov__type_1_1Vec.html#a31a73978bc3c8dc0f0df1a1abc83664f">ov_type::Vec::clone</a></div><div class="ttdeci">std::shared_ptr&lt; Type &gt; clone() override</div><div class="ttdoc">Performs all the cloning </div><div class="ttdef"><b>Definition:</b> Vec.h:58</div></div>
+<div class="ttc" id="classov__type_1_1Type_html_a578c16c3fe70fd4a0b33c4c39c777b33"><div class="ttname"><a href="classov__type_1_1Type.html#a578c16c3fe70fd4a0b33c4c39c777b33">ov_type::Type::value</a></div><div class="ttdeci">virtual const Eigen::MatrixXd &amp; value() const</div><div class="ttdoc">Access variable&amp;#39;s estimate </div><div class="ttdef"><b>Definition:</b> Type.h:79</div></div>
+<div class="ttc" id="classov__type_1_1Vec_html_aae80ad8a2e9580f20ee90e126f36bcb0"><div class="ttname"><a href="classov__type_1_1Vec.html#aae80ad8a2e9580f20ee90e126f36bcb0">ov_type::Vec::Vec</a></div><div class="ttdeci">Vec(int dim)</div><div class="ttdoc">Default constructor for Vec </div><div class="ttdef"><b>Definition:</b> Vec.h:39</div></div>
+<div class="ttc" id="classov__type_1_1Type_html_a85a032ffd5c9a04bf7f582f31cdb4bb2"><div class="ttname"><a href="classov__type_1_1Type.html#a85a032ffd5c9a04bf7f582f31cdb4bb2">ov_type::Type::fej</a></div><div class="ttdeci">virtual const Eigen::MatrixXd &amp; fej() const</div><div class="ttdoc">Access variable&amp;#39;s first-estimate </div><div class="ttdef"><b>Definition:</b> Type.h:84</div></div>
+<div class="ttc" id="classov__type_1_1Type_html"><div class="ttname"><a href="classov__type_1_1Type.html">ov_type::Type</a></div><div class="ttdoc">Base class for estimated variables. </div><div class="ttdef"><b>Definition:</b> Type.h:37</div></div>
+<div class="ttc" id="classov__type_1_1Type_html_a40afb4c94c3d11db860b98c186e22312"><div class="ttname"><a href="classov__type_1_1Type.html#a40afb4c94c3d11db860b98c186e22312">ov_type::Type::_value</a></div><div class="ttdeci">Eigen::MatrixXd _value</div><div class="ttdoc">Current best estimate </div><div class="ttdef"><b>Definition:</b> Type.h:126</div></div>
+<div class="ttc" id="classov__type_1_1Vec_html"><div class="ttname"><a href="classov__type_1_1Vec.html">ov_type::Vec</a></div><div class="ttdoc">Derived Type class that implements vector variables </div><div class="ttdef"><b>Definition:</b> Vec.h:32</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

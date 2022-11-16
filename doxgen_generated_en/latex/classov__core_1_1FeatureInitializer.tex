@@ -1,0 +1,166 @@
+\hypertarget{classov__core_1_1FeatureInitializer}{}\section{ov\+\_\+core\+:\+:Feature\+Initializer Class Reference}
+\label{classov__core_1_1FeatureInitializer}\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+
+
+Class that triangulates feature.  
+
+
+
+
+{\ttfamily \#include $<$Feature\+Initializer.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose}
+\begin{DoxyCompactList}\small\item\em Structure which stores pose estimates for use in triangulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1FeatureInitializer_afa2efde962719a502507044379644e63}{Feature\+Initializer} (\hyperlink{structov__core_1_1FeatureInitializerOptions}{Feature\+Initializer\+Options} \&options)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1FeatureInitializer_a86e8f87f677689e6588516f8d08086d7}{single\+\_\+triangulation} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$ feat, std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&clones\+C\+AM)
+\begin{DoxyCompactList}\small\item\em Uses a linear triangulation to get initial estimate for the feature. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1FeatureInitializer_a97e8070e331293368ed1fedd62458d5e}{single\+\_\+triangulation\+\_\+1d} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$ feat, std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&clones\+C\+AM)
+\begin{DoxyCompactList}\small\item\em Uses a linear triangulation to get initial estimate for the feature, treating the anchor observation as a true bearing. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__core_1_1FeatureInitializer_a27eb3af3c4e22473e795966eff800599}{single\+\_\+gaussnewton} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$ feat, std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&clones\+C\+AM)
+\begin{DoxyCompactList}\small\item\em Uses a nonlinear triangulation to refine initial linear estimate of the feature. \end{DoxyCompactList}\item 
+const \hyperlink{structov__core_1_1FeatureInitializerOptions}{Feature\+Initializer\+Options} \hyperlink{classov__core_1_1FeatureInitializer_ae12109c70cee2ce4d11c2a1b345654b8}{config} ()
+\begin{DoxyCompactList}\small\item\em Gets the current configuration of the feature initializer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classov__core_1_1FeatureInitializer_a2b851be642683766f649a751452407bf}{compute\+\_\+error} (std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&clones\+C\+AM, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$ feat, double alpha, double beta, double rho)
+\begin{DoxyCompactList}\small\item\em Helper function for the gauss newton method that computes error of the given estimate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_a1e9a923db5dc5ced439d0516ff884964}\label{classov__core_1_1FeatureInitializer_a1e9a923db5dc5ced439d0516ff884964}} 
+\hyperlink{structov__core_1_1FeatureInitializerOptions}{Feature\+Initializer\+Options} \hyperlink{classov__core_1_1FeatureInitializer_a1e9a923db5dc5ced439d0516ff884964}{\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Contains options for the initializer process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that triangulates feature. 
+
+This class has the functions needed to triangulate and then refine a given 3D feature. As in the standard M\+S\+C\+KF, we know the clones of the camera from propagation and past updates. Thus, we just need to triangulate a feature in 3D with the known poses and then refine it. One should first call the \hyperlink{classov__core_1_1FeatureInitializer_a86e8f87f677689e6588516f8d08086d7}{single\+\_\+triangulation()} function afterwhich \hyperlink{classov__core_1_1FeatureInitializer_a27eb3af3c4e22473e795966eff800599}{single\+\_\+gaussnewton()} allows for refinement. Please see the \hyperlink{update-featinit}{Feature Triangulation} page for detailed derivations. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_afa2efde962719a502507044379644e63}\label{classov__core_1_1FeatureInitializer_afa2efde962719a502507044379644e63}} 
+\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}!Feature\+Initializer@{Feature\+Initializer}}
+\index{Feature\+Initializer@{Feature\+Initializer}!ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+\subsubsection{\texorpdfstring{Feature\+Initializer()}{FeatureInitializer()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Feature\+Initializer\+::\+Feature\+Initializer (\begin{DoxyParamCaption}\item[{\hyperlink{structov__core_1_1FeatureInitializerOptions}{Feature\+Initializer\+Options} \&}]{options }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Options for the initializer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_a2b851be642683766f649a751452407bf}\label{classov__core_1_1FeatureInitializer_a2b851be642683766f649a751452407bf}} 
+\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}!compute\+\_\+error@{compute\+\_\+error}}
+\index{compute\+\_\+error@{compute\+\_\+error}!ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+\subsubsection{\texorpdfstring{compute\+\_\+error()}{compute\_error()}}
+{\footnotesize\ttfamily double Feature\+Initializer\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&}]{clones\+C\+AM,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$}]{feat,  }\item[{double}]{alpha,  }\item[{double}]{beta,  }\item[{double}]{rho }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Helper function for the gauss newton method that computes error of the given estimate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clones\+C\+AM} & Map between camera ID to map of timestamp to camera pose estimate \\
+\hline
+{\em feat} & Pointer to the feature \\
+\hline
+{\em alpha} & x/z in anchor \\
+\hline
+{\em beta} & y/z in anchor \\
+\hline
+{\em rho} & 1/z inverse depth \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_ae12109c70cee2ce4d11c2a1b345654b8}\label{classov__core_1_1FeatureInitializer_ae12109c70cee2ce4d11c2a1b345654b8}} 
+\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}!config@{config}}
+\index{config@{config}!ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+\subsubsection{\texorpdfstring{config()}{config()}}
+{\footnotesize\ttfamily const \hyperlink{structov__core_1_1FeatureInitializerOptions}{Feature\+Initializer\+Options} ov\+\_\+core\+::\+Feature\+Initializer\+::config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current configuration of the feature initializer. 
+
+\begin{DoxyReturn}{Returns}
+Const feature initializer config 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_a27eb3af3c4e22473e795966eff800599}\label{classov__core_1_1FeatureInitializer_a27eb3af3c4e22473e795966eff800599}} 
+\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}!single\+\_\+gaussnewton@{single\+\_\+gaussnewton}}
+\index{single\+\_\+gaussnewton@{single\+\_\+gaussnewton}!ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+\subsubsection{\texorpdfstring{single\+\_\+gaussnewton()}{single\_gaussnewton()}}
+{\footnotesize\ttfamily bool Feature\+Initializer\+::single\+\_\+gaussnewton (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$}]{feat,  }\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&}]{clones\+C\+AM }\end{DoxyParamCaption})}
+
+
+
+Uses a nonlinear triangulation to refine initial linear estimate of the feature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feat} & Pointer to feature \\
+\hline
+{\em clones\+C\+AM} & Map between camera ID to map of timestamp to camera pose estimate (rotation from global to camera, position of camera in global frame) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns false if it fails to be optimize (based on the thresholds) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_a86e8f87f677689e6588516f8d08086d7}\label{classov__core_1_1FeatureInitializer_a86e8f87f677689e6588516f8d08086d7}} 
+\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}!single\+\_\+triangulation@{single\+\_\+triangulation}}
+\index{single\+\_\+triangulation@{single\+\_\+triangulation}!ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+\subsubsection{\texorpdfstring{single\+\_\+triangulation()}{single\_triangulation()}}
+{\footnotesize\ttfamily bool Feature\+Initializer\+::single\+\_\+triangulation (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$}]{feat,  }\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&}]{clones\+C\+AM }\end{DoxyParamCaption})}
+
+
+
+Uses a linear triangulation to get initial estimate for the feature. 
+
+The derivations for this method can be found in the \hyperlink{update-featinit_featinit-linear}{3D Cartesian Triangulation} documentation page.
+
+
+\begin{DoxyParams}{Parameters}
+{\em feat} & Pointer to feature \\
+\hline
+{\em clones\+C\+AM} & Map between camera ID to map of timestamp to camera pose estimate (rotation from global to camera, position of camera in global frame) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns false if it fails to triangulate (based on the thresholds) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__core_1_1FeatureInitializer_a97e8070e331293368ed1fedd62458d5e}\label{classov__core_1_1FeatureInitializer_a97e8070e331293368ed1fedd62458d5e}} 
+\index{ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}!single\+\_\+triangulation\+\_\+1d@{single\+\_\+triangulation\+\_\+1d}}
+\index{single\+\_\+triangulation\+\_\+1d@{single\+\_\+triangulation\+\_\+1d}!ov\+\_\+core\+::\+Feature\+Initializer@{ov\+\_\+core\+::\+Feature\+Initializer}}
+\subsubsection{\texorpdfstring{single\+\_\+triangulation\+\_\+1d()}{single\_triangulation\_1d()}}
+{\footnotesize\ttfamily bool Feature\+Initializer\+::single\+\_\+triangulation\+\_\+1d (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{Feature} $>$}]{feat,  }\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::unordered\+\_\+map$<$ double, \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose}{Clone\+Pose} $>$$>$ \&}]{clones\+C\+AM }\end{DoxyParamCaption})}
+
+
+
+Uses a linear triangulation to get initial estimate for the feature, treating the anchor observation as a true bearing. 
+
+The derivations for this method can be found in the \hyperlink{update-featinit_featinit-linear-1d}{1D Depth Triangulation} documentation page. This function should be used if you want speed, or know your anchor bearing is reasonably accurate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em feat} & Pointer to feature \\
+\hline
+{\em clones\+C\+AM} & Map between camera ID to map of timestamp to camera pose estimate (rotation from global to camera, position of camera in global frame) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns false if it fails to triangulate (based on the thresholds) 
+\end{DoxyReturn}

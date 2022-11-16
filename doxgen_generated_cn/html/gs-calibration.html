@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: Sensor Calibration</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="getting-started.html">Getting Started</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Sensor Calibration </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="gs-visual-inertial-sensor"></a>
+Visual-Inertial Sensors</h1>
+<p>One may ask why use a visual-inertial sensor? The main reason is because of the complimentary nature of the two different sensing modalities. The camera provides high density external measurements of the environment, while the IMU measures internal ego-motion of the sensor platform. The IMU is crucial in providing robustness to the estimator while also providing system scale in the case of a monocular camera.</p>
+<p>However, there are some challenges when leveraging the IMU in estimation. An IMU requires estimating of additional bias terms and requires highly accurate calibration between the camera and IMU. Additionally small errors in the relative timestamps between the sensors can also degrade performance very quickly in dynamic trajectories. Within this <em>OpenVINS</em> project we address these by advocating the <em>online</em> estimation of these extrinsic and time offset parameters between the cameras and IMU.</p>
+<div class="image">
+<img src="rig_hydra_old.jpg" alt="rig_hydra_old.jpg" width="60%"/>
+</div>
+<h1><a class="anchor" id="gs-calib-cam-static"></a>
+Camera Intrinsic Calibration (Offline)</h1>
+<p>The first task is to calibrate the camera intrinsic values such as the focal length, camera center, and distortion coefficients. Our group often uses the <a href="https://github.com/ethz-asl/kalibr/">Kalibr</a> <a class="el" href="citelist.html#CITEREF_Furgale2013IROS">[7]</a> calibration toolbox to perform both intrinsic and extrinsic offline calibrations, by proceeding the following steps:</p>
+<ol type="1">
+<li>Clone and build the <a href="https://github.com/ethz-asl/kalibr/">Kalibr</a> toolbox</li>
+<li>Print out a calibration board to use (we normally use the <a href="https://drive.google.com/file/d/0B0T1sizOvRsUdjFJem9mQXdiMTQ/edit?usp=sharing">Aprilgrid 6x6 0.8x0.8 m (A0 page)</a>)</li>
+<li>Ensure that your sensor driver is publishing onto ROS with correct timestamps.</li>
+<li>Sensor preparations<ul>
+<li>Limit motion blur by decreasing exposure time</li>
+<li>Publish at low framerate to allow for larger variance in dataset (2-5hz)</li>
+<li>Ensure that your calibration board can be viewed in all areas of the image</li>
+<li>Ensure that your sensor is in focus (can use their <em>kalibr_camera_focus</em> or just manually)</li>
+</ul>
+</li>
+<li>Record a ROS bag and ensure that the calibration board can be seen from different orientations, distances, and in each part of the image plane. You can either move the calibration board and keep the camera still or move the camera and keep the calibration board stationary.</li>
+<li>Finally run the calibration<ul>
+<li>Use the kalibr_calibrate_cameras with your specified topic</li>
+<li>Depending on amount of distortion, use the <em>pinhole-equi</em> for fisheye, or if a low distortion then use the <em>pinhole-radtan</em></li>
+<li>Depending on how many frames are in your dataset this can take on the upwards of a few hours.</li>
+</ul>
+</li>
+<li>Inspect the final result, pay close attention to the final reprojection error graphs, with a good calibration having less than &lt; 0.2-0.5 pixel reprojection errors.</li>
+</ol>
+<h1><a class="anchor" id="gs-calib-imu-static"></a>
+IMU Intrinsic Calibration (Offline)</h1>
+<p>The other imporatnt intrinsic calibration is to compute the inertial sensor intrinsic noise characteristics, which are needed for the batch optimization to calibrate the camera to IMU transform and in any VINS estimator so that we can properly probabilistically fuse the images and inertial readings. Unfortunately, there is no mature open sourced toolbox to find these values, while one can try our <a href="https://github.com/rpng/kalibr_allan">kalibr_allan</a> project, which is not optimized though. Specifically we are estimating the following noise parameters:</p>
+<table class="doxtable">
+<tr>
+<th>Parameter </th><th>YAML element </th><th>Symbol </th><th>Units  </th></tr>
+<tr>
+<td>Gyroscope "white noise" </td><td><code>gyroscope_noise_density</code> </td><td><img class="formulaInl" alt="$\sigma_g$" src="form_36.png"/> </td><td><img class="formulaInl" alt="$\frac{rad}{s}\frac{1}{\sqrt{Hz}}$" src="form_37.png"/> </td></tr>
+<tr>
+<td>Accelerometer "white noise" </td><td><code>accelerometer_noise_density</code> </td><td><img class="formulaInl" alt="$\sigma_a$" src="form_38.png"/> </td><td><img class="formulaInl" alt="$\frac{m}{s^2}\frac{1}{\sqrt{Hz}}$" src="form_39.png"/> </td></tr>
+<tr>
+<td>Gyroscope "random walk" </td><td><code>gyroscope_random_walk</code> </td><td><img class="formulaInl" alt="$\sigma_{b_g}$" src="form_40.png"/> </td><td><img class="formulaInl" alt="$\frac{rad}{s^2}\frac{1}{\sqrt{Hz}}$" src="form_41.png"/> </td></tr>
+<tr>
+<td>Accelerometer "random walk" </td><td><code>accelerometer_random_walk</code> </td><td><img class="formulaInl" alt="$\sigma_{b_a}$" src="form_42.png"/> </td><td><img class="formulaInl" alt="$\frac{m}{s^3}\frac{1}{\sqrt{Hz}}$" src="form_43.png"/> </td></tr>
+</table>
+<p>The standard way as explained in [<a href="https://ieeexplore.ieee.org/document/660628/">IEEE Standard Specification Format Guide and Test Procedure for Single-Axis Interferometric Fiber Optic Gyros</a> (page 71, section C)] is that we can compute an <a href="https://en.wikipedia.org/wiki/Allan_variance">Allan variance</a> plot of the sensor readings over different observation times (see below).</p>
+<div class="image">
+<img src="allanvar_gyro.png" alt="allanvar_gyro.png" width="75%"/>
+</div>
+<p>As shown in the above figure, if we compute the Allan variance we we can look at the value of a line at <img class="formulaInl" alt="$\tau=1$" src="form_44.png"/> with a -1/2 slope fitted to the left side of the plot to get the white noise of the sensor. Similarly, a line with 1/2 fitted to the right side can be evaluated at <img class="formulaInl" alt="$\tau=3$" src="form_45.png"/> to get the random walk noise. We have a package that can do this in matlab, but actual verification and conversion into a C++ codebase has yet to be done. Please refer to our [<a href="https://github.com/rpng/kalibr_allan">kalibr_allan</a>] github project for details on how to generate this plot for your sensor and calculate the values. Note that one may need to inflate the calculated values by 10-20 times to get usable sensor values.</p>
+<h1><a class="anchor" id="gs-calib-cam-dynamic"></a>
+Dynamic IMU-Camera Calibration (Offline)</h1>
+<p>After obtaining the intrinsic calibration of both the camera and IMU, we can now perform dynamic calibration of the transform between the two sensors. For this we again leverage the [<a href="https://github.com/ethz-asl/kalibr/">Kalibr</a> calibration toolbox]. For these collected datasets, it is important to minimize the motion blur in the camera while also ensuring that you excite all axes of the IMU. One needs to have at least one translational motion along with two degrees of orientation change for these calibration parameters to be observable (please see our recent paper on why: [<a href="https://ieeexplore.ieee.org/abstract/document/8616792">Degenerate Motion Analysis for Aided INS With Online Spatial and Temporal Sensor Calibration</a>]). We recommend having as much change in orientation as possible in order to ensure convergence.</p>
+<ol type="1">
+<li>Clone and build the <a href="https://github.com/ethz-asl/kalibr/">Kalibr</a> toolbox</li>
+<li>Print out a calibration board to use (we normally use the <a href="https://drive.google.com/file/d/0B0T1sizOvRsUdjFJem9mQXdiMTQ/edit?usp=sharing">Aprilgrid 6x6 0.8x0.8 m (A0 page)</a>)</li>
+<li>Ensure that your sensor driver is publishing onto ROS with correct timestamps.</li>
+<li>Sensor preparations<ul>
+<li>Limit motion blur by decreasing exposure time</li>
+<li>Publish at high-ish framerate (20-30hz)</li>
+<li>Publish your inertial reading at a reasonable rate (200-500hz)</li>
+</ul>
+</li>
+<li>Record a ROS bag and ensure that the calibration board can be seen from different orientations, distances, and mostly in the center of the image. You should move in <em>smooth</em> non-jerky motions with a trajectory that excites as many orientation and translational directions as possible at the same time. A 30-60 second dataset is normally enough to allow for calibration.</li>
+<li>Finally run the calibration<ul>
+<li>Use the <em>kalibr_calibrate_imu_camera</em></li>
+<li>Input your static calibration file which will have the camera topics in it</li>
+<li>You will need to make an <a href="https://drive.google.com/file/d/0B0T1sizOvRsUSk9ReDlid0VSY3M/edit?usp=sharing">imu.yaml</a> file with your noise parameters.</li>
+<li>Depending on how many frames are in your dataset this can take on the upwards of half a day.</li>
+</ul>
+</li>
+<li>Inspect the final result. You will want to make sure that the spline fitted to the inertial reading was properly fitted. Ensure that your estimated biases do not leave your 3-sigma bounds. If they do your trajectory was too dynamic, or your noise values are not good. Sanity check your final rotation and translation with hand-measured values. </li>
+</ol>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

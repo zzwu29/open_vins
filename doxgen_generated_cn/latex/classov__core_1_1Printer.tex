@@ -1,0 +1,124 @@
+\hypertarget{classov__core_1_1Printer}{}\section{ov\+\_\+core\+:\+:Printer类 参考}
+\label{classov__core_1_1Printer}\index{ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}}
+
+
+\hyperlink{classov__core_1_1Printer}{Printer} for open\+\_\+vins that allows for various levels of printing to be done  
+
+
+
+
+{\ttfamily \#include $<$print.\+h$>$}
+
+\subsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{Print\+Level} \{ \newline
+{\bfseries A\+LL} = 0, 
+{\bfseries D\+E\+B\+UG} = 1, 
+{\bfseries I\+N\+FO} = 2, 
+{\bfseries W\+A\+R\+N\+I\+NG} = 3, 
+\newline
+{\bfseries E\+R\+R\+OR} = 4, 
+{\bfseries S\+I\+L\+E\+NT} = 5
+ \}\begin{DoxyCompactList}\small\item\em The different print levels possible \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__core_1_1Printer_a46c933308a512618c304afefee62ead8}{set\+Print\+Level} (const std\+::string \&level)
+\begin{DoxyCompactList}\small\item\em Set the print level to use for all future printing to stdout. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__core_1_1Printer_a3edd554248a7e269f4c1d0d3f84a257b}{set\+Print\+Level} (\hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{Print\+Level} level)
+\begin{DoxyCompactList}\small\item\em Set the print level to use for all future printing to stdout. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__core_1_1Printer_a5371993bfa709539ca870884f7c76f78}{debug\+Print} (\hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{Print\+Level} level, const char location\mbox{[}$\,$\mbox{]}, const char line\mbox{[}$\,$\mbox{]}, const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em The print function that prints to stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{静态 Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1Printer_a29f197352b671a22704ffdd8354b33bd}\label{classov__core_1_1Printer_a29f197352b671a22704ffdd8354b33bd}} 
+static \hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{Print\+Level} \hyperlink{classov__core_1_1Printer_a29f197352b671a22704ffdd8354b33bd}{current\+\_\+print\+\_\+level} = Print\+Level\+::\+I\+N\+FO
+\begin{DoxyCompactList}\small\item\em The current print level \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+\hyperlink{classov__core_1_1Printer}{Printer} for open\+\_\+vins that allows for various levels of printing to be done 
+
+To set the global verbosity level one can do the following\+: 
+\begin{DoxyCode}
+\hyperlink{classov__core_1_1Printer_a46c933308a512618c304afefee62ead8}{ov\_core::Printer::setPrintLevel}(\textcolor{stringliteral}{"WARNING"});
+\hyperlink{classov__core_1_1Printer_a46c933308a512618c304afefee62ead8}{ov\_core::Printer::setPrintLevel}(ov\_core::Printer::PrintLevel::WARNING);
+\end{DoxyCode}
+ 
+
+\subsection{成员枚举类型说明}
+\mbox{\Hypertarget{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}\label{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}} 
+\index{ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}!Print\+Level@{Print\+Level}}
+\index{Print\+Level@{Print\+Level}!ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}}
+\subsubsection{\texorpdfstring{Print\+Level}{PrintLevel}}
+{\footnotesize\ttfamily enum \hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{ov\+\_\+core\+::\+Printer\+::\+Print\+Level}}
+
+
+
+The different print levels possible 
+
+
+\begin{DoxyItemize}
+\item Print\+Level\+::\+A\+LL \+: All P\+R\+I\+N\+T\+\_\+\+X\+X\+XX will output to the console
+\item Print\+Level\+::\+D\+E\+B\+UG \+: \char`\"{}\+D\+E\+B\+U\+G\char`\"{}, \char`\"{}\+I\+N\+F\+O\char`\"{}, \char`\"{}\+W\+A\+R\+N\+I\+N\+G\char`\"{} and \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. \char`\"{}\+A\+L\+L\char`\"{} will be silenced
+\item Print\+Level\+::\+I\+N\+FO \+: \char`\"{}\+I\+N\+F\+O\char`\"{}, \char`\"{}\+W\+A\+R\+N\+I\+N\+G\char`\"{} and \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. \char`\"{}\+A\+L\+L\char`\"{} and \char`\"{}\+D\+E\+B\+U\+G\char`\"{} will be silenced
+\item Print\+Level\+::\+W\+A\+R\+N\+I\+NG \+: \char`\"{}\+W\+A\+R\+N\+I\+N\+G\char`\"{} and \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. \char`\"{}\+A\+L\+L\char`\"{}, \char`\"{}\+D\+E\+B\+U\+G\char`\"{} and \char`\"{}\+I\+N\+F\+O\char`\"{} will be silenced
+\item Print\+Level\+::\+E\+R\+R\+OR \+: Only \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. All the rest are silenced
+\item Print\+Level\+::\+S\+I\+L\+E\+NT \+: All P\+R\+I\+N\+T\+\_\+\+X\+X\+XX will be silenced. 
+\end{DoxyItemize}
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__core_1_1Printer_a5371993bfa709539ca870884f7c76f78}\label{classov__core_1_1Printer_a5371993bfa709539ca870884f7c76f78}} 
+\index{ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}!debug\+Print@{debug\+Print}}
+\index{debug\+Print@{debug\+Print}!ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}}
+\subsubsection{\texorpdfstring{debug\+Print()}{debugPrint()}}
+{\footnotesize\ttfamily void Printer\+::debug\+Print (\begin{DoxyParamCaption}\item[{\hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{Print\+Level}}]{level,  }\item[{const char}]{location\mbox{[}$\,$\mbox{]},  }\item[{const char}]{line\mbox{[}$\,$\mbox{]},  }\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The print function that prints to stdout. 
+
+
+\begin{DoxyParams}{参数}
+{\em level} & the print level for this print call \\
+\hline
+{\em location} & the location the print was made from \\
+\hline
+{\em line} & the line the print was made from \\
+\hline
+{\em format} & The printf format \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1Printer_a46c933308a512618c304afefee62ead8}\label{classov__core_1_1Printer_a46c933308a512618c304afefee62ead8}} 
+\index{ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}!set\+Print\+Level@{set\+Print\+Level}}
+\index{set\+Print\+Level@{set\+Print\+Level}!ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}}
+\subsubsection{\texorpdfstring{set\+Print\+Level()}{setPrintLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Printer\+::set\+Print\+Level (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set the print level to use for all future printing to stdout. 
+
+
+\begin{DoxyParams}{参数}
+{\em level} & The debug level to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1Printer_a3edd554248a7e269f4c1d0d3f84a257b}\label{classov__core_1_1Printer_a3edd554248a7e269f4c1d0d3f84a257b}} 
+\index{ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}!set\+Print\+Level@{set\+Print\+Level}}
+\index{set\+Print\+Level@{set\+Print\+Level}!ov\+\_\+core\+::\+Printer@{ov\+\_\+core\+::\+Printer}}
+\subsubsection{\texorpdfstring{set\+Print\+Level()}{setPrintLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Printer\+::set\+Print\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{classov__core_1_1Printer_a1c4c6c612ec6251afd91a1ddf933a0b2}{Print\+Level}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set the print level to use for all future printing to stdout. 
+
+
+\begin{DoxyParams}{参数}
+{\em level} & The debug level to use \\
+\hline
+\end{DoxyParams}

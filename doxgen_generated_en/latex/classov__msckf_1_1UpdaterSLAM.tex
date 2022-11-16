@@ -1,0 +1,146 @@
+\hypertarget{classov__msckf_1_1UpdaterSLAM}{}\section{ov\+\_\+msckf\+:\+:Updater\+S\+L\+AM Class Reference}
+\label{classov__msckf_1_1UpdaterSLAM}\index{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}}
+
+
+Will compute the system for our sparse S\+L\+AM features and update the filter.  
+
+
+
+
+{\ttfamily \#include $<$Updater\+S\+L\+A\+M.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1UpdaterSLAM_a24185ab7a42cea66b9361ebf991e9548}{Updater\+S\+L\+AM} (\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&options\+\_\+slam, \hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&options\+\_\+aruco, \hyperlink{structov__core_1_1FeatureInitializerOptions}{ov\+\_\+core\+::\+Feature\+Initializer\+Options} \&feat\+\_\+init\+\_\+options)
+\begin{DoxyCompactList}\small\item\em Default constructor for our S\+L\+AM updater. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1UpdaterSLAM_a327bcedfea68fe301dc37e1f08d562e6}{update} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{ov\+\_\+core\+::\+Feature} $>$$>$ \&feature\+\_\+vec)
+\begin{DoxyCompactList}\small\item\em Given tracked S\+L\+AM features, this will try to use them to update the state. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1UpdaterSLAM_a4ef14978d06b4386672fe56c3a844fda}{delayed\+\_\+init} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{ov\+\_\+core\+::\+Feature} $>$$>$ \&feature\+\_\+vec)
+\begin{DoxyCompactList}\small\item\em Given max track features, this will try to use them to initialize them in the state. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1UpdaterSLAM_ae85d162f1a93f1dbed1a60b2fdd26870}{change\+\_\+anchors} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state)
+\begin{DoxyCompactList}\small\item\em Will change S\+L\+AM feature anchors if it will be marginalized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__msckf_1_1UpdaterSLAM_a4910b23be6e7cf3a9f135330f657c501}{perform\+\_\+anchor\+\_\+change} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Landmark}{ov\+\_\+type\+::\+Landmark} $>$ landmark, double new\+\_\+anchor\+\_\+timestamp, size\+\_\+t new\+\_\+cam\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Shifts landmark anchor to new clone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a219d1a88421f59b953e65e835776cfd9}\label{classov__msckf_1_1UpdaterSLAM_a219d1a88421f59b953e65e835776cfd9}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{classov__msckf_1_1UpdaterSLAM_a219d1a88421f59b953e65e835776cfd9}{\+\_\+options\+\_\+slam}
+\begin{DoxyCompactList}\small\item\em Options used during update for slam features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_abf282c84f49d9ec4514c530b3a97f683}\label{classov__msckf_1_1UpdaterSLAM_abf282c84f49d9ec4514c530b3a97f683}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{classov__msckf_1_1UpdaterSLAM_abf282c84f49d9ec4514c530b3a97f683}{\+\_\+options\+\_\+aruco}
+\begin{DoxyCompactList}\small\item\em Options used during update for aruco features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a2adf90e25fa4a3abf697eba018e0b65e}\label{classov__msckf_1_1UpdaterSLAM_a2adf90e25fa4a3abf697eba018e0b65e}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureInitializer}{ov\+\_\+core\+::\+Feature\+Initializer} $>$ \hyperlink{classov__msckf_1_1UpdaterSLAM_a2adf90e25fa4a3abf697eba018e0b65e}{initializer\+\_\+feat}
+\begin{DoxyCompactList}\small\item\em Feature initializer class object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a550ec76668fcbb2a8cb8245c6c08fddd}\label{classov__msckf_1_1UpdaterSLAM_a550ec76668fcbb2a8cb8245c6c08fddd}} 
+std\+::map$<$ int, double $>$ \hyperlink{classov__msckf_1_1UpdaterSLAM_a550ec76668fcbb2a8cb8245c6c08fddd}{chi\+\_\+squared\+\_\+table}
+\begin{DoxyCompactList}\small\item\em Chi squared 95th percentile table (lookup would be size of residual) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Will compute the system for our sparse S\+L\+AM features and update the filter. 
+
+This class is responsible for performing delayed feature initialization, S\+L\+AM update, and S\+L\+AM anchor change for anchored feature representations. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a24185ab7a42cea66b9361ebf991e9548}\label{classov__msckf_1_1UpdaterSLAM_a24185ab7a42cea66b9361ebf991e9548}} 
+\index{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}!Updater\+S\+L\+AM@{Updater\+S\+L\+AM}}
+\index{Updater\+S\+L\+AM@{Updater\+S\+L\+AM}!ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}}
+\subsubsection{\texorpdfstring{Updater\+S\+L\+A\+M()}{UpdaterSLAM()}}
+{\footnotesize\ttfamily Updater\+S\+L\+A\+M\+::\+Updater\+S\+L\+AM (\begin{DoxyParamCaption}\item[{\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&}]{options\+\_\+slam,  }\item[{\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&}]{options\+\_\+aruco,  }\item[{\hyperlink{structov__core_1_1FeatureInitializerOptions}{ov\+\_\+core\+::\+Feature\+Initializer\+Options} \&}]{feat\+\_\+init\+\_\+options }\end{DoxyParamCaption})}
+
+
+
+Default constructor for our S\+L\+AM updater. 
+
+Our updater has a feature initializer which we use to initialize features as needed. Also the options allow for one to tune the different parameters for update.
+
+
+\begin{DoxyParams}{Parameters}
+{\em options\+\_\+slam} & Updater options (include measurement noise value) for S\+L\+AM features \\
+\hline
+{\em options\+\_\+aruco} & Updater options (include measurement noise value) for A\+R\+U\+CO features \\
+\hline
+{\em feat\+\_\+init\+\_\+options} & Feature initializer options \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_ae85d162f1a93f1dbed1a60b2fdd26870}\label{classov__msckf_1_1UpdaterSLAM_ae85d162f1a93f1dbed1a60b2fdd26870}} 
+\index{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}!change\+\_\+anchors@{change\+\_\+anchors}}
+\index{change\+\_\+anchors@{change\+\_\+anchors}!ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}}
+\subsubsection{\texorpdfstring{change\+\_\+anchors()}{change\_anchors()}}
+{\footnotesize\ttfamily void Updater\+S\+L\+A\+M\+::change\+\_\+anchors (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state }\end{DoxyParamCaption})}
+
+
+
+Will change S\+L\+AM feature anchors if it will be marginalized. 
+
+Makes sure that if any clone is about to be marginalized, it changes anchor representation. By default, this will shift the anchor into the newest I\+MU clone and keep the camera calibration anchor the same.
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a4ef14978d06b4386672fe56c3a844fda}\label{classov__msckf_1_1UpdaterSLAM_a4ef14978d06b4386672fe56c3a844fda}} 
+\index{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}!delayed\+\_\+init@{delayed\+\_\+init}}
+\index{delayed\+\_\+init@{delayed\+\_\+init}!ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}}
+\subsubsection{\texorpdfstring{delayed\+\_\+init()}{delayed\_init()}}
+{\footnotesize\ttfamily void Updater\+S\+L\+A\+M\+::delayed\+\_\+init (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{ov\+\_\+core\+::\+Feature} $>$$>$ \&}]{feature\+\_\+vec }\end{DoxyParamCaption})}
+
+
+
+Given max track features, this will try to use them to initialize them in the state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter \\
+\hline
+{\em feature\+\_\+vec} & Features that can be used for update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a4910b23be6e7cf3a9f135330f657c501}\label{classov__msckf_1_1UpdaterSLAM_a4910b23be6e7cf3a9f135330f657c501}} 
+\index{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}!perform\+\_\+anchor\+\_\+change@{perform\+\_\+anchor\+\_\+change}}
+\index{perform\+\_\+anchor\+\_\+change@{perform\+\_\+anchor\+\_\+change}!ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}}
+\subsubsection{\texorpdfstring{perform\+\_\+anchor\+\_\+change()}{perform\_anchor\_change()}}
+{\footnotesize\ttfamily void Updater\+S\+L\+A\+M\+::perform\+\_\+anchor\+\_\+change (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Landmark}{ov\+\_\+type\+::\+Landmark} $>$}]{landmark,  }\item[{double}]{new\+\_\+anchor\+\_\+timestamp,  }\item[{size\+\_\+t}]{new\+\_\+cam\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Shifts landmark anchor to new clone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \hyperlink{classov__msckf_1_1State}{State} of filter \\
+\hline
+{\em landmark} & landmark whose anchor is being shifter \\
+\hline
+{\em new\+\_\+anchor\+\_\+timestamp} & Clone timestamp we want to move to \\
+\hline
+{\em new\+\_\+cam\+\_\+id} & Which camera frame we want to move to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterSLAM_a327bcedfea68fe301dc37e1f08d562e6}\label{classov__msckf_1_1UpdaterSLAM_a327bcedfea68fe301dc37e1f08d562e6}} 
+\index{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}!update@{update}}
+\index{update@{update}!ov\+\_\+msckf\+::\+Updater\+S\+L\+AM@{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Updater\+S\+L\+A\+M\+::update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{ov\+\_\+core\+::\+Feature} $>$$>$ \&}]{feature\+\_\+vec }\end{DoxyParamCaption})}
+
+
+
+Given tracked S\+L\+AM features, this will try to use them to update the state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter \\
+\hline
+{\em feature\+\_\+vec} & Features that can be used for update \\
+\hline
+\end{DoxyParams}

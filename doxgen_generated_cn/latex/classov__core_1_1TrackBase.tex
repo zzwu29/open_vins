@@ -1,0 +1,240 @@
+\hypertarget{classov__core_1_1TrackBase}{}\section{ov\+\_\+core\+:\+:Track\+Base类 参考}
+\label{classov__core_1_1TrackBase}\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+
+
+Visual feature tracking base class  
+
+
+
+
+{\ttfamily \#include $<$Track\+Base.\+h$>$}
+
+\subsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}\label{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}} 
+enum \hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{Histogram\+Method} \{ {\bfseries N\+O\+NE}, 
+{\bfseries H\+I\+S\+T\+O\+G\+R\+AM}, 
+{\bfseries C\+L\+A\+HE}
+ \}\begin{DoxyCompactList}\small\item\em Desired pre-\/processing image method. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1TrackBase_a645127d6e03e66b96959ececccb3ffc0}{Track\+Base} (std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$$>$ cameras, int numfeats, int numaruco, bool stereo, \hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{Histogram\+Method} histmethod)
+\begin{DoxyCompactList}\small\item\em Public constructor with configuration variables \end{DoxyCompactList}\item 
+virtual void \hyperlink{classov__core_1_1TrackBase_a18f208f4047e9a1955406806ba68a8c1}{feed\+\_\+new\+\_\+camera} (const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&message)=0
+\begin{DoxyCompactList}\small\item\em Process a new image \end{DoxyCompactList}\item 
+virtual void \hyperlink{classov__core_1_1TrackBase_a01c002a52290030fb86955ed6706f658}{display\+\_\+active} (cv\+::\+Mat \&img\+\_\+out, int r1, int g1, int b1, int r2, int g2, int b2, std\+::string overlay=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Shows features extracted in the last image \end{DoxyCompactList}\item 
+virtual void \hyperlink{classov__core_1_1TrackBase_ae90a40ff97cf87e1fe58e278d49c2f5b}{display\+\_\+history} (cv\+::\+Mat \&img\+\_\+out, int r1, int g1, int b1, int r2, int g2, int b2, std\+::vector$<$ size\+\_\+t $>$ highlighted=\{\}, std\+::string overlay=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Shows a \char`\"{}trail\char`\"{} for each feature (i.\+e. its history) \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{Feature\+Database} $>$ \hyperlink{classov__core_1_1TrackBase_aebcef580e2c1639d45bcb74e2bc516aa}{get\+\_\+feature\+\_\+database} ()
+\begin{DoxyCompactList}\small\item\em Get the feature database with all the track information \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackBase_a8f4f7f1c4de3c33a254c14b1f96af5a0}{change\+\_\+feat\+\_\+id} (size\+\_\+t id\+\_\+old, size\+\_\+t id\+\_\+new)
+\begin{DoxyCompactList}\small\item\em Changes the ID of an actively tracked feature to another one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a35238206253104bd568d1321dd767610}\label{classov__core_1_1TrackBase_a35238206253104bd568d1321dd767610}} 
+int \hyperlink{classov__core_1_1TrackBase_a35238206253104bd568d1321dd767610}{get\+\_\+num\+\_\+features} ()
+\begin{DoxyCompactList}\small\item\em Getter method for number of active features \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a91d20228c100c753217043e7ebb5f99e}\label{classov__core_1_1TrackBase_a91d20228c100c753217043e7ebb5f99e}} 
+void \hyperlink{classov__core_1_1TrackBase_a91d20228c100c753217043e7ebb5f99e}{set\+\_\+num\+\_\+features} (int \+\_\+num\+\_\+features)
+\begin{DoxyCompactList}\small\item\em Setter method for number of active features \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a052a06d61aadf4a12a8739f0221d3e6b}\label{classov__core_1_1TrackBase_a052a06d61aadf4a12a8739f0221d3e6b}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$ $>$ \hyperlink{classov__core_1_1TrackBase_a052a06d61aadf4a12a8739f0221d3e6b}{camera\+\_\+calib}
+\begin{DoxyCompactList}\small\item\em Camera object which has all calibration in it \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a832d13076b7d5ef3d6481deb5ce3000d}\label{classov__core_1_1TrackBase_a832d13076b7d5ef3d6481deb5ce3000d}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{Feature\+Database} $>$ \hyperlink{classov__core_1_1TrackBase_a832d13076b7d5ef3d6481deb5ce3000d}{database}
+\begin{DoxyCompactList}\small\item\em Database with all our current features \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a10325315c2e52ab8367097d57b7020c6}\label{classov__core_1_1TrackBase_a10325315c2e52ab8367097d57b7020c6}} 
+std\+::map$<$ size\+\_\+t, bool $>$ \hyperlink{classov__core_1_1TrackBase_a10325315c2e52ab8367097d57b7020c6}{camera\+\_\+fisheye}
+\begin{DoxyCompactList}\small\item\em If we are a fisheye model or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a22e5b8a82308be5190933e5991891e9a}\label{classov__core_1_1TrackBase_a22e5b8a82308be5190933e5991891e9a}} 
+int \hyperlink{classov__core_1_1TrackBase_a22e5b8a82308be5190933e5991891e9a}{num\+\_\+features}
+\begin{DoxyCompactList}\small\item\em Number of features we should try to track frame to frame \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a33375ebbd4b3ebcd69c782e897847276}\label{classov__core_1_1TrackBase_a33375ebbd4b3ebcd69c782e897847276}} 
+bool \hyperlink{classov__core_1_1TrackBase_a33375ebbd4b3ebcd69c782e897847276}{use\+\_\+stereo}
+\begin{DoxyCompactList}\small\item\em If we should use binocular tracking or stereo tracking for multi-\/camera \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_adbd2200d5a77254ee57e5a86f9e367c6}\label{classov__core_1_1TrackBase_adbd2200d5a77254ee57e5a86f9e367c6}} 
+\hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{Histogram\+Method} \hyperlink{classov__core_1_1TrackBase_adbd2200d5a77254ee57e5a86f9e367c6}{histogram\+\_\+method}
+\begin{DoxyCompactList}\small\item\em What histogram equalization method we should pre-\/process images with? \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a8d9a970b148abdee71e1ace835c38c7c}\label{classov__core_1_1TrackBase_a8d9a970b148abdee71e1ace835c38c7c}} 
+std\+::vector$<$ std\+::mutex $>$ \hyperlink{classov__core_1_1TrackBase_a8d9a970b148abdee71e1ace835c38c7c}{mtx\+\_\+feeds}
+\begin{DoxyCompactList}\small\item\em Mutexs for our last set of image storage (img\+\_\+last, pts\+\_\+last, and ids\+\_\+last) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_afc70de91df5ec14f4db66414a71f0fbb}\label{classov__core_1_1TrackBase_afc70de91df5ec14f4db66414a71f0fbb}} 
+std\+::mutex \hyperlink{classov__core_1_1TrackBase_afc70de91df5ec14f4db66414a71f0fbb}{mtx\+\_\+last\+\_\+vars}
+\begin{DoxyCompactList}\small\item\em Mutex for editing the $\ast$\+\_\+last variables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a84396d08375c2c796fc759de12d28469}\label{classov__core_1_1TrackBase_a84396d08375c2c796fc759de12d28469}} 
+std\+::map$<$ size\+\_\+t, cv\+::\+Mat $>$ \hyperlink{classov__core_1_1TrackBase_a84396d08375c2c796fc759de12d28469}{img\+\_\+last}
+\begin{DoxyCompactList}\small\item\em Last set of images (use map so all trackers render in the same order) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a744c43a93a6e4b5cbd9551280e6a1c97}\label{classov__core_1_1TrackBase_a744c43a93a6e4b5cbd9551280e6a1c97}} 
+std\+::map$<$ size\+\_\+t, cv\+::\+Mat $>$ \hyperlink{classov__core_1_1TrackBase_a744c43a93a6e4b5cbd9551280e6a1c97}{img\+\_\+mask\+\_\+last}
+\begin{DoxyCompactList}\small\item\em Last set of images (use map so all trackers render in the same order) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_ad44a9e0c34c63b477be5fd2a63a6fb61}\label{classov__core_1_1TrackBase_ad44a9e0c34c63b477be5fd2a63a6fb61}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ cv\+::\+Key\+Point $>$ $>$ \hyperlink{classov__core_1_1TrackBase_ad44a9e0c34c63b477be5fd2a63a6fb61}{pts\+\_\+last}
+\begin{DoxyCompactList}\small\item\em Last set of tracked points \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_aaf73cf7b7fd410d8532733875154ed2f}\label{classov__core_1_1TrackBase_aaf73cf7b7fd410d8532733875154ed2f}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ size\+\_\+t $>$ $>$ \hyperlink{classov__core_1_1TrackBase_aaf73cf7b7fd410d8532733875154ed2f}{ids\+\_\+last}
+\begin{DoxyCompactList}\small\item\em Set of I\+Ds of each current feature in the database \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_af59db0441bf16f0e7c62d8f3bd09e5f0}\label{classov__core_1_1TrackBase_af59db0441bf16f0e7c62d8f3bd09e5f0}} 
+std\+::atomic$<$ size\+\_\+t $>$ \hyperlink{classov__core_1_1TrackBase_af59db0441bf16f0e7c62d8f3bd09e5f0}{currid}
+\begin{DoxyCompactList}\small\item\em Master ID for this tracker (atomic to allow for multi-\/threading) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a57cb2bb8f3c607f8b9d4bf2a602ac4e6}\label{classov__core_1_1TrackBase_a57cb2bb8f3c607f8b9d4bf2a602ac4e6}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T1}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a73e38b621931e157aaa17495b53867b0}\label{classov__core_1_1TrackBase_a73e38b621931e157aaa17495b53867b0}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T2}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a8e120e3fea132cc8284216f5567938f3}\label{classov__core_1_1TrackBase_a8e120e3fea132cc8284216f5567938f3}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T3}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a77d86ae2f9d21a3033c15f99b0e34d6e}\label{classov__core_1_1TrackBase_a77d86ae2f9d21a3033c15f99b0e34d6e}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T4}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_ab57d642985cdbf063dabbd17a2d2e41e}\label{classov__core_1_1TrackBase_ab57d642985cdbf063dabbd17a2d2e41e}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T5}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_acfc1e6bd97b51b95ac4b2283201f395a}\label{classov__core_1_1TrackBase_acfc1e6bd97b51b95ac4b2283201f395a}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T6}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a03326b3c79412f3f96d4c0a6d9de1e76}\label{classov__core_1_1TrackBase_a03326b3c79412f3f96d4c0a6d9de1e76}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T7}
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Visual feature tracking base class 
+
+This is the base class for all our visual trackers. The goal here is to provide a common interface so all underlying trackers can simply hide away all the complexities. We have something called the \char`\"{}feature database\char`\"{} which has all the tracking information inside of it. The user can ask this database for features which can then be used in an M\+S\+C\+KF or batch-\/based setting. The feature tracks store both the raw (distorted) and undistorted/normalized values. Right now we just support two camera models, see\+: undistort\+\_\+point\+\_\+brown() and undistort\+\_\+point\+\_\+fisheye().
+
+
+
+\begin{DoxyParagraph}{A Note on Multi-\/\+Threading Support}
+There is some support for asynchronous multi-\/threaded feature tracking of independent cameras. The key assumption during implementation is that the user will not try to track on the same camera in parallel, and instead call on different cameras. For example, if I have two cameras, I can either sequentially call the feed function, or I spin each of these into separate threads and wait for their return. The \hyperlink{classov__core_1_1TrackBase_af59db0441bf16f0e7c62d8f3bd09e5f0}{currid} is atomic to allow for multiple threads to access it without issue and ensure that all features have unique id values. We also have mutex for access for the calibration and previous images and tracks (used during visualization). It should be noted that if a thread calls visualization, it might hang or the feed thread might, due to acquiring the mutex for that specific camera id / feed.
+\end{DoxyParagraph}
+This base class also handles most of the heavy lifting with the visualization, but the sub-\/classes can override this and do their own logic if they want (i.\+e. the \hyperlink{classov__core_1_1TrackAruco}{Track\+Aruco} has its own logic for visualization). This visualization needs access to the prior images and their tracks, thus must synchronise in the case of multi-\/threading. This shouldn\textquotesingle{}t impact performance, but high frequency visualization calls can negatively effect the performance. 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a645127d6e03e66b96959ececccb3ffc0}\label{classov__core_1_1TrackBase_a645127d6e03e66b96959ececccb3ffc0}} 
+\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}!Track\+Base@{Track\+Base}}
+\index{Track\+Base@{Track\+Base}!ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+\subsubsection{\texorpdfstring{Track\+Base()}{TrackBase()}}
+{\footnotesize\ttfamily Track\+Base\+::\+Track\+Base (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$$>$}]{cameras,  }\item[{int}]{numfeats,  }\item[{int}]{numaruco,  }\item[{bool}]{stereo,  }\item[{\hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{Histogram\+Method}}]{histmethod }\end{DoxyParamCaption})}
+
+
+
+Public constructor with configuration variables 
+
+
+\begin{DoxyParams}{参数}
+{\em cameras} & camera calibration object which has all camera intrinsics in it \\
+\hline
+{\em numfeats} & number of features we want want to track (i.\+e. track 200 points from frame to frame) \\
+\hline
+{\em numaruco} & the max id of the arucotags, so we ensure that we start our non-\/auroc features above this value \\
+\hline
+{\em stereo} & if we should do stereo feature tracking or binocular \\
+\hline
+{\em histmethod} & what type of histogram pre-\/processing should be done (histogram eq?) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a8f4f7f1c4de3c33a254c14b1f96af5a0}\label{classov__core_1_1TrackBase_a8f4f7f1c4de3c33a254c14b1f96af5a0}} 
+\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}!change\+\_\+feat\+\_\+id@{change\+\_\+feat\+\_\+id}}
+\index{change\+\_\+feat\+\_\+id@{change\+\_\+feat\+\_\+id}!ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+\subsubsection{\texorpdfstring{change\+\_\+feat\+\_\+id()}{change\_feat\_id()}}
+{\footnotesize\ttfamily void Track\+Base\+::change\+\_\+feat\+\_\+id (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id\+\_\+old,  }\item[{size\+\_\+t}]{id\+\_\+new }\end{DoxyParamCaption})}
+
+
+
+Changes the ID of an actively tracked feature to another one. 
+
+This function can be helpfull if you detect a loop-\/closure with an old frame. One could then change the id of an active feature to match the old feature id!
+
+
+\begin{DoxyParams}{参数}
+{\em id\+\_\+old} & Old id we want to change \\
+\hline
+{\em id\+\_\+new} & Id we want to change the old id to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a01c002a52290030fb86955ed6706f658}\label{classov__core_1_1TrackBase_a01c002a52290030fb86955ed6706f658}} 
+\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}!display\+\_\+active@{display\+\_\+active}}
+\index{display\+\_\+active@{display\+\_\+active}!ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+\subsubsection{\texorpdfstring{display\+\_\+active()}{display\_active()}}
+{\footnotesize\ttfamily void Track\+Base\+::display\+\_\+active (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{img\+\_\+out,  }\item[{int}]{r1,  }\item[{int}]{g1,  }\item[{int}]{b1,  }\item[{int}]{r2,  }\item[{int}]{g2,  }\item[{int}]{b2,  }\item[{std\+::string}]{overlay = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Shows features extracted in the last image 
+
+
+\begin{DoxyParams}{参数}
+{\em img\+\_\+out} & image to which we will overlayed features on \\
+\hline
+{\em r1,g1,b1} & first color to draw in \\
+\hline
+{\em r2,g2,b2} & second color to draw in \\
+\hline
+{\em overlay} & Text overlay to replace to normal \char`\"{}cam0\char`\"{} in the top left of screen \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1TrackBase_ae90a40ff97cf87e1fe58e278d49c2f5b}\label{classov__core_1_1TrackBase_ae90a40ff97cf87e1fe58e278d49c2f5b}} 
+\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}!display\+\_\+history@{display\+\_\+history}}
+\index{display\+\_\+history@{display\+\_\+history}!ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+\subsubsection{\texorpdfstring{display\+\_\+history()}{display\_history()}}
+{\footnotesize\ttfamily void Track\+Base\+::display\+\_\+history (\begin{DoxyParamCaption}\item[{cv\+::\+Mat \&}]{img\+\_\+out,  }\item[{int}]{r1,  }\item[{int}]{g1,  }\item[{int}]{b1,  }\item[{int}]{r2,  }\item[{int}]{g2,  }\item[{int}]{b2,  }\item[{std\+::vector$<$ size\+\_\+t $>$}]{highlighted = {\ttfamily \{\}},  }\item[{std\+::string}]{overlay = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Shows a \char`\"{}trail\char`\"{} for each feature (i.\+e. its history) 
+
+
+\begin{DoxyParams}{参数}
+{\em img\+\_\+out} & image to which we will overlayed features on \\
+\hline
+{\em r1,g1,b1} & first color to draw in \\
+\hline
+{\em r2,g2,b2} & second color to draw in \\
+\hline
+{\em highlighted} & unique ids which we wish to highlight (e.\+g. slam feats) \\
+\hline
+{\em overlay} & Text overlay to replace to normal \char`\"{}cam0\char`\"{} in the top left of screen \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1TrackBase_a18f208f4047e9a1955406806ba68a8c1}\label{classov__core_1_1TrackBase_a18f208f4047e9a1955406806ba68a8c1}} 
+\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}!feed\+\_\+new\+\_\+camera@{feed\+\_\+new\+\_\+camera}}
+\index{feed\+\_\+new\+\_\+camera@{feed\+\_\+new\+\_\+camera}!ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+\subsubsection{\texorpdfstring{feed\+\_\+new\+\_\+camera()}{feed\_new\_camera()}}
+{\footnotesize\ttfamily virtual void ov\+\_\+core\+::\+Track\+Base\+::feed\+\_\+new\+\_\+camera (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Process a new image 
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+
+
+在 \hyperlink{classov__core_1_1TrackAruco_a8c6b74f31cabe516bb9ceb2d2326a2a9}{ov\+\_\+core\+::\+Track\+Aruco}, \hyperlink{classov__core_1_1TrackKLT_a8cb9c3595fbbddc9a563137cd06b07cf}{ov\+\_\+core\+::\+Track\+K\+LT}, \hyperlink{classov__core_1_1TrackDescriptor_afcbf3078992f740582eac24e3164e6f1}{ov\+\_\+core\+::\+Track\+Descriptor} , 以及 \hyperlink{classov__core_1_1TrackSIM_a4c1537c48eec664a2c83dacc4b7e5778}{ov\+\_\+core\+::\+Track\+S\+IM} 内被实现.
+
+\mbox{\Hypertarget{classov__core_1_1TrackBase_aebcef580e2c1639d45bcb74e2bc516aa}\label{classov__core_1_1TrackBase_aebcef580e2c1639d45bcb74e2bc516aa}} 
+\index{ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}!get\+\_\+feature\+\_\+database@{get\+\_\+feature\+\_\+database}}
+\index{get\+\_\+feature\+\_\+database@{get\+\_\+feature\+\_\+database}!ov\+\_\+core\+::\+Track\+Base@{ov\+\_\+core\+::\+Track\+Base}}
+\subsubsection{\texorpdfstring{get\+\_\+feature\+\_\+database()}{get\_feature\_database()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{classov__core_1_1FeatureDatabase}{Feature\+Database}$>$ ov\+\_\+core\+::\+Track\+Base\+::get\+\_\+feature\+\_\+database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the feature database with all the track information 
+
+\begin{DoxyReturn}{返回}
+\hyperlink{classov__core_1_1FeatureDatabase}{Feature\+Database} pointer that one can query for features 
+\end{DoxyReturn}

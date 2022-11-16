@@ -1,0 +1,85 @@
+\hypertarget{classov__init_1_1StaticInitializer}{}\section{ov\+\_\+init\+:\+:Static\+Initializer Class Reference}
+\label{classov__init_1_1StaticInitializer}\index{ov\+\_\+init\+::\+Static\+Initializer@{ov\+\_\+init\+::\+Static\+Initializer}}
+
+
+Initializer for a static visual-\/inertial system.  
+
+
+
+
+{\ttfamily \#include $<$Static\+Initializer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__init_1_1StaticInitializer_a7c0e4dfac3e8d54a2303fe2cc3137026}{Static\+Initializer} (\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&params\+\_\+, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ db, std\+::shared\+\_\+ptr$<$ std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$$>$ imu\+\_\+data\+\_\+)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1StaticInitializer_af7f232bd33243300a7e0f212efb72232}{initialize} (double \&timestamp, Eigen\+::\+Matrix\+Xd \&covariance, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&order, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$ t\+\_\+imu, bool wait\+\_\+for\+\_\+jerk=true)
+\begin{DoxyCompactList}\small\item\em Try to get the initialized system using just the imu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Initializer for a static visual-\/inertial system. 
+
+This implementation that assumes that the imu starts from standing still. To initialize from standstill\+:
+\begin{DoxyEnumerate}
+\item Collect all inertial measurements
+\item See if within the last window there was a jump in acceleration
+\item If the jump is past our threshold we should init (i.\+e. we have started moving)
+\item Use the {\itshape previous} window, which should have been stationary to initialize orientation
+\item Return a roll and pitch aligned with gravity and biases. 
+\end{DoxyEnumerate}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__init_1_1StaticInitializer_a7c0e4dfac3e8d54a2303fe2cc3137026}\label{classov__init_1_1StaticInitializer_a7c0e4dfac3e8d54a2303fe2cc3137026}} 
+\index{ov\+\_\+init\+::\+Static\+Initializer@{ov\+\_\+init\+::\+Static\+Initializer}!Static\+Initializer@{Static\+Initializer}}
+\index{Static\+Initializer@{Static\+Initializer}!ov\+\_\+init\+::\+Static\+Initializer@{ov\+\_\+init\+::\+Static\+Initializer}}
+\subsubsection{\texorpdfstring{Static\+Initializer()}{StaticInitializer()}}
+{\footnotesize\ttfamily ov\+\_\+init\+::\+Static\+Initializer\+::\+Static\+Initializer (\begin{DoxyParamCaption}\item[{\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&}]{params\+\_\+,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$}]{db,  }\item[{std\+::shared\+\_\+ptr$<$ std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$$>$}]{imu\+\_\+data\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params\+\_\+} & Parameters loaded from either R\+OS or C\+M\+D\+L\+I\+NE \\
+\hline
+{\em db} & Feature tracker database with all features in it \\
+\hline
+{\em imu\+\_\+data\+\_\+} & Shared pointer to our I\+MU vector of historical information \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__init_1_1StaticInitializer_af7f232bd33243300a7e0f212efb72232}\label{classov__init_1_1StaticInitializer_af7f232bd33243300a7e0f212efb72232}} 
+\index{ov\+\_\+init\+::\+Static\+Initializer@{ov\+\_\+init\+::\+Static\+Initializer}!initialize@{initialize}}
+\index{initialize@{initialize}!ov\+\_\+init\+::\+Static\+Initializer@{ov\+\_\+init\+::\+Static\+Initializer}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily bool Static\+Initializer\+::initialize (\begin{DoxyParamCaption}\item[{double \&}]{timestamp,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{covariance,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{order,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$}]{t\+\_\+imu,  }\item[{bool}]{wait\+\_\+for\+\_\+jerk = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Try to get the initialized system using just the imu. 
+
+This will check if we have had a large enough jump in our acceleration. If we have then we will use the period of time before this jump to initialize the state. This assumes that our imu is sitting still and is not moving (so this would fail if we are experiencing constant acceleration).
+
+In the case that we do not wait for a jump (i.\+e. {\ttfamily wait\+\_\+for\+\_\+jerk} is false), then the system will try to initialize as soon as possible. This is only recommended if you have zero velocity update enabled to handle the stationary cases. To initialize in this case, we need to have the average angular variance be below the set threshold (i.\+e. we need to be stationary).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em timestamp} & Timestamp we have initialized the state at \\
+\hline
+\mbox{\tt out}  & {\em covariance} & Calculated covariance of the returned state \\
+\hline
+\mbox{\tt out}  & {\em order} & Order of the covariance matrix \\
+\hline
+\mbox{\tt out}  & {\em t\+\_\+imu} & Our imu type element \\
+\hline
+ & {\em wait\+\_\+for\+\_\+jerk} & If true we will wait for a \char`\"{}jerk\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we have successfully initialized our system 
+\end{DoxyReturn}

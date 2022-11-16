@@ -1,0 +1,95 @@
+\hypertarget{classov__type_1_1LandmarkRepresentation}{}\section{ov\+\_\+type\+:\+:Landmark\+Representation Class Reference}
+\label{classov__type_1_1LandmarkRepresentation}\index{ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}}
+
+
+Class has useful feature representation types.  
+
+
+
+
+{\ttfamily \#include $<$Landmark\+Representation.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}\label{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}} 
+enum \hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation} \{ \newline
+{\bfseries G\+L\+O\+B\+A\+L\+\_\+3D}, 
+{\bfseries G\+L\+O\+B\+A\+L\+\_\+\+F\+U\+L\+L\+\_\+\+I\+N\+V\+E\+R\+S\+E\+\_\+\+D\+E\+P\+TH}, 
+{\bfseries A\+N\+C\+H\+O\+R\+E\+D\+\_\+3D}, 
+{\bfseries A\+N\+C\+H\+O\+R\+E\+D\+\_\+\+F\+U\+L\+L\+\_\+\+I\+N\+V\+E\+R\+S\+E\+\_\+\+D\+E\+P\+TH}, 
+\newline
+{\bfseries A\+N\+C\+H\+O\+R\+E\+D\+\_\+\+M\+S\+C\+K\+F\+\_\+\+I\+N\+V\+E\+R\+S\+E\+\_\+\+D\+E\+P\+TH}, 
+{\bfseries A\+N\+C\+H\+O\+R\+E\+D\+\_\+\+I\+N\+V\+E\+R\+S\+E\+\_\+\+D\+E\+P\+T\+H\+\_\+\+S\+I\+N\+G\+LE}, 
+{\bfseries U\+N\+K\+N\+O\+WN}
+ \}\begin{DoxyCompactList}\small\item\em What feature representation our state can use. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \hyperlink{classov__type_1_1LandmarkRepresentation_ab20d64d87c0d661cd343cdd7814d8264}{as\+\_\+string} (\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation} feat\+\_\+representation)
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation. \end{DoxyCompactList}\item 
+static \hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation} \hyperlink{classov__type_1_1LandmarkRepresentation_a730830f7d0235f40f4266d0a66895e50}{from\+\_\+string} (const std\+::string \&feat\+\_\+representation)
+\begin{DoxyCompactList}\small\item\em Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation. \end{DoxyCompactList}\item 
+static bool \hyperlink{classov__type_1_1LandmarkRepresentation_a67860ca8360c71fa8c1ae3f99a2378c1}{is\+\_\+relative\+\_\+representation} (\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation} feat\+\_\+representation)
+\begin{DoxyCompactList}\small\item\em Helper function that checks if the passed feature representation is a relative or global. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class has useful feature representation types. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__type_1_1LandmarkRepresentation_ab20d64d87c0d661cd343cdd7814d8264}\label{classov__type_1_1LandmarkRepresentation_ab20d64d87c0d661cd343cdd7814d8264}} 
+\index{ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}!as\+\_\+string@{as\+\_\+string}}
+\index{as\+\_\+string@{as\+\_\+string}!ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}}
+\subsubsection{\texorpdfstring{as\+\_\+string()}{as\_string()}}
+{\footnotesize\ttfamily static std\+::string ov\+\_\+type\+::\+Landmark\+Representation\+::as\+\_\+string (\begin{DoxyParamCaption}\item[{\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation}}]{feat\+\_\+representation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feat\+\_\+representation} & Representation we want to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String version of the passed enum 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__type_1_1LandmarkRepresentation_a730830f7d0235f40f4266d0a66895e50}\label{classov__type_1_1LandmarkRepresentation_a730830f7d0235f40f4266d0a66895e50}} 
+\index{ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}!from\+\_\+string@{from\+\_\+string}}
+\index{from\+\_\+string@{from\+\_\+string}!ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}}
+\subsubsection{\texorpdfstring{from\+\_\+string()}{from\_string()}}
+{\footnotesize\ttfamily static \hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation} ov\+\_\+type\+::\+Landmark\+Representation\+::from\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{feat\+\_\+representation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feat\+\_\+representation} & String we want to find the enum of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Representation, will be \char`\"{}unknown\char`\"{} if we coun\textquotesingle{}t parse it 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__type_1_1LandmarkRepresentation_a67860ca8360c71fa8c1ae3f99a2378c1}\label{classov__type_1_1LandmarkRepresentation_a67860ca8360c71fa8c1ae3f99a2378c1}} 
+\index{ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}!is\+\_\+relative\+\_\+representation@{is\+\_\+relative\+\_\+representation}}
+\index{is\+\_\+relative\+\_\+representation@{is\+\_\+relative\+\_\+representation}!ov\+\_\+type\+::\+Landmark\+Representation@{ov\+\_\+type\+::\+Landmark\+Representation}}
+\subsubsection{\texorpdfstring{is\+\_\+relative\+\_\+representation()}{is\_relative\_representation()}}
+{\footnotesize\ttfamily static bool ov\+\_\+type\+::\+Landmark\+Representation\+::is\+\_\+relative\+\_\+representation (\begin{DoxyParamCaption}\item[{\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Representation}}]{feat\+\_\+representation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Helper function that checks if the passed feature representation is a relative or global. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em feat\+\_\+representation} & Representation we want to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if it is a relative representation 
+\end{DoxyReturn}

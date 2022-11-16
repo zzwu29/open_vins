@@ -1,0 +1,121 @@
+\hypertarget{classov__init_1_1InertialInitializer}{}\section{ov\+\_\+init\+:\+:Inertial\+Initializer Class Reference}
+\label{classov__init_1_1InertialInitializer}\index{ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}}
+
+
+Initializer for visual-\/inertial system.  
+
+
+
+
+{\ttfamily \#include $<$Inertial\+Initializer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__init_1_1InertialInitializer_ab53c9effb332d8259cd04e06ab26ce5f}{Inertial\+Initializer} (\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&params\+\_\+, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ db)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classov__init_1_1InertialInitializer_ac7f060d9cfedc4f780574ad436c34b66}{feed\+\_\+imu} (const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&message, double oldest\+\_\+time=-\/1)
+\begin{DoxyCompactList}\small\item\em Feed function for inertial data. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1InertialInitializer_aa2288d134687ccf1b7ee85ddcf982991}{initialize} (double \&timestamp, Eigen\+::\+Matrix\+Xd \&covariance, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&order, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$ t\+\_\+imu, bool wait\+\_\+for\+\_\+jerk=true)
+\begin{DoxyCompactList}\small\item\em Try to get the initialized system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_aa2a83ab908985ccb9f89dd6613fb203c}\label{classov__init_1_1InertialInitializer_aa2a83ab908985ccb9f89dd6613fb203c}} 
+\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \hyperlink{classov__init_1_1InertialInitializer_aa2a83ab908985ccb9f89dd6613fb203c}{params}
+\begin{DoxyCompactList}\small\item\em Initialization parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_a3968041a4da5cf43774845bd1782707d}\label{classov__init_1_1InertialInitializer_a3968041a4da5cf43774845bd1782707d}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ \hyperlink{classov__init_1_1InertialInitializer_a3968041a4da5cf43774845bd1782707d}{\+\_\+db}
+\begin{DoxyCompactList}\small\item\em Feature tracker database with all features in it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_a41bba4e8e0bb529ca90bd80a0cbe77d4}\label{classov__init_1_1InertialInitializer_a41bba4e8e0bb529ca90bd80a0cbe77d4}} 
+std\+::shared\+\_\+ptr$<$ std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ $>$ \hyperlink{classov__init_1_1InertialInitializer_a41bba4e8e0bb529ca90bd80a0cbe77d4}{imu\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Our history of I\+MU messages (time, angular, linear) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_a89f3e90f16c4c42407696a11701f6db3}\label{classov__init_1_1InertialInitializer_a89f3e90f16c4c42407696a11701f6db3}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__init_1_1StaticInitializer}{Static\+Initializer} $>$ \hyperlink{classov__init_1_1InertialInitializer_a89f3e90f16c4c42407696a11701f6db3}{init\+\_\+static}
+\begin{DoxyCompactList}\small\item\em Static initialization helper class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_af35694c9b263ce6e8757b20723aef712}\label{classov__init_1_1InertialInitializer_af35694c9b263ce6e8757b20723aef712}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__init_1_1DynamicInitializer}{Dynamic\+Initializer} $>$ \hyperlink{classov__init_1_1InertialInitializer_af35694c9b263ce6e8757b20723aef712}{init\+\_\+dynamic}
+\begin{DoxyCompactList}\small\item\em Dynamic initialization helper class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Initializer for visual-\/inertial system. 
+
+This will try to do both dynamic and state initialization of the state. The user can request to wait for a jump in our I\+MU readings (i.\+e. device is picked up) or to initialize as soon as possible. For state initialization, the user needs to specify the calibration beforehand, otherwise dynamic is always used. The logic is as follows\+:
+\begin{DoxyEnumerate}
+\item Try to perform dynamic initialization of state elements.
+\item If this fails and we have calibration then we can try to do static initialization
+\item If the unit is stationary and we are waiting for a jerk, just return, otherwise initialize the state!
+\end{DoxyEnumerate}
+
+The dynamic system is based on an implementation and extension of the work \href{https://ieeexplore.ieee.org/document/6386235}{\tt Estimator initialization in vision-\/aided inertial navigation with unknown camera-\/\+I\+MU calibration} \cite{Dong2012IROS} which solves the initialization problem by first creating a linear system for recovering the camera to I\+MU rotation, then for velocity, gravity, and feature positions, and finally a full optimization to allow for covariance recovery. Another paper which might be of interest to the reader is \href{https://ieeexplore.ieee.org/abstract/document/9462400}{\tt An Analytical Solution to the I\+MU Initialization Problem for Visual-\/\+Inertial Systems} which has some detailed experiments on scale recovery and the accelerometer bias. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_ab53c9effb332d8259cd04e06ab26ce5f}\label{classov__init_1_1InertialInitializer_ab53c9effb332d8259cd04e06ab26ce5f}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}!Inertial\+Initializer@{Inertial\+Initializer}}
+\index{Inertial\+Initializer@{Inertial\+Initializer}!ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}}
+\subsubsection{\texorpdfstring{Inertial\+Initializer()}{InertialInitializer()}}
+{\footnotesize\ttfamily Inertial\+Initializer\+::\+Inertial\+Initializer (\begin{DoxyParamCaption}\item[{\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&}]{params\+\_\+,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$}]{db }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params\+\_\+} & Parameters loaded from either R\+OS or C\+M\+D\+L\+I\+NE \\
+\hline
+{\em db} & Feature tracker database with all features in it \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_ac7f060d9cfedc4f780574ad436c34b66}\label{classov__init_1_1InertialInitializer_ac7f060d9cfedc4f780574ad436c34b66}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}!feed\+\_\+imu@{feed\+\_\+imu}}
+\index{feed\+\_\+imu@{feed\+\_\+imu}!ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}}
+\subsubsection{\texorpdfstring{feed\+\_\+imu()}{feed\_imu()}}
+{\footnotesize\ttfamily void Inertial\+Initializer\+::feed\+\_\+imu (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{message,  }\item[{double}]{oldest\+\_\+time = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Feed function for inertial data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Contains our timestamp and inertial information \\
+\hline
+{\em oldest\+\_\+time} & Time that we can discard measurements before \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__init_1_1InertialInitializer_aa2288d134687ccf1b7ee85ddcf982991}\label{classov__init_1_1InertialInitializer_aa2288d134687ccf1b7ee85ddcf982991}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}!initialize@{initialize}}
+\index{initialize@{initialize}!ov\+\_\+init\+::\+Inertial\+Initializer@{ov\+\_\+init\+::\+Inertial\+Initializer}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily bool Inertial\+Initializer\+::initialize (\begin{DoxyParamCaption}\item[{double \&}]{timestamp,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{covariance,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{order,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$}]{t\+\_\+imu,  }\item[{bool}]{wait\+\_\+for\+\_\+jerk = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Try to get the initialized system. 
+
+
+
+\begin{DoxyParagraph}{Processing Cost}
+This is a serial process that can take on orders of seconds to complete. If you are a real-\/time application then you will likely want to call this from a async thread which allows for this to process in the background. The features used are cloned from the feature database thus should be thread-\/safe to continue to append new feature tracks to the database.
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em timestamp} & Timestamp we have initialized the state at \\
+\hline
+\mbox{\tt out}  & {\em covariance} & Calculated covariance of the returned state \\
+\hline
+\mbox{\tt out}  & {\em order} & Order of the covariance matrix \\
+\hline
+\mbox{\tt out}  & {\em t\+\_\+imu} & Our imu type (need to have correct ids) \\
+\hline
+ & {\em wait\+\_\+for\+\_\+jerk} & If true we will wait for a \char`\"{}jerk\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we have successfully initialized our system 
+\end{DoxyReturn}

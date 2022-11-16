@@ -1,0 +1,78 @@
+\hypertarget{classov__msckf_1_1UpdaterMSCKF}{}\section{ov\+\_\+msckf\+:\+:Updater\+M\+S\+C\+KF Class Reference}
+\label{classov__msckf_1_1UpdaterMSCKF}\index{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF@{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF}}
+
+
+Will compute the system for our sparse features and update the filter.  
+
+
+
+
+{\ttfamily \#include $<$Updater\+M\+S\+C\+K\+F.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1UpdaterMSCKF_af8d2ffc21b0209319c7fd9a351b9d3ad}{Updater\+M\+S\+C\+KF} (\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&options, \hyperlink{structov__core_1_1FeatureInitializerOptions}{ov\+\_\+core\+::\+Feature\+Initializer\+Options} \&feat\+\_\+init\+\_\+options)
+\begin{DoxyCompactList}\small\item\em Default constructor for our M\+S\+C\+KF updater. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1UpdaterMSCKF_a4f307c56582c5fefeef298c5b54da2fd}{update} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{ov\+\_\+core\+::\+Feature} $>$$>$ \&feature\+\_\+vec)
+\begin{DoxyCompactList}\small\item\em Given tracked features, this will try to use them to update the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterMSCKF_ab82434d9a42bbbf4a19dd049e8187c9d}\label{classov__msckf_1_1UpdaterMSCKF_ab82434d9a42bbbf4a19dd049e8187c9d}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{classov__msckf_1_1UpdaterMSCKF_ab82434d9a42bbbf4a19dd049e8187c9d}{\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Options used during update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterMSCKF_a828b58318b6a4fcbf0f18ca37371e997}\label{classov__msckf_1_1UpdaterMSCKF_a828b58318b6a4fcbf0f18ca37371e997}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureInitializer}{ov\+\_\+core\+::\+Feature\+Initializer} $>$ \hyperlink{classov__msckf_1_1UpdaterMSCKF_a828b58318b6a4fcbf0f18ca37371e997}{initializer\+\_\+feat}
+\begin{DoxyCompactList}\small\item\em Feature initializer class object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterMSCKF_a1dec60a307dd3a6867c44b3af988603e}\label{classov__msckf_1_1UpdaterMSCKF_a1dec60a307dd3a6867c44b3af988603e}} 
+std\+::map$<$ int, double $>$ \hyperlink{classov__msckf_1_1UpdaterMSCKF_a1dec60a307dd3a6867c44b3af988603e}{chi\+\_\+squared\+\_\+table}
+\begin{DoxyCompactList}\small\item\em Chi squared 95th percentile table (lookup would be size of residual) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Will compute the system for our sparse features and update the filter. 
+
+This class is responsible for computing the entire linear system for all features that are going to be used in an update. This follows the original M\+S\+C\+KF, where we first triangulate features, we then nullspace project the feature Jacobian. After this we compress all the measurements to have an efficient update and update the state. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterMSCKF_af8d2ffc21b0209319c7fd9a351b9d3ad}\label{classov__msckf_1_1UpdaterMSCKF_af8d2ffc21b0209319c7fd9a351b9d3ad}} 
+\index{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF@{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF}!Updater\+M\+S\+C\+KF@{Updater\+M\+S\+C\+KF}}
+\index{Updater\+M\+S\+C\+KF@{Updater\+M\+S\+C\+KF}!ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF@{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF}}
+\subsubsection{\texorpdfstring{Updater\+M\+S\+C\+K\+F()}{UpdaterMSCKF()}}
+{\footnotesize\ttfamily Updater\+M\+S\+C\+K\+F\+::\+Updater\+M\+S\+C\+KF (\begin{DoxyParamCaption}\item[{\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&}]{options,  }\item[{\hyperlink{structov__core_1_1FeatureInitializerOptions}{ov\+\_\+core\+::\+Feature\+Initializer\+Options} \&}]{feat\+\_\+init\+\_\+options }\end{DoxyParamCaption})}
+
+
+
+Default constructor for our M\+S\+C\+KF updater. 
+
+Our updater has a feature initializer which we use to initialize features as needed. Also the options allow for one to tune the different parameters for update.
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Updater options (include measurement noise value) \\
+\hline
+{\em feat\+\_\+init\+\_\+options} & Feature initializer options \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterMSCKF_a4f307c56582c5fefeef298c5b54da2fd}\label{classov__msckf_1_1UpdaterMSCKF_a4f307c56582c5fefeef298c5b54da2fd}} 
+\index{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF@{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF}!update@{update}}
+\index{update@{update}!ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF@{ov\+\_\+msckf\+::\+Updater\+M\+S\+C\+KF}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Updater\+M\+S\+C\+K\+F\+::update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1Feature}{ov\+\_\+core\+::\+Feature} $>$$>$ \&}]{feature\+\_\+vec }\end{DoxyParamCaption})}
+
+
+
+Given tracked features, this will try to use them to update the state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter \\
+\hline
+{\em feature\+\_\+vec} & Features that can be used for update \\
+\hline
+\end{DoxyParams}
+Chi2 distance check 

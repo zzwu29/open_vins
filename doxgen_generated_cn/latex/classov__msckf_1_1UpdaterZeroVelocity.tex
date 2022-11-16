@@ -1,0 +1,139 @@
+\hypertarget{classov__msckf_1_1UpdaterZeroVelocity}{}\section{ov\+\_\+msckf\+:\+:Updater\+Zero\+Velocity类 参考}
+\label{classov__msckf_1_1UpdaterZeroVelocity}\index{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}}
+
+
+Will try to {\itshape detect} and then update using zero velocity assumption.  
+
+
+
+
+{\ttfamily \#include $<$Updater\+Zero\+Velocity.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a1077d2767c078874ed48132ebaa9b975}{Updater\+Zero\+Velocity} (\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&options, \hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager} \&noises, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ db, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Propagator}{Propagator} $>$ prop, double gravity\+\_\+mag, double zupt\+\_\+max\+\_\+velocity, double zupt\+\_\+noise\+\_\+multiplier, double zupt\+\_\+max\+\_\+disparity)
+\begin{DoxyCompactList}\small\item\em Default constructor for our zero velocity detector and updater. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a85e0ca4c3728853d6e12ae4ec9bf691d}{feed\+\_\+imu} (const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&message, double oldest\+\_\+time=-\/1)
+\begin{DoxyCompactList}\small\item\em Feed function for inertial data \end{DoxyCompactList}\item 
+bool \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a703a198829da68f905280ce8af8aa9e6}{try\+\_\+update} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, double timestamp)
+\begin{DoxyCompactList}\small\item\em Will first detect if the system is zero velocity, then will update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a749638ff6ee8f1b0ba8eee2bef7e93e8}\label{classov__msckf_1_1UpdaterZeroVelocity_a749638ff6ee8f1b0ba8eee2bef7e93e8}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a749638ff6ee8f1b0ba8eee2bef7e93e8}{\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Options used during update (chi2 multiplier) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a40b315489e839b9f47168b13ff3ea625}\label{classov__msckf_1_1UpdaterZeroVelocity_a40b315489e839b9f47168b13ff3ea625}} 
+\hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager} \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a40b315489e839b9f47168b13ff3ea625}{\+\_\+noises}
+\begin{DoxyCompactList}\small\item\em Container for the imu noise values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a8faef43ba67821767973ee9a78c173cc}\label{classov__msckf_1_1UpdaterZeroVelocity_a8faef43ba67821767973ee9a78c173cc}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a8faef43ba67821767973ee9a78c173cc}{\+\_\+db}
+\begin{DoxyCompactList}\small\item\em Feature tracker database with all features in it \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_aff9a0009bd455014af4dea494fcb2b33}\label{classov__msckf_1_1UpdaterZeroVelocity_aff9a0009bd455014af4dea494fcb2b33}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Propagator}{Propagator} $>$ \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_aff9a0009bd455014af4dea494fcb2b33}{\+\_\+prop}
+\begin{DoxyCompactList}\small\item\em Our propagator! \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_aa0bd3b68624d85a6e9db27a1d1631486}\label{classov__msckf_1_1UpdaterZeroVelocity_aa0bd3b68624d85a6e9db27a1d1631486}} 
+Eigen\+::\+Vector3d \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_aa0bd3b68624d85a6e9db27a1d1631486}{\+\_\+gravity}
+\begin{DoxyCompactList}\small\item\em Gravity vector \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a27800e861318dfd8938005dc8b7507cf}\label{classov__msckf_1_1UpdaterZeroVelocity_a27800e861318dfd8938005dc8b7507cf}} 
+double \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a27800e861318dfd8938005dc8b7507cf}{\+\_\+zupt\+\_\+max\+\_\+velocity} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Max velocity (m/s) that we should consider a zupt with \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a4cb7aba647c32c927075fbffd7573b5e}\label{classov__msckf_1_1UpdaterZeroVelocity_a4cb7aba647c32c927075fbffd7573b5e}} 
+double \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a4cb7aba647c32c927075fbffd7573b5e}{\+\_\+zupt\+\_\+noise\+\_\+multiplier} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Multiplier of our I\+MU noise matrix (default should be 1.\+0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a2ef8c37273e0159bd83cc34cccce1099}\label{classov__msckf_1_1UpdaterZeroVelocity_a2ef8c37273e0159bd83cc34cccce1099}} 
+double \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a2ef8c37273e0159bd83cc34cccce1099}{\+\_\+zupt\+\_\+max\+\_\+disparity} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Max disparity (pixels) that we should consider a zupt with \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a5b6c97d5985ae971821aaeaed715e717}\label{classov__msckf_1_1UpdaterZeroVelocity_a5b6c97d5985ae971821aaeaed715e717}} 
+std\+::map$<$ int, double $>$ \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a5b6c97d5985ae971821aaeaed715e717}{chi\+\_\+squared\+\_\+table}
+\begin{DoxyCompactList}\small\item\em Chi squared 95th percentile table (lookup would be size of residual) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a38119874bfd080afe2f21444e7f26692}\label{classov__msckf_1_1UpdaterZeroVelocity_a38119874bfd080afe2f21444e7f26692}} 
+std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a38119874bfd080afe2f21444e7f26692}{imu\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Our history of I\+MU messages (time, angular, linear) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_ae3d40558eff57d631724a15ab431f83a}\label{classov__msckf_1_1UpdaterZeroVelocity_ae3d40558eff57d631724a15ab431f83a}} 
+double \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_ae3d40558eff57d631724a15ab431f83a}{last\+\_\+prop\+\_\+time\+\_\+offset} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Estimate for time offset at last propagation time \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_acf1718826a68f0bae6fe0bbd7d2654de}\label{classov__msckf_1_1UpdaterZeroVelocity_acf1718826a68f0bae6fe0bbd7d2654de}} 
+bool {\bfseries have\+\_\+last\+\_\+prop\+\_\+time\+\_\+offset} = false
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a6b782fc825eddcd71a7808288cbb9734}\label{classov__msckf_1_1UpdaterZeroVelocity_a6b782fc825eddcd71a7808288cbb9734}} 
+double \hyperlink{classov__msckf_1_1UpdaterZeroVelocity_a6b782fc825eddcd71a7808288cbb9734}{last\+\_\+zupt\+\_\+state\+\_\+timestamp} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Last timestamp we did zero velocity update with \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Will try to {\itshape detect} and then update using zero velocity assumption. 
+
+Consider the case that a V\+IO unit remains stationary for a period time. Typically this can cause issues in a monocular system without S\+L\+AM features since no features can be triangulated. Additional, if features could be triangulated (e.\+g. stereo) the quality can be poor and hurt performance. If we can detect the cases where we are stationary then we can leverage this to prevent the need to do feature update during this period. The main application would be using this on a {\bfseries wheeled vehicle} which needs to stop (e.\+g. stop lights or parking). 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a1077d2767c078874ed48132ebaa9b975}\label{classov__msckf_1_1UpdaterZeroVelocity_a1077d2767c078874ed48132ebaa9b975}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}!Updater\+Zero\+Velocity@{Updater\+Zero\+Velocity}}
+\index{Updater\+Zero\+Velocity@{Updater\+Zero\+Velocity}!ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}}
+\subsubsection{\texorpdfstring{Updater\+Zero\+Velocity()}{UpdaterZeroVelocity()}}
+{\footnotesize\ttfamily Updater\+Zero\+Velocity\+::\+Updater\+Zero\+Velocity (\begin{DoxyParamCaption}\item[{\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \&}]{options,  }\item[{\hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager} \&}]{noises,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$}]{db,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Propagator}{Propagator} $>$}]{prop,  }\item[{double}]{gravity\+\_\+mag,  }\item[{double}]{zupt\+\_\+max\+\_\+velocity,  }\item[{double}]{zupt\+\_\+noise\+\_\+multiplier,  }\item[{double}]{zupt\+\_\+max\+\_\+disparity }\end{DoxyParamCaption})}
+
+
+
+Default constructor for our zero velocity detector and updater. 
+
+
+\begin{DoxyParams}{参数}
+{\em options} & Updater options (chi2 multiplier) \\
+\hline
+{\em noises} & imu noise characteristics (continuous time) \\
+\hline
+{\em db} & Feature tracker database with all features in it \\
+\hline
+{\em prop} & \hyperlink{classov__msckf_1_1Propagator}{Propagator} class object which can predict the state forward in time \\
+\hline
+{\em gravity\+\_\+mag} & Global gravity magnitude of the system (normally 9.\+81) \\
+\hline
+{\em zupt\+\_\+max\+\_\+velocity} & Max velocity we should consider to do a update with \\
+\hline
+{\em zupt\+\_\+noise\+\_\+multiplier} & Multiplier of our I\+MU noise matrix (default should be 1.\+0) \\
+\hline
+{\em zupt\+\_\+max\+\_\+disparity} & Max disparity we should consider to do a update with \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a85e0ca4c3728853d6e12ae4ec9bf691d}\label{classov__msckf_1_1UpdaterZeroVelocity_a85e0ca4c3728853d6e12ae4ec9bf691d}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}!feed\+\_\+imu@{feed\+\_\+imu}}
+\index{feed\+\_\+imu@{feed\+\_\+imu}!ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}}
+\subsubsection{\texorpdfstring{feed\+\_\+imu()}{feed\_imu()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity\+::feed\+\_\+imu (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{message,  }\item[{double}]{oldest\+\_\+time = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Feed function for inertial data 
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp and inertial information \\
+\hline
+{\em oldest\+\_\+time} & Time that we can discard measurements before \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1UpdaterZeroVelocity_a703a198829da68f905280ce8af8aa9e6}\label{classov__msckf_1_1UpdaterZeroVelocity_a703a198829da68f905280ce8af8aa9e6}} 
+\index{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}!try\+\_\+update@{try\+\_\+update}}
+\index{try\+\_\+update@{try\+\_\+update}!ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity@{ov\+\_\+msckf\+::\+Updater\+Zero\+Velocity}}
+\subsubsection{\texorpdfstring{try\+\_\+update()}{try\_update()}}
+{\footnotesize\ttfamily bool Updater\+Zero\+Velocity\+::try\+\_\+update (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{double}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Will first detect if the system is zero velocity, then will update. 
+
+
+\begin{DoxyParams}{参数}
+{\em state} & \hyperlink{classov__msckf_1_1State}{State} of the filter \\
+\hline
+{\em timestamp} & Next camera timestamp we want to see if we should propagate to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True if the system is currently at zero velocity 
+\end{DoxyReturn}

@@ -1,0 +1,249 @@
+\hypertarget{structov__init_1_1InertialInitializerOptions}{}\section{ov\+\_\+init\+:\+:Inertial\+Initializer\+Options结构体 参考}
+\label{structov__init_1_1InertialInitializerOptions}\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+
+
+Struct which stores all options needed for state estimation.  
+
+
+
+
+{\ttfamily \#include $<$Inertial\+Initializer\+Options.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{structov__init_1_1InertialInitializerOptions_a4b4ecffffd22caa546e78b7765e6d0ea}{print\+\_\+and\+\_\+load} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load the non-\/simulation parameters of the system and print. \end{DoxyCompactList}\item 
+void \hyperlink{structov__init_1_1InertialInitializerOptions_a0f807d03fd000d632baaf934660a3a4c}{print\+\_\+and\+\_\+load\+\_\+initializer} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all initializer settings loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__init_1_1InertialInitializerOptions_a4d5ee1a5eb1b3bb35d040e59df7d6541}{print\+\_\+and\+\_\+load\+\_\+noise} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all noise parameters loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__init_1_1InertialInitializerOptions_a4bbf49110ccf3f02b36d90f2504a0196}{print\+\_\+and\+\_\+load\+\_\+state} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load and print all state parameters (e.\+g. sensor extrinsics) This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__init_1_1InertialInitializerOptions_a2dd58d205af3a419aa090f1f5291d0e2}{print\+\_\+and\+\_\+load\+\_\+simulation} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all simulated parameters. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a8fc45471d64b463b54b49fafc2372391}\label{structov__init_1_1InertialInitializerOptions_a8fc45471d64b463b54b49fafc2372391}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a8fc45471d64b463b54b49fafc2372391}{init\+\_\+window\+\_\+time} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Amount of time we will initialize over (seconds) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ae52064e908cacf87016bb56162890b5c}\label{structov__init_1_1InertialInitializerOptions_ae52064e908cacf87016bb56162890b5c}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ae52064e908cacf87016bb56162890b5c}{init\+\_\+imu\+\_\+thresh} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Variance threshold on our acceleration to be classified as moving \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a2ccadc84d3b4085f3d639efacc1850c6}\label{structov__init_1_1InertialInitializerOptions_a2ccadc84d3b4085f3d639efacc1850c6}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a2ccadc84d3b4085f3d639efacc1850c6}{init\+\_\+max\+\_\+disparity} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Max disparity we will consider the unit to be stationary \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a442ed53391151e45582a365c057ac492}\label{structov__init_1_1InertialInitializerOptions_a442ed53391151e45582a365c057ac492}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a442ed53391151e45582a365c057ac492}{init\+\_\+max\+\_\+features} = 50
+\begin{DoxyCompactList}\small\item\em Number of features we should try to track \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a889a037850d9f66bdc3a4a6aed225a6c}\label{structov__init_1_1InertialInitializerOptions_a889a037850d9f66bdc3a4a6aed225a6c}} 
+bool \hyperlink{structov__init_1_1InertialInitializerOptions_a889a037850d9f66bdc3a4a6aed225a6c}{init\+\_\+dyn\+\_\+use} = false
+\begin{DoxyCompactList}\small\item\em If we should perform dynamic initialization \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a48813c0831ff72ec1a9bb984fbed5bc4}\label{structov__init_1_1InertialInitializerOptions_a48813c0831ff72ec1a9bb984fbed5bc4}} 
+bool \hyperlink{structov__init_1_1InertialInitializerOptions_a48813c0831ff72ec1a9bb984fbed5bc4}{init\+\_\+dyn\+\_\+mle\+\_\+opt\+\_\+calib} = false
+\begin{DoxyCompactList}\small\item\em If we should optimize and recover the calibration in our M\+LE \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a8e235cd4275b5f1673e915ddf2e5a4e3}\label{structov__init_1_1InertialInitializerOptions_a8e235cd4275b5f1673e915ddf2e5a4e3}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a8e235cd4275b5f1673e915ddf2e5a4e3}{init\+\_\+dyn\+\_\+mle\+\_\+max\+\_\+iter} = 20
+\begin{DoxyCompactList}\small\item\em Max number of M\+LE iterations for dynamic initialization \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a285d660986d879699bf0b10bf806c769}\label{structov__init_1_1InertialInitializerOptions_a285d660986d879699bf0b10bf806c769}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a285d660986d879699bf0b10bf806c769}{init\+\_\+dyn\+\_\+mle\+\_\+max\+\_\+threads} = 20
+\begin{DoxyCompactList}\small\item\em Max number of M\+LE threads for dynamic initialization \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ade879e2b38eb03ebe50bbd4cbd5a1ba6}\label{structov__init_1_1InertialInitializerOptions_ade879e2b38eb03ebe50bbd4cbd5a1ba6}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ade879e2b38eb03ebe50bbd4cbd5a1ba6}{init\+\_\+dyn\+\_\+mle\+\_\+max\+\_\+time} = 5.\+0
+\begin{DoxyCompactList}\small\item\em Max time for M\+LE optimization (seconds) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a77d404c5b0dd4a9957f7e857e759f538}\label{structov__init_1_1InertialInitializerOptions_a77d404c5b0dd4a9957f7e857e759f538}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a77d404c5b0dd4a9957f7e857e759f538}{init\+\_\+dyn\+\_\+num\+\_\+pose} = 5
+\begin{DoxyCompactList}\small\item\em Number of poses to use during initialization (max should be cam freq $\ast$ window) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a3f6fb9d845f5fb69bb5e38ba1776d98a}\label{structov__init_1_1InertialInitializerOptions_a3f6fb9d845f5fb69bb5e38ba1776d98a}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a3f6fb9d845f5fb69bb5e38ba1776d98a}{init\+\_\+dyn\+\_\+min\+\_\+deg} = 45.\+0
+\begin{DoxyCompactList}\small\item\em Minimum degrees we need to rotate before we try to init (sum of norm) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ac18caae89ce58c128ddb0c9afdcb65fd}\label{structov__init_1_1InertialInitializerOptions_ac18caae89ce58c128ddb0c9afdcb65fd}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ac18caae89ce58c128ddb0c9afdcb65fd}{init\+\_\+dyn\+\_\+inflation\+\_\+orientation} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Magnitude we will inflate initial covariance of orientation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_aafab6a5eca4819a84137bd93452ba30a}\label{structov__init_1_1InertialInitializerOptions_aafab6a5eca4819a84137bd93452ba30a}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_aafab6a5eca4819a84137bd93452ba30a}{init\+\_\+dyn\+\_\+inflation\+\_\+velocity} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Magnitude we will inflate initial covariance of velocity \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a185fc9aa3073561ac95e3bf9d421e083}\label{structov__init_1_1InertialInitializerOptions_a185fc9aa3073561ac95e3bf9d421e083}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a185fc9aa3073561ac95e3bf9d421e083}{init\+\_\+dyn\+\_\+inflation\+\_\+bias\+\_\+gyro} = 100.\+0
+\begin{DoxyCompactList}\small\item\em Magnitude we will inflate initial covariance of gyroscope bias \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a4a3e85e21af048ba7922a97098c3f7ab}\label{structov__init_1_1InertialInitializerOptions_a4a3e85e21af048ba7922a97098c3f7ab}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a4a3e85e21af048ba7922a97098c3f7ab}{init\+\_\+dyn\+\_\+inflation\+\_\+bias\+\_\+accel} = 100.\+0
+\begin{DoxyCompactList}\small\item\em Magnitude we will inflate initial covariance of accelerometer bias \end{DoxyCompactList}\item 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a202ca41d108ae2da322f246f246d0c2a}{init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond} = 1e-\/15
+\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ac89f312b0f4ed57a1d7b97ca319b6ee6}\label{structov__init_1_1InertialInitializerOptions_ac89f312b0f4ed57a1d7b97ca319b6ee6}} 
+Eigen\+::\+Vector3d \hyperlink{structov__init_1_1InertialInitializerOptions_ac89f312b0f4ed57a1d7b97ca319b6ee6}{init\+\_\+dyn\+\_\+bias\+\_\+g} = Eigen\+::\+Vector3d\+::\+Zero()
+\begin{DoxyCompactList}\small\item\em Initial I\+MU gyroscope bias values for dynamic initialization (will be optimized) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ab810afe7877d06a6154fa4f28d23051d}\label{structov__init_1_1InertialInitializerOptions_ab810afe7877d06a6154fa4f28d23051d}} 
+Eigen\+::\+Vector3d \hyperlink{structov__init_1_1InertialInitializerOptions_ab810afe7877d06a6154fa4f28d23051d}{init\+\_\+dyn\+\_\+bias\+\_\+a} = Eigen\+::\+Vector3d\+::\+Zero()
+\begin{DoxyCompactList}\small\item\em Initial I\+MU accelerometer bias values for dynamic initialization (will be optimized) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ab0e1f45c83f23902d5060d233b2c322b}\label{structov__init_1_1InertialInitializerOptions_ab0e1f45c83f23902d5060d233b2c322b}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ab0e1f45c83f23902d5060d233b2c322b}{sigma\+\_\+w} = 1.\+6968e-\/04
+\begin{DoxyCompactList}\small\item\em Gyroscope white noise (rad/s/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a3a7ed5c1ae5ca754dcc11feecc478bb7}\label{structov__init_1_1InertialInitializerOptions_a3a7ed5c1ae5ca754dcc11feecc478bb7}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a3a7ed5c1ae5ca754dcc11feecc478bb7}{sigma\+\_\+wb} = 1.\+9393e-\/05
+\begin{DoxyCompactList}\small\item\em Gyroscope random walk (rad/s$^\wedge$2/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a1ee315c6230a76c677e879bf4b0b2115}\label{structov__init_1_1InertialInitializerOptions_a1ee315c6230a76c677e879bf4b0b2115}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a1ee315c6230a76c677e879bf4b0b2115}{sigma\+\_\+a} = 2.\+0000e-\/3
+\begin{DoxyCompactList}\small\item\em Accelerometer white noise (m/s$^\wedge$2/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ae096e5a68f56d98e738383add8b42526}\label{structov__init_1_1InertialInitializerOptions_ae096e5a68f56d98e738383add8b42526}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ae096e5a68f56d98e738383add8b42526}{sigma\+\_\+ab} = 3.\+0000e-\/03
+\begin{DoxyCompactList}\small\item\em Accelerometer random walk (m/s$^\wedge$3/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ac10140226c97ac5b92f6f72a1f2134df}\label{structov__init_1_1InertialInitializerOptions_ac10140226c97ac5b92f6f72a1f2134df}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ac10140226c97ac5b92f6f72a1f2134df}{sigma\+\_\+pix} = 1
+\begin{DoxyCompactList}\small\item\em Noise sigma for our raw pixel measurements \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a94b223e0b714d700d3b489b3918b002d}\label{structov__init_1_1InertialInitializerOptions_a94b223e0b714d700d3b489b3918b002d}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a94b223e0b714d700d3b489b3918b002d}{gravity\+\_\+mag} = 9.\+81
+\begin{DoxyCompactList}\small\item\em Gravity magnitude in the global frame (i.\+e. should be 9.\+81 typically) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a6525a195b4ba524597a0031fa23f65af}\label{structov__init_1_1InertialInitializerOptions_a6525a195b4ba524597a0031fa23f65af}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a6525a195b4ba524597a0031fa23f65af}{num\+\_\+cameras} = 1
+\begin{DoxyCompactList}\small\item\em Number of distinct cameras that we will observe features in \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ac0e008a72e6fb14ac129fae7ae62e05b}\label{structov__init_1_1InertialInitializerOptions_ac0e008a72e6fb14ac129fae7ae62e05b}} 
+bool \hyperlink{structov__init_1_1InertialInitializerOptions_ac0e008a72e6fb14ac129fae7ae62e05b}{use\+\_\+stereo} = true
+\begin{DoxyCompactList}\small\item\em If we should process two cameras are being stereo or binocular. If binocular, we do monocular feature tracking on each image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a7bae4984f5ae2416c12a4aa4895018a4}\label{structov__init_1_1InertialInitializerOptions_a7bae4984f5ae2416c12a4aa4895018a4}} 
+bool \hyperlink{structov__init_1_1InertialInitializerOptions_a7bae4984f5ae2416c12a4aa4895018a4}{downsample\+\_\+cameras} = false
+\begin{DoxyCompactList}\small\item\em Will half the resolution all tracking image (aruco will be 1/4 instead of halved if dowsize\+\_\+aruoc also enabled) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ac592989c94e0bd68ff372ff29d917018}\label{structov__init_1_1InertialInitializerOptions_ac592989c94e0bd68ff372ff29d917018}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ac592989c94e0bd68ff372ff29d917018}{calib\+\_\+camimu\+\_\+dt} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Time offset between camera and I\+MU (t\+\_\+imu = t\+\_\+cam + t\+\_\+off) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a29e872f770bce934c99712d1bbf7cc21}\label{structov__init_1_1InertialInitializerOptions_a29e872f770bce934c99712d1bbf7cc21}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{ov\+\_\+core\+::\+Cam\+Base} $>$ $>$ \hyperlink{structov__init_1_1InertialInitializerOptions_a29e872f770bce934c99712d1bbf7cc21}{camera\+\_\+intrinsics}
+\begin{DoxyCompactList}\small\item\em Map between camid and camera intrinsics (fx, fy, cx, cy, d1...d4, cam\+\_\+w, cam\+\_\+h) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a031126dec2e7db46ae2b0233aa0d9554}\label{structov__init_1_1InertialInitializerOptions_a031126dec2e7db46ae2b0233aa0d9554}} 
+std\+::map$<$ size\+\_\+t, Eigen\+::\+Vector\+Xd $>$ \hyperlink{structov__init_1_1InertialInitializerOptions_a031126dec2e7db46ae2b0233aa0d9554}{camera\+\_\+extrinsics}
+\begin{DoxyCompactList}\small\item\em Map between camid and camera extrinsics (q\+\_\+\+ItoC, p\+\_\+\+IinC). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a1737eab55d27c05b3663a6b4c908aa6f}\label{structov__init_1_1InertialInitializerOptions_a1737eab55d27c05b3663a6b4c908aa6f}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a1737eab55d27c05b3663a6b4c908aa6f}{sim\+\_\+seed\+\_\+state\+\_\+init} = 0
+\begin{DoxyCompactList}\small\item\em Seed for initial states (i.\+e. random feature 3d positions in the generated map) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_aed93d59d66bf7d2f0778a09fb58a0a92}\label{structov__init_1_1InertialInitializerOptions_aed93d59d66bf7d2f0778a09fb58a0a92}} 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_aed93d59d66bf7d2f0778a09fb58a0a92}{sim\+\_\+seed\+\_\+preturb} = 0
+\begin{DoxyCompactList}\small\item\em Seed for calibration perturbations. Change this to perturb by different random values if perturbations are enabled. \end{DoxyCompactList}\item 
+int \hyperlink{structov__init_1_1InertialInitializerOptions_a4974c2a72613c396477eb322bca919ea}{sim\+\_\+seed\+\_\+measurements} = 0
+\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_af8d57aa321db8dc0a6ae5b5b99bfbd46}\label{structov__init_1_1InertialInitializerOptions_af8d57aa321db8dc0a6ae5b5b99bfbd46}} 
+bool \hyperlink{structov__init_1_1InertialInitializerOptions_af8d57aa321db8dc0a6ae5b5b99bfbd46}{sim\+\_\+do\+\_\+perturbation} = false
+\begin{DoxyCompactList}\small\item\em If we should perturb the calibration that the estimator starts with \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_aa8e988485f1a07e879d7a01e8e5b5ca3}\label{structov__init_1_1InertialInitializerOptions_aa8e988485f1a07e879d7a01e8e5b5ca3}} 
+std\+::string \hyperlink{structov__init_1_1InertialInitializerOptions_aa8e988485f1a07e879d7a01e8e5b5ca3}{sim\+\_\+traj\+\_\+path} = \char`\"{}../ov\+\_\+data/sim/udel\+\_\+gore.\+txt\char`\"{}
+\begin{DoxyCompactList}\small\item\em Path to the trajectory we will b-\/spline and simulate on. Should be time(s),pos(xyz),ori(xyzw) format. \end{DoxyCompactList}\item 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_aa21a87a289051ef5ae66b315a53de75e}{sim\+\_\+distance\+\_\+threshold} = 1.\+2
+\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_aad85b7e3154b976099a927066259e19b}\label{structov__init_1_1InertialInitializerOptions_aad85b7e3154b976099a927066259e19b}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_aad85b7e3154b976099a927066259e19b}{sim\+\_\+freq\+\_\+cam} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Frequency (Hz) that we will simulate our cameras \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_ad5469977d726e6281781746dbf527c1e}\label{structov__init_1_1InertialInitializerOptions_ad5469977d726e6281781746dbf527c1e}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_ad5469977d726e6281781746dbf527c1e}{sim\+\_\+freq\+\_\+imu} = 400.\+0
+\begin{DoxyCompactList}\small\item\em Frequency (Hz) that we will simulate our inertial measurement unit \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a5dcebf9e0a5f13dde042ba43db83cf37}\label{structov__init_1_1InertialInitializerOptions_a5dcebf9e0a5f13dde042ba43db83cf37}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a5dcebf9e0a5f13dde042ba43db83cf37}{sim\+\_\+min\+\_\+feature\+\_\+gen\+\_\+distance} = 5
+\begin{DoxyCompactList}\small\item\em Feature distance we generate features from (minimum) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a0408c41382b9a69d976e27e977884765}\label{structov__init_1_1InertialInitializerOptions_a0408c41382b9a69d976e27e977884765}} 
+double \hyperlink{structov__init_1_1InertialInitializerOptions_a0408c41382b9a69d976e27e977884765}{sim\+\_\+max\+\_\+feature\+\_\+gen\+\_\+distance} = 10
+\begin{DoxyCompactList}\small\item\em Feature distance we generate features from (maximum) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Struct which stores all options needed for state estimation. 
+
+This is broken into a few different parts\+: estimator, trackers, and simulation. If you are going to add a parameter here you will need to add it to the parsers. You will also need to add it to the print statement at the bottom of each. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a4b4ecffffd22caa546e78b7765e6d0ea}\label{structov__init_1_1InertialInitializerOptions_a4b4ecffffd22caa546e78b7765e6d0ea}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!print\+\_\+and\+\_\+load@{print\+\_\+and\+\_\+load}}
+\index{print\+\_\+and\+\_\+load@{print\+\_\+and\+\_\+load}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load()}{print\_and\_load()}}
+{\footnotesize\ttfamily void ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::print\+\_\+and\+\_\+load (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load the non-\/simulation parameters of the system and print. 
+
+
+\begin{DoxyParams}{参数}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a0f807d03fd000d632baaf934660a3a4c}\label{structov__init_1_1InertialInitializerOptions_a0f807d03fd000d632baaf934660a3a4c}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!print\+\_\+and\+\_\+load\+\_\+initializer@{print\+\_\+and\+\_\+load\+\_\+initializer}}
+\index{print\+\_\+and\+\_\+load\+\_\+initializer@{print\+\_\+and\+\_\+load\+\_\+initializer}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+initializer()}{print\_and\_load\_initializer()}}
+{\footnotesize\ttfamily void ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::print\+\_\+and\+\_\+load\+\_\+initializer (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all initializer settings loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{参数}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a4d5ee1a5eb1b3bb35d040e59df7d6541}\label{structov__init_1_1InertialInitializerOptions_a4d5ee1a5eb1b3bb35d040e59df7d6541}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!print\+\_\+and\+\_\+load\+\_\+noise@{print\+\_\+and\+\_\+load\+\_\+noise}}
+\index{print\+\_\+and\+\_\+load\+\_\+noise@{print\+\_\+and\+\_\+load\+\_\+noise}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+noise()}{print\_and\_load\_noise()}}
+{\footnotesize\ttfamily void ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::print\+\_\+and\+\_\+load\+\_\+noise (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all noise parameters loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{参数}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a2dd58d205af3a419aa090f1f5291d0e2}\label{structov__init_1_1InertialInitializerOptions_a2dd58d205af3a419aa090f1f5291d0e2}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!print\+\_\+and\+\_\+load\+\_\+simulation@{print\+\_\+and\+\_\+load\+\_\+simulation}}
+\index{print\+\_\+and\+\_\+load\+\_\+simulation@{print\+\_\+and\+\_\+load\+\_\+simulation}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+simulation()}{print\_and\_load\_simulation()}}
+{\footnotesize\ttfamily void ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::print\+\_\+and\+\_\+load\+\_\+simulation (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all simulated parameters. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{参数}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a4bbf49110ccf3f02b36d90f2504a0196}\label{structov__init_1_1InertialInitializerOptions_a4bbf49110ccf3f02b36d90f2504a0196}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!print\+\_\+and\+\_\+load\+\_\+state@{print\+\_\+and\+\_\+load\+\_\+state}}
+\index{print\+\_\+and\+\_\+load\+\_\+state@{print\+\_\+and\+\_\+load\+\_\+state}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+state()}{print\_and\_load\_state()}}
+{\footnotesize\ttfamily void ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::print\+\_\+and\+\_\+load\+\_\+state (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load and print all state parameters (e.\+g. sensor extrinsics) This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{参数}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{类成员变量说明}
+\mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a202ca41d108ae2da322f246f246d0c2a}\label{structov__init_1_1InertialInitializerOptions_a202ca41d108ae2da322f246f246d0c2a}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond@{init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond}}
+\index{init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond@{init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond}{init\_dyn\_min\_rec\_cond}}
+{\footnotesize\ttfamily double ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::init\+\_\+dyn\+\_\+min\+\_\+rec\+\_\+cond = 1e-\/15}
+
+Minimum reciprocal condition number acceptable for our covariance recovery (min\+\_\+sigma / max\+\_\+sigma $<$ sqrt(min\+\_\+reciprocal\+\_\+condition\+\_\+number)) \mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_aa21a87a289051ef5ae66b315a53de75e}\label{structov__init_1_1InertialInitializerOptions_aa21a87a289051ef5ae66b315a53de75e}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!sim\+\_\+distance\+\_\+threshold@{sim\+\_\+distance\+\_\+threshold}}
+\index{sim\+\_\+distance\+\_\+threshold@{sim\+\_\+distance\+\_\+threshold}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{sim\+\_\+distance\+\_\+threshold}{sim\_distance\_threshold}}
+{\footnotesize\ttfamily double ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::sim\+\_\+distance\+\_\+threshold = 1.\+2}
+
+We will start simulating after we have moved this much along the b-\/spline. This prevents static starts as we init from groundtruth in simulation. \mbox{\Hypertarget{structov__init_1_1InertialInitializerOptions_a4974c2a72613c396477eb322bca919ea}\label{structov__init_1_1InertialInitializerOptions_a4974c2a72613c396477eb322bca919ea}} 
+\index{ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}!sim\+\_\+seed\+\_\+measurements@{sim\+\_\+seed\+\_\+measurements}}
+\index{sim\+\_\+seed\+\_\+measurements@{sim\+\_\+seed\+\_\+measurements}!ov\+\_\+init\+::\+Inertial\+Initializer\+Options@{ov\+\_\+init\+::\+Inertial\+Initializer\+Options}}
+\subsubsection{\texorpdfstring{sim\+\_\+seed\+\_\+measurements}{sim\_seed\_measurements}}
+{\footnotesize\ttfamily int ov\+\_\+init\+::\+Inertial\+Initializer\+Options\+::sim\+\_\+seed\+\_\+measurements = 0}
+
+Measurement noise seed. This should be incremented for each run in the Monte-\/\+Carlo simulation to generate the same true measurements, but diffferent noise values. 

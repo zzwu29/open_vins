@@ -1,0 +1,146 @@
+\hypertarget{classov__type_1_1JPLQuat}{}\section{ov\+\_\+type\+:\+:J\+P\+L\+Quat Class Reference}
+\label{classov__type_1_1JPLQuat}\index{ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}}
+
+
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements J\+PL quaternion.  
+
+
+
+
+{\ttfamily \#include $<$J\+P\+L\+Quat.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__type_1_1JPLQuat_af0a26f1b03bc7c89abad5dfd985c61cd}{update} (const Eigen\+::\+Vector\+Xd \&dx) override
+\begin{DoxyCompactList}\small\item\em Implements update operation by left-\/multiplying the current quaternion with a quaternion built from a small axis-\/angle perturbation. \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1JPLQuat_a51847b09cfc48c3d869d08ecd7f4821d}{set\+\_\+value} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Sets the value of the estimate and recomputes the internal rotation matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1JPLQuat_ae631d6cf4ed4170234272be498fd22e3}{set\+\_\+fej} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Sets the fej value and recomputes the fej rotation matrix. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_a1a85597f2096605d2ddbee7c449bf4bc}\label{classov__type_1_1JPLQuat_a1a85597f2096605d2ddbee7c449bf4bc}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ \hyperlink{classov__type_1_1JPLQuat_a1a85597f2096605d2ddbee7c449bf4bc}{clone} () override
+\begin{DoxyCompactList}\small\item\em Create a clone of this variable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_a8066e5417183815c51035932f3027f74}\label{classov__type_1_1JPLQuat_a8066e5417183815c51035932f3027f74}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__type_1_1JPLQuat_a8066e5417183815c51035932f3027f74}{Rot} () const
+\begin{DoxyCompactList}\small\item\em Rotation access. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_a2747deed39c33fe3cd2caeb7096dbc56}\label{classov__type_1_1JPLQuat_a2747deed39c33fe3cd2caeb7096dbc56}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__type_1_1JPLQuat_a2747deed39c33fe3cd2caeb7096dbc56}{Rot\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ Rotation access. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__type_1_1JPLQuat_a0ea10a064e10b3788ec541cf667c8e99}{set\+\_\+value\+\_\+internal} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the value of the estimate and recomputes the internal rotation matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1JPLQuat_ac1e67273e4414bc4a162787ff6d73a48}{set\+\_\+fej\+\_\+internal} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the fej value and recomputes the fej rotation matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_a96c5f21fbff5ba2ecd0e9daf05a24765}\label{classov__type_1_1JPLQuat_a96c5f21fbff5ba2ecd0e9daf05a24765}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries \+\_\+R}
+\item 
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_aa87a66b60ae150c0006fed0559787644}\label{classov__type_1_1JPLQuat_aa87a66b60ae150c0006fed0559787644}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries \+\_\+\+Rfej}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements J\+PL quaternion. 
+
+This quaternion uses a left-\/multiplicative error state and follows the \char`\"{}\+J\+P\+L convention\char`\"{}. Please checkout our utility functions in the \hyperlink{quat__ops_8h_source}{quat\+\_\+ops.\+h} file. We recommend that people new quaternions check out the following resources\+:
+\begin{DoxyItemize}
+\item \href{http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf}{\tt http\+://mars.\+cs.\+umn.\+edu/tr/reports/\+Trawny05b.\+pdf}
+\item \href{ftp://naif.jpl.nasa.gov/pub/naif/misc/Quaternion_White_Paper/Quaternions_White_Paper.pdf}{\tt ftp\+://naif.\+jpl.\+nasa.\+gov/pub/naif/misc/\+Quaternion\+\_\+\+White\+\_\+\+Paper/\+Quaternions\+\_\+\+White\+\_\+\+Paper.\+pdf} 
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_ae631d6cf4ed4170234272be498fd22e3}\label{classov__type_1_1JPLQuat_ae631d6cf4ed4170234272be498fd22e3}} 
+\index{ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}!set\+\_\+fej@{set\+\_\+fej}}
+\index{set\+\_\+fej@{set\+\_\+fej}!ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}}
+\subsubsection{\texorpdfstring{set\+\_\+fej()}{set\_fej()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+J\+P\+L\+Quat\+::set\+\_\+fej (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the fej value and recomputes the fej rotation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+value} & New value for the quaternion estimate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classov__type_1_1Type_ab8345946b27cb43e0cfc36454a06686d}{ov\+\_\+type\+::\+Type}.
+
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_ac1e67273e4414bc4a162787ff6d73a48}\label{classov__type_1_1JPLQuat_ac1e67273e4414bc4a162787ff6d73a48}} 
+\index{ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}!set\+\_\+fej\+\_\+internal@{set\+\_\+fej\+\_\+internal}}
+\index{set\+\_\+fej\+\_\+internal@{set\+\_\+fej\+\_\+internal}!ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}}
+\subsubsection{\texorpdfstring{set\+\_\+fej\+\_\+internal()}{set\_fej\_internal()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+J\+P\+L\+Quat\+::set\+\_\+fej\+\_\+internal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Sets the fej value and recomputes the fej rotation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+value} & New value for the quaternion estimate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_a51847b09cfc48c3d869d08ecd7f4821d}\label{classov__type_1_1JPLQuat_a51847b09cfc48c3d869d08ecd7f4821d}} 
+\index{ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+J\+P\+L\+Quat\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the value of the estimate and recomputes the internal rotation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+value} & New value for the quaternion estimate \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classov__type_1_1Type_a81c73f0b6c10f2550a487019a59796a9}{ov\+\_\+type\+::\+Type}.
+
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_a0ea10a064e10b3788ec541cf667c8e99}\label{classov__type_1_1JPLQuat_a0ea10a064e10b3788ec541cf667c8e99}} 
+\index{ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}!set\+\_\+value\+\_\+internal@{set\+\_\+value\+\_\+internal}}
+\index{set\+\_\+value\+\_\+internal@{set\+\_\+value\+\_\+internal}!ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}}
+\subsubsection{\texorpdfstring{set\+\_\+value\+\_\+internal()}{set\_value\_internal()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+J\+P\+L\+Quat\+::set\+\_\+value\+\_\+internal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Sets the value of the estimate and recomputes the internal rotation matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+value} & New value for the quaternion estimate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1JPLQuat_af0a26f1b03bc7c89abad5dfd985c61cd}\label{classov__type_1_1JPLQuat_af0a26f1b03bc7c89abad5dfd985c61cd}} 
+\index{ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}!update@{update}}
+\index{update@{update}!ov\+\_\+type\+::\+J\+P\+L\+Quat@{ov\+\_\+type\+::\+J\+P\+L\+Quat}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+J\+P\+L\+Quat\+::update (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{dx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements update operation by left-\/multiplying the current quaternion with a quaternion built from a small axis-\/angle perturbation. 
+
+\[ \bar{q}=norm\Big(\begin{bmatrix} 0.5*\mathbf{\theta_{dx}} \\ 1 \end{bmatrix}\Big) \hat{\bar{q}} \]
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Axis-\/angle representation of the perturbing quaternion \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classov__type_1_1Type_a4e133d50af35f07bd97f73590fe31000}{ov\+\_\+type\+::\+Type}.
+

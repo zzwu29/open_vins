@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: Visual-Inertial Simulator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Visual-Inertial Simulator </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="sim-bspline"></a>
+B-Spline Interpolation</h1>
+<div class="image">
+<object type="image/svg+xml" data="splineframes.svg" width="60%">splineframes.svg</object>
+</div>
+<p>At the center of the simulator is an <img class="formulaInl" alt="$\mathbb{SE}(3)$" src="form_126.png"/> b-spline which allows for the calculation of the pose, velocity, and accelerations at any given timestep along a given trajectory. We follow the work of Mueggler et al. <a class="el" href="citelist.html#CITEREF_Mueggler2018TRO">[17]</a> and Patron et al. <a class="el" href="citelist.html#CITEREF_Patron2015IJCV">[18]</a> in which given a series of uniformly distributed "control points" poses the pose <img class="formulaInl" alt="$\{S\}$" src="form_127.png"/> at a given timestep <img class="formulaInl" alt="$t_s$" src="form_128.png"/> can be interpolated by:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} {}^{G}_{S}\mathbf{T}(u(t_s)) &amp;= {}^{G}_{i-1}\mathbf{T}~\mathbf{A}_0~\mathbf{A}_1~\mathbf{A}_2 \label{eq:poseinterp} \\[0.75em] \mathbf{A}_j &amp;= \mathrm{exp}\Big({B}_j(u(t))~{}^{i-1+j}_{i+j}\mathbf{\Omega} \Big) \\ {}^{i-1}_{i}\mathbf{\Omega} &amp;= \mathrm{log}\Big( {}^{G}_{i-1}\mathbf{T}^{-1}~{}^{G}_{i}\mathbf{T} \Big) \\[0.75em] {B}_0(u(t)) &amp;= \frac{1}{3!}~(5+3u-3u^2+u^3) \\ {B}_1(u(t)) &amp;= \frac{1}{3!}~(1+3u+3u^2-2u^3) \\ {B}_2(u(t)) &amp;= \frac{1}{3!}~(u^3) \end{align*}" src="form_129.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$u(t_s)=(t_s-t_i)/(t_{i+1}-t_i)$" src="form_130.png"/>, <img class="formulaInl" alt="$\mathrm{exp}(\cdot)$" src="form_131.png"/>, <img class="formulaInl" alt="$\mathrm{log}(\cdot)$" src="form_132.png"/> are the <img class="formulaInl" alt="$\mathbb{SE}(3)$" src="form_126.png"/> matrix exponential <a class="el" href="namespaceov__core.html#a8907fdb4273f23741299fb23a1c1f572">ov_core::exp_se3</a> and logarithm <a class="el" href="namespaceov__core.html#aaf3626f4ed6392b8b0b0d0a75ff08a61">ov_core::log_se3</a>. The frame notations can be seen in the above figure and we refer the reader to the <a class="el" href="classov__core_1_1BsplineSE3.html">ov_core::BsplineSE3</a> class for more details. The above equation can be interpretative as compounding the fractions portions of the bounding poses to the first pose <img class="formulaInl" alt="${}^{G}_{i-1}\mathbf{T}$" src="form_133.png"/>. From this above equation, it is simple to take the derivative in respect to time, thus allowing the computation of the velocity and acceleration at any point.</p>
+<p>The only needed input into the simulator is a pose trajectory which we will then uniformly sample to construct control points for this spline. This spline is then used to both generate the inertial measurements while also providing the pose information needed to generate visual-bearing measurements.</p>
+<h1><a class="anchor" id="sim-inertial"></a>
+Inertial Measurements</h1>
+<p>To incorporate inertial measurements from a IMU sensor, we can leverage the continuous nature and <img class="formulaInl" alt="$C^2$" src="form_134.png"/>-continuity of our cubic B-spline. We can define the sensor measurement from a IMU as follows:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} {}^I\boldsymbol{\omega}_m(t) &amp;= {}^I\boldsymbol{\omega}(t) + \mathbf{b}_\omega + \mathbf{n}_\omega \\ {}^I\mathbf{a}_m(t) &amp;= {}^I\mathbf{a}(t) + {}^{I(t)}_G\mathbf{R}{}^G\mathbf{g} + \mathbf{b}_a + \mathbf{n}_a \\ \dot{\mathbf{b}}_\omega &amp;= \mathbf{n}_{wg} \\ \dot{\mathbf{b}}_a &amp;= \mathbf{n}_{wa} \end{align*}" src="form_135.png"/>
+</p>
+<p>where each measurement is corrupted with some white noise and random-walk bias. To obtain the true measurements from our <img class="formulaInl" alt="$\mathbb{SE}(3)$" src="form_126.png"/> b-spline we can do the following:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} {}^I\boldsymbol{\omega}(t) &amp;= \mathrm{vee}\Big( {}^{G}_{I}\mathbf{R}(u(t))^\top {}^{G}_{I}\dot{\mathbf{R}}(u(t)) \Big) \\ {}^I\mathbf{a}(t) &amp;= {}^{G}_{I}\mathbf{R}(u(t))^\top {}^{G}\ddot{\mathbf{p}}_{I}(u(t)) \end{align*}" src="form_136.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$\mathrm{vee}(\cdot)$" src="form_137.png"/> returns the vector portion of the skew-symmetric matrix (see <a class="el" href="namespaceov__core.html#aaf2593d3bde63e31ac9fc20e345271dc">ov_core::vee</a>). These are then corrupted using the random walk biases and corresponding white noises. For example we have the following:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \omega_m(t) &amp;= \omega(t) + b_\omega(t) + \sigma_w\frac{1}{\sqrt{\Delta t}}\textrm{gennoise}(0,1) \\ b_\omega(t+\Delta t) &amp;= b_\omega(t) + \sigma_{wg}\sqrt{\Delta t}~\textrm{gennoise}(0,1) \\ t &amp;= t+\Delta t \end{align*}" src="form_138.png"/>
+</p>
+<p>Note that this is repeated per-scalar value as compared to the vector and identically for the accelerometer readings. The <img class="formulaInl" alt="$\textrm{gennoise}(m,v)$" src="form_139.png"/> function generates a random scalar float with mean <em>m</em> and variance <em>v</em>. The <img class="formulaInl" alt="$\Delta t$" src="form_140.png"/> is our sensor sampling rate that we advance time forward with.</p>
+<h1><a class="anchor" id="sim-visbearing"></a>
+Visual-Bearing Measurement</h1>
+<p>The first step that we perform after creating the b-spline trajectory is the generation of a map of point features. To generate these features, we increment along the spline at a fixed interval and ensure that all cameras see enough features in the map. If there are not enough features in the given frame, we generate new features by sending random rays from the camera out and assigning a random depth. This feature is then added to the map so that it can be projected into future frames.</p>
+<p>After the map generation phase, we generate feature measurements by projecting them into the current frame. Projected features are limited to being with-in the field of view of the camera, in front of the camera, and close in distance. Pixel noise can be directly added to the raw pixel values. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

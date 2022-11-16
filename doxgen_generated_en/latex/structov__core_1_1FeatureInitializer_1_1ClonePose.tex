@@ -1,0 +1,48 @@
+\hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose}{}\section{ov\+\_\+core\+:\+:Feature\+Initializer\+:\+:Clone\+Pose Struct Reference}
+\label{structov__core_1_1FeatureInitializer_1_1ClonePose}\index{ov\+\_\+core\+::\+Feature\+Initializer\+::\+Clone\+Pose@{ov\+\_\+core\+::\+Feature\+Initializer\+::\+Clone\+Pose}}
+
+
+Structure which stores pose estimates for use in triangulation.  
+
+
+
+
+{\ttfamily \#include $<$Feature\+Initializer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_a03004e652d7e39db06ba1efee87baf35}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_a03004e652d7e39db06ba1efee87baf35}} 
+\hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_a03004e652d7e39db06ba1efee87baf35}{Clone\+Pose} (const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&R, const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&p)
+\begin{DoxyCompactList}\small\item\em Constructs pose from rotation and position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_a8a71caa7b8fe89be792cf7392035303b}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_a8a71caa7b8fe89be792cf7392035303b}} 
+\hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_a8a71caa7b8fe89be792cf7392035303b}{Clone\+Pose} (const Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \&q, const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&p)
+\begin{DoxyCompactList}\small\item\em Constructs pose from quaternion and position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_a547f0ca911c273202c71ae5ef0dd21b8}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_a547f0ca911c273202c71ae5ef0dd21b8}} 
+\hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_a547f0ca911c273202c71ae5ef0dd21b8}{Clone\+Pose} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_a0ceb30018eb94165b9ae122f9a644b3c}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_a0ceb30018eb94165b9ae122f9a644b3c}} 
+const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \& \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_a0ceb30018eb94165b9ae122f9a644b3c}{Rot} ()
+\begin{DoxyCompactList}\small\item\em Accessor for rotation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_aaa93798264c4123ba8cbdd0daa1c8f95}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_aaa93798264c4123ba8cbdd0daa1c8f95}} 
+const Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \& \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_aaa93798264c4123ba8cbdd0daa1c8f95}{pos} ()
+\begin{DoxyCompactList}\small\item\em Accessor for position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_ae235244ea20c0bea763b5ec50610ff4c}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_ae235244ea20c0bea763b5ec50610ff4c}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_ae235244ea20c0bea763b5ec50610ff4c}{\+\_\+\+Rot}
+\begin{DoxyCompactList}\small\item\em Rotation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializer_1_1ClonePose_a242e4f9f5640ee0fe7210e60093ec801}\label{structov__core_1_1FeatureInitializer_1_1ClonePose_a242e4f9f5640ee0fe7210e60093ec801}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{structov__core_1_1FeatureInitializer_1_1ClonePose_a242e4f9f5640ee0fe7210e60093ec801}{\+\_\+pos}
+\begin{DoxyCompactList}\small\item\em Position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure which stores pose estimates for use in triangulation. 
+
+
+\begin{DoxyItemize}
+\item R\+\_\+\+GtoC -\/ rotation from global to camera
+\item p\+\_\+\+CinG -\/ position of camera in global frame 
+\end{DoxyItemize}

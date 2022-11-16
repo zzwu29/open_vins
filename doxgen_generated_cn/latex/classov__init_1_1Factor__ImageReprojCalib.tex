@@ -1,0 +1,75 @@
+\hypertarget{classov__init_1_1Factor__ImageReprojCalib}{}\section{ov\+\_\+init\+:\+:Factor\+\_\+\+Image\+Reproj\+Calib类 参考}
+\label{classov__init_1_1Factor__ImageReprojCalib}\index{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib@{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib}}
+
+
+Factor of feature bearing observation (raw) with calibration  
+
+
+
+
+{\ttfamily \#include $<$Factor\+\_\+\+Image\+Reproj\+Calib.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__init_1_1Factor__ImageReprojCalib_aaecdb048ff86ec1621fc690adf6eb89a}{Factor\+\_\+\+Image\+Reproj\+Calib} (const Eigen\+::\+Vector2d \&uv\+\_\+meas\+\_\+, double pix\+\_\+sigma\+\_\+, bool is\+\_\+fisheye\+\_\+)
+\begin{DoxyCompactList}\small\item\em Default constructor \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1Factor__ImageReprojCalib_ad374255563922f2dff0e8d33f860419b}{Evaluate} (double const $\ast$const $\ast$parameters, double $\ast$residuals, double $\ast$$\ast$jacobians) const override
+\begin{DoxyCompactList}\small\item\em Error residual and Jacobian calculation \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_a6b61d1e16eb2ea839386975477c6b0b0}\label{classov__init_1_1Factor__ImageReprojCalib_a6b61d1e16eb2ea839386975477c6b0b0}} 
+Eigen\+::\+Vector2d {\bfseries uv\+\_\+meas}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_a54fe1639da58d8ca921d0bc812d59925}\label{classov__init_1_1Factor__ImageReprojCalib_a54fe1639da58d8ca921d0bc812d59925}} 
+double {\bfseries pix\+\_\+sigma} = 1.\+0
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_a88e052fdf8160abc2289dbcceb7d1432}\label{classov__init_1_1Factor__ImageReprojCalib_a88e052fdf8160abc2289dbcceb7d1432}} 
+Eigen\+::\+Matrix$<$ double, 2, 2 $>$ {\bfseries sqrtQ}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_a8e139b85dac9c971f1764999c4f8880f}\label{classov__init_1_1Factor__ImageReprojCalib_a8e139b85dac9c971f1764999c4f8880f}} 
+bool {\bfseries is\+\_\+fisheye} = false
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_a97e1ebb6fdb6ab55c58235eb150b5b73}\label{classov__init_1_1Factor__ImageReprojCalib_a97e1ebb6fdb6ab55c58235eb150b5b73}} 
+double {\bfseries gate} = 1.\+0
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Factor of feature bearing observation (raw) with calibration 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_aaecdb048ff86ec1621fc690adf6eb89a}\label{classov__init_1_1Factor__ImageReprojCalib_aaecdb048ff86ec1621fc690adf6eb89a}} 
+\index{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib@{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib}!Factor\+\_\+\+Image\+Reproj\+Calib@{Factor\+\_\+\+Image\+Reproj\+Calib}}
+\index{Factor\+\_\+\+Image\+Reproj\+Calib@{Factor\+\_\+\+Image\+Reproj\+Calib}!ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib@{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib}}
+\subsubsection{\texorpdfstring{Factor\+\_\+\+Image\+Reproj\+Calib()}{Factor\_ImageReprojCalib()}}
+{\footnotesize\ttfamily Factor\+\_\+\+Image\+Reproj\+Calib\+::\+Factor\+\_\+\+Image\+Reproj\+Calib (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2d \&}]{uv\+\_\+meas\+\_\+,  }\item[{double}]{pix\+\_\+sigma\+\_\+,  }\item[{bool}]{is\+\_\+fisheye\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Default constructor 
+
+
+\begin{DoxyParams}{参数}
+{\em uv\+\_\+meas\+\_\+} & Raw pixel uv measurement of a environmental feature \\
+\hline
+{\em pix\+\_\+sigma\+\_\+} & Raw pixel measurement uncertainty (typically 1) \\
+\hline
+{\em is\+\_\+fisheye\+\_\+} & If this raw pixel camera uses fisheye distortion \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__init_1_1Factor__ImageReprojCalib_ad374255563922f2dff0e8d33f860419b}\label{classov__init_1_1Factor__ImageReprojCalib_ad374255563922f2dff0e8d33f860419b}} 
+\index{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib@{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib@{ov\+\_\+init\+::\+Factor\+\_\+\+Image\+Reproj\+Calib}}
+\subsubsection{\texorpdfstring{Evaluate()}{Evaluate()}}
+{\footnotesize\ttfamily bool Factor\+\_\+\+Image\+Reproj\+Calib\+::\+Evaluate (\begin{DoxyParamCaption}\item[{double const $\ast$const $\ast$}]{parameters,  }\item[{double $\ast$}]{residuals,  }\item[{double $\ast$$\ast$}]{jacobians }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Error residual and Jacobian calculation 
+
+This computes the Jacobians and residual of the feature projection model. This is a function of the observing pose, feature in global, and calibration parameters. The normalized pixel coordinates are found and then distorted using the camera distortion model. See the \hyperlink{update-feat}{Camera Measurement Update} page for more details. 

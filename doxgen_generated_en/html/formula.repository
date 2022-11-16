@@ -1,0 +1,358 @@
+\form#0:$\sigma$
+\form#1:$N$
+\form#2:$K$
+\form#3:$\hat{\mathbf{x}}^+$
+\form#4:\begin{align*} e_{ATE} &= \frac{1}{N} \sum_{i=1}^{N} \sqrt{ \frac{1}{K} \sum_{k=1}^{K} ||\mathbf{x}_{k,i} \boxminus \hat{\mathbf{x}}^+_{k,i}||^2_{2} } \end{align*}
+\form#5:$\mathcal{D} = [d_1,~d_2,\cdots,~d_V]$
+\form#6:$D_i$
+\form#7:$d_i$
+\form#8:\begin{align*} \tilde{\mathbf{x}}_{r} &= \mathbf{x}_{k} \boxminus \mathbf{x}_{k+d_i} \\ e_{rpe,d_i} &= \frac{1}{D_i} \sum_{k=1}^{D_i} ||\tilde{\mathbf{x}}_{r} \boxminus \hat{\tilde{\mathbf{x}}}_{r}||_{2} \end{align*}
+\form#9:$k$
+\form#10:\begin{align*} e_{rmse,k} &= \sqrt{ \frac{1}{N} \sum_{i=1}^{N} ||\mathbf{x}_{k,i} \boxminus \hat{\mathbf{x}}_{k,i}||^2_{2} } \end{align*}
+\form#11:\begin{align*} e_{nees,k} &= \frac{1}{N} \sum_{i=1}^{N} (\mathbf{x}_{k,i} \boxminus \hat{\mathbf{x}}_{k,i})^\top \mathbf{P}^{-1}_{k,i} (\mathbf{x}_{k,i} \boxminus \hat{\mathbf{x}}_{k,i}) \end{align*}
+\form#12:$3\sigma$
+\form#13:\begin{align*} \mathbf{e}_k &= \mathbf{x}_{k} \boxminus \hat{\mathbf{x}}_{k} \\ &\textrm{where} ~~\mathbf{e}_k\sim \mathcal N (0, \mathbf P) \end{align*}
+\form#14:\begin{align*} \tilde{\mathbf{x}}_{k|k-1} &= \mathbf{\Phi}_{(k,k-1)}~\tilde{\mathbf{x}}_{k-1|k-1} + \mathbf{G}_{k}\mathbf{w}_{k} \\ \tilde{\mathbf{z}}_{k} &= \mathbf{H}_{k}~\tilde{\mathbf{x}}_{k|k-1}+\mathbf{n}_{k} \end{align*}
+\form#15:\begin{align*} \mathbf{x}_k &= \begin{bmatrix} {}_G^{I_{k}} \bar{q}{}^{\top} & {}^G\mathbf{p}_{{I}_{k}}^{\top} & {}^G\mathbf{v}_{{I}_{k}}^{\top} & {}^G\mathbf{p}_{f}^{\top} \end{bmatrix}^{\top} \end{align*}
+\form#16:\begin{align*} \mathbf{H}_{k} &= \mathbf H_{proj,k}~\mathbf H_{state,k} \\ &= \begin{bmatrix} \frac{1}{{}^Iz} & 0 & \frac{-{}^Ix}{({}^Iz)^2} \\ 0 & \frac{1}{{}^Iz} & \frac{-{}^Iy}{({}^Iz)^2} \\ \end{bmatrix} \begin{bmatrix} \lfloor {}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) \times\rfloor & -{}^{I_k}_{G}\mathbf{R} & \mathbf 0_{3\times3} & {}^{I_k}_{G}\mathbf{R} \end{bmatrix} \\ &= \mathbf H_{proj,k}~ {}^{I_k}_{G}\mathbf{R} \begin{bmatrix} \lfloor ({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) \times\rfloor {}^{I_k}_{G}\mathbf{R}^\top & -\mathbf I_{3\times3} & \mathbf 0_{3\times3} & \mathbf I_{3\times3} \end{bmatrix} \end{align*}
+\form#17:\begin{align*} \mathbf{\Phi}_{(k,k-1)}&= \begin{bmatrix} {}^{I_{k}}_{I_{k-1}}\mathbf R & \mathbf 0_{3\times3} & \mathbf 0_{3\times3} & \mathbf 0_{3\times3} \\[1em] \empty -{}^{I_{k-1}}_{G}\mathbf{R}^\top \lfloor \boldsymbol\alpha(k,k-1) \times\rfloor & \mathbf I_{3\times3} & (t_{k}-t_{k-1})\mathbf I_{3\times3} & \mathbf 0_{3\times3} \\[1em] \empty -{}^{I_{k-1}}_{G}\mathbf{R}^\top \lfloor \boldsymbol\beta(k,k-1) \times\rfloor & \mathbf 0_{3\times3} & \mathbf I_{3\times3} & \mathbf 0_{3\times3} \\[1em] \empty \mathbf 0_{3\times3} & \mathbf 0_{3\times3} & \mathbf 0_{3\times3} & \mathbf I_{3\times3} \end{bmatrix} \\[2em] \boldsymbol\alpha(k,k-1) &= \int_{t_{k-1}}^{k} \int_{t_{k-1}}^{s} {}^{I_{k-1}}_{\tau}\mathbf R (\mathbf a(\tau)-\mathbf b_a - \mathbf w_a) d\tau ds \\ \boldsymbol\beta(k,k-1) &= \int_{t_{k-1}}^{t_k} {}^{I_{k-1}}_{\tau}\mathbf R (\mathbf a(\tau)-\mathbf b_a - \mathbf w_a) d\tau \end{align*}
+\form#18:$\mathbf a(\tau)$
+\form#19:$\tau $
+\form#20:${}^{I_{k}}_{I_{k-1}}\mathbf R$
+\form#21:${}^{G}\mathbf g = [0 ~ 0 ~ 9.81]^\top$
+\form#22:\begin{align*} \mathcal{O}= \begin{bmatrix} \mathbf{H}_{0}\mathbf{\Phi}_{(0,0)} \\ \mathbf{H}_{1}\mathbf{\Phi}_{(1,0)} \\ \mathbf{H}_{2}\mathbf{\Phi}_{(2,0)} \\ \vdots \\ \mathbf{H}_{k}\mathbf{\Phi}_{(k,0)} \\ \end{bmatrix} \end{align*}
+\form#23:$\mathbf{H}_{k}$
+\form#24:$\mathbf{\Phi}_{(k,0)}$
+\form#25:\begin{align*} \mathbf{H}_{k}\mathbf{\Phi}_{(k,0)} &= \empty \mathbf H_{proj,k}~ {}^{I_k}_{G}\mathbf{R} \begin{bmatrix} \boldsymbol\Gamma_1 & \boldsymbol\Gamma_2 & \boldsymbol\Gamma_3 & \boldsymbol\Gamma_4 \end{bmatrix} \\[2em] \empty \empty \boldsymbol\Gamma_1 &= \Big\lfloor \Big({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k} + {}^{I_{0}}_{G}\mathbf{R}^\top \boldsymbol\alpha(k,0) \Big) \times\Big\rfloor {}^{I_0}_{G}\mathbf{R}^\top \\ &= \Big\lfloor \Big({}^{G}\mathbf{p}_f- {}^{G}\mathbf{p}_{I_0}-{}^{G}\mathbf{v}_{I_0}(t_k-t_0)-\frac{1}{2}{}^G\mathbf{g}(t_k-t_0)^2 \Big) \times\Big\rfloor {}^{I_0}_{G}\mathbf{R}^\top \\ \boldsymbol\Gamma_2 &= -\mathbf I_{3\times3} \\ \boldsymbol\Gamma_3 &= -(t_{k}-t_0) \mathbf I_{3\times3} \\ \boldsymbol\Gamma_4 &= \mathbf I_{3\times3} \end{align*}
+\form#26:\begin{align*} \mathcal{N}_{vins} &= \begin{bmatrix} {}^{I_{0}}_{G}\mathbf{R}{}^G\mathbf{g} & \mathbf 0_{3\times3} \\ -\lfloor {}^{G}\mathbf{p}_{I_0} \times\rfloor{}^G\mathbf{g} & \mathbf{I}_{3\times3} \\ -\lfloor {}^{G}\mathbf{v}_{I_0} \times\rfloor{}^G\mathbf{g} & \mathbf{0}_{3\times3} \\ -\lfloor {}^{G}\mathbf{p}_{f} \times\rfloor{}^G\mathbf{g} & \mathbf{I}_{3\times3} \\ \end{bmatrix} \end{align*}
+\form#27:$ \mathbf{H}_{k}\mathbf{\Phi}_{(k,0)}\mathcal{N}_{vio} = \mathbf 0 $
+\form#28:\begin{align*} \mathbf{\Phi}_{(k+1,k-1)}(\mathbf{x}_{k+1|k},\mathbf{x}_{k-1|k-1}) \neq \mathbf{\Phi}_{(k+1,k)}(\mathbf{x}_{k+1|k},\mathbf{x}_{k|k}) ~ \mathbf{\Phi}_{(k,k-1)}(\mathbf{x}_{k|k-1},\mathbf{x}_{k-1|k-1}) \end{align*}
+\form#29:$\mathbf{\Phi}_{(k,k-1)}(\mathbf{x}_{k|k-1},\mathbf{x}_{k-1|k-1})$
+\form#30:$ \mathbf{\Phi}_{(k+1,k)}(\mathbf{x}_{k+1|k},\mathbf{x}_{k|k}) $
+\form#31:$\mathbf{x}_{k|k}$
+\form#32:\begin{align*} \mathbf{\Phi}_{(k+1,k-1)}(\mathbf{x}_{k+1|k},\mathbf{x}_{k-1|k-1}) = \mathbf{\Phi}_{(k+1,k)}(\mathbf{x}_{k+1|k},\mathbf{x}_{k|k-1}) ~ \mathbf{\Phi}_{(k,k-1)}(\mathbf{x}_{k|k-1},\mathbf{x}_{k-1|k-1}) \end{align*}
+\form#33:$\mathbf{x}_{k|k-1}$
+\form#34:$\mathbf H_k $
+\form#35:$ {}^G\mathbf{p}_f $
+\form#36:$\sigma_g$
+\form#37:$\frac{rad}{s}\frac{1}{\sqrt{Hz}}$
+\form#38:$\sigma_a$
+\form#39:$\frac{m}{s^2}\frac{1}{\sqrt{Hz}}$
+\form#40:$\sigma_{b_g}$
+\form#41:$\frac{rad}{s^2}\frac{1}{\sqrt{Hz}}$
+\form#42:$\sigma_{b_a}$
+\form#43:$\frac{m}{s^3}\frac{1}{\sqrt{Hz}}$
+\form#44:$\tau=1$
+\form#45:$\tau=3$
+\form#46:$\boldsymbol{\omega}_m$
+\form#47:$\mathbf{a}_m$
+\form#48:\begin{align*} \boldsymbol{\omega}_m(t) &= \boldsymbol{\omega}(t) + \mathbf{b}_{g}(t) + \mathbf{n}_{{g}}(t)\\ \mathbf{a}_m(t) &= \mathbf{a}(t) + {}^I_G\mathbf{R}(t) {^G\mathbf{g}} + \mathbf{b}_{a}(t) + \mathbf{n}_{{a}}(t) \end{align*}
+\form#49:$\boldsymbol{\omega}$
+\form#50:$\mathbf{a}$
+\form#51:$\{I\}$
+\form#52:$\mathbf{b}_{g}$
+\form#53:$\mathbf{b}_{a}$
+\form#54:$\mathbf{n}_{{g}}$
+\form#55:$\mathbf{n}_{{a}}$
+\form#56:${^G\mathbf{g}} = [ 0 ~~ 0 ~~ 9.81 ]^\top$
+\form#57:$\{G\}$
+\form#58:$^I_G\mathbf{R}$
+\form#59:$\mathbf{x}_I$
+\form#60:$t$
+\form#61:\begin{align*} \mathbf{x}_I(t) = \begin{bmatrix} ^I_G\bar{q}(t) \\ ^G\mathbf{p}_I(t) \\ ^G\mathbf{v}_I(t)\\ \mathbf{b}_{\mathbf{g}}(t) \\ \mathbf{b}_{\mathbf{a}}(t) \end{bmatrix} \end{align*}
+\form#62:$^I_G\bar{q}$
+\form#63:$^G\mathbf{p}_I$
+\form#64:$^G\mathbf{v}_I$
+\form#65:$I$
+\form#66:$^{I_t}_G\bar{q} = \text{}^I_G\bar{q}(t)$
+\form#67:$\delta \bar{q}$
+\form#68:$\otimes$
+\form#69:\begin{align*} ^I_G\bar{q} &= \delta \bar{q} \otimes \text{}^I_G \hat{\bar{q}}\\ \delta \bar{q} &= \begin{bmatrix} \hat{\mathbf{k}}\sin(\frac{1}{2}\tilde{\theta})\\ \cos(\frac{1}{2}\tilde{\theta}) \end{bmatrix} \simeq \begin{bmatrix} \frac{1}{2}\tilde{\boldsymbol{\theta}}\\ 1 \end{bmatrix} \end{align*}
+\form#70:$\hat{\mathbf{k}}$
+\form#71:$\tilde{\theta}$
+\form#72:$\tilde{\boldsymbol{\theta}} = \tilde{\theta}~\hat{\mathbf{k}}$
+\form#73:\begin{align*} \tilde{\mathbf{x}}_I(t) = \begin{bmatrix} ^I_G\tilde{\boldsymbol{\theta}}(t) \\ ^G\tilde{\mathbf{p}}_I(t) \\ ^G\tilde{\mathbf{v}}_I(t)\\ \tilde{\mathbf{b}}_{{g}}(t) \\ \tilde{\mathbf{b}}_{{a}}(t) \end{bmatrix} \end{align*}
+\form#74:\begin{align*} \newcommand{\comm}[1]{} ^I_G\dot{\bar{q}}(t) \comm{ &= \lim_{\delta t \to 0} \frac{1}{\delta t} (^{I_{t + \delta t}}_G\bar{q} - \text{}^{I_{t}}_G\bar{q})\\ &= \lim_{\delta t \to 0} \frac{1}{\delta t} (^{I_{t + \delta t}}_{L_{t}}\bar{q} \otimes ^{I_{t}}_{G}\bar{q} - \bar{q}_0 \otimes \text{}^{I_{t}}_G\bar{q})\\ &= \lim_{\delta t \to 0} \frac{1}{\delta t} (^{I_{t + \delta t}}_{L_{t}}\bar{q} - \bar{q}_0 ) \otimes \text{}^{I_{t}}_{G}\bar{q}\\ &\approx \lim_{\delta t \to 0} \frac{1}{\delta t} \Bigg (\begin{bmatrix} \frac{1}{2}\delta \boldsymbol{\theta}\\ 1 \end{bmatrix} -\begin{bmatrix} \boldsymbol{0}\\ 1 \end{bmatrix} \Bigg ) \otimes \text{}^{I_{t}}_{G}\bar{q} \\ &= \frac{1}{2} \begin{bmatrix} \boldsymbol{\omega}\\ 0 \end{bmatrix} \otimes \text{}^{I_{t}}_{G}\bar{q}\\} &= \frac{1}{2} \begin{bmatrix} -\lfloor \boldsymbol{\omega}(t) \times \rfloor && \boldsymbol{\omega}(t) \\ -\boldsymbol{\omega}^\top(t) && 0 \end{bmatrix} \text{}^{I_{t}}_{G}\bar{q}\\ &=: \frac{1}{2} \boldsymbol{\Omega}(\boldsymbol{\omega}(t)) \text{}^{I_{t}}_{G}\bar{q}\\ ^G\dot{\mathbf{p}}_I(t) &=\text{} ^G\mathbf{v}_I(t)\\ ^G\dot{\mathbf{v}}_I(t) &=\text{} ^{I_{t}}_G\mathbf{R}^\top\mathbf{a}(t) \\ \dot{\mathbf{b}}_{\mathbf{g}}(t) &= \mathbf{n}_{wg}\\ \dot{\mathbf{b}}_{\mathbf{a}}(t) &= \mathbf{n}_{wa} \end{align*}
+\form#75:$\boldsymbol{\omega}_m(t)$
+\form#76:$\mathbf{a}_m(t)$
+\form#77:$t \in [t_k,t_{k+1}]$
+\form#78:$\hat{\boldsymbol{\omega}}(t) = \boldsymbol{\omega}_m(t) - \hat{\boldsymbol{b}}_g(t)$
+\form#79:$\hat{\boldsymbol{a}}(t) = \boldsymbol{a}_m(t) - \hat{\boldsymbol{b}}_a(t) - ^I_G\hat{\mathbf{R}}(t){}^G\mathbf{g}$
+\form#80:\begin{align*} ^{I_{t}}_{G}\bar{q} = \boldsymbol{\Theta}(t,t_k) \text{}^{I_{k}}_{G}\bar{q} \end{align*}
+\form#81:$\boldsymbol{\Theta}(t,t_k)$
+\form#82:\begin{align*} \newcommand{\comm}[1]{} \boldsymbol{\Theta}(t,t_k) &= \text{}^{I_t}_G\bar{q} \text{ }^{I_k}_{G}\bar{q}^{-1}\\ \Rightarrow \dot{\boldsymbol{\Theta}}(t,t_k) &= \text{}^{I_t}_G\dot{\bar{q}} \text{ }^{I_k}_{G}\bar{q}^{-1}\\ &= \frac{1}{2} \boldsymbol{\Omega}(\boldsymbol{\omega}(t)) \text{ }^{I_t}_{G}\bar{q} \text{ }^{I_k}_{G}\bar{q}^{-1}\\ &= \frac{1}{2} \boldsymbol{\Omega}(\boldsymbol{\omega}(t)) \boldsymbol{\Theta}(t,t_k) \end{align*}
+\form#83:$\boldsymbol{\Theta}(t_k,t_k) = \mathbf{I}_{4}$
+\form#84:$\boldsymbol{\omega}(t) = \boldsymbol{\omega}$
+\form#85:$\Delta t = t_{k+1} - t_k$
+\form#86:$\boldsymbol{\Theta}$
+\form#87:\begin{align*} \boldsymbol{\Theta}(t_{k+1},t_k) &= \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}(\boldsymbol{\omega})\Delta t\bigg)\\ &= \cos\bigg(\frac{|\boldsymbol{\omega}|}{2} \Delta t \bigg) \cdot \mathbf{I}_4 + \frac{1}{|\boldsymbol{\omega}|}\sin\bigg(\frac{|\boldsymbol{\omega}|}{2} \Delta t \bigg) \cdot \boldsymbol{\Omega}(\boldsymbol{\omega})\\ &\simeq \mathbf{I}_4 + \frac{\Delta t}{2}\boldsymbol{\Omega}(\boldsymbol{\omega}) \end{align*}
+\form#88:$|\boldsymbol{\omega}|$
+\form#89:$t_k$
+\form#90:$t_{k+1}$
+\form#91:$\hat{\boldsymbol{\omega}}(t) = \hat{\boldsymbol{\omega}}$
+\form#92:\begin{align*} \text{}^{I_{k+1}}_{G}\hat{\bar{q}} = \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}(\hat{\boldsymbol{\omega}})\Delta t\bigg) \text{}^{I_{k}}_{G}\hat{\bar{q}} \end{align*}
+\form#93:\begin{align*} ^G\hat{\mathbf{v}}_{k+1} &= \text{}^G\hat{\mathbf{v}}_{I_k} + \int_{t_{k}}^{t_{k+1}} {^G\hat{\mathbf{a}}(\tau)} d\tau \\ &= \text{}^G\hat{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t+ \int_{t_{k}}^{t_{k+1}} {^G_{I_{\tau}}\hat{\mathbf{R}}(\mathbf{a}_m(\tau) - \hat{\mathbf{b}}_{\mathbf{a}}(\tau)) d\tau}\\[1em] ^G\hat{\mathbf{p}}_{I_{k+1}} &= \text{}^G\hat{\mathbf{p}}_{I_k} + \int_{t_{k}}^{t_{k+1}} {^G\hat{\mathbf{v}}_I(\tau)} d\tau \\ &= \text{}^G\hat{\mathbf{p}}_{I_k} + \text{}^G\hat{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \int_{t_{k}}^{t_{k+1}} \int_{t_{k}}^{s} {^G_{I_{\tau}}\hat{\mathbf{R}}(\mathbf{a}_m(\tau) - \hat{\mathbf{b}}_{\mathbf{a}}(\tau)) d\tau ds} \end{align*}
+\form#94:$\hat{\mathbf{b}}_{\mathbf{g}}$
+\form#95:$\hat{\mathbf{b}}_{\mathbf{a}}$
+\form#96:\begin{align*} \hat{\mathbf{b}}_{\mathbf{g},k+1} &= \hat{\mathbf{b}}_{\mathbf{g},k} + \int_{t_{k+1}}^{t_{k}} {\hat{\mathbf{n}}_{wg}(\tau)} d\tau \\ &= \hat{\mathbf{b}}_{\mathbf{g},k} \\ \hat{\mathbf{b}}_{\mathbf{a},k+1} &= \hat{\mathbf{b}}_{\mathbf{a},k} + \int_{t_{k+1}}^{t_{k}} {\hat{\mathbf{n}}_{wa}(\tau)} d\tau \\ &= \hat{\mathbf{b}}_{\mathbf{a},k} \end{align*}
+\form#97:$\hat{\mathbf{n}}_{wg}$
+\form#98:$\hat{\mathbf{n}}_{wa}$
+\form#99:${\boldsymbol{\omega}}_{m}(t_k) = {\boldsymbol{\omega}}_{m,k}$
+\form#100:\begin{align*} \text{}^{I_{k+1}}_{G}\hat{\bar{q}} = \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}\big({\boldsymbol{\omega}}_{m,k}-\hat{\mathbf{b}}_{g,k}\big)\Delta t\bigg) \text{}^{I_{k}}_{G}\hat{\bar{q}} \end{align*}
+\form#101:$\mathbf{a}_{m}(t_k) = \mathbf{a}_{m,k}$
+\form#102:$t \in [t_k, t_{k+1}]$
+\form#103:\begin{align*} ^G\hat{\mathbf{v}}_{k+1} &= \text{}^G\hat{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t +\text{}^{I_k}_G\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t\\ ^G\hat{\mathbf{p}}_{I_{k+1}} &= \text{}^G\hat{\mathbf{p}}_{I_k} + {}^G\hat{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t^2 \end{align*}
+\form#104:\begin{align*} \hat{\mathbf{b}}_{\mathbf{g},k+1} &= \hat{\mathbf{b}}_{\mathbf{g},k}\\ \hat{\mathbf{b}}_{\mathbf{a},k+1} &= \hat{\mathbf{b}}_{\mathbf{a},k} \end{align*}
+\form#105:$\boldsymbol{\Phi}(t_{k+1},t_k)$
+\form#106:$\mathbf{G}_{k}$
+\form#107:$\mathbf{Q}_c$
+\form#108:$\mathbf{Q}_d$
+\form#109:\begin{align*} \sigma_{g} &= \frac{1}{\sqrt{\Delta t}}~ \sigma_{g_c} \\ \sigma_{bg} &= \sqrt{\Delta t}~ \sigma_{bg_c} \\[1em] \mathbf{Q}_{meas} &= \begin{bmatrix} \frac{1}{\Delta t}~ \sigma_{g_c}^2~ \mathbf{I}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & \frac{1}{\Delta t}~ \sigma_{a_c}^2~ \mathbf{I}_3 \end{bmatrix} \\ \mathbf{Q}_{bias} &= \begin{bmatrix} \Delta t~ \sigma_{bg_c}^2~ \mathbf{I}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & \Delta t~ \sigma_{ba_c}^2~ \mathbf{I}_3 \end{bmatrix} \end{align*}
+\form#110:$\mathbf{n} = [ \mathbf{n}_g ~ \mathbf{n}_a ~ \mathbf{n}_{bg} ~ \mathbf{n}_{ba} ]^\top$
+\form#111:\begin{align*} \mathbf{Q}_{d} &= \begin{bmatrix} \mathbf{Q}_{meas} & \mathbf{0}_3 \\ \mathbf{0}_3 & \mathbf{Q}_{bias} \end{bmatrix} \end{align*}
+\form#112:\begin{align*} \tilde{\mathbf{x}}_I(t_{k+1}) = \boldsymbol{\Phi}(t_{k+1},t_k) \tilde{\mathbf{x}}_I(t_{k}) + \mathbf{G}_{k} \mathbf{n} \end{align*}
+\form#113:$\mathbf{SO}(3)$
+\form#114:${}^{I}_G \mathbf{R} \approx (\mathbf{I}_3 - \lfloor ^{I}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I}_{G} \hat{\mathbf{R}}$
+\form#115:\begin{align*} {}^{I_{k+1}}_G \mathbf{R} &= \text{}^{I_{k+1}}_{I_{k}} \mathbf{R} \text{}^{I_{k}}_G \mathbf{R} \\ (\mathbf{I}_3 - \lfloor ^{I_{k+1}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I_{k+1}}_{G} \hat{\mathbf{R}} &\approx \textrm{exp}(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t - {}^{I_{k}}\tilde{\boldsymbol{\omega}}\Delta t) (\mathbf{I}_3 - \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I_{k}}_{G} \hat{\mathbf{R}}\\ &=\textrm{exp}(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t)\textrm{exp}(-\mathbf{J}_r(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t){}^{I_{k}}\tilde{\boldsymbol{\omega}}\Delta t) (\mathbf{I}_3 - \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I_{k}}_{G} \hat{\mathbf{R}}\\ &=\text{}^{I_{k+1}}_{I_{k}} \hat{\mathbf{R}} (\mathbf{I}_3 - \lfloor \mathbf J_r(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t) \tilde{\boldsymbol{\omega}}_k\Delta t \times\rfloor) (\mathbf{I}_3 - \lfloor ^{I_k}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor) \text{}^{I_{k}}_G \hat{\mathbf{R}} \end{align*}
+\form#116:$\tilde{\boldsymbol{\omega}} = \boldsymbol{\omega} - \hat{\boldsymbol{\omega}} = -(\tilde{\mathbf{b}}_{\mathbf{g}} + \mathbf{n}_g)$
+\form#117:$\mathbf {J}_r(\boldsymbol{\theta})$
+\form#118:\begin{align*} \text{}^{I_{k+1}}_{G}\tilde{\boldsymbol{\theta}} \approx \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}} \text{}^{I_k}_{G}\tilde{\boldsymbol{\theta}} - \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}}\mathbf J_r(\text{}^{I_{k+1}}_{I_{k}}\hat{\boldsymbol{\theta}}) \Delta t (\tilde{\mathbf{b}}_{\mathbf{g},k} + \mathbf{n}_{\mathbf{g},k}) \end{align*}
+\form#119:\begin{align*} ^G\mathbf{p}_{I_{k+1}} &= \text{}^G\mathbf{p}_{I_k} + \text{}^G\mathbf{v}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \frac{1}{2}\text{}^{I_k}_G\mathbf{R}^\top \mathbf{a}_{k}\Delta t^2\\ ^G\hat{\mathbf{p}}_{I_{k+1}} + \text{}^G\tilde{\mathbf{p}}_{I_{k+1}} &\approx \text{}^G\hat{\mathbf{p}}_{I_k} + \text{}^G\tilde{\mathbf{p}}_{I_k} + \text{}^G\hat{\mathbf{v}}_{I_k} \Delta t + \text{}^G\tilde{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2\\ &\hspace{4cm} + \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top (\mathbf{I}_3 + \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor) (\hat{\mathbf{a}}_{k} + \tilde{\mathbf{a}}_{k})\Delta t^2\\ \\ ^G\mathbf{v}_{k+1} &= \text{}^G\mathbf{v}_{I_k} - {}^G\mathbf{g}\Delta t +\text{}^{I_k}_G\mathbf{R}^\top\mathbf{a}_{k}\Delta t\\ ^G\hat{\mathbf{v}}_{k+1} + ^G\tilde{\mathbf{v}}_{k+1} &\approx {}^G\hat{\mathbf{v}}_{I_k} + {}^G\tilde{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t + \text{}^{I_k}_G\hat{\mathbf{R}}^\top (\mathbf{I}_3 + \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor) (\hat{\mathbf{a}}_{k} + \tilde{\mathbf{a}}_{k})\Delta t \end{align*}
+\form#120:$\tilde{\mathbf{a}} = \mathbf{a} - \hat{\mathbf{a}} = - (\tilde{\mathbf{b}}_{\mathbf{a}} + \mathbf{n}_{\mathbf{a}})$
+\form#121:\begin{align*} \text{}^G\tilde{\mathbf{p}}_{I_{k+1}} &= \text{}^G\tilde{\mathbf{p}}_{I_k} + \Delta t \text{}^G\tilde{\mathbf{v}}_{I_k} - \frac{1}{2}\text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t^2 \times\rfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}} - \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \Delta t^2 (\tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{\mathbf{a},k})\\ ^G\tilde{\mathbf{v}}_{k+1} &= \text{}^G\tilde{\mathbf{v}}_{I_k} - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t \times\rfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}} - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \Delta t (\tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{\mathbf{a},k}) \end{align*}
+\form#122:\begin{align*} \mathbf{b}_{\mathbf{g},k+1} &= \mathbf{b}_{\mathbf{g},k} + \mathbf{n}_{wg} \\ \hat{\mathbf{b}}_{\mathbf{g},k+1} + \tilde{\mathbf{b}}_{\mathbf{g},k+1} &= \hat{\mathbf{b}}_{\mathbf{g},k} + \tilde{\mathbf{b}}_{\mathbf{g},k} + \mathbf{n}_{wg} \\ \tilde{\mathbf{b}}_{\mathbf{g},k+1} &= \tilde{\mathbf{b}}_{\mathbf{g},k} + \mathbf{n}_{wg} \\[1em] \mathbf{b}_{\mathbf{a},k+1} &= \mathbf{b}_{\mathbf{a},k} + \mathbf{n}_{wa} \\ \hat{\mathbf{b}}_{\mathbf{a},k+1} + \tilde{\mathbf{b}}_{\mathbf{a},k+1} &= \hat{\mathbf{b}}_{\mathbf{a},k} + \tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{wa} \\ \tilde{\mathbf{b}}_{\mathbf{a},k+1} &= \tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{wa} \end{align*}
+\form#123:\begin{align*} \boldsymbol{\Phi}(t_{k+1},t_k) &= \begin{bmatrix} \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}} & \mathbf{0}_3 & \mathbf{0}_3 & - \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}}\mathbf J_r(\text{}^{I_{k+1}}_{I_{k}}\hat{\boldsymbol{\theta}}) \Delta t & \mathbf{0}_3 \\ - \frac{1}{2}\text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t^2 \times\rfloor & \mathbf{I}_3 & \Delta t \mathbf{I}_3 & \mathbf{0}_3 & - \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \Delta t^2 \\ - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t \times\rfloor & \mathbf{0}_3 & \mathbf{I}_3 & \mathbf{0}_3 & - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \Delta t \\ \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{I}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{I}_3 \end{bmatrix} \end{align*}
+\form#124:\begin{align*} \mathbf{G}_{k} &= \begin{bmatrix} - \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}}\mathbf J_r(\text{}^{I_{k+1}}_{I_{k}}\hat{\boldsymbol{\theta}}) \Delta t & \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & - \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \Delta t^2 & \mathbf{0}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \Delta t & \mathbf{0}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{I}_3 & \mathbf{0}_3 \\ \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{0}_3 & \mathbf{I}_3 \end{bmatrix} \end{align*}
+\form#125:\begin{align*} \mathbf{P}_{k+1|k} = \boldsymbol{\Phi}(t_{k+1},t_k)\mathbf{P}_{k|k}\boldsymbol{\Phi}(t_{k+1},t_k)^\top + \mathbf{G}_k\mathbf{Q}_d\mathbf{G}_k^\top \end{align*}
+\form#126:$\mathbb{SE}(3)$
+\form#127:$\{S\}$
+\form#128:$t_s$
+\form#129:\begin{align*} {}^{G}_{S}\mathbf{T}(u(t_s)) &= {}^{G}_{i-1}\mathbf{T}~\mathbf{A}_0~\mathbf{A}_1~\mathbf{A}_2 \label{eq:poseinterp} \\[0.75em] \mathbf{A}_j &= \mathrm{exp}\Big({B}_j(u(t))~{}^{i-1+j}_{i+j}\mathbf{\Omega} \Big) \\ {}^{i-1}_{i}\mathbf{\Omega} &= \mathrm{log}\Big( {}^{G}_{i-1}\mathbf{T}^{-1}~{}^{G}_{i}\mathbf{T} \Big) \\[0.75em] {B}_0(u(t)) &= \frac{1}{3!}~(5+3u-3u^2+u^3) \\ {B}_1(u(t)) &= \frac{1}{3!}~(1+3u+3u^2-2u^3) \\ {B}_2(u(t)) &= \frac{1}{3!}~(u^3) \end{align*}
+\form#130:$u(t_s)=(t_s-t_i)/(t_{i+1}-t_i)$
+\form#131:$\mathrm{exp}(\cdot)$
+\form#132:$\mathrm{log}(\cdot)$
+\form#133:${}^{G}_{i-1}\mathbf{T}$
+\form#134:$C^2$
+\form#135:\begin{align*} {}^I\boldsymbol{\omega}_m(t) &= {}^I\boldsymbol{\omega}(t) + \mathbf{b}_\omega + \mathbf{n}_\omega \\ {}^I\mathbf{a}_m(t) &= {}^I\mathbf{a}(t) + {}^{I(t)}_G\mathbf{R}{}^G\mathbf{g} + \mathbf{b}_a + \mathbf{n}_a \\ \dot{\mathbf{b}}_\omega &= \mathbf{n}_{wg} \\ \dot{\mathbf{b}}_a &= \mathbf{n}_{wa} \end{align*}
+\form#136:\begin{align*} {}^I\boldsymbol{\omega}(t) &= \mathrm{vee}\Big( {}^{G}_{I}\mathbf{R}(u(t))^\top {}^{G}_{I}\dot{\mathbf{R}}(u(t)) \Big) \\ {}^I\mathbf{a}(t) &= {}^{G}_{I}\mathbf{R}(u(t))^\top {}^{G}\ddot{\mathbf{p}}_{I}(u(t)) \end{align*}
+\form#137:$\mathrm{vee}(\cdot)$
+\form#138:\begin{align*} \omega_m(t) &= \omega(t) + b_\omega(t) + \sigma_w\frac{1}{\sqrt{\Delta t}}\textrm{gennoise}(0,1) \\ b_\omega(t+\Delta t) &= b_\omega(t) + \sigma_{wg}\sqrt{\Delta t}~\textrm{gennoise}(0,1) \\ t &= t+\Delta t \end{align*}
+\form#139:$\textrm{gennoise}(m,v)$
+\form#140:$\Delta t$
+\form#141:\begin{align*} \mathbf{H}_{o,k} = \begin{bmatrix} \mathbf{Q_1} & \mathbf{Q_2} \end{bmatrix} \begin{bmatrix} \mathbf{R_1} \\ \mathbf{0} \end{bmatrix} = \mathbf Q_1 \mathbf R_1 \end{align*}
+\form#142:\begin{align*} \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{H}_{o,k}\tilde{\mathbf{x}}_{k} + \mathbf{n}_o \\[5px] \empty \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf Q_1 \mathbf R_1 \tilde{\mathbf{x}}_{k} + \mathbf{n}_o \\[5px] \empty \mathbf{Q_1}^\top \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{Q_1}^\top \mathbf{Q_1} \mathbf{R_1} \tilde{\mathbf{x}}_{k} + \mathbf{Q_1}^\top \mathbf{n}_o \\[5px] \empty \mathbf{Q_1}^\top\tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{R_1} \tilde{\mathbf{x}}_{k} + \mathbf{Q_1}^\top\mathbf{n}_o \\[5pt] \empty \Rightarrow~ \tilde{\mathbf{z}}_{n,k} &\simeq \mathbf{H}_{n,k} \tilde{\mathbf{x}}_{k} + \mathbf{n}_n \end{align*}
+\form#143:\begin{align*} \hat{\mathbf{x}}_{k|k} &= \hat{\mathbf{x}}_{k|k-1} + \mathbf{P}_{k|k-1} \mathbf{H}_{n,k}^\top (\mathbf{H}_{n,k} \mathbf{P}_{k|k-1} \mathbf{H}_{n,k}^\top + \mathbf{R}_n)^{-1}\tilde{\mathbf{z}}_{n,k} \\[5px] \empty \mathbf{P}_{k|k} &= \mathbf{P}_{k|k-1} - \mathbf{P}_{k|k-1}\mathbf{H}_{n,k}^\top (\mathbf{H}_{n,k}\mathbf{P}_{k|k-1} \mathbf{H}_{n,k}^\top + \mathbf{R}_n)^{-1} \mathbf{H}_{n,k} \mathbf{P}_{k|k-1}^\top \end{align*}
+\form#144:$\mathbf{x}$
+\form#145:$\mathbf{f}$
+\form#146:\begin{align*} \mathbf{z}_i = \mathbf{h}_i\left(\mathbf{x}, \mathbf{f}\right) + \mathbf{n}_i \end{align*}
+\form#147:$\hat{\mathbf x}$
+\form#148:$\hat{\mathbf f}$
+\form#149:\begin{align*} \mathbf{z} &= \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \\ \vdots \\ \mathbf{z}_m \end{bmatrix} = \mathbf{h}\left(\mathbf{x}, \mathbf{f}\right)+ \mathbf{n}\\ \Rightarrow~~ \mathbf{r} &= \mathbf{z}-\mathbf{h}(\hat{\mathbf{x}}, \hat{f}) = \mathbf{H}_x \tilde{\mathbf{x}} +\mathbf{H}_f \tilde{\mathbf{f}} + \mathbf{n} \end{align*}
+\form#150:$\mathbf{H}_f$
+\form#151:$\tilde{\mathbf{f}}$
+\form#152:$\mathbf{H}_x$
+\form#153:$\mathbf{r}$
+\form#154:\begin{align*} \begin{bmatrix} \mathbf{r}_1 \\ \mathbf{r}_2 \end{bmatrix} = \begin{bmatrix} \mathbf{H}_{x1} \\ \mathbf{H}_{x2} \end{bmatrix} \tilde{\mathbf{x}} +\begin{bmatrix} \mathbf{H}_{f1} \\ \mathbf{0} \end{bmatrix} \tilde{\mathbf{f}} + \begin{bmatrix} \mathbf{n}_1 \\ \mathbf{n}_2 \end{bmatrix} \end{align*}
+\form#155:$\mathbf{H}_{f1}$
+\form#156:$\mathbf{R} = \sigma^2\mathbf{I}_m$
+\form#157:$\mathbf{R}_1 = \sigma^2\mathbf{I}_n$
+\form#158:$\mathbf{R}_2 = \sigma^2\mathbf{I}_{m-n}$
+\form#159:\begin{align*} \tilde{\mathbf{f}} &= \mathbf{H}_{f1}^{-1}(\mathbf{r}_1-\mathbf{n}_1-\mathbf{H}_x\tilde{\mathbf{x}}) \\ \Rightarrow~ \mathbb{E}[\tilde{\mathbf{f}}] &= \mathbf{H}_{f1}^{-1}(\mathbf{r}_1) \end{align*}
+\form#160:$\hat{\mathbf f}+\mathbb{E}[\tilde{\mathbf{f}}]$
+\form#161:$\hat{\mathbf{f}}$
+\form#162:\begin{align*} \mathbf{P}_{ff} &= \mathbb{E}\Big[(\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}]) (\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}])^{\top}\Big] \\ &= \mathbb{E}\Big[(\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}})) (\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}}))^{\top}\Big] \\ &= \mathbf{H}_{f1}^{-1}(\mathbf{H}_{x1}\mathbf{P}_{xx}\mathbf{H}_{x1}^{\top} + \mathbf{R}_1)\mathbf{H}_{f1}^{-\top} \end{align*}
+\form#163:\begin{align*} \mathbf{P}_{xf} &= \mathbb{E}\Big[(\tilde{\mathbf{x}}) (\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}])^{\top}\Big] \\ &= \mathbb{E}\Big[(\tilde{\mathbf{x}}) (\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}}))^{\top}\Big] \\ &= -\mathbf{P}_{xx}\mathbf{H}_{x1}^{\top}\mathbf{H}_{f1}^{-\top} \end{align*}
+\form#164:\begin{align*} \mathbf{P}_{aug} = \begin{bmatrix} \mathbf{P}_{xx} & \mathbf{P}_{xf} \\ \mathbf{P}_{xf}^{\top} & \mathbf{P}_{ff} \end{bmatrix} \end{align*}
+\form#165:$\mathbf{r}_2$
+\form#166:$\mathbf{H}_{x2}$
+\form#167:$\mathbf{n}_2$
+\form#168:$uv$
+\form#169:\begin{align*} \mathbf{z}_{m,k} &= \mathbf h(\mathbf x_k) + \mathbf n_k \\ &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) + \mathbf{n}_k \\ &= \mathbf h_d(\mathbf h_p({}^{C_k}\mathbf{p}_f), ~\boldsymbol\zeta) + \mathbf{n}_k \\ &= \mathbf h_d(\mathbf h_p(\mathbf h_t({}^{G}\mathbf{p}_f,~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k})), ~\boldsymbol\zeta) + \mathbf{n}_k \\ &= \mathbf h_d(\mathbf h_p(\mathbf h_t(\mathbf h_r(\boldsymbol\lambda,\cdots),~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k})), ~\boldsymbol\zeta) + \mathbf{n}_k \end{align*}
+\form#170:$\mathbf n_k$
+\form#171:$\mathbf z_{n,k}$
+\form#172:$\boldsymbol\zeta$
+\form#173:${}^{C_k}\mathbf{p}_f$
+\form#174:$\{C_k\}$
+\form#175:${}^{G}\mathbf{p}_f$
+\form#176:$\{ {}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k} \}$
+\form#177:$\boldsymbol\lambda$
+\form#178:$\mathbf{z}_k = \mathbf h_d (\mathbf{z}_{n,k}, ~\boldsymbol\zeta)$
+\form#179:$\mathbf{z}_{n,k}= \mathbf h_p({}^{C_k}\mathbf{p}_f)$
+\form#180:${}^{C_k}\mathbf{p}_f=\mathbf h_t({}^{G}\mathbf{p}_f,~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k})$
+\form#181:${}^{G}\mathbf{p}_f= \mathbf h_r(\boldsymbol\lambda,\cdots)$
+\form#182:$\mathbf h_r(\cdots)$
+\form#183:$ \mathbf{x} $
+\form#184:\begin{align*} \frac{\partial \mathbf{z}_k}{\partial \mathbf{x}} = \frac{\partial \mathbf h_d (\cdot) }{\partial \mathbf{z}_{n,k}} \frac{\partial \mathbf h_p (\cdot) }{\partial {}^{C_k}\mathbf{p}_f} \frac{\partial \mathbf h_t (\cdot) }{\partial \mathbf{x}} + \frac{\partial \mathbf h_d (\cdot) }{\partial \mathbf{z}_{n,k}} \frac{\partial \mathbf h_p (\cdot) }{\partial {}^{C_k}\mathbf{p}_f} \frac{\partial \mathbf h_t (\cdot) }{\partial {}^{G}\mathbf{p}_f} \frac{\partial \mathbf h_r (\cdot) }{\partial \mathbf{x}} \end{align*}
+\form#185:\begin{align*} \begin{bmatrix} u \\ v \end{bmatrix}:= \mathbf{z}_k &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) = \begin{bmatrix} f_x * x + c_x \\ f_y * y + c_y \end{bmatrix}\\[1em] \empty {\rm where}~~ x &= x_n (1 + k_1 r^2 + k_2 r^4) + 2 p_1 x_n y_n + p_2(r^2 + 2 x_n^2) \\\ y &= y_n (1 + k_1 r^2 + k_2 r^4) + p_1 (r^2 + 2 y_n^2) + 2 p_2 x_n y_n \\[1em] r^2 &= x_n^2 + y_n^2 \end{align*}
+\form#186:$ \mathbf{z}_{n,k} = [ x_n ~ y_n ]^\top$
+\form#187:\begin{align*} \boldsymbol\zeta = \begin{bmatrix} f_x & f_y & c_x & c_y & k_1 & k_2 & p_1 & p_2 \end{bmatrix}^\top \end{align*}
+\form#188:\begin{align*} \frac{\partial \mathbf h_d(\cdot)}{\partial \boldsymbol\zeta} = \begin{bmatrix} x & 0 & 1 & 0 & f_x*(x_nr^2) & f_x*(x_nr^4) & f_x*(2x_ny_n) & f_x*(r^2+2x_n^2) \\[5pt] 0 & y & 0 & 1 & f_y*(y_nr^2) & f_y*(y_nr^4) & f_y*(r^2+2y_n^2) & f_y*(2x_ny_n) \end{bmatrix} \end{align*}
+\form#189:\begin{align*} \frac{\partial \mathbf h_d (\cdot)}{\partial \mathbf{z}_{n,k}} = \begin{bmatrix} f_x*((1+k_1r^2+k_2r^4)+(2k_1x_n^2+4k_2x_n^2(x_n^2+y_n^2))+2p_1y_n+(2p_2x_n+4p_2x_n)) & f_x*(2k_1x_ny_n+4k_2x_ny_n(x_n^2+y_n^2)+2p_1x_n+2p_2y_n) \\ f_y*(2k_1x_ny_n+4k_2x_ny_n(x_n^2+y_n^2)+2p_1x_n+2p_2y_n) & f_y*((1+k_1r^2+k_2r^4)+(2k_1y_n^2+4k_2y_n^2(x_n^2+y_n^2))+(2p_1y_n+4p_1y_n)+2p_2x_n) \end{bmatrix} \end{align*}
+\form#190:\begin{align*} \begin{bmatrix} u \\ v \end{bmatrix}:= \mathbf{z}_k &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) = \begin{bmatrix} f_x * x + c_x \\ f_y * y + c_y \end{bmatrix}\\[1em] \empty {\rm where}~~ x &= \frac{x_n}{r} * \theta_d \\ y &= \frac{y_n}{r} * \theta_d \\ \theta_d &= \theta (1 + k_1 \theta^2 + k_2 \theta^4 + k_3 \theta^6 + k_4 \theta^8) \\ \quad r^2 &= x_n^2 + y_n^2 \\ \theta &= atan(r) \end{align*}
+\form#191:\begin{align*} \boldsymbol\zeta = \begin{bmatrix} f_x & f_y & c_x & c_y & k_1 & k_2 & k_3 & k_4 \end{bmatrix}^\top \end{align*}
+\form#192:\begin{align*} \frac{\partial \mathbf h_d (\cdot)}{\partial \boldsymbol\zeta} = \begin{bmatrix} x_n & 0 & 1 & 0 & f_x*(\frac{x_n}{r}\theta^3) & f_x*(\frac{x_n}{r}\theta^5) & f_x*(\frac{x_n}{r}\theta^7) & f_x*(\frac{x_n}{r}\theta^9) \\[5pt] 0 & y_n & 0 & 1 & f_y*(\frac{y_n}{r}\theta^3) & f_y*(\frac{y_n}{r}\theta^5) & f_y*(\frac{y_n}{r}\theta^7) & f_y*(\frac{y_n}{r}\theta^9) \end{bmatrix} \end{align*}
+\form#193:\begin{align*} \frac{\partial \mathbf h_d(\cdot)}{\partial \mathbf{z}_{n,k}} &= \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial x_ny_n}+ \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial r}\frac{\partial r}{\partial x_ny_n}+ \frac{\partial uv}{\partial xy}\frac{\partial xy}{\partial \theta_d}\frac{\partial \theta_d}{\partial \theta}\frac{\partial \theta}{\partial r}\frac{\partial r}{\partial x_ny_n} \\[1em] \empty {\rm where}~~~~ \frac{\partial uv}{\partial xy} &= \begin{bmatrix} f_x & 0 \\ 0 & f_y \end{bmatrix} \\ \empty \frac{\partial xy}{\partial x_ny_n} &= \begin{bmatrix} \theta_d/r & 0 \\ 0 & \theta_d/r \end{bmatrix} \\ \empty \frac{\partial xy}{\partial r} &= \begin{bmatrix} -\frac{x_n}{r^2}\theta_d \\ -\frac{y_n}{r^2}\theta_d \end{bmatrix} \\ \empty \frac{\partial r}{\partial x_ny_n} &= \begin{bmatrix} \frac{x_n}{r} & \frac{y_n}{r} \end{bmatrix} \\ \empty \frac{\partial xy}{\partial \theta_d} &= \begin{bmatrix} \frac{x_n}{r} \\ \frac{y_n}{r} \end{bmatrix} \\ \empty \frac{\partial \theta_d}{\partial \theta} &= \begin{bmatrix} 1 + 3k_1 \theta^2 + 5k_2 \theta^4 + 7k_3 \theta^6 + 9k_4 \theta^8\end{bmatrix} \\ \empty \frac{\partial \theta}{\partial r} &= \begin{bmatrix} \frac{1}{r^2+1} \end{bmatrix} \end{align*}
+\form#194:\begin{align*} \mathbf{z}_{n,k} &= \mathbf h_p ({}^{C_k}\mathbf{p}_f) = \begin{bmatrix} {}^Cx/{}^Cz \\ {}^Cy/{}^Cz \end{bmatrix} \\ \text{where} \quad {}^{C_k}\mathbf{p}_f &= \begin{bmatrix} {}^Cx \\ {}^Cy \\ {}^Cz \end{bmatrix} \end{align*}
+\form#195:\begin{align*} \frac{\partial \mathbf h_p (\cdot)}{\partial {}^{C_k}\mathbf{p}_f} = \begin{bmatrix} \frac{1}{{}^Cz} & 0 & \frac{-{}^Cx}{({}^Cz)^2} \\ 0 & \frac{1}{{}^Cz} & \frac{-{}^Cy}{({}^Cz)^2} \\ \end{bmatrix} \end{align*}
+\form#196:\begin{align*} {}^{C_k}\mathbf{p}_f &= \mathbf h_t ({}^{G}\mathbf{p}_f,~{}^{C_k}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{C_k}) = {}^{C_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{C_k}) \end{align*}
+\form#197:$\{ {}^{C}_{I}\mathbf{R}, ~{}^{C}\mathbf{p}_I \}$
+\form#198:\begin{align*} {}^{G}\mathbf{p}_{C_k} &= {}^{G}\mathbf{p}_{I_k} + {}^{G}_{I}\mathbf{R} {}^{I}\mathbf{p}_{C_k} = {}^{G}\mathbf{p}_{I_k} + {}^{G}_{I}\mathbf{R} {}^{I}\mathbf{p}_{C} \\ {}^{C_k}_{G}\mathbf{R} &= {}^{C_k}_{I}\mathbf{R} {}^{I_k}_{G}\mathbf{R} = {}^{C}_{I}\mathbf{R} {}^{I_k}_{G}\mathbf{R} \end{align*}
+\form#199:$ {}^{C_k}\mathbf{p}_f$
+\form#200:\begin{align*} {}^{C_k}\mathbf{p}_f = {}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) +{}^{C}\mathbf{p}_I \end{align*}
+\form#201:\begin{align*} \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{G}\mathbf{p}_f} &= {}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R} \\ \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{I_k}_{G}\mathbf{R}} &= {}^{C}_{I}\mathbf{R} \left\lfloor {}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) \times\right\rfloor \\ \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{G}\mathbf{p}_{I_k}} &= -{}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R} \end{align*}
+\form#202:$\lfloor \mathbf a\times \rfloor $
+\form#203:$\mathbf a$
+\form#204:\begin{align*} \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{C}_{I}\mathbf{R}} &= \left\lfloor {}^{C}_{I}\mathbf{R}{}^{I_k}_{G}\mathbf{R}({}^{G}\mathbf{p}_f-{}^{G}\mathbf{p}_{I_k}) \times\right\rfloor \\ \frac{\partial \mathbf h_t (\cdot)}{\partial {}^{C}\mathbf{p}_I} &= \mathbf{I}_{3\times 3} \end{align*}
+\form#205:$\boldsymbol \lambda$
+\form#206:${}^{G}\mathbf{p}_f=\mathbf f (\cdot)$
+\form#207:\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda) \\ &= \begin{bmatrix} {}^Gx \\ {}^Gy \\ {}^Gz \end{bmatrix} \\ \text{where} &\quad \boldsymbol\lambda = {}^{G}\mathbf{p}_f = \begin{bmatrix} {}^Gx & {}^Gy & {}^Gz \end{bmatrix}^\top \end{align*}
+\form#208:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= \mathbf{I}_{3\times 3} \end{align*}
+\form#209:\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda) \\ &= \frac{1}{\rho}\begin{bmatrix} \cos(\theta)\sin(\phi) \\ \sin(\theta)\sin(\phi) \\ \cos(\phi) \end{bmatrix} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \theta & \phi & \rho \end{bmatrix}^\top \end{align*}
+\form#210:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= \begin{bmatrix} -\frac{1}{\rho}\sin(\theta)\sin(\phi) & \frac{1}{\rho}\cos(\theta)\cos(\phi) & -\frac{1}{\rho^2}\cos(\theta)\sin(\phi) \\ \frac{1}{\rho}\cos(\theta)\sin(\phi) & \frac{1}{\rho}\sin(\theta)\cos(\phi) & -\frac{1}{\rho^2}\sin(\theta)\sin(\phi) \\ 0 & -\frac{1}{\rho}\sin(\phi) & -\frac{1}{\rho^2}\cos(\phi) \end{bmatrix} \end{align*}
+\form#211:$\{{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a}\}$
+\form#212:\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top( \boldsymbol\lambda -{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = {}^{C_a}\mathbf{p}_f = \begin{bmatrix} {}^{C_a}x & {}^{C_a}y & {}^{C_a}z \end{bmatrix}^\top \end{align*}
+\form#213:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \end{align*}
+\form#214:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{I_a}_{G}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top \left\lfloor{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{G}\mathbf{p}_{I_a}} &= \mathbf{I}_{3\times 3} \end{align*}
+\form#215:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}_{I}\mathbf{R}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \left\lfloor({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) \times\right\rfloor \\ \frac{\partial \mathbf f(\cdot)}{\partial {}^{C}\mathbf{p}_{I}} &= -{}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \end{align*}
+\form#216:\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top\Bigg(\frac{1}{\rho}\begin{bmatrix} \cos(\theta)\sin(\phi) \\ \sin(\theta)\sin(\phi) \\ \cos(\phi) \end{bmatrix}-{}^{C}\mathbf{p}_{I}\Bigg) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \theta & \phi & \rho \end{bmatrix}^\top \end{align*}
+\form#217:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \begin{bmatrix} -\frac{1}{\rho}\sin(\theta)\sin(\phi) & \frac{1}{\rho}\cos(\theta)\cos(\phi) & -\frac{1}{\rho^2}\cos(\theta)\sin(\phi) \\ \frac{1}{\rho}\cos(\theta)\sin(\phi) & \frac{1}{\rho}\sin(\theta)\cos(\phi) & -\frac{1}{\rho^2}\sin(\theta)\sin(\phi) \\ 0 & -\frac{1}{\rho}\sin(\phi) & -\frac{1}{\rho^2}\cos(\phi) \end{bmatrix} \end{align*}
+\form#218:\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top\Bigg(\frac{1}{\rho}\begin{bmatrix} \alpha \\ \beta \\ 1 \end{bmatrix}-{}^{C}\mathbf{p}_{I}\Bigg) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \alpha & \beta & \rho \end{bmatrix}^\top \end{align*}
+\form#219:\begin{align*} \frac{\partial \mathbf f(\cdot)}{\partial \boldsymbol\lambda} &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top \begin{bmatrix} \frac{1}{\rho} & 0 & -\frac{1}{\rho^2}\alpha \\ 0 & \frac{1}{\rho} & -\frac{1}{\rho^2}\beta \\ 0 & 0 & -\frac{1}{\rho^2} \end{bmatrix} \end{align*}
+\form#220:\begin{align*} {}^{G}\mathbf{p}_f &= \mathbf f(\boldsymbol\lambda,~{}^{I_a}_{G}\mathbf{R},~{}^{G}\mathbf{p}_{I_a},~{}^{C}_{I}\mathbf{R},~{}^{C}\mathbf{p}_{I}) \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top({}^{C_a}\mathbf{p}_f-{}^{C}\mathbf{p}_{I}) + {}^{G}\mathbf{p}_{I_a} \\ &= {}^{I_a}_{G}\mathbf{R}^\top{}^{C}_{I}\mathbf{R}^\top\Big(\frac{1}{\rho}\hat{\mathbf{b}}-{}^{C}\mathbf{p}_{I}\Big) + {}^{G}\mathbf{p}_{I_a} \\ \text{where} &\quad \boldsymbol\lambda = \begin{bmatrix} \rho \end{bmatrix} \end{align*}
+\form#221:$\hat{\mathbf{b}}$
+\form#222:$\{A\}$
+\form#223:$\mathbf{p}_f$
+\form#224:$1\ldots m$
+\form#225:$A$
+\form#226:$C_i, i=1\ldots m$
+\form#227:\begin{align*} {}^{C_i}\mathbf{p}_{f} & = {}^{C_i}_A\mathbf{R} \left( {}^A\mathbf{p}_f - {}^A\mathbf{p}_{C_i}\right) \\ {}^A\mathbf{p}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}\mathbf{p}_{f} + {}^A\mathbf{p}_{C_i} \end{align*}
+\form#228:${}^{C_i}\mathbf{b}$
+\form#229:${}^{C_i}z$
+\form#230:\begin{align*} {}^{C_i}\mathbf{p}_f & = {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} = {}^{C_i}z_{f} \begin{bmatrix} u_n \\ v_n \\ 1 \end{bmatrix} \end{align*}
+\form#231:$u_n$
+\form#232:$v_n$
+\form#233:\begin{align*} {}^A\mathbf{p}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} + {}^A\mathbf{p}_{C_i} \\ & = {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^A\mathbf{p}_{C_i} \end{align*}
+\form#234:${}^{C_i}z_{f}$
+\form#235:${}^{A}\mathbf{b}_{C_i \rightarrow f}$
+\form#236:\begin{align*} {}^{A}\mathbf{N}_i &= \lfloor {}^{A}\mathbf{b}_{C_i \rightarrow f} \times\rfloor = \begin{bmatrix} 0 & -{}^{A}{b}_{C_i \rightarrow f}(3) & {}^{A}{b}_{C_i \rightarrow f}(2) \\ {}^{A}{b}_{C_i \rightarrow f}(3) & 0 & -{}^{A}{b}_{C_i \rightarrow f}(1) \\ -{}^{A}{b}_{C_i \rightarrow f}(2) & {}^{A}{b}_{C_i \rightarrow f}(1) & 0 \\ \end{bmatrix} \end{align*}
+\form#237:${}^{A}\mathbf{N}_i{}^{A}\mathbf{b}_{C_i \rightarrow f}=\mathbf{0}_3$
+\form#238:${}^A\mathbf{p}_f$
+\form#239:\begin{align*} {}^{A}\mathbf{N}_i {}^A\mathbf{p}_f & = {}^{A}\mathbf{N}_i {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \\ & = {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \end{align*}
+\form#240:\begin{align*} \underbrace{ \begin{bmatrix} \vdots \\ {}^{A}\mathbf{N}_i \\ \vdots \end{bmatrix} }_{\mathbf{A}} {}^A\mathbf{p}_f & = \underbrace{ \begin{bmatrix} \vdots \\ {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \\ \vdots \end{bmatrix} }_{\mathbf{b}} \end{align*}
+\form#241:$m>1$
+\form#242:${}^{A}\mathbf{N}_i$
+\form#243:\begin{align*} \mathbf{A}^\top\mathbf{A}~ {}^A\mathbf{p}_f &= \mathbf{A}^\top\mathbf{b} \\ \Big( \sum_i {}^{A}\mathbf{N}_i^\top {}^{A}\mathbf{N}_i \Big) {}^A\mathbf{p}_f &= \Big( \sum_i {}^{A}\mathbf{N}_i^\top {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \Big) \end{align*}
+\form#244:$[u_n ~ v_n ~ 1]^\top$
+\form#245:\begin{align*} {}^{C_i}\mathbf{p}_{f} & = {}^{C_i}_A\mathbf{R} \left( {}^A\mathbf{p}_f - {}^A\mathbf{p}_{C_i}\right) \\ {}^A\mathbf{p}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}\mathbf{p}_{f} + {}^A\mathbf{p}_{C_i} \\ {}^{A}z_{f} {}^A\mathbf{b}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}\mathbf{p}_{f} + {}^A\mathbf{p}_{C_i} \\ \end{align*}
+\form#246:\begin{align*} {}^{A}z_{f} {}^A\mathbf{b}_f & = {}^{C_i}_A\mathbf{R}^\top {}^{C_i}z_{f} {}^{C_i}\mathbf{b}_{f} + {}^A\mathbf{p}_{C_i} \\ & = {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^A\mathbf{p}_{C_i} \end{align*}
+\form#247:\begin{align*} {}^{A}\mathbf{N}_i &= \lfloor {}^{A}\mathbf{b}_{C_i \rightarrow f} \times\rfloor \end{align*}
+\form#248:${}^{A}z_{f}$
+\form#249:\begin{align*} ({}^{A}\mathbf{N}_i {}^A\mathbf{b}_f) {}^{A}z_{f} & = {}^{A}\mathbf{N}_i {}^{C_i}z_{f} {}^{A}\mathbf{b}_{C_i \rightarrow f} + {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \\ & = {}^{A}\mathbf{N}_i {}^A\mathbf{p}_{C_i} \end{align*}
+\form#250:\begin{align*} \Big( \sum_i ({}^{A}\mathbf{N}_i{}^A\mathbf{b}_f)^\top ({}^{A}\mathbf{N}_i{}^A\mathbf{b}_f) \Big) {}^{A}z_{f} &= \Big( \sum_i ({}^{A}\mathbf{N}_i{}^A\mathbf{b}_f)^\top {}^{A}\mathbf{N}_i{}^A \mathbf{b}_i \Big) \end{align*}
+\form#251:$ {}^A\mathbf{p}_f = {}^{A}z_{f} {}^A\mathbf{b}_f$
+\form#252:\begin{align*} {}^{C_i}\mathbf{p}_f & = {}^{C_i}_A\mathbf{R} \left( {}^A\mathbf{p}_f - {}^A\mathbf{p}_{C_i} \right) \\ &= {}^Az_f {}^{C_i}_A\mathbf{R} \left( \begin{bmatrix} {}^Ax_f/{}^Az_f \\ {}^Ay_f/{}^Az_f \\ 1 \end{bmatrix} - \frac{1}{{}^Az_f} {}^A\mathbf{p}_{C_i} \right) \\ \Rightarrow \frac{1}{{}^Az_f} {}^{C_i}\mathbf{p}_f & = {}^{C_i}_A\mathbf{R} \left( \begin{bmatrix} {}^Ax_f/{}^Az_f \\ {}^Ay_f/{}^Az_f \\ 1 \end{bmatrix} - \frac{1}{{}^Az_f} {}^A\mathbf{p}_{C_i} \right) \end{align*}
+\form#253:$u_A = {}^Ax_f/{}^Az_f$
+\form#254:$v_A = {}^Ay_f/{}^Az_f$
+\form#255:$\rho_A = {1}/{{}^Az_f}$
+\form#256:\begin{align*} h(u_A, v_A, \rho_A) & = {}^{C_i}_A\mathbf{R} \left( \begin{bmatrix} u_A \\ v_A \\ 1 \end{bmatrix} - \rho_A {}^A\mathbf{p}_{C_i} \right) \end{align*}
+\form#257:$\{C_i\}$
+\form#258:\begin{align*} \mathbf{z} & = \begin{bmatrix} u_i \\ v_i \end{bmatrix} \\ &= \begin{bmatrix} h(u_A, v_A, \rho_A)(1) / h(u_A, v_A, \rho_A)(3) \\ h(u_A, v_A, \rho_A)(2) / h(u_A, v_A, \rho_A)(3) \\ \end{bmatrix} \\ & = \mathbf{h}(u_A, v_A, \rho_A) \end{align*}
+\form#259:\begin{align*} \operatorname*{argmin}_{u_A, v_A, \rho_A}||{\mathbf{z} - \mathbf{h}(u_A, v_A, \rho_A)}||^2 \end{align*}
+\form#260:\begin{align*} \frac{\partial \mathbf{h}(u_A, v_A, \rho_A)}{\partial {h}(u_A, v_A, \rho_A)} & = \begin{bmatrix} 1/h(\cdots)(1) & 0 & -h(\cdots)(1)/h(\cdots)(3)^2 \\ 0 & 1/h(\cdots)(2) & -h(\cdots)(2)/h(\cdots)(3)^2 \end{bmatrix} \\ \frac{\partial {h}(u_A, v_A, \rho_A)}{\partial [u_A, v_A, \rho_A]} & = {}^{C_i}_A\mathbf{R} \begin{bmatrix} \begin{bmatrix} 1 & 0 \\ 0 & 1 \\ 0 & 0 \end{bmatrix} & -{}^A\mathbf{p}_{C_i} \end{bmatrix} \end{align*}
+\form#261:\begin{align*} \tilde{\mathbf{z}}_{m,k} &\simeq \mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{H}_{f} {}^G\tilde{\mathbf{p}}_f + \mathbf{n}_k \end{align*}
+\form#262:$\mathbf{P}_{zz}$
+\form#263:\begin{align*} \mathbf{P}_{zz} &= \mathbb{E}\left[ \tilde{\mathbf{z}}_{m,k}{m,k} \tilde{\mathbf{z}}_{m,k}^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}+\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f+\mathbf{n}_k) (\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}+\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f+\mathbf{n}_k)^\top \right] \\[5px] &= \mathbb{E}\Big[ \mathbf{H}_{x}\tilde{\mathbf{x}}_{k}\tilde{\mathbf{x}}_{k}^\top\mathbf{H}_{x}^\top +\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}{}^G\tilde{\mathbf{p}}_f^\top\mathbf{H}_{f}^\top +\textcolor{red}{\mathbf{H}_{x}\tilde{\mathbf{x}}_{k}\mathbf{n}_k^\top} \nonumber\\[3px] &\hspace{3cm}+ \mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f\tilde{\mathbf{x}}_{k}^\top\mathbf{H}_{x}^\top +\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f{}^G\tilde{\mathbf{p}}_f^\top\mathbf{H}_{f}^\top +\mathbf{H}_{f}{}^G\tilde{\mathbf{p}}_f\mathbf{n}_k^\top \nonumber\\[3px] &\hspace{3cm}+ \textcolor{red}{\mathbf{n}_k\tilde{\mathbf{x}}_{k}^\top\mathbf{H}_{x}^\top} +\mathbf{n}_k{}^G\tilde{\mathbf{p}}_f^\top\mathbf{H}_{f}^\top +\mathbf{n}_k\mathbf{n}_k^\top \Big] \\[5px] \empty &= \mathbf{H}_x\mathbb{E}\Big[\tilde{\mathbf{x}}_{k}\tilde{\mathbf{x}}_{k}^\top\Big]\mathbf{H}_x^\top +\mathbf{H}_x\mathbb{E}\Big[\tilde{\mathbf{x}}_{k}{}^G\tilde{\mathbf{p}}_f^\top\Big]\mathbf{H}_f^\top +\mathbf{H}_f\mathbb{E}\Big[{}^G\tilde{\mathbf{p}}_f\tilde{\mathbf{x}}_{k}^\top\Big]\mathbf{H}_x^\top + \mathbf{H}_f\mathbb{E}\Big[{}^G\tilde{\mathbf{p}}_f{}^G\tilde{\mathbf{p}}_f^\top\Big]\mathbf{H}_f^\top \nonumber\\[3px] &\hspace{3.2cm}+ \mathbf{H}_f\mathbb{E}\Big[{}^G\tilde{\mathbf{p}}_f\mathbf{n}_k^\top\Big] +\mathbb{E}\Big[\mathbf{n}_k{}^G\tilde{\mathbf{p}}_f^\top\Big]\mathbf{H}_f^\top +\mathbb{E}\Big[\mathbf{n}_k\mathbf{n}_k^\top\Big] \\[5px] \empty &= \mathbf{H}_x \mathbf{P}_{xx}\mathbf{H}_x^\top +\mathbf{H}_x \mathbf{P}_{xf}\mathbf{H}_f^\top +\mathbf{H}_f \mathbf{P}_{fx}\mathbf{H}_x^\top + \mathbf{H}_f \mathbf{P}_{ff}\mathbf{H}_f^\top \nonumber\\[3px] &\hspace{2.3cm}+ \mathbf{H}_f \mathbf{P}_{fn} +\mathbf{P}_{nf} \mathbf{H}_f^\top +\mathbf{R}_d \end{align*}
+\form#264:$\mathbf{P}_{xf}$
+\form#265:$\mathbf{P}_{ff}$
+\form#266:$\mathbf{P}_{nf}$
+\form#267:${}^G\tilde{\mathbf{p}}_f$
+\form#268:$\mathbf{H}_{f}$
+\form#269:\begin{align*} \mathbf{H}_{f} = \begin{bmatrix} \mathbf{Q_1} & \mathbf{Q_2} \end{bmatrix} \begin{bmatrix} \mathbf{R_1} \\ \mathbf{0} \end{bmatrix} = \mathbf{Q_1}\mathbf{R_1} \end{align*}
+\form#270:\begin{align*} \tilde{\mathbf{z}}_{m,k} &\simeq \mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{Q_1}\mathbf{R_1}{}^G\tilde{\mathbf{p}}_f + \mathbf{n}_k \\[5px] \empty \Rightarrow~ \mathbf{Q_2}^\top\tilde{\mathbf{z}}_m &\simeq \mathbf{Q_2}^\top\mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \textcolor{red}{\mathbf{Q_2}^\top\mathbf{Q_1}\mathbf{R_1} {}^G\tilde{\mathbf{p}}_f} + \mathbf{Q_2}^\top\mathbf{n}_k \\[5px] \empty \Rightarrow~ \mathbf{Q_2}^\top\tilde{\mathbf{z}}_m &\simeq \mathbf{Q_2}^\top\mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{Q_2}^\top\mathbf{n}_k \\[5px] \empty \Rightarrow~ \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{H}_{o,k}\tilde{\mathbf{x}}_{k} + \mathbf{n}_{o,k} \end{align*}
+\form#271:$\mathbf Q_1$
+\form#272:$\mathbf Q_2$
+\form#273:\begin{align*} \textrm{size}(\mathbf{H}_{f}) &= 2n\times3 \textrm{~~where~}n\textrm{~is the number of uv measurements of this feature} \\[5px] \textrm{size}({}^G\tilde{\mathbf{p}}_f) &= 3\times1 \\[5px] \textrm{size}(\mathbf{H}_{x}) &= 2n\times15+6c \textrm{~~where~}c\textrm{~is the number of clones} \\[5px] \textrm{size}(\tilde{\mathbf{x}}_{k}) &= 15+6c\times1 \textrm{~~where~}c\textrm{~is the number of clones} \\[5px] \textrm{rank}(\mathbf{H}_{f}) &\leq \textrm{min}(2n,3) = 3 \textrm{~~where equality holds in most cases} \\[5px] \textrm{nullity}(\mathbf{H}_{f}) &= \textrm{size}(\mathbf{x}) - \textrm{rank}(\mathbf{H}_{f}) = 2n-3 \textrm{~~assuming full rank} \end{align*}
+\form#274:\begin{align*} \mathbf{Q_2}^\top\tilde{\mathbf{z}}_{m,k} &\simeq \mathbf{Q_2}^\top\mathbf{H}_{x} \tilde{\mathbf{x}}_{k} + \mathbf{Q_2}^\top\mathbf{n}_k \\[5px] \empty \Rightarrow~ (2n-3\times2n)(2n\times1) &= (2n-3\times2n)(2n\times15+6c)(15+6c\times1) \\ &\hspace{3.5cm}+ (2n-3\times2n)(2n\times1) \nonumber\\[5px] \empty \tilde{\mathbf{z}}_{o,k} &\simeq \mathbf{H}_{o,k}\tilde{\mathbf{x}}_{k} + \mathbf{n}_o \\[5px] \empty \Rightarrow~ (2n-3\times1) &= (2n-3\times15+6c)(15+6c\times1) + (2n-3\times1) \end{align*}
+\form#275:$\mathbf z_{o,k}$
+\form#276:\begin{align*} \hat{\mathbf{x}}_{k|k} &= \hat{\mathbf{x}}_{k|k-1} + \mathbf{P}_{k|k-1} \mathbf{H}_{o,k}^\top (\mathbf{H}_{o,k} \mathbf{P}_{k|k-1} \mathbf{H}_{o,k}^\top + \mathbf{R}_o)^{-1}\tilde{\mathbf{z}}_{o,k} \\[5px] \mathbf{P}_{k|k} &= \mathbf{P}_{k|k-1} - \mathbf{P}_{k|k-1}\mathbf{H}_{o,k}^\top (\mathbf{H}_{o,k} \mathbf{P}_{k|k-1} \mathbf{H}_{o,k}^\top + \mathbf{R}_o)^{-1} \mathbf{H}_{o,k}\mathbf{P}_{k|k-1}^\top \end{align*}
+\form#277:$k|k-1$
+\form#278:$\ominus$
+\form#279:$k|k$
+\form#280:$\oplus$
+\form#281:$\mathbf{Q}_1$
+\form#282:$2n\times3$
+\form#283:\begin{align*} \mathbf{a} &= \mathbf{0} \\ \boldsymbol{\omega} &= \mathbf{0} \end{align*}
+\form#284:\begin{align*} \mathbf{a} &= \mathbf{a}_m - \mathbf{b}_a - {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} - \mathbf{n}_a \\ \boldsymbol{\omega} &= \boldsymbol{\omega}_m - \mathbf{b}_g - \mathbf{n}_g \end{align*}
+\form#285:\begin{align*} \tilde{\mathbf{z}} &= \begin{bmatrix} \mathbf{a} - \Big(\mathbf{a}_m - \mathbf{b}_a - {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} - \mathbf{n}_a \Big) \\ \boldsymbol{\omega} - \Big(\boldsymbol{\omega}_m - \mathbf{b}_g - \mathbf{n}_g \Big) \end{bmatrix} &= \begin{bmatrix} - \Big(\mathbf{a}_m - \mathbf{b}_a - {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} - \mathbf{n}_a \Big) \\ - \Big(\boldsymbol{\omega}_m - \mathbf{b}_g - \mathbf{n}_g \Big) \end{bmatrix} \end{align*}
+\form#286:\begin{align*} \frac{\partial \tilde{\mathbf{z}}}{\partial {}^{I_k}_{G}\mathbf{R}} &= - \left\lfloor {}^{I_k}_G\mathbf{R}{}^G\mathbf{g} \times\right\rfloor \\ \frac{\partial \tilde{\mathbf{z}}}{\partial \mathbf{b}_a} &= \frac{\partial \tilde{\mathbf{z}}}{\partial \mathbf{b}_g} = - \mathbf{I}_{3\times 3} \end{align*}
+\form#287:$\chi^2$
+\form#288:\begin{align*} \tilde{\mathbf{z}}^\top(\mathbf{H}\mathbf{P}\mathbf{H}^\top + \alpha\mathbf{R})^{-1}\tilde{\mathbf{z}} < \chi^2 \end{align*}
+\form#289:$\mathbf{R}$
+\form#290:$\alpha\in[50,100]$
+\form#291:\begin{align*} \frac{1}{N}\sum_{i=0}^N ||\mathbf{uv}_{k,i}-\mathbf{uv}_{k-1,i}|| < \Delta d \end{align*}
+\form#292:$ \mathbf x\sim \mathcal N (\hat{\mathbf x}^\ominus, \mathbf P_{xx}^\ominus)$
+\form#293:$n$
+\form#294:$m$
+\form#295:$\mathbf{z}_m = \mathbf z + \mathbf n = \mathbf h(\mathbf x) + \mathbf n $
+\form#296:$ \mathbf n \sim \mathcal N(\mathbf 0, \mathbf R)$
+\form#297:$ p(\mathbf x|\mathbf z_m)$
+\form#298:$ p(\mathbf x|\mathbf z_m) \simeq \mathcal N (\hat{\mathbf x}^\oplus, \mathbf P_{xx}^\oplus)$
+\form#299:\begin{align*} p(\mathbf{x} | \mathbf{z}_m) = \frac{p(\mathbf{x},\mathbf{z}_m)}{p(\mathbf{z}_m)} \end{align*}
+\form#300:$ p(\mathbf{z}_m) \simeq \mathcal N (\hat{\mathbf z}, \mathbf P_{zz}) $
+\form#301:\begin{align*} p(\mathbf{x},\mathbf{z}_m) = \mathcal N \left( \begin{bmatrix} \hat{\mathbf x}^\ominus \\ \mathbf z \end{bmatrix}, \begin{bmatrix}\mathbf P_{xx} & \mathbf P_{xz} \\ \mathbf P_{zx} & \mathbf P_{zz} \end{bmatrix} \right) =: \mathcal N(\hat{\mathbf y}, \mathbf P_{yy}) \end{align*}
+\form#302:\begin{align*} p(\mathbf{x} | \mathbf{z}_m) &\simeq \frac{\mathcal N(\hat{\mathbf y}, \mathbf P_{yy})}{\mathcal N (\hat{\mathbf z}, \mathbf P_{zz}) }\\ &= \frac{\frac{1}{\sqrt{(2\pi)^{n+m}|{\mathbf{P}_{yy}}|}}e^{-\frac{1}{2}(\mathbf{y}-\hat{\mathbf{y}})^\top\mathbf{P}_{yy}^{-1}(\mathbf{y}-\hat{\mathbf{y}})}}{ \frac{1}{\sqrt{(2\pi)^{m}|{\mathbf{P}_{zz}}|}}e^{-\frac{1}{2}(\mathbf{z}_m-\hat{\mathbf{z}})^\top\mathbf{P}_{zz}^{-1}(\mathbf{z}_m-\hat{\mathbf{z}})}}\\ &= \frac{1}{\sqrt{(2\pi)^{n}|{\mathbf{P}_{yy}}|/|{\mathbf{P}_{zz}}|}} e^{ {-\frac{1}{2}\left[ (\mathbf{y}-\hat{\mathbf{y}})^\top\mathbf{P}_{yy}^{-1}(\mathbf{y}-\hat{\mathbf{y}}) - (\mathbf{z}_m-\hat{\mathbf{z}})^\top\mathbf{P}_{zz}^{-1}(\mathbf{z}_m-\hat{\mathbf{z}}) \right]} }\\ &=: \mathcal N (\hat{\mathbf x}^\oplus, \mathbf P_{xx}^\oplus) \end{align*}
+\form#303:$|{\mathbf{P}_{yy}}|/|{\mathbf{P}_{zz}}|$
+\form#304:\begin{align*} |{\mathbf{P}_{yy}}| = \Big|{\begin{bmatrix} \mathbf{P}_{xx} & \mathbf{P}_{xz} \\ \mathbf{P}_{zx} & \mathbf{P}_{zz} \end{bmatrix}}\Big| = \Big|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}\Big|\ \Big|{\mathbf{P}_{zz}}\Big| \end{align*}
+\form#305:\begin{align*} \frac{|{\mathbf{P}_{yy}}|}{|{\mathbf{P}_{zz}}|} = \frac{\Big|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}\Big|\Big|{\mathbf{P}_{zz}}\Big|}{|{\mathbf{P}_{zz}}|} = \Big|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}\Big| \end{align*}
+\form#306:$\mathbf{r}_x=\mathbf{x}-\hat{\mathbf{x}}^\ominus$
+\form#307:$\mathbf{r}_z=\mathbf{z}_m-\hat{\mathbf{z}}$
+\form#308:$\mathbf{r}_y=\mathbf{y}-\hat{\mathbf{y}}$
+\form#309:\begin{align*} &(\mathbf{y}-\hat{\mathbf{y}})^\top\mathbf{P}_{yy}^{-1}(\mathbf{y}-\hat{\mathbf{y}}) - (\mathbf{z}_m-\hat{\mathbf{z}})^\top\mathbf{P}_{zz}^{-1}(\mathbf{z}_m-\hat{\mathbf{z}}) \\[5px] &= \mathbf{r}_y^\top\mathbf{P}_{yy}^{-1}\mathbf{r}_y - \mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z \\[5px] &= \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix}^\top \begin{bmatrix} \mathbf{P}_{xx} & \mathbf{P}_{xz} \\ \mathbf{P}_{zx} & \mathbf{P}_{zz} \end{bmatrix}^{-1} \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix} - \mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z \\[5px] &= \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix}^\top \begin{bmatrix} \mathbf{Q} & -\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1} \\ -\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q} & \mathbf{P}_{zz}^{-1}+\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1} \end{bmatrix} \begin{bmatrix} \mathbf{r}_x \\ \mathbf{r}_z \end{bmatrix} - \mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z \\[5px] &\hspace{8cm} \mathrm{where} ~ \mathbf{Q}= (\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx})^{-1} \nonumber\\[5px] &= \mathbf{r}_x^\top\mathbf{Q}\mathbf{r}_x -\mathbf{r}_x^\top\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z -\mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q}\mathbf{r}_x \nonumber\\ &\hspace{4.6cm}+\mathbf{r}_z^\top( \textcolor{red}{\mathbf{P}_{zz}^{-1}}+\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}\mathbf{Q}\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1} )\mathbf{r}_z -\textcolor{red}{\mathbf{r}_z^\top\mathbf{P}_{zz}^{-1}\mathbf{r}_z} \\[5px] &= \mathbf{r}_x^\top\mathbf{Q}\mathbf{r}_x -\mathbf{r}_x^\top\mathbf{Q}[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_x] -[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z]^\top\mathbf{Q}\mathbf{r}_x +[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z]^\top\mathbf{Q}[\mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z] \\[5px] &= (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z)^\top \mathbf{Q} (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z) \\[5px] &= (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z)^\top (\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx})^{-1} (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z) \end{align*}
+\form#310:$(\mathbf{P}_{zz}^{-1})^\top = \mathbf{P}_{zz}^{-1}$
+\form#311:\begin{align*} p(\mathbf{x}_k | \mathbf{z}_m) &= \frac{1}{\sqrt{(2\pi)^{n}|{\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx}}}|} \times \nonumber\\ &\hspace{0.5cm}\mathrm{exp}\left( {-\frac{1}{2}\left[ (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z)^\top (\mathbf{P}_{xx} - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx})^{-1} (\mathbf{r}_x - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{r}_z) \right]} \right) \end{align*}
+\form#312:\begin{align*} \hat{\mathbf{x}}^\oplus &= \hat{\mathbf{x}}^\ominus + \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}(\mathbf{z}_m - \hat{\mathbf{z}}) \\ \mathbf{P}_{xx}^\oplus &= \mathbf{P}_{xx}^\ominus - \mathbf{P}_{xz}\mathbf{P}_{zz}^{-1}\mathbf{P}_{zx} \end{align*}
+\form#313:\begin{align*} \mathbf{z}_{m,k} &= \mathbf{H}_k \mathbf{x}_k + \mathbf{n}_k \\ \hat{\mathbf{z}}_k &:= \mathbb{E}[\mathbf{z}_{m,k}] = \mathbb{E}[\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k] = \mathbf{H}_k {\hat{\mathbf{x}}_k^\ominus} \end{align*}
+\form#314:\begin{align*} \mathbf{P}_{zz} &= \mathbb{E}\left[ (\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k)(\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus}) (\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus})^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) + \mathbf{n}_k) (\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) + \mathbf{n}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ \mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top + \textcolor{red}{\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) \mathbf{n}_k^\top} \right.\nonumber\\ &\hspace{4cm}+ \textcolor{red}{\mathbf{n}_k (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top} + \left. \mathbf{n}_k \mathbf{n}_k^\top \right] \\[5px] &= \mathbb{E}\left[ \mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top + \mathbf{n}_k \mathbf{n}_k^\top \right] \\[5px] &= \mathbf{H}_k~\mathbb{E}\left[(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\right]\mathbf{H}_k^\top + ~\mathbb{E}\left[\mathbf{n}_k\mathbf{n}_k^\top\right] \\[5px] &= \mathbf{H}_k\mathbf{P}_{xx}^\ominus\mathbf{H}_k^\top + \mathbf{R}_k \end{align*}
+\form#315:$\mathbf{R}_k$
+\form#316:$\mathbf{H}_k$
+\form#317:$\mathbf{P}_{xx}^\ominus$
+\form#318:\begin{align*} \mathbf{P}_{xz} &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})(\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{H}_k\mathbf{x}_k + \mathbf{n}_k - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus})^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) (\mathbf{H}_k(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus}) + \mathbf{n}_k)^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\mathbf{H}_k^\top +(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})\mathbf{n}_k^\top \right] \\[5px] &= \mathbb{E}\left[ (\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})^\top\right]\mathbf{H}_k^\top + \textcolor{red}{\mathbb{E}\left[(\mathbf{x}_k - {\hat{\mathbf{x}}_k^\ominus})\mathbf{n}_k^\top \right]} \\[5px] &= \mathbf{P}_{xx}^\ominus\mathbf{H}_k^\top \end{align*}
+\form#319:\begin{align*} \hat{\mathbf{x}}_k^\oplus &= {\hat{\mathbf{x}}_k^\ominus} + \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1}(\mathbf{z}_{m,k} - \hat{\mathbf{z}}_k) \\[5px] &= {\hat{\mathbf{x}}_k^\ominus} + \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1}(\mathbf{z}_{m,k} - \mathbf{H}_k{\hat{\mathbf{x}}_k^\ominus}) \\[5px] &= {\hat{\mathbf{x}}_k^\ominus} + \mathbf{K}\mathbf{r}_z \\[5px] \mathbf{P}_{xx}^\oplus &= \mathbf{P}_{k}^\ominus - \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1} (\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top)^\top \\[5px] &= \mathbf{P}_{k}^\ominus - \mathbf{P}_{k}^\ominus\mathbf{H}_k^\top (\mathbf{H}_k\mathbf{P}_{k}^\ominus\mathbf{H}_k^\top + \mathbf{R}_{k})^{-1} \mathbf{H}_k{\mathbf{P}_{k}^\ominus} \end{align*}
+\form#320:\begin{align*} {}^{w}_{s}\mathbf{T}(u(t)) &= {}^{w}_{i-1}\mathbf{T}~\mathbf{A}_0~\mathbf{A}_1~\mathbf{A}_2 \\ \empty {}^{w}_{s}\dot{\mathbf{T}}(u(t)) &= {}^{w}_{i-1}\mathbf{T} \Big( \dot{\mathbf{A}}_0~\mathbf{A}_1~\mathbf{A}_2 + \mathbf{A}_0~\dot{\mathbf{A}}_1~\mathbf{A}_2 + \mathbf{A}_0~\mathbf{A}_1~\dot{\mathbf{A}}_2 \Big) \\ \empty {}^{w}_{s}\ddot{\mathbf{T}}(u(t)) &= {}^{w}_{i-1}\mathbf{T} \Big( \ddot{\mathbf{A}}_0~\mathbf{A}_1~\mathbf{A}_2 + \mathbf{A}_0~\ddot{\mathbf{A}}_1~\mathbf{A}_2 + \mathbf{A}_0~\mathbf{A}_1~\ddot{\mathbf{A}}_2 \nonumber\\ &\hspace{4cm} + 2\dot{\mathbf{A}}_0\dot{\mathbf{A}}_1\mathbf{A}_2 + 2\mathbf{A}_0\dot{\mathbf{A}}_1\dot{\mathbf{A}}_2 + 2\dot{\mathbf{A}}_0\mathbf{A}_1\dot{\mathbf{A}}_2 \Big) \\[1em] \empty {}^{i-1}_{i}\mathbf{\Omega} &= \mathrm{log}\big( {}^{w}_{i-1}\mathbf{T}^{-1}~{}^{w}_{i}\mathbf{T} \big) \\ \mathbf{A}_j &= \mathrm{exp}\Big({B}_j(u(t))~{}^{i-1+j}_{i+j}\mathbf{\Omega} \Big) \\ \dot{\mathbf{A}}_j &= \dot{B}_j(u(t)) ~{}^{i-1+j}_{i+j}\mathbf{\Omega}^\wedge ~\mathbf{A}_j \\ \ddot{\mathbf{A}}_j &= \dot{B}_j(u(t)) ~{}^{i-1+j}_{i+j}\mathbf{\Omega}^\wedge ~\dot{\mathbf{A}}_j + \ddot{B}_j(u(t)) ~{}^{i-1+j}_{i+j}\mathbf{\Omega}^\wedge ~\mathbf{A}_j \\[1em] \empty {B}_0(u(t)) &= \frac{1}{3!}~(5+3u-3u^2+u^3) \\ {B}_1(u(t)) &= \frac{1}{3!}~(1+3u+3u^2-2u^3) \\ {B}_2(u(t)) &= \frac{1}{3!}~(u^3) \\[1em] \empty \dot{{B}}_0(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t}~(3-6u+3u^2) \\ \dot{{B}}_1(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t}~(3+6u-6u^2) \\ \dot{{B}}_2(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t}~(3u^2) \\[1em] \empty \ddot{{B}}_0(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t^2}~(-6+6u) \\ \ddot{{B}}_1(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t^2}~(6-12u) \\ \ddot{{B}}_2(u(t)) &= \frac{1}{3!}~\frac{1}{\Delta t^2}~(6u) \end{align*}
+\form#321:$u(t_s)=(t_s-t_i)/\Delta t=(t_s-t_i)/(t_{i+1}-t_i)$
+\form#322:\[ \bar{q}=norm\Big(\begin{bmatrix} 0.5*\mathbf{\theta_{dx}} \\ 1 \end{bmatrix}\Big) \hat{\bar{q}} \]
+\form#323:\begin{align*} \mathbf{R}(\bar{q})= \begin{bmatrix} q_1^2-q_2^2-q_3^2+q_4^2 & 2(q_1q_2+q_3q_4) & 2(q_1q_3-q_2q_4) \\ 2(q_1q_2-q_3q_4) & -q_2^2+q_2^2-q_3^2+q_4^2 & 2(q_2q_3+q_1q_4) \\ 2(q_1q_3+q_2q_4) & 2(q_2q_3-q_1q_4) & -q_1^2-q_2^2+q_3^2+q_4^2 \end{bmatrix} \end{align*}
+\form#324:\begin{align*} \lfloor\mathbf{v}\times\rfloor = \begin{bmatrix} 0 & -v_3 & v_2 \\ v_3 & 0 & -v_1 \\ -v_2 & v_1 & 0 \end{bmatrix} \end{align*}
+\form#325:\begin{align*} \mathbf{R} = (2q_4^2-1)\mathbf{I}_3-2q_4\lfloor\mathbf{q}\times\rfloor+2\mathbf{q}\mathbf{q}^\top \end{align*}
+\form#326:\begin{align*} \bar{q}\otimes\bar{p}= \mathcal{L}(\bar{q})\bar{p}= \begin{bmatrix} q_4\mathbf{I}_3+\lfloor\mathbf{q}\times\rfloor & \mathbf{q} \\ -\mathbf{q}^\top & q_4 \end{bmatrix} \begin{bmatrix} \mathbf{p} \\ p_4 \end{bmatrix} \end{align*}
+\form#327:\begin{align*} \exp\colon\mathfrak{so}(3)&\to SO(3) \\ \exp(\mathbf{v}) &= \mathbf{I} +\frac{\sin{\theta}}{\theta}\lfloor\mathbf{v}\times\rfloor +\frac{1-\cos{\theta}}{\theta^2}\lfloor\mathbf{v}\times\rfloor^2 \\ \mathrm{where}&\quad \theta^2 = \mathbf{v}^\top\mathbf{v} \end{align*}
+\form#328:\begin{align*} \theta &= \textrm{arccos}(0.5(\textrm{trace}(\mathbf{R})-1)) \\ \lfloor\mathbf{v}\times\rfloor &= \frac{\theta}{2\sin{\theta}}(\mathbf{R}-\mathbf{R}^\top) \end{align*}
+\form#329:\begin{align*} \exp([\boldsymbol\omega,\mathbf u])&=\begin{bmatrix} \mathbf R & \mathbf V \mathbf u \\ \mathbf 0 & 1 \end{bmatrix} \\[1em] \mathbf R &= \mathbf I + A \lfloor \boldsymbol\omega \times\rfloor + B \lfloor \boldsymbol\omega \times\rfloor^2 \\ \mathbf V &= \mathbf I + B \lfloor \boldsymbol\omega \times\rfloor + C \lfloor \boldsymbol\omega \times\rfloor^2 \end{align*}
+\form#330:\begin{align*} \theta &= \sqrt{\boldsymbol\omega^\top\boldsymbol\omega} \\ A &= \sin\theta/\theta \\ B &= (1-\cos\theta)/\theta^2 \\ C &= (1-A)/\theta^2 \end{align*}
+\form#331:\begin{align*} \boldsymbol\omega &=\mathrm{skew\_offdiags}\Big(\frac{\theta}{2\sin\theta}(\mathbf R - \mathbf R^\top)\Big) \\ \mathbf u &= \mathbf V^{-1}\mathbf t \end{align*}
+\form#332:\begin{align*} \theta &= \mathrm{arccos}((\mathrm{tr}(\mathbf R)-1)/2) \\ \mathbf V^{-1} &= \mathbf I - \frac{1}{2} \lfloor \boldsymbol\omega \times\rfloor + \frac{1}{\theta^2}\Big(1-\frac{A}{2B}\Big)\lfloor \boldsymbol\omega \times\rfloor^2 \end{align*}
+\form#333:\begin{align*} \boldsymbol\Omega^{\wedge} = \begin{bmatrix} \lfloor \boldsymbol\omega \times\rfloor & \mathbf u \\ \mathbf 0 & 0 \end{bmatrix} \end{align*}
+\form#334:\begin{align*} \mathbf{T}^{-1} = \begin{bmatrix} \mathbf{R}^\top & -\mathbf{R}^\top\mathbf{p} \\ \mathbf{0} & 1 \end{bmatrix} \end{align*}
+\form#335:\begin{align*} \bar{q}^{-1} = \begin{bmatrix} -\mathbf{q} \\ q_4 \end{bmatrix} \end{align*}
+\form#336:$\theta=|\boldsymbol\theta|$
+\form#337:$\mathbf a=\boldsymbol\theta/|\boldsymbol\theta|$
+\form#338:\begin{align*} J_l(\boldsymbol\theta) = \frac{\sin\theta}{\theta}\mathbf I + \Big(1-\frac{\sin\theta}{\theta}\Big)\mathbf a \mathbf a^\top + \frac{1-\cos\theta}{\theta}\lfloor \mathbf a \times\rfloor \end{align*}
+\form#339:\begin{align*} e_{ATE} &= \sqrt{ \frac{1}{K} \sum_{k=1}^{K} ||\mathbf{x}_{k,i} \boxminus \hat{\mathbf{x}}^+_{k,i}||^2_{2} } \end{align*}
+\form#340:\begin{align*} \tilde{\mathbf{x}}_{r} &= \mathbf{x}_{k} \boxminus \mathbf{x}_{k+d_i} \\ e_{rpe,d_i} &= \frac{1}{D_i} \sum_{k=1}^{D_i} ||\tilde{\mathbf{x}}_{r} \boxminus \hat{\tilde{\mathbf{x}}}_{r}||^2_{2} \end{align*}
+\form#341:\[ \textrm{argmin} ||A * (x - x_{lin}) + b||^2 \]
+\form#342:$(A^T*A) = Inf_{prior} $
+\form#343:$A^T*b = grad_{prior} $
+\form#344:\[ [ Arr Arm ] [ xr ] = [ - gr ] \]
+\form#345:\[ [ Amr Amm ] [ xm ] = [ - gm ] \]
+\form#346:$ xr $
+\form#347:$ x_{lin} $
+\form#348:\[ cost^2 = (xr - xr_{lin})^T*(A^T*A)*(xr - xr_{lin}) + b^T*A*(xr - xr_{lin}) + b^b \]
+\form#349:\[ A = sqrt(Arr - Arm*Amm^{-1}*Amr) \]
+\form#350:\[ b = A^-1 * (gr - Arm*Amm^{-1}*gm) \]
+\form#351:\begin{align*} \text{}^{I_{k+1}}_{G}\hat{\bar{q}} &= \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}\big({\boldsymbol{\omega}}_{m,k}-\hat{\mathbf{b}}_{g,k}\big)\Delta t\bigg) \text{}^{I_{k}}_{G}\hat{\bar{q}} \\ ^G\hat{\mathbf{v}}_{k+1} &= \text{}^G\hat{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t +\text{}^{I_k}_G\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t\\ ^G\hat{\mathbf{p}}_{I_{k+1}} &= \text{}^G\hat{\mathbf{p}}_{I_k} + {}^G\hat{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t^2 \end{align*}
+\form#352:$ f(t,y) $
+\form#353:\begin{align*} {k_1} &= f({t_0}, y_0) \Delta t \\ {k_2} &= f( {t_0}+{\Delta t \over 2}, y_0 + {1 \over 2}{k_1} ) \Delta t \\ {k_3} &= f( {t_0}+{\Delta t \over 2}, y_0 + {1 \over 2}{k_2} ) \Delta t \\ {k_4} &= f( {t_0} + {\Delta t}, y_0 + {k_3} ) \Delta t \\ y_{0+\Delta t} &= y_0 + \left( {{1 \over 6}{k_1} + {1 \over 3}{k_2} + {1 \over 3}{k_3} + {1 \over 6}{k_4}} \right) \end{align*}
+\form#354:\[ \tilde{\mathbf{x}}' = \begin{bmatrix} \boldsymbol\Phi_1 & \boldsymbol\Phi_2 & \boldsymbol\Phi_3 \end{bmatrix} \begin{bmatrix} \tilde{\mathbf{x}}_1 \\ \tilde{\mathbf{x}}_2 \\ \tilde{\mathbf{x}}_3 \end{bmatrix} + \mathbf{n} \]
+\form#355:\begin{align*} {}^{I_{t+t_d}}_G\bar{q} &= \begin{bmatrix}\frac{1}{2} {}^{I_{t+\hat{t}_d}}\boldsymbol\omega \tilde{t}_d \\ 1\end{bmatrix}\otimes{}^{I_{t+\hat{t}_d}}_G\bar{q} \\ {}^G\mathbf{p}_{I_{t+t_d}} &= {}^G\mathbf{p}_{I_{t+\hat{t}_d}} + {}^G\mathbf{v}_{I_{t+\hat{t}_d}}\tilde{t}_d \end{align*}
+\form#356:${}^{I_{t+\hat{t}_d}}\boldsymbol\omega$
+\form#357:\begin{align*} \frac{\partial {}^{I_{t+t_d}}_G\tilde{\boldsymbol\theta}}{\partial \tilde{t}_d} &= {}^{I_{t+\hat{t}_d}}\boldsymbol\omega \\ \frac{\partial {}^G\tilde{\mathbf{p}}_{I_{t+t_d}}}{\partial \tilde{t}_d} &= {}^G\mathbf{v}_{I_{t+\hat{t}_d}} \end{align*}

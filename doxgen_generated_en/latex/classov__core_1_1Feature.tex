@@ -1,0 +1,109 @@
+\hypertarget{classov__core_1_1Feature}{}\section{ov\+\_\+core\+:\+:Feature Class Reference}
+\label{classov__core_1_1Feature}\index{ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}}
+
+
+Sparse feature class used to collect measurements.  
+
+
+
+
+{\ttfamily \#include $<$Feature.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__core_1_1Feature_aee27e65f3de5581ededd30646479e315}{clean\+\_\+old\+\_\+measurements} (const std\+::vector$<$ double $>$ \&valid\+\_\+times)
+\begin{DoxyCompactList}\small\item\em Remove measurements that do not occur at passed timestamps. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1Feature_a9daa91fb3836d23563bdc9aad6686ee1}{clean\+\_\+invalid\+\_\+measurements} (const std\+::vector$<$ double $>$ \&invalid\+\_\+times)
+\begin{DoxyCompactList}\small\item\em Remove measurements that occur at the invalid timestamps. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1Feature_ad5426e15b7fb0f1f315c12465c63787d}{clean\+\_\+older\+\_\+measurements} (double timestamp)
+\begin{DoxyCompactList}\small\item\em Remove measurements that are older then the specified timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a2d29cbda05723b3c681fca9d9c08a6b6}\label{classov__core_1_1Feature_a2d29cbda05723b3c681fca9d9c08a6b6}} 
+size\+\_\+t \hyperlink{classov__core_1_1Feature_a2d29cbda05723b3c681fca9d9c08a6b6}{featid}
+\begin{DoxyCompactList}\small\item\em Unique ID of this feature. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_afd7ba032d3f576d6cedff37326a00766}\label{classov__core_1_1Feature_afd7ba032d3f576d6cedff37326a00766}} 
+bool \hyperlink{classov__core_1_1Feature_afd7ba032d3f576d6cedff37326a00766}{to\+\_\+delete}
+\begin{DoxyCompactList}\small\item\em If this feature should be deleted. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a0158e28d76464ab4daa4ac498270b6a0}\label{classov__core_1_1Feature_a0158e28d76464ab4daa4ac498270b6a0}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ Eigen\+::\+Vector\+Xf $>$ $>$ \hyperlink{classov__core_1_1Feature_a0158e28d76464ab4daa4ac498270b6a0}{uvs}
+\begin{DoxyCompactList}\small\item\em UV coordinates that this feature has been seen from (mapped by camera ID) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a9eb23faca74853073bf7625c9cdfe93f}\label{classov__core_1_1Feature_a9eb23faca74853073bf7625c9cdfe93f}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ Eigen\+::\+Vector\+Xf $>$ $>$ \hyperlink{classov__core_1_1Feature_a9eb23faca74853073bf7625c9cdfe93f}{uvs\+\_\+norm}
+\begin{DoxyCompactList}\small\item\em UV normalized coordinates that this feature has been seen from (mapped by camera ID) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a16de72ae07065bc81570d63ec694d743}\label{classov__core_1_1Feature_a16de72ae07065bc81570d63ec694d743}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::vector$<$ double $>$ $>$ \hyperlink{classov__core_1_1Feature_a16de72ae07065bc81570d63ec694d743}{timestamps}
+\begin{DoxyCompactList}\small\item\em Timestamps of each UV measurement (mapped by camera ID) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a9d3c50ff0d0e511fc859d6537c90f192}\label{classov__core_1_1Feature_a9d3c50ff0d0e511fc859d6537c90f192}} 
+int \hyperlink{classov__core_1_1Feature_a9d3c50ff0d0e511fc859d6537c90f192}{anchor\+\_\+cam\+\_\+id} = -\/1
+\begin{DoxyCompactList}\small\item\em What camera ID our pose is anchored in!! By default the first measurement is the anchor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_abf559a10ad1ccf1ba44500d2c81fc765}\label{classov__core_1_1Feature_abf559a10ad1ccf1ba44500d2c81fc765}} 
+double \hyperlink{classov__core_1_1Feature_abf559a10ad1ccf1ba44500d2c81fc765}{anchor\+\_\+clone\+\_\+timestamp}
+\begin{DoxyCompactList}\small\item\em Timestamp of anchor clone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a7c7616f29b0a254a12cdb6244c1f5953}\label{classov__core_1_1Feature_a7c7616f29b0a254a12cdb6244c1f5953}} 
+Eigen\+::\+Vector3d \hyperlink{classov__core_1_1Feature_a7c7616f29b0a254a12cdb6244c1f5953}{p\+\_\+\+FinA}
+\begin{DoxyCompactList}\small\item\em Triangulated position of this feature, in the anchor frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1Feature_a5e9697cf6bd37a344ddaff0631778278}\label{classov__core_1_1Feature_a5e9697cf6bd37a344ddaff0631778278}} 
+Eigen\+::\+Vector3d \hyperlink{classov__core_1_1Feature_a5e9697cf6bd37a344ddaff0631778278}{p\+\_\+\+FinG}
+\begin{DoxyCompactList}\small\item\em Triangulated position of this feature, in the global frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sparse feature class used to collect measurements. 
+
+This feature class allows for holding of all tracking information for a given feature. Each feature has a unique ID assigned to it, and should have a set of feature tracks alongside it. See the \hyperlink{classov__core_1_1FeatureDatabase}{Feature\+Database} class for details on how we load information into this, and how we delete features. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1Feature_a9daa91fb3836d23563bdc9aad6686ee1}\label{classov__core_1_1Feature_a9daa91fb3836d23563bdc9aad6686ee1}} 
+\index{ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}!clean\+\_\+invalid\+\_\+measurements@{clean\+\_\+invalid\+\_\+measurements}}
+\index{clean\+\_\+invalid\+\_\+measurements@{clean\+\_\+invalid\+\_\+measurements}!ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}}
+\subsubsection{\texorpdfstring{clean\+\_\+invalid\+\_\+measurements()}{clean\_invalid\_measurements()}}
+{\footnotesize\ttfamily void Feature\+::clean\+\_\+invalid\+\_\+measurements (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{invalid\+\_\+times }\end{DoxyParamCaption})}
+
+
+
+Remove measurements that occur at the invalid timestamps. 
+
+Given a series of invalid timestamps, this will remove all measurements that have occurred at these times.
+
+
+\begin{DoxyParams}{Parameters}
+{\em invalid\+\_\+times} & Vector of timestamps that our measurements should not \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1Feature_aee27e65f3de5581ededd30646479e315}\label{classov__core_1_1Feature_aee27e65f3de5581ededd30646479e315}} 
+\index{ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}!clean\+\_\+old\+\_\+measurements@{clean\+\_\+old\+\_\+measurements}}
+\index{clean\+\_\+old\+\_\+measurements@{clean\+\_\+old\+\_\+measurements}!ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}}
+\subsubsection{\texorpdfstring{clean\+\_\+old\+\_\+measurements()}{clean\_old\_measurements()}}
+{\footnotesize\ttfamily void Feature\+::clean\+\_\+old\+\_\+measurements (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ double $>$ \&}]{valid\+\_\+times }\end{DoxyParamCaption})}
+
+
+
+Remove measurements that do not occur at passed timestamps. 
+
+Given a series of valid timestamps, this will remove all measurements that have not occurred at these times. This would normally be used to ensure that the measurements that we have occur at our clone times.
+
+
+\begin{DoxyParams}{Parameters}
+{\em valid\+\_\+times} & Vector of timestamps that our measurements must occur at \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1Feature_ad5426e15b7fb0f1f315c12465c63787d}\label{classov__core_1_1Feature_ad5426e15b7fb0f1f315c12465c63787d}} 
+\index{ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}!clean\+\_\+older\+\_\+measurements@{clean\+\_\+older\+\_\+measurements}}
+\index{clean\+\_\+older\+\_\+measurements@{clean\+\_\+older\+\_\+measurements}!ov\+\_\+core\+::\+Feature@{ov\+\_\+core\+::\+Feature}}
+\subsubsection{\texorpdfstring{clean\+\_\+older\+\_\+measurements()}{clean\_older\_measurements()}}
+{\footnotesize\ttfamily void Feature\+::clean\+\_\+older\+\_\+measurements (\begin{DoxyParamCaption}\item[{double}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Remove measurements that are older then the specified timestamp. 
+
+Given a valid timestamp, this will remove all measurements that have occured earlier then this.
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Timestamps that our measurements must occur after \\
+\hline
+\end{DoxyParams}

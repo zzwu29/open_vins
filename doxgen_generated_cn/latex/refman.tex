@@ -1,0 +1,274 @@
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage[export]{adjustbox} % also loads graphicx
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage[table]{xcolor}
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  letterpaper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{3ex plus 2ex minus 2ex}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize 制作者 Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize 制作者 Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Packages requested by user
+\usepackage{amsmath,amssymb,stmaryrd,xcolor}
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+\usepackage{caption}
+\captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+
+%===== C O N T E N T S =====
+
+\usepackage{CJKutf8}
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false,
+             bookmarksnumbered=true,
+             pdfencoding=unicode
+            }
+\pagenumbering{alph}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}%
+{\Large Open\+V\+I\+NS }\\
+\vspace*{1cm}
+{\large 制作者 Doxygen 1.8.13}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+%--- Begin generated contents ---
+\chapter{Open\+V\+I\+NS}
+\label{index}\hypertarget{index}{}\input{index}
+\chapter{Getting Started}
+\label{getting-started}
+\Hypertarget{getting-started}
+\input{getting-started}
+\chapter{I\+MU Propagation Derivations}
+\label{propagation}
+\Hypertarget{propagation}
+\input{propagation}
+\chapter{First-\/\+Estimate Jacobian Estimators}
+\label{fej}
+\Hypertarget{fej}
+\input{fej}
+\chapter{Measurement Update Derivations}
+\label{update}
+\Hypertarget{update}
+\input{update}
+\chapter{Visual-\/\+Inertial Simulator}
+\label{simulation}
+\Hypertarget{simulation}
+\input{simulation}
+\chapter{System Evaluation}
+\label{evaluation}
+\Hypertarget{evaluation}
+\input{evaluation}
+\chapter{Developer and Internals}
+\label{dev-welcome}
+\Hypertarget{dev-welcome}
+\input{dev-welcome}
+\chapter{命名空间索引}
+\input{namespaces}
+\chapter{继承关系索引}
+\input{hierarchy}
+\chapter{类索引}
+\input{annotated}
+\chapter{命名空间文档}
+\input{namespaceov__core}
+\input{namespaceov__eval}
+\input{namespaceov__init}
+\input{namespaceov__msckf}
+\input{namespaceov__type}
+\chapter{类说明}
+\input{classov__eval_1_1AlignTrajectory}
+\input{classov__eval_1_1AlignUtils}
+\input{classov__core_1_1BsplineSE3}
+\input{classov__core_1_1CamBase}
+\input{classov__core_1_1CamEqui}
+\input{structov__core_1_1CameraData}
+\input{classov__core_1_1CamRadtan}
+\input{structov__core_1_1FeatureInitializer_1_1ClonePose}
+\input{classov__core_1_1CpiBase}
+\input{classov__core_1_1CpiV1}
+\input{classov__core_1_1CpiV2}
+\input{classov__core_1_1DatasetReader}
+\input{classov__init_1_1DynamicInitializer}
+\input{classov__init_1_1Factor__GenericPrior}
+\input{classov__init_1_1Factor__ImageReprojCalib}
+\input{classov__init_1_1Factor__ImuCPIv1}
+\input{classov__core_1_1Feature}
+\input{classov__core_1_1FeatureDatabase}
+\input{classov__core_1_1FeatureHelper}
+\input{classov__core_1_1FeatureInitializer}
+\input{structov__core_1_1FeatureInitializerOptions}
+\input{classov__core_1_1Grider__FAST}
+\input{classov__core_1_1Grider__GRID}
+\input{classov__type_1_1IMU}
+\input{structov__core_1_1ImuData}
+\input{classov__init_1_1InertialInitializer}
+\input{structov__init_1_1InertialInitializerOptions}
+\input{classov__init_1_1InitializerHelper}
+\input{classov__type_1_1JPLQuat}
+\input{classov__core_1_1LambdaBody}
+\input{classov__type_1_1Landmark}
+\input{classov__type_1_1LandmarkRepresentation}
+\input{classov__eval_1_1Loader}
+\input{structov__msckf_1_1NoiseManager}
+\input{classov__type_1_1PoseJPL}
+\input{classov__core_1_1Printer}
+\input{classov__msckf_1_1Propagator}
+\input{classov__eval_1_1Recorder}
+\input{classov__eval_1_1ResultSimulation}
+\input{classov__eval_1_1ResultTrajectory}
+\input{classov__msckf_1_1ROS1Visualizer}
+\input{classov__msckf_1_1ROS2Visualizer}
+\input{classov__msckf_1_1ROSVisualizerHelper}
+\input{classov__msckf_1_1Simulator}
+\input{classov__init_1_1SimulatorInit}
+\input{classov__msckf_1_1State}
+\input{classov__init_1_1State__JPLQuatLocal}
+\input{classov__msckf_1_1StateHelper}
+\input{structov__msckf_1_1StateOptions}
+\input{classov__init_1_1StaticInitializer}
+\input{structov__eval_1_1Statistics}
+\input{classov__core_1_1TrackAruco}
+\input{classov__core_1_1TrackBase}
+\input{classov__core_1_1TrackDescriptor}
+\input{classov__core_1_1TrackKLT}
+\input{classov__core_1_1TrackSIM}
+\input{classov__type_1_1Type}
+\input{classov__msckf_1_1UpdaterHelper}
+\input{structov__msckf_1_1UpdaterHelper_1_1UpdaterHelperFeature}
+\input{classov__msckf_1_1UpdaterMSCKF}
+\input{structov__msckf_1_1UpdaterOptions}
+\input{classov__msckf_1_1UpdaterSLAM}
+\input{classov__msckf_1_1UpdaterZeroVelocity}
+\input{classov__type_1_1Vec}
+\input{classov__msckf_1_1VioManager}
+\input{structov__msckf_1_1VioManagerOptions}
+\input{classov__core_1_1YamlParser}
+%--- End generated contents ---
+
+% Bibliography
+\newpage
+\phantomsection
+\bibliographystyle{plainnat}
+\bibliography{bibTmpFile_1}
+\addcontentsline{toc}{chapter}{参考书目}
+
+% Index
+\backmatter
+\newpage
+\phantomsection
+\clearemptydoublepage
+\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\end{CJK}
+\end{document}

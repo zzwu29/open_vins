@@ -1,0 +1,824 @@
+Welcome to the Open\+V\+I\+NS project! The following guides will help new users through the downloading of the software and running on datasets that we support. Additionally, we provide information on how to get your own sensors running on our system and have a guide on how we perform calibration. Please feel free to open an issue if you find any missing or areas that could be clarified.\hypertarget{getting-started_highlevel}{}\section{High-\/level overview}\label{getting-started_highlevel}
+From a high level the system is build on a few key algorithms. At the center we have the \hyperlink{namespaceov__core}{ov\+\_\+core} which contains a lot of standard computer vision algorithms and utilities that anybody can use. Specifically it stores the following large components\+:
+
+
+\begin{DoxyItemize}
+\item Sparse feature visual tracking (K\+LT and descriptor-\/based)
+\item Fundamental math types used to represent states
+\item Initialization procedures
+\item Multi-\/sensor simulator that generates synthetic measurements
+\end{DoxyItemize}
+
+This \hyperlink{namespaceov__core}{ov\+\_\+core} library is used by the \hyperlink{namespaceov__msckf}{ov\+\_\+msckf} system which contains our filter-\/based estimator. Within this we have the state, its manager, type system, prediction, and update algorithms. We encourage users to look at the specific documentation for a detailed view of what we support. The \hyperlink{namespaceov__eval}{ov\+\_\+eval} library has a bunch of evaluation methods and scripts that one can use to generate research results for publication.\hypertarget{getting-started_getting-started-more}{}\section{Getting Started Guides}\label{getting-started_getting-started-more}
+
+\begin{DoxyItemize}
+\item \hyperlink{gs-installing}{Installation Guide} --- Installation guide for Open\+V\+I\+NS and dependencies
+\item \hyperlink{dev-docker}{Building with Docker} --- Installing with Docker instead of from source
+\item \hyperlink{gs-tutorial}{Simple Tutorial} --- Simple tutorial on getting Open\+V\+I\+NS running out of the box.
+\item \hyperlink{gs-datasets}{Supported Datasets} --- Links to supported datasets and configuration files
+\item \hyperlink{gs-calibration}{Sensor Calibration} --- Guide to how to calibration your own visual-\/inertial sensors. 
+\end{DoxyItemize}\hypertarget{gs-installing}{}\section{Installation Guide}\label{gs-installing}
+\hypertarget{gs-installing_gs-install-ros}{}\subsection{R\+O\+S Dependency}\label{gs-installing_gs-install-ros}
+Our codebase is built on top of the \href{https://www.ros.org/}{\tt Robot Operating System (R\+OS)} and has been tested building on Ubuntu 16.\+04, 18.\+04, 20.\+04 systems with R\+OS Kinetic, Melodic, and Noetic. We also recommend installing the \href{https://github.com/catkin/catkin_tools}{\tt catkin\+\_\+tools} build for easy R\+OS building. All R\+OS installs include \href{https://github.com/opencv/opencv}{\tt Open\+CV}, but if you need to build Open\+CV from source ensure you build the contributed modules as we use Aruco feature extraction. See the \href{https://github.com/opencv/opencv_contrib}{\tt opencv\+\_\+contrib} readme on how to configure your cmake command when you build the core Open\+CV library. We have tested building with Open\+CV 3.\+2, 3.\+3, 3.\+4, 4.\+2, and 4.\+5. Please see the official instructions to install R\+OS\+:
+
+
+\begin{DoxyItemize}
+\item \href{http://wiki.ros.org/kinetic/Installation/Ubuntu}{\tt Ubuntu 16.\+04 R\+OS 1 Kinetic} (uses Open\+CV 3.\+3)
+\item \href{http://wiki.ros.org/melodic/Installation/Ubuntu}{\tt Ubuntu 18.\+04 R\+OS 1 Melodic} (uses Open\+CV 3.\+2)
+\item \href{http://wiki.ros.org/noetic/Installation/Ubuntu}{\tt Ubuntu 20.\+04 R\+OS 1 Noetic} (uses Open\+CV 4.\+2)
+\item \href{https://docs.ros.org/en/dashing/}{\tt Ubuntu 18.\+04 R\+OS 2 Dashing} (uses Open\+CV 3.\+2)
+\item \href{https://docs.ros.org/en/galactic/}{\tt Ubuntu 20.\+04 R\+OS 2 Galactic} (uses Open\+CV 4.\+2)
+\end{DoxyItemize}
+
+We do support R\+O\+S-\/free builds, but don\textquotesingle{}t recommend using this interface as we have limited support for it. You will need to ensure you have installed Open\+CV 3 or 4, Eigen3, and Ceres which are the only dependencies. For Ubuntu linux-\/based system the system dependencies are\+:
+
+
+\begin{DoxyCode}
+sudo apt-get install libeigen3-dev libboost-all-dev libceres-dev
+\end{DoxyCode}
+
+
+If R\+OS is not found on the system, one can use command line options to run the simulation without any visualization or {\ttfamily cmake -\/\+D\+E\+N\+A\+B\+L\+E\+\_\+\+R\+OS=O\+FF ..}. If you are using the R\+O\+S-\/free interface, you will need to properly construct the \hyperlink{structov__msckf_1_1VioManagerOptions}{ov\+\_\+msckf\+::\+Vio\+Manager\+Options} struct with proper information and feed inertial and image data into the correct functions. The simulator binary {\ttfamily run\+\_\+simulation} can give you and example on how to do this.\hypertarget{gs-installing_gs-install-ros-1}{}\subsubsection{R\+O\+S1 Install}\label{gs-installing_gs-install-ros-1}
+To install we can perform the following\+:
+
+
+\begin{DoxyCode}
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb\_release -sc) main" >
+       /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key
+       C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+sudo apt-get update
+export ROS1\_DISTRO=noetic # kinetic=16.04, melodic=18.04, noetic=20.04
+sudo apt-get install ros-$ROS1\_DISTRO-desktop-full
+sudo apt-get install python-catkin-tools # ubuntu 16.04, 18.04
+sudo apt-get install python3-catkin-tools python3-osrf-pycommon # ubuntu 20.04
+sudo apt-get install libeigen3-dev libboost-all-dev libceres-dev
+\end{DoxyCode}
+
+
+If you only have R\+O\+S1 on your system and are not cross installing R\+O\+S2, then you can run the following to append this to your bashrc file. Every time a terminal is open, thus will load the R\+O\+S1 environmental variables required to find all dependencies for building and system installed packages.
+
+
+\begin{DoxyCode}
+echo "source /opt/ros/$ROS1\_DISTRO/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+\end{DoxyCode}
+
+
+Otherwise, if you want to also install R\+O\+S2, you must {\itshape N\+OT} have a global source. Instead we can have a nice helper command which can be used when we build a R\+O\+S1 workspace. Additionally, the {\ttfamily source\+\_\+devel} command can be used when in your workspace root to source built packages. Once appended simply run {\ttfamily source\+\_\+ros1} to load your R\+O\+S1 environmental variables.
+
+
+\begin{DoxyCode}
+echo "alias source\_ros1=\(\backslash\)"source /opt/ros/$ROS1\_DISTRO/setup.bash\(\backslash\)"" >> ~/.bashrc
+echo "alias source\_devel=\(\backslash\)"source devel/setup.bash\(\backslash\)"" >> ~/.bashrc
+source ~/.bashrc
+\end{DoxyCode}
+\hypertarget{gs-installing_gs-install-ros-2}{}\subsubsection{R\+O\+S2 Install}\label{gs-installing_gs-install-ros-2}
+To install we can perform the following\+:
+
+
+\begin{DoxyCode}
+sudo apt update && sudo apt install curl gnupg lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o
+       /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg]
+       http://packages.ros.org/ros2/ubuntu $(lsb\_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list >
+       /dev/null
+sudo apt-get update
+export ROS2\_DISTRO=galactic # dashing=18.04, galactic=20.04
+sudo apt install ros-$ROS2\_DISTRO-desktop
+sudo apt-get install ros-$ROS2\_DISTRO-ros2bag ros-$ROS2\_DISTRO-rosbag2* # rosbag utilities (seems to be
+       separate)
+sudo apt-get install libeigen3-dev libboost-all-dev libceres-dev
+\end{DoxyCode}
+
+
+If you only have R\+O\+S2 on your system and are not cross installing R\+O\+S1, then you can run the following to append this to your bashrc file. Every time a terminal is open, thus will load the R\+O\+S2 environmental variables required to find all dependencies for building and system installed packages.
+
+
+\begin{DoxyCode}
+echo "source /opt/ros/$ROS2\_DISTRO/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+\end{DoxyCode}
+
+
+Otherwise, if you want to also install R\+O\+S1, you must {\itshape N\+OT} have a global source. Instead we can have a nice helper command which can be used when we build a R\+O\+S1 workspace. Additionally, the {\ttfamily source\+\_\+install} command can be used when in your workspace root to source built packages. Once appended simply run {\ttfamily source\+\_\+ros2} to load your R\+O\+S1 environmental variables.
+
+
+\begin{DoxyCode}
+echo "alias source\_ros2=\(\backslash\)"source /opt/ros/$ROS2\_DISTRO/setup.bash\(\backslash\)"" >> ~/.bashrc
+echo "alias source\_install=\(\backslash\)"source install/setup.bash\(\backslash\)"" >> ~/.bashrc
+source ~/.bashrc
+\end{DoxyCode}
+\hypertarget{gs-installing_gs-install-openvins}{}\subsection{Cloning the Open\+V\+I\+N\+S Project}\label{gs-installing_gs-install-openvins}
+Now that we have R\+OS installed we can setup a catkin workspace and build the project! If you did not install the catkin\+\_\+tools build system, you should be able to build using the standard {\ttfamily catkin\+\_\+make} command that is included with R\+OS. If you run into any problems please google search the issue first and if you are unable to find a solution please open an issue on our github page. After the build is successful please following the \hyperlink{gs-tutorial}{Simple Tutorial} guide on getting a dataset and running the system.
+
+There are additional options that users might be interested in. Configure these with {\ttfamily catkin build -\/D$<$option\+\_\+name$>$=O\+FF} or {\ttfamily cmake -\/D$<$option\+\_\+name$>$=ON ..} in the R\+OS free case.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+R\+OS} -\/ (default ON) -\/ Enable or disable building with R\+OS (if it is found)
+\item {\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+A\+R\+U\+C\+O\+\_\+\+T\+A\+GS} -\/ (default ON) -\/ Enable or disable aruco tag (disable if no contrib modules)
+\item {\ttfamily B\+U\+I\+L\+D\+\_\+\+O\+V\+\_\+\+E\+V\+AL} -\/ (default ON) -\/ Enable or disable building of \hyperlink{namespaceov__eval}{ov\+\_\+eval}
+\item {\ttfamily D\+I\+S\+A\+B\+L\+E\+\_\+\+M\+A\+T\+P\+L\+O\+T\+L\+IB} -\/ (default O\+FF) -\/ Disable or enable matplotlib plot scripts in \hyperlink{namespaceov__eval}{ov\+\_\+eval}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+mkdir -p ~/workspace/catkin\_ws\_ov/src/
+cd ~/workspace/catkin\_ws\_ov/src/
+git clone https://github.com/rpng/open\_vins/
+cd ..
+catkin build # ROS1
+colcon build # ROS2
+colcon build --event-handlers console\_cohesion+ --packages-select ov\_core ov\_init ov\_msckf ov\_eval # ROS2
+       with verbose output
+\end{DoxyCode}
+
+
+If you do not have R\+OS installed, then you can do the following\+:
+
+
+\begin{DoxyCode}
+cd ~/github/
+git clone https://github.com/rpng/open\_vins/
+cd open\_vins/ov\_msckf/
+mkdir build
+cd build
+cmake ..
+make -j4
+\end{DoxyCode}
+
+
+If you wish to debug and run with assert statements, you can configure your workspace as follows\+:
+
+
+\begin{DoxyCode}
+catkin config --cmake-args -DCMAKE\_BUILD\_TYPE=Debug
+catkin build --cmake-args -DCMAKE\_BUILD\_TYPE=Debug
+colcon build --cmake-args -DCMAKE\_BUILD\_TYPE=Debug
+\end{DoxyCode}
+\hypertarget{gs-installing_gs-install-oveval}{}\subsection{Additional Evaluation Requirements}\label{gs-installing_gs-install-oveval}
+If you want to use the plotting utility wrapper of \href{https://github.com/lava/matplotlib-cpp}{\tt matplotlib-\/cpp} to generate plots directly from running the cpp code in \hyperlink{namespaceov__eval}{ov\+\_\+eval} you will need to make sure you have a valid Python 2.\+7 or 3 install of matplotlib. On ubuntu 16.\+04 you can do the following command which should take care of everything you need. If you can\textquotesingle{}t link properly, make sure you can call it from Python normally (i.\+e. that your Python environment is not broken). You can disable this visualization if it is broken for you by passing the -\/\+D\+D\+I\+S\+A\+B\+L\+E\+\_\+\+M\+A\+T\+P\+L\+O\+T\+L\+IB=ON parameter to your catkin build. Additionally if you wish to record C\+PU and memory usage of the node, you will need to install the \href{https://github.com/giampaolo/psutil}{\tt psutil} library.
+
+
+\begin{DoxyCode}
+sudo apt-get install python2.7-dev python-matplotlib python-numpy python-psutil # for python2 systems
+sudo apt-get install python3-dev python3-matplotlib python3-numpy python3-psutil python3-tk # for python3
+       systems
+catkin build -DDISABLE\_MATPLOTLIB=OFF # build with viz (default)
+catkin build -DDISABLE\_MATPLOTLIB=ON # build without viz
+\end{DoxyCode}
+\hypertarget{gs-installing_gs-install-opencv}{}\subsection{Open\+C\+V Dependency (from source)}\label{gs-installing_gs-install-opencv}
+We leverage \href{https://opencv.org/}{\tt Open\+CV} for this project which you can typically use the install from R\+OS. If the R\+OS version of \href{http://wiki.ros.org/cv_bridge}{\tt cv\+\_\+bridge} does not work (or are using non-\/\+R\+OS building), then you can try building Open\+CV from source ensuring you include the contrib modules. One should make sure you can see some of the \char`\"{}contrib\char`\"{} (e.\+g. aruco) when you cmake to ensure you have linked to the contrib modules.
+
+
+
+\begin{DoxyParagraph}{Open\+CV Source Installation}
+Try to first build with your system / R\+OS Open\+CV. Only fall back onto this if it does not allow you to compile, or want a newer version!
+\end{DoxyParagraph}
+
+\begin{DoxyCode}
+git clone https://github.com/opencv/opencv/
+git clone https://github.com/opencv/opencv\_contrib/
+mkdir opencv/build/
+cd opencv/build/
+cmake -DOPENCV\_EXTRA\_MODULES\_PATH=../../opencv\_contrib/modules ..
+make -j8
+sudo make install
+\end{DoxyCode}
+
+
+If you do not want to build the modules, you should also be able to do this (while it is not as well tested). The Aruco\+Tag tracker depends on a non-\/free module in the contrib repository, thus this will need to be disabled. You can disable this with {\ttfamily catkin build -\/\+D\+E\+N\+A\+B\+L\+E\+\_\+\+A\+R\+U\+C\+O\+\_\+\+T\+A\+GS=O\+FF} or {\ttfamily cmake -\/\+D\+E\+N\+A\+B\+L\+E\+\_\+\+A\+R\+U\+C\+O\+\_\+\+T\+A\+GS=O\+FF ..} in your build folder.\hypertarget{gs-installing_gs-install-ceres}{}\subsection{Ceres Solver (from source)}\label{gs-installing_gs-install-ceres}
+Ceres solver \cite{ceres-solver} is required for dynamic initialization and backend optimization. Please refer to their \href{http://ceres-solver.org/installation.html#linux}{\tt documentation} for specifics to your platform. It should be able to build on most platforms (including A\+RM android devices). To install we can perform the following\+:
+
+
+
+\begin{DoxyParagraph}{Ceres Source Installation}
+Try to first build with your system with {\ttfamily sudo apt-\/get install libceres-\/dev}. Only fall back onto this if it does not allow you to compile, or want a newer version! You will need to build from source if there is an Eigen miss-\/match\+: \char`\"{}\+Failed to find Ceres -\/ Found Eigen dependency, but the version of Eigen found (3.\+3.\+7) does not exactly match the version of Eigen Ceres was compiled with (3.\+3.\+4).\char`\"{}
+\end{DoxyParagraph}
+
+\begin{DoxyCode}
+sudo apt-get install -y cmake libgoogle-glog-dev libgflags-dev libatlas-base-dev libeigen3-dev
+       libsuitesparse-dev
+CERES\_VERSION="2.0.0"
+git clone https://ceres-solver.googlesource.com/ceres-solver
+cd ceres-solver
+git checkout tags/$\{CERES\_VERSION\}
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+\end{DoxyCode}
+ \hypertarget{dev-docker}{}\section{Building with Docker}\label{dev-docker}
+\hypertarget{dev-docker_dev-docker-install}{}\subsection{Installing Docker}\label{dev-docker_dev-docker-install}
+This will differ on which operating system you have installed, this guide is for linux-\/based systems. Please take a look at the official Docker \href{https://docs.docker.com/get-docker/}{\tt Get Docker} guide. There is also a guide from R\+OS called \href{http://wiki.ros.org/docker/Tutorials/Docker}{\tt getting started with R\+OS and Docker}. On Ubuntu one should be able to do the following to get docker\+:
+
+
+\begin{DoxyCode}
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o
+       /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg]
+       https://download.docker.com/linux/ubuntu $(lsb\_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+\end{DoxyCode}
+
+
+From there we can install \href{https://github.com/NVIDIA/nvidia-docker}{\tt N\+V\+I\+D\+IA Container Toolkit} to allow for the docker to use our G\+PU and for easy G\+UI pass through. You might also want to check out \href{https://roboticseabass.wordpress.com/2021/04/21/docker-and-ros/}{\tt this} blogpost for some more details.
+
+
+\begin{DoxyCode}
+distribution=$(. /etc/os-release;echo $ID$VERSION\_ID) \(\backslash\)
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \(\backslash\)
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee
+       /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi #to verify install
+\end{DoxyCode}
+
+
+From this point we should be able to \char`\"{}test\char`\"{} that everything is working ok. First on the host machine we need to allow for x11 windows to connect.
+
+
+\begin{DoxyCode}
+xhost +
+\end{DoxyCode}
+
+
+We can now run the following command which should open gazebo G\+UI on your main desktop window.
+
+
+\begin{DoxyCode}
+docker run -it --net=host --gpus all \(\backslash\)
+    --env="NVIDIA\_DRIVER\_CAPABILITIES=all" \(\backslash\)
+    --env="DISPLAY" \(\backslash\)
+    --env="QT\_X11\_NO\_MITSHM=1" \(\backslash\)
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \(\backslash\)
+    osrf/ros:noetic-desktop-full \(\backslash\)
+    bash -it -c "roslaunch gazebo\_ros empty\_world.launch"
+\end{DoxyCode}
+
+
+Alternatively we can launch directly into a bash shell and run commands from in there. This basically gives you a terminal in the docker container.
+
+
+\begin{DoxyCode}
+docker run -it --net=host --gpus all \(\backslash\)
+    --env="NVIDIA\_DRIVER\_CAPABILITIES=all" \(\backslash\)
+    --env="DISPLAY" \(\backslash\)
+    --env="QT\_X11\_NO\_MITSHM=1" \(\backslash\)
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \(\backslash\)
+    osrf/ros:noetic-desktop-full \(\backslash\)
+    bash
+rviz # you should be able to launch rviz once in bash
+\end{DoxyCode}
+\hypertarget{dev-docker_dev-docker-openvins}{}\subsection{Running Open\+V\+I\+N\+S with Docker}\label{dev-docker_dev-docker-openvins}
+Clone the Open\+V\+I\+NS repository, build the container and then launch it. The \href{https://docs.docker.com/engine/reference/builder/}{\tt Dockerfile} will not build the repo by default, thus you will need to build the project. We have a few docker files for each version of R\+OS and operating system we support. In the following we will use the \href{https://github.com/rpng/open_vins/blob/master/Dockerfile_ros1_20_04}{\tt Dockerfile\+\_\+ros1\+\_\+20\+\_\+04} which is for a R\+O\+S1 install with a 20.\+04 system.
+
+
+
+\begin{DoxyParagraph}{Use a Workspace Directory Mount}
+Here it is important to note that we are going to create a dedicated R\+OS {\itshape workspace} which will then be loaded into the workspace. Thus if you are going to develop packages alongside Open\+V\+I\+NS you would make sure you have cloned your source code into the same workspace. The workspace local folder will be mounted to {\ttfamily /catkin\+\_\+ws/} in the docker, thus all changes from the host are mirrored.
+\end{DoxyParagraph}
+
+\begin{DoxyCode}
+mkdir -p ~/workspace/catkin\_ws\_ov/src
+cd ~/workspace/catkin\_ws\_ov/src
+git clone https://github.com/rpng/open\_vins.git
+cd open\_vins
+export VERSION=ros1\_20\_04 # which docker file version you want (ROS1 vs ROS2 and ubuntu version)
+docker build -t ov\_$VERSION -f Dockerfile\_$VERSION .
+\end{DoxyCode}
+
+
+If the dockerfile breaks, you can remove the image and reinstall using the following\+:
+
+
+\begin{DoxyCode}
+docker image list
+docker image rm ov\_ros1\_20\_04 --force
+\end{DoxyCode}
+
+
+From here it is a good idea to create a nice helper command which will launch the docker and also pass the G\+UI to your host machine. Here you can append it to the bottom of the $\sim$/.bashrc so that we always have it on startup or just run the two commands on each restart
+
+
+
+\begin{DoxyParagraph}{Directory Binding}
+You will need to specify {\itshape absolute directory paths} to the workspace and dataset folders on the host you want to bind. Bind mounts are used to ensure that the host directory is directly used and all edits made on the host are sync\textquotesingle{}ed with the docker container. See the docker \href{https://docs.docker.com/storage/bind-mounts/}{\tt bind mounts} documentation. You can add and remove mounts from this command as you see the need.
+\end{DoxyParagraph}
+
+\begin{DoxyCode}
+nano ~/.bashrc # add to the bashrc file
+xhost + &> /dev/null
+export DOCKER\_CATKINWS=/home/username/workspace/catkin\_ws\_ov
+export DOCKER\_DATASETS=/home/username/datasets
+alias ov\_docker="docker run -it --net=host --gpus all \(\backslash\)
+    --env=\(\backslash\)"NVIDIA\_DRIVER\_CAPABILITIES=all\(\backslash\)" --env=\(\backslash\)"DISPLAY\(\backslash\)" \(\backslash\)
+    --env=\(\backslash\)"QT\_X11\_NO\_MITSHM=1\(\backslash\)" --volume=\(\backslash\)"/tmp/.X11-unix:/tmp/.X11-unix:rw\(\backslash\)" \(\backslash\)
+    --mount type=bind,source=$DOCKER\_CATKINWS,target=/catkin\_ws \(\backslash\)
+    --mount type=bind,source=$DOCKER\_DATASETS,target=/datasets $1"
+source ~/.bashrc # after you save and exit
+\end{DoxyCode}
+
+
+Now we can launch R\+V\+IZ and also compile the Open\+V\+I\+NS codebase. From two different terminals on the host machine one can run the following (R\+OS 1)\+:
+
+
+\begin{DoxyCode}
+ov\_docker ov\_ros1\_20\_04 roscore
+ov\_docker ov\_ros1\_20\_04 rosrun rviz rviz -d /catkin\_ws/src/open\_vins/ov\_msckf/launch/display.rviz
+\end{DoxyCode}
+
+
+To actually get a bash environment that we can use to build and run things with we can do the following. Note that any install or changes to operating system variables will not persist, thus only edit within your workspace which is linked as a volume.
+
+
+\begin{DoxyCode}
+ov\_docker ov\_ros1\_20\_04 bash
+\end{DoxyCode}
+
+
+Now once inside the docker with the bash shell we can build and launch an example simulation\+:
+
+
+\begin{DoxyCode}
+cd catkin\_ws
+catkin build
+source devel/setup.bash
+rosrun ov\_eval plot\_trajectories none src/open\_vins/ov\_data/sim/udel\_gore.txt
+roslaunch ov\_msckf simulation.launch
+\end{DoxyCode}
+
+
+And a version for R\+OS 2 we can do the following\+:
+
+
+\begin{DoxyCode}
+cd catkin\_ws
+colcon build --event-handlers console\_cohesion+
+source install/setup.bash
+ros2 run ov\_eval plot\_trajectories none src/open\_vins/ov\_data/sim/udel\_gore.txt
+ros2 run ov\_msckf run\_simulation src/open\_vins/config/rpng\_sim/estimator\_config.yaml
+\end{DoxyCode}
+
+
+
+
+\begin{DoxyParagraph}{Real-\/time Performance}
+On my machine running inside of the docker container is not real-\/time in nature. I am not sure why this is the case if someone knows if something is setup incorrectly please open a github issue. Thus it is recommended to only use the \char`\"{}serial\char`\"{} nodes which allows for the same parameters to be used as when installing directly on an OS.
+\end{DoxyParagraph}
+\hypertarget{dev-docker_dev-docker-clion}{}\subsection{Using Jetbrains Clion and Docker}\label{dev-docker_dev-docker-clion}
+
+
+Jetbrains provides some instructions on their side and a youtube video. Basically, Clion needs to be configured to use an external compile service and this service needs to be exposed from the docker container. I still recommend users compile with {\ttfamily catkin build} directly in the docker, but this will allow for debugging and syntax insights.
+
+
+\begin{DoxyItemize}
+\item \href{https://blog.jetbrains.com/clion/2020/01/using-docker-with-clion/}{\tt https\+://blog.\+jetbrains.\+com/clion/2020/01/using-\/docker-\/with-\/clion/}
+\item \href{https://www.youtube.com/watch?v=h69XLiMtCT8}{\tt https\+://www.\+youtube.\+com/watch?v=h69\+X\+Li\+Mt\+C\+T8}
+\end{DoxyItemize}
+
+After building the Open\+V\+I\+NS image (as above) we can do the following which will start a detached process in the docker. This process will allow us to connect Clion to it.
+
+
+\begin{DoxyCode}
+export DOCKER\_CATKINWS=/home/username/workspace/catkin\_ws\_ov # NOTE: should already be set in your bashrc
+export DOCKER\_DATASETS=/home/username/datasets # NOTE: should already be set in your bashrc
+docker run -d --cap-add sys\_ptrace -p127.0.0.1:2222:22 \(\backslash\)
+    --mount type=bind,source=$DOCKER\_CATKINWS,target=/catkin\_ws \(\backslash\)
+    --mount type=bind,source=$DOCKER\_DATASETS,target=/datasets \(\backslash\)
+    --name clion\_remote\_env ov\_ros1\_20\_04
+\end{DoxyCode}
+
+
+We can now change Clion to use the docker remote\+:
+
+
+\begin{DoxyEnumerate}
+\item In short, you should add a new Toolchain entry in settings under Build, Execution, Deployment as a Remote Host type.
+\item Click in the Credentials section and fill out the S\+SH credentials we set-\/up in the Dockerfile
+\begin{DoxyItemize}
+\item Host\+: localhost
+\item Port\+: 2222
+\item Username\+: user
+\item Password\+: password
+\item C\+Make\+: /usr/local/bin/cmake
+\end{DoxyItemize}
+\item Make sure the found C\+Make is the custom one installed and not the system one (greater than 3.\+12)
+\item Add a C\+Make profile that uses this toolchain and you’re done.
+\item Change build target to be this new C\+Make profile (optionally just edit / delete the default)
+\end{DoxyEnumerate}
+
+To add support for R\+OS you will need to manually set environmental variables in the C\+Make profile. These were generated by going into the R\+OS workspace, building a package, and then looking at {\ttfamily printenv} output. It should be under {\ttfamily Settings $>$ Build,Execution,Deployment $>$ C\+Make $>$ (your profile) $>$ Environment}. This might be a brittle method, but not sure what else to do... (also see \href{https://www.allaban.me/posts/2020/08/ros2-setup-ide-docker/}{\tt this} blog post). You will need to edit the R\+OS version ({\ttfamily noetic} is used below) to fit whatever docker container you are using.
+
+
+\begin{DoxyCode}
+
+      LD\_PATH\_LIB=/catkin\_ws/devel/lib:/opt/ros/noetic/lib;PYTHON\_EXECUTABLE=/usr/bin/python3;PYTHON\_INCLUDE\_DIR=/
+      usr/include/python3.8;ROS\_VERSION=1;CMAKE\_PREFIX\_PATH=/catkin\_ws/devel:/opt/ros/noetic;LD\_LIBRARY\_PATH=/catk
+      in\_ws/devel/lib:/opt/ros/noetic/lib;PATH=/opt/ros/noetic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/b
+      in:/sbin:/bin;PKG\_CONFIG\_PATH=/catkin\_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig;PYTHONPATH=/opt/r
+      os/noetic/lib/python3/dist-packages;ROSLISP\_PACKAGE\_DIRECTORIES=/catkin\_ws/devel/share/common-lisp;ROS\_PACKA
+      GE\_PATH=/catkin\_ws/src/open\_vins/ov\_core:/catkin\_ws/src/open\_vins/ov\_data:/catkin\_ws/src/open\_vins/ov\_eval:/catkin\_ws/src/open\_vins/ov\_msckf:/opt/ros/noetic/share
+\end{DoxyCode}
+
+
+When you build in Clion you should see in {\ttfamily docker stats} that the {\ttfamily clion\+\_\+remote\+\_\+env} is building the files and maxing out the C\+PU during this process. Clion should send the source files to the remote server and then on build should build and run it remotely within the docker container. A user might also want to edit {\ttfamily Build,Execution,Deployment $>$ Deployment} settings to exclude certain folders from copying over. See this \href{https://www.jetbrains.com/help/clion/remote-projects-support.html}{\tt jetbrains documentation page} for more details. \hypertarget{gs-tutorial}{}\section{Simple Tutorial}\label{gs-tutorial}
+This guide assumes that you have already built the project successfully and are now ready to run the program on some datasets. If you have not compiled the program yet please follow the \hyperlink{gs-installing}{Installation Guide} guide. The first that we will download is a dataset to run the program on. In this tutorial we will run on the \href{https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets}{\tt Eu\+RoC M\+AV Dataset} \cite{Burri2016IJRR} which provides monochrome stereo images at 20\+Hz with a M\+E\+MS A\+D\+I\+S16448 I\+MU at 200\+Hz.
+
+ \href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room1/V1_01_easy/V1_01_easy.bag}{\tt Download R\+OS 1 Bag Vicon Room 1 01 Easy  } 
+
+ \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt Download R\+OS 2 Bag Vicon Room 1 01 Easy  } 
+
+All configuration information for the system is exposed to the user in the configuration file, and can be overridden in the launch file. We will create a launch file that will launch our M\+S\+C\+KF estimation node and feed the R\+OS bag into the system. One can take a look in the \href{https://github.com/rpng/open_vins/tree/master/ov_msckf/launch}{\tt launch} folder for more examples. For Open\+V\+I\+NS we need to define a series of files\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily estimator\+\_\+config.\+yaml} -\/ Contains Open\+V\+I\+NS specific configuration files. Each of these can be overridden in the launch file.
+\item {\ttfamily kalibr\+\_\+imu\+\_\+chain.\+yaml} -\/ I\+MU noise parameters and topic information based on the sensor in the dataset. This should be the same as Kalibr\textquotesingle{}s (see \hyperlink{gs-calibration_gs-calib-imu-static}{I\+MU Intrinsic Calibration (Offline)}).
+\item {\ttfamily kalibr\+\_\+imucam\+\_\+chain.\+yaml} -\/ Camera to I\+MU transformation and camera intrinsics. This should be the same as Kalibr\textquotesingle{}s (see \hyperlink{gs-calibration_gs-calib-cam-static}{Camera Intrinsic Calibration (Offline)}).
+\end{DoxyItemize}\hypertarget{gs-tutorial_gs-tutorial-ros1}{}\subsection{R\+O\+S 1 Tutorial}\label{gs-tutorial_gs-tutorial-ros1}
+The R\+O\+S1 system uses the \href{http://wiki.ros.org/roslaunch}{\tt roslaunch} system to manage and launch nodes. These files can launch multiple nodes, and each node can their own set of parameters set. Consider the below launch file. We can see the main parameter that is being passed into the estimator is the {\ttfamily config\+\_\+path} file which has all configuration for this specific dataset. Additionally, we can see that we are launching the {\ttfamily run\+\_\+subscribe\+\_\+msckf} R\+OS 1 node, and are going to be overriding the {\ttfamily use\+\_\+stereo} and {\ttfamily max\+\_\+cameras} with the specificed values. R\+OS parameters always have priority, and you should see in the console that they have been successfully overridden.
+
+ 
+\begin{DoxyCode}
+<\textcolor{keywordtype}{launch}>
+
+    \textcolor{comment}{<!-- what config we are going to run (should match folder name) -->}
+    <\textcolor{keywordtype}{arg} \textcolor{keyword}{name}=\textcolor{stringliteral}{"verbosity"}   \textcolor{keyword}{default}=\textcolor{stringliteral}{"INFO"} /> \textcolor{comment}{<!-- ALL, DEBUG, INFO, WARNING, ERROR, SILENT -->}
+    <\textcolor{keywordtype}{arg} \textcolor{keyword}{name}=\textcolor{stringliteral}{"config"}      \textcolor{keyword}{default}=\textcolor{stringliteral}{"euroc\_mav"} /> \textcolor{comment}{<!-- euroc\_mav, tum\_vi, rpng\_aruco -->}
+    <\textcolor{keywordtype}{arg} \textcolor{keyword}{name}=\textcolor{stringliteral}{"config\_path"} \textcolor{keyword}{default}=\textcolor{stringliteral}{"$(find ov\_msckf)/../config/$(arg config)/estimator\_config.yaml"} />
+
+    \textcolor{comment}{<!-- MASTER NODE! -->}
+    <\textcolor{keywordtype}{node} \textcolor{keyword}{name}=\textcolor{stringliteral}{"run\_subscribe\_msckf"} \textcolor{keyword}{pkg}=\textcolor{stringliteral}{"ov\_msckf"} \textcolor{keyword}{type}=\textcolor{stringliteral}{"run\_subscribe\_msckf"} \textcolor{keyword}{output}=\textcolor{stringliteral}{"screen"}>
+        <\textcolor{keywordtype}{param} \textcolor{keyword}{name}=\textcolor{stringliteral}{"verbosity"}    \textcolor{keyword}{type}=\textcolor{stringliteral}{"string"} \textcolor{keyword}{value}=\textcolor{stringliteral}{"$(arg verbosity)"} />
+        <\textcolor{keywordtype}{param} \textcolor{keyword}{name}=\textcolor{stringliteral}{"config\_path"}  \textcolor{keyword}{type}=\textcolor{stringliteral}{"string"} \textcolor{keyword}{value}=\textcolor{stringliteral}{"$(arg config\_path)"} />
+        <\textcolor{keywordtype}{param} \textcolor{keyword}{name}=\textcolor{stringliteral}{"use\_stereo"}   \textcolor{keyword}{type}=\textcolor{stringliteral}{"bool"}   \textcolor{keyword}{value}=\textcolor{stringliteral}{"true"} />
+        <\textcolor{keywordtype}{param} \textcolor{keyword}{name}=\textcolor{stringliteral}{"max\_cameras"}  \textcolor{keyword}{type}=\textcolor{stringliteral}{"int"}    \textcolor{keyword}{value}=\textcolor{stringliteral}{"2"} />
+    </\textcolor{keywordtype}{node}>
+
+</\textcolor{keywordtype}{launch}>
+\end{DoxyCode}
+ 
+
+Since the configuration file for the Euroc\+Mav dataset has already been created, we can simply do the following. Note it is good practice to run a {\ttfamily roscore} that stays active so that you do not need to relaunch rviz or other packages.
+
+
+\begin{DoxyCode}
+roscore # term 0
+source devel/setup.bash # term 1
+roslaunch ov\_msckf subscribe.launch config:=euroc\_mav
+\end{DoxyCode}
+
+
+In another two terminals we can run the following. For R\+V\+IZ, one can open the {\ttfamily ov\+\_\+msckf/launch/display.\+rviz} configuration file. You should see the system publishing features and a state estimate.
+
+
+\begin{DoxyCode}
+rviz # term 2
+rosbag play V1\_01\_easy.bag # term 3
+\end{DoxyCode}
+\hypertarget{gs-tutorial_gs-tutorial-ros2}{}\subsection{R\+O\+S 2 Tutorial}\label{gs-tutorial_gs-tutorial-ros2}
+For R\+OS 2, launch files and nodes have become a bit more combersom due to the removal of a centralized communication method. This both allows for more distributed systems, but causes a bit more on the developer to perform integration. The launch system is described in \href{https://design.ros2.org/articles/roslaunch.html}{\tt this} design article. Consider the following launch file which does the same as the R\+OS 1 launch file above.
+
+ 
+\begin{DoxyCode}
+from launch \textcolor{keyword}{import} LaunchDescription
+\textcolor{keyword}{from} launch.actions \textcolor{keyword}{import} DeclareLaunchArgument, LogInfo, OpaqueFunction
+\textcolor{keyword}{from} launch.conditions \textcolor{keyword}{import} IfCondition
+\textcolor{keyword}{from} launch.substitutions \textcolor{keyword}{import} LaunchConfiguration, TextSubstitution
+\textcolor{keyword}{from} launch\_ros.actions \textcolor{keyword}{import} Node
+\textcolor{keyword}{from} ament\_index\_python.packages \textcolor{keyword}{import} get\_package\_share\_directory, get\_package\_prefix
+\textcolor{keyword}{import} os
+\textcolor{keyword}{import} sys
+
+launch\_args = [
+    DeclareLaunchArgument(name=\textcolor{stringliteral}{'namespace'},         default\_value=\textcolor{stringliteral}{''},           description=\textcolor{stringliteral}{'namespace'}),
+    DeclareLaunchArgument(name=\textcolor{stringliteral}{'config'},            default\_value=\textcolor{stringliteral}{'euroc\_mav'},  description=\textcolor{stringliteral}{'euroc\_mav,
+       tum\_vi, rpng\_aruco...'}),
+    DeclareLaunchArgument(name=\textcolor{stringliteral}{'verbosity'},         default\_value=\textcolor{stringliteral}{'INFO'},       description=\textcolor{stringliteral}{'ALL, DEBUG,
+       INFO, WARNING, ERROR, SILENT'}),
+    DeclareLaunchArgument(name=\textcolor{stringliteral}{'use\_stereo'},        default\_value=\textcolor{stringliteral}{'true'},       description=\textcolor{stringliteral}{''}),
+    DeclareLaunchArgument(name=\textcolor{stringliteral}{'max\_cameras'},       default\_value=\textcolor{stringliteral}{'2'},          description=\textcolor{stringliteral}{''})
+]
+
+\textcolor{keyword}{def }launch\_setup(context):
+    configs\_dir=os.path.join(get\_package\_share\_directory(\textcolor{stringliteral}{'ov\_msckf'}),\textcolor{stringliteral}{'config'})
+    available\_configs = os.listdir(configs\_dir)
+    config = LaunchConfiguration(\textcolor{stringliteral}{'config'}).perform(context)
+    \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} config \textcolor{keywordflow}{in} available\_configs:
+        \textcolor{keywordflow}{return}[LogInfo(msg=\textcolor{stringliteral}{'ERROR: unknown config: \(\backslash\)'\{\}\(\backslash\)' - Available configs are: \{\} - not starting
+       OpenVINS'}.format(config,\textcolor{stringliteral}{', '}.join(available\_configs)))]
+    config\_path = os.path.join(get\_package\_share\_directory(\textcolor{stringliteral}{'ov\_msckf'}),\textcolor{stringliteral}{'config'},config,\textcolor{stringliteral}{'
+      estimator\_config.yaml'})
+    node1 = Node(package = \textcolor{stringliteral}{'ov\_msckf'},
+                 executable = \textcolor{stringliteral}{'run\_subscribe\_msckf'},
+                 namespace = LaunchConfiguration(\textcolor{stringliteral}{'namespace'}),
+                 parameters =[\{\textcolor{stringliteral}{'verbosity'}: LaunchConfiguration(\textcolor{stringliteral}{'verbosity'})\},
+                              \{\textcolor{stringliteral}{'use\_stereo'}: LaunchConfiguration(\textcolor{stringliteral}{'use\_stereo'})\},
+                              \{\textcolor{stringliteral}{'max\_cameras'}: LaunchConfiguration(\textcolor{stringliteral}{'max\_cameras'})\},
+                              \{\textcolor{stringliteral}{'config\_path'}: config\_path\}])
+    \textcolor{keywordflow}{return} [node1]
+
+\textcolor{keyword}{def }generate\_launch\_description():
+    opfunc = OpaqueFunction(function = launch\_setup)
+    ld = LaunchDescription(launch\_args)
+    ld.add\_action(opfunc)
+    \textcolor{keywordflow}{return} ld
+\end{DoxyCode}
+ 
+
+We can see that first the {\ttfamily launch\+\_\+setup} function defines the nodes that we will be launching from this file. Then the {\ttfamily Launch\+Description} is created given the launch arguments and the node is added to it and returned to R\+OS. We can the launch it using the following\+:
+
+
+\begin{DoxyCode}
+source install/setup.bash
+ros2 launch ov\_msckf subscribe.launch.py config:=euroc\_mav
+\end{DoxyCode}
+
+
+We can then use the R\+O\+S2 rosbag file. First make sure you have installed the rosbag2 and all its backends. If you downloaded the bag above you should already have a valid bag format. Otherwise, you will need to convert it following \hyperlink{dev-ros1-to-ros2}{R\+O\+S1 to R\+O\+S2 Bag Conversion Guide} . A \char`\"{}bag\char`\"{} is now defined by a db3 sqlite database and config yaml file in a folder. In another terminal we can run the following\+:
+
+
+\begin{DoxyCode}
+ros2 bag play V1\_01\_easy
+\end{DoxyCode}
+ \hypertarget{gs-datasets}{}\section{Supported Datasets}\label{gs-datasets}
+\hypertarget{gs-datasets_gs-data-euroc}{}\subsection{The Eu\+Ro\+C M\+A\+V Dataset}\label{gs-datasets_gs-data-euroc}
+The E\+TH A\+SL \href{https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets}{\tt Eu\+RoC M\+AV dataset} \cite{Burri2016IJRR} is one of the most used datasets in the visual-\/inertial / simultaneous localization and mapping (S\+L\+AM) research literature. The reason for this is the synchronised inertial+camera sensor data and the high quality groundtruth. The dataset contains different sequences of varying difficulty of a Micro Aerial Vehicle (M\+AV) flying in an indoor room. Monochrome stereo images are collected by a two Aptina M\+T9\+V034 global shutter cameras at 20 frames per seconds, while a A\+D\+I\+S16448 M\+E\+MS inertial unit provides linear accelerations and angular velocities at a rate of 200 samples per second.
+
+We recommend that most users start testing on this dataset before moving on to the other datasets that our system support or before trying with your own collected data. The machine hall datasets have the M\+AV being picked up in the beginning and then set down, we normally skip this part, but it should be able to be handled by the filter if S\+L\+AM features are enabled. Please take a look at the \href{https://github.com/rpng/open_vins/blob/master/ov_msckf/scripts/run_ros_eth.sh}{\tt run\+\_\+ros\+\_\+eth.\+sh} script for some reasonable default values (they might still need to be tuned).
+
+
+
+\begin{DoxyParagraph}{Groundtruth on V1\+\_\+01\+\_\+easy}
+We have found that the groundtruth on the V1\+\_\+01\+\_\+easy dataset is not accurate in its orientation estimate. We have recomputed this by optimizing the inertial and vicon readings in a graph to get the trajectory of the imu. You can find the output at this \href{https://drive.google.com/drive/folders/1d62Q_RQwHzKLcIdUlTeBmojr7j0UL4sM?usp=sharing}{\tt link} and is what we normally use to evaluate the error on this dataset.
+\end{DoxyParagraph}
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endhead
+\PBS\raggedleft Vicon Room 1 01 &58 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room1/V1_01_easy/V1_01_easy.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Vicon Room 1 02 &76 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room1/V1_02_medium/V1_02_medium.bag}{\tt rosbag} , \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2}&\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Vicon Room 1 03 &79 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room1/V1_03_difficult/V1_03_difficult.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Vicon Room 2 01 &37 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room2/V2_01_easy/V2_01_easy.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Vicon Room 2 02 &83 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room2/V2_02_medium/V2_02_medium.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Vicon Room 2 03 &86 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/vicon_room2/V2_03_difficult/V2_03_difficult.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Machine Hall 01 &80 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Machine Hall 02 &73 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_02_easy/MH_02_easy.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Machine Hall 03 &131 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_03_medium/MH_03_medium.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Machine Hall 04 &92 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_04_difficult/MH_04_difficult.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Machine Hall 05 &98 &\href{http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_05_difficult/MH_05_difficult.bag}{\tt rosbag}, \href{https://drive.google.com/drive/folders/1xQ1KcZhZ5pioPXTyrZBN6Mjxkfpcd_B3?usp=sharing}{\tt rosbag2} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/euroc_mav}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/euroc_mav}{\tt config} \\\cline{1-5}
+\end{longtabu}
+\hypertarget{gs-datasets_gs-data-tumvi}{}\subsection{T\+U\+M Visual-\/\+Inertial Dataset}\label{gs-datasets_gs-data-tumvi}
+The T\+UM \href{https://vision.in.tum.de/data/datasets/visual-inertial-dataset}{\tt Visual-\/\+Inertial Dataset} \cite{Schubert2018IROS} is a more recent dataset that was presented to provide a way to evaluate state-\/of-\/the-\/art visual inertial odometry approaches. As compared to the Eu\+RoC M\+AV datasets, this dataset provides photometric calibration of the cameras which has not been available in any other visual-\/inertal dataset for researchers. Monochrome stereo images are collected by two I\+DS u\+Eye U\+I-\/3241\+L\+E-\/\+M-\/\+GL global shutter cameras at 20 frames per second, while a Bosch B\+M\+I160 inertial unit provides linear accelerations and angular velocities at a rate of 200 samples per second. Not all datasets have groundtruth available throughout the entire trajectory as the motion capture system is limited to the starting and ending room. There are quite a few very challenging outdoor handheld datasets which are a challenging direction for research. Note that we focus on the room datasets as full 6 dof pose collection is available over the total trajectory.
+
+
+
+\begin{DoxyParagraph}{Filter Initialization from Standstill}
+These datasets have very non-\/static starts, as they are handheld, and the standstill initialization has issues handling this. Thus careful tuning of the imu initialization threshold is typically needed to ensure that the initialized orientation and the zero velocity assumption are valid. Please take a look at the \href{https://github.com/rpng/open_vins/blob/master/ov_msckf/scripts/run_ros_tumvi.sh}{\tt run\+\_\+ros\+\_\+tumvi.\+sh} script for some reasonable default values (they might still need to be tuned).
+\end{DoxyParagraph}
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endhead
+\PBS\raggedleft room1 &147 &\href{http://vision.in.tum.de/tumvi/calibrated/512_16/dataset-room1_512_16.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/tum_vi}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/tum_vi}{\tt config} \\\cline{1-5}
+\PBS\raggedleft room2 &142 &\href{http://vision.in.tum.de/tumvi/calibrated/512_16/dataset-room2_512_16.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/tum_vi}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/tum_vi}{\tt config} \\\cline{1-5}
+\PBS\raggedleft room3 &136 &\href{http://vision.in.tum.de/tumvi/calibrated/512_16/dataset-room3_512_16.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/tum_vi}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/tum_vi}{\tt config} \\\cline{1-5}
+\PBS\raggedleft room4 &69 &\href{http://vision.in.tum.de/tumvi/calibrated/512_16/dataset-room4_512_16.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/tum_vi}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/tum_vi}{\tt config} \\\cline{1-5}
+\PBS\raggedleft room5 &132 &\href{http://vision.in.tum.de/tumvi/calibrated/512_16/dataset-room5_512_16.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/tum_vi}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/tum_vi}{\tt config} \\\cline{1-5}
+\PBS\raggedleft room6 &67 &\href{http://vision.in.tum.de/tumvi/calibrated/512_16/dataset-room6_512_16.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/tum_vi}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/tum_vi}{\tt config} \\\cline{1-5}
+\end{longtabu}
+\hypertarget{gs-datasets_gs-data-rpng}{}\subsection{R\+P\+N\+G Open\+V\+I\+N\+S Dataset}\label{gs-datasets_gs-data-rpng}
+In additional the community maintained datasets, we have also released a few datasets. Please cite the Open\+V\+I\+NS paper if you use any of these datasets in your works. Here are the specifics of the sensors that each dataset uses\+:
+
+
+\begin{DoxyItemize}
+\item Ar\+Uco Datasets\+:
+\begin{DoxyItemize}
+\item Core visual-\/inertial sensor is the \href{https://furgalep.github.io/bib/nikolic_icra14.pdf}{\tt V\+I-\/\+Sensor}
+\item Stereo global shutter images at 20 Hz
+\item A\+D\+I\+S16448 I\+MU at 200 Hz
+\item Kalibr calibration file can be found \href{https://drive.google.com/file/d/1I0C-z3ZrTKne4bdbgBI6CtH1Rk4EQim0/view?usp=sharing}{\tt here}
+\end{DoxyItemize}
+\item Ironsides Datasets\+:
+\begin{DoxyItemize}
+\item Core visual-\/inertial sensor is the \href{https://arxiv.org/pdf/1710.00893v1.pdf}{\tt ironsides}
+\item Has two \href{https://docs.emlid.com/reach/}{\tt Reach R\+TK} one subscribed to a base station for corrections
+\item Stereo global shutter fisheye images at 20 Hz
+\item Inven\+Sense I\+MU at 200 Hz
+\item G\+PS fixes at 5 Hz (/reach01/tcpfix has corrections from \href{https://cors.dot.ny.gov/sbc}{\tt N\+Y\+S\+Net})
+\item Kalibr calibration file can be found \href{https://drive.google.com/file/d/1bhn0GrIYNEeAabQAbWoP8l_514cJ0KrZ/view?usp=sharing}{\tt here}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+
+\begin{DoxyParagraph}{Monocular Camera}
+Currently there are issues with running with a monocular camera on the Ironside Neighborhood car datasets. This is likely due to the near-\/constant velocity and \char`\"{}smoothness\char`\"{} of the trajectory. Please refer to \cite{Lee2020IROS} and \cite{Wu2017ICRA} for details.
+\end{DoxyParagraph}
+Most of these datasets do not have perfect calibration parameters, and some are not time synchronised. Thus, please ensure that you have enabled online calibration of these parameters. Additionally, there is no groundtruth for these datasets, but some do include G\+PS messages if you wish to compare relative to something.
+
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endhead
+\PBS\raggedleft Ar\+Uco Room 01 &27 &\href{https://drive.google.com/file/d/1ytjo8V6pCroaVd8-QSop7R4DbsvvKyRQ/view?usp=sharing}{\tt rosbag} &none &\href{https://github.com/rpng/open_vins/blob/master/config/rpng_aruco}{\tt config aruco} \\\cline{1-5}
+\PBS\raggedleft Ar\+Uco Room 02 &93 &\href{https://drive.google.com/file/d/1l_hnPUW6ufqxPtrLqRRHHI4mfGRZB1ha/view?usp=sharing}{\tt rosbag} &none &\href{https://github.com/rpng/open_vins/blob/master/config/rpng_aruco}{\tt config aruco} \\\cline{1-5}
+\PBS\raggedleft Ar\+Uco Hallway 01 &190 &\href{https://drive.google.com/file/d/1FQBo3uHqRd0qm8GUb50Q-sj5gukcwaoU/view?usp=sharing}{\tt rosbag} &none &\href{https://github.com/rpng/open_vins/blob/master/config/rpng_aruco}{\tt config aruco} \\\cline{1-5}
+\PBS\raggedleft Ar\+Uco Hallway 02 &105 &\href{https://drive.google.com/file/d/1oAbnV3MPOeaUSjnSc3g8t-pWV1nVjbys/view?usp=sharing}{\tt rosbag} &none &\href{https://github.com/rpng/open_vins/blob/master/config/rpng_aruco}{\tt config aruco} \\\cline{1-5}
+\PBS\raggedleft Neighborhood 01 &2300 &\href{https://drive.google.com/file/d/1N07SDbaLEkq9pVEvi6oiHpavaRuFs3j2/view?usp=sharing}{\tt rosbag} &none &\href{https://github.com/rpng/open_vins/blob/master/config/rpng_ironsides}{\tt config ironsides} \\\cline{1-5}
+\PBS\raggedleft Neighborhood 02 &7400 &\href{https://drive.google.com/file/d/1QEUi40sO8OkVXEGF5JojiiZMHMSiSqtg/view?usp=sharing}{\tt rosbag} &none &\href{https://github.com/rpng/open_vins/blob/master/config/rpng_ironsides}{\tt config ironsides} \\\cline{1-5}
+\end{longtabu}
+\hypertarget{gs-datasets_gs-data-uzhfpv}{}\subsection{U\+Z\+H-\/\+F\+P\+V Drone Racing Dataset}\label{gs-datasets_gs-data-uzhfpv}
+The \href{https://fpv.ifi.uzh.ch/}{\tt U\+Z\+H-\/\+F\+PV Drone Racing Dataset} \cite{Schubert2018IROS} is a dataset focused on high-\/speed agressive 6dof motion with very high levels of optical flow as compared to other datasets. A F\+PV drone racing quadrotor has on board a Qualcomm Snapdragon Flight board which can provide inertial measurement and has two 640x480 grayscale global shutter fisheye camera\textquotesingle{}s attached. The groundtruth is collected with a Leica Nova M\+S60 laser tracker. There are four total sensor configurations and calibration provides including\+: indoor forward facing stereo, indoor 45 degree stereo, outdoor forward facing, and outdoor 45 degree. A top speed of 12.\+8 m/s (28 mph) is reached in the indoor scenarios, and 23.\+4 m/s (54 mphs) is reached in the outdoor datasets. Each of these datasets is picked up in the beginning and then set down, we normally skip this part, but it should be able to be handled by the filter if S\+L\+AM features are enabled. Please take a look at the \href{https://github.com/rpng/open_vins/blob/master/ov_msckf/scripts/run_ros_uzhfpv.sh}{\tt run\+\_\+ros\+\_\+uzhfpv.\+sh} script for some reasonable default values (they might still need to be tuned).
+
+
+
+\begin{DoxyParagraph}{Dataset Groundtruthing}
+Only the Absolute Trajectory Error (A\+TE) should be used as a metric for this dataset. This is due to inaccurate groundtruth orientation estimates which are explain in their \href{https://fpv.ifi.uzh.ch/wp-content/uploads/2020/11/Ground-Truth-Rotation-Issue-Report.pdf}{\tt report} on the issue. The basic summary is that it is hard to get an accurate orientation information due to the point-\/based Leica measurements used to groundtruth.
+\end{DoxyParagraph}
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (m) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Config  }\\\cline{1-5}
+\endhead
+\PBS\raggedleft Indoor 5 &157 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_forward_5_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 6 &204 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_forward_6_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 7 &314 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_forward_7_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 9 &136 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_forward_9_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 10 &129 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_forward_10_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 45deg 2 &207 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_45_2_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor_45}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 45deg 4 &164 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_45_4_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor_45}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 45deg 12 &112 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_45_12_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor_45}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 45deg 13 &159 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_45_13_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor_45}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Indoor 45deg 14 &211 &\href{http://rpg.ifi.uzh.ch/datasets/uzh-fpv-newer-versions/v2/indoor_45_14_snapdragon_with_gt.bag}{\tt rosbag} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/uzh_fpv}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/uzhfpv_indoor_45}{\tt config} \\\cline{1-5}
+\end{longtabu}
+\hypertarget{gs-datasets_gs-data-kaist}{}\subsection{K\+A\+I\+S\+T Urban Dataset}\label{gs-datasets_gs-data-kaist}
+The \href{https://sites.google.com/view/complex-urban-dataset}{\tt K\+A\+I\+ST urban dataset} \cite{Jeong2019IJRR} is a dataset focus on autonomous driving and localization in challenging complex urban environments. The dataset was collected in Korea with a vehicle equipped with stereo camera pair, 2d S\+I\+CK Li\+D\+A\+Rs, 3d Velodyne Li\+D\+AR, Xsens I\+MU, fiber optic gyro (FoG), wheel encoders, and R\+KT G\+PS. The camera is 10 Hz, while the Xsens I\+MU is 100 Hz sensing rate. A groundtruth \char`\"{}baseline\char`\"{} trajectory is also provided which is the resulting output from fusion of the FoG, R\+KT G\+PS, and wheel encoders.
+
+
+
+\begin{DoxyParagraph}{Dynamic Environments}
+A challenging open research question is being able to handle dynamic objects seen from the cameras. By default we rely on our tracking 8 point R\+A\+N\+S\+AC to handle these dynamics objects. In the most of the K\+A\+I\+ST datasets the majority of the scene can be taken up by other moving vehicles, thus the performance can suffer. Please be aware of this fact.
+\end{DoxyParagraph}
+We recommend converting the K\+A\+I\+ST file format into a R\+OS bag format. If you are using R\+O\+S2 then you should first convert into a R\+O\+S1 then convert following the \hyperlink{dev-ros1-to-ros2}{R\+O\+S1 to R\+O\+S2 Bag Conversion Guide} . Follow the instructions on the \href{https://github.com/rpng/kaist2bag}{\tt kaist2bag} repository\+:
+
+
+\begin{DoxyCode}
+git clone https://github.com/irapkaist/irp\_sen\_msgs.git
+git clone https://github.com/rpng/kaist2bag.git
+\end{DoxyCode}
+
+
+
+
+\begin{DoxyParagraph}{Monocular Camera}
+Currently there are issues with running with a monocular camera on this dataset. This is likely due to the near-\/constant velocity and \char`\"{}smoothness\char`\"{} of the trajectory. Please refer to \cite{Lee2020IROS} and \cite{Wu2017ICRA} for details.
+\end{DoxyParagraph}
+You can also try to use the \href{https://github.com/irapkaist/file_player}{\tt file\+\_\+player} to publish live. It is important to {\itshape disable} the \char`\"{}skip stop section\char`\"{} to ensure that we have continuous sensor feeds. Typically we process the datasets at 1.\+5x rate so we get a $\sim$20 Hz image feed and the datasets can be processed in a more efficient manor.
+
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (km) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Example Launch  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (km) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Example Launch  }\\\cline{1-5}
+\endhead
+\PBS\raggedleft Urban 28 &11.\+47 &\href{https://sites.google.com/view/complex-urban-dataset/download-lidar-stereo?authuser=0}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Urban 32 &7.\+30 &\href{https://sites.google.com/view/complex-urban-dataset/download-lidar-stereo?authuser=0}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Urban 38 &11.\+42 &\href{https://sites.google.com/view/complex-urban-dataset/download-lidar-stereo?authuser=0}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist}{\tt config} \\\cline{1-5}
+\PBS\raggedleft Urban 39 &11.\+06 &\href{https://sites.google.com/view/complex-urban-dataset/download-lidar-stereo?authuser=0}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist}{\tt config} \\\cline{1-5}
+\end{longtabu}
+\hypertarget{gs-datasets_gs-data-kaist-vio}{}\subsection{K\+A\+I\+S\+T V\+I\+O Dataset}\label{gs-datasets_gs-data-kaist-vio}
+The \href{https://github.com/url-kaist/kaistviodataset}{\tt K\+A\+I\+ST V\+IO dataset} \cite{Jeon2021RAL} is a dataset of a M\+AV in an indoor 3.\+15 x 3.\+60 x 2.\+50 meter environment which undergoes various trajectory motions. The camera is intel realsense D435i 25 Hz, while the I\+MU is 100 Hz sensing rate from the pixelhawk 4 unit. A groundtruth \char`\"{}baseline\char`\"{} trajectory is also provided from a Opti\+Track Mocap system at 50 Hz, the bag files have the marker body frame to I\+MU frame already applied. This topic has been provided in ov\+\_\+data for convinces sake.
+
+ \tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (km) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Example Launch  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ Dataset Name }&\textbf{ Length (km) }&\textbf{ Dataset Link }&\textbf{ Groundtruth Traj. }&\textbf{ Example Launch  }\\\cline{1-5}
+\endhead
+\PBS\raggedleft circle &29.\+99 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/circle/circle.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft circle\+\_\+fast &64.\+15 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/circle/circle_fast.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft circle\+\_\+head &35.\+05 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/circle/circle_head.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft infinite &29.\+35 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/infinite/infinite.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft infinite\+\_\+fast &54.\+24 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/infinite/infinite_fast.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft infinite\+\_\+head &37.\+45 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/infinite/infinite_head.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft rotation &7.\+82 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/rotation/rotation.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft rotation\+\_\+fast &14.\+55 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/rotation/rotation_fast.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft square &41.\+94 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/square/square.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft square\+\_\+fast &44.\+07 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/square/square_fast.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\PBS\raggedleft square\+\_\+head &50.\+00 &\href{https://urserver.kaist.ac.kr/publicdata/KAIST_VIO_Dataset/square/square_head.bag}{\tt download} &\href{https://github.com/rpng/open_vins/tree/master/ov_data/kaist_vio}{\tt link} &\href{https://github.com/rpng/open_vins/blob/master/config/kaist_vio}{\tt config} \\\cline{1-5}
+\end{longtabu}
+ \hypertarget{gs-calibration}{}\section{Sensor Calibration}\label{gs-calibration}
+\hypertarget{gs-calibration_gs-visual-inertial-sensor}{}\subsection{Visual-\/\+Inertial Sensors}\label{gs-calibration_gs-visual-inertial-sensor}
+One may ask why use a visual-\/inertial sensor? The main reason is because of the complimentary nature of the two different sensing modalities. The camera provides high density external measurements of the environment, while the I\+MU measures internal ego-\/motion of the sensor platform. The I\+MU is crucial in providing robustness to the estimator while also providing system scale in the case of a monocular camera.
+
+However, there are some challenges when leveraging the I\+MU in estimation. An I\+MU requires estimating of additional bias terms and requires highly accurate calibration between the camera and I\+MU. Additionally small errors in the relative timestamps between the sensors can also degrade performance very quickly in dynamic trajectories. Within this {\itshape Open\+V\+I\+NS} project we address these by advocating the {\itshape online} estimation of these extrinsic and time offset parameters between the cameras and I\+MU.
+
+\hypertarget{gs-calibration_gs-calib-cam-static}{}\subsection{Camera Intrinsic Calibration (\+Offline)}\label{gs-calibration_gs-calib-cam-static}
+The first task is to calibrate the camera intrinsic values such as the focal length, camera center, and distortion coefficients. Our group often uses the \href{https://github.com/ethz-asl/kalibr/}{\tt Kalibr} \cite{Furgale2013IROS} calibration toolbox to perform both intrinsic and extrinsic offline calibrations, by proceeding the following steps\+:
+
+
+\begin{DoxyEnumerate}
+\item Clone and build the \href{https://github.com/ethz-asl/kalibr/}{\tt Kalibr} toolbox
+\item Print out a calibration board to use (we normally use the \href{https://drive.google.com/file/d/0B0T1sizOvRsUdjFJem9mQXdiMTQ/edit?usp=sharing}{\tt Aprilgrid 6x6 0.\+8x0.\+8 m (A0 page)})
+\item Ensure that your sensor driver is publishing onto R\+OS with correct timestamps.
+\item Sensor preparations
+\begin{DoxyItemize}
+\item Limit motion blur by decreasing exposure time
+\item Publish at low framerate to allow for larger variance in dataset (2-\/5hz)
+\item Ensure that your calibration board can be viewed in all areas of the image
+\item Ensure that your sensor is in focus (can use their {\itshape kalibr\+\_\+camera\+\_\+focus} or just manually)
+\end{DoxyItemize}
+\item Record a R\+OS bag and ensure that the calibration board can be seen from different orientations, distances, and in each part of the image plane. You can either move the calibration board and keep the camera still or move the camera and keep the calibration board stationary.
+\item Finally run the calibration
+\begin{DoxyItemize}
+\item Use the kalibr\+\_\+calibrate\+\_\+cameras with your specified topic
+\item Depending on amount of distortion, use the {\itshape pinhole-\/equi} for fisheye, or if a low distortion then use the {\itshape pinhole-\/radtan}
+\item Depending on how many frames are in your dataset this can take on the upwards of a few hours.
+\end{DoxyItemize}
+\item Inspect the final result, pay close attention to the final reprojection error graphs, with a good calibration having less than $<$ 0.\+2-\/0.\+5 pixel reprojection errors.
+\end{DoxyEnumerate}\hypertarget{gs-calibration_gs-calib-imu-static}{}\subsection{I\+M\+U Intrinsic Calibration (\+Offline)}\label{gs-calibration_gs-calib-imu-static}
+The other imporatnt intrinsic calibration is to compute the inertial sensor intrinsic noise characteristics, which are needed for the batch optimization to calibrate the camera to I\+MU transform and in any V\+I\+NS estimator so that we can properly probabilistically fuse the images and inertial readings. Unfortunately, there is no mature open sourced toolbox to find these values, while one can try our \href{https://github.com/rpng/kalibr_allan}{\tt kalibr\+\_\+allan} project, which is not optimized though. Specifically we are estimating the following noise parameters\+:
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Parameter }&\textbf{ Y\+A\+ML element }&\textbf{ Symbol }&\textbf{ Units  }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Parameter }&\textbf{ Y\+A\+ML element }&\textbf{ Symbol }&\textbf{ Units  }\\\cline{1-4}
+\endhead
+Gyroscope \char`\"{}white noise\char`\"{} &{\ttfamily gyroscope\+\_\+noise\+\_\+density} &$\sigma_g$ &$\frac{rad}{s}\frac{1}{\sqrt{Hz}}$ \\\cline{1-4}
+Accelerometer \char`\"{}white noise\char`\"{} &{\ttfamily accelerometer\+\_\+noise\+\_\+density} &$\sigma_a$ &$\frac{m}{s^2}\frac{1}{\sqrt{Hz}}$ \\\cline{1-4}
+Gyroscope \char`\"{}random walk\char`\"{} &{\ttfamily gyroscope\+\_\+random\+\_\+walk} &$\sigma_{b_g}$ &$\frac{rad}{s^2}\frac{1}{\sqrt{Hz}}$ \\\cline{1-4}
+Accelerometer \char`\"{}random walk\char`\"{} &{\ttfamily accelerometer\+\_\+random\+\_\+walk} &$\sigma_{b_a}$ &$\frac{m}{s^3}\frac{1}{\sqrt{Hz}}$ \\\cline{1-4}
+\end{longtabu}
+
+
+The standard way as explained in \mbox{[}\href{https://ieeexplore.ieee.org/document/660628/}{\tt I\+E\+EE Standard Specification Format Guide and Test Procedure for Single-\/\+Axis Interferometric Fiber Optic Gyros} (page 71, section C)\mbox{]} is that we can compute an \href{https://en.wikipedia.org/wiki/Allan_variance}{\tt Allan variance} plot of the sensor readings over different observation times (see below).
+
+
+
+As shown in the above figure, if we compute the Allan variance we we can look at the value of a line at $\tau=1$ with a -\/1/2 slope fitted to the left side of the plot to get the white noise of the sensor. Similarly, a line with 1/2 fitted to the right side can be evaluated at $\tau=3$ to get the random walk noise. We have a package that can do this in matlab, but actual verification and conversion into a C++ codebase has yet to be done. Please refer to our \mbox{[}\href{https://github.com/rpng/kalibr_allan}{\tt kalibr\+\_\+allan}\mbox{]} github project for details on how to generate this plot for your sensor and calculate the values. Note that one may need to inflate the calculated values by 10-\/20 times to get usable sensor values.\hypertarget{gs-calibration_gs-calib-cam-dynamic}{}\subsection{Dynamic I\+M\+U-\/\+Camera Calibration (\+Offline)}\label{gs-calibration_gs-calib-cam-dynamic}
+After obtaining the intrinsic calibration of both the camera and I\+MU, we can now perform dynamic calibration of the transform between the two sensors. For this we again leverage the \mbox{[}\href{https://github.com/ethz-asl/kalibr/}{\tt Kalibr} calibration toolbox\mbox{]}. For these collected datasets, it is important to minimize the motion blur in the camera while also ensuring that you excite all axes of the I\+MU. One needs to have at least one translational motion along with two degrees of orientation change for these calibration parameters to be observable (please see our recent paper on why\+: \mbox{[}\href{https://ieeexplore.ieee.org/abstract/document/8616792}{\tt Degenerate Motion Analysis for Aided I\+NS With Online Spatial and Temporal Sensor Calibration}\mbox{]}). We recommend having as much change in orientation as possible in order to ensure convergence.
+
+
+\begin{DoxyEnumerate}
+\item Clone and build the \href{https://github.com/ethz-asl/kalibr/}{\tt Kalibr} toolbox
+\item Print out a calibration board to use (we normally use the \href{https://drive.google.com/file/d/0B0T1sizOvRsUdjFJem9mQXdiMTQ/edit?usp=sharing}{\tt Aprilgrid 6x6 0.\+8x0.\+8 m (A0 page)})
+\item Ensure that your sensor driver is publishing onto R\+OS with correct timestamps.
+\item Sensor preparations
+\begin{DoxyItemize}
+\item Limit motion blur by decreasing exposure time
+\item Publish at high-\/ish framerate (20-\/30hz)
+\item Publish your inertial reading at a reasonable rate (200-\/500hz)
+\end{DoxyItemize}
+\item Record a R\+OS bag and ensure that the calibration board can be seen from different orientations, distances, and mostly in the center of the image. You should move in {\itshape smooth} non-\/jerky motions with a trajectory that excites as many orientation and translational directions as possible at the same time. A 30-\/60 second dataset is normally enough to allow for calibration.
+\item Finally run the calibration
+\begin{DoxyItemize}
+\item Use the {\itshape kalibr\+\_\+calibrate\+\_\+imu\+\_\+camera}
+\item Input your static calibration file which will have the camera topics in it
+\item You will need to make an \href{https://drive.google.com/file/d/0B0T1sizOvRsUSk9ReDlid0VSY3M/edit?usp=sharing}{\tt imu.\+yaml} file with your noise parameters.
+\item Depending on how many frames are in your dataset this can take on the upwards of half a day.
+\end{DoxyItemize}
+\item Inspect the final result. You will want to make sure that the spline fitted to the inertial reading was properly fitted. Ensure that your estimated biases do not leave your 3-\/sigma bounds. If they do your trajectory was too dynamic, or your noise values are not good. Sanity check your final rotation and translation with hand-\/measured values. 
+\end{DoxyEnumerate}

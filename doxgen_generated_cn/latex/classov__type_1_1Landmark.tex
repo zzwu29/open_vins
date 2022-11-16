@@ -1,0 +1,116 @@
+\hypertarget{classov__type_1_1Landmark}{}\section{ov\+\_\+type\+:\+:Landmark类 参考}
+\label{classov__type_1_1Landmark}\index{ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}}
+
+
+\hyperlink{classov__type_1_1Type}{Type} that implements a persistent S\+L\+AM feature.  
+
+
+
+
+{\ttfamily \#include $<$Landmark.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_afdfcac1cff90284cc815bd1c17c2659d}\label{classov__type_1_1Landmark_afdfcac1cff90284cc815bd1c17c2659d}} 
+\hyperlink{classov__type_1_1Landmark_afdfcac1cff90284cc815bd1c17c2659d}{Landmark} (int dim)
+\begin{DoxyCompactList}\small\item\em Default constructor (feature is a \hyperlink{classov__type_1_1Vec}{Vec} of size 3 or \hyperlink{classov__type_1_1Vec}{Vec} of size 1) \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1Landmark_aae8c688f5bb601edcb38fde41ff04297}{update} (const Eigen\+::\+Vector\+Xd \&dx) override
+\begin{DoxyCompactList}\small\item\em Overrides the default vector update rule We want to selectively update the F\+EJ value if we are using an anchored representation. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1Landmark_aa4f66d5e3954beea3f05b8b757561132}{get\+\_\+xyz} (bool getfej) const
+\begin{DoxyCompactList}\small\item\em Will return the position of the feature in the global frame of reference. \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1Landmark_ac34319e2057c3c63154cef9a9aa08a2e}{set\+\_\+from\+\_\+xyz} (Eigen\+::\+Matrix$<$ double, 3, 1 $>$ p\+\_\+\+FinG, bool isfej)
+\begin{DoxyCompactList}\small\item\em Will set the current value based on the representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_ad8e61393e2cf88ad04055081d93c1281}\label{classov__type_1_1Landmark_ad8e61393e2cf88ad04055081d93c1281}} 
+size\+\_\+t \hyperlink{classov__type_1_1Landmark_ad8e61393e2cf88ad04055081d93c1281}{\+\_\+featid}
+\begin{DoxyCompactList}\small\item\em Feature ID of this landmark (corresponds to frontend id) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_a97b5c9a2110e0fad40eefcecb3f5fb14}\label{classov__type_1_1Landmark_a97b5c9a2110e0fad40eefcecb3f5fb14}} 
+int \hyperlink{classov__type_1_1Landmark_a97b5c9a2110e0fad40eefcecb3f5fb14}{\+\_\+unique\+\_\+camera\+\_\+id} = -\/1
+\begin{DoxyCompactList}\small\item\em What unique camera stream this slam feature was observed from \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_acbc8b8af7f85c0dc123365046f1af432}\label{classov__type_1_1Landmark_acbc8b8af7f85c0dc123365046f1af432}} 
+int \hyperlink{classov__type_1_1Landmark_acbc8b8af7f85c0dc123365046f1af432}{\+\_\+anchor\+\_\+cam\+\_\+id} = -\/1
+\begin{DoxyCompactList}\small\item\em What camera ID our pose is anchored in!! By default the first measurement is the anchor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_a734c934cc4bf108ad228bd0f0596ef2a}\label{classov__type_1_1Landmark_a734c934cc4bf108ad228bd0f0596ef2a}} 
+double \hyperlink{classov__type_1_1Landmark_a734c934cc4bf108ad228bd0f0596ef2a}{\+\_\+anchor\+\_\+clone\+\_\+timestamp} = -\/1
+\begin{DoxyCompactList}\small\item\em Timestamp of anchor clone \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_a8c2faa8e153b95606c9062527fdd029e}\label{classov__type_1_1Landmark_a8c2faa8e153b95606c9062527fdd029e}} 
+bool \hyperlink{classov__type_1_1Landmark_a8c2faa8e153b95606c9062527fdd029e}{has\+\_\+had\+\_\+anchor\+\_\+change} = false
+\begin{DoxyCompactList}\small\item\em Boolean if this landmark has had at least one anchor change \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_af1020195008ececef0aceec655af7b66}\label{classov__type_1_1Landmark_af1020195008ececef0aceec655af7b66}} 
+bool \hyperlink{classov__type_1_1Landmark_af1020195008ececef0aceec655af7b66}{should\+\_\+marg} = false
+\begin{DoxyCompactList}\small\item\em Boolean if this landmark should be marginalized out \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_a91175b33f67648b4613a4e8fbf45c57b}\label{classov__type_1_1Landmark_a91175b33f67648b4613a4e8fbf45c57b}} 
+Eigen\+::\+Vector3d \hyperlink{classov__type_1_1Landmark_a91175b33f67648b4613a4e8fbf45c57b}{uv\+\_\+norm\+\_\+zero}
+\begin{DoxyCompactList}\small\item\em First normalized uv coordinate bearing of this measurement (used for single depth representation) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_a1ec99a64bd719ecde264279aa7e45b5f}\label{classov__type_1_1Landmark_a1ec99a64bd719ecde264279aa7e45b5f}} 
+Eigen\+::\+Vector3d \hyperlink{classov__type_1_1Landmark_a1ec99a64bd719ecde264279aa7e45b5f}{uv\+\_\+norm\+\_\+zero\+\_\+fej}
+\begin{DoxyCompactList}\small\item\em First estimate normalized uv coordinate bearing of this measurement (used for single depth representation) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1Landmark_a0935ff64bd9d96b24e8437c96a6bbe3d}\label{classov__type_1_1Landmark_a0935ff64bd9d96b24e8437c96a6bbe3d}} 
+\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{Landmark\+Representation\+::\+Representation} \hyperlink{classov__type_1_1Landmark_a0935ff64bd9d96b24e8437c96a6bbe3d}{\+\_\+feat\+\_\+representation}
+\begin{DoxyCompactList}\small\item\em What feature representation this feature currently has \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{额外继承的成员函数}
+
+
+\subsection{详细描述}
+\hyperlink{classov__type_1_1Type}{Type} that implements a persistent S\+L\+AM feature. 
+
+We store the feature ID that should match the I\+Ds in the trackers. Additionally if this is an anchored representation we store what clone timestamp this is anchored from and what camera. If this features should be marginalized its flag can be set and during cleanup it will be removed. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__type_1_1Landmark_aa4f66d5e3954beea3f05b8b757561132}\label{classov__type_1_1Landmark_aa4f66d5e3954beea3f05b8b757561132}} 
+\index{ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}!get\+\_\+xyz@{get\+\_\+xyz}}
+\index{get\+\_\+xyz@{get\+\_\+xyz}!ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}}
+\subsubsection{\texorpdfstring{get\+\_\+xyz()}{get\_xyz()}}
+{\footnotesize\ttfamily Eigen\+::\+Matrix$<$ double, 3, 1 $>$ Landmark\+::get\+\_\+xyz (\begin{DoxyParamCaption}\item[{bool}]{getfej }\end{DoxyParamCaption}) const}
+
+
+
+Will return the position of the feature in the global frame of reference. 
+
+
+\begin{DoxyParams}{参数}
+{\em getfej} & Set to true to get the landmark F\+EJ value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Position of feature either in global or anchor frame 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__type_1_1Landmark_ac34319e2057c3c63154cef9a9aa08a2e}\label{classov__type_1_1Landmark_ac34319e2057c3c63154cef9a9aa08a2e}} 
+\index{ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}!set\+\_\+from\+\_\+xyz@{set\+\_\+from\+\_\+xyz}}
+\index{set\+\_\+from\+\_\+xyz@{set\+\_\+from\+\_\+xyz}!ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}}
+\subsubsection{\texorpdfstring{set\+\_\+from\+\_\+xyz()}{set\_from\_xyz()}}
+{\footnotesize\ttfamily void Landmark\+::set\+\_\+from\+\_\+xyz (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{p\+\_\+\+FinG,  }\item[{bool}]{isfej }\end{DoxyParamCaption})}
+
+
+
+Will set the current value based on the representation. 
+
+
+\begin{DoxyParams}{参数}
+{\em p\+\_\+\+FinG} & Position of the feature either in global or anchor frame \\
+\hline
+{\em isfej} & Set to true to set the landmark F\+EJ value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1Landmark_aae8c688f5bb601edcb38fde41ff04297}\label{classov__type_1_1Landmark_aae8c688f5bb601edcb38fde41ff04297}} 
+\index{ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}!update@{update}}
+\index{update@{update}!ov\+\_\+type\+::\+Landmark@{ov\+\_\+type\+::\+Landmark}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Landmark\+::update (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{dx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Overrides the default vector update rule We want to selectively update the F\+EJ value if we are using an anchored representation. 
+
+
+\begin{DoxyParams}{参数}
+{\em dx} & Additive error state correction \\
+\hline
+\end{DoxyParams}
+
+
+实现了 \hyperlink{classov__type_1_1Type_a4e133d50af35f07bd97f73590fe31000}{ov\+\_\+type\+::\+Type}.
+

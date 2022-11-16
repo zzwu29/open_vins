@@ -1,0 +1,285 @@
+\hypertarget{structov__msckf_1_1VioManagerOptions}{}\section{ov\+\_\+msckf\+:\+:Vio\+Manager\+Options Struct Reference}
+\label{structov__msckf_1_1VioManagerOptions}\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+
+
+Struct which stores all options needed for state estimation.  
+
+
+
+
+{\ttfamily \#include $<$Vio\+Manager\+Options.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{structov__msckf_1_1VioManagerOptions_a47c23046d8d14887345655c41086a6be}{print\+\_\+and\+\_\+load} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load the non-\/simulation parameters of the system and print. \end{DoxyCompactList}\item 
+void \hyperlink{structov__msckf_1_1VioManagerOptions_a2881476b186ab8998e3e53a1c786d064}{print\+\_\+and\+\_\+load\+\_\+estimator} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all estimator settings loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__msckf_1_1VioManagerOptions_a8b6747bbaa472ee1b1ecb790e480162c}{print\+\_\+and\+\_\+load\+\_\+noise} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all noise parameters loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__msckf_1_1VioManagerOptions_a36f57d2065478652ae129ec538c1b98e}{print\+\_\+and\+\_\+load\+\_\+state} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load and print all state parameters (e.\+g. sensor extrinsics) This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__msckf_1_1VioManagerOptions_a88ac10c8c334619721be00810e590f4b}{print\+\_\+and\+\_\+load\+\_\+trackers} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all parameters related to visual tracking This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\item 
+void \hyperlink{structov__msckf_1_1VioManagerOptions_ac7ede3345d96f3c8c16bb5bbddcc08d0}{print\+\_\+and\+\_\+load\+\_\+simulation} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em This function will load print out all simulated parameters. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a578756373f9bcd2eadae31c419fb8c43}\label{structov__msckf_1_1VioManagerOptions_a578756373f9bcd2eadae31c419fb8c43}} 
+\hyperlink{structov__msckf_1_1StateOptions}{State\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_a578756373f9bcd2eadae31c419fb8c43}{state\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Core state options (e.\+g. number of cameras, use fej, stereo, what calibration to enable etc) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_aeab967a61ff3c317e7d1d30ab61c70cc}\label{structov__msckf_1_1VioManagerOptions_aeab967a61ff3c317e7d1d30ab61c70cc}} 
+\hyperlink{structov__init_1_1InertialInitializerOptions}{ov\+\_\+init\+::\+Inertial\+Initializer\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_aeab967a61ff3c317e7d1d30ab61c70cc}{init\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Our state initialization options (e.\+g. window size, num features, if we should get the calibration) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ae921221a9db709f06fbd7379e3430bf8}\label{structov__msckf_1_1VioManagerOptions_ae921221a9db709f06fbd7379e3430bf8}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_ae921221a9db709f06fbd7379e3430bf8}{dt\+\_\+slam\+\_\+delay} = 2.\+0
+\begin{DoxyCompactList}\small\item\em Delay, in seconds, that we should wait from init before we start estimating S\+L\+AM features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a92fe206a83fc4b6c79b88a19c7ff7f3a}\label{structov__msckf_1_1VioManagerOptions_a92fe206a83fc4b6c79b88a19c7ff7f3a}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a92fe206a83fc4b6c79b88a19c7ff7f3a}{try\+\_\+zupt} = false
+\begin{DoxyCompactList}\small\item\em If we should try to use zero velocity update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ad1a08e427b280edf0bb7a64ea71d1c80}\label{structov__msckf_1_1VioManagerOptions_ad1a08e427b280edf0bb7a64ea71d1c80}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_ad1a08e427b280edf0bb7a64ea71d1c80}{zupt\+\_\+max\+\_\+velocity} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Max velocity we will consider to try to do a zupt (i.\+e. if above this, don\textquotesingle{}t do zupt) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a9c9396ee0ec6228d99d458e8a02f47cd}\label{structov__msckf_1_1VioManagerOptions_a9c9396ee0ec6228d99d458e8a02f47cd}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a9c9396ee0ec6228d99d458e8a02f47cd}{zupt\+\_\+noise\+\_\+multiplier} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Multiplier of our zupt measurement I\+MU noise matrix (default should be 1.\+0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a0d6b97164305763b5f1c5e302fbeb02a}\label{structov__msckf_1_1VioManagerOptions_a0d6b97164305763b5f1c5e302fbeb02a}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a0d6b97164305763b5f1c5e302fbeb02a}{zupt\+\_\+max\+\_\+disparity} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Max disparity we will consider to try to do a zupt (i.\+e. if above this, don\textquotesingle{}t do zupt) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a0b65d82ff8ef21e22774f070d9f42938}\label{structov__msckf_1_1VioManagerOptions_a0b65d82ff8ef21e22774f070d9f42938}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a0b65d82ff8ef21e22774f070d9f42938}{zupt\+\_\+only\+\_\+at\+\_\+beginning} = false
+\begin{DoxyCompactList}\small\item\em If we should only use the zupt at the very beginning static initialization phase. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_af1c76781e016ae09e49bd4d8e42006e6}\label{structov__msckf_1_1VioManagerOptions_af1c76781e016ae09e49bd4d8e42006e6}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_af1c76781e016ae09e49bd4d8e42006e6}{record\+\_\+timing\+\_\+information} = false
+\begin{DoxyCompactList}\small\item\em If we should record the timing performance to file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a3cd20d912a15dc8cbe4b71a5bb9daf89}\label{structov__msckf_1_1VioManagerOptions_a3cd20d912a15dc8cbe4b71a5bb9daf89}} 
+std\+::string \hyperlink{structov__msckf_1_1VioManagerOptions_a3cd20d912a15dc8cbe4b71a5bb9daf89}{record\+\_\+timing\+\_\+filepath} = \char`\"{}ov\+\_\+msckf\+\_\+timing.\+txt\char`\"{}
+\begin{DoxyCompactList}\small\item\em The path to the file we will record the timing information into. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a5c6a088515a0b5440e8ae7987ea70593}\label{structov__msckf_1_1VioManagerOptions_a5c6a088515a0b5440e8ae7987ea70593}} 
+\hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager} \hyperlink{structov__msckf_1_1VioManagerOptions_a5c6a088515a0b5440e8ae7987ea70593}{imu\+\_\+noises}
+\begin{DoxyCompactList}\small\item\em I\+MU noise (gyroscope and accelerometer) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a8e9f183d26954a03cd2da0511d96b0f3}\label{structov__msckf_1_1VioManagerOptions_a8e9f183d26954a03cd2da0511d96b0f3}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_a8e9f183d26954a03cd2da0511d96b0f3}{msckf\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Update options for M\+S\+C\+KF features (pixel noise and chi2 multiplier) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a3972f04e248b39ee50d7a6ef5dfbc086}\label{structov__msckf_1_1VioManagerOptions_a3972f04e248b39ee50d7a6ef5dfbc086}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_a3972f04e248b39ee50d7a6ef5dfbc086}{slam\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Update options for S\+L\+AM features (pixel noise and chi2 multiplier) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a7f72e601f8b772aeb3a59304fd615667}\label{structov__msckf_1_1VioManagerOptions_a7f72e601f8b772aeb3a59304fd615667}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_a7f72e601f8b772aeb3a59304fd615667}{aruco\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Update options for A\+R\+U\+CO features (pixel noise and chi2 multiplier) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_adbcc99cae0410b2627246080e9e03e3e}\label{structov__msckf_1_1VioManagerOptions_adbcc99cae0410b2627246080e9e03e3e}} 
+\hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_adbcc99cae0410b2627246080e9e03e3e}{zupt\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Update options for zero velocity (chi2 multiplier) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a0ab368f8b306660cc0fd59790851b3eb}\label{structov__msckf_1_1VioManagerOptions_a0ab368f8b306660cc0fd59790851b3eb}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a0ab368f8b306660cc0fd59790851b3eb}{gravity\+\_\+mag} = 9.\+81
+\begin{DoxyCompactList}\small\item\em Gravity magnitude in the global frame (i.\+e. should be 9.\+81 typically) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a10bb45ab36e74b8e4d25f8e68bc2ffd7}\label{structov__msckf_1_1VioManagerOptions_a10bb45ab36e74b8e4d25f8e68bc2ffd7}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a10bb45ab36e74b8e4d25f8e68bc2ffd7}{calib\+\_\+camimu\+\_\+dt} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Time offset between camera and I\+MU. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ae5855bbb2f0191344acd87e2dbd6d39b}\label{structov__msckf_1_1VioManagerOptions_ae5855bbb2f0191344acd87e2dbd6d39b}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{ov\+\_\+core\+::\+Cam\+Base} $>$ $>$ \hyperlink{structov__msckf_1_1VioManagerOptions_ae5855bbb2f0191344acd87e2dbd6d39b}{camera\+\_\+intrinsics}
+\begin{DoxyCompactList}\small\item\em Map between camid and camera intrinsics (fx, fy, cx, cy, d1...d4, cam\+\_\+w, cam\+\_\+h) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ab5cecc1b5cf69b6835d9af0df4496401}\label{structov__msckf_1_1VioManagerOptions_ab5cecc1b5cf69b6835d9af0df4496401}} 
+std\+::map$<$ size\+\_\+t, Eigen\+::\+Vector\+Xd $>$ \hyperlink{structov__msckf_1_1VioManagerOptions_ab5cecc1b5cf69b6835d9af0df4496401}{camera\+\_\+extrinsics}
+\begin{DoxyCompactList}\small\item\em Map between camid and camera extrinsics (q\+\_\+\+ItoC, p\+\_\+\+IinC). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a3b74f8ceb35bd36df62d0e2403adcd25}\label{structov__msckf_1_1VioManagerOptions_a3b74f8ceb35bd36df62d0e2403adcd25}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a3b74f8ceb35bd36df62d0e2403adcd25}{use\+\_\+mask} = false
+\begin{DoxyCompactList}\small\item\em If we should try to load a mask and use it to reject invalid features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ae4b385302e72d09d7c5abccb48a83442}\label{structov__msckf_1_1VioManagerOptions_ae4b385302e72d09d7c5abccb48a83442}} 
+std\+::map$<$ size\+\_\+t, cv\+::\+Mat $>$ \hyperlink{structov__msckf_1_1VioManagerOptions_ae4b385302e72d09d7c5abccb48a83442}{masks}
+\begin{DoxyCompactList}\small\item\em Mask images for each camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_af01535da59b1d2d5e3309aaa34e69c8e}\label{structov__msckf_1_1VioManagerOptions_af01535da59b1d2d5e3309aaa34e69c8e}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_af01535da59b1d2d5e3309aaa34e69c8e}{use\+\_\+stereo} = true
+\begin{DoxyCompactList}\small\item\em If we should process two cameras are being stereo or binocular. If binocular, we do monocular feature tracking on each image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a1885c647c47cb5216fc4b868553ec0fa}\label{structov__msckf_1_1VioManagerOptions_a1885c647c47cb5216fc4b868553ec0fa}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a1885c647c47cb5216fc4b868553ec0fa}{use\+\_\+klt} = true
+\begin{DoxyCompactList}\small\item\em If we should use K\+LT tracking, or descriptor matcher. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a731396cbfdf81f8519981d6e4b6374fd}\label{structov__msckf_1_1VioManagerOptions_a731396cbfdf81f8519981d6e4b6374fd}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a731396cbfdf81f8519981d6e4b6374fd}{use\+\_\+aruco} = true
+\begin{DoxyCompactList}\small\item\em If should extract aruco tags and estimate them. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_afa1f6f0e1422dc41ea98c80077580c60}\label{structov__msckf_1_1VioManagerOptions_afa1f6f0e1422dc41ea98c80077580c60}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_afa1f6f0e1422dc41ea98c80077580c60}{downsize\+\_\+aruco} = true
+\begin{DoxyCompactList}\small\item\em Will half the resolution of the aruco tag image (will be faster) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_af08feea8c9e944e727483f6ff3899e8e}\label{structov__msckf_1_1VioManagerOptions_af08feea8c9e944e727483f6ff3899e8e}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_af08feea8c9e944e727483f6ff3899e8e}{downsample\+\_\+cameras} = false
+\begin{DoxyCompactList}\small\item\em Will half the resolution all tracking image (aruco will be 1/4 instead of halved if dowsize\+\_\+aruoc also enabled) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ac68cc4f6f0e072ba2a06ada8e68b22bc}\label{structov__msckf_1_1VioManagerOptions_ac68cc4f6f0e072ba2a06ada8e68b22bc}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_ac68cc4f6f0e072ba2a06ada8e68b22bc}{num\+\_\+opencv\+\_\+threads} = 4
+\begin{DoxyCompactList}\small\item\em Threads our front-\/end should try to use (opencv uses this also) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_afaadd730413dd254d8f53da5a7ba5f17}\label{structov__msckf_1_1VioManagerOptions_afaadd730413dd254d8f53da5a7ba5f17}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_afaadd730413dd254d8f53da5a7ba5f17}{use\+\_\+multi\+\_\+threading\+\_\+pubs} = true
+\begin{DoxyCompactList}\small\item\em If our R\+OS image publisher should be async (if sim this should be no!) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a63e5226f519e51f29210e3d29f757eba}\label{structov__msckf_1_1VioManagerOptions_a63e5226f519e51f29210e3d29f757eba}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a63e5226f519e51f29210e3d29f757eba}{use\+\_\+multi\+\_\+threading\+\_\+subs} = false
+\begin{DoxyCompactList}\small\item\em If our R\+OS subscriber callbacks should be async (if sim and serial then this should be no!) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a1bde650ec917e7a3df221a1524e33429}\label{structov__msckf_1_1VioManagerOptions_a1bde650ec917e7a3df221a1524e33429}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_a1bde650ec917e7a3df221a1524e33429}{num\+\_\+pts} = 150
+\begin{DoxyCompactList}\small\item\em The number of points we should extract and track in {\itshape each} image frame. This highly effects the computation required for tracking. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a27d862f8f1811211f895b27a3b789e3a}\label{structov__msckf_1_1VioManagerOptions_a27d862f8f1811211f895b27a3b789e3a}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_a27d862f8f1811211f895b27a3b789e3a}{fast\+\_\+threshold} = 20
+\begin{DoxyCompactList}\small\item\em Fast extraction threshold. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ab52b09d507ef33dabe72d65a223fe067}\label{structov__msckf_1_1VioManagerOptions_ab52b09d507ef33dabe72d65a223fe067}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_ab52b09d507ef33dabe72d65a223fe067}{grid\+\_\+x} = 5
+\begin{DoxyCompactList}\small\item\em Number of grids we should split column-\/wise to do feature extraction in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a678920b0804fb40a14b22da61d49d631}\label{structov__msckf_1_1VioManagerOptions_a678920b0804fb40a14b22da61d49d631}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_a678920b0804fb40a14b22da61d49d631}{grid\+\_\+y} = 5
+\begin{DoxyCompactList}\small\item\em Number of grids we should split row-\/wise to do feature extraction in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a66d1e76bc9e8ffdd1c669d99fdce76b7}\label{structov__msckf_1_1VioManagerOptions_a66d1e76bc9e8ffdd1c669d99fdce76b7}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_a66d1e76bc9e8ffdd1c669d99fdce76b7}{min\+\_\+px\+\_\+dist} = 10
+\begin{DoxyCompactList}\small\item\em Will check after doing K\+LT track and remove any features closer than this. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a16dc81c1a909ece39ad6b8d46e01f17f}\label{structov__msckf_1_1VioManagerOptions_a16dc81c1a909ece39ad6b8d46e01f17f}} 
+\hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{ov\+\_\+core\+::\+Track\+Base\+::\+Histogram\+Method} \hyperlink{structov__msckf_1_1VioManagerOptions_a16dc81c1a909ece39ad6b8d46e01f17f}{histogram\+\_\+method} = ov\+\_\+core\+::\+Track\+Base\+::\+Histogram\+Method\+::\+H\+I\+S\+T\+O\+G\+R\+AM
+\begin{DoxyCompactList}\small\item\em What type of pre-\/processing histogram method should be applied to images. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a62800a75870b19213d1c44e69b2c32f7}\label{structov__msckf_1_1VioManagerOptions_a62800a75870b19213d1c44e69b2c32f7}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a62800a75870b19213d1c44e69b2c32f7}{knn\+\_\+ratio} = 0.\+85
+\begin{DoxyCompactList}\small\item\em K\+NN ration between top two descriptor matcher which is required to be a good match. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a0911df8b2eb55f73191c9b0c815cb538}\label{structov__msckf_1_1VioManagerOptions_a0911df8b2eb55f73191c9b0c815cb538}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a0911df8b2eb55f73191c9b0c815cb538}{track\+\_\+frequency} = 20.\+0
+\begin{DoxyCompactList}\small\item\em Frequency we want to track images at (higher freq ones will be dropped) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a3ef0a31865f542c778762883c5d1bb11}\label{structov__msckf_1_1VioManagerOptions_a3ef0a31865f542c778762883c5d1bb11}} 
+\hyperlink{structov__core_1_1FeatureInitializerOptions}{ov\+\_\+core\+::\+Feature\+Initializer\+Options} \hyperlink{structov__msckf_1_1VioManagerOptions_a3ef0a31865f542c778762883c5d1bb11}{featinit\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Parameters used by our feature initialize / triangulator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a04e82ff351254354378cd7568aaef6ed}\label{structov__msckf_1_1VioManagerOptions_a04e82ff351254354378cd7568aaef6ed}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_a04e82ff351254354378cd7568aaef6ed}{sim\+\_\+seed\+\_\+state\+\_\+init} = 0
+\begin{DoxyCompactList}\small\item\em Seed for initial states (i.\+e. random feature 3d positions in the generated map) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_afe2c433c61d25c18901b089a2215114c}\label{structov__msckf_1_1VioManagerOptions_afe2c433c61d25c18901b089a2215114c}} 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_afe2c433c61d25c18901b089a2215114c}{sim\+\_\+seed\+\_\+preturb} = 0
+\begin{DoxyCompactList}\small\item\em Seed for calibration perturbations. Change this to perturb by different random values if perturbations are enabled. \end{DoxyCompactList}\item 
+int \hyperlink{structov__msckf_1_1VioManagerOptions_a9b3fee122a7d3b2069a424b5ef1b1155}{sim\+\_\+seed\+\_\+measurements} = 0
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a4d595d5277582b53d12ad75bc7a6ad57}\label{structov__msckf_1_1VioManagerOptions_a4d595d5277582b53d12ad75bc7a6ad57}} 
+bool \hyperlink{structov__msckf_1_1VioManagerOptions_a4d595d5277582b53d12ad75bc7a6ad57}{sim\+\_\+do\+\_\+perturbation} = false
+\begin{DoxyCompactList}\small\item\em If we should perturb the calibration that the estimator starts with. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ab948eee26f7031d626297b172c9d183d}\label{structov__msckf_1_1VioManagerOptions_ab948eee26f7031d626297b172c9d183d}} 
+std\+::string \hyperlink{structov__msckf_1_1VioManagerOptions_ab948eee26f7031d626297b172c9d183d}{sim\+\_\+traj\+\_\+path} = \char`\"{}src/open\+\_\+vins/ov\+\_\+data/sim/udel\+\_\+gore.\+txt\char`\"{}
+\begin{DoxyCompactList}\small\item\em Path to the trajectory we will b-\/spline and simulate on. Should be time(s),pos(xyz),ori(xyzw) format. \end{DoxyCompactList}\item 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a3b6af0048e6bb9b903088f30f9be7221}{sim\+\_\+distance\+\_\+threshold} = 1.\+2
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a093cc163f266b0c013d7eda528bb1e80}\label{structov__msckf_1_1VioManagerOptions_a093cc163f266b0c013d7eda528bb1e80}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a093cc163f266b0c013d7eda528bb1e80}{sim\+\_\+freq\+\_\+cam} = 10.\+0
+\begin{DoxyCompactList}\small\item\em Frequency (Hz) that we will simulate our cameras. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_aaf63d79014853441849b5e6a2813020f}\label{structov__msckf_1_1VioManagerOptions_aaf63d79014853441849b5e6a2813020f}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_aaf63d79014853441849b5e6a2813020f}{sim\+\_\+freq\+\_\+imu} = 400.\+0
+\begin{DoxyCompactList}\small\item\em Frequency (Hz) that we will simulate our inertial measurement unit. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ae229dda22c11905a023f944f2b25842a}\label{structov__msckf_1_1VioManagerOptions_ae229dda22c11905a023f944f2b25842a}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_ae229dda22c11905a023f944f2b25842a}{sim\+\_\+min\+\_\+feature\+\_\+gen\+\_\+distance} = 5
+\begin{DoxyCompactList}\small\item\em Feature distance we generate features from (minimum) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a2663dc7c331d58f45e1ce701211f68dc}\label{structov__msckf_1_1VioManagerOptions_a2663dc7c331d58f45e1ce701211f68dc}} 
+double \hyperlink{structov__msckf_1_1VioManagerOptions_a2663dc7c331d58f45e1ce701211f68dc}{sim\+\_\+max\+\_\+feature\+\_\+gen\+\_\+distance} = 10
+\begin{DoxyCompactList}\small\item\em Feature distance we generate features from (maximum) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct which stores all options needed for state estimation. 
+
+This is broken into a few different parts\+: estimator, trackers, and simulation. If you are going to add a parameter here you will need to add it to the parsers. You will also need to add it to the print statement at the bottom of each. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a47c23046d8d14887345655c41086a6be}\label{structov__msckf_1_1VioManagerOptions_a47c23046d8d14887345655c41086a6be}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!print\+\_\+and\+\_\+load@{print\+\_\+and\+\_\+load}}
+\index{print\+\_\+and\+\_\+load@{print\+\_\+and\+\_\+load}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load()}{print\_and\_load()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::print\+\_\+and\+\_\+load (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load the non-\/simulation parameters of the system and print. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a2881476b186ab8998e3e53a1c786d064}\label{structov__msckf_1_1VioManagerOptions_a2881476b186ab8998e3e53a1c786d064}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!print\+\_\+and\+\_\+load\+\_\+estimator@{print\+\_\+and\+\_\+load\+\_\+estimator}}
+\index{print\+\_\+and\+\_\+load\+\_\+estimator@{print\+\_\+and\+\_\+load\+\_\+estimator}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+estimator()}{print\_and\_load\_estimator()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::print\+\_\+and\+\_\+load\+\_\+estimator (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all estimator settings loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a8b6747bbaa472ee1b1ecb790e480162c}\label{structov__msckf_1_1VioManagerOptions_a8b6747bbaa472ee1b1ecb790e480162c}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!print\+\_\+and\+\_\+load\+\_\+noise@{print\+\_\+and\+\_\+load\+\_\+noise}}
+\index{print\+\_\+and\+\_\+load\+\_\+noise@{print\+\_\+and\+\_\+load\+\_\+noise}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+noise()}{print\_and\_load\_noise()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::print\+\_\+and\+\_\+load\+\_\+noise (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all noise parameters loaded. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_ac7ede3345d96f3c8c16bb5bbddcc08d0}\label{structov__msckf_1_1VioManagerOptions_ac7ede3345d96f3c8c16bb5bbddcc08d0}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!print\+\_\+and\+\_\+load\+\_\+simulation@{print\+\_\+and\+\_\+load\+\_\+simulation}}
+\index{print\+\_\+and\+\_\+load\+\_\+simulation@{print\+\_\+and\+\_\+load\+\_\+simulation}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+simulation()}{print\_and\_load\_simulation()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::print\+\_\+and\+\_\+load\+\_\+simulation (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all simulated parameters. This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a36f57d2065478652ae129ec538c1b98e}\label{structov__msckf_1_1VioManagerOptions_a36f57d2065478652ae129ec538c1b98e}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!print\+\_\+and\+\_\+load\+\_\+state@{print\+\_\+and\+\_\+load\+\_\+state}}
+\index{print\+\_\+and\+\_\+load\+\_\+state@{print\+\_\+and\+\_\+load\+\_\+state}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+state()}{print\_and\_load\_state()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::print\+\_\+and\+\_\+load\+\_\+state (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load and print all state parameters (e.\+g. sensor extrinsics) This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a88ac10c8c334619721be00810e590f4b}\label{structov__msckf_1_1VioManagerOptions_a88ac10c8c334619721be00810e590f4b}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!print\+\_\+and\+\_\+load\+\_\+trackers@{print\+\_\+and\+\_\+load\+\_\+trackers}}
+\index{print\+\_\+and\+\_\+load\+\_\+trackers@{print\+\_\+and\+\_\+load\+\_\+trackers}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{print\+\_\+and\+\_\+load\+\_\+trackers()}{print\_and\_load\_trackers()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::print\+\_\+and\+\_\+load\+\_\+trackers (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&}]{parser = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This function will load print out all parameters related to visual tracking This allows for visual checking that everything was loaded properly from R\+O\+S/\+C\+MD parsers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parser} & If not null, this parser will be used to load our parameters \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a3b6af0048e6bb9b903088f30f9be7221}\label{structov__msckf_1_1VioManagerOptions_a3b6af0048e6bb9b903088f30f9be7221}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!sim\+\_\+distance\+\_\+threshold@{sim\+\_\+distance\+\_\+threshold}}
+\index{sim\+\_\+distance\+\_\+threshold@{sim\+\_\+distance\+\_\+threshold}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{sim\+\_\+distance\+\_\+threshold}{sim\_distance\_threshold}}
+{\footnotesize\ttfamily double ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::sim\+\_\+distance\+\_\+threshold = 1.\+2}
+
+We will start simulating after we have moved this much along the b-\/spline. This prevents static starts as we init from groundtruth in simulation. \mbox{\Hypertarget{structov__msckf_1_1VioManagerOptions_a9b3fee122a7d3b2069a424b5ef1b1155}\label{structov__msckf_1_1VioManagerOptions_a9b3fee122a7d3b2069a424b5ef1b1155}} 
+\index{ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}!sim\+\_\+seed\+\_\+measurements@{sim\+\_\+seed\+\_\+measurements}}
+\index{sim\+\_\+seed\+\_\+measurements@{sim\+\_\+seed\+\_\+measurements}!ov\+\_\+msckf\+::\+Vio\+Manager\+Options@{ov\+\_\+msckf\+::\+Vio\+Manager\+Options}}
+\subsubsection{\texorpdfstring{sim\+\_\+seed\+\_\+measurements}{sim\_seed\_measurements}}
+{\footnotesize\ttfamily int ov\+\_\+msckf\+::\+Vio\+Manager\+Options\+::sim\+\_\+seed\+\_\+measurements = 0}
+
+Measurement noise seed. This should be incremented for each run in the Monte-\/\+Carlo simulation to generate the same true measurements, but diffferent noise values. 

@@ -1,0 +1,126 @@
+\hypertarget{classov__eval_1_1AlignUtils}{}\section{ov\+\_\+eval\+:\+:Align\+Utils类 参考}
+\label{classov__eval_1_1AlignUtils}\index{ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}}
+
+
+Helper functions for the trajectory alignment class.  
+
+
+
+
+{\ttfamily \#include $<$Align\+Utils.\+h$>$}
+
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{classov__eval_1_1AlignUtils_a6eafc0d55cb43fa6d2718a707697abff}{get\+\_\+best\+\_\+yaw} (const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&C)
+\begin{DoxyCompactList}\small\item\em Gets best yaw from Frobenius problem. Equation (17)-\/(18) in \href{http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf}{\tt Zhang et al. 2018 I\+R\+OS} paper. \end{DoxyCompactList}\item 
+static Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__eval_1_1AlignUtils_a773b70968bab53fcaf45db308a70fe82}{get\+\_\+mean} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 3, 1 $>$$>$ \&data)
+\begin{DoxyCompactList}\small\item\em Gets mean of the vector of data \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignUtils_a0047243dabf7448c01fdb118e13061e8}{align\+\_\+umeyama} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 3, 1 $>$$>$ \&data, const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 3, 1 $>$$>$ \&model, Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&R, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&t, double \&s, bool known\+\_\+scale, bool yaw\+\_\+only)
+\begin{DoxyCompactList}\small\item\em Given a set of points in a model frame and a set of points in a data frame, finds best transform between frames (subject to constraints). \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignUtils_a222cc11925f47bb8055aaf73d4336490}{perform\+\_\+association} (double offset, double max\+\_\+difference, std\+::vector$<$ double $>$ \&est\+\_\+times, std\+::vector$<$ double $>$ \&gt\+\_\+times, std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&est\+\_\+poses, std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&gt\+\_\+poses)
+\begin{DoxyCompactList}\small\item\em Will intersect our loaded data so that we have common timestamps. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1AlignUtils_afd79761c342430237a1ecf563d5c0d05}{perform\+\_\+association} (double offset, double max\+\_\+difference, std\+::vector$<$ double $>$ \&est\+\_\+times, std\+::vector$<$ double $>$ \&gt\+\_\+times, std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&est\+\_\+poses, std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&gt\+\_\+poses, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&est\+\_\+covori, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&est\+\_\+covpos, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&gt\+\_\+covori, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&gt\+\_\+covpos)
+\begin{DoxyCompactList}\small\item\em Will intersect our loaded data so that we have common timestamps. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Helper functions for the trajectory alignment class. 
+
+The key function is an implementation of Umeyama\textquotesingle{}s \href{https://ieeexplore.ieee.org/document/88573}{\tt Least-\/squares estimation of transformation parameters between two point patterns}. This is what allows us to find the transform between the two trajectories without worrying about singularities for the absolute trajectory error. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__eval_1_1AlignUtils_a0047243dabf7448c01fdb118e13061e8}\label{classov__eval_1_1AlignUtils_a0047243dabf7448c01fdb118e13061e8}} 
+\index{ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}!align\+\_\+umeyama@{align\+\_\+umeyama}}
+\index{align\+\_\+umeyama@{align\+\_\+umeyama}!ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}}
+\subsubsection{\texorpdfstring{align\+\_\+umeyama()}{align\_umeyama()}}
+{\footnotesize\ttfamily void Align\+Utils\+::align\+\_\+umeyama (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 3, 1 $>$$>$ \&}]{data,  }\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 3, 1 $>$$>$ \&}]{model,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&}]{R,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \&}]{t,  }\item[{double \&}]{s,  }\item[{bool}]{known\+\_\+scale,  }\item[{bool}]{yaw\+\_\+only }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Given a set of points in a model frame and a set of points in a data frame, finds best transform between frames (subject to constraints). 
+
+
+\begin{DoxyParams}{参数}
+{\em data} & Vector of points in data frame (i.\+e., estimates) \\
+\hline
+{\em model} & Vector of points in model frame (i.\+e., gt) \\
+\hline
+{\em R} & Output rotation from data frame to model frame \\
+\hline
+{\em t} & Output translation from data frame to model frame \\
+\hline
+{\em s} & Output scale from data frame to model frame \\
+\hline
+{\em known\+\_\+scale} & Whether to fix scale \\
+\hline
+{\em yaw\+\_\+only} & Whether to only use yaw orientation (such as when frames are already gravity aligned) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignUtils_a6eafc0d55cb43fa6d2718a707697abff}\label{classov__eval_1_1AlignUtils_a6eafc0d55cb43fa6d2718a707697abff}} 
+\index{ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}!get\+\_\+best\+\_\+yaw@{get\+\_\+best\+\_\+yaw}}
+\index{get\+\_\+best\+\_\+yaw@{get\+\_\+best\+\_\+yaw}!ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}}
+\subsubsection{\texorpdfstring{get\+\_\+best\+\_\+yaw()}{get\_best\_yaw()}}
+{\footnotesize\ttfamily static double ov\+\_\+eval\+::\+Align\+Utils\+::get\+\_\+best\+\_\+yaw (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \&}]{C }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets best yaw from Frobenius problem. Equation (17)-\/(18) in \href{http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf}{\tt Zhang et al. 2018 I\+R\+OS} paper. 
+
+
+\begin{DoxyParams}{参数}
+{\em C} & Data matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignUtils_a773b70968bab53fcaf45db308a70fe82}\label{classov__eval_1_1AlignUtils_a773b70968bab53fcaf45db308a70fe82}} 
+\index{ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}!get\+\_\+mean@{get\+\_\+mean}}
+\index{get\+\_\+mean@{get\+\_\+mean}!ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}}
+\subsubsection{\texorpdfstring{get\+\_\+mean()}{get\_mean()}}
+{\footnotesize\ttfamily static Eigen\+::\+Matrix$<$double, 3, 1$>$ ov\+\_\+eval\+::\+Align\+Utils\+::get\+\_\+mean (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 3, 1 $>$$>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mean of the vector of data 
+
+
+\begin{DoxyParams}{参数}
+{\em data} & Vector of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Mean value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__eval_1_1AlignUtils_a222cc11925f47bb8055aaf73d4336490}\label{classov__eval_1_1AlignUtils_a222cc11925f47bb8055aaf73d4336490}} 
+\index{ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}!perform\+\_\+association@{perform\+\_\+association}}
+\index{perform\+\_\+association@{perform\+\_\+association}!ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}}
+\subsubsection{\texorpdfstring{perform\+\_\+association()}{perform\_association()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Align\+Utils\+::perform\+\_\+association (\begin{DoxyParamCaption}\item[{double}]{offset,  }\item[{double}]{max\+\_\+difference,  }\item[{std\+::vector$<$ double $>$ \&}]{est\+\_\+times,  }\item[{std\+::vector$<$ double $>$ \&}]{gt\+\_\+times,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{est\+\_\+poses,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{gt\+\_\+poses }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Will intersect our loaded data so that we have common timestamps. 
+
+
+\begin{DoxyParams}{参数}
+{\em offset} & Time offset to append to our estimate \\
+\hline
+{\em max\+\_\+difference} & Biggest allowed difference between matched timesteps \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1AlignUtils_afd79761c342430237a1ecf563d5c0d05}\label{classov__eval_1_1AlignUtils_afd79761c342430237a1ecf563d5c0d05}} 
+\index{ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}!perform\+\_\+association@{perform\+\_\+association}}
+\index{perform\+\_\+association@{perform\+\_\+association}!ov\+\_\+eval\+::\+Align\+Utils@{ov\+\_\+eval\+::\+Align\+Utils}}
+\subsubsection{\texorpdfstring{perform\+\_\+association()}{perform\_association()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Align\+Utils\+::perform\+\_\+association (\begin{DoxyParamCaption}\item[{double}]{offset,  }\item[{double}]{max\+\_\+difference,  }\item[{std\+::vector$<$ double $>$ \&}]{est\+\_\+times,  }\item[{std\+::vector$<$ double $>$ \&}]{gt\+\_\+times,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{est\+\_\+poses,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{gt\+\_\+poses,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{est\+\_\+covori,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{est\+\_\+covpos,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{gt\+\_\+covori,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{gt\+\_\+covpos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Will intersect our loaded data so that we have common timestamps. 
+
+
+\begin{DoxyParams}{参数}
+{\em offset} & Time offset to append to our estimate \\
+\hline
+{\em max\+\_\+difference} & Biggest allowed difference between matched timesteps \\
+\hline
+\end{DoxyParams}

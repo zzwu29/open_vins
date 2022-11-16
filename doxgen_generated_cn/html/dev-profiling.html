@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: System Profiling</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dev-welcome.html">Developer and Internals</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">System Profiling </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>目录</h3>
+<ul><li class="level1"><a href="#dev-profiling-compute">Profiling Processing Time</a></li>
+<li class="level1"><a href="#dev-profiling-leaks">Memory Leaks</a></li>
+<li class="level1"><a href="#dev-profiling-compiler">Compiler Profiling</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="dev-profiling-compute"></a>
+Profiling Processing Time</h1>
+<p>One way (besides inserting timing statements into the code) is to leverage a profiler such as <a href="https://www.valgrind.org/">valgrind</a>. This tool allows for recording of the call stack of the system. To use this with a ROS node, we can do the following (based on <a href="http://wiki.ros.org/roslaunch/Tutorials/Roslaunch%20Nodes%20in%20Valgrind%20or%20GDB">this</a> guide):</p>
+<ul>
+<li>Edit <code>roslaunch <a class="el" href="namespaceov__msckf.html" title="Extended Kalman Filter estimator ">ov_msckf</a> pgeneva_serial_eth.launch</code> launch file</li>
+<li>Append <code>launch-prefix="valgrind --tool=callgrind --callgrind-out-file=/tmp/callgrind.txt"</code> to your ROS node. This will cause the node to run with valgrind.</li>
+<li>Change the bag length to be only 10 or so seconds (since profiling is slow)</li>
+</ul>
+<div class="fragment"><div class="line">sudo apt install valgrind</div><div class="line">roslaunch ov_msckf pgeneva_serial_eth.launch</div></div><!-- fragment --><p>After running the profiling program we will want to visualize it. There are some good tools for that, specifically we are using <a href="https://github.com/jrfonseca/gprof2dot">gprof2dot</a> and <a href="https://github.com/jrfonseca/xdot.py">xdot.py</a>. First we will post-process it into a xdot graph format and then visualize it for inspection.</p>
+<div class="image">
+<img src="example_callgrind.png" alt="example_callgrind.png" width="80%"/>
+</div>
+<div class="fragment"><div class="line">// install viz programs</div><div class="line">apt-get install python3 graphviz</div><div class="line">apt-get install gir1.2-gtk-3.0 python3-gi python3-gi-cairo graphviz</div><div class="line">pip install gprof2dot xdot</div><div class="line">// actually process and then viz call file</div><div class="line">gprof2dot --format callgrind --strip /tmp/callgrind.txt --output /tmp/callgrind.xdot</div><div class="line">xdot /tmp/callgrind.xdot</div></div><!-- fragment --><h1><a class="anchor" id="dev-profiling-leaks"></a>
+Memory Leaks</h1>
+<p>One can leverage a profiler such as <a href="https://www.valgrind.org/">valgrind</a> to perform memory leak check of the codebase. Ensure you have installed the <code>valgrind</code> package (see above). We can change the node launch file as follows:</p>
+<ul>
+<li>Edit <code>roslaunch <a class="el" href="namespaceov__msckf.html" title="Extended Kalman Filter estimator ">ov_msckf</a> pgeneva_serial_eth.launch</code> launch file</li>
+<li>Append <code>launch-prefix="valgrind --tool=memcheck --leak-check=yes"</code> to your ROS node. This will cause the node to run with valgrind.</li>
+<li>Change the bag length to be only 10 or so seconds (since profiling is slow)</li>
+</ul>
+<p>This <a href="https://web.stanford.edu/class/archive/cs/cs107/cs107.1206/resources/valgrind.html">page</a> has some nice support material for FAQ. An example loss is shown below which was found by memcheck.</p>
+<div class="fragment"><div class="line">==5512== 1,578,860 (24 direct, 1,578,836 indirect) bytes in 1 blocks are definitely lost in loss record 6,585 of 6,589</div><div class="line">==5512==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)</div><div class="line">....</div><div class="line">==5512==    by 0x543F868: operator[] (unordered_map.h:973)</div><div class="line">==5512==    by 0x543F868: ov_core::TrackKLT::feed_stereo(double, cv::Mat&amp;, cv::Mat&amp;, unsigned long, unsigned long) (TrackKLT.cpp:165)</div><div class="line">==5512==    by 0x4EF8C52: ov_msckf::VioManager::feed_measurement_stereo(double, cv::Mat&amp;, cv::Mat&amp;, unsigned long, unsigned long) (VioManager.cpp:245)</div><div class="line">==5512==    by 0x1238A9: main (ros_serial_msckf.cpp:247)</div></div><!-- fragment --><h1><a class="anchor" id="dev-profiling-compiler"></a>
+Compiler Profiling</h1>
+<p>Here is a small guide on how to perform compiler profiling for building of the codebase. This should be used to try to minimize compile times which in general hurt developer productivity. It is recommended to read the following pages which this is a condenced form of:</p>
+<ul>
+<li><a href="https://aras-p.info/blog/2019/01/16/time-trace-timeline-flame-chart-profiler-for-Clang/">https://aras-p.info/blog/2019/01/16/time-trace-timeline-flame-chart-profiler-for-Clang/</a></li>
+<li><a href="https://aras-p.info/blog/2019/09/28/Clang-Build-Analyzer/">https://aras-p.info/blog/2019/09/28/Clang-Build-Analyzer/</a></li>
+</ul>
+<p>First we need to ensure we have a compiler that can profile the build time. Clang greater then 9 should work, but we have tested only with 11. We can get the <a href="https://apt.llvm.org/">latest Clang</a> by using the follow auto-install script:</p>
+<div class="fragment"><div class="line">sudo bash -c &quot;$(wget -O - https://apt.llvm.org/llvm.sh)&quot;</div><div class="line">export CC=/usr/bin/clang-11</div><div class="line">export CXX=/usr/bin/clang++-11</div></div><!-- fragment --><p>We then need to clone the analyzer repository, which allows for summary generation.</p>
+<div class="fragment"><div class="line">git clone https://github.com/aras-p/ClangBuildAnalyzer</div><div class="line">cd ClangBuildAnalyzer</div><div class="line">cmake . &amp;&amp; make</div></div><!-- fragment --><p>We can finally build our ROS package and time how long it takes. Note that we are using <a href="https://catkin-tools.readthedocs.io/en/latest/">catkin tools</a> to build here. The prefix <em>CBA</em> means to run the command in the ClangBuildAnalyzer repository clone folder. While the prefix <em>WS</em> means run in the root of your ROS workspace.</p>
+<div class="fragment"><div class="line">(WS) cd ~/workspace/</div><div class="line">(WS) catkin clean -y &amp;&amp; mkdir build</div><div class="line">(CBA) ./ClangBuildAnalyzer --start ~/workspace/build/</div><div class="line">(WS) export CC=/usr/bin/clang-11 &amp;&amp; export CXX=/usr/bin/clang++-11</div><div class="line">(WS) catkin build ov_msckf -DCMAKE_CXX_FLAGS=&quot;-ftime-trace&quot;</div><div class="line">(CBA) ./ClangBuildAnalyzer --stop ~/workspace/build/ capture_file.bin</div><div class="line">(CBA) ./ClangBuildAnalyzer --analyze capture_file.bin &gt; timing_results.txt</div></div><!-- fragment --><p>The <code>time-trace</code> flag should generate a bunch of .json files in your build folder. These can be opened in your chrome browser <code>chrome://tracing</code> for viewing. In general the ClangBuildAnalyzer is more useful for finding what files take long. An example output of what is generated in the timing_results.txt file is:</p>
+<div class="fragment"><div class="line">Analyzing build trace from &#39;capture_file.bin&#39;...</div><div class="line">     Time summary:</div><div class="line">Compilation (86 times):</div><div class="line">  Parsing (frontend):          313.9 s</div><div class="line">  Codegen &amp; opts (backend):    222.9 s</div><div class="line"></div><div class="line">     Files that took longest to parse (compiler frontend):</div><div class="line"> 13139 ms: /build//ov_msckf/CMakeFiles/ov_msckf_lib.dir/src/update/UpdaterSLAM.cpp.o</div><div class="line"> 12843 ms: /build//ov_msckf/CMakeFiles/run_serial_msckf.dir/src/ros_serial_msckf.cpp.o</div><div class="line"> ...</div><div class="line"> </div><div class="line">     Functions that took longest to compile:</div><div class="line">  1639 ms: main (/src/open_vins/ov_eval/src/error_comparison.cpp)</div><div class="line">  1337 ms: ov_core::BsplineSE3::get_acceleration(double, Eigen::Matrix&lt;double, ... (/src/open_vins/ov_core/src/sim/BsplineSE3.cpp)</div><div class="line">  1156 ms: ov_eval::ResultSimulation::plot_state(bool, double) (/src/open_vins/ov_eval/src/calc/ResultSimulation.cpp)</div><div class="line">  ...</div><div class="line"></div><div class="line">     Expensive headers: </div><div class="line"> 27505 ms: /src/open_vins/ov_core/src/track/TrackBase.h (included 12 times, avg 2292 ms), included via:</div><div class="line">   TrackKLT.cpp.o TrackKLT.h  (4372 ms)</div><div class="line">   TrackBase.cpp.o  (4297 ms)</div><div class="line">   TrackSIM.cpp.o TrackSIM.h  (4252 ms)</div><div class="line">   ...</div></div><!-- fragment --><p>Some key methods to reduce compile times are as follows:</p><ul>
+<li>Only include headers that are required for your class</li>
+<li>Don't include headers in your header files <code>.h</code> that are only required in your <code>.cpp</code> source files.</li>
+<li>Consider <a href="https://www.wikiwand.com/en/Forward_declaration">forward declarations</a> of methods and types</li>
+<li>Ensure you are using an include guard in your headers </li>
+</ul>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

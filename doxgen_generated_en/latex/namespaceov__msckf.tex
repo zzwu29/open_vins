@@ -1,0 +1,71 @@
+\hypertarget{namespaceov__msckf}{}\section{ov\+\_\+msckf Namespace Reference}
+\label{namespaceov__msckf}\index{ov\+\_\+msckf@{ov\+\_\+msckf}}
+
+
+Extended Kalman Filter estimator.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager}
+\begin{DoxyCompactList}\small\item\em Struct of our imu noise parameters. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1Propagator}{Propagator}
+\begin{DoxyCompactList}\small\item\em Performs the state covariance and mean propagation using imu measurements. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1ROS1Visualizer}{R\+O\+S1\+Visualizer}
+\begin{DoxyCompactList}\small\item\em Helper class that will publish results onto the R\+OS framework. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1ROS2Visualizer}{R\+O\+S2\+Visualizer}
+\begin{DoxyCompactList}\small\item\em Helper class that will publish results onto the R\+OS framework. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1ROSVisualizerHelper}{R\+O\+S\+Visualizer\+Helper}
+\begin{DoxyCompactList}\small\item\em Helper class that handles some common versions into and out of R\+OS formats. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1Simulator}{Simulator}
+\begin{DoxyCompactList}\small\item\em Master simulator class that generated visual-\/inertial measurements. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1State}{State}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classov__msckf_1_1State}{State} of our filter. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1StateHelper}{State\+Helper}
+\begin{DoxyCompactList}\small\item\em Helper which manipulates the \hyperlink{classov__msckf_1_1State}{State} and its covariance. \end{DoxyCompactList}\item 
+struct \hyperlink{structov__msckf_1_1StateOptions}{State\+Options}
+\begin{DoxyCompactList}\small\item\em Struct which stores all our filter options. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1UpdaterHelper}{Updater\+Helper}
+\begin{DoxyCompactList}\small\item\em Class that has helper functions for our updaters. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1UpdaterMSCKF}{Updater\+M\+S\+C\+KF}
+\begin{DoxyCompactList}\small\item\em Will compute the system for our sparse features and update the filter. \end{DoxyCompactList}\item 
+struct \hyperlink{structov__msckf_1_1UpdaterOptions}{Updater\+Options}
+\begin{DoxyCompactList}\small\item\em Struct which stores general updater options. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1UpdaterSLAM}{Updater\+S\+L\+AM}
+\begin{DoxyCompactList}\small\item\em Will compute the system for our sparse S\+L\+AM features and update the filter. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1UpdaterZeroVelocity}{Updater\+Zero\+Velocity}
+\begin{DoxyCompactList}\small\item\em Will try to {\itshape detect} and then update using zero velocity assumption. \end{DoxyCompactList}\item 
+class \hyperlink{classov__msckf_1_1VioManager}{Vio\+Manager}
+\begin{DoxyCompactList}\small\item\em Core class that manages the entire system. \end{DoxyCompactList}\item 
+struct \hyperlink{structov__msckf_1_1VioManagerOptions}{Vio\+Manager\+Options}
+\begin{DoxyCompactList}\small\item\em Struct which stores all options needed for state estimation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Extended Kalman Filter estimator. 
+
+This is an implementation of a \href{https://ieeexplore.ieee.org/document/4209642}{\tt Multi-\/\+State Constraint Kalman Filter (M\+S\+C\+KF)} \cite{Mourikis2007ICRA} which leverages inertial and visual feature information. We want to stress that this is {\bfseries not} a \char`\"{}vanilla\char`\"{} implementation of the filter and instead has many more features and improvements over the original. In additional we have a modular type system which allows us to initialize and marginalizing variables out of state with ease. Please see the following documentation pages for derivation details\+:
+
+
+\begin{DoxyItemize}
+\item \hyperlink{propagation}{I\+MU Propagation Derivations} --- Inertial propagation derivations and details.
+\item \hyperlink{update}{Measurement Update Derivations} --- General state update for the different measurements.
+\item \hyperlink{fej}{First-\/\+Estimate Jacobian Estimators} --- Background on First-\/\+Estimate Jacobians and how we use them.
+\item \hyperlink{dev-index}{Covariance Index Internals} --- High level details on how the type system and covariance management works.
+\end{DoxyItemize}
+
+The key features of the system are the following\+:
+
+
+\begin{DoxyItemize}
+\item Sliding stochastic imu clones
+\item First estimate Jacobians
+\item Camera intrinsics and extrinsic online calibration
+\item Time offset between camera and imu calibration
+\item Standard M\+S\+C\+KF features with nullspace projection
+\item 3d S\+L\+AM feature support (with six different representations)
+\item Generic simulation of trajectories through and environment (see \hyperlink{classov__msckf_1_1Simulator}{ov\+\_\+msckf\+::\+Simulator})
+\end{DoxyItemize}
+
+We suggest those that are interested to first checkout the \hyperlink{classov__msckf_1_1State}{State} and \hyperlink{classov__msckf_1_1Propagator}{Propagator} which should provide a nice introduction to the code. Both the slam and msckf features leverage the same Jacobian code, and thus we also recommend looking at the \hyperlink{classov__msckf_1_1UpdaterHelper}{Updater\+Helper} class for details on that. 

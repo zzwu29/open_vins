@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_msckf::VioManagerOptions结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__msckf.html">ov_msckf</a></li><li class="navelem"><a class="el" href="structov__msckf_1_1VioManagerOptions.html">VioManagerOptions</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structov__msckf_1_1VioManagerOptions-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_msckf::VioManagerOptions结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Struct which stores all options needed for state estimation.  
+ <a href="structov__msckf_1_1VioManagerOptions.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="VioManagerOptions_8h_source.html">VioManagerOptions.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a47c23046d8d14887345655c41086a6be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a47c23046d8d14887345655c41086a6be">print_and_load</a> (const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;parser=nullptr)</td></tr>
+<tr class="memdesc:a47c23046d8d14887345655c41086a6be"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will load the non-simulation parameters of the system and print.  <a href="#a47c23046d8d14887345655c41086a6be">更多...</a><br /></td></tr>
+<tr class="separator:a47c23046d8d14887345655c41086a6be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2881476b186ab8998e3e53a1c786d064"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a2881476b186ab8998e3e53a1c786d064">print_and_load_estimator</a> (const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;parser=nullptr)</td></tr>
+<tr class="memdesc:a2881476b186ab8998e3e53a1c786d064"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will load print out all estimator settings loaded. This allows for visual checking that everything was loaded properly from ROS/CMD parsers.  <a href="#a2881476b186ab8998e3e53a1c786d064">更多...</a><br /></td></tr>
+<tr class="separator:a2881476b186ab8998e3e53a1c786d064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6747bbaa472ee1b1ecb790e480162c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a8b6747bbaa472ee1b1ecb790e480162c">print_and_load_noise</a> (const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;parser=nullptr)</td></tr>
+<tr class="memdesc:a8b6747bbaa472ee1b1ecb790e480162c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will load print out all noise parameters loaded. This allows for visual checking that everything was loaded properly from ROS/CMD parsers.  <a href="#a8b6747bbaa472ee1b1ecb790e480162c">更多...</a><br /></td></tr>
+<tr class="separator:a8b6747bbaa472ee1b1ecb790e480162c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f57d2065478652ae129ec538c1b98e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a36f57d2065478652ae129ec538c1b98e">print_and_load_state</a> (const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;parser=nullptr)</td></tr>
+<tr class="memdesc:a36f57d2065478652ae129ec538c1b98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will load and print all state parameters (e.g. sensor extrinsics) This allows for visual checking that everything was loaded properly from ROS/CMD parsers.  <a href="#a36f57d2065478652ae129ec538c1b98e">更多...</a><br /></td></tr>
+<tr class="separator:a36f57d2065478652ae129ec538c1b98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88ac10c8c334619721be00810e590f4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a88ac10c8c334619721be00810e590f4b">print_and_load_trackers</a> (const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;parser=nullptr)</td></tr>
+<tr class="memdesc:a88ac10c8c334619721be00810e590f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will load print out all parameters related to visual tracking This allows for visual checking that everything was loaded properly from ROS/CMD parsers.  <a href="#a88ac10c8c334619721be00810e590f4b">更多...</a><br /></td></tr>
+<tr class="separator:a88ac10c8c334619721be00810e590f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7ede3345d96f3c8c16bb5bbddcc08d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ac7ede3345d96f3c8c16bb5bbddcc08d0">print_and_load_simulation</a> (const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;parser=nullptr)</td></tr>
+<tr class="memdesc:ac7ede3345d96f3c8c16bb5bbddcc08d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will load print out all simulated parameters. This allows for visual checking that everything was loaded properly from ROS/CMD parsers.  <a href="#ac7ede3345d96f3c8c16bb5bbddcc08d0">更多...</a><br /></td></tr>
+<tr class="separator:ac7ede3345d96f3c8c16bb5bbddcc08d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a578756373f9bcd2eadae31c419fb8c43"><td class="memItemLeft" align="right" valign="top"><a id="a578756373f9bcd2eadae31c419fb8c43"></a>
+<a class="el" href="structov__msckf_1_1StateOptions.html">StateOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a578756373f9bcd2eadae31c419fb8c43">state_options</a></td></tr>
+<tr class="memdesc:a578756373f9bcd2eadae31c419fb8c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Core state options (e.g. number of cameras, use fej, stereo, what calibration to enable etc) <br /></td></tr>
+<tr class="separator:a578756373f9bcd2eadae31c419fb8c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab967a61ff3c317e7d1d30ab61c70cc"><td class="memItemLeft" align="right" valign="top"><a id="aeab967a61ff3c317e7d1d30ab61c70cc"></a>
+<a class="el" href="structov__init_1_1InertialInitializerOptions.html">ov_init::InertialInitializerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#aeab967a61ff3c317e7d1d30ab61c70cc">init_options</a></td></tr>
+<tr class="memdesc:aeab967a61ff3c317e7d1d30ab61c70cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our state initialization options (e.g. window size, num features, if we should get the calibration) <br /></td></tr>
+<tr class="separator:aeab967a61ff3c317e7d1d30ab61c70cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae921221a9db709f06fbd7379e3430bf8"><td class="memItemLeft" align="right" valign="top"><a id="ae921221a9db709f06fbd7379e3430bf8"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ae921221a9db709f06fbd7379e3430bf8">dt_slam_delay</a> = 2.0</td></tr>
+<tr class="memdesc:ae921221a9db709f06fbd7379e3430bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delay, in seconds, that we should wait from init before we start estimating SLAM features <br /></td></tr>
+<tr class="separator:ae921221a9db709f06fbd7379e3430bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92fe206a83fc4b6c79b88a19c7ff7f3a"><td class="memItemLeft" align="right" valign="top"><a id="a92fe206a83fc4b6c79b88a19c7ff7f3a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a92fe206a83fc4b6c79b88a19c7ff7f3a">try_zupt</a> = false</td></tr>
+<tr class="memdesc:a92fe206a83fc4b6c79b88a19c7ff7f3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should try to use zero velocity update <br /></td></tr>
+<tr class="separator:a92fe206a83fc4b6c79b88a19c7ff7f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a08e427b280edf0bb7a64ea71d1c80"><td class="memItemLeft" align="right" valign="top"><a id="ad1a08e427b280edf0bb7a64ea71d1c80"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ad1a08e427b280edf0bb7a64ea71d1c80">zupt_max_velocity</a> = 1.0</td></tr>
+<tr class="memdesc:ad1a08e427b280edf0bb7a64ea71d1c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max velocity we will consider to try to do a zupt (i.e. if above this, don't do zupt) <br /></td></tr>
+<tr class="separator:ad1a08e427b280edf0bb7a64ea71d1c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9396ee0ec6228d99d458e8a02f47cd"><td class="memItemLeft" align="right" valign="top"><a id="a9c9396ee0ec6228d99d458e8a02f47cd"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a9c9396ee0ec6228d99d458e8a02f47cd">zupt_noise_multiplier</a> = 1.0</td></tr>
+<tr class="memdesc:a9c9396ee0ec6228d99d458e8a02f47cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplier of our zupt measurement IMU noise matrix (default should be 1.0) <br /></td></tr>
+<tr class="separator:a9c9396ee0ec6228d99d458e8a02f47cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d6b97164305763b5f1c5e302fbeb02a"><td class="memItemLeft" align="right" valign="top"><a id="a0d6b97164305763b5f1c5e302fbeb02a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a0d6b97164305763b5f1c5e302fbeb02a">zupt_max_disparity</a> = 1.0</td></tr>
+<tr class="memdesc:a0d6b97164305763b5f1c5e302fbeb02a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max disparity we will consider to try to do a zupt (i.e. if above this, don't do zupt) <br /></td></tr>
+<tr class="separator:a0d6b97164305763b5f1c5e302fbeb02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b65d82ff8ef21e22774f070d9f42938"><td class="memItemLeft" align="right" valign="top"><a id="a0b65d82ff8ef21e22774f070d9f42938"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a0b65d82ff8ef21e22774f070d9f42938">zupt_only_at_beginning</a> = false</td></tr>
+<tr class="memdesc:a0b65d82ff8ef21e22774f070d9f42938"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should only use the zupt at the very beginning static initialization phase <br /></td></tr>
+<tr class="separator:a0b65d82ff8ef21e22774f070d9f42938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c76781e016ae09e49bd4d8e42006e6"><td class="memItemLeft" align="right" valign="top"><a id="af1c76781e016ae09e49bd4d8e42006e6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#af1c76781e016ae09e49bd4d8e42006e6">record_timing_information</a> = false</td></tr>
+<tr class="memdesc:af1c76781e016ae09e49bd4d8e42006e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should record the timing performance to file <br /></td></tr>
+<tr class="separator:af1c76781e016ae09e49bd4d8e42006e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd20d912a15dc8cbe4b71a5bb9daf89"><td class="memItemLeft" align="right" valign="top"><a id="a3cd20d912a15dc8cbe4b71a5bb9daf89"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a3cd20d912a15dc8cbe4b71a5bb9daf89">record_timing_filepath</a> = &quot;ov_msckf_timing.txt&quot;</td></tr>
+<tr class="memdesc:a3cd20d912a15dc8cbe4b71a5bb9daf89"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path to the file we will record the timing information into <br /></td></tr>
+<tr class="separator:a3cd20d912a15dc8cbe4b71a5bb9daf89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6a088515a0b5440e8ae7987ea70593"><td class="memItemLeft" align="right" valign="top"><a id="a5c6a088515a0b5440e8ae7987ea70593"></a>
+<a class="el" href="structov__msckf_1_1NoiseManager.html">NoiseManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a5c6a088515a0b5440e8ae7987ea70593">imu_noises</a></td></tr>
+<tr class="memdesc:a5c6a088515a0b5440e8ae7987ea70593"><td class="mdescLeft">&#160;</td><td class="mdescRight">IMU noise (gyroscope and accelerometer) <br /></td></tr>
+<tr class="separator:a5c6a088515a0b5440e8ae7987ea70593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e9f183d26954a03cd2da0511d96b0f3"><td class="memItemLeft" align="right" valign="top"><a id="a8e9f183d26954a03cd2da0511d96b0f3"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a8e9f183d26954a03cd2da0511d96b0f3">msckf_options</a></td></tr>
+<tr class="memdesc:a8e9f183d26954a03cd2da0511d96b0f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update options for MSCKF features (pixel noise and chi2 multiplier) <br /></td></tr>
+<tr class="separator:a8e9f183d26954a03cd2da0511d96b0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3972f04e248b39ee50d7a6ef5dfbc086"><td class="memItemLeft" align="right" valign="top"><a id="a3972f04e248b39ee50d7a6ef5dfbc086"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a3972f04e248b39ee50d7a6ef5dfbc086">slam_options</a></td></tr>
+<tr class="memdesc:a3972f04e248b39ee50d7a6ef5dfbc086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update options for SLAM features (pixel noise and chi2 multiplier) <br /></td></tr>
+<tr class="separator:a3972f04e248b39ee50d7a6ef5dfbc086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f72e601f8b772aeb3a59304fd615667"><td class="memItemLeft" align="right" valign="top"><a id="a7f72e601f8b772aeb3a59304fd615667"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a7f72e601f8b772aeb3a59304fd615667">aruco_options</a></td></tr>
+<tr class="memdesc:a7f72e601f8b772aeb3a59304fd615667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update options for ARUCO features (pixel noise and chi2 multiplier) <br /></td></tr>
+<tr class="separator:a7f72e601f8b772aeb3a59304fd615667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcc99cae0410b2627246080e9e03e3e"><td class="memItemLeft" align="right" valign="top"><a id="adbcc99cae0410b2627246080e9e03e3e"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#adbcc99cae0410b2627246080e9e03e3e">zupt_options</a></td></tr>
+<tr class="memdesc:adbcc99cae0410b2627246080e9e03e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update options for zero velocity (chi2 multiplier) <br /></td></tr>
+<tr class="separator:adbcc99cae0410b2627246080e9e03e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ab368f8b306660cc0fd59790851b3eb"><td class="memItemLeft" align="right" valign="top"><a id="a0ab368f8b306660cc0fd59790851b3eb"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a0ab368f8b306660cc0fd59790851b3eb">gravity_mag</a> = 9.81</td></tr>
+<tr class="memdesc:a0ab368f8b306660cc0fd59790851b3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravity magnitude in the global frame (i.e. should be 9.81 typically) <br /></td></tr>
+<tr class="separator:a0ab368f8b306660cc0fd59790851b3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bb45ab36e74b8e4d25f8e68bc2ffd7"><td class="memItemLeft" align="right" valign="top"><a id="a10bb45ab36e74b8e4d25f8e68bc2ffd7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a10bb45ab36e74b8e4d25f8e68bc2ffd7">calib_camimu_dt</a> = 0.0</td></tr>
+<tr class="memdesc:a10bb45ab36e74b8e4d25f8e68bc2ffd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time offset between camera and IMU. <br /></td></tr>
+<tr class="separator:a10bb45ab36e74b8e4d25f8e68bc2ffd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5855bbb2f0191344acd87e2dbd6d39b"><td class="memItemLeft" align="right" valign="top"><a id="ae5855bbb2f0191344acd87e2dbd6d39b"></a>
+std::unordered_map&lt; size_t, std::shared_ptr&lt; <a class="el" href="classov__core_1_1CamBase.html">ov_core::CamBase</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ae5855bbb2f0191344acd87e2dbd6d39b">camera_intrinsics</a></td></tr>
+<tr class="memdesc:ae5855bbb2f0191344acd87e2dbd6d39b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map between camid and camera intrinsics (fx, fy, cx, cy, d1...d4, cam_w, cam_h) <br /></td></tr>
+<tr class="separator:ae5855bbb2f0191344acd87e2dbd6d39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cecc1b5cf69b6835d9af0df4496401"><td class="memItemLeft" align="right" valign="top"><a id="ab5cecc1b5cf69b6835d9af0df4496401"></a>
+std::map&lt; size_t, Eigen::VectorXd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ab5cecc1b5cf69b6835d9af0df4496401">camera_extrinsics</a></td></tr>
+<tr class="memdesc:ab5cecc1b5cf69b6835d9af0df4496401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map between camid and camera extrinsics (q_ItoC, p_IinC). <br /></td></tr>
+<tr class="separator:ab5cecc1b5cf69b6835d9af0df4496401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b74f8ceb35bd36df62d0e2403adcd25"><td class="memItemLeft" align="right" valign="top"><a id="a3b74f8ceb35bd36df62d0e2403adcd25"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a3b74f8ceb35bd36df62d0e2403adcd25">use_mask</a> = false</td></tr>
+<tr class="memdesc:a3b74f8ceb35bd36df62d0e2403adcd25"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should try to load a mask and use it to reject invalid features <br /></td></tr>
+<tr class="separator:a3b74f8ceb35bd36df62d0e2403adcd25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b385302e72d09d7c5abccb48a83442"><td class="memItemLeft" align="right" valign="top"><a id="ae4b385302e72d09d7c5abccb48a83442"></a>
+std::map&lt; size_t, cv::Mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ae4b385302e72d09d7c5abccb48a83442">masks</a></td></tr>
+<tr class="memdesc:ae4b385302e72d09d7c5abccb48a83442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask images for each camera <br /></td></tr>
+<tr class="separator:ae4b385302e72d09d7c5abccb48a83442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01535da59b1d2d5e3309aaa34e69c8e"><td class="memItemLeft" align="right" valign="top"><a id="af01535da59b1d2d5e3309aaa34e69c8e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#af01535da59b1d2d5e3309aaa34e69c8e">use_stereo</a> = true</td></tr>
+<tr class="memdesc:af01535da59b1d2d5e3309aaa34e69c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should process two cameras are being stereo or binocular. If binocular, we do monocular feature tracking on each image. <br /></td></tr>
+<tr class="separator:af01535da59b1d2d5e3309aaa34e69c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1885c647c47cb5216fc4b868553ec0fa"><td class="memItemLeft" align="right" valign="top"><a id="a1885c647c47cb5216fc4b868553ec0fa"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a1885c647c47cb5216fc4b868553ec0fa">use_klt</a> = true</td></tr>
+<tr class="memdesc:a1885c647c47cb5216fc4b868553ec0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should use KLT tracking, or descriptor matcher <br /></td></tr>
+<tr class="separator:a1885c647c47cb5216fc4b868553ec0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731396cbfdf81f8519981d6e4b6374fd"><td class="memItemLeft" align="right" valign="top"><a id="a731396cbfdf81f8519981d6e4b6374fd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a731396cbfdf81f8519981d6e4b6374fd">use_aruco</a> = true</td></tr>
+<tr class="memdesc:a731396cbfdf81f8519981d6e4b6374fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">If should extract aruco tags and estimate them <br /></td></tr>
+<tr class="separator:a731396cbfdf81f8519981d6e4b6374fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa1f6f0e1422dc41ea98c80077580c60"><td class="memItemLeft" align="right" valign="top"><a id="afa1f6f0e1422dc41ea98c80077580c60"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#afa1f6f0e1422dc41ea98c80077580c60">downsize_aruco</a> = true</td></tr>
+<tr class="memdesc:afa1f6f0e1422dc41ea98c80077580c60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will half the resolution of the aruco tag image (will be faster) <br /></td></tr>
+<tr class="separator:afa1f6f0e1422dc41ea98c80077580c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af08feea8c9e944e727483f6ff3899e8e"><td class="memItemLeft" align="right" valign="top"><a id="af08feea8c9e944e727483f6ff3899e8e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#af08feea8c9e944e727483f6ff3899e8e">downsample_cameras</a> = false</td></tr>
+<tr class="memdesc:af08feea8c9e944e727483f6ff3899e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will half the resolution all tracking image (aruco will be 1/4 instead of halved if dowsize_aruoc also enabled) <br /></td></tr>
+<tr class="separator:af08feea8c9e944e727483f6ff3899e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac68cc4f6f0e072ba2a06ada8e68b22bc"><td class="memItemLeft" align="right" valign="top"><a id="ac68cc4f6f0e072ba2a06ada8e68b22bc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ac68cc4f6f0e072ba2a06ada8e68b22bc">num_opencv_threads</a> = 4</td></tr>
+<tr class="memdesc:ac68cc4f6f0e072ba2a06ada8e68b22bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Threads our front-end should try to use (opencv uses this also) <br /></td></tr>
+<tr class="separator:ac68cc4f6f0e072ba2a06ada8e68b22bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaadd730413dd254d8f53da5a7ba5f17"><td class="memItemLeft" align="right" valign="top"><a id="afaadd730413dd254d8f53da5a7ba5f17"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#afaadd730413dd254d8f53da5a7ba5f17">use_multi_threading_pubs</a> = true</td></tr>
+<tr class="memdesc:afaadd730413dd254d8f53da5a7ba5f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">If our ROS image publisher should be async (if sim this should be no!) <br /></td></tr>
+<tr class="separator:afaadd730413dd254d8f53da5a7ba5f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e5226f519e51f29210e3d29f757eba"><td class="memItemLeft" align="right" valign="top"><a id="a63e5226f519e51f29210e3d29f757eba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a63e5226f519e51f29210e3d29f757eba">use_multi_threading_subs</a> = false</td></tr>
+<tr class="memdesc:a63e5226f519e51f29210e3d29f757eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">If our ROS subscriber callbacks should be async (if sim and serial then this should be no!) <br /></td></tr>
+<tr class="separator:a63e5226f519e51f29210e3d29f757eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bde650ec917e7a3df221a1524e33429"><td class="memItemLeft" align="right" valign="top"><a id="a1bde650ec917e7a3df221a1524e33429"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a1bde650ec917e7a3df221a1524e33429">num_pts</a> = 150</td></tr>
+<tr class="memdesc:a1bde650ec917e7a3df221a1524e33429"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of points we should extract and track in <em>each</em> image frame. This highly effects the computation required for tracking. <br /></td></tr>
+<tr class="separator:a1bde650ec917e7a3df221a1524e33429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27d862f8f1811211f895b27a3b789e3a"><td class="memItemLeft" align="right" valign="top"><a id="a27d862f8f1811211f895b27a3b789e3a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a27d862f8f1811211f895b27a3b789e3a">fast_threshold</a> = 20</td></tr>
+<tr class="memdesc:a27d862f8f1811211f895b27a3b789e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fast extraction threshold <br /></td></tr>
+<tr class="separator:a27d862f8f1811211f895b27a3b789e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52b09d507ef33dabe72d65a223fe067"><td class="memItemLeft" align="right" valign="top"><a id="ab52b09d507ef33dabe72d65a223fe067"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ab52b09d507ef33dabe72d65a223fe067">grid_x</a> = 5</td></tr>
+<tr class="memdesc:ab52b09d507ef33dabe72d65a223fe067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of grids we should split column-wise to do feature extraction in <br /></td></tr>
+<tr class="separator:ab52b09d507ef33dabe72d65a223fe067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678920b0804fb40a14b22da61d49d631"><td class="memItemLeft" align="right" valign="top"><a id="a678920b0804fb40a14b22da61d49d631"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a678920b0804fb40a14b22da61d49d631">grid_y</a> = 5</td></tr>
+<tr class="memdesc:a678920b0804fb40a14b22da61d49d631"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of grids we should split row-wise to do feature extraction in <br /></td></tr>
+<tr class="separator:a678920b0804fb40a14b22da61d49d631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d1e76bc9e8ffdd1c669d99fdce76b7"><td class="memItemLeft" align="right" valign="top"><a id="a66d1e76bc9e8ffdd1c669d99fdce76b7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a66d1e76bc9e8ffdd1c669d99fdce76b7">min_px_dist</a> = 10</td></tr>
+<tr class="memdesc:a66d1e76bc9e8ffdd1c669d99fdce76b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will check after doing KLT track and remove any features closer than this <br /></td></tr>
+<tr class="separator:a66d1e76bc9e8ffdd1c669d99fdce76b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16dc81c1a909ece39ad6b8d46e01f17f"><td class="memItemLeft" align="right" valign="top"><a id="a16dc81c1a909ece39ad6b8d46e01f17f"></a>
+<a class="el" href="classov__core_1_1TrackBase.html#aa4b34a5dce99b59522d57bf9278c9a1a">ov_core::TrackBase::HistogramMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a16dc81c1a909ece39ad6b8d46e01f17f">histogram_method</a> = ov_core::TrackBase::HistogramMethod::HISTOGRAM</td></tr>
+<tr class="memdesc:a16dc81c1a909ece39ad6b8d46e01f17f"><td class="mdescLeft">&#160;</td><td class="mdescRight">What type of pre-processing histogram method should be applied to images <br /></td></tr>
+<tr class="separator:a16dc81c1a909ece39ad6b8d46e01f17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62800a75870b19213d1c44e69b2c32f7"><td class="memItemLeft" align="right" valign="top"><a id="a62800a75870b19213d1c44e69b2c32f7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a62800a75870b19213d1c44e69b2c32f7">knn_ratio</a> = 0.85</td></tr>
+<tr class="memdesc:a62800a75870b19213d1c44e69b2c32f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">KNN ration between top two descriptor matcher which is required to be a good match <br /></td></tr>
+<tr class="separator:a62800a75870b19213d1c44e69b2c32f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0911df8b2eb55f73191c9b0c815cb538"><td class="memItemLeft" align="right" valign="top"><a id="a0911df8b2eb55f73191c9b0c815cb538"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a0911df8b2eb55f73191c9b0c815cb538">track_frequency</a> = 20.0</td></tr>
+<tr class="memdesc:a0911df8b2eb55f73191c9b0c815cb538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frequency we want to track images at (higher freq ones will be dropped) <br /></td></tr>
+<tr class="separator:a0911df8b2eb55f73191c9b0c815cb538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ef0a31865f542c778762883c5d1bb11"><td class="memItemLeft" align="right" valign="top"><a id="a3ef0a31865f542c778762883c5d1bb11"></a>
+<a class="el" href="structov__core_1_1FeatureInitializerOptions.html">ov_core::FeatureInitializerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a3ef0a31865f542c778762883c5d1bb11">featinit_options</a></td></tr>
+<tr class="memdesc:a3ef0a31865f542c778762883c5d1bb11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters used by our feature initialize / triangulator <br /></td></tr>
+<tr class="separator:a3ef0a31865f542c778762883c5d1bb11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e82ff351254354378cd7568aaef6ed"><td class="memItemLeft" align="right" valign="top"><a id="a04e82ff351254354378cd7568aaef6ed"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a04e82ff351254354378cd7568aaef6ed">sim_seed_state_init</a> = 0</td></tr>
+<tr class="memdesc:a04e82ff351254354378cd7568aaef6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seed for initial states (i.e. random feature 3d positions in the generated map) <br /></td></tr>
+<tr class="separator:a04e82ff351254354378cd7568aaef6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2c433c61d25c18901b089a2215114c"><td class="memItemLeft" align="right" valign="top"><a id="afe2c433c61d25c18901b089a2215114c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#afe2c433c61d25c18901b089a2215114c">sim_seed_preturb</a> = 0</td></tr>
+<tr class="memdesc:afe2c433c61d25c18901b089a2215114c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seed for calibration perturbations. Change this to perturb by different random values if perturbations are enabled. <br /></td></tr>
+<tr class="separator:afe2c433c61d25c18901b089a2215114c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b3fee122a7d3b2069a424b5ef1b1155"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a9b3fee122a7d3b2069a424b5ef1b1155">sim_seed_measurements</a> = 0</td></tr>
+<tr class="separator:a9b3fee122a7d3b2069a424b5ef1b1155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d595d5277582b53d12ad75bc7a6ad57"><td class="memItemLeft" align="right" valign="top"><a id="a4d595d5277582b53d12ad75bc7a6ad57"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a4d595d5277582b53d12ad75bc7a6ad57">sim_do_perturbation</a> = false</td></tr>
+<tr class="memdesc:a4d595d5277582b53d12ad75bc7a6ad57"><td class="mdescLeft">&#160;</td><td class="mdescRight">If we should perturb the calibration that the estimator starts with <br /></td></tr>
+<tr class="separator:a4d595d5277582b53d12ad75bc7a6ad57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab948eee26f7031d626297b172c9d183d"><td class="memItemLeft" align="right" valign="top"><a id="ab948eee26f7031d626297b172c9d183d"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ab948eee26f7031d626297b172c9d183d">sim_traj_path</a> = &quot;src/open_vins/ov_data/sim/udel_gore.txt&quot;</td></tr>
+<tr class="memdesc:ab948eee26f7031d626297b172c9d183d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the trajectory we will b-spline and simulate on. Should be time(s),pos(xyz),ori(xyzw) format. <br /></td></tr>
+<tr class="separator:ab948eee26f7031d626297b172c9d183d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6af0048e6bb9b903088f30f9be7221"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a3b6af0048e6bb9b903088f30f9be7221">sim_distance_threshold</a> = 1.2</td></tr>
+<tr class="separator:a3b6af0048e6bb9b903088f30f9be7221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a093cc163f266b0c013d7eda528bb1e80"><td class="memItemLeft" align="right" valign="top"><a id="a093cc163f266b0c013d7eda528bb1e80"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a093cc163f266b0c013d7eda528bb1e80">sim_freq_cam</a> = 10.0</td></tr>
+<tr class="memdesc:a093cc163f266b0c013d7eda528bb1e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frequency (Hz) that we will simulate our cameras <br /></td></tr>
+<tr class="separator:a093cc163f266b0c013d7eda528bb1e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf63d79014853441849b5e6a2813020f"><td class="memItemLeft" align="right" valign="top"><a id="aaf63d79014853441849b5e6a2813020f"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#aaf63d79014853441849b5e6a2813020f">sim_freq_imu</a> = 400.0</td></tr>
+<tr class="memdesc:aaf63d79014853441849b5e6a2813020f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frequency (Hz) that we will simulate our inertial measurement unit <br /></td></tr>
+<tr class="separator:aaf63d79014853441849b5e6a2813020f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae229dda22c11905a023f944f2b25842a"><td class="memItemLeft" align="right" valign="top"><a id="ae229dda22c11905a023f944f2b25842a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#ae229dda22c11905a023f944f2b25842a">sim_min_feature_gen_distance</a> = 5</td></tr>
+<tr class="memdesc:ae229dda22c11905a023f944f2b25842a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature distance we generate features from (minimum) <br /></td></tr>
+<tr class="separator:ae229dda22c11905a023f944f2b25842a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2663dc7c331d58f45e1ce701211f68dc"><td class="memItemLeft" align="right" valign="top"><a id="a2663dc7c331d58f45e1ce701211f68dc"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__msckf_1_1VioManagerOptions.html#a2663dc7c331d58f45e1ce701211f68dc">sim_max_feature_gen_distance</a> = 10</td></tr>
+<tr class="memdesc:a2663dc7c331d58f45e1ce701211f68dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature distance we generate features from (maximum) <br /></td></tr>
+<tr class="separator:a2663dc7c331d58f45e1ce701211f68dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Struct which stores all options needed for state estimation. </p>
+<p>This is broken into a few different parts: estimator, trackers, and simulation. If you are going to add a parameter here you will need to add it to the parsers. You will also need to add it to the print statement at the bottom of each. </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a47c23046d8d14887345655c41086a6be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47c23046d8d14887345655c41086a6be">&#9670;&nbsp;</a></span>print_and_load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::VioManagerOptions::print_and_load </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parser</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function will load the non-simulation parameters of the system and print. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td>If not null, this parser will be used to load our parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2881476b186ab8998e3e53a1c786d064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2881476b186ab8998e3e53a1c786d064">&#9670;&nbsp;</a></span>print_and_load_estimator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::VioManagerOptions::print_and_load_estimator </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parser</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function will load print out all estimator settings loaded. This allows for visual checking that everything was loaded properly from ROS/CMD parsers. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td>If not null, this parser will be used to load our parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b6747bbaa472ee1b1ecb790e480162c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b6747bbaa472ee1b1ecb790e480162c">&#9670;&nbsp;</a></span>print_and_load_noise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::VioManagerOptions::print_and_load_noise </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parser</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function will load print out all noise parameters loaded. This allows for visual checking that everything was loaded properly from ROS/CMD parsers. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td>If not null, this parser will be used to load our parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac7ede3345d96f3c8c16bb5bbddcc08d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7ede3345d96f3c8c16bb5bbddcc08d0">&#9670;&nbsp;</a></span>print_and_load_simulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::VioManagerOptions::print_and_load_simulation </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parser</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function will load print out all simulated parameters. This allows for visual checking that everything was loaded properly from ROS/CMD parsers. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td>If not null, this parser will be used to load our parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a36f57d2065478652ae129ec538c1b98e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f57d2065478652ae129ec538c1b98e">&#9670;&nbsp;</a></span>print_and_load_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::VioManagerOptions::print_and_load_state </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parser</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function will load and print all state parameters (e.g. sensor extrinsics) This allows for visual checking that everything was loaded properly from ROS/CMD parsers. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td>If not null, this parser will be used to load our parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a88ac10c8c334619721be00810e590f4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88ac10c8c334619721be00810e590f4b">&#9670;&nbsp;</a></span>print_and_load_trackers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::VioManagerOptions::print_and_load_trackers </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classov__core_1_1YamlParser.html">ov_core::YamlParser</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>parser</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function will load print out all parameters related to visual tracking This allows for visual checking that everything was loaded properly from ROS/CMD parsers. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parser</td><td>If not null, this parser will be used to load our parameters </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a3b6af0048e6bb9b903088f30f9be7221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6af0048e6bb9b903088f30f9be7221">&#9670;&nbsp;</a></span>sim_distance_threshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ov_msckf::VioManagerOptions::sim_distance_threshold = 1.2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>We will start simulating after we have moved this much along the b-spline. This prevents static starts as we init from groundtruth in simulation. </p>
+
+</div>
+</div>
+<a id="a9b3fee122a7d3b2069a424b5ef1b1155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b3fee122a7d3b2069a424b5ef1b1155">&#9670;&nbsp;</a></span>sim_seed_measurements</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ov_msckf::VioManagerOptions::sim_seed_measurements = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Measurement noise seed. This should be incremented for each run in the Monte-Carlo simulation to generate the same true measurements, but diffferent noise values. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

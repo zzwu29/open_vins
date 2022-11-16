@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core/src/cpi/CpiV2.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f846aec873b969403c43c9b6accb9e26.html">ov_core</a></li><li class="navelem"><a class="el" href="dir_73fb0fc6664f16923a3e82fd05d842f5.html">src</a></li><li class="navelem"><a class="el" href="dir_3789c69fa48254e18dc13732e40a1286.html">cpi</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">CpiV2.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CPI_V2_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CPI_V2_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/*</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * MIT License</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Copyright (c) 2018 Kevin Eckenhoff</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Copyright (c) 2018 Patrick Geneva</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * Copyright (c) 2018 Guoquan Huang</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * Permission is hereby granted, free of charge, to any person obtaining a copy</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * of this software and associated documentation files (the &quot;Software&quot;), to deal</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * in the Software without restriction, including without limitation the rights</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * copies of the Software, and to permit persons to whom the Software is</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * furnished to do so, subject to the following conditions:</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * The above copyright notice and this permission notice shall be included in all</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * copies or substantial portions of the Software.</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * SOFTWARE.</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;CpiBase.h&quot;</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;Eigen/Dense&gt;</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceov__core.html">ov_core</a> {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classov__core_1_1CpiV2.html">   49</a></span>&#160;<span class="keyword">class </span><a class="code" href="classov__core_1_1CpiV2.html">CpiV2</a> : <span class="keyword">public</span> <a class="code" href="classov__core_1_1CpiBase.html">CpiBase</a> {</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Extended covariance used to handle the sampling model</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Eigen::Matrix&lt;double, 21, 21&gt; P_big = Eigen::Matrix&lt;double, 21, 21&gt;::Zero();</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// Our large compounded state transition Jacobian matrix</span></div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  Eigen::Matrix&lt;double, 21, 21&gt; Discrete_J_b = Eigen::Matrix&lt;double, 21, 21&gt;::Identity();</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classov__core_1_1CpiV2.html#ab024c0b2d090de85e40c6c80d6bb04c3">   65</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classov__core_1_1CpiV2.html#ab024c0b2d090de85e40c6c80d6bb04c3">state_transition_jacobians</a> = <span class="keyword">true</span>;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// Alpha and beta Jacobians wrt linearization orientation</span></div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Eigen::Matrix&lt;double, 3, 3&gt; O_a = Eigen::Matrix&lt;double, 3, 3&gt;::Zero();</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  Eigen::Matrix&lt;double, 3, 3&gt; O_b = Eigen::Matrix&lt;double, 3, 3&gt;::Zero();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classov__core_1_1CpiV2.html#acc303eae31571a4a132cb8a161b6658b">   79</a></span>&#160;  <a class="code" href="classov__core_1_1CpiV2.html#acc303eae31571a4a132cb8a161b6658b">CpiV2</a>(<span class="keywordtype">double</span> sigma_w, <span class="keywordtype">double</span> sigma_wb, <span class="keywordtype">double</span> sigma_a, <span class="keywordtype">double</span> sigma_ab, <span class="keywordtype">bool</span> imu_avg_ = <span class="keyword">false</span>)</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      : <a class="code" href="classov__core_1_1CpiBase.html">CpiBase</a>(sigma_w, sigma_wb, sigma_a, sigma_ab, imu_avg_) {}</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="classov__core_1_1CpiV2.html">CpiV2</a>() {}</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classov__core_1_1CpiV2.html#a2e526d34b80061293a922fefa3a858a1">feed_IMU</a>(<span class="keywordtype">double</span> t_0, <span class="keywordtype">double</span> t_1, Eigen::Matrix&lt;double, 3, 1&gt; w_m_0, Eigen::Matrix&lt;double, 3, 1&gt; a_m_0,</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                Eigen::Matrix&lt;double, 3, 1&gt; w_m_1 = Eigen::Matrix&lt;double, 3, 1&gt;::Zero(),</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                Eigen::Matrix&lt;double, 3, 1&gt; a_m_1 = Eigen::Matrix&lt;double, 3, 1&gt;::Zero());</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;} <span class="comment">// namespace ov_core</span></div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CPI_V2_H */</span><span class="preprocessor"></span></div><div class="ttc" id="classov__core_1_1CpiV2_html_acc303eae31571a4a132cb8a161b6658b"><div class="ttname"><a href="classov__core_1_1CpiV2.html#acc303eae31571a4a132cb8a161b6658b">ov_core::CpiV2::CpiV2</a></div><div class="ttdeci">CpiV2(double sigma_w, double sigma_wb, double sigma_a, double sigma_ab, bool imu_avg_=false)</div><div class="ttdoc">Default constructor for our Model 2 preintegration (piecewise constant local acceleration assumption)...</div><div class="ttdef"><b>Definition:</b> CpiV2.h:79</div></div>
+<div class="ttc" id="classov__core_1_1CpiV2_html"><div class="ttname"><a href="classov__core_1_1CpiV2.html">ov_core::CpiV2</a></div><div class="ttdoc">Model 2 of continuous preintegration. </div><div class="ttdef"><b>Definition:</b> CpiV2.h:49</div></div>
+<div class="ttc" id="namespaceov__core_html"><div class="ttname"><a href="namespaceov__core.html">ov_core</a></div><div class="ttdoc">Core algorithms for OpenVINS </div><div class="ttdef"><b>Definition:</b> CamBase.h:30</div></div>
+<div class="ttc" id="classov__core_1_1CpiBase_html"><div class="ttname"><a href="classov__core_1_1CpiBase.html">ov_core::CpiBase</a></div><div class="ttdoc">Base class for continuous preintegration integrators. </div><div class="ttdef"><b>Definition:</b> CpiBase.h:49</div></div>
+<div class="ttc" id="classov__core_1_1CpiV2_html_a2e526d34b80061293a922fefa3a858a1"><div class="ttname"><a href="classov__core_1_1CpiV2.html#a2e526d34b80061293a922fefa3a858a1">ov_core::CpiV2::feed_IMU</a></div><div class="ttdeci">void feed_IMU(double t_0, double t_1, Eigen::Matrix&lt; double, 3, 1 &gt; w_m_0, Eigen::Matrix&lt; double, 3, 1 &gt; a_m_0, Eigen::Matrix&lt; double, 3, 1 &gt; w_m_1=Eigen::Matrix&lt; double, 3, 1 &gt;::Zero(), Eigen::Matrix&lt; double, 3, 1 &gt; a_m_1=Eigen::Matrix&lt; double, 3, 1 &gt;::Zero())</div><div class="ttdoc">Our precompound function for Model 2 </div><div class="ttdef"><b>Definition:</b> CpiV2.cpp:33</div></div>
+<div class="ttc" id="classov__core_1_1CpiV2_html_ab024c0b2d090de85e40c6c80d6bb04c3"><div class="ttname"><a href="classov__core_1_1CpiV2.html#ab024c0b2d090de85e40c6c80d6bb04c3">ov_core::CpiV2::state_transition_jacobians</a></div><div class="ttdeci">bool state_transition_jacobians</div><div class="ttdoc">If we want to use analytical jacobians or not. In the paper we just numerically integrated the jacobi...</div><div class="ttdef"><b>Definition:</b> CpiV2.h:65</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

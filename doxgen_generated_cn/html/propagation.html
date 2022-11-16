@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: IMU Propagation Derivations</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">IMU Propagation Derivations </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>目录</h3>
+<ul><li class="level1"><a href="#imu_measurements">IMU Measurements</a></li>
+<li class="level1"><a href="#ins_state">State Vector</a></li>
+<li class="level1"><a href="#imu_kinematic">IMU Kinematics</a></li>
+<li class="level1"><a href="#conti_prop">Continuous-time IMU Propagation</a></li>
+<li class="level1"><a href="#disc_prop">Discrete-time IMU Propagation</a></li>
+<li class="level1"><a href="#error_prop">Discrete-time Error-state Propagation</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="imu_measurements"></a>
+IMU Measurements</h1>
+<p>We use a 6-axis inertial measurement unit (IMU) to propagate the inertial navigation system (INS), which provides measurements of the local rotational velocity (angular rate) <img class="formulaInl" alt="$\boldsymbol{\omega}_m$" src="form_46.png"/> and local translational acceleration <img class="formulaInl" alt="$\mathbf{a}_m$" src="form_47.png"/>:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \boldsymbol{\omega}_m(t) &amp;= \boldsymbol{\omega}(t) + \mathbf{b}_{g}(t) + \mathbf{n}_{{g}}(t)\\ \mathbf{a}_m(t) &amp;= \mathbf{a}(t) + {}^I_G\mathbf{R}(t) {^G\mathbf{g}} + \mathbf{b}_{a}(t) + \mathbf{n}_{{a}}(t) \end{align*}" src="form_48.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$\boldsymbol{\omega}$" src="form_49.png"/> and <img class="formulaInl" alt="$\mathbf{a}$" src="form_50.png"/> are the true rotational velocity and translational acceleration in the IMU local frame <img class="formulaInl" alt="$\{I\}$" src="form_51.png"/>, <img class="formulaInl" alt="$\mathbf{b}_{g}$" src="form_52.png"/> and <img class="formulaInl" alt="$\mathbf{b}_{a}$" src="form_53.png"/> are the gyroscope and accelerometer biases, and <img class="formulaInl" alt="$\mathbf{n}_{{g}}$" src="form_54.png"/> <img class="formulaInl" alt="$\mathbf{n}_{{a}}$" src="form_55.png"/> are white Gaussian noise, <img class="formulaInl" alt="${^G\mathbf{g}} = [ 0 ~~ 0 ~~ 9.81 ]^\top$" src="form_56.png"/> is the gravity expressed in the global frame <img class="formulaInl" alt="$\{G\}$" src="form_57.png"/> (noting that the gravity is slightly different on different locations of the globe), and <img class="formulaInl" alt="$^I_G\mathbf{R}$" src="form_58.png"/> is the rotation matrix from global to IMU local frame.</p>
+<h1><a class="anchor" id="ins_state"></a>
+State Vector</h1>
+<p>We define our INS state vector <img class="formulaInl" alt="$\mathbf{x}_I$" src="form_59.png"/> at time <img class="formulaInl" alt="$t$" src="form_60.png"/> as:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{x}_I(t) = \begin{bmatrix} ^I_G\bar{q}(t) \\ ^G\mathbf{p}_I(t) \\ ^G\mathbf{v}_I(t)\\ \mathbf{b}_{\mathbf{g}}(t) \\ \mathbf{b}_{\mathbf{a}}(t) \end{bmatrix} \end{align*}" src="form_61.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$^I_G\bar{q}$" src="form_62.png"/> is the unit quaternion representing the rotation global to IMU frame, <img class="formulaInl" alt="$^G\mathbf{p}_I$" src="form_63.png"/> is the position of IMU in global frame, and <img class="formulaInl" alt="$^G\mathbf{v}_I$" src="form_64.png"/> is the velocity of IMU in global frame. We will often write time as a subscript of <img class="formulaInl" alt="$I$" src="form_65.png"/> describing the state of IMU at the time for notation clarity (e.g., <img class="formulaInl" alt="$^{I_t}_G\bar{q} = \text{}^I_G\bar{q}(t)$" src="form_66.png"/>). In order to define the IMU error state, the standard additive error definition is employed for the position, velocity, and biases, while we use the quaternion error state <img class="formulaInl" alt="$\delta \bar{q}$" src="form_67.png"/> with a left quaternion multiplicative error <img class="formulaInl" alt="$\otimes$" src="form_68.png"/>:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} ^I_G\bar{q} &amp;= \delta \bar{q} \otimes \text{}^I_G \hat{\bar{q}}\\ \delta \bar{q} &amp;= \begin{bmatrix} \hat{\mathbf{k}}\sin(\frac{1}{2}\tilde{\theta})\\ \cos(\frac{1}{2}\tilde{\theta}) \end{bmatrix} \simeq \begin{bmatrix} \frac{1}{2}\tilde{\boldsymbol{\theta}}\\ 1 \end{bmatrix} \end{align*}" src="form_69.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$\hat{\mathbf{k}}$" src="form_70.png"/> is the rotation axis and <img class="formulaInl" alt="$\tilde{\theta}$" src="form_71.png"/> is the rotation angle. For small rotation, the error angle vector is approximated by <img class="formulaInl" alt="$\tilde{\boldsymbol{\theta}} = \tilde{\theta}~\hat{\mathbf{k}}$" src="form_72.png"/> as the error vector about the three orientation axes. The total IMU error state thus is defined as the following 15x1 (not 16x1) vector:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \tilde{\mathbf{x}}_I(t) = \begin{bmatrix} ^I_G\tilde{\boldsymbol{\theta}}(t) \\ ^G\tilde{\mathbf{p}}_I(t) \\ ^G\tilde{\mathbf{v}}_I(t)\\ \tilde{\mathbf{b}}_{{g}}(t) \\ \tilde{\mathbf{b}}_{{a}}(t) \end{bmatrix} \end{align*}" src="form_73.png"/>
+</p>
+<h1><a class="anchor" id="imu_kinematic"></a>
+IMU Kinematics</h1>
+<p>The IMU state evolves over time as follows (see <a href="http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf">Indirect Kalman Filter for 3D Attitude Estimation</a> <a class="el" href="citelist.html#CITEREF_Trawny2005TR">[22]</a>).</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \newcommand{\comm}[1]{} ^I_G\dot{\bar{q}}(t) \comm{ &amp;= \lim_{\delta t \to 0} \frac{1}{\delta t} (^{I_{t + \delta t}}_G\bar{q} - \text{}^{I_{t}}_G\bar{q})\\ &amp;= \lim_{\delta t \to 0} \frac{1}{\delta t} (^{I_{t + \delta t}}_{L_{t}}\bar{q} \otimes ^{I_{t}}_{G}\bar{q} - \bar{q}_0 \otimes \text{}^{I_{t}}_G\bar{q})\\ &amp;= \lim_{\delta t \to 0} \frac{1}{\delta t} (^{I_{t + \delta t}}_{L_{t}}\bar{q} - \bar{q}_0 ) \otimes \text{}^{I_{t}}_{G}\bar{q}\\ &amp;\approx \lim_{\delta t \to 0} \frac{1}{\delta t} \Bigg (\begin{bmatrix} \frac{1}{2}\delta \boldsymbol{\theta}\\ 1 \end{bmatrix} -\begin{bmatrix} \boldsymbol{0}\\ 1 \end{bmatrix} \Bigg ) \otimes \text{}^{I_{t}}_{G}\bar{q} \\ &amp;= \frac{1}{2} \begin{bmatrix} \boldsymbol{\omega}\\ 0 \end{bmatrix} \otimes \text{}^{I_{t}}_{G}\bar{q}\\} &amp;= \frac{1}{2} \begin{bmatrix} -\lfloor \boldsymbol{\omega}(t) \times \rfloor &amp;&amp; \boldsymbol{\omega}(t) \\ -\boldsymbol{\omega}^\top(t) &amp;&amp; 0 \end{bmatrix} \text{}^{I_{t}}_{G}\bar{q}\\ &amp;=: \frac{1}{2} \boldsymbol{\Omega}(\boldsymbol{\omega}(t)) \text{}^{I_{t}}_{G}\bar{q}\\ ^G\dot{\mathbf{p}}_I(t) &amp;=\text{} ^G\mathbf{v}_I(t)\\ ^G\dot{\mathbf{v}}_I(t) &amp;=\text{} ^{I_{t}}_G\mathbf{R}^\top\mathbf{a}(t) \\ \dot{\mathbf{b}}_{\mathbf{g}}(t) &amp;= \mathbf{n}_{wg}\\ \dot{\mathbf{b}}_{\mathbf{a}}(t) &amp;= \mathbf{n}_{wa} \end{align*}" src="form_74.png"/>
+</p>
+<p>where we have modeled the gyroscope and accelerometer biases as random walk and thus their time derivatives are white Gaussian. Note that the above kinematics have been defined in terms of the <em>true</em> acceleration and angular velocities.</p>
+<h1><a class="anchor" id="conti_prop"></a>
+Continuous-time IMU Propagation</h1>
+<p>Given the continuous-time measurements <img class="formulaInl" alt="$\boldsymbol{\omega}_m(t)$" src="form_75.png"/> and <img class="formulaInl" alt="$\mathbf{a}_m(t)$" src="form_76.png"/> in the time interval <img class="formulaInl" alt="$t \in [t_k,t_{k+1}]$" src="form_77.png"/>, and their estimates, i.e. after taking the expectation, <img class="formulaInl" alt="$\hat{\boldsymbol{\omega}}(t) = \boldsymbol{\omega}_m(t) - \hat{\boldsymbol{b}}_g(t)$" src="form_78.png"/> and <img class="formulaInl" alt="$\hat{\boldsymbol{a}}(t) = \boldsymbol{a}_m(t) - \hat{\boldsymbol{b}}_a(t) - ^I_G\hat{\mathbf{R}}(t){}^G\mathbf{g}$" src="form_79.png"/>, we can define the solutions to the above IMU kinematics differential equation. The solution to the quaternion evolution has the following general form:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} ^{I_{t}}_{G}\bar{q} = \boldsymbol{\Theta}(t,t_k) \text{}^{I_{k}}_{G}\bar{q} \end{align*}" src="form_80.png"/>
+</p>
+<p>Differentiating and reordering the terms yields the governing equation for <img class="formulaInl" alt="$\boldsymbol{\Theta}(t,t_k)$" src="form_81.png"/> as</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \newcommand{\comm}[1]{} \boldsymbol{\Theta}(t,t_k) &amp;= \text{}^{I_t}_G\bar{q} \text{ }^{I_k}_{G}\bar{q}^{-1}\\ \Rightarrow \dot{\boldsymbol{\Theta}}(t,t_k) &amp;= \text{}^{I_t}_G\dot{\bar{q}} \text{ }^{I_k}_{G}\bar{q}^{-1}\\ &amp;= \frac{1}{2} \boldsymbol{\Omega}(\boldsymbol{\omega}(t)) \text{ }^{I_t}_{G}\bar{q} \text{ }^{I_k}_{G}\bar{q}^{-1}\\ &amp;= \frac{1}{2} \boldsymbol{\Omega}(\boldsymbol{\omega}(t)) \boldsymbol{\Theta}(t,t_k) \end{align*}" src="form_82.png"/>
+</p>
+<p> with <img class="formulaInl" alt="$\boldsymbol{\Theta}(t_k,t_k) = \mathbf{I}_{4}$" src="form_83.png"/>. If we take <img class="formulaInl" alt="$\boldsymbol{\omega}(t) = \boldsymbol{\omega}$" src="form_84.png"/> to be constant over the the period <img class="formulaInl" alt="$\Delta t = t_{k+1} - t_k$" src="form_85.png"/>, then the above system is linear time-invarying (LTI), and <img class="formulaInl" alt="$\boldsymbol{\Theta}$" src="form_86.png"/> can be solved as (see <a href="https://books.google.com/books?id=L_YVMUJKNQUC">[Stochastic Models, Estimation, and Control]</a> <a class="el" href="citelist.html#CITEREF_Maybeck1982STOC">[15]</a>):</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \boldsymbol{\Theta}(t_{k+1},t_k) &amp;= \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}(\boldsymbol{\omega})\Delta t\bigg)\\ &amp;= \cos\bigg(\frac{|\boldsymbol{\omega}|}{2} \Delta t \bigg) \cdot \mathbf{I}_4 + \frac{1}{|\boldsymbol{\omega}|}\sin\bigg(\frac{|\boldsymbol{\omega}|}{2} \Delta t \bigg) \cdot \boldsymbol{\Omega}(\boldsymbol{\omega})\\ &amp;\simeq \mathbf{I}_4 + \frac{\Delta t}{2}\boldsymbol{\Omega}(\boldsymbol{\omega}) \end{align*}" src="form_87.png"/>
+</p>
+<p>where the approximation assumes small <img class="formulaInl" alt="$|\boldsymbol{\omega}|$" src="form_88.png"/>. We can formulate the quaternion propagation from <img class="formulaInl" alt="$t_k$" src="form_89.png"/> to <img class="formulaInl" alt="$t_{k+1}$" src="form_90.png"/> using the estimated rotational velocity <img class="formulaInl" alt="$\hat{\boldsymbol{\omega}}(t) = \hat{\boldsymbol{\omega}}$" src="form_91.png"/> as:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \text{}^{I_{k+1}}_{G}\hat{\bar{q}} = \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}(\hat{\boldsymbol{\omega}})\Delta t\bigg) \text{}^{I_{k}}_{G}\hat{\bar{q}} \end{align*}" src="form_92.png"/>
+</p>
+<p>Having defined the integration of the orientation, we can integrate the velocity and position over the measurement interval:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} ^G\hat{\mathbf{v}}_{k+1} &amp;= \text{}^G\hat{\mathbf{v}}_{I_k} + \int_{t_{k}}^{t_{k+1}} {^G\hat{\mathbf{a}}(\tau)} d\tau \\ &amp;= \text{}^G\hat{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t+ \int_{t_{k}}^{t_{k+1}} {^G_{I_{\tau}}\hat{\mathbf{R}}(\mathbf{a}_m(\tau) - \hat{\mathbf{b}}_{\mathbf{a}}(\tau)) d\tau}\\[1em] ^G\hat{\mathbf{p}}_{I_{k+1}} &amp;= \text{}^G\hat{\mathbf{p}}_{I_k} + \int_{t_{k}}^{t_{k+1}} {^G\hat{\mathbf{v}}_I(\tau)} d\tau \\ &amp;= \text{}^G\hat{\mathbf{p}}_{I_k} + \text{}^G\hat{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \int_{t_{k}}^{t_{k+1}} \int_{t_{k}}^{s} {^G_{I_{\tau}}\hat{\mathbf{R}}(\mathbf{a}_m(\tau) - \hat{\mathbf{b}}_{\mathbf{a}}(\tau)) d\tau ds} \end{align*}" src="form_93.png"/>
+</p>
+<p>Propagation of each bias <img class="formulaInl" alt="$\hat{\mathbf{b}}_{\mathbf{g}}$" src="form_94.png"/> and <img class="formulaInl" alt="$\hat{\mathbf{b}}_{\mathbf{a}}$" src="form_95.png"/> is given by:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \hat{\mathbf{b}}_{\mathbf{g},k+1} &amp;= \hat{\mathbf{b}}_{\mathbf{g},k} + \int_{t_{k+1}}^{t_{k}} {\hat{\mathbf{n}}_{wg}(\tau)} d\tau \\ &amp;= \hat{\mathbf{b}}_{\mathbf{g},k} \\ \hat{\mathbf{b}}_{\mathbf{a},k+1} &amp;= \hat{\mathbf{b}}_{\mathbf{a},k} + \int_{t_{k+1}}^{t_{k}} {\hat{\mathbf{n}}_{wa}(\tau)} d\tau \\ &amp;= \hat{\mathbf{b}}_{\mathbf{a},k} \end{align*}" src="form_96.png"/>
+</p>
+<p>The biases will not evolve since our random walk noises <img class="formulaInl" alt="$\hat{\mathbf{n}}_{wg}$" src="form_97.png"/> and <img class="formulaInl" alt="$\hat{\mathbf{n}}_{wa}$" src="form_98.png"/> are zero-mean white Gaussian. All of the above integrals could be analytically or numerically solved if one wishes to use the continuous-time measurement evolution model.</p>
+<h1><a class="anchor" id="disc_prop"></a>
+Discrete-time IMU Propagation</h1>
+<p>A simpler method is to model the measurements as discrete-time over the integration period. To do this, the measurements can be assumed to be constant during the sampling period. We employ this assumption and approximate that the measurement at time <img class="formulaInl" alt="$t_k$" src="form_89.png"/> remains the same until we get the next measurement at <img class="formulaInl" alt="$t_{k+1}$" src="form_90.png"/>. For the quaternion propagation, it is the same as continuous-time propagation with constant measurement assumption <img class="formulaInl" alt="${\boldsymbol{\omega}}_{m}(t_k) = {\boldsymbol{\omega}}_{m,k}$" src="form_99.png"/>. We use subscript <img class="formulaInl" alt="$k$" src="form_9.png"/> to denote it is the measurement we get at time <img class="formulaInl" alt="$t_k$" src="form_89.png"/>. Therefore the propagation of quaternion can be written as:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \text{}^{I_{k+1}}_{G}\hat{\bar{q}} = \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}\big({\boldsymbol{\omega}}_{m,k}-\hat{\mathbf{b}}_{g,k}\big)\Delta t\bigg) \text{}^{I_{k}}_{G}\hat{\bar{q}} \end{align*}" src="form_100.png"/>
+</p>
+<p>For the velocity and position propagation we have constant <img class="formulaInl" alt="$\mathbf{a}_{m}(t_k) = \mathbf{a}_{m,k}$" src="form_101.png"/> over <img class="formulaInl" alt="$t \in [t_k, t_{k+1}]$" src="form_102.png"/>. We can therefore directly solve for the new states as:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} ^G\hat{\mathbf{v}}_{k+1} &amp;= \text{}^G\hat{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t +\text{}^{I_k}_G\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t\\ ^G\hat{\mathbf{p}}_{I_{k+1}} &amp;= \text{}^G\hat{\mathbf{p}}_{I_k} + {}^G\hat{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t^2 \end{align*}" src="form_103.png"/>
+</p>
+<p>The propagation of each bias is likewise the continuous system:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \hat{\mathbf{b}}_{\mathbf{g},k+1} &amp;= \hat{\mathbf{b}}_{\mathbf{g},k}\\ \hat{\mathbf{b}}_{\mathbf{a},k+1} &amp;= \hat{\mathbf{b}}_{\mathbf{a},k} \end{align*}" src="form_104.png"/>
+</p>
+<h1><a class="anchor" id="error_prop"></a>
+Discrete-time Error-state Propagation</h1>
+<p>In order to propagate the covariance matrix, we should derive the error-state propagation, i.e., computing the system Jacobian <img class="formulaInl" alt="$\boldsymbol{\Phi}(t_{k+1},t_k)$" src="form_105.png"/> and noise Jacobian <img class="formulaInl" alt="$\mathbf{G}_{k}$" src="form_106.png"/>. In particular, when the covariance matrix of the continuous-time measurement noises is given by <img class="formulaInl" alt="$\mathbf{Q}_c$" src="form_107.png"/>, then the discrete-time noise covariance <img class="formulaInl" alt="$\mathbf{Q}_d$" src="form_108.png"/> can be computed as (see [<a href="http://mars.cs.umn.edu/tr/reports/Trawny05b.pdf">Indirect Kalman Filter for 3D Attitude Estimation</a>] <a class="el" href="citelist.html#CITEREF_Trawny2005TR">[22]</a> Eq. (129) and (130)):</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \sigma_{g} &amp;= \frac{1}{\sqrt{\Delta t}}~ \sigma_{g_c} \\ \sigma_{bg} &amp;= \sqrt{\Delta t}~ \sigma_{bg_c} \\[1em] \mathbf{Q}_{meas} &amp;= \begin{bmatrix} \frac{1}{\Delta t}~ \sigma_{g_c}^2~ \mathbf{I}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; \frac{1}{\Delta t}~ \sigma_{a_c}^2~ \mathbf{I}_3 \end{bmatrix} \\ \mathbf{Q}_{bias} &amp;= \begin{bmatrix} \Delta t~ \sigma_{bg_c}^2~ \mathbf{I}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; \Delta t~ \sigma_{ba_c}^2~ \mathbf{I}_3 \end{bmatrix} \end{align*}" src="form_109.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$\mathbf{n} = [ \mathbf{n}_g ~ \mathbf{n}_a ~ \mathbf{n}_{bg} ~ \mathbf{n}_{ba} ]^\top$" src="form_110.png"/> are the discrete IMU sensor noises which have been converted from their continuous representations. We define the stacked discrete measurement noise as follows:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{Q}_{d} &amp;= \begin{bmatrix} \mathbf{Q}_{meas} &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; \mathbf{Q}_{bias} \end{bmatrix} \end{align*}" src="form_111.png"/>
+</p>
+<p>The method of computing Jacobians is to "perturb" each variable in the system and see how the old error "perturbation" relates to the new error state. That is, <img class="formulaInl" alt="$\boldsymbol{\Phi}(t_{k+1},t_k)$" src="form_105.png"/> and <img class="formulaInl" alt="$\mathbf{G}_{k}$" src="form_106.png"/> can be found by perturbing each variable as: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \tilde{\mathbf{x}}_I(t_{k+1}) = \boldsymbol{\Phi}(t_{k+1},t_k) \tilde{\mathbf{x}}_I(t_{k}) + \mathbf{G}_{k} \mathbf{n} \end{align*}" src="form_112.png"/>
+</p>
+<p> For the orientation error propagation, we start with the <img class="formulaInl" alt="$\mathbf{SO}(3)$" src="form_113.png"/> perturbation using <img class="formulaInl" alt="${}^{I}_G \mathbf{R} \approx (\mathbf{I}_3 - \lfloor ^{I}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I}_{G} \hat{\mathbf{R}}$" src="form_114.png"/>:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} {}^{I_{k+1}}_G \mathbf{R} &amp;= \text{}^{I_{k+1}}_{I_{k}} \mathbf{R} \text{}^{I_{k}}_G \mathbf{R} \\ (\mathbf{I}_3 - \lfloor ^{I_{k+1}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I_{k+1}}_{G} \hat{\mathbf{R}} &amp;\approx \textrm{exp}(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t - {}^{I_{k}}\tilde{\boldsymbol{\omega}}\Delta t) (\mathbf{I}_3 - \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I_{k}}_{G} \hat{\mathbf{R}}\\ &amp;=\textrm{exp}(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t)\textrm{exp}(-\mathbf{J}_r(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t){}^{I_{k}}\tilde{\boldsymbol{\omega}}\Delta t) (\mathbf{I}_3 - \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor)^{I_{k}}_{G} \hat{\mathbf{R}}\\ &amp;=\text{}^{I_{k+1}}_{I_{k}} \hat{\mathbf{R}} (\mathbf{I}_3 - \lfloor \mathbf J_r(-{}^{I_{k}}\hat{\boldsymbol{\omega}}\Delta t) \tilde{\boldsymbol{\omega}}_k\Delta t \times\rfloor) (\mathbf{I}_3 - \lfloor ^{I_k}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor) \text{}^{I_{k}}_G \hat{\mathbf{R}} \end{align*}" src="form_115.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$\tilde{\boldsymbol{\omega}} = \boldsymbol{\omega} - \hat{\boldsymbol{\omega}} = -(\tilde{\mathbf{b}}_{\mathbf{g}} + \mathbf{n}_g)$" src="form_116.png"/> handles both the perturbation to the bias and measurement noise. <img class="formulaInl" alt="$\mathbf {J}_r(\boldsymbol{\theta})$" src="form_117.png"/> is the right Jacobian of <img class="formulaInl" alt="$\mathbf{SO}(3)$" src="form_113.png"/> that maps the variation of rotation angle in the parameter vector space into the variation in the tangent vector space to the manifold [see <a class="el" href="namespaceov__core.html#a0406d085d6175d3bc8a539328ec214b5">ov_core::Jr_so3()</a>]. By neglecting the second order terms from above, we obtain the following orientation error propagation:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \text{}^{I_{k+1}}_{G}\tilde{\boldsymbol{\theta}} \approx \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}} \text{}^{I_k}_{G}\tilde{\boldsymbol{\theta}} - \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}}\mathbf J_r(\text{}^{I_{k+1}}_{I_{k}}\hat{\boldsymbol{\theta}}) \Delta t (\tilde{\mathbf{b}}_{\mathbf{g},k} + \mathbf{n}_{\mathbf{g},k}) \end{align*}" src="form_118.png"/>
+</p>
+<p>Now we can do error propagation of position and velocity using the same scheme:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} ^G\mathbf{p}_{I_{k+1}} &amp;= \text{}^G\mathbf{p}_{I_k} + \text{}^G\mathbf{v}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \frac{1}{2}\text{}^{I_k}_G\mathbf{R}^\top \mathbf{a}_{k}\Delta t^2\\ ^G\hat{\mathbf{p}}_{I_{k+1}} + \text{}^G\tilde{\mathbf{p}}_{I_{k+1}} &amp;\approx \text{}^G\hat{\mathbf{p}}_{I_k} + \text{}^G\tilde{\mathbf{p}}_{I_k} + \text{}^G\hat{\mathbf{v}}_{I_k} \Delta t + \text{}^G\tilde{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2\\ &amp;\hspace{4cm} + \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top (\mathbf{I}_3 + \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor) (\hat{\mathbf{a}}_{k} + \tilde{\mathbf{a}}_{k})\Delta t^2\\ \\ ^G\mathbf{v}_{k+1} &amp;= \text{}^G\mathbf{v}_{I_k} - {}^G\mathbf{g}\Delta t +\text{}^{I_k}_G\mathbf{R}^\top\mathbf{a}_{k}\Delta t\\ ^G\hat{\mathbf{v}}_{k+1} + ^G\tilde{\mathbf{v}}_{k+1} &amp;\approx {}^G\hat{\mathbf{v}}_{I_k} + {}^G\tilde{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t + \text{}^{I_k}_G\hat{\mathbf{R}}^\top (\mathbf{I}_3 + \lfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}}\times\rfloor) (\hat{\mathbf{a}}_{k} + \tilde{\mathbf{a}}_{k})\Delta t \end{align*}" src="form_119.png"/>
+</p>
+<p>where <img class="formulaInl" alt="$\tilde{\mathbf{a}} = \mathbf{a} - \hat{\mathbf{a}} = - (\tilde{\mathbf{b}}_{\mathbf{a}} + \mathbf{n}_{\mathbf{a}})$" src="form_120.png"/>. By neglecting the second order error terms, we obtain the following position and velocity error propagation:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \text{}^G\tilde{\mathbf{p}}_{I_{k+1}} &amp;= \text{}^G\tilde{\mathbf{p}}_{I_k} + \Delta t \text{}^G\tilde{\mathbf{v}}_{I_k} - \frac{1}{2}\text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t^2 \times\rfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}} - \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \Delta t^2 (\tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{\mathbf{a},k})\\ ^G\tilde{\mathbf{v}}_{k+1} &amp;= \text{}^G\tilde{\mathbf{v}}_{I_k} - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t \times\rfloor ^{I_{k}}_{G}\tilde{\boldsymbol{\theta}} - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \Delta t (\tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{\mathbf{a},k}) \end{align*}" src="form_121.png"/>
+</p>
+<p>The propagation of the two random-walk biases are as follows:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{b}_{\mathbf{g},k+1} &amp;= \mathbf{b}_{\mathbf{g},k} + \mathbf{n}_{wg} \\ \hat{\mathbf{b}}_{\mathbf{g},k+1} + \tilde{\mathbf{b}}_{\mathbf{g},k+1} &amp;= \hat{\mathbf{b}}_{\mathbf{g},k} + \tilde{\mathbf{b}}_{\mathbf{g},k} + \mathbf{n}_{wg} \\ \tilde{\mathbf{b}}_{\mathbf{g},k+1} &amp;= \tilde{\mathbf{b}}_{\mathbf{g},k} + \mathbf{n}_{wg} \\[1em] \mathbf{b}_{\mathbf{a},k+1} &amp;= \mathbf{b}_{\mathbf{a},k} + \mathbf{n}_{wa} \\ \hat{\mathbf{b}}_{\mathbf{a},k+1} + \tilde{\mathbf{b}}_{\mathbf{a},k+1} &amp;= \hat{\mathbf{b}}_{\mathbf{a},k} + \tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{wa} \\ \tilde{\mathbf{b}}_{\mathbf{a},k+1} &amp;= \tilde{\mathbf{b}}_{\mathbf{a},k} + \mathbf{n}_{wa} \end{align*}" src="form_122.png"/>
+</p>
+<p>By collecting all the perturbation results, we can build <img class="formulaInl" alt="$\boldsymbol{\Phi}(t_{k+1},t_k)$" src="form_105.png"/> and <img class="formulaInl" alt="$\mathbf{G}_{k}$" src="form_106.png"/> matrices as:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \boldsymbol{\Phi}(t_{k+1},t_k) &amp;= \begin{bmatrix} \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}} &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; - \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}}\mathbf J_r(\text{}^{I_{k+1}}_{I_{k}}\hat{\boldsymbol{\theta}}) \Delta t &amp; \mathbf{0}_3 \\ - \frac{1}{2}\text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t^2 \times\rfloor &amp; \mathbf{I}_3 &amp; \Delta t \mathbf{I}_3 &amp; \mathbf{0}_3 &amp; - \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \Delta t^2 \\ - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \lfloor \hat{\mathbf{a}}_{k} \Delta t \times\rfloor &amp; \mathbf{0}_3 &amp; \mathbf{I}_3 &amp; \mathbf{0}_3 &amp; - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \Delta t \\ \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{I}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{I}_3 \end{bmatrix} \end{align*}" src="form_123.png"/>
+</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{G}_{k} &amp;= \begin{bmatrix} - \text{}^{I_{k+1}}_{I_{k}}\hat{\mathbf{R}}\mathbf J_r(\text{}^{I_{k+1}}_{I_{k}}\hat{\boldsymbol{\theta}}) \Delta t &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; - \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top \Delta t^2 &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; - \text{}^{I_k}_G\hat{\mathbf{R}}^\top \Delta t &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{I}_3 &amp; \mathbf{0}_3 \\ \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{0}_3 &amp; \mathbf{I}_3 \end{bmatrix} \end{align*}" src="form_124.png"/>
+</p>
+<p>Now, with the computed <img class="formulaInl" alt="$\boldsymbol{\Phi}(t_{k+1},t_k)$" src="form_105.png"/> and <img class="formulaInl" alt="$\mathbf{G}_{k}$" src="form_106.png"/> matrices, we can propagate the covariance from <img class="formulaInl" alt="$t_k$" src="form_89.png"/> to <img class="formulaInl" alt="$t_{k+1}$" src="form_90.png"/>: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{P}_{k+1|k} = \boldsymbol{\Phi}(t_{k+1},t_k)\mathbf{P}_{k|k}\boldsymbol{\Phi}(t_{k+1},t_k)^\top + \mathbf{G}_k\mathbf{Q}_d\mathbf{G}_k^\top \end{align*}" src="form_125.png"/>
+</p>
+ </div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

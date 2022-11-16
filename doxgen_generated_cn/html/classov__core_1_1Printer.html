@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core::Printer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__core.html">ov_core</a></li><li class="navelem"><a class="el" href="classov__core_1_1Printer.html">Printer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="classov__core_1_1Printer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_core::Printer类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="classov__core_1_1Printer.html" title="Printer for open_vins that allows for various levels of printing to be done ">Printer</a> for open_vins that allows for various levels of printing to be done  
+ <a href="classov__core_1_1Printer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="print_8h_source.html">print.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a1c4c6c612ec6251afd91a1ddf933a0b2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">PrintLevel</a> { <br />
+&#160;&#160;<b>ALL</b> = 0, 
+<b>DEBUG</b> = 1, 
+<b>INFO</b> = 2, 
+<b>WARNING</b> = 3, 
+<br />
+&#160;&#160;<b>ERROR</b> = 4, 
+<b>SILENT</b> = 5
+<br />
+ }<tr class="memdesc:a1c4c6c612ec6251afd91a1ddf933a0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The different print levels possible  <a href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">更多...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a1c4c6c612ec6251afd91a1ddf933a0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a46c933308a512618c304afefee62ead8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Printer.html#a46c933308a512618c304afefee62ead8">setPrintLevel</a> (const std::string &amp;level)</td></tr>
+<tr class="memdesc:a46c933308a512618c304afefee62ead8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the print level to use for all future printing to stdout.  <a href="#a46c933308a512618c304afefee62ead8">更多...</a><br /></td></tr>
+<tr class="separator:a46c933308a512618c304afefee62ead8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3edd554248a7e269f4c1d0d3f84a257b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Printer.html#a3edd554248a7e269f4c1d0d3f84a257b">setPrintLevel</a> (<a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">PrintLevel</a> level)</td></tr>
+<tr class="memdesc:a3edd554248a7e269f4c1d0d3f84a257b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the print level to use for all future printing to stdout.  <a href="#a3edd554248a7e269f4c1d0d3f84a257b">更多...</a><br /></td></tr>
+<tr class="separator:a3edd554248a7e269f4c1d0d3f84a257b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5371993bfa709539ca870884f7c76f78"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Printer.html#a5371993bfa709539ca870884f7c76f78">debugPrint</a> (<a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">PrintLevel</a> level, const char location[], const char line[], const char *format,...)</td></tr>
+<tr class="memdesc:a5371993bfa709539ca870884f7c76f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">The print function that prints to stdout.  <a href="#a5371993bfa709539ca870884f7c76f78">更多...</a><br /></td></tr>
+<tr class="separator:a5371993bfa709539ca870884f7c76f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:a29f197352b671a22704ffdd8354b33bd"><td class="memItemLeft" align="right" valign="top"><a id="a29f197352b671a22704ffdd8354b33bd"></a>
+static <a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">PrintLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1Printer.html#a29f197352b671a22704ffdd8354b33bd">current_print_level</a> = PrintLevel::INFO</td></tr>
+<tr class="memdesc:a29f197352b671a22704ffdd8354b33bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current print level <br /></td></tr>
+<tr class="separator:a29f197352b671a22704ffdd8354b33bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p><a class="el" href="classov__core_1_1Printer.html" title="Printer for open_vins that allows for various levels of printing to be done ">Printer</a> for open_vins that allows for various levels of printing to be done </p>
+<p>To set the global verbosity level one can do the following: </p><div class="fragment"><div class="line"><a class="code" href="classov__core_1_1Printer.html#a46c933308a512618c304afefee62ead8">ov_core::Printer::setPrintLevel</a>(<span class="stringliteral">&quot;WARNING&quot;</span>);</div><div class="line"><a class="code" href="classov__core_1_1Printer.html#a46c933308a512618c304afefee62ead8">ov_core::Printer::setPrintLevel</a>(ov_core::Printer::PrintLevel::WARNING);</div></div><!-- fragment --> </div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="a1c4c6c612ec6251afd91a1ddf933a0b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4c6c612ec6251afd91a1ddf933a0b2">&#9670;&nbsp;</a></span>PrintLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">ov_core::Printer::PrintLevel</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The different print levels possible </p>
+<ul>
+<li>PrintLevel::ALL : All PRINT_XXXX will output to the console</li>
+<li>PrintLevel::DEBUG : "DEBUG", "INFO", "WARNING" and "ERROR" will be printed. "ALL" will be silenced</li>
+<li>PrintLevel::INFO : "INFO", "WARNING" and "ERROR" will be printed. "ALL" and "DEBUG" will be silenced</li>
+<li>PrintLevel::WARNING : "WARNING" and "ERROR" will be printed. "ALL", "DEBUG" and "INFO" will be silenced</li>
+<li>PrintLevel::ERROR : Only "ERROR" will be printed. All the rest are silenced</li>
+<li>PrintLevel::SILENT : All PRINT_XXXX will be silenced. </li>
+</ul>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a5371993bfa709539ca870884f7c76f78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5371993bfa709539ca870884f7c76f78">&#9670;&nbsp;</a></span>debugPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Printer::debugPrint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">PrintLevel</a>&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>location</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>line</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The print function that prints to stdout. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>the print level for this print call </td></tr>
+    <tr><td class="paramname">location</td><td>the location the print was made from </td></tr>
+    <tr><td class="paramname">line</td><td>the line the print was made from </td></tr>
+    <tr><td class="paramname">format</td><td>The printf format </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a46c933308a512618c304afefee62ead8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c933308a512618c304afefee62ead8">&#9670;&nbsp;</a></span>setPrintLevel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Printer::setPrintLevel </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the print level to use for all future printing to stdout. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>The debug level to use </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3edd554248a7e269f4c1d0d3f84a257b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3edd554248a7e269f4c1d0d3f84a257b">&#9670;&nbsp;</a></span>setPrintLevel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Printer::setPrintLevel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classov__core_1_1Printer.html#a1c4c6c612ec6251afd91a1ddf933a0b2">PrintLevel</a>&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the print level to use for all future printing to stdout. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>The debug level to use </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

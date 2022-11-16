@@ -1,0 +1,354 @@
+
+\begin{DoxyItemize}
+\item \hyperlink{dev-coding-style}{Coding Style Guide} --- General coding styles and conventions
+\item \hyperlink{dev-docs}{Documentation Guide} --- Developer guide on how documentation can be built
+\item \hyperlink{dev-ros1-to-ros2}{R\+O\+S1 to R\+O\+S2 Bag Conversion Guide} --- Some notes on R\+OS bag conversion
+\item \hyperlink{dev-index}{Covariance Index Internals} --- Description of the covariance index system
+\item \hyperlink{dev-profiling}{System Profiling} --- Some notes on performing profiling
+\item \hyperlink{dev-roadmap}{Future Roadmap} --- Where we plan to go in the future 
+\end{DoxyItemize}\hypertarget{dev-coding-style}{}\section{Coding Style Guide}\label{dev-coding-style}
+\hypertarget{dev-coding-style_coding-style-overview}{}\subsection{Overview}\label{dev-coding-style_coding-style-overview}
+Please note that if you have a good excuse to either break the rules or modify them, feel free to do it (and update this guide accordingly, if appropriate). Nothing is worse than rule that hurts productivity instead of improving it. In general, the main aim of this style is\+:
+
+
+\begin{DoxyItemize}
+\item Vertical and horizontal compression, fitting more code on a screen while keeping the code readable.
+\item Do not need to enforce line wrapping if clarity is impacted (i.\+e. Jacobians)
+\item Consistent indentation and formatting rules to ensure readability (4 space tabbing)
+\end{DoxyItemize}
+
+The codebase is coded in \href{https://en.wikipedia.org/wiki/Snake_case}{\tt snake\+\_\+case} with accessor and getter function for most classes (there are a few exceptions). We leverage the \href{http://www.doxygen.nl/}{\tt Doxygen} documentation system with a post-\/processing script from \href{https://mcss.mosra.cz/documentation/doxygen/}{\tt m.\+css}. Please see \hyperlink{dev-docs}{Documentation Guide} for details on how our documentation is generated. All functions should be commented both internally and externally with a focus on being as clear to a developer or user that is reading the code or documentation website.\hypertarget{dev-coding-style_coding-style-naming}{}\subsection{Naming Conventions}\label{dev-coding-style_coding-style-naming}
+We have particular naming style for our orientations and positions that should be consistent throughout the project. In general rotation matrices are the only exception of a variable that starts with a capital letter. Both position and orientation variables should contain the frame of references.
+
+
+\begin{DoxyCode}
+Eigen::Matrix<double,3,3> R\_ItoC; \textcolor{comment}{//=> SO(3) rotation from IMU to camera frame}
+Eigen::Matrix<double,4,1> q\_ItoC; \textcolor{comment}{//=> JPL quaternion rot from IMU to the camera}
+Eigen::Vector3d p\_IinC; \textcolor{comment}{//=> 3d position of the IMU frame in the camera frame}
+Eigen::Vector3d p\_FinG; \textcolor{comment}{//=> position of feature F in the global frame G}
+\end{DoxyCode}
+\hypertarget{dev-coding-style_coding-style-printing}{}\subsection{Print Statements}\label{dev-coding-style_coding-style-printing}
+The code uses a simple print statement level logic that allows the user to enable and disable the verbosity. In general the user can specify the following (see \href{ov_core/src/utils/print.h}{\tt ov\+\_\+core/src/utils/print.\+h} file for details)\+:
+
+
+\begin{DoxyItemize}
+\item Print\+Level\+::\+A\+LL \+: All P\+R\+I\+N\+T\+\_\+\+X\+X\+XX will output to the console
+\item Print\+Level\+::\+D\+E\+B\+UG \+: \char`\"{}\+D\+E\+B\+U\+G\char`\"{}, \char`\"{}\+I\+N\+F\+O\char`\"{}, \char`\"{}\+W\+A\+R\+N\+I\+N\+G\char`\"{} and \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. \char`\"{}\+A\+L\+L\char`\"{} will be silenced
+\item Print\+Level\+::\+I\+N\+FO \+: \char`\"{}\+I\+N\+F\+O\char`\"{}, \char`\"{}\+W\+A\+R\+N\+I\+N\+G\char`\"{} and \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. \char`\"{}\+A\+L\+L\char`\"{} and \char`\"{}\+D\+E\+B\+U\+G\char`\"{} will be silenced
+\item Print\+Level\+::\+W\+A\+R\+N\+I\+NG \+: \char`\"{}\+W\+A\+R\+N\+I\+N\+G\char`\"{} and \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. \char`\"{}\+A\+L\+L\char`\"{}, \char`\"{}\+D\+E\+B\+U\+G\char`\"{} and \char`\"{}\+I\+N\+F\+O\char`\"{} will be silenced
+\item Print\+Level\+::\+E\+R\+R\+OR \+: Only \char`\"{}\+E\+R\+R\+O\+R\char`\"{} will be printed. All the rest are silenced
+\item Print\+Level\+::\+S\+I\+L\+E\+NT \+: All P\+R\+I\+N\+T\+\_\+\+X\+X\+XX will be silenced.
+\end{DoxyItemize}
+
+To use these, you can specify the following using the \href{https://www.cplusplus.com/reference/cstdio/printf/}{\tt printf} standard input logic. A user can also specify colors (see \href{ov_core/src/utils/colors.h}{\tt ov\+\_\+core/src/utils/colors.\+h} file for details)\+:
+
+
+\begin{DoxyCode}
+PRINT\_ALL(\textcolor{stringliteral}{"the value is %.2f\(\backslash\)n"}, variable);
+PRINT\_DEBUG(\textcolor{stringliteral}{"the value is %.2f\(\backslash\)n"}, variable);
+PRINT\_INFO(\textcolor{stringliteral}{"the value is %.2f\(\backslash\)n"}, variable);
+PRINT\_WARNING(\textcolor{stringliteral}{"the value is %.2f\(\backslash\)n"}, variable);
+PRINT\_ERROR(RED \textcolor{stringliteral}{"the value is %.2f\(\backslash\)n"} RESET, variable);
+\end{DoxyCode}
+ \hypertarget{dev-docs}{}\section{Documentation Guide}\label{dev-docs}
+\hypertarget{dev-docs_developers-pdfmanual}{}\subsection{Building the Latex P\+D\+F Reference Manual}\label{dev-docs_developers-pdfmanual}
+
+\begin{DoxyEnumerate}
+\item You will need to install doxygen and texlive with all packages
+\begin{DoxyItemize}
+\item {\ttfamily sudo apt-\/get update}
+\item {\ttfamily sudo apt-\/get install doxygen texlive-\/full}
+\item You will likely need new version of \href{https://stackoverflow.com/a/50986638/7718197}{\tt doxygen} 1.\+9.\+4 to fix ghostscript errors
+\end{DoxyItemize}
+\item Go into the project folder and generate latex files
+\begin{DoxyItemize}
+\item {\ttfamily cd open\+\_\+vins/}
+\item {\ttfamily doxygen}
+\item This should run, and will stop if there are any latex errors
+\item On my Ubuntu 20.\+04 this installs version \char`\"{}2019.\+20200218\char`\"{}
+\end{DoxyItemize}
+\item Generate a P\+DF from the latex files
+\begin{DoxyItemize}
+\item {\ttfamily cd doxgen\+\_\+generated/latex/}
+\item {\ttfamily make}
+\item File should be called {\ttfamily refman.\+pdf}
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{dev-docs_developers-addpage}{}\subsection{Adding a Website Page}\label{dev-docs_developers-addpage}
+
+\begin{DoxyEnumerate}
+\item Add a {\ttfamily doc/pagename.\+dox} file, copy up-\/to-\/date license header.
+\item Add a {\ttfamily @page} definition and title to your page
+\item If the page is top-\/level, list it in {\ttfamily doc/00-\/page-\/order.\+dox} to ensure it gets listed at a proper place
+\item If the page is not top-\/level, list it using {\ttfamily @subpage} in its parent page
+\item Leverage {\ttfamily @section} and {\ttfamily @subsection} to separate the page
+\end{DoxyEnumerate}\hypertarget{dev-docs_latex}{}\subsection{Math / Latex Equations}\label{dev-docs_latex}
+
+\begin{DoxyItemize}
+\item More details on how to format your documentation can be found here\+:
+\begin{DoxyItemize}
+\item \href{http://www.doxygen.nl/manual/formulas.html}{\tt http\+://www.\+doxygen.\+nl/manual/formulas.\+html}
+\item \href{https://mcss.mosra.cz/css/components/#math}{\tt https\+://mcss.\+mosra.\+cz/css/components/\#math}
+\item \href{https://mcss.mosra.cz/css/components/}{\tt https\+://mcss.\+mosra.\+cz/css/components/}
+\end{DoxyItemize}
+\item Use the inline commands for latex {\ttfamily \textbackslash{}f \$ $<$formula\+\_\+here$>$ \textbackslash{}f \$} (no space between f and \$)
+\item Use block to have equation centered on page {\ttfamily \textbackslash{}f \mbox{[} $<$big\+\_\+formula\+\_\+here$>$ \textbackslash{}f \mbox{]}} (no space between f and \mbox{[}\mbox{]})
+\end{DoxyItemize}\hypertarget{dev-docs_developers-building}{}\subsection{Building the Documentation Site}\label{dev-docs_developers-building}
+
+\begin{DoxyEnumerate}
+\item Clone the m.\+css repository which has scripts to build
+\begin{DoxyItemize}
+\item Ensure that it is {\bfseries not} in the same folder as your open\+\_\+vins
+\item {\ttfamily git clone \href{https://github.com/mosra/m.css}{\tt https\+://github.\+com/mosra/m.\+css}}
+\item This repository contains the script that will generate our documentation
+\end{DoxyItemize}
+\item You will need to install python3.\+6
+\begin{DoxyItemize}
+\item {\ttfamily sudo add-\/apt-\/repository ppa\+:deadsnakes/ppa}
+\item {\ttfamily sudo apt-\/get update}
+\item {\ttfamily sudo apt-\/get install python3.\+6}
+\item {\ttfamily curl \href{https://bootstrap.pypa.io/get-pip.py}{\tt https\+://bootstrap.\+pypa.\+io/get-\/pip.\+py} $\vert$ sudo python3.\+6}
+\item {\ttfamily sudo -\/H pip3.\+6 install jinja2 Pygments}
+\item {\ttfamily sudo apt install texlive-\/base texlive-\/latex-\/extra texlive-\/fonts-\/extra texlive-\/fonts-\/recommended}
+\end{DoxyItemize}
+\item To use the bibtex citing you need to have
+\begin{DoxyItemize}
+\item bibtex executable in search path
+\item perl executable in search path
+\item \href{http://www.doxygen.nl/manual/commands.html#cmdcite}{\tt http\+://www.\+doxygen.\+nl/manual/commands.\+html\#cmdcite}
+\end{DoxyItemize}
+\item Go into the documentation folder and build
+\begin{DoxyItemize}
+\item {\ttfamily cd m.\+css/documentation/}
+\item {\ttfamily python3.\+6 doxygen.\+py $<$path\+\_\+to\+\_\+\+Doxyfile-\/mcss$>$}
+\end{DoxyItemize}
+\item If you run into errors, ensure your python path is set to use the 3.\+6 libraries
+\begin{DoxyItemize}
+\item {\ttfamily export P\+Y\+T\+H\+O\+N\+P\+A\+TH=/usr/local/lib/python3.6/dist-\/packages/}
+\end{DoxyItemize}
+\item You might need to comment out the {\ttfamily enable\+\_\+async=True} flag in the doxygen.\+py file
+\item This should then build the documentation website
+\item Open the html page {\ttfamily /open\+\_\+vins/doxgen\+\_\+generated/html/index.html} to view documentation
+\end{DoxyEnumerate}\hypertarget{dev-docs_developers-theme}{}\subsection{Custom m.\+css Theme}\label{dev-docs_developers-theme}
+
+\begin{DoxyEnumerate}
+\item This is based on the \href{https://mcss.mosra.cz/css/themes/#make-your-own}{\tt m.\+css docs} for custom theme
+\item Files needed are in {\ttfamily open\+\_\+vins/docs/mcss\+\_\+theme/}
+\item Copy the following files into the {\ttfamily m.\+css/css/} folder
+\begin{DoxyItemize}
+\item m-\/theme-\/udel.\+css
+\item pygments-\/tango.\+css
+\item m-\/udel.\+css
+\end{DoxyItemize}
+\item Most settings are in the {\ttfamily m-\/theme-\/udel.\+css} file
+\item To generate / compile the edited theme do\+:
+\begin{DoxyItemize}
+\item {\ttfamily python3.\+6 postprocess.\+py m-\/udel.\+css m-\/documentation.\+css -\/o m-\/udel+documentation.compiled.\+css}
+\item Copy this generated file into {\ttfamily open\+\_\+vins/docs/css/}
+\item Regenerate the website and it should change the theme
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{dev-docs_developers-figures}{}\subsection{Creating Figures}\label{dev-docs_developers-figures}
+
+\begin{DoxyItemize}
+\item One of the editors we use is \href{http://ipe.otfried.org/}{\tt I\+PE} which is avalible of different platforms
+\item We use the ubuntu 16.\+04 version 7.\+1.\+10
+\item Create your figure in I\+PE then save it to disk (i.\+e. should have a {\ttfamily file.\+ipe})
+\item Use the command line utility {\ttfamily iperender} to convert into a svg
+\item {\ttfamily iperender -\/svg -\/transparent file.\+ipe file.\+svg} 
+\end{DoxyItemize}\hypertarget{dev-ros1-to-ros2}{}\section{R\+O\+S1 to R\+O\+S2 Bag Conversion Guide}\label{dev-ros1-to-ros2}
+\hypertarget{dev-ros1-to-ros2_gs-ros1-to-ros2-option-1}{}\subsection{rosbags}\label{dev-ros1-to-ros2_gs-ros1-to-ros2-option-1}
+\href{https://gitlab.com/ternaris/rosbags}{\tt rosbags} is the simplest utility which does not depend on R\+OS installs at all. R\+OS bag conversion is a hard problem since you need to have both R\+O\+S1 and R\+O\+S2 dependencies. This is what was used to generate the converted R\+O\+S2 bag files for standard datasets. To do a conversion of a bag file we can do the following\+:
+
+
+\begin{DoxyCode}
+pip install rosbags
+rosbags-convert V1\_01\_easy.bag
+\end{DoxyCode}
+\hypertarget{dev-ros1-to-ros2_dev-ros1-to-ros2-option-2}{}\subsection{rosbag2 play}\label{dev-ros1-to-ros2_dev-ros1-to-ros2-option-2}
+To do this conversion you will need to have both R\+O\+S1 and R\+O\+S2 installed on your system. Also ensure that you have installed all dependencies and backends required. The main \href{https://github.com/ros2/rosbag2}{\tt rosbag2} readme has a lot of good details.
+
+
+\begin{DoxyCode}
+sudo apt-get install ros-$ROS2\_DISTRO-ros2bag ros-$ROS2\_DISTRO-rosbag2*
+sudo apt install ros-$ROS2\_DISTRO-rosbag2-bag-v2-plugins
+\end{DoxyCode}
+
+
+From here we can do the following. This is based on \href{https://github.com/ros2/rosbag2/issues/139#issuecomment-516167831}{\tt this issue}. You might run into issues with the .so files being corrupted (see \href{https://github.com/ros2/rosbag2/issues/94}{\tt this issue}) Not sure if there is a fix besides building it from scratch yourself.
+
+
+\begin{DoxyCode}
+source\_ros1
+source\_ros2
+ros2 bag play -s rosbag\_v2 V1\_01\_easy.bag
+\end{DoxyCode}
+ \hypertarget{dev-index}{}\section{Covariance Index Internals}\label{dev-index}
+\hypertarget{dev-index_dev-index-types}{}\subsection{Type System}\label{dev-index_dev-index-types}
+The type system that the \hyperlink{namespaceov__msckf}{ov\+\_\+msckf} leverages was inspired by graph-\/based optimization frameworks such as \href{https://github.com/borglab/gtsam}{\tt Georgia Tech Smoothing and Mapping library (G\+T\+S\+AM)}. As compared to manually knowing where in the covariance state elements are, the interaction is abstracted away from the user and is replaced by a straight forward way to access the desired elements. The \hyperlink{classov__msckf_1_1State}{ov\+\_\+msckf\+::\+State} is owner of these types and thus after creation one should not delete these externally.
+
+
+\begin{DoxyCode}
+\textcolor{keyword}{class }Type \{
+\textcolor{keyword}{protected}:
+    \textcolor{comment}{// Current best estimate}
+    Eigen::MatrixXd \_value;
+    \textcolor{comment}{// Location of error state in covariance}
+    \textcolor{keywordtype}{int} \_id = -1;
+    \textcolor{comment}{// Dimension of error state}
+    \textcolor{keywordtype}{int} \_size = -1;
+\};
+\end{DoxyCode}
+
+
+A type is defined by its location in its covariance, its current estimate and its error state size. The current value does not have to be a vector, but could be a matrix in the case of an S\+O(3) rotation group type object. The error state needs to be a vector and thus a type will need to define the mapping between this error state and its manifold representation.\hypertarget{dev-index_dev-index-update}{}\subsection{Type-\/based E\+K\+F Update}\label{dev-index_dev-index-update}
+To show the power of this type-\/based indexing system, we will go through how we compute the E\+KF update. The specific method we will be looking at is the \hyperlink{classov__msckf_1_1StateHelper_a471d81fcc22b706654556950931067fd}{ov\+\_\+msckf\+::\+State\+Helper\+::\+E\+K\+F\+Update()} which takes in the state, vector of types, Jacobian, residual, and measurement covariance. As compared to passing a Jacobian matrix that is the full size of state wide, we instead leverage this type system by passing a \char`\"{}small\char`\"{} Jacobian that has only the state elements that the measurements are a function of.
+
+For example, if we have a global 3D S\+L\+AM feature update (implemented in \hyperlink{classov__msckf_1_1UpdaterSLAM}{ov\+\_\+msckf\+::\+Updater\+S\+L\+AM}) our Jacobian will only be a function of the newest clone and the feature. This means that our Jacobian is only of size 9 as compared to the size our state. In addition to the matrix containing the Jacobian elements, we need to know what order this Jacobian is in, thus we pass a vector of types which correspond to the state elements our Jacobian is a function of. Thus in our example, it would contain two types\+: our newest clone \hyperlink{classov__type_1_1PoseJPL}{ov\+\_\+type\+::\+Pose\+J\+PL} and current landmark feature \hyperlink{classov__type_1_1Landmark}{ov\+\_\+type\+::\+Landmark} with our Jacobian being the type size of the pose plus the type size of the landmark in width. \hypertarget{dev-profiling}{}\section{System Profiling}\label{dev-profiling}
+\hypertarget{dev-profiling_dev-profiling-compute}{}\subsection{Profiling Processing Time}\label{dev-profiling_dev-profiling-compute}
+One way (besides inserting timing statements into the code) is to leverage a profiler such as \href{https://www.valgrind.org/}{\tt valgrind}. This tool allows for recording of the call stack of the system. To use this with a R\+OS node, we can do the following (based on \href{http://wiki.ros.org/roslaunch/Tutorials/Roslaunch%20Nodes%20in%20Valgrind%20or%20GDB}{\tt this} guide)\+:
+
+
+\begin{DoxyItemize}
+\item Edit {\ttfamily roslaunch \hyperlink{namespaceov__msckf}{ov\+\_\+msckf} pgeneva\+\_\+serial\+\_\+eth.\+launch} launch file
+\item Append {\ttfamily launch-\/prefix=\char`\"{}valgrind -\/-\/tool=callgrind -\/-\/callgrind-\/out-\/file=/tmp/callgrind.\+txt\char`\"{}} to your R\+OS node. This will cause the node to run with valgrind.
+\item Change the bag length to be only 10 or so seconds (since profiling is slow)
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+sudo apt install valgrind
+roslaunch ov\_msckf pgeneva\_serial\_eth.launch
+\end{DoxyCode}
+
+
+After running the profiling program we will want to visualize it. There are some good tools for that, specifically we are using \href{https://github.com/jrfonseca/gprof2dot}{\tt gprof2dot} and \href{https://github.com/jrfonseca/xdot.py}{\tt xdot.\+py}. First we will post-\/process it into a xdot graph format and then visualize it for inspection.
+
+
+
+
+\begin{DoxyCode}
+// install viz programs
+apt-get install python3 graphviz
+apt-get install gir1.2-gtk-3.0 python3-gi python3-gi-cairo graphviz
+pip install gprof2dot xdot
+// actually process and then viz call file
+gprof2dot --format callgrind --strip /tmp/callgrind.txt --output /tmp/callgrind.xdot
+xdot /tmp/callgrind.xdot
+\end{DoxyCode}
+\hypertarget{dev-profiling_dev-profiling-leaks}{}\subsection{Memory Leaks}\label{dev-profiling_dev-profiling-leaks}
+One can leverage a profiler such as \href{https://www.valgrind.org/}{\tt valgrind} to perform memory leak check of the codebase. Ensure you have installed the {\ttfamily valgrind} package (see above). We can change the node launch file as follows\+:
+
+
+\begin{DoxyItemize}
+\item Edit {\ttfamily roslaunch \hyperlink{namespaceov__msckf}{ov\+\_\+msckf} pgeneva\+\_\+serial\+\_\+eth.\+launch} launch file
+\item Append {\ttfamily launch-\/prefix=\char`\"{}valgrind -\/-\/tool=memcheck -\/-\/leak-\/check=yes\char`\"{}} to your R\+OS node. This will cause the node to run with valgrind.
+\item Change the bag length to be only 10 or so seconds (since profiling is slow)
+\end{DoxyItemize}
+
+This \href{https://web.stanford.edu/class/archive/cs/cs107/cs107.1206/resources/valgrind.html}{\tt page} has some nice support material for F\+AQ. An example loss is shown below which was found by memcheck.
+
+
+\begin{DoxyCode}
+==5512== 1,578,860 (24 direct, 1,578,836 indirect) bytes in 1 blocks are definitely lost in loss record
+       6,585 of 6,589
+==5512==    at 0x4C3017F: operator new(unsigned long) (in
+       /usr/lib/valgrind/vgpreload\_memcheck-amd64-linux.so)
+....
+==5512==    by 0x543F868: operator[] (unordered\_map.h:973)
+==5512==    by 0x543F868: ov\_core::TrackKLT::feed\_stereo(double, cv::Mat&, cv::Mat&, unsigned long,
+       unsigned long) (TrackKLT.cpp:165)
+==5512==    by 0x4EF8C52: ov\_msckf::VioManager::feed\_measurement\_stereo(double, cv::Mat&, cv::Mat&,
+       unsigned long, unsigned long) (VioManager.cpp:245)
+==5512==    by 0x1238A9: main (ros\_serial\_msckf.cpp:247)
+\end{DoxyCode}
+\hypertarget{dev-profiling_dev-profiling-compiler}{}\subsection{Compiler Profiling}\label{dev-profiling_dev-profiling-compiler}
+Here is a small guide on how to perform compiler profiling for building of the codebase. This should be used to try to minimize compile times which in general hurt developer productivity. It is recommended to read the following pages which this is a condenced form of\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://aras-p.info/blog/2019/01/16/time-trace-timeline-flame-chart-profiler-for-Clang/}{\tt https\+://aras-\/p.\+info/blog/2019/01/16/time-\/trace-\/timeline-\/flame-\/chart-\/profiler-\/for-\/\+Clang/}
+\item \href{https://aras-p.info/blog/2019/09/28/Clang-Build-Analyzer/}{\tt https\+://aras-\/p.\+info/blog/2019/09/28/\+Clang-\/\+Build-\/\+Analyzer/}
+\end{DoxyItemize}
+
+First we need to ensure we have a compiler that can profile the build time. Clang greater then 9 should work, but we have tested only with 11. We can get the \href{https://apt.llvm.org/}{\tt latest Clang} by using the follow auto-\/install script\+:
+
+
+\begin{DoxyCode}
+sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+export CC=/usr/bin/clang-11
+export CXX=/usr/bin/clang++-11
+\end{DoxyCode}
+
+
+We then need to clone the analyzer repository, which allows for summary generation.
+
+
+\begin{DoxyCode}
+git clone https://github.com/aras-p/ClangBuildAnalyzer
+cd ClangBuildAnalyzer
+cmake . && make
+\end{DoxyCode}
+
+
+We can finally build our R\+OS package and time how long it takes. Note that we are using \href{https://catkin-tools.readthedocs.io/en/latest/}{\tt catkin tools} to build here. The prefix {\itshape C\+BA} means to run the command in the Clang\+Build\+Analyzer repository clone folder. While the prefix {\itshape WS} means run in the root of your R\+OS workspace.
+
+
+\begin{DoxyCode}
+(WS) cd ~/workspace/
+(WS) catkin clean -y && mkdir build
+(CBA) ./ClangBuildAnalyzer --start ~/workspace/build/
+(WS) export CC=/usr/bin/clang-11 && export CXX=/usr/bin/clang++-11
+(WS) catkin build ov\_msckf -DCMAKE\_CXX\_FLAGS="-ftime-trace"
+(CBA) ./ClangBuildAnalyzer --stop ~/workspace/build/ capture\_file.bin
+(CBA) ./ClangBuildAnalyzer --analyze capture\_file.bin > timing\_results.txt
+\end{DoxyCode}
+
+
+The {\ttfamily time-\/trace} flag should generate a bunch of .json files in your build folder. These can be opened in your chrome browser {\ttfamily chrome\+://tracing} for viewing. In general the Clang\+Build\+Analyzer is more useful for finding what files take long. An example output of what is generated in the timing\+\_\+results.\+txt file is\+:
+
+
+\begin{DoxyCode}
+Analyzing build trace from 'capture\_file.bin'...
+     Time summary:
+Compilation (86 times):
+  Parsing (frontend):          313.9 s
+  Codegen & opts (backend):    222.9 s
+
+     Files that took longest to parse (compiler frontend):
+ 13139 ms: /build//ov\_msckf/CMakeFiles/ov\_msckf\_lib.dir/src/update/UpdaterSLAM.cpp.o
+ 12843 ms: /build//ov\_msckf/CMakeFiles/run\_serial\_msckf.dir/src/ros\_serial\_msckf.cpp.o
+ ...
+ 
+     Functions that took longest to compile:
+  1639 ms: main (/src/open\_vins/ov\_eval/src/error\_comparison.cpp)
+  1337 ms: ov\_core::BsplineSE3::get\_acceleration(double, Eigen::Matrix<double, ...
+       (/src/open\_vins/ov\_core/src/sim/BsplineSE3.cpp)
+  1156 ms: ov\_eval::ResultSimulation::plot\_state(bool, double)
+       (/src/open\_vins/ov\_eval/src/calc/ResultSimulation.cpp)
+  ...
+
+     Expensive headers: 
+ 27505 ms: /src/open\_vins/ov\_core/src/track/TrackBase.h (included 12 times, avg 2292 ms), included via:
+   TrackKLT.cpp.o TrackKLT.h  (4372 ms)
+   TrackBase.cpp.o  (4297 ms)
+   TrackSIM.cpp.o TrackSIM.h  (4252 ms)
+   ...
+\end{DoxyCode}
+
+
+Some key methods to reduce compile times are as follows\+:
+\begin{DoxyItemize}
+\item Only include headers that are required for your class
+\item Don\textquotesingle{}t include headers in your header files {\ttfamily .h} that are only required in your {\ttfamily .cpp} source files.
+\item Consider \href{https://www.wikiwand.com/en/Forward_declaration}{\tt forward declarations} of methods and types
+\item Ensure you are using an include guard in your headers 
+\end{DoxyItemize}\hypertarget{dev-roadmap}{}\section{Future Roadmap}\label{dev-roadmap}
+The initial release provides the library foundation which contains a filter-\/based visual-\/inertial localization solution. This can be used in a wide range of scenarios and the type-\/based index system allows for others to easily add new features and develop on top of this system. Here is a list of future directions, although nothing is set in stone, that we are interested in taking\+:
+
+
+\begin{DoxyItemize}
+\item Creation of a secondary graph-\/based thread that loosely introduces loop closures (akin to the second thread of V\+I\+N\+S-\/\+Mono and others) which should allow for drift free long-\/term localization.
+\item Large scale offline batch graph optimization which leverages the trajectory of the \hyperlink{namespaceov__msckf}{ov\+\_\+msckf} as its initial guess and then optimizes both the map and trajectory.
+\item Incorporate our prior work in preintegration \cite{Eckenhoff2019IJRR} into the same framework structure to allow for easy extensibility. Focus on sparsification and marginalization to allow for realtime computation.
+\item Support for arbitrary Schmidt\textquotesingle{}ing of state elements allowing for modeling of their prior uncertainties but without optimizing their values online.
+\item More advance imu integration schemes, quantification of the integration noises to handle low frequency readings, and modeling of the imu intrinsics. 
+\end{DoxyItemize}

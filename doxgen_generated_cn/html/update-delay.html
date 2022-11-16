@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: Delayed Feature Initialization</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="update.html">Measurement Update Derivations</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Delayed Feature Initialization </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>We describe a method of delayed initialization of a 3D point feature as in <a href="https://escholarship.org/content/qt4nn0j264/qt4nn0j264.pdf">Visual-Inertial Odometry on Resource-Constrained Systems</a> <a class="el" href="citelist.html#CITEREF_Li2014THESIS">[14]</a>. Specifically, given a set of measurements involving the state <img class="formulaInl" alt="$\mathbf{x}$" src="form_144.png"/> and a new feature <img class="formulaInl" alt="$\mathbf{f}$" src="form_145.png"/>, we want to optimally and efficiently initialize the feature.</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{z}_i = \mathbf{h}_i\left(\mathbf{x}, \mathbf{f}\right) + \mathbf{n}_i \end{align*}" src="form_146.png"/>
+</p>
+<p>In general, we collect more than the minimum number of measurements at different times needed for initialization (i.e. delayed). For example, although in principle we need two monocular images to initialize a 3D point feature, we often collect more than two images in order to obtain better initialization. To process all collected measurements, we stack them and perform linearization around some linearization points (estimates) denoted by <img class="formulaInl" alt="$\hat{\mathbf x}$" src="form_147.png"/> and <img class="formulaInl" alt="$\hat{\mathbf f}$" src="form_148.png"/>:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{z} &amp;= \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \\ \vdots \\ \mathbf{z}_m \end{bmatrix} = \mathbf{h}\left(\mathbf{x}, \mathbf{f}\right)+ \mathbf{n}\\ \Rightarrow~~ \mathbf{r} &amp;= \mathbf{z}-\mathbf{h}(\hat{\mathbf{x}}, \hat{f}) = \mathbf{H}_x \tilde{\mathbf{x}} +\mathbf{H}_f \tilde{\mathbf{f}} + \mathbf{n} \end{align*}" src="form_149.png"/>
+</p>
+<p>To efficiently compute the resulting augmented covariance matrix, we perform <a href="https://en.wikipedia.org/wiki/Givens_rotation">Givens rotations</a> to zero-out rows in <img class="formulaInl" alt="$\mathbf{H}_f$" src="form_150.png"/> with indices larger than the dimension of <img class="formulaInl" alt="$\tilde{\mathbf{f}}$" src="form_151.png"/>, and apply the same Givens rotations to <img class="formulaInl" alt="$\mathbf{H}_x$" src="form_152.png"/> and <img class="formulaInl" alt="$\mathbf{r}$" src="form_153.png"/>. As a result of this operation, we have the following linear system:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \begin{bmatrix} \mathbf{r}_1 \\ \mathbf{r}_2 \end{bmatrix} = \begin{bmatrix} \mathbf{H}_{x1} \\ \mathbf{H}_{x2} \end{bmatrix} \tilde{\mathbf{x}} +\begin{bmatrix} \mathbf{H}_{f1} \\ \mathbf{0} \end{bmatrix} \tilde{\mathbf{f}} + \begin{bmatrix} \mathbf{n}_1 \\ \mathbf{n}_2 \end{bmatrix} \end{align*}" src="form_154.png"/>
+</p>
+<p>Note that the bottom system essentially is corresponding to the nullspace projection as in the MSCKF update and <img class="formulaInl" alt="$\mathbf{H}_{f1}$" src="form_155.png"/> is generally invertible. Note also that we assume the measurement noise is isotropic; otherwise, we should first perform whitening to make it isotropic, which would save significant computations. So, if the original measurement noise covariance <img class="formulaInl" alt="$\mathbf{R} = \sigma^2\mathbf{I}_m$" src="form_156.png"/> and the dimension of <img class="formulaInl" alt="$\tilde{\mathbf{f}}$" src="form_151.png"/> is n, then the inferred measurement noise covariance will be <img class="formulaInl" alt="$\mathbf{R}_1 = \sigma^2\mathbf{I}_n$" src="form_157.png"/> and <img class="formulaInl" alt="$\mathbf{R}_2 = \sigma^2\mathbf{I}_{m-n}$" src="form_158.png"/>.</p>
+<p>Now we can directly solve for the error of the new feature based on the first subsystem:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \tilde{\mathbf{f}} &amp;= \mathbf{H}_{f1}^{-1}(\mathbf{r}_1-\mathbf{n}_1-\mathbf{H}_x\tilde{\mathbf{x}}) \\ \Rightarrow~ \mathbb{E}[\tilde{\mathbf{f}}] &amp;= \mathbf{H}_{f1}^{-1}(\mathbf{r}_1) \end{align*}" src="form_159.png"/>
+</p>
+<p>where we assumed noise and state error are zero mean. We can update <img class="formulaInl" alt="$\hat{\mathbf f}$" src="form_148.png"/> with this correction by <img class="formulaInl" alt="$\hat{\mathbf f}+\mathbb{E}[\tilde{\mathbf{f}}]$" src="form_160.png"/>. Note that this is equivalent to a Gauss Newton step for solving the corresponding maximum likelihood estimation (MLE) formed by fixing the estimate of <img class="formulaInl" alt="$\mathbf{x}$" src="form_144.png"/> and optimizing over the value of <img class="formulaInl" alt="$\hat{\mathbf{f}}$" src="form_161.png"/>, and should therefore be zero if we used such an optimization to come up with our initial estimate for the new variable.</p>
+<p>We now can compute the covariance of the new feature as follows:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{P}_{ff} &amp;= \mathbb{E}\Big[(\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}]) (\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}])^{\top}\Big] \\ &amp;= \mathbb{E}\Big[(\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}})) (\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}}))^{\top}\Big] \\ &amp;= \mathbf{H}_{f1}^{-1}(\mathbf{H}_{x1}\mathbf{P}_{xx}\mathbf{H}_{x1}^{\top} + \mathbf{R}_1)\mathbf{H}_{f1}^{-\top} \end{align*}" src="form_162.png"/>
+</p>
+<p>and the cross correlation can be computed as:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{P}_{xf} &amp;= \mathbb{E}\Big[(\tilde{\mathbf{x}}) (\tilde{\mathbf{f}}-\mathbb{E}[\tilde{\mathbf{f}}])^{\top}\Big] \\ &amp;= \mathbb{E}\Big[(\tilde{\mathbf{x}}) (\mathbf{H}_{f1}^{-1}(-\mathbf{n}_1-\mathbf{H}_{x1}\tilde{\mathbf{x}}))^{\top}\Big] \\ &amp;= -\mathbf{P}_{xx}\mathbf{H}_{x1}^{\top}\mathbf{H}_{f1}^{-\top} \end{align*}" src="form_163.png"/>
+</p>
+<p>These entries can then be placed in the correct location for the covariance. For example when initializing a new feature to the end of the state, the augmented covariance would be:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\begin{align*} \mathbf{P}_{aug} = \begin{bmatrix} \mathbf{P}_{xx} &amp; \mathbf{P}_{xf} \\ \mathbf{P}_{xf}^{\top} &amp; \mathbf{P}_{ff} \end{bmatrix} \end{align*}" src="form_164.png"/>
+</p>
+<p>Note that this process does not update the estimate for <img class="formulaInl" alt="$\mathbf{x}$" src="form_144.png"/>. However, after initialization, we can then use the second system, <img class="formulaInl" alt="$\mathbf{r}_2$" src="form_165.png"/>, <img class="formulaInl" alt="$\mathbf{H}_{x2}$" src="form_166.png"/>, and <img class="formulaInl" alt="$\mathbf{n}_2$" src="form_167.png"/> to update our new state through a standard EKF update (see <a class="el" href="update.html#linear-meas">Linear Measurement Update</a> section). </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

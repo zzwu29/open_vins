@@ -1,0 +1,155 @@
+\hypertarget{classov__eval_1_1Loader}{}\section{ov\+\_\+eval\+:\+:Loader类 参考}
+\label{classov__eval_1_1Loader}\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+
+
+Has helper functions to load text files from disk and process them.  
+
+
+
+
+{\ttfamily \#include $<$Loader.\+h$>$}
+
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__eval_1_1Loader_afdd99379f29b052ecf7bf197d21a911f}{load\+\_\+data} (std\+::string path\+\_\+traj, std\+::vector$<$ double $>$ \&times, std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&poses, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&cov\+\_\+ori, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&cov\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em This will load {\itshape space} separated trajectory into memory \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1Loader_abcb07f7d33c1ed0e9996775188861d87}{load\+\_\+data\+\_\+csv} (std\+::string path\+\_\+traj, std\+::vector$<$ double $>$ \&times, std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&poses, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&cov\+\_\+ori, std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&cov\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em This will load {\itshape comma} separated trajectory into memory (A\+S\+L/\+E\+TH format) \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1Loader_a6ecab01ce0d594bc3a635925ea8a7321}{load\+\_\+simulation} (std\+::string path, std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&values)
+\begin{DoxyCompactList}\small\item\em Load an arbitrary sized row of {\itshape space} separated values, used for our simulation \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1Loader_aef2c74f0ad3dc52f0ce47bfe22ae6ed4}{load\+\_\+timing\+\_\+flamegraph} (std\+::string path, std\+::vector$<$ std\+::string $>$ \&names, std\+::vector$<$ double $>$ \&times, std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&timing\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Load {\itshape comma} separated timing file from pid\+\_\+ros.\+py file \end{DoxyCompactList}\item 
+static void \hyperlink{classov__eval_1_1Loader_aebb4fa55e3b3c9399dfebe11fe940112}{load\+\_\+timing\+\_\+percent} (std\+::string path, std\+::vector$<$ double $>$ \&times, std\+::vector$<$ Eigen\+::\+Vector3d $>$ \&summed\+\_\+values, std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&node\+\_\+values)
+\begin{DoxyCompactList}\small\item\em Load space separated timing file from pid\+\_\+ros.\+py file \end{DoxyCompactList}\item 
+static double \hyperlink{classov__eval_1_1Loader_af4f3f47d194febe39fe1a97a915b7add}{get\+\_\+total\+\_\+length} (const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&poses)
+\begin{DoxyCompactList}\small\item\em Will calculate the total trajectory distance \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Has helper functions to load text files from disk and process them. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__eval_1_1Loader_af4f3f47d194febe39fe1a97a915b7add}\label{classov__eval_1_1Loader_af4f3f47d194febe39fe1a97a915b7add}} 
+\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}!get\+\_\+total\+\_\+length@{get\+\_\+total\+\_\+length}}
+\index{get\+\_\+total\+\_\+length@{get\+\_\+total\+\_\+length}!ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+\subsubsection{\texorpdfstring{get\+\_\+total\+\_\+length()}{get\_total\_length()}}
+{\footnotesize\ttfamily double Loader\+::get\+\_\+total\+\_\+length (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{poses }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Will calculate the total trajectory distance 
+
+
+\begin{DoxyParams}{参数}
+{\em poses} & Pose at every timestep \mbox{[}pos,quat\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Distance travels (meters) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__eval_1_1Loader_afdd99379f29b052ecf7bf197d21a911f}\label{classov__eval_1_1Loader_afdd99379f29b052ecf7bf197d21a911f}} 
+\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}!load\+\_\+data@{load\+\_\+data}}
+\index{load\+\_\+data@{load\+\_\+data}!ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+\subsubsection{\texorpdfstring{load\+\_\+data()}{load\_data()}}
+{\footnotesize\ttfamily void Loader\+::load\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+\_\+traj,  }\item[{std\+::vector$<$ double $>$ \&}]{times,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{poses,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{cov\+\_\+ori,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{cov\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This will load {\itshape space} separated trajectory into memory 
+
+
+\begin{DoxyParams}{参数}
+{\em path\+\_\+traj} & Path to the trajectory file that we want to read in. \\
+\hline
+{\em times} & Timesteps in seconds for each pose \\
+\hline
+{\em poses} & Pose at every timestep \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em cov\+\_\+ori} & Vector of orientation covariances at each timestep (empty if we can\textquotesingle{}t load) \\
+\hline
+{\em cov\+\_\+pos} & Vector of position covariances at each timestep (empty if we can\textquotesingle{}t load) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Loader_abcb07f7d33c1ed0e9996775188861d87}\label{classov__eval_1_1Loader_abcb07f7d33c1ed0e9996775188861d87}} 
+\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}!load\+\_\+data\+\_\+csv@{load\+\_\+data\+\_\+csv}}
+\index{load\+\_\+data\+\_\+csv@{load\+\_\+data\+\_\+csv}!ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+\subsubsection{\texorpdfstring{load\+\_\+data\+\_\+csv()}{load\_data\_csv()}}
+{\footnotesize\ttfamily void Loader\+::load\+\_\+data\+\_\+csv (\begin{DoxyParamCaption}\item[{std\+::string}]{path\+\_\+traj,  }\item[{std\+::vector$<$ double $>$ \&}]{times,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix$<$ double, 7, 1 $>$$>$ \&}]{poses,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{cov\+\_\+ori,  }\item[{std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&}]{cov\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This will load {\itshape comma} separated trajectory into memory (A\+S\+L/\+E\+TH format) 
+
+
+\begin{DoxyParams}{参数}
+{\em path\+\_\+traj} & Path to the trajectory file that we want to read in. \\
+\hline
+{\em times} & Timesteps in seconds for each pose \\
+\hline
+{\em poses} & Pose at every timestep \mbox{[}pos,quat\mbox{]} \\
+\hline
+{\em cov\+\_\+ori} & Vector of orientation covariances at each timestep (empty if we can\textquotesingle{}t load) \\
+\hline
+{\em cov\+\_\+pos} & Vector of position covariances at each timestep (empty if we can\textquotesingle{}t load) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Loader_a6ecab01ce0d594bc3a635925ea8a7321}\label{classov__eval_1_1Loader_a6ecab01ce0d594bc3a635925ea8a7321}} 
+\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}!load\+\_\+simulation@{load\+\_\+simulation}}
+\index{load\+\_\+simulation@{load\+\_\+simulation}!ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+\subsubsection{\texorpdfstring{load\+\_\+simulation()}{load\_simulation()}}
+{\footnotesize\ttfamily void Loader\+::load\+\_\+simulation (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load an arbitrary sized row of {\itshape space} separated values, used for our simulation 
+
+
+\begin{DoxyParams}{参数}
+{\em path} & Path to our text file to load \\
+\hline
+{\em values} & Each row of values \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Loader_aef2c74f0ad3dc52f0ce47bfe22ae6ed4}\label{classov__eval_1_1Loader_aef2c74f0ad3dc52f0ce47bfe22ae6ed4}} 
+\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}!load\+\_\+timing\+\_\+flamegraph@{load\+\_\+timing\+\_\+flamegraph}}
+\index{load\+\_\+timing\+\_\+flamegraph@{load\+\_\+timing\+\_\+flamegraph}!ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+\subsubsection{\texorpdfstring{load\+\_\+timing\+\_\+flamegraph()}{load\_timing\_flamegraph()}}
+{\footnotesize\ttfamily void Loader\+::load\+\_\+timing\+\_\+flamegraph (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{names,  }\item[{std\+::vector$<$ double $>$ \&}]{times,  }\item[{std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&}]{timing\+\_\+values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load {\itshape comma} separated timing file from pid\+\_\+ros.\+py file 
+
+
+\begin{DoxyParams}{参数}
+{\em path} & Path to our text file to load \\
+\hline
+{\em names} & Names of each timing category \\
+\hline
+{\em times} & Timesteps in seconds for each measurement \\
+\hline
+{\em timing\+\_\+values} & Component timing values for the given timestamp \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__eval_1_1Loader_aebb4fa55e3b3c9399dfebe11fe940112}\label{classov__eval_1_1Loader_aebb4fa55e3b3c9399dfebe11fe940112}} 
+\index{ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}!load\+\_\+timing\+\_\+percent@{load\+\_\+timing\+\_\+percent}}
+\index{load\+\_\+timing\+\_\+percent@{load\+\_\+timing\+\_\+percent}!ov\+\_\+eval\+::\+Loader@{ov\+\_\+eval\+::\+Loader}}
+\subsubsection{\texorpdfstring{load\+\_\+timing\+\_\+percent()}{load\_timing\_percent()}}
+{\footnotesize\ttfamily void Loader\+::load\+\_\+timing\+\_\+percent (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{std\+::vector$<$ double $>$ \&}]{times,  }\item[{std\+::vector$<$ Eigen\+::\+Vector3d $>$ \&}]{summed\+\_\+values,  }\item[{std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \&}]{node\+\_\+values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load space separated timing file from pid\+\_\+ros.\+py file 
+
+
+\begin{DoxyParams}{参数}
+{\em path} & Path to our text file to load \\
+\hline
+{\em times} & Timesteps in seconds for each measurement \\
+\hline
+{\em summed\+\_\+values} & Summed node values \mbox{[}cpu,mem,num\+\_\+threads\mbox{]} \\
+\hline
+{\em node\+\_\+values} & Values for each separate node \mbox{[}cpu,mem,num\+\_\+threads\mbox{]} \\
+\hline
+\end{DoxyParams}

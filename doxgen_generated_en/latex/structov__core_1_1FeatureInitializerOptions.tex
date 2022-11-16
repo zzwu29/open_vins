@@ -1,0 +1,60 @@
+\hypertarget{structov__core_1_1FeatureInitializerOptions}{}\section{ov\+\_\+core\+:\+:Feature\+Initializer\+Options Struct Reference}
+\label{structov__core_1_1FeatureInitializerOptions}\index{ov\+\_\+core\+::\+Feature\+Initializer\+Options@{ov\+\_\+core\+::\+Feature\+Initializer\+Options}}
+
+
+Struct which stores all our feature initializer options.  
+
+
+
+
+{\ttfamily \#include $<$Feature\+Initializer\+Options.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_ac4daa94e8d53f30a8b12bfb8261004c4}\label{structov__core_1_1FeatureInitializerOptions_ac4daa94e8d53f30a8b12bfb8261004c4}} 
+void \hyperlink{structov__core_1_1FeatureInitializerOptions_ac4daa94e8d53f30a8b12bfb8261004c4}{print} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em Nice print function of what parameters we have loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_aa55a78626d15ac6051ca0f7a5227d175}\label{structov__core_1_1FeatureInitializerOptions_aa55a78626d15ac6051ca0f7a5227d175}} 
+bool \hyperlink{structov__core_1_1FeatureInitializerOptions_aa55a78626d15ac6051ca0f7a5227d175}{triangulate\+\_\+1d} = false
+\begin{DoxyCompactList}\small\item\em If we should perform 1d triangulation instead of 3d. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a5d67f467e1becbdc56132efb13f16992}\label{structov__core_1_1FeatureInitializerOptions_a5d67f467e1becbdc56132efb13f16992}} 
+bool \hyperlink{structov__core_1_1FeatureInitializerOptions_a5d67f467e1becbdc56132efb13f16992}{refine\+\_\+features} = true
+\begin{DoxyCompactList}\small\item\em If we should perform Levenberg-\/\+Marquardt refinment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a413a780bdbc3fa28267d4b88f5f8106a}\label{structov__core_1_1FeatureInitializerOptions_a413a780bdbc3fa28267d4b88f5f8106a}} 
+int \hyperlink{structov__core_1_1FeatureInitializerOptions_a413a780bdbc3fa28267d4b88f5f8106a}{max\+\_\+runs} = 5
+\begin{DoxyCompactList}\small\item\em Max runs for Levenberg-\/\+Marquardt. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a0228000bac963fb9125172a30dfe0b47}\label{structov__core_1_1FeatureInitializerOptions_a0228000bac963fb9125172a30dfe0b47}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a0228000bac963fb9125172a30dfe0b47}{init\+\_\+lamda} = 1e-\/3
+\begin{DoxyCompactList}\small\item\em Init lambda for Levenberg-\/\+Marquardt optimization. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a6c5a242019e48ac561c26c21d1d08497}\label{structov__core_1_1FeatureInitializerOptions_a6c5a242019e48ac561c26c21d1d08497}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a6c5a242019e48ac561c26c21d1d08497}{max\+\_\+lamda} = 1e10
+\begin{DoxyCompactList}\small\item\em Max lambda for Levenberg-\/\+Marquardt optimization. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a92b55db31844ec203e3cc42092843d08}\label{structov__core_1_1FeatureInitializerOptions_a92b55db31844ec203e3cc42092843d08}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a92b55db31844ec203e3cc42092843d08}{min\+\_\+dx} = 1e-\/6
+\begin{DoxyCompactList}\small\item\em Cutoff for dx increment to consider as converged. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a7d02a79933097af4e705235d205bc477}\label{structov__core_1_1FeatureInitializerOptions_a7d02a79933097af4e705235d205bc477}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a7d02a79933097af4e705235d205bc477}{min\+\_\+dcost} = 1e-\/6
+\begin{DoxyCompactList}\small\item\em Cutoff for cost decrement to consider as converged. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_af052a0957b569410a1e4657a93d3d498}\label{structov__core_1_1FeatureInitializerOptions_af052a0957b569410a1e4657a93d3d498}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_af052a0957b569410a1e4657a93d3d498}{lam\+\_\+mult} = 10
+\begin{DoxyCompactList}\small\item\em Multiplier to increase/decrease lambda. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a978a451e0fda58764b25d5bf89d5675b}\label{structov__core_1_1FeatureInitializerOptions_a978a451e0fda58764b25d5bf89d5675b}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a978a451e0fda58764b25d5bf89d5675b}{min\+\_\+dist} = 0.\+10
+\begin{DoxyCompactList}\small\item\em Minimum distance to accept triangulated features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_ad1bf58514d4539e5722cd8f6bdfba543}\label{structov__core_1_1FeatureInitializerOptions_ad1bf58514d4539e5722cd8f6bdfba543}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_ad1bf58514d4539e5722cd8f6bdfba543}{max\+\_\+dist} = 60
+\begin{DoxyCompactList}\small\item\em Minimum distance to accept triangulated features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a6f62408d17ff8e5ee4a76213f3348443}\label{structov__core_1_1FeatureInitializerOptions_a6f62408d17ff8e5ee4a76213f3348443}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a6f62408d17ff8e5ee4a76213f3348443}{max\+\_\+baseline} = 40
+\begin{DoxyCompactList}\small\item\em Max baseline ratio to accept triangulated features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__core_1_1FeatureInitializerOptions_a3205f827e3ba58f509435d08b369995c}\label{structov__core_1_1FeatureInitializerOptions_a3205f827e3ba58f509435d08b369995c}} 
+double \hyperlink{structov__core_1_1FeatureInitializerOptions_a3205f827e3ba58f509435d08b369995c}{max\+\_\+cond\+\_\+number} = 10000
+\begin{DoxyCompactList}\small\item\em Max condition number of linear triangulation matrix accept triangulated features. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct which stores all our feature initializer options. 

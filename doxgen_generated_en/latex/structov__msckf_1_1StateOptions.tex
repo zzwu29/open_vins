@@ -1,0 +1,69 @@
+\hypertarget{structov__msckf_1_1StateOptions}{}\section{ov\+\_\+msckf\+:\+:State\+Options Struct Reference}
+\label{structov__msckf_1_1StateOptions}\index{ov\+\_\+msckf\+::\+State\+Options@{ov\+\_\+msckf\+::\+State\+Options}}
+
+
+Struct which stores all our filter options.  
+
+
+
+
+{\ttfamily \#include $<$State\+Options.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a053913ab9567ff179ec6ed6dbaef46a8}\label{structov__msckf_1_1StateOptions_a053913ab9567ff179ec6ed6dbaef46a8}} 
+void \hyperlink{structov__msckf_1_1StateOptions_a053913ab9567ff179ec6ed6dbaef46a8}{print} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1YamlParser}{ov\+\_\+core\+::\+Yaml\+Parser} $>$ \&parser=nullptr)
+\begin{DoxyCompactList}\small\item\em Nice print function of what parameters we have loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a1a4f949ad477d10523fa06322dcc0e39}\label{structov__msckf_1_1StateOptions_a1a4f949ad477d10523fa06322dcc0e39}} 
+bool \hyperlink{structov__msckf_1_1StateOptions_a1a4f949ad477d10523fa06322dcc0e39}{do\+\_\+fej} = true
+\begin{DoxyCompactList}\small\item\em Bool to determine whether or not to do first estimate Jacobians. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_af4881f6bc94e9dc7d91adf2d064b131a}\label{structov__msckf_1_1StateOptions_af4881f6bc94e9dc7d91adf2d064b131a}} 
+bool \hyperlink{structov__msckf_1_1StateOptions_af4881f6bc94e9dc7d91adf2d064b131a}{imu\+\_\+avg} = false
+\begin{DoxyCompactList}\small\item\em Bool to determine whether or not use imu message averaging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_ab7f0a5a223c108e959c851fd80820bb0}\label{structov__msckf_1_1StateOptions_ab7f0a5a223c108e959c851fd80820bb0}} 
+bool \hyperlink{structov__msckf_1_1StateOptions_ab7f0a5a223c108e959c851fd80820bb0}{use\+\_\+rk4\+\_\+integration} = true
+\begin{DoxyCompactList}\small\item\em Bool to determine if we should use Rk4 imu integration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a9119bc2f15ba934708bf201bdb5ac225}\label{structov__msckf_1_1StateOptions_a9119bc2f15ba934708bf201bdb5ac225}} 
+bool \hyperlink{structov__msckf_1_1StateOptions_a9119bc2f15ba934708bf201bdb5ac225}{do\+\_\+calib\+\_\+camera\+\_\+pose} = false
+\begin{DoxyCompactList}\small\item\em Bool to determine whether or not to calibrate imu-\/to-\/camera pose. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_aff5471acfde8d4ddd4cd44e940be5177}\label{structov__msckf_1_1StateOptions_aff5471acfde8d4ddd4cd44e940be5177}} 
+bool \hyperlink{structov__msckf_1_1StateOptions_aff5471acfde8d4ddd4cd44e940be5177}{do\+\_\+calib\+\_\+camera\+\_\+intrinsics} = false
+\begin{DoxyCompactList}\small\item\em Bool to determine whether or not to calibrate camera intrinsics. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a05dd7ee2f2acaadfbcabfad00a26df25}\label{structov__msckf_1_1StateOptions_a05dd7ee2f2acaadfbcabfad00a26df25}} 
+bool \hyperlink{structov__msckf_1_1StateOptions_a05dd7ee2f2acaadfbcabfad00a26df25}{do\+\_\+calib\+\_\+camera\+\_\+timeoffset} = false
+\begin{DoxyCompactList}\small\item\em Bool to determine whether or not to calibrate camera to I\+MU time offset. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a3fbf23951c9d379f51847348f775cfc9}\label{structov__msckf_1_1StateOptions_a3fbf23951c9d379f51847348f775cfc9}} 
+int \hyperlink{structov__msckf_1_1StateOptions_a3fbf23951c9d379f51847348f775cfc9}{max\+\_\+clone\+\_\+size} = 11
+\begin{DoxyCompactList}\small\item\em Max clone size of sliding window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_af486dff48a918b3afed0176558d86f65}\label{structov__msckf_1_1StateOptions_af486dff48a918b3afed0176558d86f65}} 
+int \hyperlink{structov__msckf_1_1StateOptions_af486dff48a918b3afed0176558d86f65}{max\+\_\+slam\+\_\+features} = 25
+\begin{DoxyCompactList}\small\item\em Max number of estimated S\+L\+AM features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a13760012f68a944b2b59e9f83bbc9bc5}\label{structov__msckf_1_1StateOptions_a13760012f68a944b2b59e9f83bbc9bc5}} 
+int \hyperlink{structov__msckf_1_1StateOptions_a13760012f68a944b2b59e9f83bbc9bc5}{max\+\_\+slam\+\_\+in\+\_\+update} = 1000
+\begin{DoxyCompactList}\small\item\em Max number of S\+L\+AM features we allow to be included in a single E\+KF update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a6fb28c6eb0838363eee0ce37a2828ed9}\label{structov__msckf_1_1StateOptions_a6fb28c6eb0838363eee0ce37a2828ed9}} 
+int \hyperlink{structov__msckf_1_1StateOptions_a6fb28c6eb0838363eee0ce37a2828ed9}{max\+\_\+msckf\+\_\+in\+\_\+update} = 1000
+\begin{DoxyCompactList}\small\item\em Max number of M\+S\+C\+KF features we will use at a given image timestep. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_ad26177fc751cdcf12e9e19ef698f91eb}\label{structov__msckf_1_1StateOptions_ad26177fc751cdcf12e9e19ef698f91eb}} 
+int \hyperlink{structov__msckf_1_1StateOptions_ad26177fc751cdcf12e9e19ef698f91eb}{max\+\_\+aruco\+\_\+features} = 1024
+\begin{DoxyCompactList}\small\item\em Max number of estimated A\+R\+U\+CO features. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a1de43b7611b68b3bbae742adfd0e20e5}\label{structov__msckf_1_1StateOptions_a1de43b7611b68b3bbae742adfd0e20e5}} 
+int \hyperlink{structov__msckf_1_1StateOptions_a1de43b7611b68b3bbae742adfd0e20e5}{num\+\_\+cameras} = 1
+\begin{DoxyCompactList}\small\item\em Number of distinct cameras that we will observe features in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a385de6983ebba82af2215898610aed36}\label{structov__msckf_1_1StateOptions_a385de6983ebba82af2215898610aed36}} 
+\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation} \hyperlink{structov__msckf_1_1StateOptions_a385de6983ebba82af2215898610aed36}{feat\+\_\+rep\+\_\+msckf} = ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation\+::\+G\+L\+O\+B\+A\+L\+\_\+3D
+\begin{DoxyCompactList}\small\item\em What representation our features are in (msckf features) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_a426ea4e9c3f5f269eddb356e9e7feb6c}\label{structov__msckf_1_1StateOptions_a426ea4e9c3f5f269eddb356e9e7feb6c}} 
+\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation} \hyperlink{structov__msckf_1_1StateOptions_a426ea4e9c3f5f269eddb356e9e7feb6c}{feat\+\_\+rep\+\_\+slam} = ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation\+::\+G\+L\+O\+B\+A\+L\+\_\+3D
+\begin{DoxyCompactList}\small\item\em What representation our features are in (slam features) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1StateOptions_aa2d88cb407257f4f7d3c868e8f39ed6c}\label{structov__msckf_1_1StateOptions_aa2d88cb407257f4f7d3c868e8f39ed6c}} 
+\hyperlink{classov__type_1_1LandmarkRepresentation_a7f5783df6932ace7f098ae243b6d298e}{ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation} \hyperlink{structov__msckf_1_1StateOptions_aa2d88cb407257f4f7d3c868e8f39ed6c}{feat\+\_\+rep\+\_\+aruco} = ov\+\_\+type\+::\+Landmark\+Representation\+::\+Representation\+::\+G\+L\+O\+B\+A\+L\+\_\+3D
+\begin{DoxyCompactList}\small\item\em What representation our features are in (aruco tag features) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct which stores all our filter options. 

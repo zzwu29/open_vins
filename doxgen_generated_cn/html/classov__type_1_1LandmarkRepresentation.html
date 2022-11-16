@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_type::LandmarkRepresentation类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__type.html">ov_type</a></li><li class="navelem"><a class="el" href="classov__type_1_1LandmarkRepresentation.html">LandmarkRepresentation</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classov__type_1_1LandmarkRepresentation-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_type::LandmarkRepresentation类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class has useful feature representation types  
+ <a href="classov__type_1_1LandmarkRepresentation.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="LandmarkRepresentation_8h_source.html">LandmarkRepresentation.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a7f5783df6932ace7f098ae243b6d298e"><td class="memItemLeft" align="right" valign="top"><a id="a7f5783df6932ace7f098ae243b6d298e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a> { <br />
+&#160;&#160;<b>GLOBAL_3D</b>, 
+<b>GLOBAL_FULL_INVERSE_DEPTH</b>, 
+<b>ANCHORED_3D</b>, 
+<b>ANCHORED_FULL_INVERSE_DEPTH</b>, 
+<br />
+&#160;&#160;<b>ANCHORED_MSCKF_INVERSE_DEPTH</b>, 
+<b>ANCHORED_INVERSE_DEPTH_SINGLE</b>, 
+<b>UNKNOWN</b>
+<br />
+ }<tr class="memdesc:a7f5783df6932ace7f098ae243b6d298e"><td class="mdescLeft">&#160;</td><td class="mdescRight">What feature representation our state can use <br /></td></tr>
+</td></tr>
+<tr class="separator:a7f5783df6932ace7f098ae243b6d298e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:ab20d64d87c0d661cd343cdd7814d8264"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__type_1_1LandmarkRepresentation.html#ab20d64d87c0d661cd343cdd7814d8264">as_string</a> (<a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a> feat_representation)</td></tr>
+<tr class="memdesc:ab20d64d87c0d661cd343cdd7814d8264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation.  <a href="#ab20d64d87c0d661cd343cdd7814d8264">更多...</a><br /></td></tr>
+<tr class="separator:ab20d64d87c0d661cd343cdd7814d8264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a730830f7d0235f40f4266d0a66895e50"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__type_1_1LandmarkRepresentation.html#a730830f7d0235f40f4266d0a66895e50">from_string</a> (const std::string &amp;feat_representation)</td></tr>
+<tr class="memdesc:a730830f7d0235f40f4266d0a66895e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation.  <a href="#a730830f7d0235f40f4266d0a66895e50">更多...</a><br /></td></tr>
+<tr class="separator:a730830f7d0235f40f4266d0a66895e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67860ca8360c71fa8c1ae3f99a2378c1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__type_1_1LandmarkRepresentation.html#a67860ca8360c71fa8c1ae3f99a2378c1">is_relative_representation</a> (<a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a> feat_representation)</td></tr>
+<tr class="memdesc:a67860ca8360c71fa8c1ae3f99a2378c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function that checks if the passed feature representation is a relative or global  <a href="#a67860ca8360c71fa8c1ae3f99a2378c1">更多...</a><br /></td></tr>
+<tr class="separator:a67860ca8360c71fa8c1ae3f99a2378c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Class has useful feature representation types </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="ab20d64d87c0d661cd343cdd7814d8264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20d64d87c0d661cd343cdd7814d8264">&#9670;&nbsp;</a></span>as_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string ov_type::LandmarkRepresentation::as_string </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a>&#160;</td>
+          <td class="paramname"><em>feat_representation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feat_representation</td><td>Representation we want to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>String version of the passed enum </dd></dl>
+
+</div>
+</div>
+<a id="a730830f7d0235f40f4266d0a66895e50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730830f7d0235f40f4266d0a66895e50">&#9670;&nbsp;</a></span>from_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a> ov_type::LandmarkRepresentation::from_string </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>feat_representation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a string representation of this enum value. Used to debug print out what the user has selected as the representation. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feat_representation</td><td>String we want to find the enum of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Representation, will be "unknown" if we coun't parse it </dd></dl>
+
+</div>
+</div>
+<a id="a67860ca8360c71fa8c1ae3f99a2378c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67860ca8360c71fa8c1ae3f99a2378c1">&#9670;&nbsp;</a></span>is_relative_representation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ov_type::LandmarkRepresentation::is_relative_representation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classov__type_1_1LandmarkRepresentation.html#a7f5783df6932ace7f098ae243b6d298e">Representation</a>&#160;</td>
+          <td class="paramname"><em>feat_representation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper function that checks if the passed feature representation is a relative or global </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feat_representation</td><td>Representation we want to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True if it is a relative representation </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

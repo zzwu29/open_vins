@@ -1,0 +1,108 @@
+\hypertarget{classov__msckf_1_1State}{}\section{ov\+\_\+msckf\+:\+:State Class Reference}
+\label{classov__msckf_1_1State}\index{ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}}
+
+
+\hyperlink{classov__msckf_1_1State}{State} of our filter.  
+
+
+
+
+{\ttfamily \#include $<$State.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1State_ad6098accfeb57e7eb8c8a22bfd45ec0b}{State} (\hyperlink{structov__msckf_1_1StateOptions}{State\+Options} \&options\+\_\+)
+\begin{DoxyCompactList}\small\item\em Default Constructor (will initialize variables to defaults) \end{DoxyCompactList}\item 
+double \hyperlink{classov__msckf_1_1State_a36420e71ffa54625667eac2a8a345582}{margtimestep} ()
+\begin{DoxyCompactList}\small\item\em Will return the timestep that we will marginalize next. As of right now, since we are using a sliding window, this is the oldest clone. But if you wanted to do a keyframe system, you could selectively marginalize clones. \end{DoxyCompactList}\item 
+int \hyperlink{classov__msckf_1_1State_a37c45cc1d3d1a3dcc46d3799a997355f}{max\+\_\+covariance\+\_\+size} ()
+\begin{DoxyCompactList}\small\item\em Calculates the current max size of the covariance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_ae7615177e3edeb8eac39eb05867dc72f}\label{classov__msckf_1_1State_ae7615177e3edeb8eac39eb05867dc72f}} 
+double \hyperlink{classov__msckf_1_1State_ae7615177e3edeb8eac39eb05867dc72f}{\+\_\+timestamp} = -\/1
+\begin{DoxyCompactList}\small\item\em Current timestamp (should be the last update time!) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_a2af409a71537d305b45c62a91b6dda75}\label{classov__msckf_1_1State_a2af409a71537d305b45c62a91b6dda75}} 
+\hyperlink{structov__msckf_1_1StateOptions}{State\+Options} \hyperlink{classov__msckf_1_1State_a2af409a71537d305b45c62a91b6dda75}{\+\_\+options}
+\begin{DoxyCompactList}\small\item\em Struct containing filter options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_aeb5600395921fb8ac81f585006186a64}\label{classov__msckf_1_1State_aeb5600395921fb8ac81f585006186a64}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$ \hyperlink{classov__msckf_1_1State_aeb5600395921fb8ac81f585006186a64}{\+\_\+imu}
+\begin{DoxyCompactList}\small\item\em Pointer to the \char`\"{}active\char`\"{} I\+MU state (q\+\_\+\+GtoI, p\+\_\+\+IinG, v\+\_\+\+IinG, bg, ba) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_a9fdd8bcc9f67c124257a8daa81bfb15d}\label{classov__msckf_1_1State_a9fdd8bcc9f67c124257a8daa81bfb15d}} 
+std\+::map$<$ double, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1PoseJPL}{ov\+\_\+type\+::\+Pose\+J\+PL} $>$ $>$ \hyperlink{classov__msckf_1_1State_a9fdd8bcc9f67c124257a8daa81bfb15d}{\+\_\+clones\+\_\+\+I\+MU}
+\begin{DoxyCompactList}\small\item\em Map between imaging times and clone poses (q\+\_\+\+Gto\+Ii, p\+\_\+\+IiinG) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_ac08dc6bd1557fd4c3639d5eb2a998cb4}\label{classov__msckf_1_1State_ac08dc6bd1557fd4c3639d5eb2a998cb4}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Landmark}{ov\+\_\+type\+::\+Landmark} $>$ $>$ \hyperlink{classov__msckf_1_1State_ac08dc6bd1557fd4c3639d5eb2a998cb4}{\+\_\+features\+\_\+\+S\+L\+AM}
+\begin{DoxyCompactList}\small\item\em Our current set of S\+L\+AM features (3d positions) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_a0ef68be4e06e4b4947c86852d1005893}\label{classov__msckf_1_1State_a0ef68be4e06e4b4947c86852d1005893}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{ov\+\_\+type\+::\+Vec} $>$ \hyperlink{classov__msckf_1_1State_a0ef68be4e06e4b4947c86852d1005893}{\+\_\+calib\+\_\+dt\+\_\+\+C\+A\+Mto\+I\+MU}
+\begin{DoxyCompactList}\small\item\em Time offset base I\+MU to camera (t\+\_\+imu = t\+\_\+cam + t\+\_\+off) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_a61797fa8310111f413c5c5b45c19460b}\label{classov__msckf_1_1State_a61797fa8310111f413c5c5b45c19460b}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1PoseJPL}{ov\+\_\+type\+::\+Pose\+J\+PL} $>$ $>$ \hyperlink{classov__msckf_1_1State_a61797fa8310111f413c5c5b45c19460b}{\+\_\+calib\+\_\+\+I\+M\+Uto\+C\+AM}
+\begin{DoxyCompactList}\small\item\em Calibration poses for each camera (R\+\_\+\+ItoC, p\+\_\+\+IinC) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_a5323d1f31a15c9b54b6696ffb5db353f}\label{classov__msckf_1_1State_a5323d1f31a15c9b54b6696ffb5db353f}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{ov\+\_\+type\+::\+Vec} $>$ $>$ \hyperlink{classov__msckf_1_1State_a5323d1f31a15c9b54b6696ffb5db353f}{\+\_\+cam\+\_\+intrinsics}
+\begin{DoxyCompactList}\small\item\em Camera intrinsics. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_af66308da3cab5bcc0098aadd5a16e874}\label{classov__msckf_1_1State_af66308da3cab5bcc0098aadd5a16e874}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{ov\+\_\+core\+::\+Cam\+Base} $>$ $>$ \hyperlink{classov__msckf_1_1State_af66308da3cab5bcc0098aadd5a16e874}{\+\_\+cam\+\_\+intrinsics\+\_\+cameras}
+\begin{DoxyCompactList}\small\item\em Camera intrinsics camera objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1State_abaf77b0c719a76ee0fd7282a087577da}\label{classov__msckf_1_1State_abaf77b0c719a76ee0fd7282a087577da}} 
+class {\bfseries State\+Helper}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classov__msckf_1_1State}{State} of our filter. 
+
+This state has all the current estimates for the filter. This system is modeled after the M\+S\+C\+KF filter, thus we have a sliding window of clones. We additionally have more parameters for online estimation of calibration and S\+L\+AM features. We also have the covariance of the system, which should be managed using the \hyperlink{classov__msckf_1_1StateHelper}{State\+Helper} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1State_ad6098accfeb57e7eb8c8a22bfd45ec0b}\label{classov__msckf_1_1State_ad6098accfeb57e7eb8c8a22bfd45ec0b}} 
+\index{ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}!State@{State}}
+\index{State@{State}!ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}}
+\subsubsection{\texorpdfstring{State()}{State()}}
+{\footnotesize\ttfamily State\+::\+State (\begin{DoxyParamCaption}\item[{\hyperlink{structov__msckf_1_1StateOptions}{State\+Options} \&}]{options\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor (will initialize variables to defaults) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options\+\_\+} & Options structure containing filter options \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1State_a36420e71ffa54625667eac2a8a345582}\label{classov__msckf_1_1State_a36420e71ffa54625667eac2a8a345582}} 
+\index{ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}!margtimestep@{margtimestep}}
+\index{margtimestep@{margtimestep}!ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}}
+\subsubsection{\texorpdfstring{margtimestep()}{margtimestep()}}
+{\footnotesize\ttfamily double ov\+\_\+msckf\+::\+State\+::margtimestep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Will return the timestep that we will marginalize next. As of right now, since we are using a sliding window, this is the oldest clone. But if you wanted to do a keyframe system, you could selectively marginalize clones. 
+
+\begin{DoxyReturn}{Returns}
+timestep of clone we will marginalize 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__msckf_1_1State_a37c45cc1d3d1a3dcc46d3799a997355f}\label{classov__msckf_1_1State_a37c45cc1d3d1a3dcc46d3799a997355f}} 
+\index{ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}!max\+\_\+covariance\+\_\+size@{max\+\_\+covariance\+\_\+size}}
+\index{max\+\_\+covariance\+\_\+size@{max\+\_\+covariance\+\_\+size}!ov\+\_\+msckf\+::\+State@{ov\+\_\+msckf\+::\+State}}
+\subsubsection{\texorpdfstring{max\+\_\+covariance\+\_\+size()}{max\_covariance\_size()}}
+{\footnotesize\ttfamily int ov\+\_\+msckf\+::\+State\+::max\+\_\+covariance\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculates the current max size of the covariance. 
+
+\begin{DoxyReturn}{Returns}
+Size of the current covariance matrix 
+\end{DoxyReturn}

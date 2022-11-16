@@ -1,0 +1,78 @@
+\hypertarget{classov__init_1_1Factor__ImuCPIv1}{}\section{ov\+\_\+init\+:\+:Factor\+\_\+\+Imu\+C\+P\+Iv1 Class Reference}
+\label{classov__init_1_1Factor__ImuCPIv1}\index{ov\+\_\+init\+::\+Factor\+\_\+\+Imu\+C\+P\+Iv1@{ov\+\_\+init\+::\+Factor\+\_\+\+Imu\+C\+P\+Iv1}}
+
+
+Factor for I\+MU continuous preintegration version 1.  
+
+
+
+
+{\ttfamily \#include $<$Factor\+\_\+\+Imu\+C\+P\+Iv1.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_af3bd5617ca4e6b1b27b71090e7434b61}\label{classov__init_1_1Factor__ImuCPIv1_af3bd5617ca4e6b1b27b71090e7434b61}} 
+\hyperlink{classov__init_1_1Factor__ImuCPIv1_af3bd5617ca4e6b1b27b71090e7434b61}{Factor\+\_\+\+Imu\+C\+P\+Iv1} (double deltatime, Eigen\+::\+Vector3d \&grav, Eigen\+::\+Vector3d \&alpha, Eigen\+::\+Vector3d \&beta, Eigen\+::\+Vector4d \&q\+\_\+\+Kto\+K1, Eigen\+::\+Vector3d \&ba\+\_\+lin, Eigen\+::\+Vector3d \&bg\+\_\+lin, Eigen\+::\+Matrix3d \&J\+\_\+q, Eigen\+::\+Matrix3d \&J\+\_\+beta, Eigen\+::\+Matrix3d \&J\+\_\+alpha, Eigen\+::\+Matrix3d \&H\+\_\+beta, Eigen\+::\+Matrix3d \&H\+\_\+alpha, Eigen\+::\+Matrix$<$ double, 15, 15 $>$ \&covariance)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1Factor__ImuCPIv1_a76eebef0897757d9978af82b0f256f28}{Evaluate} (double const $\ast$const $\ast$parameters, double $\ast$residuals, double $\ast$$\ast$jacobians) const override
+\begin{DoxyCompactList}\small\item\em Error residual and Jacobian calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a6ea9b90892f87230d5a5a060178eb270}\label{classov__init_1_1Factor__ImuCPIv1_a6ea9b90892f87230d5a5a060178eb270}} 
+Eigen\+::\+Vector3d {\bfseries alpha}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a833f10149e4ed154eb8a0477cdbf36d4}\label{classov__init_1_1Factor__ImuCPIv1_a833f10149e4ed154eb8a0477cdbf36d4}} 
+Eigen\+::\+Vector3d {\bfseries beta}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_aaf91012dc2e36286b632e8a74860abd8}\label{classov__init_1_1Factor__ImuCPIv1_aaf91012dc2e36286b632e8a74860abd8}} 
+Eigen\+::\+Vector4d {\bfseries q\+\_\+breve}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a7989140a84674607ec85b9b8bc39298a}\label{classov__init_1_1Factor__ImuCPIv1_a7989140a84674607ec85b9b8bc39298a}} 
+double {\bfseries dt}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_ac4511c7ec588ef3707f7cf300c8abbaf}\label{classov__init_1_1Factor__ImuCPIv1_ac4511c7ec588ef3707f7cf300c8abbaf}} 
+Eigen\+::\+Vector3d {\bfseries b\+\_\+w\+\_\+lin\+\_\+save}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a9624e08bab89788f5a3f010fb924ac82}\label{classov__init_1_1Factor__ImuCPIv1_a9624e08bab89788f5a3f010fb924ac82}} 
+Eigen\+::\+Vector3d {\bfseries b\+\_\+a\+\_\+lin\+\_\+save}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a4fc6167a8d7977c8a4c5d9d902cf604c}\label{classov__init_1_1Factor__ImuCPIv1_a4fc6167a8d7977c8a4c5d9d902cf604c}} 
+Eigen\+::\+Matrix3d {\bfseries J\+\_\+q}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a7df0e396606aad0c09230162594af72f}\label{classov__init_1_1Factor__ImuCPIv1_a7df0e396606aad0c09230162594af72f}} 
+Eigen\+::\+Matrix3d {\bfseries J\+\_\+a}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_ac18bf93448dd63e8a644ba59f7537706}\label{classov__init_1_1Factor__ImuCPIv1_ac18bf93448dd63e8a644ba59f7537706}} 
+Eigen\+::\+Matrix3d {\bfseries J\+\_\+b}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a9b7dfe80421554d5a29f2145084c5621}\label{classov__init_1_1Factor__ImuCPIv1_a9b7dfe80421554d5a29f2145084c5621}} 
+Eigen\+::\+Matrix3d {\bfseries H\+\_\+a}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_ad25f44b13639e349dea37a3afcc2449b}\label{classov__init_1_1Factor__ImuCPIv1_ad25f44b13639e349dea37a3afcc2449b}} 
+Eigen\+::\+Matrix3d {\bfseries H\+\_\+b}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a0620f8c734cc1d0412278472987887ae}\label{classov__init_1_1Factor__ImuCPIv1_a0620f8c734cc1d0412278472987887ae}} 
+Eigen\+::\+Matrix$<$ double, 15, 15 $>$ {\bfseries sqrt\+I\+\_\+save}
+\item 
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a2bb9dc2ea616722dde853237772fc782}\label{classov__init_1_1Factor__ImuCPIv1_a2bb9dc2ea616722dde853237772fc782}} 
+Eigen\+::\+Vector3d {\bfseries grav\+\_\+save}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Factor for I\+MU continuous preintegration version 1. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__init_1_1Factor__ImuCPIv1_a76eebef0897757d9978af82b0f256f28}\label{classov__init_1_1Factor__ImuCPIv1_a76eebef0897757d9978af82b0f256f28}} 
+\index{ov\+\_\+init\+::\+Factor\+\_\+\+Imu\+C\+P\+Iv1@{ov\+\_\+init\+::\+Factor\+\_\+\+Imu\+C\+P\+Iv1}!Evaluate@{Evaluate}}
+\index{Evaluate@{Evaluate}!ov\+\_\+init\+::\+Factor\+\_\+\+Imu\+C\+P\+Iv1@{ov\+\_\+init\+::\+Factor\+\_\+\+Imu\+C\+P\+Iv1}}
+\subsubsection{\texorpdfstring{Evaluate()}{Evaluate()}}
+{\footnotesize\ttfamily bool Factor\+\_\+\+Imu\+C\+P\+Iv1\+::\+Evaluate (\begin{DoxyParamCaption}\item[{double const $\ast$const $\ast$}]{parameters,  }\item[{double $\ast$}]{residuals,  }\item[{double $\ast$$\ast$}]{jacobians }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Error residual and Jacobian calculation. 
+
+This computes the error between the integrated preintegrated measurement and the current state estimate. This also takes into account the bias linearization point changes. 

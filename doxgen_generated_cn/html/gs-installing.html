@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: Installation Guide</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="getting-started.html">Getting Started</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Installation Guide </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>目录</h3>
+<ul><li class="level1"><a href="#gs-install-ros">ROS Dependency</a><ul><li class="level2"><a href="#gs-install-ros-1">ROS1 Install</a></li>
+<li class="level2"><a href="#gs-install-ros-2">ROS2 Install</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#gs-install-openvins">Cloning the OpenVINS Project</a></li>
+<li class="level1"><a href="#gs-install-oveval">Additional Evaluation Requirements</a></li>
+<li class="level1"><a href="#gs-install-opencv">OpenCV Dependency (from source)</a></li>
+<li class="level1"><a href="#gs-install-ceres">Ceres Solver (from source)</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="gs-install-ros"></a>
+ROS Dependency</h1>
+<p>Our codebase is built on top of the <a href="https://www.ros.org/">Robot Operating System (ROS)</a> and has been tested building on Ubuntu 16.04, 18.04, 20.04 systems with ROS Kinetic, Melodic, and Noetic. We also recommend installing the <a href="https://github.com/catkin/catkin_tools">catkin_tools</a> build for easy ROS building. All ROS installs include <a href="https://github.com/opencv/opencv">OpenCV</a>, but if you need to build OpenCV from source ensure you build the contributed modules as we use Aruco feature extraction. See the <a href="https://github.com/opencv/opencv_contrib">opencv_contrib</a> readme on how to configure your cmake command when you build the core OpenCV library. We have tested building with OpenCV 3.2, 3.3, 3.4, 4.2, and 4.5. Please see the official instructions to install ROS:</p>
+<ul>
+<li><a href="http://wiki.ros.org/kinetic/Installation/Ubuntu">Ubuntu 16.04 ROS 1 Kinetic</a> (uses OpenCV 3.3)</li>
+<li><a href="http://wiki.ros.org/melodic/Installation/Ubuntu">Ubuntu 18.04 ROS 1 Melodic</a> (uses OpenCV 3.2)</li>
+<li><a href="http://wiki.ros.org/noetic/Installation/Ubuntu">Ubuntu 20.04 ROS 1 Noetic</a> (uses OpenCV 4.2)</li>
+<li><a href="https://docs.ros.org/en/dashing/">Ubuntu 18.04 ROS 2 Dashing</a> (uses OpenCV 3.2)</li>
+<li><a href="https://docs.ros.org/en/galactic/">Ubuntu 20.04 ROS 2 Galactic</a> (uses OpenCV 4.2)</li>
+</ul>
+<p>We do support ROS-free builds, but don't recommend using this interface as we have limited support for it. You will need to ensure you have installed OpenCV 3 or 4, Eigen3, and Ceres which are the only dependencies. For Ubuntu linux-based system the system dependencies are:</p>
+<div class="fragment"><div class="line">sudo apt-get install libeigen3-dev libboost-all-dev libceres-dev</div></div><!-- fragment --><p>If ROS is not found on the system, one can use command line options to run the simulation without any visualization or <code>cmake -DENABLE_ROS=OFF ..</code>. If you are using the ROS-free interface, you will need to properly construct the <a class="el" href="structov__msckf_1_1VioManagerOptions.html">ov_msckf::VioManagerOptions</a> struct with proper information and feed inertial and image data into the correct functions. The simulator binary <code>run_simulation</code> can give you and example on how to do this.</p>
+<h2><a class="anchor" id="gs-install-ros-1"></a>
+ROS1 Install</h2>
+<p>To install we can perform the following:</p>
+<div class="fragment"><div class="line">sudo sh -c &#39;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&#39;</div><div class="line">sudo apt-key adv --keyserver &#39;hkp://keyserver.ubuntu.com:80&#39; --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654</div><div class="line">sudo apt-get update</div><div class="line">export ROS1_DISTRO=noetic # kinetic=16.04, melodic=18.04, noetic=20.04</div><div class="line">sudo apt-get install ros-$ROS1_DISTRO-desktop-full</div><div class="line">sudo apt-get install python-catkin-tools # ubuntu 16.04, 18.04</div><div class="line">sudo apt-get install python3-catkin-tools python3-osrf-pycommon # ubuntu 20.04</div><div class="line">sudo apt-get install libeigen3-dev libboost-all-dev libceres-dev</div></div><!-- fragment --><p>If you only have ROS1 on your system and are not cross installing ROS2, then you can run the following to append this to your bashrc file. Every time a terminal is open, thus will load the ROS1 environmental variables required to find all dependencies for building and system installed packages.</p>
+<div class="fragment"><div class="line">echo &quot;source /opt/ros/$ROS1_DISTRO/setup.bash&quot; &gt;&gt; ~/.bashrc</div><div class="line">source ~/.bashrc</div></div><!-- fragment --><p>Otherwise, if you want to also install ROS2, you must <em>NOT</em> have a global source. Instead we can have a nice helper command which can be used when we build a ROS1 workspace. Additionally, the <code>source_devel</code> command can be used when in your workspace root to source built packages. Once appended simply run <code>source_ros1</code> to load your ROS1 environmental variables.</p>
+<div class="fragment"><div class="line">echo &quot;alias source_ros1=\&quot;source /opt/ros/$ROS1_DISTRO/setup.bash\&quot;&quot; &gt;&gt; ~/.bashrc</div><div class="line">echo &quot;alias source_devel=\&quot;source devel/setup.bash\&quot;&quot; &gt;&gt; ~/.bashrc</div><div class="line">source ~/.bashrc</div></div><!-- fragment --><h2><a class="anchor" id="gs-install-ros-2"></a>
+ROS2 Install</h2>
+<p>To install we can perform the following:</p>
+<div class="fragment"><div class="line">sudo apt update &amp;&amp; sudo apt install curl gnupg lsb-release</div><div class="line">sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg</div><div class="line">echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main&quot; | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null</div><div class="line">sudo apt-get update</div><div class="line">export ROS2_DISTRO=galactic # dashing=18.04, galactic=20.04</div><div class="line">sudo apt install ros-$ROS2_DISTRO-desktop</div><div class="line">sudo apt-get install ros-$ROS2_DISTRO-ros2bag ros-$ROS2_DISTRO-rosbag2* # rosbag utilities (seems to be separate)</div><div class="line">sudo apt-get install libeigen3-dev libboost-all-dev libceres-dev</div></div><!-- fragment --><p>If you only have ROS2 on your system and are not cross installing ROS1, then you can run the following to append this to your bashrc file. Every time a terminal is open, thus will load the ROS2 environmental variables required to find all dependencies for building and system installed packages.</p>
+<div class="fragment"><div class="line">echo &quot;source /opt/ros/$ROS2_DISTRO/setup.bash&quot; &gt;&gt; ~/.bashrc</div><div class="line">source ~/.bashrc</div></div><!-- fragment --><p>Otherwise, if you want to also install ROS1, you must <em>NOT</em> have a global source. Instead we can have a nice helper command which can be used when we build a ROS1 workspace. Additionally, the <code>source_install</code> command can be used when in your workspace root to source built packages. Once appended simply run <code>source_ros2</code> to load your ROS1 environmental variables.</p>
+<div class="fragment"><div class="line">echo &quot;alias source_ros2=\&quot;source /opt/ros/$ROS2_DISTRO/setup.bash\&quot;&quot; &gt;&gt; ~/.bashrc</div><div class="line">echo &quot;alias source_install=\&quot;source install/setup.bash\&quot;&quot; &gt;&gt; ~/.bashrc</div><div class="line">source ~/.bashrc</div></div><!-- fragment --><h1><a class="anchor" id="gs-install-openvins"></a>
+Cloning the OpenVINS Project</h1>
+<p>Now that we have ROS installed we can setup a catkin workspace and build the project! If you did not install the catkin_tools build system, you should be able to build using the standard <code>catkin_make</code> command that is included with ROS. If you run into any problems please google search the issue first and if you are unable to find a solution please open an issue on our github page. After the build is successful please following the <a class="el" href="gs-tutorial.html">Simple Tutorial</a> guide on getting a dataset and running the system.</p>
+<p>There are additional options that users might be interested in. Configure these with <code>catkin build -D&lt;option_name&gt;=OFF</code> or <code>cmake -D&lt;option_name&gt;=ON ..</code> in the ROS free case.</p>
+<ul>
+<li><code>ENABLE_ROS</code> - (default ON) - Enable or disable building with ROS (if it is found)</li>
+<li><code>ENABLE_ARUCO_TAGS</code> - (default ON) - Enable or disable aruco tag (disable if no contrib modules)</li>
+<li><code>BUILD_OV_EVAL</code> - (default ON) - Enable or disable building of <a class="el" href="namespaceov__eval.html" title="Evaluation and recording utilities ">ov_eval</a></li>
+<li><code>DISABLE_MATPLOTLIB</code> - (default OFF) - Disable or enable matplotlib plot scripts in <a class="el" href="namespaceov__eval.html" title="Evaluation and recording utilities ">ov_eval</a></li>
+</ul>
+<div class="fragment"><div class="line">mkdir -p ~/workspace/catkin_ws_ov/src/</div><div class="line">cd ~/workspace/catkin_ws_ov/src/</div><div class="line">git clone https://github.com/rpng/open_vins/</div><div class="line">cd ..</div><div class="line">catkin build # ROS1</div><div class="line">colcon build # ROS2</div><div class="line">colcon build --event-handlers console_cohesion+ --packages-select ov_core ov_init ov_msckf ov_eval # ROS2 with verbose output</div></div><!-- fragment --><p>If you do not have ROS installed, then you can do the following:</p>
+<div class="fragment"><div class="line">cd ~/github/</div><div class="line">git clone https://github.com/rpng/open_vins/</div><div class="line">cd open_vins/ov_msckf/</div><div class="line">mkdir build</div><div class="line">cd build</div><div class="line">cmake ..</div><div class="line">make -j4</div></div><!-- fragment --><p>If you wish to debug and run with assert statements, you can configure your workspace as follows:</p>
+<div class="fragment"><div class="line">catkin config --cmake-args -DCMAKE_BUILD_TYPE=Debug</div><div class="line">catkin build --cmake-args -DCMAKE_BUILD_TYPE=Debug</div><div class="line">colcon build --cmake-args -DCMAKE_BUILD_TYPE=Debug</div></div><!-- fragment --><h1><a class="anchor" id="gs-install-oveval"></a>
+Additional Evaluation Requirements</h1>
+<p>If you want to use the plotting utility wrapper of <a href="https://github.com/lava/matplotlib-cpp">matplotlib-cpp</a> to generate plots directly from running the cpp code in <a class="el" href="namespaceov__eval.html" title="Evaluation and recording utilities ">ov_eval</a> you will need to make sure you have a valid Python 2.7 or 3 install of matplotlib. On ubuntu 16.04 you can do the following command which should take care of everything you need. If you can't link properly, make sure you can call it from Python normally (i.e. that your Python environment is not broken). You can disable this visualization if it is broken for you by passing the -DDISABLE_MATPLOTLIB=ON parameter to your catkin build. Additionally if you wish to record CPU and memory usage of the node, you will need to install the <a href="https://github.com/giampaolo/psutil">psutil</a> library.</p>
+<div class="fragment"><div class="line">sudo apt-get install python2.7-dev python-matplotlib python-numpy python-psutil # for python2 systems</div><div class="line">sudo apt-get install python3-dev python3-matplotlib python3-numpy python3-psutil python3-tk # for python3 systems</div><div class="line">catkin build -DDISABLE_MATPLOTLIB=OFF # build with viz (default)</div><div class="line">catkin build -DDISABLE_MATPLOTLIB=ON # build without viz</div></div><!-- fragment --><h1><a class="anchor" id="gs-install-opencv"></a>
+OpenCV Dependency (from source)</h1>
+<p>We leverage <a href="https://opencv.org/">OpenCV</a> for this project which you can typically use the install from ROS. If the ROS version of <a href="http://wiki.ros.org/cv_bridge">cv_bridge</a> does not work (or are using non-ROS building), then you can try building OpenCV from source ensuring you include the contrib modules. One should make sure you can see some of the "contrib" (e.g. aruco) when you cmake to ensure you have linked to the contrib modules.</p>
+<dl class="section user"><dt>OpenCV Source Installation</dt><dd>Try to first build with your system / ROS OpenCV. Only fall back onto this if it does not allow you to compile, or want a newer version!</dd></dl>
+<div class="fragment"><div class="line">git clone https://github.com/opencv/opencv/</div><div class="line">git clone https://github.com/opencv/opencv_contrib/</div><div class="line">mkdir opencv/build/</div><div class="line">cd opencv/build/</div><div class="line">cmake -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules ..</div><div class="line">make -j8</div><div class="line">sudo make install</div></div><!-- fragment --><p>If you do not want to build the modules, you should also be able to do this (while it is not as well tested). The ArucoTag tracker depends on a non-free module in the contrib repository, thus this will need to be disabled. You can disable this with <code>catkin build -DENABLE_ARUCO_TAGS=OFF</code> or <code>cmake -DENABLE_ARUCO_TAGS=OFF ..</code> in your build folder.</p>
+<h1><a class="anchor" id="gs-install-ceres"></a>
+Ceres Solver (from source)</h1>
+<p>Ceres solver <a class="el" href="citelist.html#CITEREF_ceres-solver">[1]</a> is required for dynamic initialization and backend optimization. Please refer to their <a href="http://ceres-solver.org/installation.html#linux">documentation</a> for specifics to your platform. It should be able to build on most platforms (including ARM android devices). To install we can perform the following:</p>
+<dl class="section user"><dt>Ceres Source Installation</dt><dd>Try to first build with your system with <code>sudo apt-get install libceres-dev</code>. Only fall back onto this if it does not allow you to compile, or want a newer version! You will need to build from source if there is an Eigen miss-match: "Failed to find Ceres - Found Eigen dependency, but the version of Eigen found (3.3.7) does not exactly match the version of Eigen Ceres was compiled with (3.3.4)."</dd></dl>
+<div class="fragment"><div class="line">sudo apt-get install -y cmake libgoogle-glog-dev libgflags-dev libatlas-base-dev libeigen3-dev libsuitesparse-dev</div><div class="line">CERES_VERSION=&quot;2.0.0&quot;</div><div class="line">git clone https://ceres-solver.googlesource.com/ceres-solver</div><div class="line">cd ceres-solver</div><div class="line">git checkout tags/${CERES_VERSION}</div><div class="line">mkdir build &amp;&amp; cd build</div><div class="line">cmake ..</div><div class="line">make</div><div class="line">sudo make install</div></div><!-- fragment --> </div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

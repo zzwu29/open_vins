@@ -1,0 +1,276 @@
+\hypertarget{classov__init_1_1SimulatorInit}{}\section{ov\+\_\+init\+:\+:Simulator\+Init类 参考}
+\label{classov__init_1_1SimulatorInit}\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+
+
+Master simulator class that generated visual-\/inertial measurements  
+
+
+
+
+{\ttfamily \#include $<$Simulator\+Init.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__init_1_1SimulatorInit_a6f8df388f25c2d90411bd51ade48c6e4}{Simulator\+Init} (\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&params\+\_\+)
+\begin{DoxyCompactList}\small\item\em Default constructor, will load all configuration variables \end{DoxyCompactList}\item 
+void \hyperlink{classov__init_1_1SimulatorInit_a34f9e98902032aeb2b695e1f72f56d15}{perturb\+\_\+parameters} (\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&params\+\_\+)
+\begin{DoxyCompactList}\small\item\em Will get a set of perturbed parameters \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1SimulatorInit_a9a251dce8d062f3b152f9fa72a7f5dd1}{ok} ()
+\begin{DoxyCompactList}\small\item\em Returns if we are actively simulating \end{DoxyCompactList}\item 
+double \hyperlink{classov__init_1_1SimulatorInit_aca29b02e15f68526724d2dae56d2f756}{current\+\_\+timestamp} ()
+\begin{DoxyCompactList}\small\item\em Gets the timestamp we have simulated up too \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1SimulatorInit_abe1fc7470175ceb0b60a9ba8461a21b3}{get\+\_\+state} (double desired\+\_\+time, Eigen\+::\+Matrix$<$ double, 17, 1 $>$ \&imustate)
+\begin{DoxyCompactList}\small\item\em Get the simulation state at a specified timestep \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1SimulatorInit_a84a06f52d0de40b6e3ce274a47512e9e}{get\+\_\+next\+\_\+imu} (double \&time\+\_\+imu, Eigen\+::\+Vector3d \&wm, Eigen\+::\+Vector3d \&am)
+\begin{DoxyCompactList}\small\item\em Gets the next inertial reading if we have one. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1SimulatorInit_a3101f4237fc14a77d8d4b6de038bd323}{get\+\_\+next\+\_\+cam} (double \&time\+\_\+cam, std\+::vector$<$ int $>$ \&camids, std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$$>$$>$ \&feats)
+\begin{DoxyCompactList}\small\item\em Gets the next inertial reading if we have one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_ac7b4f53f1aa8775c636976cb912cad64}\label{classov__init_1_1SimulatorInit_ac7b4f53f1aa8775c636976cb912cad64}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \hyperlink{classov__init_1_1SimulatorInit_ac7b4f53f1aa8775c636976cb912cad64}{get\+\_\+map} ()
+\begin{DoxyCompactList}\small\item\em Returns the true 3d map of features \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a1c311cdb3c5de359ca6a8080fda13de6}\label{classov__init_1_1SimulatorInit_a1c311cdb3c5de359ca6a8080fda13de6}} 
+\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \hyperlink{classov__init_1_1SimulatorInit_a1c311cdb3c5de359ca6a8080fda13de6}{get\+\_\+true\+\_\+parameters} ()
+\begin{DoxyCompactList}\small\item\em Access function to get the true parameters (i.\+e. calibration and settings) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$ $>$ \hyperlink{classov__init_1_1SimulatorInit_a97c74693a9fe77d025d53983c9a147ce}{project\+\_\+pointcloud} (const Eigen\+::\+Matrix3d \&R\+\_\+\+GtoI, const Eigen\+::\+Vector3d \&p\+\_\+\+IinG, int camid, const std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \&feats)
+\begin{DoxyCompactList}\small\item\em Projects the passed map features into the desired camera frame. \end{DoxyCompactList}\item 
+void \hyperlink{classov__init_1_1SimulatorInit_a352ee444f38cb6689e37ac83e30c7a68}{generate\+\_\+points} (const Eigen\+::\+Matrix3d \&R\+\_\+\+GtoI, const Eigen\+::\+Vector3d \&p\+\_\+\+IinG, int camid, std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \&feats, int numpts)
+\begin{DoxyCompactList}\small\item\em Will generate points in the fov of the specified camera \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a372edd6c98642b8aabb583dbf11140f2}\label{classov__init_1_1SimulatorInit_a372edd6c98642b8aabb583dbf11140f2}} 
+\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \hyperlink{classov__init_1_1SimulatorInit_a372edd6c98642b8aabb583dbf11140f2}{params}
+\begin{DoxyCompactList}\small\item\em True params (a copy of the parsed ones) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_abf0cb10b2d9ec0e5688071e40490ca01}\label{classov__init_1_1SimulatorInit_abf0cb10b2d9ec0e5688071e40490ca01}} 
+std\+::vector$<$ Eigen\+::\+Vector\+Xd $>$ \hyperlink{classov__init_1_1SimulatorInit_abf0cb10b2d9ec0e5688071e40490ca01}{traj\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Our loaded trajectory data (timestamp(s), q\+\_\+\+GtoI, p\+\_\+\+IinG) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a40735548035cb62e36f9aac82921d8d3}\label{classov__init_1_1SimulatorInit_a40735548035cb62e36f9aac82921d8d3}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1BsplineSE3}{ov\+\_\+core\+::\+Bspline\+S\+E3} $>$ \hyperlink{classov__init_1_1SimulatorInit_a40735548035cb62e36f9aac82921d8d3}{spline}
+\begin{DoxyCompactList}\small\item\em Our b-\/spline trajectory \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a2fb7a28d93c7b4d38d95bcaf13ecbef8}\label{classov__init_1_1SimulatorInit_a2fb7a28d93c7b4d38d95bcaf13ecbef8}} 
+size\+\_\+t \hyperlink{classov__init_1_1SimulatorInit_a2fb7a28d93c7b4d38d95bcaf13ecbef8}{id\+\_\+map} = 0
+\begin{DoxyCompactList}\small\item\em Our map of 3d features \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a26cfaf9b3d02ad742eb1dabc40eaab32}\label{classov__init_1_1SimulatorInit_a26cfaf9b3d02ad742eb1dabc40eaab32}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ {\bfseries featmap}
+\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a07a8dcfb65652705d79ccade133cfac5}\label{classov__init_1_1SimulatorInit_a07a8dcfb65652705d79ccade133cfac5}} 
+std\+::mt19937 \hyperlink{classov__init_1_1SimulatorInit_a07a8dcfb65652705d79ccade133cfac5}{gen\+\_\+meas\+\_\+imu}
+\begin{DoxyCompactList}\small\item\em Mersenne twister P\+R\+NG for measurements (I\+MU) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a22c0c57b4ddbd9995b42020e1139e3ea}\label{classov__init_1_1SimulatorInit_a22c0c57b4ddbd9995b42020e1139e3ea}} 
+std\+::vector$<$ std\+::mt19937 $>$ \hyperlink{classov__init_1_1SimulatorInit_a22c0c57b4ddbd9995b42020e1139e3ea}{gen\+\_\+meas\+\_\+cams}
+\begin{DoxyCompactList}\small\item\em Mersenne twister P\+R\+NG for measurements (C\+A\+M\+E\+R\+AS) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_ad458e97f0d879d4b23fe983dec5df804}\label{classov__init_1_1SimulatorInit_ad458e97f0d879d4b23fe983dec5df804}} 
+std\+::mt19937 \hyperlink{classov__init_1_1SimulatorInit_ad458e97f0d879d4b23fe983dec5df804}{gen\+\_\+state\+\_\+init}
+\begin{DoxyCompactList}\small\item\em Mersenne twister P\+R\+NG for state initialization \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_ad1183d2053b6618e3ad4f4b3616c74a6}\label{classov__init_1_1SimulatorInit_ad1183d2053b6618e3ad4f4b3616c74a6}} 
+std\+::mt19937 \hyperlink{classov__init_1_1SimulatorInit_ad1183d2053b6618e3ad4f4b3616c74a6}{gen\+\_\+state\+\_\+perturb}
+\begin{DoxyCompactList}\small\item\em Mersenne twister P\+R\+NG for state perturbations \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a8abb917e0f329e5d8602692a5f4c2776}\label{classov__init_1_1SimulatorInit_a8abb917e0f329e5d8602692a5f4c2776}} 
+bool \hyperlink{classov__init_1_1SimulatorInit_a8abb917e0f329e5d8602692a5f4c2776}{is\+\_\+running}
+\begin{DoxyCompactList}\small\item\em If our simulation is running \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a69cfbc8778564611b8b81e5fdb1d5736}\label{classov__init_1_1SimulatorInit_a69cfbc8778564611b8b81e5fdb1d5736}} 
+double \hyperlink{classov__init_1_1SimulatorInit_a69cfbc8778564611b8b81e5fdb1d5736}{timestamp}
+\begin{DoxyCompactList}\small\item\em Current timestamp of the system \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_aad6608fa7e7a00ef588ec326c3f03729}\label{classov__init_1_1SimulatorInit_aad6608fa7e7a00ef588ec326c3f03729}} 
+double \hyperlink{classov__init_1_1SimulatorInit_aad6608fa7e7a00ef588ec326c3f03729}{timestamp\+\_\+last\+\_\+imu}
+\begin{DoxyCompactList}\small\item\em Last time we had an I\+MU reading \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_ad35d52befdec1e430bdd13c49a418fc4}\label{classov__init_1_1SimulatorInit_ad35d52befdec1e430bdd13c49a418fc4}} 
+double \hyperlink{classov__init_1_1SimulatorInit_ad35d52befdec1e430bdd13c49a418fc4}{timestamp\+\_\+last\+\_\+cam}
+\begin{DoxyCompactList}\small\item\em Last time we had an C\+A\+M\+E\+RA reading \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_ab3f60dfbc69a9b510d9278e9d21ef31e}\label{classov__init_1_1SimulatorInit_ab3f60dfbc69a9b510d9278e9d21ef31e}} 
+Eigen\+::\+Vector3d \hyperlink{classov__init_1_1SimulatorInit_ab3f60dfbc69a9b510d9278e9d21ef31e}{true\+\_\+bias\+\_\+accel} = Eigen\+::\+Vector3d\+::\+Zero()
+\begin{DoxyCompactList}\small\item\em Our running acceleration bias \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a23a46e6cdbe66968bb6d4174a1aa6861}\label{classov__init_1_1SimulatorInit_a23a46e6cdbe66968bb6d4174a1aa6861}} 
+Eigen\+::\+Vector3d \hyperlink{classov__init_1_1SimulatorInit_a23a46e6cdbe66968bb6d4174a1aa6861}{true\+\_\+bias\+\_\+gyro} = Eigen\+::\+Vector3d\+::\+Zero()
+\begin{DoxyCompactList}\small\item\em Our running gyroscope bias \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_aca8eeb9e14ae34664d610f7fbf86a90c}\label{classov__init_1_1SimulatorInit_aca8eeb9e14ae34664d610f7fbf86a90c}} 
+std\+::vector$<$ double $>$ {\bfseries hist\+\_\+true\+\_\+bias\+\_\+time}
+\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a96c954fefe87f0c91421fdaa09e72dd2}\label{classov__init_1_1SimulatorInit_a96c954fefe87f0c91421fdaa09e72dd2}} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ {\bfseries hist\+\_\+true\+\_\+bias\+\_\+accel}
+\item 
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a34b63849cf6d4dfc3d0376ebce213e80}\label{classov__init_1_1SimulatorInit_a34b63849cf6d4dfc3d0376ebce213e80}} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ {\bfseries hist\+\_\+true\+\_\+bias\+\_\+gyro}
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Master simulator class that generated visual-\/inertial measurements 
+
+Given a trajectory this will generate a S\+E(3) \hyperlink{classov__core_1_1BsplineSE3}{ov\+\_\+core\+::\+Bspline\+S\+E3} for that trajectory. This allows us to get the inertial measurement information at each timestep during this trajectory. After creating the bspline we will generate an environmental feature map which will be used as our feature measurements. This map will be projected into the frame at each timestep to get our \char`\"{}raw\char`\"{} uv measurements. We inject bias and white noises into our inertial readings while adding our white noise to the uv measurements also. The user should specify the sensor rates that they desire along with the seeds of the random number generators. 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a6f8df388f25c2d90411bd51ade48c6e4}\label{classov__init_1_1SimulatorInit_a6f8df388f25c2d90411bd51ade48c6e4}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!Simulator\+Init@{Simulator\+Init}}
+\index{Simulator\+Init@{Simulator\+Init}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{Simulator\+Init()}{SimulatorInit()}}
+{\footnotesize\ttfamily Simulator\+Init\+::\+Simulator\+Init (\begin{DoxyParamCaption}\item[{\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&}]{params\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Default constructor, will load all configuration variables 
+
+
+\begin{DoxyParams}{参数}
+{\em params\+\_\+} & \hyperlink{classov__init_1_1InertialInitializer}{Inertial\+Initializer} parameters. Should have already been loaded from cmd. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_aca29b02e15f68526724d2dae56d2f756}\label{classov__init_1_1SimulatorInit_aca29b02e15f68526724d2dae56d2f756}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!current\+\_\+timestamp@{current\+\_\+timestamp}}
+\index{current\+\_\+timestamp@{current\+\_\+timestamp}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{current\+\_\+timestamp()}{current\_timestamp()}}
+{\footnotesize\ttfamily double ov\+\_\+init\+::\+Simulator\+Init\+::current\+\_\+timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the timestamp we have simulated up too 
+
+\begin{DoxyReturn}{返回}
+Timestamp 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a352ee444f38cb6689e37ac83e30c7a68}\label{classov__init_1_1SimulatorInit_a352ee444f38cb6689e37ac83e30c7a68}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!generate\+\_\+points@{generate\+\_\+points}}
+\index{generate\+\_\+points@{generate\+\_\+points}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{generate\+\_\+points()}{generate\_points()}}
+{\footnotesize\ttfamily void Simulator\+Init\+::generate\+\_\+points (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix3d \&}]{R\+\_\+\+GtoI,  }\item[{const Eigen\+::\+Vector3d \&}]{p\+\_\+\+IinG,  }\item[{int}]{camid,  }\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \&}]{feats,  }\item[{int}]{numpts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Will generate points in the fov of the specified camera 
+
+
+\begin{DoxyParams}[1]{参数}
+ & {\em R\+\_\+\+GtoI} & Orientation of the I\+MU pose \\
+\hline
+ & {\em p\+\_\+\+IinG} & Position of the I\+MU pose \\
+\hline
+ & {\em camid} & Camera id of the camera sensor we want to project into \\
+\hline
+\mbox{\tt out}  & {\em feats} & Map we will append new features to \\
+\hline
+ & {\em numpts} & Number of points we should generate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a3101f4237fc14a77d8d4b6de038bd323}\label{classov__init_1_1SimulatorInit_a3101f4237fc14a77d8d4b6de038bd323}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!get\+\_\+next\+\_\+cam@{get\+\_\+next\+\_\+cam}}
+\index{get\+\_\+next\+\_\+cam@{get\+\_\+next\+\_\+cam}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{get\+\_\+next\+\_\+cam()}{get\_next\_cam()}}
+{\footnotesize\ttfamily bool Simulator\+Init\+::get\+\_\+next\+\_\+cam (\begin{DoxyParamCaption}\item[{double \&}]{time\+\_\+cam,  }\item[{std\+::vector$<$ int $>$ \&}]{camids,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$$>$$>$ \&}]{feats }\end{DoxyParamCaption})}
+
+
+
+Gets the next inertial reading if we have one. 
+
+
+\begin{DoxyParams}{参数}
+{\em time\+\_\+cam} & Time that this measurement occured at \\
+\hline
+{\em camids} & Camera ids that the corresponding vectors match \\
+\hline
+{\em feats} & Noisy uv measurements and ids for the returned time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True if we have a measurement 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a84a06f52d0de40b6e3ce274a47512e9e}\label{classov__init_1_1SimulatorInit_a84a06f52d0de40b6e3ce274a47512e9e}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!get\+\_\+next\+\_\+imu@{get\+\_\+next\+\_\+imu}}
+\index{get\+\_\+next\+\_\+imu@{get\+\_\+next\+\_\+imu}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{get\+\_\+next\+\_\+imu()}{get\_next\_imu()}}
+{\footnotesize\ttfamily bool Simulator\+Init\+::get\+\_\+next\+\_\+imu (\begin{DoxyParamCaption}\item[{double \&}]{time\+\_\+imu,  }\item[{Eigen\+::\+Vector3d \&}]{wm,  }\item[{Eigen\+::\+Vector3d \&}]{am }\end{DoxyParamCaption})}
+
+
+
+Gets the next inertial reading if we have one. 
+
+
+\begin{DoxyParams}{参数}
+{\em time\+\_\+imu} & Time that this measurement occured at \\
+\hline
+{\em wm} & Angular velocity measurement in the inertial frame \\
+\hline
+{\em am} & Linear velocity in the inertial frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True if we have a measurement 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_abe1fc7470175ceb0b60a9ba8461a21b3}\label{classov__init_1_1SimulatorInit_abe1fc7470175ceb0b60a9ba8461a21b3}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!get\+\_\+state@{get\+\_\+state}}
+\index{get\+\_\+state@{get\+\_\+state}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{get\+\_\+state()}{get\_state()}}
+{\footnotesize\ttfamily bool Simulator\+Init\+::get\+\_\+state (\begin{DoxyParamCaption}\item[{double}]{desired\+\_\+time,  }\item[{Eigen\+::\+Matrix$<$ double, 17, 1 $>$ \&}]{imustate }\end{DoxyParamCaption})}
+
+
+
+Get the simulation state at a specified timestep 
+
+
+\begin{DoxyParams}{参数}
+{\em desired\+\_\+time} & Timestamp we want to get the state at \\
+\hline
+{\em imustate} & State in the M\+S\+C\+KF ordering\+: \mbox{[}time(sec),q\+\_\+\+GtoI,p\+\_\+\+IinG,v\+\_\+\+IinG,b\+\_\+gyro,b\+\_\+accel\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True if we have a state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a9a251dce8d062f3b152f9fa72a7f5dd1}\label{classov__init_1_1SimulatorInit_a9a251dce8d062f3b152f9fa72a7f5dd1}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!ok@{ok}}
+\index{ok@{ok}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{ok()}{ok()}}
+{\footnotesize\ttfamily bool ov\+\_\+init\+::\+Simulator\+Init\+::ok (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns if we are actively simulating 
+
+\begin{DoxyReturn}{返回}
+True if we still have simulation data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a34f9e98902032aeb2b695e1f72f56d15}\label{classov__init_1_1SimulatorInit_a34f9e98902032aeb2b695e1f72f56d15}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!perturb\+\_\+parameters@{perturb\+\_\+parameters}}
+\index{perturb\+\_\+parameters@{perturb\+\_\+parameters}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{perturb\+\_\+parameters()}{perturb\_parameters()}}
+{\footnotesize\ttfamily void Simulator\+Init\+::perturb\+\_\+parameters (\begin{DoxyParamCaption}\item[{\hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&}]{params\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Will get a set of perturbed parameters 
+
+
+\begin{DoxyParams}{参数}
+{\em params\+\_\+} & Parameters we will perturb \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__init_1_1SimulatorInit_a97c74693a9fe77d025d53983c9a147ce}\label{classov__init_1_1SimulatorInit_a97c74693a9fe77d025d53983c9a147ce}} 
+\index{ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}!project\+\_\+pointcloud@{project\+\_\+pointcloud}}
+\index{project\+\_\+pointcloud@{project\+\_\+pointcloud}!ov\+\_\+init\+::\+Simulator\+Init@{ov\+\_\+init\+::\+Simulator\+Init}}
+\subsubsection{\texorpdfstring{project\+\_\+pointcloud()}{project\_pointcloud()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ size\+\_\+t, Eigen\+::\+Vector\+Xf $>$ $>$ Simulator\+Init\+::project\+\_\+pointcloud (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix3d \&}]{R\+\_\+\+GtoI,  }\item[{const Eigen\+::\+Vector3d \&}]{p\+\_\+\+IinG,  }\item[{int}]{camid,  }\item[{const std\+::unordered\+\_\+map$<$ size\+\_\+t, Eigen\+::\+Vector3d $>$ \&}]{feats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Projects the passed map features into the desired camera frame. 
+
+
+\begin{DoxyParams}{参数}
+{\em R\+\_\+\+GtoI} & Orientation of the I\+MU pose \\
+\hline
+{\em p\+\_\+\+IinG} & Position of the I\+MU pose \\
+\hline
+{\em camid} & Camera id of the camera sensor we want to project into \\
+\hline
+{\em feats} & Our set of 3d features \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True distorted raw image measurements and their ids for the specified camera 
+\end{DoxyReturn}

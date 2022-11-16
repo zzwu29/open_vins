@@ -1,0 +1,102 @@
+\hypertarget{classov__core_1_1CpiV2}{}\section{ov\+\_\+core\+:\+:Cpi\+V2 Class Reference}
+\label{classov__core_1_1CpiV2}\index{ov\+\_\+core\+::\+Cpi\+V2@{ov\+\_\+core\+::\+Cpi\+V2}}
+
+
+Model 2 of continuous preintegration.  
+
+
+
+
+{\ttfamily \#include $<$Cpi\+V2.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1CpiV2_acc303eae31571a4a132cb8a161b6658b}{Cpi\+V2} (double sigma\+\_\+w, double sigma\+\_\+wb, double sigma\+\_\+a, double sigma\+\_\+ab, bool imu\+\_\+avg\+\_\+=false)
+\begin{DoxyCompactList}\small\item\em Default constructor for our Model 2 preintegration (piecewise constant local acceleration assumption) \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1CpiV2_a2e526d34b80061293a922fefa3a858a1}{feed\+\_\+\+I\+MU} (double t\+\_\+0, double t\+\_\+1, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ w\+\_\+m\+\_\+0, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ a\+\_\+m\+\_\+0, Eigen\+::\+Matrix$<$ double, 3, 1 $>$ w\+\_\+m\+\_\+1=Eigen\+::\+Matrix$<$ double, 3, 1 $>$\+::Zero(), Eigen\+::\+Matrix$<$ double, 3, 1 $>$ a\+\_\+m\+\_\+1=Eigen\+::\+Matrix$<$ double, 3, 1 $>$\+::Zero())
+\begin{DoxyCompactList}\small\item\em Our precompound function for Model 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiV2_ab024c0b2d090de85e40c6c80d6bb04c3}\label{classov__core_1_1CpiV2_ab024c0b2d090de85e40c6c80d6bb04c3}} 
+bool \hyperlink{classov__core_1_1CpiV2_ab024c0b2d090de85e40c6c80d6bb04c3}{state\+\_\+transition\+\_\+jacobians} = true
+\begin{DoxyCompactList}\small\item\em If we want to use analytical jacobians or not. In the paper we just numerically integrated the jacobians If set to false, we use a closed form version similar to model 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1CpiV2_a71af3328f6ffb888c4b65139a1acdf6b}\label{classov__core_1_1CpiV2_a71af3328f6ffb888c4b65139a1acdf6b}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries O\+\_\+a} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\item 
+\mbox{\Hypertarget{classov__core_1_1CpiV2_a08f8adcd49de5092c56120d83d913749}\label{classov__core_1_1CpiV2_a08f8adcd49de5092c56120d83d913749}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ {\bfseries O\+\_\+b} = Eigen\+::\+Matrix$<$double, 3, 3$>$\+::Zero()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Model 2 of continuous preintegration. 
+
+This model is the \char`\"{}piecewise constant local acceleration assumption.\char`\"{} Please see the following publication for details on the theory \cite{Eckenhoff2019IJRR} \+: \begin{quote}
+Continuous Preintegration Theory for Graph-\/based Visual-\/\+Inertial Navigation Authors\+: Kevin Eckenhoff, Patrick Geneva, and Guoquan Huang \href{http://udel.edu/~ghuang/papers/tr_cpi.pdf}{\tt http\+://udel.\+edu/$\sim$ghuang/papers/tr\+\_\+cpi.\+pdf} \end{quote}
+
+
+The steps to use this preintegration class are as follows\+:
+\begin{DoxyEnumerate}
+\item call \hyperlink{classov__core_1_1CpiBase_a32c11e3e61dc8a524bf48a18504b5417}{set\+Linearization\+Points()} to set the bias/orientation linearization point
+\item call \hyperlink{classov__core_1_1CpiV2_a2e526d34b80061293a922fefa3a858a1}{feed\+\_\+\+I\+M\+U()} will all I\+MU measurements you want to precompound over
+\item access public varibles, to get means, Jacobians, and measurement covariance 
+\end{DoxyEnumerate}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1CpiV2_acc303eae31571a4a132cb8a161b6658b}\label{classov__core_1_1CpiV2_acc303eae31571a4a132cb8a161b6658b}} 
+\index{ov\+\_\+core\+::\+Cpi\+V2@{ov\+\_\+core\+::\+Cpi\+V2}!Cpi\+V2@{Cpi\+V2}}
+\index{Cpi\+V2@{Cpi\+V2}!ov\+\_\+core\+::\+Cpi\+V2@{ov\+\_\+core\+::\+Cpi\+V2}}
+\subsubsection{\texorpdfstring{Cpi\+V2()}{CpiV2()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Cpi\+V2\+::\+Cpi\+V2 (\begin{DoxyParamCaption}\item[{double}]{sigma\+\_\+w,  }\item[{double}]{sigma\+\_\+wb,  }\item[{double}]{sigma\+\_\+a,  }\item[{double}]{sigma\+\_\+ab,  }\item[{bool}]{imu\+\_\+avg\+\_\+ = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor for our Model 2 preintegration (piecewise constant local acceleration assumption) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sigma\+\_\+w} & gyroscope white noise density (rad/s/sqrt(hz)) \\
+\hline
+{\em sigma\+\_\+wb} & gyroscope random walk (rad/s$^\wedge$2/sqrt(hz)) \\
+\hline
+{\em sigma\+\_\+a} & accelerometer white noise density (m/s$^\wedge$2/sqrt(hz)) \\
+\hline
+{\em sigma\+\_\+ab} & accelerometer random walk (m/s$^\wedge$3/sqrt(hz)) \\
+\hline
+{\em imu\+\_\+avg\+\_\+} & if we want to average the imu measurements (I\+J\+RR paper did not do this) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1CpiV2_a2e526d34b80061293a922fefa3a858a1}\label{classov__core_1_1CpiV2_a2e526d34b80061293a922fefa3a858a1}} 
+\index{ov\+\_\+core\+::\+Cpi\+V2@{ov\+\_\+core\+::\+Cpi\+V2}!feed\+\_\+\+I\+MU@{feed\+\_\+\+I\+MU}}
+\index{feed\+\_\+\+I\+MU@{feed\+\_\+\+I\+MU}!ov\+\_\+core\+::\+Cpi\+V2@{ov\+\_\+core\+::\+Cpi\+V2}}
+\subsubsection{\texorpdfstring{feed\+\_\+\+I\+M\+U()}{feed\_IMU()}}
+{\footnotesize\ttfamily void Cpi\+V2\+::feed\+\_\+\+I\+MU (\begin{DoxyParamCaption}\item[{double}]{t\+\_\+0,  }\item[{double}]{t\+\_\+1,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{w\+\_\+m\+\_\+0,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{a\+\_\+m\+\_\+0,  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{w\+\_\+m\+\_\+1 = {\ttfamily Eigen\+:\+:Matrix$<$double,~3,~1$>$\+:\+:Zero()},  }\item[{Eigen\+::\+Matrix$<$ double, 3, 1 $>$}]{a\+\_\+m\+\_\+1 = {\ttfamily Eigen\+:\+:Matrix$<$double,~3,~1$>$\+:\+:Zero()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Our precompound function for Model 2. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em t\+\_\+0} & first I\+MU timestamp \\
+\hline
+\mbox{\tt in}  & {\em t\+\_\+1} & second I\+MU timestamp \\
+\hline
+\mbox{\tt in}  & {\em w\+\_\+m\+\_\+0} & first imu gyroscope measurement \\
+\hline
+\mbox{\tt in}  & {\em a\+\_\+m\+\_\+0} & first imu acceleration measurement \\
+\hline
+\mbox{\tt in}  & {\em w\+\_\+m\+\_\+1} & second imu gyroscope measurement \\
+\hline
+\mbox{\tt in}  & {\em a\+\_\+m\+\_\+1} & second imu acceleration measurement\\
+\hline
+\end{DoxyParams}
+We will first analytically integrate our meansurement. We can numerically or analytically integrate our bias jacobians. Then we perform numerical integration for our measurement covariance. 
+
+Implements \hyperlink{classov__core_1_1CpiBase_af3b192b968d702b484a672a5557bea13}{ov\+\_\+core\+::\+Cpi\+Base}.
+

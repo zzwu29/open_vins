@@ -1,0 +1,276 @@
+\hypertarget{classov__core_1_1TrackDescriptor}{}\section{ov\+\_\+core\+:\+:Track\+Descriptor Class Reference}
+\label{classov__core_1_1TrackDescriptor}\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+
+
+Descriptor-\/based visual tracking.  
+
+
+
+
+{\ttfamily \#include $<$Track\+Descriptor.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1TrackDescriptor_a5f7793abdb80621d2d41e619cd46b9cf}{Track\+Descriptor} (std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$$>$ cameras, int numfeats, int numaruco, bool stereo, \hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{Histogram\+Method} histmethod, int fast\+\_\+threshold, int gridx, int gridy, int minpxdist, double knnratio)
+\begin{DoxyCompactList}\small\item\em Public constructor with configuration variables. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackDescriptor_afcbf3078992f740582eac24e3164e6f1}{feed\+\_\+new\+\_\+camera} (const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&message) override
+\begin{DoxyCompactList}\small\item\em Process a new image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__core_1_1TrackDescriptor_ada58eab951f766db88f48879d30b72b7}{feed\+\_\+monocular} (const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&message, size\+\_\+t msg\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Process a new monocular image. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackDescriptor_a4f182f8ee96c73f9105a8a1fa3f5eee1}{feed\+\_\+stereo} (const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&message, size\+\_\+t msg\+\_\+id\+\_\+left, size\+\_\+t msg\+\_\+id\+\_\+right)
+\begin{DoxyCompactList}\small\item\em Process new stereo pair of images. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackDescriptor_a5f1db51d0c57dab6ed1da4dc17add0a1}{perform\+\_\+detection\+\_\+monocular} (const cv\+::\+Mat \&img0, const cv\+::\+Mat \&mask0, std\+::vector$<$ cv\+::\+Key\+Point $>$ \&pts0, cv\+::\+Mat \&desc0, std\+::vector$<$ size\+\_\+t $>$ \&ids0)
+\begin{DoxyCompactList}\small\item\em Detects new features in the current image. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackDescriptor_a0f3bfb96dcfc50ce8ebc1e40171d50c0}{perform\+\_\+detection\+\_\+stereo} (const cv\+::\+Mat \&img0, const cv\+::\+Mat \&img1, const cv\+::\+Mat \&mask0, const cv\+::\+Mat \&mask1, std\+::vector$<$ cv\+::\+Key\+Point $>$ \&pts0, std\+::vector$<$ cv\+::\+Key\+Point $>$ \&pts1, cv\+::\+Mat \&desc0, cv\+::\+Mat \&desc1, size\+\_\+t cam\+\_\+id0, size\+\_\+t cam\+\_\+id1, std\+::vector$<$ size\+\_\+t $>$ \&ids0, std\+::vector$<$ size\+\_\+t $>$ \&ids1)
+\begin{DoxyCompactList}\small\item\em Detects new features in the current stereo pair. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1TrackDescriptor_a328a65890fabf3ba88968acf46561d97}{robust\+\_\+match} (const std\+::vector$<$ cv\+::\+Key\+Point $>$ \&pts0, const std\+::vector$<$ cv\+::\+Key\+Point $>$ \&pts1, const cv\+::\+Mat \&desc0, const cv\+::\+Mat \&desc1, size\+\_\+t id0, size\+\_\+t id1, std\+::vector$<$ cv\+::\+D\+Match $>$ \&matches)
+\begin{DoxyCompactList}\small\item\em Find matches between two keypoint+descriptor sets. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ab738252a3242961ff4c496247eff2e10}\label{classov__core_1_1TrackDescriptor_ab738252a3242961ff4c496247eff2e10}} 
+void {\bfseries robust\+\_\+ratio\+\_\+test} (std\+::vector$<$ std\+::vector$<$ cv\+::\+D\+Match $>$$>$ \&matches)
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_afae4718169c5f4c4fd11a63d6d27d2a4}\label{classov__core_1_1TrackDescriptor_afae4718169c5f4c4fd11a63d6d27d2a4}} 
+void {\bfseries robust\+\_\+symmetry\+\_\+test} (std\+::vector$<$ std\+::vector$<$ cv\+::\+D\+Match $>$$>$ \&matches1, std\+::vector$<$ std\+::vector$<$ cv\+::\+D\+Match $>$$>$ \&matches2, std\+::vector$<$ cv\+::\+D\+Match $>$ \&good\+\_\+matches)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a8f3173b664e11dda898fda7d5ba46b71}\label{classov__core_1_1TrackDescriptor_a8f3173b664e11dda898fda7d5ba46b71}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T1}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a4c41176773ce2a6545f2f8e4f85a1f7b}\label{classov__core_1_1TrackDescriptor_a4c41176773ce2a6545f2f8e4f85a1f7b}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T2}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a9d95fac250a57212caec71b5f5ad8aca}\label{classov__core_1_1TrackDescriptor_a9d95fac250a57212caec71b5f5ad8aca}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T3}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ab14bc7cb2ca403d568109d52070cf081}\label{classov__core_1_1TrackDescriptor_ab14bc7cb2ca403d568109d52070cf081}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T4}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ad7263a9b3c359a3009c02ba5184a3090}\label{classov__core_1_1TrackDescriptor_ad7263a9b3c359a3009c02ba5184a3090}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T5}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ae5bc6307841a28a9b3d8496b2fa6e073}\label{classov__core_1_1TrackDescriptor_ae5bc6307841a28a9b3d8496b2fa6e073}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T6}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_aa18bcb26c70ba3d269e7e171ada7eab3}\label{classov__core_1_1TrackDescriptor_aa18bcb26c70ba3d269e7e171ada7eab3}} 
+boost\+::posix\+\_\+time\+::ptime {\bfseries r\+T7}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ad11366d838ae47600500543a56b651c3}\label{classov__core_1_1TrackDescriptor_ad11366d838ae47600500543a56b651c3}} 
+cv\+::\+Ptr$<$ cv\+::\+O\+RB $>$ {\bfseries orb0} = cv\+::\+O\+R\+B\+::create()
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_aa7c9211e95e5e3e3b8fbeef4795ffdb9}\label{classov__core_1_1TrackDescriptor_aa7c9211e95e5e3e3b8fbeef4795ffdb9}} 
+cv\+::\+Ptr$<$ cv\+::\+O\+RB $>$ {\bfseries orb1} = cv\+::\+O\+R\+B\+::create()
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a0b7f0798d71dc4a3f803098e097f7eb9}\label{classov__core_1_1TrackDescriptor_a0b7f0798d71dc4a3f803098e097f7eb9}} 
+cv\+::\+Ptr$<$ cv\+::\+Descriptor\+Matcher $>$ {\bfseries matcher} = cv\+::\+Descriptor\+Matcher\+::create(\char`\"{}Brute\+Force-\/Hamming\char`\"{})
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a150ead1b37d1a8a2319d6c2d9b955d46}\label{classov__core_1_1TrackDescriptor_a150ead1b37d1a8a2319d6c2d9b955d46}} 
+int {\bfseries threshold}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ad44a5a5edd9eb38b442b71c7c68630fa}\label{classov__core_1_1TrackDescriptor_ad44a5a5edd9eb38b442b71c7c68630fa}} 
+int {\bfseries grid\+\_\+x}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a842119cdd662e4bcbab084187706e991}\label{classov__core_1_1TrackDescriptor_a842119cdd662e4bcbab084187706e991}} 
+int {\bfseries grid\+\_\+y}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a8d410818845fb5d57615f8e87862b8dc}\label{classov__core_1_1TrackDescriptor_a8d410818845fb5d57615f8e87862b8dc}} 
+int {\bfseries min\+\_\+px\+\_\+dist}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a80c29687d05a0f34e5ed7f09702fc8f1}\label{classov__core_1_1TrackDescriptor_a80c29687d05a0f34e5ed7f09702fc8f1}} 
+double {\bfseries knn\+\_\+ratio}
+\item 
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a887713e7440883d8d7e3c58efd0fa155}\label{classov__core_1_1TrackDescriptor_a887713e7440883d8d7e3c58efd0fa155}} 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, cv\+::\+Mat $>$ {\bfseries desc\+\_\+last}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Descriptor-\/based visual tracking. 
+
+Here we use descriptor matching to track features from one frame to the next. We track both temporally, and across stereo pairs to get stereo constraints. Right now we use O\+RB descriptors as we have found it is the fastest when computing descriptors. Tracks are then rejected based on a ratio test and ransac. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a5f7793abdb80621d2d41e619cd46b9cf}\label{classov__core_1_1TrackDescriptor_a5f7793abdb80621d2d41e619cd46b9cf}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!Track\+Descriptor@{Track\+Descriptor}}
+\index{Track\+Descriptor@{Track\+Descriptor}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{Track\+Descriptor()}{TrackDescriptor()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Track\+Descriptor\+::\+Track\+Descriptor (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1CamBase}{Cam\+Base} $>$$>$}]{cameras,  }\item[{int}]{numfeats,  }\item[{int}]{numaruco,  }\item[{bool}]{stereo,  }\item[{\hyperlink{classov__core_1_1TrackBase_aa4b34a5dce99b59522d57bf9278c9a1a}{Histogram\+Method}}]{histmethod,  }\item[{int}]{fast\+\_\+threshold,  }\item[{int}]{gridx,  }\item[{int}]{gridy,  }\item[{int}]{minpxdist,  }\item[{double}]{knnratio }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Public constructor with configuration variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cameras} & camera calibration object which has all camera intrinsics in it \\
+\hline
+{\em numfeats} & number of features we want want to track (i.\+e. track 200 points from frame to frame) \\
+\hline
+{\em numaruco} & the max id of the arucotags, so we ensure that we start our non-\/auroc features above this value \\
+\hline
+{\em stereo} & if we should do stereo feature tracking or binocular \\
+\hline
+{\em histmethod} & what type of histogram pre-\/processing should be done (histogram eq?) \\
+\hline
+{\em fast\+\_\+threshold} & F\+A\+ST detection threshold \\
+\hline
+{\em gridx} & size of grid in the x-\/direction / u-\/direction \\
+\hline
+{\em gridy} & size of grid in the y-\/direction / v-\/direction \\
+\hline
+{\em minpxdist} & features need to be at least this number pixels away from each other \\
+\hline
+{\em knnratio} & matching ratio needed (smaller value forces top two descriptors during match to be more different) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_ada58eab951f766db88f48879d30b72b7}\label{classov__core_1_1TrackDescriptor_ada58eab951f766db88f48879d30b72b7}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!feed\+\_\+monocular@{feed\+\_\+monocular}}
+\index{feed\+\_\+monocular@{feed\+\_\+monocular}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{feed\+\_\+monocular()}{feed\_monocular()}}
+{\footnotesize\ttfamily void Track\+Descriptor\+::feed\+\_\+monocular (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&}]{message,  }\item[{size\+\_\+t}]{msg\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Process a new monocular image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+{\em msg\+\_\+id} & the camera index in message data vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_afcbf3078992f740582eac24e3164e6f1}\label{classov__core_1_1TrackDescriptor_afcbf3078992f740582eac24e3164e6f1}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!feed\+\_\+new\+\_\+camera@{feed\+\_\+new\+\_\+camera}}
+\index{feed\+\_\+new\+\_\+camera@{feed\+\_\+new\+\_\+camera}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{feed\+\_\+new\+\_\+camera()}{feed\_new\_camera()}}
+{\footnotesize\ttfamily void Track\+Descriptor\+::feed\+\_\+new\+\_\+camera (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Process a new image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classov__core_1_1TrackBase_a18f208f4047e9a1955406806ba68a8c1}{ov\+\_\+core\+::\+Track\+Base}.
+
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a4f182f8ee96c73f9105a8a1fa3f5eee1}\label{classov__core_1_1TrackDescriptor_a4f182f8ee96c73f9105a8a1fa3f5eee1}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!feed\+\_\+stereo@{feed\+\_\+stereo}}
+\index{feed\+\_\+stereo@{feed\+\_\+stereo}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{feed\+\_\+stereo()}{feed\_stereo()}}
+{\footnotesize\ttfamily void Track\+Descriptor\+::feed\+\_\+stereo (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1CameraData}{Camera\+Data} \&}]{message,  }\item[{size\+\_\+t}]{msg\+\_\+id\+\_\+left,  }\item[{size\+\_\+t}]{msg\+\_\+id\+\_\+right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Process new stereo pair of images. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Contains our timestamp, images, and camera ids \\
+\hline
+{\em msg\+\_\+id\+\_\+left} & first image index in message data vector \\
+\hline
+{\em msg\+\_\+id\+\_\+right} & second image index in message data vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a5f1db51d0c57dab6ed1da4dc17add0a1}\label{classov__core_1_1TrackDescriptor_a5f1db51d0c57dab6ed1da4dc17add0a1}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!perform\+\_\+detection\+\_\+monocular@{perform\+\_\+detection\+\_\+monocular}}
+\index{perform\+\_\+detection\+\_\+monocular@{perform\+\_\+detection\+\_\+monocular}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{perform\+\_\+detection\+\_\+monocular()}{perform\_detection\_monocular()}}
+{\footnotesize\ttfamily void Track\+Descriptor\+::perform\+\_\+detection\+\_\+monocular (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img0,  }\item[{const cv\+::\+Mat \&}]{mask0,  }\item[{std\+::vector$<$ cv\+::\+Key\+Point $>$ \&}]{pts0,  }\item[{cv\+::\+Mat \&}]{desc0,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{ids0 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Detects new features in the current image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img0} & image we will detect features on \\
+\hline
+{\em mask0} & mask which has what R\+OI we do not want features in \\
+\hline
+{\em pts0} & vector of extracted keypoints \\
+\hline
+{\em desc0} & vector of the extracted descriptors \\
+\hline
+{\em ids0} & vector of all new I\+Ds\\
+\hline
+\end{DoxyParams}
+Given a set of images, and their currently extracted features, this will try to add new features. We return all extracted descriptors here since we DO N\+OT need to do stereo tracking left to right. Our vector of I\+Ds will be later overwritten when we match features temporally to the previous frame\textquotesingle{}s features. See \hyperlink{classov__core_1_1TrackDescriptor_a328a65890fabf3ba88968acf46561d97}{robust\+\_\+match()} for the matching. \mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a0f3bfb96dcfc50ce8ebc1e40171d50c0}\label{classov__core_1_1TrackDescriptor_a0f3bfb96dcfc50ce8ebc1e40171d50c0}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!perform\+\_\+detection\+\_\+stereo@{perform\+\_\+detection\+\_\+stereo}}
+\index{perform\+\_\+detection\+\_\+stereo@{perform\+\_\+detection\+\_\+stereo}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{perform\+\_\+detection\+\_\+stereo()}{perform\_detection\_stereo()}}
+{\footnotesize\ttfamily void Track\+Descriptor\+::perform\+\_\+detection\+\_\+stereo (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{img0,  }\item[{const cv\+::\+Mat \&}]{img1,  }\item[{const cv\+::\+Mat \&}]{mask0,  }\item[{const cv\+::\+Mat \&}]{mask1,  }\item[{std\+::vector$<$ cv\+::\+Key\+Point $>$ \&}]{pts0,  }\item[{std\+::vector$<$ cv\+::\+Key\+Point $>$ \&}]{pts1,  }\item[{cv\+::\+Mat \&}]{desc0,  }\item[{cv\+::\+Mat \&}]{desc1,  }\item[{size\+\_\+t}]{cam\+\_\+id0,  }\item[{size\+\_\+t}]{cam\+\_\+id1,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{ids0,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{ids1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Detects new features in the current stereo pair. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img0} & left image we will detect features on \\
+\hline
+{\em img1} & right image we will detect features on \\
+\hline
+{\em mask0} & mask which has what R\+OI we do not want features in \\
+\hline
+{\em mask1} & mask which has what R\+OI we do not want features in \\
+\hline
+{\em pts0} & left vector of new keypoints \\
+\hline
+{\em pts1} & right vector of new keypoints \\
+\hline
+{\em desc0} & left vector of extracted descriptors \\
+\hline
+{\em desc1} & left vector of extracted descriptors \\
+\hline
+{\em cam\+\_\+id0} & id of the first camera \\
+\hline
+{\em cam\+\_\+id1} & id of the second camera \\
+\hline
+{\em ids0} & left vector of all new I\+Ds \\
+\hline
+{\em ids1} & right vector of all new I\+Ds\\
+\hline
+\end{DoxyParams}
+This does the same logic as the \hyperlink{classov__core_1_1TrackDescriptor_a5f1db51d0c57dab6ed1da4dc17add0a1}{perform\+\_\+detection\+\_\+monocular()} function, but we also enforce stereo contraints. We also do S\+T\+E\+R\+EO matching from the left to right, and only return good matches that are found in both the left and right. Our vector of I\+Ds will be later overwritten when we match features temporally to the previous frame\textquotesingle{}s features. See \hyperlink{classov__core_1_1TrackDescriptor_a328a65890fabf3ba88968acf46561d97}{robust\+\_\+match()} for the matching. \mbox{\Hypertarget{classov__core_1_1TrackDescriptor_a328a65890fabf3ba88968acf46561d97}\label{classov__core_1_1TrackDescriptor_a328a65890fabf3ba88968acf46561d97}} 
+\index{ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}!robust\+\_\+match@{robust\+\_\+match}}
+\index{robust\+\_\+match@{robust\+\_\+match}!ov\+\_\+core\+::\+Track\+Descriptor@{ov\+\_\+core\+::\+Track\+Descriptor}}
+\subsubsection{\texorpdfstring{robust\+\_\+match()}{robust\_match()}}
+{\footnotesize\ttfamily void Track\+Descriptor\+::robust\+\_\+match (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ cv\+::\+Key\+Point $>$ \&}]{pts0,  }\item[{const std\+::vector$<$ cv\+::\+Key\+Point $>$ \&}]{pts1,  }\item[{const cv\+::\+Mat \&}]{desc0,  }\item[{const cv\+::\+Mat \&}]{desc1,  }\item[{size\+\_\+t}]{id0,  }\item[{size\+\_\+t}]{id1,  }\item[{std\+::vector$<$ cv\+::\+D\+Match $>$ \&}]{matches }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Find matches between two keypoint+descriptor sets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pts0} & first vector of keypoints \\
+\hline
+{\em pts1} & second vector of keypoints \\
+\hline
+{\em desc0} & first vector of descriptors \\
+\hline
+{\em desc1} & second vector of decriptors \\
+\hline
+{\em id0} & id of the first camera \\
+\hline
+{\em id1} & id of the second camera \\
+\hline
+{\em matches} & vector of matches that we have found\\
+\hline
+\end{DoxyParams}
+This will perform a \char`\"{}robust match\char`\"{} between the two sets of points (slow but has great results). First we do a simple K\+NN match from 1to2 and 2to1, which is followed by a ratio check and symmetry check. Original code is from the \char`\"{}\+Robust\+Matcher\char`\"{} in the opencv examples, and seems to give very good results in the matches. \href{https://github.com/opencv/opencv/blob/master/samples/cpp/tutorial_code/calib3d/real_time_pose_estimation/src/RobustMatcher.cpp}{\tt https\+://github.\+com/opencv/opencv/blob/master/samples/cpp/tutorial\+\_\+code/calib3d/real\+\_\+time\+\_\+pose\+\_\+estimation/src/\+Robust\+Matcher.\+cpp} 

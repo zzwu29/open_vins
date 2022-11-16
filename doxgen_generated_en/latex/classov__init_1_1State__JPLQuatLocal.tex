@@ -1,0 +1,55 @@
+\hypertarget{classov__init_1_1State__JPLQuatLocal}{}\section{ov\+\_\+init\+:\+:State\+\_\+\+J\+P\+L\+Quat\+Local Class Reference}
+\label{classov__init_1_1State__JPLQuatLocal}\index{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local@{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local}}
+
+
+J\+PL quaternion C\+E\+R\+ES state parameterization.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+J\+P\+L\+Quat\+Local.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classov__init_1_1State__JPLQuatLocal_ae0d6f02fa9043878a623bc46aee0c928}{Plus} (const double $\ast$x, const double $\ast$delta, double $\ast$x\+\_\+plus\+\_\+delta) const override
+\begin{DoxyCompactList}\small\item\em State update function for a J\+PL quaternion representation. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1State__JPLQuatLocal_ab6732d5027ddfa89a76d00ef35ee2fc8}{Compute\+Jacobian} (const double $\ast$x, double $\ast$jacobian) const override
+\begin{DoxyCompactList}\small\item\em Computes the jacobian in respect to the local parameterization. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__init_1_1State__JPLQuatLocal_af801ab9594a21ccd98c5525ff121a399}\label{classov__init_1_1State__JPLQuatLocal_af801ab9594a21ccd98c5525ff121a399}} 
+int {\bfseries Global\+Size} () const override
+\item 
+\mbox{\Hypertarget{classov__init_1_1State__JPLQuatLocal_a2f8902e5be623d71aa7299b666afe4c8}\label{classov__init_1_1State__JPLQuatLocal_a2f8902e5be623d71aa7299b666afe4c8}} 
+int {\bfseries Local\+Size} () const override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+J\+PL quaternion C\+E\+R\+ES state parameterization. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__init_1_1State__JPLQuatLocal_ab6732d5027ddfa89a76d00ef35ee2fc8}\label{classov__init_1_1State__JPLQuatLocal_ab6732d5027ddfa89a76d00ef35ee2fc8}} 
+\index{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local@{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local}!Compute\+Jacobian@{Compute\+Jacobian}}
+\index{Compute\+Jacobian@{Compute\+Jacobian}!ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local@{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local}}
+\subsubsection{\texorpdfstring{Compute\+Jacobian()}{ComputeJacobian()}}
+{\footnotesize\ttfamily bool State\+\_\+\+J\+P\+L\+Quat\+Local\+::\+Compute\+Jacobian (\begin{DoxyParamCaption}\item[{const double $\ast$}]{x,  }\item[{double $\ast$}]{jacobian }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Computes the jacobian in respect to the local parameterization. 
+
+This essentially \char`\"{}tricks\char`\"{} ceres. Instead of doing what ceres wants\+: dr/dlocal= dr/dglobal $\ast$ dglobal/dlocal
+
+We instead directly do\+: dr/dlocal= \mbox{[} dr/dlocal, 0\mbox{]} $\ast$ \mbox{[}I; 0\mbox{]}= dr/dlocal. Therefore we here define dglobal/dlocal= \mbox{[}I; 0\mbox{]} \mbox{\Hypertarget{classov__init_1_1State__JPLQuatLocal_ae0d6f02fa9043878a623bc46aee0c928}\label{classov__init_1_1State__JPLQuatLocal_ae0d6f02fa9043878a623bc46aee0c928}} 
+\index{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local@{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local}!Plus@{Plus}}
+\index{Plus@{Plus}!ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local@{ov\+\_\+init\+::\+State\+\_\+\+J\+P\+L\+Quat\+Local}}
+\subsubsection{\texorpdfstring{Plus()}{Plus()}}
+{\footnotesize\ttfamily bool State\+\_\+\+J\+P\+L\+Quat\+Local\+::\+Plus (\begin{DoxyParamCaption}\item[{const double $\ast$}]{x,  }\item[{const double $\ast$}]{delta,  }\item[{double $\ast$}]{x\+\_\+plus\+\_\+delta }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+State update function for a J\+PL quaternion representation. 
+
+Implements update operation by left-\/multiplying the current quaternion with a quaternion built from a small axis-\/angle perturbation.
+
+\[ \bar{q}=norm\Big(\begin{bmatrix} 0.5*\mathbf{\theta_{dx}} \\ 1 \end{bmatrix}\Big) \hat{\bar{q}} \] 

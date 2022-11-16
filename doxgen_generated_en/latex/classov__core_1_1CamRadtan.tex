@@ -1,0 +1,134 @@
+\hypertarget{classov__core_1_1CamRadtan}{}\section{ov\+\_\+core\+:\+:Cam\+Radtan Class Reference}
+\label{classov__core_1_1CamRadtan}\index{ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}}
+
+
+Radial-\/tangential / Brown–\+Conrady model pinhole camera model class.  
+
+
+
+
+{\ttfamily \#include $<$Cam\+Radtan.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__core_1_1CamRadtan_a34a91e335e1767f20e82cc6013a8ccc8}{Cam\+Radtan} (int width, int height)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector2f \hyperlink{classov__core_1_1CamRadtan_af02fa84ed2fdc895aaaf216184aa25ef}{undistort\+\_\+f} (const Eigen\+::\+Vector2f \&uv\+\_\+dist) override
+\begin{DoxyCompactList}\small\item\em Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector2f \hyperlink{classov__core_1_1CamRadtan_a022376b5a15b827bbb7dabebc8df0508}{distort\+\_\+f} (const Eigen\+::\+Vector2f \&uv\+\_\+norm) override
+\begin{DoxyCompactList}\small\item\em Given a normalized uv coordinate this will distort it to the raw image plane. \end{DoxyCompactList}\item 
+void \hyperlink{classov__core_1_1CamRadtan_a4ab5e54e89f48779a696f5b33d120dbc}{compute\+\_\+distort\+\_\+jacobian} (const Eigen\+::\+Vector2d \&uv\+\_\+norm, Eigen\+::\+Matrix\+Xd \&H\+\_\+dz\+\_\+dzn, Eigen\+::\+Matrix\+Xd \&H\+\_\+dz\+\_\+dzeta) override
+\begin{DoxyCompactList}\small\item\em Computes the derivative of raw distorted to normalized coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Radial-\/tangential / Brown–\+Conrady model pinhole camera model class. 
+
+To calibrate camera intrinsics, we need to know how to map our normalized coordinates into the raw pixel coordinates on the image plane. We first employ the radial distortion as in \href{https://docs.opencv.org/3.4/da/d54/group__imgproc__transform.html#details}{\tt Open\+CV model}\+:
+
+\begin{align*} \begin{bmatrix} u \\ v \end{bmatrix}:= \mathbf{z}_k &= \mathbf h_d(\mathbf{z}_{n,k}, ~\boldsymbol\zeta) = \begin{bmatrix} f_x * x + c_x \\ f_y * y + c_y \end{bmatrix}\\[1em] \empty {\rm where}~~ x &= x_n (1 + k_1 r^2 + k_2 r^4) + 2 p_1 x_n y_n + p_2(r^2 + 2 x_n^2) \\\ y &= y_n (1 + k_1 r^2 + k_2 r^4) + p_1 (r^2 + 2 y_n^2) + 2 p_2 x_n y_n \\[1em] r^2 &= x_n^2 + y_n^2 \end{align*}
+
+where $ \mathbf{z}_{n,k} = [ x_n ~ y_n ]^\top$ are the normalized coordinates of the 3D feature and u and v are the distorted image coordinates on the image plane. The following distortion and camera intrinsic (focal length and image center) parameters are involved in the above distortion model, which can be estimated online\+:
+
+\begin{align*} \boldsymbol\zeta = \begin{bmatrix} f_x & f_y & c_x & c_y & k_1 & k_2 & p_1 & p_2 \end{bmatrix}^\top \end{align*}
+
+Note that we do not estimate the higher order (i.\+e., higher than fourth order) terms as in most offline calibration methods such as \href{https://github.com/ethz-asl/kalibr}{\tt Kalibr}. To estimate these intrinsic parameters (including the distortation parameters), the following Jacobian for these parameters is needed\+:
+
+\begin{align*} \frac{\partial \mathbf h_d(\cdot)}{\partial \boldsymbol\zeta} = \begin{bmatrix} x & 0 & 1 & 0 & f_x*(x_nr^2) & f_x*(x_nr^4) & f_x*(2x_ny_n) & f_x*(r^2+2x_n^2) \\[5pt] 0 & y & 0 & 1 & f_y*(y_nr^2) & f_y*(y_nr^4) & f_y*(r^2+2y_n^2) & f_y*(2x_ny_n) \end{bmatrix} \end{align*}
+
+Similarly, the Jacobian with respect to the normalized coordinates can be obtained as follows\+:
+
+\begin{align*} \frac{\partial \mathbf h_d (\cdot)}{\partial \mathbf{z}_{n,k}} = \begin{bmatrix} f_x*((1+k_1r^2+k_2r^4)+(2k_1x_n^2+4k_2x_n^2(x_n^2+y_n^2))+2p_1y_n+(2p_2x_n+4p_2x_n)) & f_x*(2k_1x_ny_n+4k_2x_ny_n(x_n^2+y_n^2)+2p_1x_n+2p_2y_n) \\ f_y*(2k_1x_ny_n+4k_2x_ny_n(x_n^2+y_n^2)+2p_1x_n+2p_2y_n) & f_y*((1+k_1r^2+k_2r^4)+(2k_1y_n^2+4k_2y_n^2(x_n^2+y_n^2))+(2p_1y_n+4p_1y_n)+2p_2x_n) \end{bmatrix} \end{align*}
+
+To equate this camera class to Kalibr\textquotesingle{}s models, this is what you would use for {\ttfamily pinhole-\/radtan}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__core_1_1CamRadtan_a34a91e335e1767f20e82cc6013a8ccc8}\label{classov__core_1_1CamRadtan_a34a91e335e1767f20e82cc6013a8ccc8}} 
+\index{ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}!Cam\+Radtan@{Cam\+Radtan}}
+\index{Cam\+Radtan@{Cam\+Radtan}!ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}}
+\subsubsection{\texorpdfstring{Cam\+Radtan()}{CamRadtan()}}
+{\footnotesize\ttfamily ov\+\_\+core\+::\+Cam\+Radtan\+::\+Cam\+Radtan (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the camera (raw pixels) \\
+\hline
+{\em height} & Height of the camera (raw pixels) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__core_1_1CamRadtan_a4ab5e54e89f48779a696f5b33d120dbc}\label{classov__core_1_1CamRadtan_a4ab5e54e89f48779a696f5b33d120dbc}} 
+\index{ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}!compute\+\_\+distort\+\_\+jacobian@{compute\+\_\+distort\+\_\+jacobian}}
+\index{compute\+\_\+distort\+\_\+jacobian@{compute\+\_\+distort\+\_\+jacobian}!ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}}
+\subsubsection{\texorpdfstring{compute\+\_\+distort\+\_\+jacobian()}{compute\_distort\_jacobian()}}
+{\footnotesize\ttfamily void ov\+\_\+core\+::\+Cam\+Radtan\+::compute\+\_\+distort\+\_\+jacobian (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2d \&}]{uv\+\_\+norm,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+dz\+\_\+dzn,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{H\+\_\+dz\+\_\+dzeta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes the derivative of raw distorted to normalized coordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+{\em H\+\_\+dz\+\_\+dzn} & Derivative of measurement z in respect to normalized \\
+\hline
+{\em H\+\_\+dz\+\_\+dzeta} & Derivative of measurement z in respect to intrinic parameters \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classov__core_1_1CamBase_a498fa2b56be008d7b59bf9927f60d5db}{ov\+\_\+core\+::\+Cam\+Base}.
+
+\mbox{\Hypertarget{classov__core_1_1CamRadtan_a022376b5a15b827bbb7dabebc8df0508}\label{classov__core_1_1CamRadtan_a022376b5a15b827bbb7dabebc8df0508}} 
+\index{ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}!distort\+\_\+f@{distort\+\_\+f}}
+\index{distort\+\_\+f@{distort\+\_\+f}!ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}}
+\subsubsection{\texorpdfstring{distort\+\_\+f()}{distort\_f()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector2f ov\+\_\+core\+::\+Cam\+Radtan\+::distort\+\_\+f (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2f \&}]{uv\+\_\+norm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Given a normalized uv coordinate this will distort it to the raw image plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+norm} & Normalized coordinates we wish to distort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of raw uv coordinate 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classov__core_1_1CamBase_a00902793219107474dc21f762fb14556}{ov\+\_\+core\+::\+Cam\+Base}.
+
+\mbox{\Hypertarget{classov__core_1_1CamRadtan_af02fa84ed2fdc895aaaf216184aa25ef}\label{classov__core_1_1CamRadtan_af02fa84ed2fdc895aaaf216184aa25ef}} 
+\index{ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}!undistort\+\_\+f@{undistort\+\_\+f}}
+\index{undistort\+\_\+f@{undistort\+\_\+f}!ov\+\_\+core\+::\+Cam\+Radtan@{ov\+\_\+core\+::\+Cam\+Radtan}}
+\subsubsection{\texorpdfstring{undistort\+\_\+f()}{undistort\_f()}}
+{\footnotesize\ttfamily Eigen\+::\+Vector2f ov\+\_\+core\+::\+Cam\+Radtan\+::undistort\+\_\+f (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector2f \&}]{uv\+\_\+dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Given a raw uv point, this will undistort it based on the camera matrices into normalized camera coords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em uv\+\_\+dist} & Raw uv coordinate we wish to undistort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2d vector of normalized coordinates 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classov__core_1_1CamBase_ad0db03f97e5a12f5ad757f72e60f50e4}{ov\+\_\+core\+::\+Cam\+Base}.
+

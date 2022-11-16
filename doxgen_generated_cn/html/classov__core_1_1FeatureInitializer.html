@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_core::FeatureInitializer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__core.html">ov_core</a></li><li class="navelem"><a class="el" href="classov__core_1_1FeatureInitializer.html">FeatureInitializer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classov__core_1_1FeatureInitializer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_core::FeatureInitializer类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class that triangulates feature  
+ <a href="classov__core_1_1FeatureInitializer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="FeatureInitializer_8h_source.html">FeatureInitializer.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure which stores pose estimates for use in triangulation  <a href="structov__core_1_1FeatureInitializer_1_1ClonePose.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:afa2efde962719a502507044379644e63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#afa2efde962719a502507044379644e63">FeatureInitializer</a> (<a class="el" href="structov__core_1_1FeatureInitializerOptions.html">FeatureInitializerOptions</a> &amp;options)</td></tr>
+<tr class="memdesc:afa2efde962719a502507044379644e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor  <a href="#afa2efde962719a502507044379644e63">更多...</a><br /></td></tr>
+<tr class="separator:afa2efde962719a502507044379644e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e8f87f677689e6588516f8d08086d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#a86e8f87f677689e6588516f8d08086d7">single_triangulation</a> (std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt; feat, std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;clonesCAM)</td></tr>
+<tr class="memdesc:a86e8f87f677689e6588516f8d08086d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses a linear triangulation to get initial estimate for the feature  <a href="#a86e8f87f677689e6588516f8d08086d7">更多...</a><br /></td></tr>
+<tr class="separator:a86e8f87f677689e6588516f8d08086d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e8070e331293368ed1fedd62458d5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#a97e8070e331293368ed1fedd62458d5e">single_triangulation_1d</a> (std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt; feat, std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;clonesCAM)</td></tr>
+<tr class="memdesc:a97e8070e331293368ed1fedd62458d5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses a linear triangulation to get initial estimate for the feature, treating the anchor observation as a true bearing.  <a href="#a97e8070e331293368ed1fedd62458d5e">更多...</a><br /></td></tr>
+<tr class="separator:a97e8070e331293368ed1fedd62458d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27eb3af3c4e22473e795966eff800599"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#a27eb3af3c4e22473e795966eff800599">single_gaussnewton</a> (std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt; feat, std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;clonesCAM)</td></tr>
+<tr class="memdesc:a27eb3af3c4e22473e795966eff800599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses a nonlinear triangulation to refine initial linear estimate of the feature  <a href="#a27eb3af3c4e22473e795966eff800599">更多...</a><br /></td></tr>
+<tr class="separator:a27eb3af3c4e22473e795966eff800599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12109c70cee2ce4d11c2a1b345654b8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structov__core_1_1FeatureInitializerOptions.html">FeatureInitializerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#ae12109c70cee2ce4d11c2a1b345654b8">config</a> ()</td></tr>
+<tr class="memdesc:ae12109c70cee2ce4d11c2a1b345654b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current configuration of the feature initializer  <a href="#ae12109c70cee2ce4d11c2a1b345654b8">更多...</a><br /></td></tr>
+<tr class="separator:ae12109c70cee2ce4d11c2a1b345654b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a2b851be642683766f649a751452407bf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#a2b851be642683766f649a751452407bf">compute_error</a> (std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;clonesCAM, std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt; feat, double alpha, double beta, double rho)</td></tr>
+<tr class="memdesc:a2b851be642683766f649a751452407bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for the gauss newton method that computes error of the given estimate  <a href="#a2b851be642683766f649a751452407bf">更多...</a><br /></td></tr>
+<tr class="separator:a2b851be642683766f649a751452407bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a1e9a923db5dc5ced439d0516ff884964"><td class="memItemLeft" align="right" valign="top"><a id="a1e9a923db5dc5ced439d0516ff884964"></a>
+<a class="el" href="structov__core_1_1FeatureInitializerOptions.html">FeatureInitializerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__core_1_1FeatureInitializer.html#a1e9a923db5dc5ced439d0516ff884964">_options</a></td></tr>
+<tr class="memdesc:a1e9a923db5dc5ced439d0516ff884964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains options for the initializer process <br /></td></tr>
+<tr class="separator:a1e9a923db5dc5ced439d0516ff884964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Class that triangulates feature </p>
+<p>This class has the functions needed to triangulate and then refine a given 3D feature. As in the standard MSCKF, we know the clones of the camera from propagation and past updates. Thus, we just need to triangulate a feature in 3D with the known poses and then refine it. One should first call the <a class="el" href="classov__core_1_1FeatureInitializer.html#a86e8f87f677689e6588516f8d08086d7" title="Uses a linear triangulation to get initial estimate for the feature ">single_triangulation()</a> function afterwhich <a class="el" href="classov__core_1_1FeatureInitializer.html#a27eb3af3c4e22473e795966eff800599" title="Uses a nonlinear triangulation to refine initial linear estimate of the feature ">single_gaussnewton()</a> allows for refinement. Please see the <a class="el" href="update-featinit.html">Feature Triangulation</a> page for detailed derivations. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="afa2efde962719a502507044379644e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa2efde962719a502507044379644e63">&#9670;&nbsp;</a></span>FeatureInitializer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ov_core::FeatureInitializer::FeatureInitializer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structov__core_1_1FeatureInitializerOptions.html">FeatureInitializerOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>Options for the initializer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a2b851be642683766f649a751452407bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b851be642683766f649a751452407bf">&#9670;&nbsp;</a></span>compute_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FeatureInitializer::compute_error </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>clonesCAM</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>feat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>beta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rho</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper function for the gauss newton method that computes error of the given estimate </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">clonesCAM</td><td>Map between camera ID to map of timestamp to camera pose estimate </td></tr>
+    <tr><td class="paramname">feat</td><td>Pointer to the feature </td></tr>
+    <tr><td class="paramname">alpha</td><td>x/z in anchor </td></tr>
+    <tr><td class="paramname">beta</td><td>y/z in anchor </td></tr>
+    <tr><td class="paramname">rho</td><td>1/z inverse depth </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae12109c70cee2ce4d11c2a1b345654b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12109c70cee2ce4d11c2a1b345654b8">&#9670;&nbsp;</a></span>config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structov__core_1_1FeatureInitializerOptions.html">FeatureInitializerOptions</a> ov_core::FeatureInitializer::config </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the current configuration of the feature initializer </p>
+<dl class="section return"><dt>返回</dt><dd>Const feature initializer config </dd></dl>
+
+</div>
+</div>
+<a id="a27eb3af3c4e22473e795966eff800599"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27eb3af3c4e22473e795966eff800599">&#9670;&nbsp;</a></span>single_gaussnewton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FeatureInitializer::single_gaussnewton </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>feat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>clonesCAM</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Uses a nonlinear triangulation to refine initial linear estimate of the feature </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feat</td><td>Pointer to feature </td></tr>
+    <tr><td class="paramname">clonesCAM</td><td>Map between camera ID to map of timestamp to camera pose estimate (rotation from global to camera, position of camera in global frame) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Returns false if it fails to be optimize (based on the thresholds) </dd></dl>
+
+</div>
+</div>
+<a id="a86e8f87f677689e6588516f8d08086d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86e8f87f677689e6588516f8d08086d7">&#9670;&nbsp;</a></span>single_triangulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FeatureInitializer::single_triangulation </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>feat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>clonesCAM</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Uses a linear triangulation to get initial estimate for the feature </p>
+<p>The derivations for this method can be found in the <a class="el" href="update-featinit.html#featinit-linear">3D Cartesian Triangulation</a> documentation page.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feat</td><td>Pointer to feature </td></tr>
+    <tr><td class="paramname">clonesCAM</td><td>Map between camera ID to map of timestamp to camera pose estimate (rotation from global to camera, position of camera in global frame) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Returns false if it fails to triangulate (based on the thresholds) </dd></dl>
+
+</div>
+</div>
+<a id="a97e8070e331293368ed1fedd62458d5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97e8070e331293368ed1fedd62458d5e">&#9670;&nbsp;</a></span>single_triangulation_1d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FeatureInitializer::single_triangulation_1d </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__core_1_1Feature.html">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>feat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; size_t, std::unordered_map&lt; double, <a class="el" href="structov__core_1_1FeatureInitializer_1_1ClonePose.html">ClonePose</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>clonesCAM</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Uses a linear triangulation to get initial estimate for the feature, treating the anchor observation as a true bearing. </p>
+<p>The derivations for this method can be found in the <a class="el" href="update-featinit.html#featinit-linear-1d">1D Depth Triangulation</a> documentation page. This function should be used if you want speed, or know your anchor bearing is reasonably accurate.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">feat</td><td>Pointer to feature </td></tr>
+    <tr><td class="paramname">clonesCAM</td><td>Map between camera ID to map of timestamp to camera pose estimate (rotation from global to camera, position of camera in global frame) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Returns false if it fails to triangulate (based on the thresholds) </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

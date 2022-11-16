@@ -1,0 +1,94 @@
+\hypertarget{classov__init_1_1DynamicInitializer}{}\section{ov\+\_\+init\+:\+:Dynamic\+Initializer Class Reference}
+\label{classov__init_1_1DynamicInitializer}\index{ov\+\_\+init\+::\+Dynamic\+Initializer@{ov\+\_\+init\+::\+Dynamic\+Initializer}}
+
+
+Initializer for a dynamic visual-\/inertial system.  
+
+
+
+
+{\ttfamily \#include $<$Dynamic\+Initializer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__init_1_1DynamicInitializer_a11e592324aedffe4a5b984cf9651a6ab}{Dynamic\+Initializer} (const \hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&params\+\_\+, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$ db, std\+::shared\+\_\+ptr$<$ std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$$>$ imu\+\_\+data\+\_\+)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classov__init_1_1DynamicInitializer_aec51b927083a2c5e6fa0c641ca326504}{initialize} (double \&timestamp, Eigen\+::\+Matrix\+Xd \&covariance, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&order, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$ \&\+\_\+imu, std\+::map$<$ double, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1PoseJPL}{ov\+\_\+type\+::\+Pose\+J\+PL} $>$$>$ \&\+\_\+clones\+\_\+\+I\+MU, std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Landmark}{ov\+\_\+type\+::\+Landmark} $>$$>$ \&\+\_\+features\+\_\+\+S\+L\+AM)
+\begin{DoxyCompactList}\small\item\em Try to get the initialized system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Initializer for a dynamic visual-\/inertial system. 
+
+This implementation that will try to recover the initial conditions of the system. Additionally, we will try to recover the covariance of the system. To initialize with arbitrary motion\+:
+\begin{DoxyEnumerate}
+\item Preintegrate our system to get the relative rotation change (biases assumed known)
+\item Construct linear system with features to recover velocity (solve with $\vert$g$\vert$ constraint)
+\item Perform a large M\+LE with all calibration and recover the covariance.
+\end{DoxyEnumerate}
+
+Method is based on this work (see this \href{https://pgeneva.com/downloads/reports/tr_init.pdf}{\tt tech report} for a high level walk through)\+:
+
+\begin{quote}
+Dong-\/\+Si, Tue-\/\+Cuong, and Anastasios I. Mourikis. \char`\"{}\+Estimator initialization in vision-\/aided inertial navigation with unknown camera-\/\+I\+M\+U calibration.\char`\"{} 2012 I\+E\+E\+E/\+R\+SJ International Conference on Intelligent Robots and Systems. I\+E\+EE, 2012. \end{quote}
+
+
+
+\begin{DoxyItemize}
+\item \href{https://ieeexplore.ieee.org/abstract/document/6386235}{\tt https\+://ieeexplore.\+ieee.\+org/abstract/document/6386235}
+\item \href{https://tdongsi.github.io/download/pubs/2011_VIO_Init_TR.pdf}{\tt https\+://tdongsi.\+github.\+io/download/pubs/2011\+\_\+\+V\+I\+O\+\_\+\+Init\+\_\+\+T\+R.\+pdf}
+\item \href{https://pgeneva.com/downloads/reports/tr_init.pdf}{\tt https\+://pgeneva.\+com/downloads/reports/tr\+\_\+init.\+pdf} 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classov__init_1_1DynamicInitializer_a11e592324aedffe4a5b984cf9651a6ab}\label{classov__init_1_1DynamicInitializer_a11e592324aedffe4a5b984cf9651a6ab}} 
+\index{ov\+\_\+init\+::\+Dynamic\+Initializer@{ov\+\_\+init\+::\+Dynamic\+Initializer}!Dynamic\+Initializer@{Dynamic\+Initializer}}
+\index{Dynamic\+Initializer@{Dynamic\+Initializer}!ov\+\_\+init\+::\+Dynamic\+Initializer@{ov\+\_\+init\+::\+Dynamic\+Initializer}}
+\subsubsection{\texorpdfstring{Dynamic\+Initializer()}{DynamicInitializer()}}
+{\footnotesize\ttfamily ov\+\_\+init\+::\+Dynamic\+Initializer\+::\+Dynamic\+Initializer (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options} \&}]{params\+\_\+,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__core_1_1FeatureDatabase}{ov\+\_\+core\+::\+Feature\+Database} $>$}]{db,  }\item[{std\+::shared\+\_\+ptr$<$ std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$$>$}]{imu\+\_\+data\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params\+\_\+} & Parameters loaded from either R\+OS or C\+M\+D\+L\+I\+NE \\
+\hline
+{\em db} & Feature tracker database with all features in it \\
+\hline
+{\em imu\+\_\+data\+\_\+} & Shared pointer to our I\+MU vector of historical information \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__init_1_1DynamicInitializer_aec51b927083a2c5e6fa0c641ca326504}\label{classov__init_1_1DynamicInitializer_aec51b927083a2c5e6fa0c641ca326504}} 
+\index{ov\+\_\+init\+::\+Dynamic\+Initializer@{ov\+\_\+init\+::\+Dynamic\+Initializer}!initialize@{initialize}}
+\index{initialize@{initialize}!ov\+\_\+init\+::\+Dynamic\+Initializer@{ov\+\_\+init\+::\+Dynamic\+Initializer}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily bool Dynamic\+Initializer\+::initialize (\begin{DoxyParamCaption}\item[{double \&}]{timestamp,  }\item[{Eigen\+::\+Matrix\+Xd \&}]{covariance,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{ov\+\_\+type\+::\+Type} $>$$>$ \&}]{order,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1IMU}{ov\+\_\+type\+::\+I\+MU} $>$ \&}]{\+\_\+imu,  }\item[{std\+::map$<$ double, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1PoseJPL}{ov\+\_\+type\+::\+Pose\+J\+PL} $>$$>$ \&}]{\+\_\+clones\+\_\+\+I\+MU,  }\item[{std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Landmark}{ov\+\_\+type\+::\+Landmark} $>$$>$ \&}]{\+\_\+features\+\_\+\+S\+L\+AM }\end{DoxyParamCaption})}
+
+
+
+Try to get the initialized system. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em timestamp} & Timestamp we have initialized the state at (last imu state) \\
+\hline
+\mbox{\tt out}  & {\em covariance} & Calculated covariance of the returned state \\
+\hline
+\mbox{\tt out}  & {\em order} & Order of the covariance matrix \\
+\hline
+ & {\em \+\_\+imu} & Pointer to the \char`\"{}active\char`\"{} I\+MU state (q\+\_\+\+GtoI, p\+\_\+\+IinG, v\+\_\+\+IinG, bg, ba) \\
+\hline
+ & {\em \+\_\+clones\+\_\+\+I\+MU} & Map between imaging times and clone poses (q\+\_\+\+Gto\+Ii, p\+\_\+\+IiinG) \\
+\hline
+ & {\em \+\_\+features\+\_\+\+S\+L\+AM} & Our current set of S\+L\+AM features (3d positions) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if we have successfully initialized our system 
+\end{DoxyReturn}

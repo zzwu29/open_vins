@@ -1,0 +1,45 @@
+\hypertarget{classov__msckf_1_1ROSVisualizerHelper}{}\section{ov\+\_\+msckf\+:\+:R\+O\+S\+Visualizer\+Helper Class Reference}
+\label{classov__msckf_1_1ROSVisualizerHelper}\index{ov\+\_\+msckf\+::\+R\+O\+S\+Visualizer\+Helper@{ov\+\_\+msckf\+::\+R\+O\+S\+Visualizer\+Helper}}
+
+
+Helper class that handles some common versions into and out of R\+OS formats.  
+
+
+
+
+{\ttfamily \#include $<$R\+O\+S\+Visualizer\+Helper.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classov__msckf_1_1ROSVisualizerHelper_a1fc6dc217407639bac014a51ca944caf}{sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Simulator}{Simulator} $>$ sim, std\+::ofstream \&of\+\_\+state\+\_\+est, std\+::ofstream \&of\+\_\+state\+\_\+std, std\+::ofstream \&of\+\_\+state\+\_\+gt)
+\begin{DoxyCompactList}\small\item\em Save current estimate state and groundtruth including calibration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class that handles some common versions into and out of R\+OS formats. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classov__msckf_1_1ROSVisualizerHelper_a1fc6dc217407639bac014a51ca944caf}\label{classov__msckf_1_1ROSVisualizerHelper_a1fc6dc217407639bac014a51ca944caf}} 
+\index{ov\+\_\+msckf\+::\+R\+O\+S\+Visualizer\+Helper@{ov\+\_\+msckf\+::\+R\+O\+S\+Visualizer\+Helper}!sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file@{sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file}}
+\index{sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file@{sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file}!ov\+\_\+msckf\+::\+R\+O\+S\+Visualizer\+Helper@{ov\+\_\+msckf\+::\+R\+O\+S\+Visualizer\+Helper}}
+\subsubsection{\texorpdfstring{sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file()}{sim\_save\_total\_state\_to\_file()}}
+{\footnotesize\ttfamily void R\+O\+S\+Visualizer\+Helper\+::sim\+\_\+save\+\_\+total\+\_\+state\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1Simulator}{Simulator} $>$}]{sim,  }\item[{std\+::ofstream \&}]{of\+\_\+state\+\_\+est,  }\item[{std\+::ofstream \&}]{of\+\_\+state\+\_\+std,  }\item[{std\+::ofstream \&}]{of\+\_\+state\+\_\+gt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Save current estimate state and groundtruth including calibration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the state \\
+\hline
+{\em sim} & Pointer to the simulator (or null) \\
+\hline
+{\em of\+\_\+state\+\_\+est} & Output file for state estimate \\
+\hline
+{\em of\+\_\+state\+\_\+std} & Output file for covariance \\
+\hline
+{\em of\+\_\+state\+\_\+gt} & Output file for groundtruth (if we have it from sim) \\
+\hline
+\end{DoxyParams}

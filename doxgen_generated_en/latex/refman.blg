@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: refman.aux
+The style file: plainnat.bst
+Database file #1: bibTmpFile_1.bib
+Warning--empty year in ceres-solver
+You've used 25 entries,
+            2773 wiz_defined-function locations,
+            778 strings with 10855 characters,
+and the built_in function-call counts, 14128 in all, are:
+= -- 1340
+> -- 789
+< -- 21
++ -- 265
+- -- 240
+* -- 1143
+:= -- 2082
+add.period$ -- 102
+call.type$ -- 25
+change.case$ -- 152
+chr.to.int$ -- 25
+cite$ -- 51
+duplicate$ -- 639
+empty$ -- 1110
+format.name$ -- 277
+if$ -- 3058
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 25
+newline$ -- 151
+num.names$ -- 100
+pop$ -- 313
+preamble$ -- 1
+purify$ -- 130
+quote$ -- 0
+skip$ -- 520
+stack$ -- 0
+substring$ -- 651
+swap$ -- 139
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 265
+warning$ -- 1
+while$ -- 125
+width$ -- 0
+write$ -- 374
+(There was 1 warning)

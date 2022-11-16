@@ -1,0 +1,59 @@
+\hypertarget{structov__eval_1_1Statistics}{}\section{ov\+\_\+eval\+:\+:Statistics结构体 参考}
+\label{structov__eval_1_1Statistics}\index{ov\+\_\+eval\+::\+Statistics@{ov\+\_\+eval\+::\+Statistics}}
+
+
+\hyperlink{structov__eval_1_1Statistics}{Statistics} object for a given set scalar time series values.  
+
+
+
+
+{\ttfamily \#include $<$Statistics.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_ada896c0243989b2b8a366a0caa18a3c6}\label{structov__eval_1_1Statistics_ada896c0243989b2b8a366a0caa18a3c6}} 
+void \hyperlink{structov__eval_1_1Statistics_ada896c0243989b2b8a366a0caa18a3c6}{calculate} ()
+\begin{DoxyCompactList}\small\item\em Will calculate all values from our vectors of information \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_ad13e2a500d7c64297077485e39b36a6c}\label{structov__eval_1_1Statistics_ad13e2a500d7c64297077485e39b36a6c}} 
+void \hyperlink{structov__eval_1_1Statistics_ad13e2a500d7c64297077485e39b36a6c}{clear} ()
+\begin{DoxyCompactList}\small\item\em Will clear any old values \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a86b2905802456b6a1d8b6bcacb9a9e39}\label{structov__eval_1_1Statistics_a86b2905802456b6a1d8b6bcacb9a9e39}} 
+double \hyperlink{structov__eval_1_1Statistics_a86b2905802456b6a1d8b6bcacb9a9e39}{rmse} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Root mean squared for the given values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_ab3fe9611541840f445f1e28a5181b2eb}\label{structov__eval_1_1Statistics_ab3fe9611541840f445f1e28a5181b2eb}} 
+double \hyperlink{structov__eval_1_1Statistics_ab3fe9611541840f445f1e28a5181b2eb}{mean} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Mean of the given values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a44b7c68c982ad20d064bd2f6168e60be}\label{structov__eval_1_1Statistics_a44b7c68c982ad20d064bd2f6168e60be}} 
+double \hyperlink{structov__eval_1_1Statistics_a44b7c68c982ad20d064bd2f6168e60be}{median} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Median of the given values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a955e40e0c9a32572c2d72815904d52be}\label{structov__eval_1_1Statistics_a955e40e0c9a32572c2d72815904d52be}} 
+double \hyperlink{structov__eval_1_1Statistics_a955e40e0c9a32572c2d72815904d52be}{std} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Standard deviation of given values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a3c199c37bd66fa83acfe4eebc279dd34}\label{structov__eval_1_1Statistics_a3c199c37bd66fa83acfe4eebc279dd34}} 
+double \hyperlink{structov__eval_1_1Statistics_a3c199c37bd66fa83acfe4eebc279dd34}{max} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Max of the given values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_ada14c28c46581e4e928f8eb7c86fdd06}\label{structov__eval_1_1Statistics_ada14c28c46581e4e928f8eb7c86fdd06}} 
+double \hyperlink{structov__eval_1_1Statistics_ada14c28c46581e4e928f8eb7c86fdd06}{min} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Min of the given values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a61e02141acabdb35b6e9bc9c1722653f}\label{structov__eval_1_1Statistics_a61e02141acabdb35b6e9bc9c1722653f}} 
+double \hyperlink{structov__eval_1_1Statistics_a61e02141acabdb35b6e9bc9c1722653f}{ninetynine} = 0.\+0
+\begin{DoxyCompactList}\small\item\em 99th percentile \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a017b8f3c767271f7d586468ec86fe2b4}\label{structov__eval_1_1Statistics_a017b8f3c767271f7d586468ec86fe2b4}} 
+std\+::vector$<$ double $>$ \hyperlink{structov__eval_1_1Statistics_a017b8f3c767271f7d586468ec86fe2b4}{timestamps}
+\begin{DoxyCompactList}\small\item\em Timestamp when these values occured at \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a354bca50b835cca4be36ea1960561de7}\label{structov__eval_1_1Statistics_a354bca50b835cca4be36ea1960561de7}} 
+std\+::vector$<$ double $>$ \hyperlink{structov__eval_1_1Statistics_a354bca50b835cca4be36ea1960561de7}{values}
+\begin{DoxyCompactList}\small\item\em Values (e.\+g. error or nees at a given time) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__eval_1_1Statistics_a0ec5edc20462a1e6834547ed79d81377}\label{structov__eval_1_1Statistics_a0ec5edc20462a1e6834547ed79d81377}} 
+std\+::vector$<$ double $>$ \hyperlink{structov__eval_1_1Statistics_a0ec5edc20462a1e6834547ed79d81377}{values\+\_\+bound}
+\begin{DoxyCompactList}\small\item\em Bound of these values (e.\+g. our expected covariance bound) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+\hyperlink{structov__eval_1_1Statistics}{Statistics} object for a given set scalar time series values. 
+
+Ensure that you call the \hyperlink{structov__eval_1_1Statistics_ada896c0243989b2b8a366a0caa18a3c6}{calculate()} function to update the values before using them. This will compute all the final results from the values in \hyperlink{structov__eval_1_1Statistics_a354bca50b835cca4be36ea1960561de7}{values} vector. 

@@ -1,0 +1,289 @@
+\hypertarget{classov__msckf_1_1Propagator}{}\section{ov\+\_\+msckf\+:\+:Propagator类 参考}
+\label{classov__msckf_1_1Propagator}\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+
+
+Performs the state covariance and mean propagation using imu measurements  
+
+
+
+
+{\ttfamily \#include $<$Propagator.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classov__msckf_1_1Propagator_a041751e94b04af4134c31a5f32c58d47}{Propagator} (\hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager} noises, double gravity\+\_\+mag)
+\begin{DoxyCompactList}\small\item\em Default constructor \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1Propagator_aa9badf8180a77869e6027d359af8121e}{feed\+\_\+imu} (const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&message, double oldest\+\_\+time=-\/1)
+\begin{DoxyCompactList}\small\item\em Stores incoming inertial readings \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1Propagator_ac96e7c40b696501a1f68097e10dde319}{propagate\+\_\+and\+\_\+clone} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, double timestamp)
+\begin{DoxyCompactList}\small\item\em Propagate state up to given timestamp and then clone \end{DoxyCompactList}\item 
+bool \hyperlink{classov__msckf_1_1Propagator_a33aabf2aea886a848a5ea3f6d83be4a4}{fast\+\_\+state\+\_\+propagate} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, double timestamp, Eigen\+::\+Matrix$<$ double, 13, 1 $>$ \&state\+\_\+plus, Eigen\+::\+Matrix$<$ double, 12, 12 $>$ \&covariance)
+\begin{DoxyCompactList}\small\item\em Gets what the state and its covariance will be at a given timestamp \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \hyperlink{classov__msckf_1_1Propagator_a2f2d18be72bfc40bab5ae5eab2bae10e}{select\+\_\+imu\+\_\+readings} (const std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \&\hyperlink{classov__msckf_1_1Propagator_aa1639a14dc1149d2e47be177bf33b572}{imu\+\_\+data}, double time0, double time1, bool warn=true)
+\begin{DoxyCompactList}\small\item\em Helper function that given current imu data, will select imu readings between the two times. \end{DoxyCompactList}\item 
+static \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \hyperlink{classov__msckf_1_1Propagator_a3dde6d888eec85594aa6a864d141d5dc}{interpolate\+\_\+data} (const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&imu\+\_\+1, const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&imu\+\_\+2, double timestamp)
+\begin{DoxyCompactList}\small\item\em Nice helper function that will linearly interpolate between two imu messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__msckf_1_1Propagator_a3e7cfb88ec2c5eb7e090e0e6fe48225e}{predict\+\_\+and\+\_\+compute} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&data\+\_\+minus, const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&data\+\_\+plus, Eigen\+::\+Matrix$<$ double, 15, 15 $>$ \&F, Eigen\+::\+Matrix$<$ double, 15, 15 $>$ \&Qd)
+\begin{DoxyCompactList}\small\item\em Propagates the state forward using the imu data and computes the noise covariance and state-\/transition matrix of this interval. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1Propagator_a038285deaa51724081651471a8de298f}{predict\+\_\+mean\+\_\+discrete} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, double dt, const Eigen\+::\+Vector3d \&w\+\_\+hat1, const Eigen\+::\+Vector3d \&a\+\_\+hat1, const Eigen\+::\+Vector3d \&w\+\_\+hat2, const Eigen\+::\+Vector3d \&a\+\_\+hat2, Eigen\+::\+Vector4d \&new\+\_\+q, Eigen\+::\+Vector3d \&new\+\_\+v, Eigen\+::\+Vector3d \&new\+\_\+p)
+\begin{DoxyCompactList}\small\item\em Discrete imu mean propagation. \end{DoxyCompactList}\item 
+void \hyperlink{classov__msckf_1_1Propagator_abfc8dcea867622ef57e740e5ab884538}{predict\+\_\+mean\+\_\+rk4} (std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$ state, double dt, const Eigen\+::\+Vector3d \&w\+\_\+hat1, const Eigen\+::\+Vector3d \&a\+\_\+hat1, const Eigen\+::\+Vector3d \&w\+\_\+hat2, const Eigen\+::\+Vector3d \&a\+\_\+hat2, Eigen\+::\+Vector4d \&new\+\_\+q, Eigen\+::\+Vector3d \&new\+\_\+v, Eigen\+::\+Vector3d \&new\+\_\+p)
+\begin{DoxyCompactList}\small\item\em R\+K4 imu mean propagation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a2199da5257d46ee711371550c734dc9a}\label{classov__msckf_1_1Propagator_a2199da5257d46ee711371550c734dc9a}} 
+double \hyperlink{classov__msckf_1_1Propagator_a2199da5257d46ee711371550c734dc9a}{last\+\_\+prop\+\_\+time\+\_\+offset} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Estimate for time offset at last propagation time \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a7affb32669bf959625b65fb80a9af6a2}\label{classov__msckf_1_1Propagator_a7affb32669bf959625b65fb80a9af6a2}} 
+bool {\bfseries have\+\_\+last\+\_\+prop\+\_\+time\+\_\+offset} = false
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a3f19a5f9fdb86733cfb0dcc040313f38}\label{classov__msckf_1_1Propagator_a3f19a5f9fdb86733cfb0dcc040313f38}} 
+\hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager} \hyperlink{classov__msckf_1_1Propagator_a3f19a5f9fdb86733cfb0dcc040313f38}{\+\_\+noises}
+\begin{DoxyCompactList}\small\item\em Container for the noise values \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_aa1639a14dc1149d2e47be177bf33b572}\label{classov__msckf_1_1Propagator_aa1639a14dc1149d2e47be177bf33b572}} 
+std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \hyperlink{classov__msckf_1_1Propagator_aa1639a14dc1149d2e47be177bf33b572}{imu\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Our history of I\+MU messages (time, angular, linear) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a9495dd802925abfde162f280f8f9d325}\label{classov__msckf_1_1Propagator_a9495dd802925abfde162f280f8f9d325}} 
+std\+::mutex {\bfseries imu\+\_\+data\+\_\+mtx}
+\item 
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a6a5ea009315ab578b48f079d502f97ab}\label{classov__msckf_1_1Propagator_a6a5ea009315ab578b48f079d502f97ab}} 
+Eigen\+::\+Vector3d \hyperlink{classov__msckf_1_1Propagator_a6a5ea009315ab578b48f079d502f97ab}{\+\_\+gravity}
+\begin{DoxyCompactList}\small\item\em Gravity vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Performs the state covariance and mean propagation using imu measurements 
+
+We will first select what measurements we need to propagate with. We then compute the state transition matrix at each step and update the state and covariance. For derivations look at \hyperlink{propagation}{I\+MU Propagation Derivations} page which has detailed equations. 
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a041751e94b04af4134c31a5f32c58d47}\label{classov__msckf_1_1Propagator_a041751e94b04af4134c31a5f32c58d47}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!Propagator@{Propagator}}
+\index{Propagator@{Propagator}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{Propagator()}{Propagator()}}
+{\footnotesize\ttfamily ov\+\_\+msckf\+::\+Propagator\+::\+Propagator (\begin{DoxyParamCaption}\item[{\hyperlink{structov__msckf_1_1NoiseManager}{Noise\+Manager}}]{noises,  }\item[{double}]{gravity\+\_\+mag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor 
+
+
+\begin{DoxyParams}{参数}
+{\em noises} & imu noise characteristics (continuous time) \\
+\hline
+{\em gravity\+\_\+mag} & Global gravity magnitude of the system (normally 9.\+81) \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a33aabf2aea886a848a5ea3f6d83be4a4}\label{classov__msckf_1_1Propagator_a33aabf2aea886a848a5ea3f6d83be4a4}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!fast\+\_\+state\+\_\+propagate@{fast\+\_\+state\+\_\+propagate}}
+\index{fast\+\_\+state\+\_\+propagate@{fast\+\_\+state\+\_\+propagate}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{fast\+\_\+state\+\_\+propagate()}{fast\_state\_propagate()}}
+{\footnotesize\ttfamily bool Propagator\+::fast\+\_\+state\+\_\+propagate (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{double}]{timestamp,  }\item[{Eigen\+::\+Matrix$<$ double, 13, 1 $>$ \&}]{state\+\_\+plus,  }\item[{Eigen\+::\+Matrix$<$ double, 12, 12 $>$ \&}]{covariance }\end{DoxyParamCaption})}
+
+
+
+Gets what the state and its covariance will be at a given timestamp 
+
+This can be used to find what the state will be in the \char`\"{}future\char`\"{} without propagating it. This will propagate a clone of the current I\+MU state and its covariance matrix. This is typically used to provide high frequency pose estimates between updates.
+
+
+\begin{DoxyParams}{参数}
+{\em state} & Pointer to state \\
+\hline
+{\em timestamp} & Time to propagate to (I\+MU clock frame) \\
+\hline
+{\em state\+\_\+plus} & The propagated state (q\+\_\+\+GtoI, p\+\_\+\+IinG, v\+\_\+\+IinI, w\+\_\+\+IinI) \\
+\hline
+{\em covariance} & The propagated covariance (q\+\_\+\+GtoI, p\+\_\+\+IinG, v\+\_\+\+IinI, w\+\_\+\+IinI) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+True if we were able to propagate the state to the current timestep 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_aa9badf8180a77869e6027d359af8121e}\label{classov__msckf_1_1Propagator_aa9badf8180a77869e6027d359af8121e}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!feed\+\_\+imu@{feed\+\_\+imu}}
+\index{feed\+\_\+imu@{feed\+\_\+imu}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{feed\+\_\+imu()}{feed\_imu()}}
+{\footnotesize\ttfamily void ov\+\_\+msckf\+::\+Propagator\+::feed\+\_\+imu (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{message,  }\item[{double}]{oldest\+\_\+time = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Stores incoming inertial readings 
+
+
+\begin{DoxyParams}{参数}
+{\em message} & Contains our timestamp and inertial information \\
+\hline
+{\em oldest\+\_\+time} & Time that we can discard measurements before \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a3dde6d888eec85594aa6a864d141d5dc}\label{classov__msckf_1_1Propagator_a3dde6d888eec85594aa6a864d141d5dc}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!interpolate\+\_\+data@{interpolate\+\_\+data}}
+\index{interpolate\+\_\+data@{interpolate\+\_\+data}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{interpolate\+\_\+data()}{interpolate\_data()}}
+{\footnotesize\ttfamily static \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} ov\+\_\+msckf\+::\+Propagator\+::interpolate\+\_\+data (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{imu\+\_\+1,  }\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{imu\+\_\+2,  }\item[{double}]{timestamp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Nice helper function that will linearly interpolate between two imu messages. 
+
+This should be used instead of just \char`\"{}cutting\char`\"{} imu messages that bound the camera times Give better time offset if we use this function, could try other orders/splines if the imu is slow.
+
+
+\begin{DoxyParams}{参数}
+{\em imu\+\_\+1} & imu at begining of interpolation interval \\
+\hline
+{\em imu\+\_\+2} & imu at end of interpolation interval \\
+\hline
+{\em timestamp} & Timestamp being interpolated to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a3e7cfb88ec2c5eb7e090e0e6fe48225e}\label{classov__msckf_1_1Propagator_a3e7cfb88ec2c5eb7e090e0e6fe48225e}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!predict\+\_\+and\+\_\+compute@{predict\+\_\+and\+\_\+compute}}
+\index{predict\+\_\+and\+\_\+compute@{predict\+\_\+and\+\_\+compute}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{predict\+\_\+and\+\_\+compute()}{predict\_and\_compute()}}
+{\footnotesize\ttfamily void Propagator\+::predict\+\_\+and\+\_\+compute (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{data\+\_\+minus,  }\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{data\+\_\+plus,  }\item[{Eigen\+::\+Matrix$<$ double, 15, 15 $>$ \&}]{F,  }\item[{Eigen\+::\+Matrix$<$ double, 15, 15 $>$ \&}]{Qd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Propagates the state forward using the imu data and computes the noise covariance and state-\/transition matrix of this interval. 
+
+This function can be replaced with analytical/numerical integration or when using a different state representation. This contains our state transition matrix along with how our noise evolves in time. If you have other state variables besides the I\+MU that evolve you would add them here. See the \hyperlink{propagation_error_prop}{Discrete-\/time Error-\/state Propagation} page for details on how this was derived.
+
+
+\begin{DoxyParams}{参数}
+{\em state} & Pointer to state \\
+\hline
+{\em data\+\_\+minus} & imu readings at beginning of interval \\
+\hline
+{\em data\+\_\+plus} & imu readings at end of interval \\
+\hline
+{\em F} & State-\/transition matrix over the interval \\
+\hline
+{\em Qd} & Discrete-\/time noise covariance over the interval \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a038285deaa51724081651471a8de298f}\label{classov__msckf_1_1Propagator_a038285deaa51724081651471a8de298f}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!predict\+\_\+mean\+\_\+discrete@{predict\+\_\+mean\+\_\+discrete}}
+\index{predict\+\_\+mean\+\_\+discrete@{predict\+\_\+mean\+\_\+discrete}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{predict\+\_\+mean\+\_\+discrete()}{predict\_mean\_discrete()}}
+{\footnotesize\ttfamily void Propagator\+::predict\+\_\+mean\+\_\+discrete (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{double}]{dt,  }\item[{const Eigen\+::\+Vector3d \&}]{w\+\_\+hat1,  }\item[{const Eigen\+::\+Vector3d \&}]{a\+\_\+hat1,  }\item[{const Eigen\+::\+Vector3d \&}]{w\+\_\+hat2,  }\item[{const Eigen\+::\+Vector3d \&}]{a\+\_\+hat2,  }\item[{Eigen\+::\+Vector4d \&}]{new\+\_\+q,  }\item[{Eigen\+::\+Vector3d \&}]{new\+\_\+v,  }\item[{Eigen\+::\+Vector3d \&}]{new\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Discrete imu mean propagation. 
+
+See \hyperlink{propagation}{I\+MU Propagation Derivations} for details on these equations. \begin{align*} \text{}^{I_{k+1}}_{G}\hat{\bar{q}} &= \exp\bigg(\frac{1}{2}\boldsymbol{\Omega}\big({\boldsymbol{\omega}}_{m,k}-\hat{\mathbf{b}}_{g,k}\big)\Delta t\bigg) \text{}^{I_{k}}_{G}\hat{\bar{q}} \\ ^G\hat{\mathbf{v}}_{k+1} &= \text{}^G\hat{\mathbf{v}}_{I_k} - {}^G\mathbf{g}\Delta t +\text{}^{I_k}_G\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t\\ ^G\hat{\mathbf{p}}_{I_{k+1}} &= \text{}^G\hat{\mathbf{p}}_{I_k} + {}^G\hat{\mathbf{v}}_{I_k} \Delta t - \frac{1}{2}{}^G\mathbf{g}\Delta t^2 + \frac{1}{2} \text{}^{I_k}_{G}\hat{\mathbf{R}}^\top(\mathbf{a}_{m,k} - \hat{\mathbf{b}}_{\mathbf{a},k})\Delta t^2 \end{align*}
+
+
+\begin{DoxyParams}{参数}
+{\em state} & Pointer to state \\
+\hline
+{\em dt} & Time we should integrate over \\
+\hline
+{\em w\+\_\+hat1} & Angular velocity with bias removed \\
+\hline
+{\em a\+\_\+hat1} & Linear acceleration with bias removed \\
+\hline
+{\em w\+\_\+hat2} & Next angular velocity with bias removed \\
+\hline
+{\em a\+\_\+hat2} & Next linear acceleration with bias removed \\
+\hline
+{\em new\+\_\+q} & The resulting new orientation after integration \\
+\hline
+{\em new\+\_\+v} & The resulting new velocity after integration \\
+\hline
+{\em new\+\_\+p} & The resulting new position after integration \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_abfc8dcea867622ef57e740e5ab884538}\label{classov__msckf_1_1Propagator_abfc8dcea867622ef57e740e5ab884538}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!predict\+\_\+mean\+\_\+rk4@{predict\+\_\+mean\+\_\+rk4}}
+\index{predict\+\_\+mean\+\_\+rk4@{predict\+\_\+mean\+\_\+rk4}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{predict\+\_\+mean\+\_\+rk4()}{predict\_mean\_rk4()}}
+{\footnotesize\ttfamily void Propagator\+::predict\+\_\+mean\+\_\+rk4 (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{double}]{dt,  }\item[{const Eigen\+::\+Vector3d \&}]{w\+\_\+hat1,  }\item[{const Eigen\+::\+Vector3d \&}]{a\+\_\+hat1,  }\item[{const Eigen\+::\+Vector3d \&}]{w\+\_\+hat2,  }\item[{const Eigen\+::\+Vector3d \&}]{a\+\_\+hat2,  }\item[{Eigen\+::\+Vector4d \&}]{new\+\_\+q,  }\item[{Eigen\+::\+Vector3d \&}]{new\+\_\+v,  }\item[{Eigen\+::\+Vector3d \&}]{new\+\_\+p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+R\+K4 imu mean propagation. 
+
+See this wikipedia page on \href{https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods}{\tt Runge-\/\+Kutta Methods}. We are doing a R\+K4 method, \href{http://mathworld.wolfram.com/Runge-KuttaMethod.html}{\tt this wolframe page} has the forth order equation defined below. We define function $ f(t,y) $ where y is a function of time t, see \hyperlink{propagation_imu_kinematic}{I\+MU Kinematics} for the definition of the continous-\/time functions.
+
+\begin{align*} {k_1} &= f({t_0}, y_0) \Delta t \\ {k_2} &= f( {t_0}+{\Delta t \over 2}, y_0 + {1 \over 2}{k_1} ) \Delta t \\ {k_3} &= f( {t_0}+{\Delta t \over 2}, y_0 + {1 \over 2}{k_2} ) \Delta t \\ {k_4} &= f( {t_0} + {\Delta t}, y_0 + {k_3} ) \Delta t \\ y_{0+\Delta t} &= y_0 + \left( {{1 \over 6}{k_1} + {1 \over 3}{k_2} + {1 \over 3}{k_3} + {1 \over 6}{k_4}} \right) \end{align*}
+
+
+\begin{DoxyParams}{参数}
+{\em state} & Pointer to state \\
+\hline
+{\em dt} & Time we should integrate over \\
+\hline
+{\em w\+\_\+hat1} & Angular velocity with bias removed \\
+\hline
+{\em a\+\_\+hat1} & Linear acceleration with bias removed \\
+\hline
+{\em w\+\_\+hat2} & Next angular velocity with bias removed \\
+\hline
+{\em a\+\_\+hat2} & Next linear acceleration with bias removed \\
+\hline
+{\em new\+\_\+q} & The resulting new orientation after integration \\
+\hline
+{\em new\+\_\+v} & The resulting new velocity after integration \\
+\hline
+{\em new\+\_\+p} & The resulting new position after integration \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_ac96e7c40b696501a1f68097e10dde319}\label{classov__msckf_1_1Propagator_ac96e7c40b696501a1f68097e10dde319}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!propagate\+\_\+and\+\_\+clone@{propagate\+\_\+and\+\_\+clone}}
+\index{propagate\+\_\+and\+\_\+clone@{propagate\+\_\+and\+\_\+clone}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{propagate\+\_\+and\+\_\+clone()}{propagate\_and\_clone()}}
+{\footnotesize\ttfamily void Propagator\+::propagate\+\_\+and\+\_\+clone (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \hyperlink{classov__msckf_1_1State}{State} $>$}]{state,  }\item[{double}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Propagate state up to given timestamp and then clone 
+
+This will first collect all imu readings that occured between the {\itshape current} state time and the new time we want the state to be at. If we don\textquotesingle{}t have any imu readings we will try to extrapolate into the future. After propagating the mean and covariance using our dynamics, We clone the current imu pose as a new clone in our state.
+
+
+\begin{DoxyParams}{参数}
+{\em state} & Pointer to state \\
+\hline
+{\em timestamp} & Time to propagate to and clone at (C\+AM clock frame) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__msckf_1_1Propagator_a2f2d18be72bfc40bab5ae5eab2bae10e}\label{classov__msckf_1_1Propagator_a2f2d18be72bfc40bab5ae5eab2bae10e}} 
+\index{ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}!select\+\_\+imu\+\_\+readings@{select\+\_\+imu\+\_\+readings}}
+\index{select\+\_\+imu\+\_\+readings@{select\+\_\+imu\+\_\+readings}!ov\+\_\+msckf\+::\+Propagator@{ov\+\_\+msckf\+::\+Propagator}}
+\subsubsection{\texorpdfstring{select\+\_\+imu\+\_\+readings()}{select\_imu\_readings()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ Propagator\+::select\+\_\+imu\+\_\+readings (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \&}]{imu\+\_\+data,  }\item[{double}]{time0,  }\item[{double}]{time1,  }\item[{bool}]{warn = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Helper function that given current imu data, will select imu readings between the two times. 
+
+This will create measurements that we will integrate with, and an extra measurement at the end. We use the \hyperlink{classov__msckf_1_1Propagator_a3dde6d888eec85594aa6a864d141d5dc}{interpolate\+\_\+data()} function to \char`\"{}cut\char`\"{} the imu readings at the begining and end of the integration. The timestamps passed should already take into account the time offset values.
+
+
+\begin{DoxyParams}{参数}
+{\em imu\+\_\+data} & I\+MU data we will select measurements from \\
+\hline
+{\em time0} & Start timestamp \\
+\hline
+{\em time1} & End timestamp \\
+\hline
+{\em warn} & If we should warn if we don\textquotesingle{}t have enough I\+MU to propagate with (e.\+g. fast prop will get warnings otherwise) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Vector of measurements (if we could compute them) 
+\end{DoxyReturn}

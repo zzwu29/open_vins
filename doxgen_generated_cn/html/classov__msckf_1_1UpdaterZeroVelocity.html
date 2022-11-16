@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_msckf::UpdaterZeroVelocity类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__msckf.html">ov_msckf</a></li><li class="navelem"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html">UpdaterZeroVelocity</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classov__msckf_1_1UpdaterZeroVelocity-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_msckf::UpdaterZeroVelocity类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Will try to <em>detect</em> and then update using zero velocity assumption.  
+ <a href="classov__msckf_1_1UpdaterZeroVelocity.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UpdaterZeroVelocity_8h_source.html">UpdaterZeroVelocity.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1077d2767c078874ed48132ebaa9b975"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a1077d2767c078874ed48132ebaa9b975">UpdaterZeroVelocity</a> (<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a> &amp;options, <a class="el" href="structov__msckf_1_1NoiseManager.html">NoiseManager</a> &amp;noises, std::shared_ptr&lt; <a class="el" href="classov__core_1_1FeatureDatabase.html">ov_core::FeatureDatabase</a> &gt; db, std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1Propagator.html">Propagator</a> &gt; prop, double gravity_mag, double zupt_max_velocity, double zupt_noise_multiplier, double zupt_max_disparity)</td></tr>
+<tr class="memdesc:a1077d2767c078874ed48132ebaa9b975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor for our zero velocity detector and updater.  <a href="#a1077d2767c078874ed48132ebaa9b975">更多...</a><br /></td></tr>
+<tr class="separator:a1077d2767c078874ed48132ebaa9b975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85e0ca4c3728853d6e12ae4ec9bf691d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a85e0ca4c3728853d6e12ae4ec9bf691d">feed_imu</a> (const <a class="el" href="structov__core_1_1ImuData.html">ov_core::ImuData</a> &amp;message, double oldest_time=-1)</td></tr>
+<tr class="memdesc:a85e0ca4c3728853d6e12ae4ec9bf691d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed function for inertial data  <a href="#a85e0ca4c3728853d6e12ae4ec9bf691d">更多...</a><br /></td></tr>
+<tr class="separator:a85e0ca4c3728853d6e12ae4ec9bf691d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a703a198829da68f905280ce8af8aa9e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a703a198829da68f905280ce8af8aa9e6">try_update</a> (std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt; state, double timestamp)</td></tr>
+<tr class="memdesc:a703a198829da68f905280ce8af8aa9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Will first detect if the system is zero velocity, then will update.  <a href="#a703a198829da68f905280ce8af8aa9e6">更多...</a><br /></td></tr>
+<tr class="separator:a703a198829da68f905280ce8af8aa9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a749638ff6ee8f1b0ba8eee2bef7e93e8"><td class="memItemLeft" align="right" valign="top"><a id="a749638ff6ee8f1b0ba8eee2bef7e93e8"></a>
+<a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a749638ff6ee8f1b0ba8eee2bef7e93e8">_options</a></td></tr>
+<tr class="memdesc:a749638ff6ee8f1b0ba8eee2bef7e93e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options used during update (chi2 multiplier) <br /></td></tr>
+<tr class="separator:a749638ff6ee8f1b0ba8eee2bef7e93e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b315489e839b9f47168b13ff3ea625"><td class="memItemLeft" align="right" valign="top"><a id="a40b315489e839b9f47168b13ff3ea625"></a>
+<a class="el" href="structov__msckf_1_1NoiseManager.html">NoiseManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a40b315489e839b9f47168b13ff3ea625">_noises</a></td></tr>
+<tr class="memdesc:a40b315489e839b9f47168b13ff3ea625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for the imu noise values <br /></td></tr>
+<tr class="separator:a40b315489e839b9f47168b13ff3ea625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8faef43ba67821767973ee9a78c173cc"><td class="memItemLeft" align="right" valign="top"><a id="a8faef43ba67821767973ee9a78c173cc"></a>
+std::shared_ptr&lt; <a class="el" href="classov__core_1_1FeatureDatabase.html">ov_core::FeatureDatabase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a8faef43ba67821767973ee9a78c173cc">_db</a></td></tr>
+<tr class="memdesc:a8faef43ba67821767973ee9a78c173cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature tracker database with all features in it <br /></td></tr>
+<tr class="separator:a8faef43ba67821767973ee9a78c173cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9a0009bd455014af4dea494fcb2b33"><td class="memItemLeft" align="right" valign="top"><a id="aff9a0009bd455014af4dea494fcb2b33"></a>
+std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1Propagator.html">Propagator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#aff9a0009bd455014af4dea494fcb2b33">_prop</a></td></tr>
+<tr class="memdesc:aff9a0009bd455014af4dea494fcb2b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our propagator! <br /></td></tr>
+<tr class="separator:aff9a0009bd455014af4dea494fcb2b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0bd3b68624d85a6e9db27a1d1631486"><td class="memItemLeft" align="right" valign="top"><a id="aa0bd3b68624d85a6e9db27a1d1631486"></a>
+Eigen::Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#aa0bd3b68624d85a6e9db27a1d1631486">_gravity</a></td></tr>
+<tr class="memdesc:aa0bd3b68624d85a6e9db27a1d1631486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gravity vector <br /></td></tr>
+<tr class="separator:aa0bd3b68624d85a6e9db27a1d1631486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27800e861318dfd8938005dc8b7507cf"><td class="memItemLeft" align="right" valign="top"><a id="a27800e861318dfd8938005dc8b7507cf"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a27800e861318dfd8938005dc8b7507cf">_zupt_max_velocity</a> = 1.0</td></tr>
+<tr class="memdesc:a27800e861318dfd8938005dc8b7507cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max velocity (m/s) that we should consider a zupt with <br /></td></tr>
+<tr class="separator:a27800e861318dfd8938005dc8b7507cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cb7aba647c32c927075fbffd7573b5e"><td class="memItemLeft" align="right" valign="top"><a id="a4cb7aba647c32c927075fbffd7573b5e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a4cb7aba647c32c927075fbffd7573b5e">_zupt_noise_multiplier</a> = 1.0</td></tr>
+<tr class="memdesc:a4cb7aba647c32c927075fbffd7573b5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplier of our IMU noise matrix (default should be 1.0) <br /></td></tr>
+<tr class="separator:a4cb7aba647c32c927075fbffd7573b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ef8c37273e0159bd83cc34cccce1099"><td class="memItemLeft" align="right" valign="top"><a id="a2ef8c37273e0159bd83cc34cccce1099"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a2ef8c37273e0159bd83cc34cccce1099">_zupt_max_disparity</a> = 1.0</td></tr>
+<tr class="memdesc:a2ef8c37273e0159bd83cc34cccce1099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max disparity (pixels) that we should consider a zupt with <br /></td></tr>
+<tr class="separator:a2ef8c37273e0159bd83cc34cccce1099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b6c97d5985ae971821aaeaed715e717"><td class="memItemLeft" align="right" valign="top"><a id="a5b6c97d5985ae971821aaeaed715e717"></a>
+std::map&lt; int, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a5b6c97d5985ae971821aaeaed715e717">chi_squared_table</a></td></tr>
+<tr class="memdesc:a5b6c97d5985ae971821aaeaed715e717"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chi squared 95th percentile table (lookup would be size of residual) <br /></td></tr>
+<tr class="separator:a5b6c97d5985ae971821aaeaed715e717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38119874bfd080afe2f21444e7f26692"><td class="memItemLeft" align="right" valign="top"><a id="a38119874bfd080afe2f21444e7f26692"></a>
+std::vector&lt; <a class="el" href="structov__core_1_1ImuData.html">ov_core::ImuData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a38119874bfd080afe2f21444e7f26692">imu_data</a></td></tr>
+<tr class="memdesc:a38119874bfd080afe2f21444e7f26692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Our history of IMU messages (time, angular, linear) <br /></td></tr>
+<tr class="separator:a38119874bfd080afe2f21444e7f26692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d40558eff57d631724a15ab431f83a"><td class="memItemLeft" align="right" valign="top"><a id="ae3d40558eff57d631724a15ab431f83a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#ae3d40558eff57d631724a15ab431f83a">last_prop_time_offset</a> = 0.0</td></tr>
+<tr class="memdesc:ae3d40558eff57d631724a15ab431f83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Estimate for time offset at last propagation time <br /></td></tr>
+<tr class="separator:ae3d40558eff57d631724a15ab431f83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1718826a68f0bae6fe0bbd7d2654de"><td class="memItemLeft" align="right" valign="top"><a id="acf1718826a68f0bae6fe0bbd7d2654de"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>have_last_prop_time_offset</b> = false</td></tr>
+<tr class="separator:acf1718826a68f0bae6fe0bbd7d2654de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b782fc825eddcd71a7808288cbb9734"><td class="memItemLeft" align="right" valign="top"><a id="a6b782fc825eddcd71a7808288cbb9734"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__msckf_1_1UpdaterZeroVelocity.html#a6b782fc825eddcd71a7808288cbb9734">last_zupt_state_timestamp</a> = 0.0</td></tr>
+<tr class="memdesc:a6b782fc825eddcd71a7808288cbb9734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last timestamp we did zero velocity update with <br /></td></tr>
+<tr class="separator:a6b782fc825eddcd71a7808288cbb9734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Will try to <em>detect</em> and then update using zero velocity assumption. </p>
+<p>Consider the case that a VIO unit remains stationary for a period time. Typically this can cause issues in a monocular system without SLAM features since no features can be triangulated. Additional, if features could be triangulated (e.g. stereo) the quality can be poor and hurt performance. If we can detect the cases where we are stationary then we can leverage this to prevent the need to do feature update during this period. The main application would be using this on a <b>wheeled vehicle</b> which needs to stop (e.g. stop lights or parking). </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a1077d2767c078874ed48132ebaa9b975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1077d2767c078874ed48132ebaa9b975">&#9670;&nbsp;</a></span>UpdaterZeroVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UpdaterZeroVelocity::UpdaterZeroVelocity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structov__msckf_1_1UpdaterOptions.html">UpdaterOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structov__msckf_1_1NoiseManager.html">NoiseManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>noises</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__core_1_1FeatureDatabase.html">ov_core::FeatureDatabase</a> &gt;&#160;</td>
+          <td class="paramname"><em>db</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1Propagator.html">Propagator</a> &gt;&#160;</td>
+          <td class="paramname"><em>prop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>gravity_mag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zupt_max_velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zupt_noise_multiplier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zupt_max_disparity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default constructor for our zero velocity detector and updater. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>Updater options (chi2 multiplier) </td></tr>
+    <tr><td class="paramname">noises</td><td>imu noise characteristics (continuous time) </td></tr>
+    <tr><td class="paramname">db</td><td>Feature tracker database with all features in it </td></tr>
+    <tr><td class="paramname">prop</td><td><a class="el" href="classov__msckf_1_1Propagator.html" title="Performs the state covariance and mean propagation using imu measurements ">Propagator</a> class object which can predict the state forward in time </td></tr>
+    <tr><td class="paramname">gravity_mag</td><td>Global gravity magnitude of the system (normally 9.81) </td></tr>
+    <tr><td class="paramname">zupt_max_velocity</td><td>Max velocity we should consider to do a update with </td></tr>
+    <tr><td class="paramname">zupt_noise_multiplier</td><td>Multiplier of our IMU noise matrix (default should be 1.0) </td></tr>
+    <tr><td class="paramname">zupt_max_disparity</td><td>Max disparity we should consider to do a update with </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a85e0ca4c3728853d6e12ae4ec9bf691d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e0ca4c3728853d6e12ae4ec9bf691d">&#9670;&nbsp;</a></span>feed_imu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ov_msckf::UpdaterZeroVelocity::feed_imu </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structov__core_1_1ImuData.html">ov_core::ImuData</a> &amp;&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>oldest_time</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Feed function for inertial data </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Contains our timestamp and inertial information </td></tr>
+    <tr><td class="paramname">oldest_time</td><td>Time that we can discard measurements before </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a703a198829da68f905280ce8af8aa9e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a703a198829da68f905280ce8af8aa9e6">&#9670;&nbsp;</a></span>try_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UpdaterZeroVelocity::try_update </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classov__msckf_1_1State.html">State</a> &gt;&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>timestamp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Will first detect if the system is zero velocity, then will update. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td><a class="el" href="classov__msckf_1_1State.html" title="State of our filter ">State</a> of the filter </td></tr>
+    <tr><td class="paramname">timestamp</td><td>Next camera timestamp we want to see if we should propagate to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>True if the system is currently at zero velocity </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

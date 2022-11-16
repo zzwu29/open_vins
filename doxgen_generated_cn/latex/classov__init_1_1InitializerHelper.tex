@@ -1,0 +1,116 @@
+\hypertarget{classov__init_1_1InitializerHelper}{}\section{ov\+\_\+init\+:\+:Initializer\+Helper类 参考}
+\label{classov__init_1_1InitializerHelper}\index{ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}}
+
+
+Has a bunch of helper functions for dynamic initialization (should all be static)  
+
+
+
+
+{\ttfamily \#include $<$helper.\+h$>$}
+
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \hyperlink{classov__init_1_1InitializerHelper_aa5c39a05a5c4328b02907012922fe4cf}{interpolate\+\_\+data} (const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&imu\+\_\+1, const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&imu\+\_\+2, double timestamp)
+\begin{DoxyCompactList}\small\item\em Nice helper function that will linearly interpolate between two imu messages. \end{DoxyCompactList}\item 
+static std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \hyperlink{classov__init_1_1InitializerHelper_ad295c3818e37e9bf44c17515fca18003}{select\+\_\+imu\+\_\+readings} (const std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \&imu\+\_\+data\+\_\+tmp, double time0, double time1)
+\begin{DoxyCompactList}\small\item\em Helper function that given current imu data, will select imu readings between the two times. \end{DoxyCompactList}\item 
+static void \hyperlink{classov__init_1_1InitializerHelper_a667b07d7092365ad12df893ae3904f6c}{gram\+\_\+schmidt} (const Eigen\+::\+Vector3d \&gravity\+\_\+inI, Eigen\+::\+Matrix3d \&R\+\_\+\+GtoI)
+\begin{DoxyCompactList}\small\item\em Given a gravity vector, compute the rotation from the inertial reference frame to this vector. \end{DoxyCompactList}\item 
+static Eigen\+::\+Matrix$<$ double, 7, 1 $>$ \hyperlink{classov__init_1_1InitializerHelper_acf91adc24386b43a62ff8d354bde0924}{compute\+\_\+dongsi\+\_\+coeff} (Eigen\+::\+Matrix\+Xd \&D, const Eigen\+::\+Matrix\+Xd \&d, double gravity\+\_\+mag)
+\begin{DoxyCompactList}\small\item\em Compute coefficients for the constrained optimization quadratic problem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Has a bunch of helper functions for dynamic initialization (should all be static) 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__init_1_1InitializerHelper_acf91adc24386b43a62ff8d354bde0924}\label{classov__init_1_1InitializerHelper_acf91adc24386b43a62ff8d354bde0924}} 
+\index{ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}!compute\+\_\+dongsi\+\_\+coeff@{compute\+\_\+dongsi\+\_\+coeff}}
+\index{compute\+\_\+dongsi\+\_\+coeff@{compute\+\_\+dongsi\+\_\+coeff}!ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}}
+\subsubsection{\texorpdfstring{compute\+\_\+dongsi\+\_\+coeff()}{compute\_dongsi\_coeff()}}
+{\footnotesize\ttfamily static Eigen\+::\+Matrix$<$double, 7, 1$>$ ov\+\_\+init\+::\+Initializer\+Helper\+::compute\+\_\+dongsi\+\_\+coeff (\begin{DoxyParamCaption}\item[{Eigen\+::\+Matrix\+Xd \&}]{D,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{d,  }\item[{double}]{gravity\+\_\+mag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Compute coefficients for the constrained optimization quadratic problem. 
+
+\href{https://gist.github.com/goldbattle/3791cbb11bbf4f5feb3f049dad72bfdd}{\tt https\+://gist.\+github.\+com/goldbattle/3791cbb11bbf4f5feb3f049dad72bfdd}
+
+
+\begin{DoxyParams}{参数}
+{\em D} & Gravity in our sensor frame \\
+\hline
+{\em d} & Rotation from the arbitrary inertial reference frame to this gravity vector \\
+\hline
+{\em gravity\+\_\+mag} & Scalar size of gravity (normally is 9.\+81) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Coefficents from highest to the constant 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classov__init_1_1InitializerHelper_a667b07d7092365ad12df893ae3904f6c}\label{classov__init_1_1InitializerHelper_a667b07d7092365ad12df893ae3904f6c}} 
+\index{ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}!gram\+\_\+schmidt@{gram\+\_\+schmidt}}
+\index{gram\+\_\+schmidt@{gram\+\_\+schmidt}!ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}}
+\subsubsection{\texorpdfstring{gram\+\_\+schmidt()}{gram\_schmidt()}}
+{\footnotesize\ttfamily static void ov\+\_\+init\+::\+Initializer\+Helper\+::gram\+\_\+schmidt (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector3d \&}]{gravity\+\_\+inI,  }\item[{Eigen\+::\+Matrix3d \&}]{R\+\_\+\+GtoI }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Given a gravity vector, compute the rotation from the inertial reference frame to this vector. 
+
+The key assumption here is that our gravity is along the vertical direction in the inertial frame. We can take this vector (z\+\_\+in\+\_\+G=0,0,1) and find two arbitrary tangent directions to it. \href{https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process}{\tt https\+://en.\+wikipedia.\+org/wiki/\+Gram\%\+E2\%80\%93\+Schmidt\+\_\+process}
+
+
+\begin{DoxyParams}{参数}
+{\em gravity\+\_\+inI} & Gravity in our sensor frame \\
+\hline
+{\em R\+\_\+\+GtoI} & Rotation from the arbitrary inertial reference frame to this gravity vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__init_1_1InitializerHelper_aa5c39a05a5c4328b02907012922fe4cf}\label{classov__init_1_1InitializerHelper_aa5c39a05a5c4328b02907012922fe4cf}} 
+\index{ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}!interpolate\+\_\+data@{interpolate\+\_\+data}}
+\index{interpolate\+\_\+data@{interpolate\+\_\+data}!ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}}
+\subsubsection{\texorpdfstring{interpolate\+\_\+data()}{interpolate\_data()}}
+{\footnotesize\ttfamily static \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} ov\+\_\+init\+::\+Initializer\+Helper\+::interpolate\+\_\+data (\begin{DoxyParamCaption}\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{imu\+\_\+1,  }\item[{const \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} \&}]{imu\+\_\+2,  }\item[{double}]{timestamp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Nice helper function that will linearly interpolate between two imu messages. 
+
+This should be used instead of just \char`\"{}cutting\char`\"{} imu messages that bound the camera times Give better time offset if we use this function, could try other orders/splines if the imu is slow.
+
+
+\begin{DoxyParams}{参数}
+{\em imu\+\_\+1} & imu at begining of interpolation interval \\
+\hline
+{\em imu\+\_\+2} & imu at end of interpolation interval \\
+\hline
+{\em timestamp} & Timestamp being interpolated to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__init_1_1InitializerHelper_ad295c3818e37e9bf44c17515fca18003}\label{classov__init_1_1InitializerHelper_ad295c3818e37e9bf44c17515fca18003}} 
+\index{ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}!select\+\_\+imu\+\_\+readings@{select\+\_\+imu\+\_\+readings}}
+\index{select\+\_\+imu\+\_\+readings@{select\+\_\+imu\+\_\+readings}!ov\+\_\+init\+::\+Initializer\+Helper@{ov\+\_\+init\+::\+Initializer\+Helper}}
+\subsubsection{\texorpdfstring{select\+\_\+imu\+\_\+readings()}{select\_imu\_readings()}}
+{\footnotesize\ttfamily static std\+::vector$<$\hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data}$>$ ov\+\_\+init\+::\+Initializer\+Helper\+::select\+\_\+imu\+\_\+readings (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \hyperlink{structov__core_1_1ImuData}{ov\+\_\+core\+::\+Imu\+Data} $>$ \&}]{imu\+\_\+data\+\_\+tmp,  }\item[{double}]{time0,  }\item[{double}]{time1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Helper function that given current imu data, will select imu readings between the two times. 
+
+This will create measurements that we will integrate with, and an extra measurement at the end. We use the \hyperlink{classov__init_1_1InitializerHelper_aa5c39a05a5c4328b02907012922fe4cf}{interpolate\+\_\+data()} function to \char`\"{}cut\char`\"{} the imu readings at the beginning and end of the integration. The timestamps passed should already take into account the time offset values.
+
+
+\begin{DoxyParams}{参数}
+{\em imu\+\_\+data\+\_\+tmp} & I\+MU data we will select measurements from \\
+\hline
+{\em time0} & Start timestamp \\
+\hline
+{\em time1} & End timestamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+Vector of measurements (if we could compute them) 
+\end{DoxyReturn}

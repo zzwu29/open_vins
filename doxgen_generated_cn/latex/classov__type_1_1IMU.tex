@@ -1,0 +1,240 @@
+\hypertarget{classov__type_1_1IMU}{}\section{ov\+\_\+type\+:\+:I\+M\+U类 参考}
+\label{classov__type_1_1IMU}\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+
+
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements an \hyperlink{classov__type_1_1IMU}{I\+MU} state  
+
+
+
+
+{\ttfamily \#include $<$I\+M\+U.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__type_1_1IMU_a9d4e915d474e8e13591a11a54ac7c969}{set\+\_\+local\+\_\+id} (int new\+\_\+id) override
+\begin{DoxyCompactList}\small\item\em Sets id used to track location of variable in the filter covariance \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1IMU_ac40233687ffc481f5d4d1ebaaf882577}{update} (const Eigen\+::\+Vector\+Xd \&dx) override
+\begin{DoxyCompactList}\small\item\em Performs update operation using \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} update for orientation, then vector updates for position, velocity, gyro bias, and accel bias (in that order). \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1IMU_a53586b4f92ba0110c2b2241fa26862a1}{set\+\_\+value} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Sets the value of the estimate \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1IMU_aadf4a83a2371984898ca8c6a339617ce}{set\+\_\+fej} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Sets the value of the first estimate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ab4a7e5d0a12a0f20b2a3a27f61201581}\label{classov__type_1_1IMU_ab4a7e5d0a12a0f20b2a3a27f61201581}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ \hyperlink{classov__type_1_1IMU_ab4a7e5d0a12a0f20b2a3a27f61201581}{clone} () override
+\begin{DoxyCompactList}\small\item\em Create a clone of this variable \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ \hyperlink{classov__type_1_1IMU_a3fb9631390473158abcdf97c71ea6e16}{check\+\_\+if\+\_\+subvariable} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ check) override
+\begin{DoxyCompactList}\small\item\em Determine if pass variable is a sub-\/variable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a5bd26c35eb91ab19909579ad51d001a7}\label{classov__type_1_1IMU_a5bd26c35eb91ab19909579ad51d001a7}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__type_1_1IMU_a5bd26c35eb91ab19909579ad51d001a7}{Rot} () const
+\begin{DoxyCompactList}\small\item\em Rotation access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a08cc1e69a164929553d7f2f78304edd7}\label{classov__type_1_1IMU_a08cc1e69a164929553d7f2f78304edd7}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__type_1_1IMU_a08cc1e69a164929553d7f2f78304edd7}{Rot\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ Rotation access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a21a9611ca918665d55662e61a8b8464a}\label{classov__type_1_1IMU_a21a9611ca918665d55662e61a8b8464a}} 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{classov__type_1_1IMU_a21a9611ca918665d55662e61a8b8464a}{quat} () const
+\begin{DoxyCompactList}\small\item\em Rotation access quaternion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a4bcd57c1285852ba4ece139b12787251}\label{classov__type_1_1IMU_a4bcd57c1285852ba4ece139b12787251}} 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{classov__type_1_1IMU_a4bcd57c1285852ba4ece139b12787251}{quat\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ Rotation access quaternion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ada4cc66b7fb6a38944c61b08599cc55f}\label{classov__type_1_1IMU_ada4cc66b7fb6a38944c61b08599cc55f}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1IMU_ada4cc66b7fb6a38944c61b08599cc55f}{pos} () const
+\begin{DoxyCompactList}\small\item\em Position access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ab6f68955da2f060d286fbc7db99b96e7}\label{classov__type_1_1IMU_ab6f68955da2f060d286fbc7db99b96e7}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1IMU_ab6f68955da2f060d286fbc7db99b96e7}{pos\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ position access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ab9a75b1353679fd26e18df4b1a92b7fa}\label{classov__type_1_1IMU_ab9a75b1353679fd26e18df4b1a92b7fa}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1IMU_ab9a75b1353679fd26e18df4b1a92b7fa}{vel} () const
+\begin{DoxyCompactList}\small\item\em Velocity access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a7760d3c3298bf0e69256eb168d60592c}\label{classov__type_1_1IMU_a7760d3c3298bf0e69256eb168d60592c}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ {\bfseries vel\+\_\+fej} () const
+\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a934683d471f8f24bd526772d3146be0e}\label{classov__type_1_1IMU_a934683d471f8f24bd526772d3146be0e}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1IMU_a934683d471f8f24bd526772d3146be0e}{bias\+\_\+g} () const
+\begin{DoxyCompactList}\small\item\em Gyro bias access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a4d547e3f63e1bd054b486709d64b0ffd}\label{classov__type_1_1IMU_a4d547e3f63e1bd054b486709d64b0ffd}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1IMU_a4d547e3f63e1bd054b486709d64b0ffd}{bias\+\_\+g\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ gyro bias access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a672ba68b2506a3d225bb6da4e5b4d93f}\label{classov__type_1_1IMU_a672ba68b2506a3d225bb6da4e5b4d93f}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1IMU_a672ba68b2506a3d225bb6da4e5b4d93f}{bias\+\_\+a} () const
+\begin{DoxyCompactList}\small\item\em Accel bias access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_adda8baa965ceb0e6e4f0d7e47cf9875d}\label{classov__type_1_1IMU_adda8baa965ceb0e6e4f0d7e47cf9875d}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ {\bfseries bias\+\_\+a\+\_\+fej} () const
+\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_aa083ef7c5392ee0da48ba77c5093bee2}\label{classov__type_1_1IMU_aa083ef7c5392ee0da48ba77c5093bee2}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1PoseJPL}{Pose\+J\+PL} $>$ \hyperlink{classov__type_1_1IMU_aa083ef7c5392ee0da48ba77c5093bee2}{pose} ()
+\begin{DoxyCompactList}\small\item\em Pose type access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ac1f6387823cd403da8abbb84ce4368fb}\label{classov__type_1_1IMU_ac1f6387823cd403da8abbb84ce4368fb}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} $>$ \hyperlink{classov__type_1_1IMU_ac1f6387823cd403da8abbb84ce4368fb}{q} ()
+\begin{DoxyCompactList}\small\item\em Quaternion type access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a6f70d8ea8f21a8e47be71cd77443d153}\label{classov__type_1_1IMU_a6f70d8ea8f21a8e47be71cd77443d153}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_a6f70d8ea8f21a8e47be71cd77443d153}{p} ()
+\begin{DoxyCompactList}\small\item\em Position type access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_aacf93e0120b0b65e32d6163a7b0003ae}\label{classov__type_1_1IMU_aacf93e0120b0b65e32d6163a7b0003ae}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_aacf93e0120b0b65e32d6163a7b0003ae}{v} ()
+\begin{DoxyCompactList}\small\item\em Velocity type access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a197df0137b205d1de56e89633ffdb03e}\label{classov__type_1_1IMU_a197df0137b205d1de56e89633ffdb03e}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_a197df0137b205d1de56e89633ffdb03e}{bg} ()
+\begin{DoxyCompactList}\small\item\em Gyroscope bias access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_abed8b317325773478f1326ee82152eb9}\label{classov__type_1_1IMU_abed8b317325773478f1326ee82152eb9}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_abed8b317325773478f1326ee82152eb9}{ba} ()
+\begin{DoxyCompactList}\small\item\em Acceleration bias access \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__type_1_1IMU_a044e09e82a734c3e0fe5f54748c40db6}{set\+\_\+value\+\_\+internal} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the value of the estimate \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1IMU_a5227146c3f4edef484cb2c9beb349a3f}{set\+\_\+fej\+\_\+internal} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the value of the first estimate \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ad90f5e8c1905d099de0ab908a072b112}\label{classov__type_1_1IMU_ad90f5e8c1905d099de0ab908a072b112}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1PoseJPL}{Pose\+J\+PL} $>$ \hyperlink{classov__type_1_1IMU_ad90f5e8c1905d099de0ab908a072b112}{\+\_\+pose}
+\begin{DoxyCompactList}\small\item\em Pose subvariable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ac1149c2a1b5576e56700ed2f7da3e87d}\label{classov__type_1_1IMU_ac1149c2a1b5576e56700ed2f7da3e87d}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_ac1149c2a1b5576e56700ed2f7da3e87d}{\+\_\+v}
+\begin{DoxyCompactList}\small\item\em Velocity subvariable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_ac3dac355b5fbcc80bc59ea05808dc2f8}\label{classov__type_1_1IMU_ac3dac355b5fbcc80bc59ea05808dc2f8}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_ac3dac355b5fbcc80bc59ea05808dc2f8}{\+\_\+bg}
+\begin{DoxyCompactList}\small\item\em Gyroscope bias subvariable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1IMU_a5b2bc57054d02e37355f52799cc9df15}\label{classov__type_1_1IMU_a5b2bc57054d02e37355f52799cc9df15}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1IMU_a5b2bc57054d02e37355f52799cc9df15}{\+\_\+ba}
+\begin{DoxyCompactList}\small\item\em Acceleration bias subvariable \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements an \hyperlink{classov__type_1_1IMU}{I\+MU} state 
+
+Contains a \hyperlink{classov__type_1_1PoseJPL}{Pose\+J\+PL}, \hyperlink{classov__type_1_1Vec}{Vec} velocity, \hyperlink{classov__type_1_1Vec}{Vec} gyro bias, and \hyperlink{classov__type_1_1Vec}{Vec} accel bias. This should be similar to that of the standard M\+S\+C\+KF state besides the ordering. The pose is first, followed by velocity, etc. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__type_1_1IMU_a3fb9631390473158abcdf97c71ea6e16}\label{classov__type_1_1IMU_a3fb9631390473158abcdf97c71ea6e16}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!check\+\_\+if\+\_\+subvariable@{check\+\_\+if\+\_\+subvariable}}
+\index{check\+\_\+if\+\_\+subvariable@{check\+\_\+if\+\_\+subvariable}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{check\+\_\+if\+\_\+subvariable()}{check\_if\_subvariable()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{classov__type_1_1Type}{Type}$>$ ov\+\_\+type\+::\+I\+M\+U\+::check\+\_\+if\+\_\+subvariable (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$}]{check }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Determine if pass variable is a sub-\/variable 
+
+If the passed variable is a sub-\/variable or the current variable this will return it. Otherwise it will return a nullptr, meaning that it was unable to be found.
+
+
+\begin{DoxyParams}{参数}
+{\em check} & \hyperlink{classov__type_1_1Type}{Type} pointer to compare our subvariables to \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_a95fcdbc584256baffc78935de5ab5da3}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1IMU_aadf4a83a2371984898ca8c6a339617ce}\label{classov__type_1_1IMU_aadf4a83a2371984898ca8c6a339617ce}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!set\+\_\+fej@{set\+\_\+fej}}
+\index{set\+\_\+fej@{set\+\_\+fej}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{set\+\_\+fej()}{set\_fej()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+I\+M\+U\+::set\+\_\+fej (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the value of the first estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_ab8345946b27cb43e0cfc36454a06686d}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1IMU_a5227146c3f4edef484cb2c9beb349a3f}\label{classov__type_1_1IMU_a5227146c3f4edef484cb2c9beb349a3f}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!set\+\_\+fej\+\_\+internal@{set\+\_\+fej\+\_\+internal}}
+\index{set\+\_\+fej\+\_\+internal@{set\+\_\+fej\+\_\+internal}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{set\+\_\+fej\+\_\+internal()}{set\_fej\_internal()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+I\+M\+U\+::set\+\_\+fej\+\_\+internal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Sets the value of the first estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1IMU_a9d4e915d474e8e13591a11a54ac7c969}\label{classov__type_1_1IMU_a9d4e915d474e8e13591a11a54ac7c969}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!set\+\_\+local\+\_\+id@{set\+\_\+local\+\_\+id}}
+\index{set\+\_\+local\+\_\+id@{set\+\_\+local\+\_\+id}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{set\+\_\+local\+\_\+id()}{set\_local\_id()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+I\+M\+U\+::set\+\_\+local\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{new\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets id used to track location of variable in the filter covariance 
+
+Note that we update the sub-\/variables also.
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+id} & entry in filter covariance corresponding to this variable \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_a52cb2fe6e25dbe8875da3fd618cf0b61}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1IMU_a53586b4f92ba0110c2b2241fa26862a1}\label{classov__type_1_1IMU_a53586b4f92ba0110c2b2241fa26862a1}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+I\+M\+U\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the value of the estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_a81c73f0b6c10f2550a487019a59796a9}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1IMU_a044e09e82a734c3e0fe5f54748c40db6}\label{classov__type_1_1IMU_a044e09e82a734c3e0fe5f54748c40db6}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!set\+\_\+value\+\_\+internal@{set\+\_\+value\+\_\+internal}}
+\index{set\+\_\+value\+\_\+internal@{set\+\_\+value\+\_\+internal}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{set\+\_\+value\+\_\+internal()}{set\_value\_internal()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+I\+M\+U\+::set\+\_\+value\+\_\+internal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Sets the value of the estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1IMU_ac40233687ffc481f5d4d1ebaaf882577}\label{classov__type_1_1IMU_ac40233687ffc481f5d4d1ebaaf882577}} 
+\index{ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}!update@{update}}
+\index{update@{update}!ov\+\_\+type\+::\+I\+MU@{ov\+\_\+type\+::\+I\+MU}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+I\+M\+U\+::update (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{dx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Performs update operation using \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} update for orientation, then vector updates for position, velocity, gyro bias, and accel bias (in that order). 
+
+
+\begin{DoxyParams}{参数}
+{\em dx} & 15 D\+OF vector encoding update using the following order (q, p, v, bg, ba) \\
+\hline
+\end{DoxyParams}
+
+
+实现了 \hyperlink{classov__type_1_1Type_a4e133d50af35f07bd97f73590fe31000}{ov\+\_\+type\+::\+Type}.
+

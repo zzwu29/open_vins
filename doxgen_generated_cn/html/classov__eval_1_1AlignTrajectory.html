@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenVINS: ov_eval::AlignTrajectory类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenVINS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceov__eval.html">ov_eval</a></li><li class="navelem"><a class="el" href="classov__eval_1_1AlignTrajectory.html">AlignTrajectory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="classov__eval_1_1AlignTrajectory-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ov_eval::AlignTrajectory类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Class that given two trajectories, will align the two.  
+ <a href="classov__eval_1_1AlignTrajectory.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="AlignTrajectory_8h_source.html">AlignTrajectory.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:ac4ea2100e9e28dc54299569b97b698a3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1AlignTrajectory.html#ac4ea2100e9e28dc54299569b97b698a3">align_trajectory</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_es, const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_gt, Eigen::Matrix3d &amp;R, Eigen::Vector3d &amp;t, double &amp;s, std::string method, int n_aligned=-1)</td></tr>
+<tr class="memdesc:ac4ea2100e9e28dc54299569b97b698a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align estimate to GT using a desired method using a set of initial poses  <a href="#ac4ea2100e9e28dc54299569b97b698a3">更多...</a><br /></td></tr>
+<tr class="separator:ac4ea2100e9e28dc54299569b97b698a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:ab281d908409f24b08c3ac910b4d942f0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1AlignTrajectory.html#ab281d908409f24b08c3ac910b4d942f0">align_posyaw_single</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_es, const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_gt, Eigen::Matrix3d &amp;R, Eigen::Vector3d &amp;t)</td></tr>
+<tr class="memdesc:ab281d908409f24b08c3ac910b4d942f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align estimate to GT using only position and yaw (for gravity aligned trajectories) using only the first poses  <a href="#ab281d908409f24b08c3ac910b4d942f0">更多...</a><br /></td></tr>
+<tr class="separator:ab281d908409f24b08c3ac910b4d942f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea1c35dee4b15301c7248c1698ee4ffa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1AlignTrajectory.html#aea1c35dee4b15301c7248c1698ee4ffa">align_posyaw</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_es, const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_gt, Eigen::Matrix3d &amp;R, Eigen::Vector3d &amp;t, int n_aligned=-1)</td></tr>
+<tr class="memdesc:aea1c35dee4b15301c7248c1698ee4ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align estimate to GT using only position and yaw (for gravity aligned trajectories) using a set of initial poses  <a href="#aea1c35dee4b15301c7248c1698ee4ffa">更多...</a><br /></td></tr>
+<tr class="separator:aea1c35dee4b15301c7248c1698ee4ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c39c91e3ba64678efe9734086babec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1AlignTrajectory.html#a23c39c91e3ba64678efe9734086babec">align_se3_single</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_es, const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_gt, Eigen::Matrix3d &amp;R, Eigen::Vector3d &amp;t)</td></tr>
+<tr class="memdesc:a23c39c91e3ba64678efe9734086babec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align estimate to GT using a full SE(3) transform using only the first poses  <a href="#a23c39c91e3ba64678efe9734086babec">更多...</a><br /></td></tr>
+<tr class="separator:a23c39c91e3ba64678efe9734086babec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48d64a8e529e8ec2471ff42b439e54a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1AlignTrajectory.html#af48d64a8e529e8ec2471ff42b439e54a">align_se3</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_es, const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_gt, Eigen::Matrix3d &amp;R, Eigen::Vector3d &amp;t, int n_aligned=-1)</td></tr>
+<tr class="memdesc:af48d64a8e529e8ec2471ff42b439e54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align estimate to GT using a full SE(3) transform using a set of initial poses  <a href="#af48d64a8e529e8ec2471ff42b439e54a">更多...</a><br /></td></tr>
+<tr class="separator:af48d64a8e529e8ec2471ff42b439e54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0413904b252f558fe47886cbbf772e63"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classov__eval_1_1AlignTrajectory.html#a0413904b252f558fe47886cbbf772e63">align_sim3</a> (const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_es, const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;traj_gt, Eigen::Matrix3d &amp;R, Eigen::Vector3d &amp;t, double &amp;s, int n_aligned=-1)</td></tr>
+<tr class="memdesc:a0413904b252f558fe47886cbbf772e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Align estimate to GT using a full SIM(3) transform using a set of initial poses  <a href="#a0413904b252f558fe47886cbbf772e63">更多...</a><br /></td></tr>
+<tr class="separator:a0413904b252f558fe47886cbbf772e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Class that given two trajectories, will align the two. </p>
+<p>Given two trajectories that have already been time synchronized we will compute the alignment transform between the two. We can do this using different alignment methods such as full SE(3) transform, just postiion and yaw, or SIM(3). These scripts are based on the <a href="https://github.com/uzh-rpg/rpg_trajectory_evaluation">rpg_trajectory_evaluation</a> toolkit by Zhang and Scaramuzza. Please take a look at their <a href="http://rpg.ifi.uzh.ch/docs/IROS18_Zhang.pdf">2018 IROS</a> paper on these methods. </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="aea1c35dee4b15301c7248c1698ee4ffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea1c35dee4b15301c7248c1698ee4ffa">&#9670;&nbsp;</a></span>align_posyaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlignTrajectory::align_posyaw </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_es</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_gt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_aligned</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Align estimate to GT using only position and yaw (for gravity aligned trajectories) using a set of initial poses </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traj_es</td><td>Estimated trajectory values in estimate frame [pos,quat] </td></tr>
+    <tr><td class="paramname">traj_gt</td><td>Groundtruth trjaectory in groundtruth frame [pos,quat] </td></tr>
+    <tr><td class="paramname">R</td><td>Rotation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">t</td><td>translation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">n_aligned</td><td>Number of poses to use for alignment (-1 will use all) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab281d908409f24b08c3ac910b4d942f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab281d908409f24b08c3ac910b4d942f0">&#9670;&nbsp;</a></span>align_posyaw_single()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlignTrajectory::align_posyaw_single </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_es</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_gt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Align estimate to GT using only position and yaw (for gravity aligned trajectories) using only the first poses </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traj_es</td><td>Estimated trajectory values in estimate frame [pos,quat] </td></tr>
+    <tr><td class="paramname">traj_gt</td><td>Groundtruth trjaectory in groundtruth frame [pos,quat] </td></tr>
+    <tr><td class="paramname">R</td><td>Rotation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">t</td><td>translation from estimate to GT frame that will be computed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af48d64a8e529e8ec2471ff42b439e54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48d64a8e529e8ec2471ff42b439e54a">&#9670;&nbsp;</a></span>align_se3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlignTrajectory::align_se3 </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_es</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_gt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_aligned</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Align estimate to GT using a full SE(3) transform using a set of initial poses </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traj_es</td><td>Estimated trajectory values in estimate frame [pos,quat] </td></tr>
+    <tr><td class="paramname">traj_gt</td><td>Groundtruth trjaectory in groundtruth frame [pos,quat] </td></tr>
+    <tr><td class="paramname">R</td><td>Rotation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">t</td><td>translation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">n_aligned</td><td>Number of poses to use for alignment (-1 will use all) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23c39c91e3ba64678efe9734086babec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c39c91e3ba64678efe9734086babec">&#9670;&nbsp;</a></span>align_se3_single()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlignTrajectory::align_se3_single </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_es</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_gt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Align estimate to GT using a full SE(3) transform using only the first poses </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traj_es</td><td>Estimated trajectory values in estimate frame [pos,quat] </td></tr>
+    <tr><td class="paramname">traj_gt</td><td>Groundtruth trjaectory in groundtruth frame [pos,quat] </td></tr>
+    <tr><td class="paramname">R</td><td>Rotation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">t</td><td>translation from estimate to GT frame that will be computed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0413904b252f558fe47886cbbf772e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0413904b252f558fe47886cbbf772e63">&#9670;&nbsp;</a></span>align_sim3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlignTrajectory::align_sim3 </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_es</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_gt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_aligned</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Align estimate to GT using a full SIM(3) transform using a set of initial poses </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traj_es</td><td>Estimated trajectory values in estimate frame [pos,quat] </td></tr>
+    <tr><td class="paramname">traj_gt</td><td>Groundtruth trjaectory in groundtruth frame [pos,quat] </td></tr>
+    <tr><td class="paramname">R</td><td>Rotation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">t</td><td>translation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">s</td><td>scale from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">n_aligned</td><td>Number of poses to use for alignment (-1 will use all) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac4ea2100e9e28dc54299569b97b698a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4ea2100e9e28dc54299569b97b698a3">&#9670;&nbsp;</a></span>align_trajectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlignTrajectory::align_trajectory </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_es</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Eigen::Matrix&lt; double, 7, 1 &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>traj_gt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n_aligned</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Align estimate to GT using a desired method using a set of initial poses </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">traj_es</td><td>Estimated trajectory values in estimate frame [pos,quat] </td></tr>
+    <tr><td class="paramname">traj_gt</td><td>Groundtruth trjaectory in groundtruth frame [pos,quat] </td></tr>
+    <tr><td class="paramname">R</td><td>Rotation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">t</td><td>translation from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">s</td><td>scale from estimate to GT frame that will be computed </td></tr>
+    <tr><td class="paramname">method</td><td>Method used for alignment </td></tr>
+    <tr><td class="paramname">n_aligned</td><td>Number of poses to use for alignment (-1 will use all) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

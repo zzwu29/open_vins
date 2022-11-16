@@ -1,0 +1,45 @@
+\hypertarget{namespaceov__init}{}\section{ov\+\_\+init Namespace Reference}
+\label{namespaceov__init}\index{ov\+\_\+init@{ov\+\_\+init}}
+
+
+State initialization code.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classov__init_1_1DynamicInitializer}{Dynamic\+Initializer}
+\begin{DoxyCompactList}\small\item\em Initializer for a dynamic visual-\/inertial system. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1Factor__GenericPrior}{Factor\+\_\+\+Generic\+Prior}
+\begin{DoxyCompactList}\small\item\em Factor for generic state priors for specific types. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1Factor__ImageReprojCalib}{Factor\+\_\+\+Image\+Reproj\+Calib}
+\begin{DoxyCompactList}\small\item\em Factor of feature bearing observation (raw) with calibration. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1Factor__ImuCPIv1}{Factor\+\_\+\+Imu\+C\+P\+Iv1}
+\begin{DoxyCompactList}\small\item\em Factor for I\+MU continuous preintegration version 1. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1InertialInitializer}{Inertial\+Initializer}
+\begin{DoxyCompactList}\small\item\em Initializer for visual-\/inertial system. \end{DoxyCompactList}\item 
+struct \hyperlink{structov__init_1_1InertialInitializerOptions}{Inertial\+Initializer\+Options}
+\begin{DoxyCompactList}\small\item\em Struct which stores all options needed for state estimation. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1InitializerHelper}{Initializer\+Helper}
+\begin{DoxyCompactList}\small\item\em Has a bunch of helper functions for dynamic initialization (should all be static) \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1SimulatorInit}{Simulator\+Init}
+\begin{DoxyCompactList}\small\item\em Master simulator class that generated visual-\/inertial measurements. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1State__JPLQuatLocal}{State\+\_\+\+J\+P\+L\+Quat\+Local}
+\begin{DoxyCompactList}\small\item\em J\+PL quaternion C\+E\+R\+ES state parameterization. \end{DoxyCompactList}\item 
+class \hyperlink{classov__init_1_1StaticInitializer}{Static\+Initializer}
+\begin{DoxyCompactList}\small\item\em Initializer for a static visual-\/inertial system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+State initialization code. 
+
+Right now this contains \hyperlink{classov__init_1_1StaticInitializer}{Static\+Initializer} and \hyperlink{classov__init_1_1DynamicInitializer}{Dynamic\+Initializer} initialization code for a visual-\/inertial system. It will wait for the platform to stationary, and then initialize its orientation in the gravity frame.
+
+
+\begin{DoxyItemize}
+\item \href{https://pgeneva.com/downloads/reports/tr_init.pdf}{\tt https\+://pgeneva.\+com/downloads/reports/tr\+\_\+init.\+pdf}
+\item \href{https://ieeexplore.ieee.org/abstract/document/6386235}{\tt https\+://ieeexplore.\+ieee.\+org/abstract/document/6386235}
+\item \href{https://tdongsi.github.io/download/pubs/2011_VIO_Init_TR.pdf}{\tt https\+://tdongsi.\+github.\+io/download/pubs/2011\+\_\+\+V\+I\+O\+\_\+\+Init\+\_\+\+T\+R.\+pdf}
+\end{DoxyItemize}
+
+If the platform is not stationary then we leverage dynamic initialization to try to recover the initial state. This is an implementation of the work \href{https://ieeexplore.ieee.org/document/6386235}{\tt Estimator initialization in vision-\/aided inertial navigation with unknown camera-\/\+I\+MU calibration} \cite{Dong2012IROS} which solves the initialization problem by first creating a linear system for recovering tthe velocity, gravity, and feature positions. After the initial recovery, a full optimization is performed to allow for covariance recovery. See this \href{https://pgeneva.com/downloads/reports/tr_init.pdf}{\tt tech report} for a high level walk through. 

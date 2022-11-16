@@ -1,0 +1,48 @@
+\hypertarget{structov__msckf_1_1NoiseManager}{}\section{ov\+\_\+msckf\+:\+:Noise\+Manager Struct Reference}
+\label{structov__msckf_1_1NoiseManager}\index{ov\+\_\+msckf\+::\+Noise\+Manager@{ov\+\_\+msckf\+::\+Noise\+Manager}}
+
+
+Struct of our imu noise parameters.  
+
+
+
+
+{\ttfamily \#include $<$Noise\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_a22f023f5dccac5c08d2785e33ec0eeee}\label{structov__msckf_1_1NoiseManager_a22f023f5dccac5c08d2785e33ec0eeee}} 
+void \hyperlink{structov__msckf_1_1NoiseManager_a22f023f5dccac5c08d2785e33ec0eeee}{print} ()
+\begin{DoxyCompactList}\small\item\em Nice print function of what parameters we have loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_acff3a71e0eb4b9ea80e814fd65ee94d6}\label{structov__msckf_1_1NoiseManager_acff3a71e0eb4b9ea80e814fd65ee94d6}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_acff3a71e0eb4b9ea80e814fd65ee94d6}{sigma\+\_\+w} = 1.\+6968e-\/04
+\begin{DoxyCompactList}\small\item\em Gyroscope white noise (rad/s/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_aa5494d695f164d62fb550bbf41623bda}\label{structov__msckf_1_1NoiseManager_aa5494d695f164d62fb550bbf41623bda}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_aa5494d695f164d62fb550bbf41623bda}{sigma\+\_\+w\+\_\+2} = pow(1.\+6968e-\/04, 2)
+\begin{DoxyCompactList}\small\item\em Gyroscope white noise covariance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_ad62b26affd461be9522394f8c0bd1699}\label{structov__msckf_1_1NoiseManager_ad62b26affd461be9522394f8c0bd1699}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_ad62b26affd461be9522394f8c0bd1699}{sigma\+\_\+wb} = 1.\+9393e-\/05
+\begin{DoxyCompactList}\small\item\em Gyroscope random walk (rad/s$^\wedge$2/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_aadba5e62145c22ca355457e9ebcc1c51}\label{structov__msckf_1_1NoiseManager_aadba5e62145c22ca355457e9ebcc1c51}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_aadba5e62145c22ca355457e9ebcc1c51}{sigma\+\_\+wb\+\_\+2} = pow(1.\+9393e-\/05, 2)
+\begin{DoxyCompactList}\small\item\em Gyroscope random walk covariance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_a6dee9928908bd58d9628176d9088b3b9}\label{structov__msckf_1_1NoiseManager_a6dee9928908bd58d9628176d9088b3b9}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_a6dee9928908bd58d9628176d9088b3b9}{sigma\+\_\+a} = 2.\+0000e-\/3
+\begin{DoxyCompactList}\small\item\em Accelerometer white noise (m/s$^\wedge$2/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_ad1997253aae2e7df977d9b752255bda6}\label{structov__msckf_1_1NoiseManager_ad1997253aae2e7df977d9b752255bda6}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_ad1997253aae2e7df977d9b752255bda6}{sigma\+\_\+a\+\_\+2} = pow(2.\+0000e-\/3, 2)
+\begin{DoxyCompactList}\small\item\em Accelerometer white noise covariance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_a31ddf8bc77fedc830ed28a8eac9a49c7}\label{structov__msckf_1_1NoiseManager_a31ddf8bc77fedc830ed28a8eac9a49c7}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_a31ddf8bc77fedc830ed28a8eac9a49c7}{sigma\+\_\+ab} = 3.\+0000e-\/03
+\begin{DoxyCompactList}\small\item\em Accelerometer random walk (m/s$^\wedge$3/sqrt(hz)) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structov__msckf_1_1NoiseManager_a568ec4370e05451c73c8d7de250c12e2}\label{structov__msckf_1_1NoiseManager_a568ec4370e05451c73c8d7de250c12e2}} 
+double \hyperlink{structov__msckf_1_1NoiseManager_a568ec4370e05451c73c8d7de250c12e2}{sigma\+\_\+ab\+\_\+2} = pow(3.\+0000e-\/03, 2)
+\begin{DoxyCompactList}\small\item\em Accelerometer random walk covariance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct of our imu noise parameters. 

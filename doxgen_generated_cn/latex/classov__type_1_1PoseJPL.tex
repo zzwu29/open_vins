@@ -1,0 +1,204 @@
+\hypertarget{classov__type_1_1PoseJPL}{}\section{ov\+\_\+type\+:\+:Pose\+J\+P\+L类 参考}
+\label{classov__type_1_1PoseJPL}\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+
+
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements a 6 d.\+o.\+f pose  
+
+
+
+
+{\ttfamily \#include $<$Pose\+J\+P\+L.\+h$>$}
+
+\subsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__type_1_1PoseJPL_a2295d3fbdd9529c1464957961a886731}{set\+\_\+local\+\_\+id} (int new\+\_\+id) override
+\begin{DoxyCompactList}\small\item\em Sets id used to track location of variable in the filter covariance \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1PoseJPL_a8c961e8638cdc37a2b37c1fa50fc67a2}{update} (const Eigen\+::\+Vector\+Xd \&dx) override
+\begin{DoxyCompactList}\small\item\em Update q and p using a the \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} update for orientation and vector update for position \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1PoseJPL_a203f719544e8f3e11eb74b1b1458e3d6}{set\+\_\+value} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Sets the value of the estimate \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1PoseJPL_aa20a30cf44fefdb749565c0e60fe027a}{set\+\_\+fej} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value) override
+\begin{DoxyCompactList}\small\item\em Sets the value of the first estimate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a0c4347fb6a988470ed5236421987d92a}\label{classov__type_1_1PoseJPL_a0c4347fb6a988470ed5236421987d92a}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ \hyperlink{classov__type_1_1PoseJPL_a0c4347fb6a988470ed5236421987d92a}{clone} () override
+\begin{DoxyCompactList}\small\item\em Create a clone of this variable \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ \hyperlink{classov__type_1_1PoseJPL_aa2138dce0eef761ebbeacc0136da34cc}{check\+\_\+if\+\_\+subvariable} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$ check) override
+\begin{DoxyCompactList}\small\item\em Determine if pass variable is a sub-\/variable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_aa48c6c3747ec401d1873ef94e3ad7ee2}\label{classov__type_1_1PoseJPL_aa48c6c3747ec401d1873ef94e3ad7ee2}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__type_1_1PoseJPL_aa48c6c3747ec401d1873ef94e3ad7ee2}{Rot} () const
+\begin{DoxyCompactList}\small\item\em Rotation access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a9e9e9bf657e838f5b1e48e8eecfd1781}\label{classov__type_1_1PoseJPL_a9e9e9bf657e838f5b1e48e8eecfd1781}} 
+Eigen\+::\+Matrix$<$ double, 3, 3 $>$ \hyperlink{classov__type_1_1PoseJPL_a9e9e9bf657e838f5b1e48e8eecfd1781}{Rot\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ Rotation access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a533fcdd266d777a1e5c419361d7e7b35}\label{classov__type_1_1PoseJPL_a533fcdd266d777a1e5c419361d7e7b35}} 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{classov__type_1_1PoseJPL_a533fcdd266d777a1e5c419361d7e7b35}{quat} () const
+\begin{DoxyCompactList}\small\item\em Rotation access as quaternion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_aa1bb71fdf85190373629e8a2ac818205}\label{classov__type_1_1PoseJPL_aa1bb71fdf85190373629e8a2ac818205}} 
+Eigen\+::\+Matrix$<$ double, 4, 1 $>$ \hyperlink{classov__type_1_1PoseJPL_aa1bb71fdf85190373629e8a2ac818205}{quat\+\_\+fej} () const
+\begin{DoxyCompactList}\small\item\em F\+EJ Rotation access as quaternion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_ae1f0b41d18b5307e9d035d05abf91c68}\label{classov__type_1_1PoseJPL_ae1f0b41d18b5307e9d035d05abf91c68}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ \hyperlink{classov__type_1_1PoseJPL_ae1f0b41d18b5307e9d035d05abf91c68}{pos} () const
+\begin{DoxyCompactList}\small\item\em Position access \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a6cdf8ee3cfefe564eb01e4b9367a04f6}\label{classov__type_1_1PoseJPL_a6cdf8ee3cfefe564eb01e4b9367a04f6}} 
+Eigen\+::\+Matrix$<$ double, 3, 1 $>$ {\bfseries pos\+\_\+fej} () const
+\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a2e6896246cfdba377cd75444f44a8868}\label{classov__type_1_1PoseJPL_a2e6896246cfdba377cd75444f44a8868}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} $>$ {\bfseries q} ()
+\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a428675563a664d2f1e3adf333762a022}\label{classov__type_1_1PoseJPL_a428675563a664d2f1e3adf333762a022}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ {\bfseries p} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classov__type_1_1PoseJPL_ab1a626a94a9c7013a253dd16a2b6a0cc}{set\+\_\+value\+\_\+internal} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the value of the estimate \end{DoxyCompactList}\item 
+void \hyperlink{classov__type_1_1PoseJPL_a779b5bce92981b57b018ab5c14cf4b99}{set\+\_\+fej\+\_\+internal} (const Eigen\+::\+Matrix\+Xd \&new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the value of the first estimate \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a945324efa203146186f18faa7fb83bdb}\label{classov__type_1_1PoseJPL_a945324efa203146186f18faa7fb83bdb}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} $>$ \hyperlink{classov__type_1_1PoseJPL_a945324efa203146186f18faa7fb83bdb}{\+\_\+q}
+\begin{DoxyCompactList}\small\item\em Subvariable containing orientation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_aa5054d412515696961240ca29586ce16}\label{classov__type_1_1PoseJPL_aa5054d412515696961240ca29586ce16}} 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Vec}{Vec} $>$ \hyperlink{classov__type_1_1PoseJPL_aa5054d412515696961240ca29586ce16}{\+\_\+p}
+\begin{DoxyCompactList}\small\item\em Subvariable containing position \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+Derived \hyperlink{classov__type_1_1Type}{Type} class that implements a 6 d.\+o.\+f pose 
+
+Internally we use a \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} quaternion representation for the orientation and 3D \hyperlink{classov__type_1_1Vec}{Vec} position. Please see \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} for details on its update procedure and its left multiplicative error. 
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_aa2138dce0eef761ebbeacc0136da34cc}\label{classov__type_1_1PoseJPL_aa2138dce0eef761ebbeacc0136da34cc}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!check\+\_\+if\+\_\+subvariable@{check\+\_\+if\+\_\+subvariable}}
+\index{check\+\_\+if\+\_\+subvariable@{check\+\_\+if\+\_\+subvariable}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{check\+\_\+if\+\_\+subvariable()}{check\_if\_subvariable()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\hyperlink{classov__type_1_1Type}{Type}$>$ ov\+\_\+type\+::\+Pose\+J\+P\+L\+::check\+\_\+if\+\_\+subvariable (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classov__type_1_1Type}{Type} $>$}]{check }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Determine if pass variable is a sub-\/variable 
+
+If the passed variable is a sub-\/variable or the current variable this will return it. Otherwise it will return a nullptr, meaning that it was unable to be found.
+
+
+\begin{DoxyParams}{参数}
+{\em check} & \hyperlink{classov__type_1_1Type}{Type} pointer to compare our subvariables to \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_a95fcdbc584256baffc78935de5ab5da3}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_aa20a30cf44fefdb749565c0e60fe027a}\label{classov__type_1_1PoseJPL_aa20a30cf44fefdb749565c0e60fe027a}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!set\+\_\+fej@{set\+\_\+fej}}
+\index{set\+\_\+fej@{set\+\_\+fej}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{set\+\_\+fej()}{set\_fej()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Pose\+J\+P\+L\+::set\+\_\+fej (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the value of the first estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_ab8345946b27cb43e0cfc36454a06686d}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a779b5bce92981b57b018ab5c14cf4b99}\label{classov__type_1_1PoseJPL_a779b5bce92981b57b018ab5c14cf4b99}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!set\+\_\+fej\+\_\+internal@{set\+\_\+fej\+\_\+internal}}
+\index{set\+\_\+fej\+\_\+internal@{set\+\_\+fej\+\_\+internal}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{set\+\_\+fej\+\_\+internal()}{set\_fej\_internal()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Pose\+J\+P\+L\+::set\+\_\+fej\+\_\+internal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Sets the value of the first estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a2295d3fbdd9529c1464957961a886731}\label{classov__type_1_1PoseJPL_a2295d3fbdd9529c1464957961a886731}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!set\+\_\+local\+\_\+id@{set\+\_\+local\+\_\+id}}
+\index{set\+\_\+local\+\_\+id@{set\+\_\+local\+\_\+id}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{set\+\_\+local\+\_\+id()}{set\_local\_id()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Pose\+J\+P\+L\+::set\+\_\+local\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{new\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets id used to track location of variable in the filter covariance 
+
+Note that we update the sub-\/variables also.
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+id} & entry in filter covariance corresponding to this variable \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_a52cb2fe6e25dbe8875da3fd618cf0b61}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a203f719544e8f3e11eb74b1b1458e3d6}\label{classov__type_1_1PoseJPL_a203f719544e8f3e11eb74b1b1458e3d6}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Pose\+J\+P\+L\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the value of the estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+
+
+重载 \hyperlink{classov__type_1_1Type_a81c73f0b6c10f2550a487019a59796a9}{ov\+\_\+type\+::\+Type} .
+
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_ab1a626a94a9c7013a253dd16a2b6a0cc}\label{classov__type_1_1PoseJPL_ab1a626a94a9c7013a253dd16a2b6a0cc}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!set\+\_\+value\+\_\+internal@{set\+\_\+value\+\_\+internal}}
+\index{set\+\_\+value\+\_\+internal@{set\+\_\+value\+\_\+internal}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{set\+\_\+value\+\_\+internal()}{set\_value\_internal()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Pose\+J\+P\+L\+::set\+\_\+value\+\_\+internal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{new\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Sets the value of the estimate 
+
+
+\begin{DoxyParams}{参数}
+{\em new\+\_\+value} & New value we should set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classov__type_1_1PoseJPL_a8c961e8638cdc37a2b37c1fa50fc67a2}\label{classov__type_1_1PoseJPL_a8c961e8638cdc37a2b37c1fa50fc67a2}} 
+\index{ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}!update@{update}}
+\index{update@{update}!ov\+\_\+type\+::\+Pose\+J\+PL@{ov\+\_\+type\+::\+Pose\+J\+PL}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void ov\+\_\+type\+::\+Pose\+J\+P\+L\+::update (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{dx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Update q and p using a the \hyperlink{classov__type_1_1JPLQuat}{J\+P\+L\+Quat} update for orientation and vector update for position 
+
+
+\begin{DoxyParams}{参数}
+{\em dx} & Correction vector (orientation then position) \\
+\hline
+\end{DoxyParams}
+
+
+实现了 \hyperlink{classov__type_1_1Type_a4e133d50af35f07bd97f73590fe31000}{ov\+\_\+type\+::\+Type}.
+
