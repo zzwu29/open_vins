@@ -136,11 +136,11 @@ struct InertialInitializerOptions {
       parser->parse_config("init_max_disparity", init_max_disparity);
       parser->parse_config("init_max_features", init_max_features);
 
-      parser->parse_config("init_att_std", init_att_std);
-      parser->parse_config("init_pos_std", init_pos_std);
-      parser->parse_config("init_vel_std", init_vel_std);
-      parser->parse_config("init_bg_std", init_bg_std);
-      parser->parse_config("init_ba_std", init_ba_std);
+      parser->parse_config("init_att_std", init_att_std, false);
+      parser->parse_config("init_pos_std", init_pos_std, false);
+      parser->parse_config("init_vel_std", init_vel_std, false);
+      parser->parse_config("init_bg_std", init_bg_std, false);
+      parser->parse_config("init_ba_std", init_ba_std, false);
 
       parser->parse_config("init_dyn_use", init_dyn_use);
       parser->parse_config("init_dyn_mle_opt_calib", init_dyn_mle_opt_calib);

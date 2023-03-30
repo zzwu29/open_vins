@@ -114,6 +114,3 @@ use_mask: false
 relative_config_imu: "kalibr_imu_chain.yaml"
 relative_config_imucam: "kalibr_imucam_chain.yaml"
 
-
-
-
